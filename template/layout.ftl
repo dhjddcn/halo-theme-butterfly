@@ -6,6 +6,7 @@
 <#include 'common/aside.ftl' >
 <#include 'common/rightside.ftl' >
 <#macro layout title type  top_background_img >
+    <!DOCTYPE html>
     <html lang="zh-CN" data-theme="light">
     <head>
         <title>${title}</title>
