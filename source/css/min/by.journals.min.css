@@ -1,0 +1,8 @@
+/*! 日志修饰 */
+.by_box .by_journal_item {
+  padding: 0.5rem;
+  border-radius: 8px;
+}
+.by_box .by_journal_item hr {
+  margin-bottom: 10px;
+}

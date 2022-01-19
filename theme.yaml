@@ -1,0 +1,39 @@
+id: butterfly
+name: Butterfly
+author:
+  name: 小红
+  website: https://dhjdd.cn
+description: Halo主题 butterfly
+logo: https://dhjdd.cn/logo
+website: https://dhjdd.cn
+repo: https://github.com/dhjddcn/halo-theme-butterfly
+cover: https://dhjdd.cn/file/screenshot_1641478512166.jpg
+version: 1.0.0
+require: ^1.4.11
+# 文章页 meta 变量
+postMetaField:
+  - enable_aside
+  - enable_comment
+  - enable_collect_check
+  - enable_toc
+  - toc_depth
+  - img_align
+  - img_max_width
+  - enable_copy
+  - enable_donate
+  - enable_share
+  - enable_like
+  - code_theme
+  - enable_mathjax
+  - enable_mermaid
+
+# 自定义页 meta 变量
+sheetMetaField:
+  - enable_aside
+  - enable_page_meta
+  - enable_collect_check
+  - enable_comment
+  - enable_mathjax
+  - enable_mermaid
+  - img_align
+  # - show_thumbnail

@@ -1,0 +1,564 @@
+# 配置详情请参考：https://docs.halo.run/zh/developer-guide/theme/config-files
+genernal:
+  label: 基本设置
+  items:
+    icp:
+      name: icp
+      label: ICP 备案号
+      type: text
+      default: ""
+      placeholder: "请填写 ICP 备案号信息"
+      description: "ICP 备案信息将展示在页脚中，不填不展示（示例：蜀ICP备xx号）"
+    police:
+      name: police
+      label: 公网安备号
+      type: text
+      default: ""
+      placeholder: "请填写公网安备号信息"
+      description: "公网安备信息将展示在页脚中，不填不展示，一栏中单独关闭（示例：蜀公网安备xx号）"
+    site_notice:
+      name: site_notice
+      label: 网站公告
+      type: textarea
+      placeholder: 请输入公告信息
+      description: "网站公告信息，将展示在页面右侧，尽量简洁明了（不填不展示该模块，也可单独开关）"
+
+
+# 主题设置
+theme:
+  label: 主题设置
+  items:
+    content_max_width:
+      name: content_max_width
+      label: 内容区最大宽度
+      type: text
+      default: "1200px"
+      placeholder: "请输入"
+      description: "限制内容区域的宽度，像素或百分比，默认1200px"
+    enable_top_background_img:
+      name: enable_top_background_img
+      label: 开启顶部背景图（全局）
+      type: switch
+      data-type: bool
+      default: true
+      description: "是否开启全局顶部背景图"
+      options:
+        - value: true
+          label: 是
+        - value: false
+          label: 否
+    top_index_background_img:
+      name: top_index_background_img
+      label: 顶部背景图（首页）
+      type: attachment
+      default: "https://s4.ax1x.com/2022/01/19/7DYmwT.jpg"
+      placeholder: "顶部背景图（首页）"
+    top_archives_background_img:
+      name: top_archives_background_img
+      label: 顶部背景图（归档）
+      type: attachment
+      default: "https://s4.ax1x.com/2022/01/19/7DYmwT.jpg"
+      placeholder: "顶部背景图（归档）"
+    top_categories_background_img:
+      name: top_categories_background_img
+      label: 顶部背景图（分类）
+      type: attachment
+      default: "https://s4.ax1x.com/2022/01/19/7DYmwT.jpg"
+      placeholder: "顶部背景图（分类）"
+    top_tags_background_img:
+      name: top_tags_background_img
+      label: 顶部背景图（标签）
+      type: attachment
+      default: "https://s4.ax1x.com/2022/01/19/7DYmwT.jpg"
+      placeholder: "顶部背景图（标签）"
+    top_links_background_img:
+      name: top_links_background_img
+      label: 顶部背景图（友链）
+      type: attachment
+      default: "https://s4.ax1x.com/2022/01/19/7DYmwT.jpg"
+      placeholder: "顶部背景图（友链）"
+    top_sheet_background_img:
+      name: top_sheet_background_img
+      label: 顶部背景图（自定义）
+      type: attachment
+      default: "https://s4.ax1x.com/2022/01/19/7DYmwT.jpg"
+      placeholder: "顶部背景图（自定义）"
+#首页
+home:
+  label: 首页
+  items:
+    enable_random_img_api:
+      name: enable_random_img_api
+      label: 启用随机图
+      type: switch
+      data-type: bool
+      default: true
+      description: "是否启用随机图API（必须先配置 API），开启后将使用随机图填充没有设置封面的 “文章|分类|标签”，未开启时使用主题内置的封面图"
+      options:
+        - value: true
+          label: 是
+        - value: false
+          label: 否
+    random_img_api:
+      name: random_img_api
+      label: 随机图 API
+      type: text
+      default: "https://api.ixiaowai.cn/gqapi/gqapi.php"
+      description: "自定义随机图API，用于填充没有设置封面的 “文章|分类|标签”，为空则使用默认随机图 API，免费 API 不会一直可用，请知悉"
+    post_thumbnail:
+      name: post_thumbnail
+      label: 文章默认缩略图
+      width: 100%
+      type: attachment
+      default: "https://picsum.photos/id/1081/210/140"
+      description: "文章无配图时生效，可使用占位图服务（210*140）"
+
+# 侧边栏
+aside:
+  label: 侧边栏
+  items:
+    enable_aside:
+      name: enable_aside
+      label: 启用全局侧边栏
+      type: switch
+      data-type: bool
+      default: true
+      description: "是否启用侧边栏（全局），关闭后所有页面都没有侧边栏（优先级高于页面元数据）"
+      options:
+        - value: true
+          label: 是
+        - value: false
+          label: 否
+    aside_position:
+      name: aside_position
+      label: 侧边栏位置
+      type: radio
+      data-type: text
+      default: right
+      description: "侧边栏展示位置，左边或右边"
+      options:
+        - value: left
+          label: 左侧
+        - value: right
+          label: 右侧
+    enable_newest_post:
+      name: enable_newest_post
+      label: 展示最新文章
+      type: switch
+      data-type: bool
+      default: true
+      description: "在右侧展示最新文章"
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+    newest_page_size:
+      name: newest_page_size
+      label: 最新文章条数
+      default: 5
+      description: "右侧最新文章展示条数，填写数字即可，默认展示最新的5篇文章（需开启最新文章）"
+    #    show_newreply:
+    #      name: show_newreply
+    #      label: 展示最新评论
+    #      type: switch
+    #      data-type: bool
+    #      default: true
+    #      description: "在右侧展示最新的评论"
+    #      options:
+    #        - value: true
+    #          label: 开启
+    #        - value: false
+    #          label: 关闭
+    #    newreply_page_size:
+    #      name: newreply_page_size
+    #      label: 最新评论条数
+    #      type: text
+    #      data-type: long
+    #      default: 5
+    #      description: "右侧最新评论展示条数，填写数字即可，默认展示最新的5条评论（需开启最新评论）"
+    enable_notice:
+      name: enable_notice
+      label: 展示网站公告
+      type: switch
+      data-type: bool
+      default: true
+      description: "在右侧展示公告信息模块，必须配置公告内容才生效（请在 '基本设置' 栏中配置）"
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+    enable_categories:
+      name: enable_categories
+      label: 侧边栏展示分类
+      type: switch
+      data-type: bool
+      default: true
+      description: "在右侧展示分类"
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+    enable_tags:
+      name: enable_tags
+      label: 侧边栏展示标签
+      type: switch
+      data-type: bool
+      default: true
+      description: "在右侧展示标签"
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+    enable_archives_aside:
+      name: enable_archives_aside
+      label: 归档页侧边栏
+      type: switch
+      data-type: bool
+      default: true
+      description: "归档页右侧是否展示侧边栏"
+      options:
+        - value: true
+          label: 是
+        - value: false
+          label: 否
+    enable_post_aside:
+      name: enable_post_aside
+      label: 文章详情页侧边栏
+      type: switch
+      data-type: bool
+      default: true
+      description: "文章页右侧是否展示侧边栏"
+      options:
+        - value: true
+          label: 是
+        - value: false
+          label: 否
+    enable_journals_aside:
+      name: enable_journals_aside
+      label: 日志页侧边栏
+      type: switch
+      data-type: bool
+      default: true
+      description: "日志页右侧是否展示侧边栏"
+      options:
+        - value: true
+          label: 是
+        - value: false
+          label: 否
+    enable_photos_aside:
+      name: enable_photos_aside
+      label: 相册页侧边栏
+      type: switch
+      data-type: bool
+      default: true
+      description: "相册页右侧是否展示侧边栏"
+      options:
+        - value: true
+          label: 是
+        - value: false
+          label: 否
+    enable_links_aside:
+      name: enable_links_aside
+      label: 友链页侧边栏
+      type: switch
+      data-type: bool
+      default: true
+      description: "友链页右侧是否展示侧边栏"
+      options:
+        - value: true
+          label: 是
+        - value: false
+          label: 否
+    enable_categories_aside:
+      name: enable_categories_aside
+      label: 分类页侧边栏
+      type: switch
+      data-type: bool
+      default: true
+      description: "分类页右侧是否展示侧边栏"
+      options:
+        - value: true
+          label: 是
+        - value: false
+          label: 否
+    enable_tags_aside:
+      name: enable_tags_aside
+      label: 标签页侧边栏
+      type: switch
+      data-type: bool
+      default: true
+      description: "标签页右侧是否展示侧边栏"
+      options:
+        - value: true
+          label: 是
+        - value: false
+          label: 否
+    enable_sheet_aside:
+      name: enable_sheet_aside
+      label: 自定义页侧边栏
+      type: switch
+      data-type: bool
+      default: true
+      description: "自定义页面右侧是否展示侧边栏，默认关闭。开启后，所有自定义页面都会展示侧边栏（若部分页面不想展示，可以配置对应页面的元数据 enable_aside 为 false ）"
+      options:
+        - value: true
+          label: 是
+        - value: false
+          label: 否
+
+
+# 代码块
+code_block:
+  label: 代码块
+  items:
+#    enable_code_copy:
+#      name: enable_code_copy
+#      label: 代码复制
+#      type: switch
+#      data-type: bool
+#      default: true
+#      description: 开启代码块复制按钮
+#      options:
+#        - value: true
+#          label: 开启
+#        - value: false
+#          label: 关闭
+#    enable_code_expander:
+#      name: enable_code_expander
+#      label: 代码折叠
+#      type: switch
+#      data-type: bool
+#      default: false
+#      description: "开启代码块折叠功能"
+#      options:
+#        - value: true
+#          label: 开启
+#        - value: false
+#          label: 关闭
+#    fold_long_code:
+#      name: fold_long_code
+#      label: 自动折叠长代码块
+#      type: switch
+#      data-type: bool
+#      default: false
+#      description: "自动折叠 <文章页> 中内容很长的代码块，提高阅读效率，此操作会出现布局偏移，可能带来一些滚动相关问题，如无必要不建议开启（必须先开启“代码折叠”选项，否则无效）"
+#      options:
+#        - value: true
+#          label: 开启
+#        - value: false
+#          label: 关闭
+#    long_code_height:
+#      name: long_code_height
+#      label: 自动折叠的高度
+#      type: text
+#      data-type: long
+#      default: 800
+#      placeholder: "请输入数字"
+#      description: "触发长代码块自动折叠的高度（单位px），只填数字即可（默认800），填 0 将折叠所有代码块"
+    code_theme:
+      name: code_theme
+      label: 代码主题
+      type: select
+      data-type: string
+      default: "one-dark"
+      description: "设置代码块主题，可通过后台元数据为每篇文章设置单独的代码主题，主题来自 prism-themes，见https://github.com/PrismJS/prism-themes"
+      options:
+        - value: "one-dark"
+          label: "one-dark"
+        - value: "one-light"
+          label: "one-light"
+        - value: "a11y-dark"
+          label: "a11y-dark"
+        - value: "atom-dark"
+          label: "atom-dark"
+        - value: "base16-ateliersulphurpool.light"
+          label: "base16-ateliersulphurpool.light"
+        - value: "cb"
+          label: "cb"
+        - value: "coldark-cold"
+          label: "coldark-cold"
+        - value: "coldark-dark"
+          label: "coldark-dark"
+        - value: "coy-without-shadows"
+          label: "coy-without-shadows"
+        - value: "darcula"
+          label: "darcula"
+        - value: "dracula"
+          label: "dracula"
+        - value: "duotone-dark"
+          label: "duotone-dark"
+        - value: "duotone-earth"
+          label: "duotone-earth"
+        - value: "duotone-forest"
+          label: "duotone-forest"
+        - value: "duotone-light"
+          label: "duotone-light"
+        - value: "duotone-sea"
+          label: "duotone-sea"
+        - value: "duotone-space"
+          label: "duotone-space"
+        - value: "ghcolors"
+          label: "ghcolors"
+        - value: "gruvbox-dark"
+          label: "gruvbox-dark"
+        - value: "gruvbox-light"
+          label: "gruvbox-light"
+        - value: "holi-theme"
+          label: "holi-theme"
+        - value: "hopscotch"
+          label: "hopscotch"
+        - value: "lucario"
+          label: "lucario"
+        - value: "material-dark"
+          label: "material-dark"
+        - value: "material-light"
+          label: "material-light"
+        - value: "material-oceanic"
+          label: "material-oceanic"
+        - value: "night-owl"
+          label: "night-owl"
+        - value: "nord"
+          label: "nord"
+        - value: "pojoaque"
+          label: "pojoaque"
+        - value: "shades-of-purple"
+          label: "shades-of-purple"
+        - value: "solarized-dark-atom"
+          label: "solarized-dark-atom"
+        - value: "synthwave84"
+          label: "synthwave84"
+        - value: "vs"
+          label: "vs"
+        - value: "vsc-dark-plus"
+          label: "vsc-dark-plus"
+        - value: "xonokai"
+          label: "xonokai"
+        - value: "z-touch"
+          label: "z-touch"
+
+# 文章页
+post:
+  label: 文章页
+  items:
+    enable_aside_expander:
+      name: enable_aside_expander
+      label: 展示侧边栏切换按钮
+      type: switch
+      data-type: bool
+      default: true
+      description: "文章页顶部显示用于切换侧边栏显示/隐藏状态的按钮（仅在展示侧边栏情况下生效）"
+      options:
+        - value: true
+          label: 是
+        - value: false
+          label: 否
+    enable_donate:
+      name: enable_donate
+      label: 开启打赏
+      type: switch
+      data-type: bool
+      default: false
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+    qrcode_zfb:
+      name: qrcode_zfb
+      label: "支付宝二维码"
+      type: attachment
+      default: ""
+      placeholder: "打赏用的支付宝收款二维码链接，不填不显示"
+    qrcode_wx:
+      name: qrcode_wx
+      label: "微信二维码"
+      type: attachment
+      default: ""
+      placeholder: "打赏用的微信收款二维码链接，不填不显示"
+
+# 其它
+#others:
+#  label: 其它
+#  items:
+#    enable_clean_mode:
+#      name: enable_clean_mode
+#      label: 绿色模式
+#      type: switch
+#      data-type: bool
+#      default: false
+#      description: "启用后，全局评论、留言、特效和广告位将会屏蔽（通常在网站备案期间开启）"
+#      options:
+#        - value: true
+#          label: 开启
+#        - value: false
+#          label: 关闭
+#    check_baidu_collect:
+#      name: check_baidu_collect
+#      label: 检查百度收录情况
+#      type: switch
+#      data-type: bool
+#      default: false
+#      description: "启用后，文章页打开时会自动检测百度收录情况，并显示状态文字（目前相关api为小红自己搭建的服务，不能保证稳定性）"
+#      options:
+#        - value: true
+#          label: 开启
+#        - value: false
+#          label: 关闭
+#    baidu_token:
+#      name: baidu_token
+#      label: 百度推送Token
+#      default: ""
+#      placeholder: "请填入token"
+#      description: "文章页未收录时会自动将当前链接推送给百度加快收录，Token在百度收录平台注册账号获取（必须启用“检查百度收录”并填入token才生效），https://ziyuan.baidu.com/linksubmit"
+##    enable_cdn:
+##      name: enable_cdn
+##      label: 使用CDN加载静态资源
+##      type: switch
+##      data-type: bool
+##      default: true
+##      description: "开启后将使用jsDelivr提供的CDN服务加载静态资源，开发环境下强制从本地加载（注意：如果你在后台修改了模板中的样式等文件，需要关掉这里才会读取最新的文件）"
+##      options:
+##        - value: true
+##          label: 开启
+##        - value: false
+##          label: 关闭
+##    enable_console_theme:
+##      name: enable_console_theme
+##      label: 控制台输出主题信息
+##      type: switch
+##      data-type: bool
+##      default: false
+##      description: "是否在控制台输出主题相关信息"
+##      options:
+##        - value: true
+##          label: 开启
+##        - value: false
+##          label: 关闭
+##    show_loaded_time:
+##      name: show_loaded_time
+##      label: 控制台输出页面加载耗时
+##      type: switch
+##      data-type: bool
+##      default: false
+##      description: "是否在控制台输出当前页面加载耗时"
+##      options:
+##        - value: true
+##          label: 开启
+##        - value: false
+##          label: 关闭
+#    rip_mode:
+#      name: rip_mode
+#      label: RIP模式(灰色模式)
+#      type: switch
+#      data-type: bool
+#      default: false
+#      description: "向生命致敬，愿精神长存 <愿此功能永不被启用>"
+#      options:
+#        - value: true
+#          label: 开启
+#        - value: false
+#          label: 关闭

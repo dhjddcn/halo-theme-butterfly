@@ -1,0 +1,9 @@
+/*! 首页修饰 */
+#Butterfly .by_header {
+  height: 100vh;
+  background-attachment: fixed;
+}
+#Butterfly .by_header .by_site_subtitle,
+#Butterfly .by_header .by_scroll_down {
+  display: block;
+}
