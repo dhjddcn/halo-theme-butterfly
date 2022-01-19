@@ -1,10 +1,4 @@
-<a id="readme" style="visibility:hidden">&nbsp;</a>
-
-<br>
-
 <p align="center">Butterfly 主题 Halo 移植版</p>
-
-
 
 > `Butterfly` 是Hexo社区[hexo-theme-Butterfly](https://github.com/jerryc127) 此次移植Halo由原版的 pug模板引擎 调整为 freemarker， 保持灵活性的同时最大限度的移植了原版功能，希望大家喜欢 ❤️ <br>
 > 🌸 同时也要在此感谢原作者 [Jerry](https://github.com/jerryc127)，欢迎大家加入 [hexo-theme-Butterfly 交流群：916571927](https://jq.qq.com/?_wv=1027&k=LfbGKBVG)
@@ -131,12 +125,9 @@
 - 自定义模板引擎
 - 文章评论后可见
 - 博客自动备份
-
 <br>
 
-
 ### 🏭 贡献
-
 > 如果你想帮助完善 `butterfly` 主题，请：
 
 - 点 `star`
@@ -147,8 +138,6 @@
 <br>
 
 ### 🙆‍♂️ 感谢
-
 在此感谢以下项目提供的支持：
-
 - [Halo](https://halo.run)
 - [Jerry](https://github.com/jerryc127)
