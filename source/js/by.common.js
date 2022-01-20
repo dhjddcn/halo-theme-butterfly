@@ -112,8 +112,11 @@ const commonContext = {
 
                 $this.prepend( '<i class="by_icon_copy by-font by_code_copy" title="复制内容"></i><i class="by_icon_arrow-downb by-font by_code_expander" title="折叠/展开"></i>' );
 
+                // $this.children( '.by_code_expander' ).click( () => {
+                //     $this.children( 'code' ).slideToggle().siblings( '.by_code_expander' ).toggleClass( 'by_code_expander_close' );
+                // } );
                 $this.children( '.by_code_expander' ).click( () => {
-                    $this.children( 'code' ).slideToggle().siblings( '.by_code_expander' ).toggleClass( 'by_code_expander_close' );
+                    $this.toggleClass( 'by_code_close');
                 } );
 
                 new ClipboardJS( $this.children( '.by_code_copy' )[0], {

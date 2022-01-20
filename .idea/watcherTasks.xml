@@ -27,7 +27,7 @@
       <option name="workingDir" value="$FileDir$" />
       <envs />
     </TaskOptions>
-    <TaskOptions isEnabled="true">
+    <TaskOptions isEnabled="false">
       <option name="arguments" value="--source-maps --out-file $FileDir$\$FileNameWithoutExtension$.js --presets env $FilePath$" />
       <option name="checkSyntaxErrors" value="true" />
       <option name="description" />

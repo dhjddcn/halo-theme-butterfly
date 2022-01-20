@@ -13,10 +13,10 @@
         <@link type=type />
         <@global.head />
     </head>
-    <body style="background-image:url(${BASE_RES_URL!}/source/img/bg.jpg)">
+    <body style="background-image:url(${settings.body_background_img!})">
     <div id="Butterfly">
         <#--  头部  -->
-        <@header  title=title background_img=(top_background_img == '')?then(settings.random_img_api, top_background_img)/>
+        <@header type=type title=title background_img ="background-image:url(${top_background_img!})" />
         <#assign by_enable_aside = (settings.enable_aside)?then('', 'by_enable_aside')>
         <#assign aside_position = (settings.aside_position == 'right')?then('', 'by_aside_position')>
         <main class="by_main_wrap by_${type} ${aside_position}" style="max-width:${settings.content_max_width}">

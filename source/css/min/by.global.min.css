@@ -192,7 +192,9 @@ body {
   font-size: var(--global-font-size);
   font-family: var(--global-font-family);
   background-position: center;
-  background-size: 100% 100%;
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
   line-height: 2;
   -webkit-tap-highlight-color: transparent;
   margin: 0;
@@ -255,7 +257,6 @@ html #Butterfly .by_aside_position .by_aside {
 .by_header {
   position: relative;
   width: 100%;
-  background-color: #49b1f5;
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -552,7 +553,7 @@ html #Butterfly .by_aside_position .by_aside {
   flex-direction: row;
   align-items: center;
   overflow: hidden;
-  height: 15.75rem;
+  height: 18em;
 }
 .by_post_item:not(:first-child) {
   margin-top: 20px;
@@ -932,5 +933,11 @@ html #Butterfly .by_aside_position .by_aside {
 }
 #Butterfly .code-toolbar .by_code_expander_close {
   transform: rotate(90deg);
+}
+#Butterfly .code-toolbar .by_code_close .by_code_expander {
+  transform: rotate(90deg);
+}
+#Butterfly .code-toolbar .by_code_close code[class*="language-"] {
+  display: none !important;
 }
 /*！ 代码块结束*/

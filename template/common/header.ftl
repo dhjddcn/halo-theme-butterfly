@@ -1,7 +1,6 @@
-<#macro header title  background_img >
-    <#assign bg = (background_img == '')?then('', 'background-image: url(${background_img!});')>
+<#macro header type title  background_img >
     <header class="by_header ${settings.enable_top_background_img?then('','by_enable_top_background_img')} ${(is_post??)?then("by_header_post", "")}"
-            style="${bg!}">
+            style="${(background_img)}">
         <nav class="by_nav ">
             <a class="by_site_title" href=${blog_url!}>${blog_title!}</a>
             <ul class="by_menus">
@@ -11,7 +10,6 @@
 <#--                        <span>搜索</span>-->
 <#--                    </a>-->
 <#--                </div>-->
-
                 <div class="by_menu_item pointer by_toggle_menu">
                     <a>
                         <i class="by-font by_icon_sangang"></i>
