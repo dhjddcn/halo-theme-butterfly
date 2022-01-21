@@ -1,8 +1,5 @@
-.by_header:not(.by_enable_top_background_img):before {
-  background-color: rgba(0, 0, 0, .5);
-}
-
-.by_post .by_box {
+/*! 文章页面修饰 */
+.by_post .by_container {
   font-size: 15px;
   margin: 0 0 16px;
 
@@ -11,7 +8,7 @@
     line-height: 24px;
     margin: 20px 0;
     font-weight: 500;
-    font-size: 20px;
+    font-size: 1.2rem;
     padding: 0 15px 0 28px;
 
     &:before {
@@ -60,6 +57,14 @@
     }
   }
 
+  ul {
+    margin-bottom: 18px;
+    padding-left: 36px;
+
+    li {
+      line-height: 26px;
+    }
+  }
 
   a {
     color: #49b1f5;
@@ -148,6 +153,11 @@
     .share_list {
       display: flex;
       align-items: center;
+
+      svg {
+        width: 1.2em;
+        height: 1.2em;
+      }
 
       a {
         margin-left: 5px;
@@ -274,7 +284,7 @@
       position: relative;
 
       &:hover {
-        animation: jelly 0.5s;
+        //animation: jelly 0.5s;
       }
     }
   }
@@ -369,5 +379,4 @@
   .is-position-fixed {
     top: 80px;
   }
-
 }

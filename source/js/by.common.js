@@ -63,39 +63,6 @@ const commonContext = {
 
         } );
     },
-    //移动端菜单
-    sidebar() {
-        const $body = $( "body" );
-        const $headerSidebar = $( ".by_header_sidebar" );
-        $( '.by_toggle_menu' ).click( () => {
-            $body.css( { "overflow": "hidden" } );
-            $headerSidebar.slideDown( 'slow' ).toggleClass( 'by_header_sidebar_open' );
-        } );
-        $( '.by_header_sidebar_mask' ).click( () => {
-            $headerSidebar.removeClass( 'by_header_sidebar_open' );
-            $body.removeAttr( "style" );
-        } );
-        //展开/收起
-        $( '.by_header_sidebar_menus_item' ).each( function () {
-            $( this ).click( function ( e ) {
-                if ( $( this ).children( 'ul' ).length ) {
-                    e.stopPropagation();    //  阻止事件冒泡
-                    $( this ).children( 'ul' ).slideToggle().parent().toggleClass( 'by_child_show' );
-                }
-            } )
-        } )
-    },
-    //初始化首页标签
-    asideTagsList() {
-        const $tags = $( '.by_aside_tags_list a' );
-        if ( !$tags.length ) return;
-        $tags.each( function () {
-            let $this = $( this );
-            let fontSize = `${ 0.3 * parseInt( $this.attr( 'data-num' ) ) }em`
-            let color = ByUtils.getRandomColor();
-            $this.css( { color } )
-        } );
-    },
     //代码块
     initCode() {
         const $pre = $( ".by_post pre ,.by_journals pre" );
@@ -116,7 +83,7 @@ const commonContext = {
                 //     $this.children( 'code' ).slideToggle().siblings( '.by_code_expander' ).toggleClass( 'by_code_expander_close' );
                 // } );
                 $this.children( '.by_code_expander' ).click( () => {
-                    $this.toggleClass( 'by_code_close');
+                    $this.toggleClass( 'by_code_close' );
                 } );
 
                 new ClipboardJS( $this.children( '.by_code_copy' )[0], {
@@ -142,7 +109,14 @@ const commonContext = {
                 )
             );
         } );
+    },
+    // 清理
+    clean() {
+        // setTimeout( () => {
+        //     $( ".pace" ).remove();
+        // }, 2000 );
     }
+
 }
 !(function () {
     document.addEventListener( "DOMContentLoaded", function () {

@@ -35,30 +35,42 @@ theme:
       default: "1200px"
       placeholder: "请输入"
       description: "限制内容区域的宽度，像素或百分比，默认1200px"
+    web_font:
+      name: web_font
+      label: 网站字体
+      type: select
+      default: "Butterfly Aqqxs"
+      description: "配置网站的字体，暂时提供 2 种供选择，也可以在 “自定义” 一栏中自定义字体来源，如果两边同时配置，优先使用自定义配置中的字体（请注意：中文字体并不能保证所有文字展示正确，请慎用！！！）"
+      options:
+        - value: "by_aqqxs.woff2"
+          label: "Butterfly Aqqxs"
+        - value: "by_slate.woff2"
+          label: "Butterfly Slate"
     enable_top_background_img:
       name: enable_top_background_img
-      label: 开启顶部背景图（全局）
+      label: 启用全局顶部背景图
       type: switch
       data-type: bool
       default: true
-      description: "是否开启全局顶部背景图"
+      description: "关闭所有页面都没用顶部图（优先级高于元数据）"
       options:
         - value: true
           label: 是
         - value: false
           label: 否
-    body_background_img:
-      name: body_background_img
-      label: 背景图
-      type: attachment
-      default: "https://gitee.com/dhjdd/Timo/raw/master/1642695780650.png"
-      placeholder: "背景图"
     top_sheet_background_img:
       name: top_sheet_background_img
       label: 顶部背景图（自定义）
       type: attachment
       default: "https://gitee.com/dhjdd/Timo/raw/master/1642695780650.png"
       placeholder: "顶部背景图（自定义）"
+    body_background:
+      name: body_background
+      label: body背景图可选（url/颜色值）
+      type: attachment
+      default: "https://gitee.com/dhjdd/Timo/raw/master/1642695780650.png"
+      placeholder: "body背景图"
+
 
 aside:
   label: 侧边栏
@@ -164,12 +176,6 @@ aside:
 index:
   label: 首页
   items:
-    top_index_background_img:
-      name: top_index_background_img
-      label: 顶部背景图
-      type: attachment
-      default: "https://gitee.com/dhjdd/Timo/raw/master/1642695780650.png"
-      placeholder: "顶部背景图"
     enable_top_index_background_img:
       name: enable_top_index_background_img
       label: 开启顶部背景图
@@ -182,6 +188,18 @@ index:
           label: 是
         - value: false
           label: 否
+    top_index_background_img:
+      name: top_index_background_img
+      label: 顶部背景图
+      type: attachment
+      default: "https://gitee.com/dhjdd/Timo/raw/master/1642695780650.png"
+      placeholder: "顶部背景图"
+    top_index_height:
+      name: top_index_height
+      label: 顶部背景图高度
+      type: text
+      default: "100vh"
+      placeholder: "顶部背景图高度"
     enable_random_img_api:
       name: enable_random_img_api
       label: 启用随机图

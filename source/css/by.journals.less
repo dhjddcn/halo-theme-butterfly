@@ -1,5 +1,5 @@
 /*! 日志修饰 */
-.by_box {
+.by_journals .by_container {
   overflow-wrap: break-word;
 
   .by_journal_item {
@@ -25,7 +25,7 @@
       height: calc(100% - 26px);
     }
 
-    &_meta{
+    &_meta {
       position: relative;
       color: var(--tab-botton-color);
       font-size: 15px;
@@ -34,6 +34,7 @@
       left: 27px;
       font-weight: 700;
       display: block;
+
       &:before, &:after {
         content: "";
         position: absolute;
@@ -43,7 +44,7 @@
       }
 
       &:before {
-        background: rgba(68,215,182,.5);
+        background: rgba(68, 215, 182, .5);
         width: 16px;
         height: 16px;
         border-radius: 8px;
@@ -59,6 +60,7 @@
         transform: scale(.5);
       }
     }
+
     &_content {
       margin: 4px 0 16px 24px;
       padding: 16px;
@@ -68,4 +70,3 @@
 
   }
 }
-

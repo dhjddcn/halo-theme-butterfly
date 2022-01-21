@@ -13,7 +13,7 @@ const IndexContext = {
     //打字效果
     subtitleTyping() {
         const subtitle = $( ".by_site_subtitle > .subtitle" );
-        if ( subtitle.length === 0 ) return;
+        if ( !subtitle.length ) return;
         new Typed( '.by_site_subtitle > .subtitle', {
             strings: [ ThemeConfig.description ],
             startDelay: 300,

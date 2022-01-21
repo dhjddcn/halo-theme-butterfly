@@ -2,36 +2,33 @@
 <#include 'common/header.ftl' >
 <#include 'common/footer.ftl' >
 <#include 'module/link.ftl' >
+<#include 'module/style.ftl' >
 <#include 'module/script.ftl' >
 <#include 'common/aside.ftl' >
 <#include 'common/rightside.ftl' >
-<#macro layout title type  top_background_img >
+<#-- type 页面类型  top_background_img 顶部背景图 enable_aside 是否显示侧边栏  -->
+<#macro layout  top_background_img type='' title="${blog_title!}">
     <!DOCTYPE html>
     <html lang="zh-CN" data-theme="light">
     <head>
         <title>${title}</title>
         <@link type=type />
         <@global.head />
+        <@style />
     </head>
-    <body style="background-image:url(${settings.body_background_img!})">
-    <div id="Butterfly">
-        <#--  头部  -->
-        <@header type=type title=title background_img ="background-image:url(${top_background_img!})" />
-        <#assign by_enable_aside = (settings.enable_aside)?then('', 'by_enable_aside')>
-        <#assign aside_position = (settings.aside_position == 'right')?then('', 'by_aside_position')>
-        <main class="by_main_wrap by_${type} ${aside_position}" style="max-width:${settings.content_max_width}">
-            <#-- 左边内容 -->
-            <div class="by_box by_card_widget ${by_enable_aside}">
+    <body>
+    <div id="Butterfly" class="by_${type}">
+        <@header type  title top_background_img  />
+        <main class="by_main">
+            <div class="by_container">
                 <#nested >
             </div>
-            <#--侧边栏-->
             <#if settings.enable_aside >
                 <@aside/>
             </#if>
         </main>
-        <#--   页脚 -->
-        <@rightside  />
         <@footer  />
+        <@rightside  />
     </div>
     <@script  type=type/>
     </body>

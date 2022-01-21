@@ -99,11 +99,3 @@
     </#if>
 </div>
 
-
-<div class="by_toc_container hide animate__animated animate__slideInRight">
-    <div class="by_toc_expander center ">
-        <i class="by-font by_icon_expand-in" title="收起目录"></i>
-        <i class="by-font by_icon_expand-out" title="展开目录"></i>
-    </div>
-    <div id="js-toc" class="toc"></div>
-</div>

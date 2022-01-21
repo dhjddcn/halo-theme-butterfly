@@ -1,83 +1,59 @@
 /* 适配 */
-@media (max-width: 900px) {
-  html #Butterfly .by_main_wrap {
-    flex-direction: column;
-  }
-  html #Butterfly .by_main_wrap .by_box,
-  html #Butterfly .by_main_wrap .by_aside {
-    width: 100%;
-  }
-  html #Butterfly .by_main_wrap .by_aside {
-    margin-top: 20px;
-    padding: 0;
-  }
-  html #Butterfly .by_header_post .by_site_info {
-    bottom: 30px;
-    text-align: left;
-    top: auto;
-  }
-}
 @media (max-width: 768px) {
-  html #Butterfly {
-    /*! 文章*/
-  }
-  html #Butterfly .by_main_wrap {
-    padding: 20px 15px;
-  }
   html #Butterfly .by_nav {
     padding: 0 16px;
   }
-  html #Butterfly .by_menus .by_search span {
+  html #Butterfly .by_menus {
     display: none;
   }
-  html #Butterfly .by_menus .by_toggle_menu {
+  html #Butterfly .by_search span {
+    display: none;
+  }
+  html #Butterfly .by_toggle_menu {
     display: inline-block;
-    padding: 0 0 0 8px;
   }
-  html #Butterfly .by_menus i {
-    font-size: 1.25rem;
+  html #Butterfly .by_site i {
+    font-size: 1.2rem;
   }
-  html #Butterfly .by_menus li.by_menu_item {
-    display: none;
+  html #Butterfly .by_site_title {
+    font-size: 1.85em;
   }
-  html #Butterfly .by_site_info .by_site_title {
-    font-size: 1.85rem;
+  html #Butterfly .by_site_subtitle {
+    font-size: 1.15em;
   }
-  html #Butterfly .by_site_info .by_site_subtitle {
-    font-size: 1.15rem;
+  html #Butterfly .by_site_social_icons {
+    display: block;
   }
-  html #Butterfly .by_header_post .by_site_info {
-    bottom: 22px;
-    padding: 0 22px;
+  html #Butterfly .by_main {
+    flex-direction: column;
+    padding: 20px 5px;
   }
-  html #Butterfly .by_box {
-    padding: 20px 15px;
+  html #Butterfly .by_container {
+    width: 100%;
+    padding: 1.8rem 0.7rem;
   }
-  html #Butterfly .by_post_item {
+  html #Butterfly .by_posts_item {
     flex-direction: column;
     height: auto;
   }
-  html #Butterfly .by_post_cover {
+  html #Butterfly .by_posts_title {
+    font-size: 1.43em;
+  }
+  html #Butterfly .by_posts_cover {
+    order: 1;
     width: 100%;
     height: 230px;
+    border-radius: 8px 8px 0 0;
   }
-  html #Butterfly .by_post_info {
-    padding: 20px 20px 30px;
+  html #Butterfly .by_posts_info {
+    order: 2;
+    padding: 1rem 1rem 1.5rem;
     width: 100%;
   }
-  html #Butterfly .by_post_title {
-    font-size: 1.4rem;
-  }
-  html #Butterfly .by_post .by_copyright_meta,
-  html #Butterfly .by_post .by_copyright_info,
-  html #Butterfly .by_post .by_copyright_info a {
-    font-size: 13px;
-  }
-  html #Butterfly .by_post .by_toc_container {
-    display: none;
-  }
-  html #Butterfly .by_links .by_box {
-    grid-template-columns: repeat(1, 1fr);
+  html #Butterfly .by_aside {
+    width: 100%;
+    padding-left: 0;
+    margin-top: 15px;
   }
 }
 @media (max-width: 500px) {
@@ -87,17 +63,5 @@
   }
   html #Butterfly .code-toolbar pre[class*="language-"].line-numbers code {
     padding: 12px 12px 12px 40px;
-  }
-  html #Butterfly .by_header_post .by_site_title {
-    font-size: 1.5rem;
-  }
-  html #Butterfly .by_header_post .by_post_meta {
-    font-size: 0.8rem;
-  }
-  html #Butterfly .by_post .by_post_tag_share .share_list {
-    margin-top: 10px;
-  }
-  html #Butterfly .by_post .by_post_tag_share .share_list a:first-child {
-    margin: 0;
   }
 }

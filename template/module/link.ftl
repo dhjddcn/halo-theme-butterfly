@@ -23,10 +23,8 @@
     <meta property="twitter:partner" content="ogwp">
     <link rel="shortcut icon" size="32x32" href="${options.blog_favicon!}">
     <link rel="canonical" href="${blog_url!}">
-    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
     <link rel="apple-touch-icon" sizes="180x180" href="${options.blog_favicon!}">
     <script src="${BASE_RES_URL!}/source/lib/jquery/jquery.min.js"></script>
-
     <#if type == 'post' || type == 'journals' >
     <#--代码块 -->
         <link rel="preload stylesheet" as="style" href="${BASE_RES_URL!}/source/lib/prism/prism.min.css">
@@ -36,29 +34,24 @@
         <link rel="preload stylesheet" as="style" href="${BASE_RES_URL!}/source/lib/fancybox/jquery.fancybox.min.css">
     <#--弹窗-->
         <link rel="preload stylesheet" as="style" href="${BASE_RES_URL!}/source/lib/qmsg/qmsg.css">
-
-    <#--动画-->
-        <link rel="preload stylesheet" as="style" href="${BASE_RES_URL!}/source/lib/animate/animate.min.css">
     </#if>
-<#--效果-->
-    <link rel="preload stylesheet" as="style" href="${BASE_RES_URL!}/source/lib/hover/hover-min.css">
+
+<#--动画-->
+<#--&lt;#&ndash;效果&ndash;&gt;-->
+<#--    <link rel="preload stylesheet" as="style" href="${BASE_RES_URL!}/source/lib/hover/hover-min.css">-->
 <#--主题-->
+    <link rel="preload stylesheet" as="style" href="${BASE_RES_URL!}/source/lib/animate/animate.min.css">
+    <link rel="preload stylesheet" as="style" href="${BASE_RES_URL!}/source/lib/pace/pace-theme-flash.min.css">
+
     <link rel="preload stylesheet" as="style" href="${BASE_RES_URL!}/source/css/min/by.theme.min.css">
     <link rel="preload stylesheet" as="style" href="${BASE_RES_URL!}/source/css/min/by.global.min.css">
     <link rel="preload stylesheet" as="style" href="${BASE_RES_URL!}/source/css/min/by.responsive.min.css">
     <link rel="preload stylesheet" as="style" href="${BASE_RES_URL!}/source/css/min/by.widget.min.css">
-    <#if type != "" &&  type != "false" >
+
+    <#if type != '' >
         <link rel="preload stylesheet" as="style" href="${BASE_RES_URL!}/source/css/min/by.${type}.min.css">
     </#if>
-    <style>
-        @font-face {
-            font-family: "Butterfly Font";
-            font-weight: 400;
-            font-style: normal;
-            font-display: swap;
-            src: url(${BASE_RES_URL!}/source/font/by_slate.woff2) format("woff2");
-        }
-    </style>
+
 </#macro>
 
 
