@@ -642,6 +642,28 @@ post:
       type: attachment
       default: ""
       placeholder: "打赏用的微信收款二维码链接，不填不显示"
+
+social:
+  label: 社交
+  items:
+    email:
+      name: email
+      label: 邮箱
+      type: text
+      default: ""
+      placeholder: "邮箱地址"
+    github:
+      name: github
+      label: Github
+      type: text
+      default: ""
+      placeholder: "github主页地址"
+    zhihu:
+      name: zhihu
+      label: 知乎
+      type: text
+      default: ""
+      placeholder: "知乎主页地址"
     #
     #others:
     #  label: 其它
