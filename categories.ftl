@@ -1,6 +1,11 @@
 <#include "template/layout.ftl">
 <#include "template/common/empty.ftl">
-<@layout title="文章分类" type="categories" top_background_img="${settings.top_categories_background_img}" >
+<@layout
+title="${settings.categories_title!}"
+type="categories"
+top_background_img="${settings.top_categories_background_img}"
+enable_aside=settings.enable_categories_aside
+>
     <@categoryTag  method="list">
         <#if categories?? && categories?size gt 0>
             <#list categories as category>

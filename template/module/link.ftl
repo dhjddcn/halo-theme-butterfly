@@ -48,7 +48,7 @@
     <link rel="preload stylesheet" as="style" href="${BASE_RES_URL!}/source/css/min/by.responsive.min.css">
     <link rel="preload stylesheet" as="style" href="${BASE_RES_URL!}/source/css/min/by.widget.min.css">
 
-    <#if type != '' >
+    <#if type != ''  && type !='sheet'>
         <link rel="preload stylesheet" as="style" href="${BASE_RES_URL!}/source/css/min/by.${type}.min.css">
     </#if>
 

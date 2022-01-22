@@ -1,6 +1,11 @@
 <#include "template/layout.ftl">
 <#include "template/common/empty.ftl">
-<@layout title="文章标签" type="tags" top_background_img="${settings.top_tags_background_img}" >
+<@layout
+title="${settings.tags_title!}"
+type="tags"
+top_background_img="${settings.top_tags_background_img}"
+enable_aside=settings.enable_tags_aside
+>
     <@tagTag method="list">
         <#if tags?? && tags?size gt 0>
             <#list tags as tag>

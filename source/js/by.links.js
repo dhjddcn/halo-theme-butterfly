@@ -43,7 +43,6 @@ const linksContext = {
 
         if ( !$links.length ) return;
 
-
         $links.each( function () {
             $( this ).css( { background: colors[parseInt( Math.random() * 30 )] } )
         } )

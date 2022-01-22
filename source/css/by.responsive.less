@@ -1,5 +1,5 @@
 /* 适配 */
-html #Butterfly {
+html body #Butterfly {
   @media (max-width: 1760px) {
   }
   @media (max-width: 1400px) {
@@ -54,8 +54,18 @@ html #Butterfly {
 
       }
 
+      &_catalogue {
+        position: fixed;
+        right: -100%;
+        bottom: 30px;
+        z-index: 100;
+        max-height: calc(100% - 60px);
+        width: 300px;
+        //opacity: 0;
+        transform-origin: right bottom;
+        //right: 45px;
+      }
     }
-
   }
 
   @media (max-width: 768px) {
@@ -166,8 +176,12 @@ html #Butterfly {
 
       }
 
+
     }
 
+    &.by_links .by_container {
+      grid-template-columns: repeat(1, 1fr);
+    }
 
   }
 
@@ -188,4 +202,5 @@ html #Butterfly {
   @media (max-width: 375px) {
 
   }
+
 }

@@ -10,9 +10,42 @@
         <#if settings.body_background?contains("http")> background-image: url(${settings.body_background!})<#else> background: ${settings.body_background!}</#if>
         }
 
-        #Butterfly .by_main{
-            max-width:${settings.content_max_width!}
+        #Butterfly .by_main {
+            max-width: ${settings.content_max_width!}
         }
+
+        <#if settings.aside_position == 'left' >
+        #Butterfly .by_main {
+            flex-direction: row-reverse;
+        }
+
+        #Butterfly .by_main .by_aside {
+            padding: 0 15px 0 0;
+        }
+
+        </#if>
+
+<#--        <#if !settings.enable_home_aside>-->
+<#--        #Butterfly.by_index .by_main .by_aside {-->
+<#--            display: none;-->
+<#--        }-->
+
+<#--        #Butterfly.by_index .by_main .by_container {-->
+<#--            width: 100%;-->
+<#--        }-->
+
+<#--        </#if>-->
+
+<#--        <#if !settings.enable_post_aside>-->
+<#--        #Butterfly.by_post .by_main .by_aside {-->
+<#--            display: none;-->
+<#--        }-->
+
+<#--        #Butterfly.by_post .by_main .by_container {-->
+<#--            width: 100%;-->
+<#--        }-->
+
+<#--        </#if>-->
 
 
     </style>

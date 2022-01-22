@@ -17,12 +17,12 @@
         <script src="${BASE_RES_URL!}/source/lib/qmsg/qmsg.js"></script>
         <script src="${BASE_RES_URL!}/source/lib/fancybox/jquery.fancybox.min.js"></script>
         <script src="${BASE_RES_URL!}/source/lib/jquery-qrcode/jquery.qrcode.min.js"></script>
-<#--        <script src="${BASE_RES_URL!}/source/lib/tocbot/tocbot.min.js"></script>-->
+        <script src="${BASE_RES_URL!}/source/lib/tocbot/tocbot.min.js"></script>
     </#if>
 
-<#--    <#if  type == 'categories'>-->
-<#--        <script src="${BASE_RES_URL!}/source/lib/echarts/echarts.min.js"></script>-->
-<#--    </#if>-->
+    <#if  type == 'categories'>
+        <script src="${BASE_RES_URL!}/source/lib/echarts/echarts.min.js"></script>
+    </#if>
 
 <#-- 公共   -->
     <script src="${BASE_RES_URL!}/source/js/by.utils.js"></script>
@@ -37,7 +37,7 @@
 
 
 <#-- 页面   -->
-    <#if type != ''>
+    <#if type != ''  && type !='sheet'>
         <script src="${BASE_RES_URL!}/source/js/by.${type}.js"></script>
     </#if>
 

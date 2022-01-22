@@ -36,11 +36,10 @@
                     </a>
                 </@commentTag>
             </div>
-
-            <a class="by_btn" href="/">
-                <i class="by-font by_icon_github"> </i> 主题 GitHub
+            <#assign site_btn=settings.site_btn?split('||')>
+            <a class="by_btn" href="${site_btn[1]}" target="_blank">
+                ${site_btn[0]}
             </a>
-
             <div class="by_user_social_icons center">
                 <a href="">
                     <svg t="1642767278920" class="icon" viewBox="0 0 1024 1024" version="1.1"
@@ -72,84 +71,96 @@
             </div>
         </#if>
 
-        <#--最新文章-->
+        <#if is_post??>
 
-        <#if posNum != 0 && settings.enable_newest_post>
-            <@postTag method="latest" top="${settings.newest_page_size!5}">
-                <div class="by_latest by_card_widget">
-                    <div class="by_card_icon_title  ">
-                        <i class="by-font by_icon_shijian "></i>
-                        <span>最新文章 ${posNum}</span>
-                    </div>
-                    <div class="by_latest_list">
-                        <#list posts?sort_by("editTime")?reverse as post>
-                            <@tbn.post_thumbnail post=post />
-                            <div class="by_latest_list_item">
-                                <a class="thumbnail" href="${post.fullPath!}" title="${post.title!}">
-                                    <img class="lazyload"
-                                         data-src="${tbn.thumbnail}"
-                                         src="${lazy_img}" onerror="this.src='${err_img}'" alt="${post.title!}">
-                                </a>
-                                <div class="content">
-                                    <a class="content_title" href="${post.fullPath!}">${post.title!}</a>
-                                    <time>
-                                        ${post.createTime?string('yyyy-MM-dd')}
-                                    </time>
-                                </div>
-                            </div>
-                        </#list>
-                    </div>
+        <div class="by_post_sticky">
+            <#--文章页目录-->
+            <div class="by_catalogue by_card_widget">
+                <div class="by_card_icon_title  ">
+                    <i class="by-font by_icon_wengao "></i>
+                    <span>目录</span>
                 </div>
-            </@postTag>
 
-        </#if>
+                <div id="js-toc" class="toc"></div>
+            </div>
+            </#if>
 
-
-        <#--分类-->
-
-        <@categoryTag method="count">
-            <#if count != 0 && settings.enable_categories>
-                <@categoryTag method="list">
-                    <div class="by_aside_categories by_card_widget">
+            <#--最新文章-->
+            <#if posNum != 0 && settings.enable_newest_post>
+                <@postTag method="latest" top="${settings.newest_page_size!5}">
+                    <div class="by_latest by_card_widget">
                         <div class="by_card_icon_title  ">
-                            <i class="by-font by_icon_fenlei"></i>
-                            <span>分类</span>
+                            <i class="by-font by_icon_shijian "></i>
+                            <span>最新文章 ${posNum}</span>
                         </div>
-                        <div class="by_aside_categories_list">
-                            <#list categories?sort_by("postCount") ? reverse as category>
-                                <a href="${category.fullPath!}" title="${category.name!}"
-                                   class="by_aside_categories_item">
-                                    <span class="ellipsis">${category.name!}</span>
-                                    <span class="ellipsis">${category.postCount!}</span>
-                                </a>
+                        <div class="by_latest_list">
+                            <#list posts?sort_by("editTime")?reverse as post>
+                                <@tbn.post_thumbnail post=post />
+                                <div class="by_latest_list_item">
+                                    <a class="thumbnail" href="${post.fullPath!}" title="${post.title!}">
+                                        <img class="lazyload"
+                                             data-src="${tbn.thumbnail}"
+                                             src="${lazy_img}" onerror="this.src='${err_img}'" alt="${post.title!}">
+                                    </a>
+                                    <div class="content">
+                                        <a class="content_title" href="${post.fullPath!}">${post.title!}</a>
+                                        <time>
+                                            ${post.createTime?string('yyyy-MM-dd')}
+                                        </time>
+                                    </div>
+                                </div>
                             </#list>
                         </div>
                     </div>
-                </@categoryTag>
+                </@postTag>
+
             </#if>
-        </@categoryTag>
+
+
+            <#--分类-->
+
+            <@categoryTag method="count">
+                <#if count != 0 && settings.enable_categories>
+                    <@categoryTag method="list">
+                        <div class="by_aside_categories by_card_widget">
+                            <div class="by_card_icon_title  ">
+                                <i class="by-font by_icon_fenlei"></i>
+                                <span>分类</span>
+                            </div>
+                            <div class="by_aside_categories_list">
+                                <#list categories?sort_by("postCount") ? reverse as category>
+                                    <a href="${category.fullPath!}" title="${category.name!}"
+                                       class="by_aside_categories_item">
+                                        <span class="ellipsis">${category.name!}</span>
+                                        <span class="ellipsis">${category.postCount!}</span>
+                                    </a>
+                                </#list>
+                            </div>
+                        </div>
+                    </@categoryTag>
+                </#if>
+            </@categoryTag>
 
 
 
 
-        <#--标签-->
-        <#if  tagNum != 0 && settings.enable_tags>
-            <@tagTag method="list">
-                <div class="by_aside_tags by_card_widget">
-                    <div class="by_card_icon_title  ">
-                        <i class="by-font by_icon_tag"></i>
-                        <span>标签</span>
+            <#--标签-->
+            <#if  tagNum != 0 && settings.enable_tags>
+                <@tagTag method="list">
+                    <div class="by_aside_tags by_card_widget">
+                        <div class="by_card_icon_title  ">
+                            <i class="by-font by_icon_tag"></i>
+                            <span>标签</span>
+                        </div>
+                        <div class="by_aside_tags_list">
+                            <#list tags as tag>
+                                <a href="${tag.fullPath!}" title="${tag.name!}"
+                                   data-num="${tag.postCount!}">${tag.name!}</a>
+                            </#list>
+                        </div>
                     </div>
-                    <div class="by_aside_tags_list">
-                        <#list tags as tag>
-                            <a href="${tag.fullPath!}" title="${tag.name!}"
-                               data-num="${tag.postCount!}">${tag.name!}</a>
-                        </#list>
-                    </div>
-                </div>
-            </@tagTag>
-        </#if>
-
-
+                </@tagTag>
+            </#if>
+            <#if is_post??></div></#if>
     </aside>
 </#macro>

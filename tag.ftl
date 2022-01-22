@@ -3,7 +3,8 @@
 <#include "template/common/pagination.ftl">
 <#include "template/common/empty.ftl">
 
-<@layout title="${tag.name!}"  top_background_img="${(tag.thumbnail == '')?then(settings.top_index_background_img,tag.thumbnail)}" >
+
+<@layout title="${tag.name!}"  top_background_img="${tag.thumbnail!}" >
     <#if posts.content?size gt 0>
         <#list posts.content as post>
             <@post_list post=post />

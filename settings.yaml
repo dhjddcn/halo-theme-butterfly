@@ -58,18 +58,13 @@ theme:
           label: 是
         - value: false
           label: 否
-    top_sheet_background_img:
-      name: top_sheet_background_img
-      label: 顶部背景图（自定义）
-      type: attachment
-      default: "https://gitee.com/dhjdd/Timo/raw/master/1642695780650.png"
-      placeholder: "顶部背景图（自定义）"
     body_background:
       name: body_background
       label: body背景图可选（url/颜色值）
       type: attachment
       default: "https://gitee.com/dhjdd/Timo/raw/master/1642695780650.png"
       placeholder: "body背景图"
+      description: "建议关闭头部顶部背景图~"
 
 
 aside:
@@ -99,6 +94,13 @@ aside:
           label: 左侧
         - value: right
           label: 右侧
+    site_btn:
+      name: site_btn
+      label: 信息按钮
+      type: textarea
+      placeholder: 请输入
+      default: "关注我||/"
+      description: "侧边栏按钮信息请按照格式填写否则报错  跳转文字|跳转url"
     enable_newest_post:
       name: enable_newest_post
       label: 展示最新文章
@@ -200,6 +202,18 @@ index:
       type: text
       default: "100vh"
       placeholder: "顶部背景图高度"
+    enable_home_aside:
+      name: enable_home_aside
+      label: 是否展示侧边栏
+      type: switch
+      data-type: bool
+      default: true
+      description: "是否展示侧边栏"
+      options:
+        - value: true
+          label: 是
+        - value: false
+          label: 否
     enable_random_img_api:
       name: enable_random_img_api
       label: 启用随机图
@@ -225,22 +239,30 @@ index:
       type: attachment
       default: "https://picsum.photos/id/1081/210/140"
       description: "文章无配图时生效，可使用占位图服务（210*140）"
-    enable_home_aside:
-      name: enable_home_aside
-      label: 是否展示侧边栏
+
+
+
+archives:
+  label: 归档
+  items:
+    archives_title:
+      name: archives_title
+      label: 归档页标题
+      default: "文章归档"
+      placeholder: "请输入"
+      description: "修改归档标题"
+    enable_top_archives_background_img:
+      name: enable_top_archives_background_img
+      label: 开启顶部背景图
       type: switch
       data-type: bool
       default: true
-      description: "是否展示侧边栏"
+      placeholder: "开启顶部背景图"
       options:
         - value: true
           label: 是
         - value: false
           label: 否
-
-archives:
-  label: 归档
-  items:
     top_archives_background_img:
       name: top_archives_background_img
       label: 顶部背景图
@@ -269,6 +291,18 @@ categories:
       default: "全部分类"
       placeholder: "请输入"
       description: "修改分类页顶部的标题"
+    enable_top_categories_background_img:
+      name: enable_top_categories_background_img
+      label: 开启顶部背景图
+      type: switch
+      data-type: bool
+      default: true
+      placeholder: "开启顶部背景图"
+      options:
+        - value: true
+          label: 是
+        - value: false
+          label: 否
     top_categories_background_img:
       name: top_categories_background_img
       label: 顶部背景图
@@ -297,6 +331,18 @@ tags:
       default: "全部标签"
       placeholder: "请输入"
       description: "修改标签页顶部的标题"
+    enable_top_tags_background_img:
+      name: enable_top_tags_background_img
+      label: 开启顶部背景图
+      type: switch
+      data-type: bool
+      default: true
+      placeholder: "开启顶部背景图"
+      options:
+        - value: true
+          label: 是
+        - value: false
+          label: 否
     top_tags_background_img:
       name: top_tags_background_img
       label: 顶部背景图（标签）
@@ -325,6 +371,18 @@ links:
       default: "友情链接"
       placeholder: "请输入"
       description: "修改友链页顶部展示的标题"
+    enable_top_links_background_img:
+      name: enable_top_links_background_img
+      label: 开启顶部背景图
+      type: switch
+      data-type: bool
+      default: true
+      placeholder: "开启顶部背景图"
+      options:
+        - value: true
+          label: 是
+        - value: false
+          label: 否
     top_links_background_img:
       name: top_links_background_img
       label: 顶部背景图（友链）
@@ -353,6 +411,18 @@ journals:
       default: "我的动态"
       placeholder: "请输入"
       description: "修改日志页顶部展示的标题"
+    enable_top_journals_background_img:
+      name: enable_top_journals_background_img
+      label: 开启顶部背景图
+      type: switch
+      data-type: bool
+      default: true
+      placeholder: "开启顶部背景图"
+      options:
+        - value: true
+          label: 是
+        - value: false
+          label: 否
     top_journals_background_img:
       name: top_journals_background_img
       label: 顶部背景图
@@ -371,6 +441,28 @@ journals:
           label: 是
         - value: false
           label: 否
+
+sheet:
+  label: 自定义
+  items:
+    enable_top_sheet_background_img:
+      name: enable_top_sheet_background_img
+      label: 开启顶部背景图
+      type: switch
+      data-type: bool
+      default: true
+      placeholder: "开启顶部背景图"
+      options:
+        - value: true
+          label: 是
+        - value: false
+          label: 否
+    top_sheet_background_img:
+      name: top_sheet_background_img
+      label: 顶部背景图
+      type: attachment
+      default: "https://gitee.com/dhjdd/Timo/raw/master/1642695780650.png"
+      placeholder: "顶部背景图"
 
 code_block:
   label: 代码块
@@ -515,18 +607,18 @@ post:
           label: 是
         - value: false
           label: 否
-    enable_aside_expander:
-      name: enable_aside_expander
-      label: 展示侧边栏切换按钮
-      type: switch
-      data-type: bool
-      default: true
-      description: "文章页顶部显示用于切换侧边栏显示/隐藏状态的按钮（仅在展示侧边栏情况下生效）"
-      options:
-        - value: true
-          label: 是
-        - value: false
-          label: 否
+    #    enable_aside_expander:
+    #      name: enable_aside_expander
+    #      label: 展示侧边栏切换按钮
+    #      type: switch
+    #      data-type: bool
+    #      default: true
+    #      description: "文章页顶部显示用于切换侧边栏显示/隐藏状态的按钮（仅在展示侧边栏情况下生效）"
+    #      options:
+    #        - value: true
+    #          label: 是
+    #        - value: false
+    #          label: 否
     enable_donate:
       name: enable_donate
       label: 开启打赏
@@ -550,40 +642,40 @@ post:
       type: attachment
       default: ""
       placeholder: "打赏用的微信收款二维码链接，不填不显示"
-
-others:
-  label: 其它
-  items:
-    enable_clean_mode:
-      name: enable_clean_mode
-      label: 绿色模式
-      type: switch
-      data-type: bool
-      default: false
-      description: "启用后，全局评论、留言、特效和广告位将会屏蔽（通常在网站备案期间开启）"
-      options:
-        - value: true
-          label: 开启
-        - value: false
-          label: 关闭
-    check_baidu_collect:
-      name: check_baidu_collect
-      label: 检查百度收录情况
-      type: switch
-      data-type: bool
-      default: false
-      description: "启用后，文章页打开时会自动检测百度收录情况，并显示状态文字（目前相关api为小红自己搭建的服务，不能保证稳定性）"
-      options:
-        - value: true
-          label: 开启
-        - value: false
-          label: 关闭
-    baidu_token:
-      name: baidu_token
-      label: 百度推送Token
-      default: ""
-      placeholder: "请填入token"
-      description: "文章页未收录时会自动将当前链接推送给百度加快收录，Token在百度收录平台注册账号获取（必须启用“检查百度收录”并填入token才生效），https://ziyuan.baidu.com/linksubmit"
+    #
+    #others:
+    #  label: 其它
+    #  items:
+    #    enable_clean_mode:
+    #      name: enable_clean_mode
+    #      label: 绿色模式
+    #      type: switch
+    #      data-type: bool
+    #      default: false
+    #      description: "启用后，全局评论、留言、特效和广告位将会屏蔽（通常在网站备案期间开启）"
+    #      options:
+    #        - value: true
+    #          label: 开启
+    #        - value: false
+    #          label: 关闭
+    #    check_baidu_collect:
+    #      name: check_baidu_collect
+    #      label: 检查百度收录情况
+    #      type: switch
+    #      data-type: bool
+    #      default: false
+    #      description: "启用后，文章页打开时会自动检测百度收录情况，并显示状态文字（目前相关api为小红自己搭建的服务，不能保证稳定性）"
+    #      options:
+    #        - value: true
+    #          label: 开启
+    #        - value: false
+    #          label: 关闭
+    #    baidu_token:
+    #      name: baidu_token
+    #      label: 百度推送Token
+    #      default: ""
+    #      placeholder: "请填入token"
+    #      description: "文章页未收录时会自动将当前链接推送给百度加快收录，Token在百度收录平台注册账号获取（必须启用“检查百度收录”并填入token才生效），https://ziyuan.baidu.com/linksubmit"
     #    enable_cdn:
     #      name: enable_cdn
     #      label: 使用CDN加载静态资源
@@ -620,15 +712,15 @@ others:
     #          label: 开启
     #        - value: false
     #          label: 关闭
-    rip_mode:
-      name: rip_mode
-      label: RIP模式(灰色模式)
-      type: switch
-      data-type: bool
-      default: false
-      description: "向生命致敬，愿精神长存 <愿此功能永不被启用>"
-      options:
-        - value: true
-          label: 开启
-        - value: false
-          label: 关闭
+#    rip_mode:
+#      name: rip_mode
+#      label: RIP模式(灰色模式)
+#      type: switch
+#      data-type: bool
+#      default: false
+#      description: "向生命致敬，愿精神长存 <愿此功能永不被启用>"
+#      options:
+#        - value: true
+#          label: 开启
+#        - value: false
+#          label: 关闭

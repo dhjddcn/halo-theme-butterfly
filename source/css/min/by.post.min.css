@@ -43,6 +43,9 @@
 .by_post .by_container a {
   color: #49b1f5;
 }
+.by_post .by_container span[data-fancybox] {
+  text-align: center;
+}
 .by_post .by_container span[data-fancybox] img {
   cursor: zoom-in;
 }

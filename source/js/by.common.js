@@ -11,6 +11,7 @@ const commonContext = {
         let initTop = 0;
         let $header = $( 'header' );
         const $rightside = $( ".by_rightside" );
+        const $postSticky = $( ".by_post_sticky" );
 
         //滚动方向
         function scrollDirection( currentTop ) {
@@ -27,8 +28,10 @@ const commonContext = {
                     if ( isDown ) {
                         if ( $header.hasClass( 'by_nav_visible' ) ) $header.removeClass( 'by_nav_visible' );
                         if ( !$rightside.hasClass( 'by_rightside_show' ) ) $rightside.addClass( 'by_rightside_show' );
+                        $postSticky.removeAttr( "style", "" );
                     } else {
                         if ( !$header.hasClass( 'by_nav_visible' ) ) $header.addClass( 'by_nav_visible' );
+                        $postSticky.css( { top: '70px' } );
                     }
                     $header.addClass( 'by_nav_fixed' );
                 } else {
@@ -62,6 +65,28 @@ const commonContext = {
             }
 
         } );
+    },
+    //移动端菜单
+    sidebar() {
+        const $body = $( "body" );
+        const $headerSidebar = $( ".by_header_sidebar" );
+        $( '.by_toggle_menu' ).click( () => {
+            $body.css( { "overflow": "hidden" } );
+            $headerSidebar.slideDown( 'slow' ).toggleClass( 'by_header_sidebar_open' );
+        } );
+        $( '.by_header_sidebar_mask' ).click( () => {
+            $headerSidebar.removeClass( 'by_header_sidebar_open' );
+            $body.removeAttr( "style" );
+        } );
+        //展开/收起
+        $( '.by_header_sidebar_menus_item' ).each( function () {
+            $( this ).click( function ( e ) {
+                if ( $( this ).children( 'ul' ).length ) {
+                    e.stopPropagation();    //  阻止事件冒泡
+                    $( this ).children( 'ul' ).slideToggle().parent().toggleClass( 'by_child_show' );
+                }
+            } )
+        } )
     },
     //代码块
     initCode() {

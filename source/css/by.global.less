@@ -48,6 +48,7 @@ a {
   word-wrap: break-word;
   transition: all 0.2s;
   overflow-wrap: break-word;
+
 }
 
 img {
@@ -62,6 +63,42 @@ svg {
   fill: currentColor;
   overflow: hidden;
   font-size: 20px;
+}
+
+ol {
+  list-style: none;
+}
+
+hr {
+  position: relative;
+  margin: 40px auto;
+  border: 2px dashed var(--hr-border);
+  width: calc(100% - 4px);
+  box-sizing: content-box;
+  height: 0;
+  overflow: visible;
+
+  &:before {
+    //noinspection CssNoGenericFontName
+    font-family: "by-font";
+    position: absolute;
+    top: -10px;
+    left: 5%;
+    z-index: 1;
+    color: var(--hr-before-color);
+    content: "\e622";
+    font-size: 20px;
+    line-height: 1;
+    transition: all 1s ease-in-out;
+
+    //可能拆分
+    display: inline-block;
+    font-weight: 600;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+  }
 }
 
 .by-font {
@@ -161,7 +198,15 @@ svg {
 }
 
 /*！ 设置*/
-#Butterfly {
+html #Butterfly {
+
+  .w-100 {
+    width: 100%;
+  }
+
+  .h-100 {
+    height: 100%;
+  }
 
   code, pre {
     font-family: "Fira Code", "Fira Mono", Menlo, Consolas, "DejaVu Sans Mono", monospace;
@@ -310,7 +355,7 @@ svg {
   position: fixed;
   right: -48px;
   bottom: 40px;
-  z-index: 100;
+  z-index: 200;
   transition: all .5s;
 
 
@@ -360,6 +405,176 @@ svg {
     z-index: 99;
     height: 400px;
     animation: header-effect 1s;
+
+    &:before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: block;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, .5);
+      content: '';
+    }
+
+    /*！ 移动端 sidebar*/
+
+    &_sidebar {
+      display: none;
+
+      &_menus {
+        position: fixed;
+        top: 0;
+        right: -300px;
+        z-index: 103;
+        overflow-x: hidden;
+        overflow-y: auto;
+        width: 300px;
+        height: 100%;
+        background: var(--sidebar-bg);
+        transition: all .5s;
+
+        ul, li {
+          list-style: none;
+        }
+
+        .by_user_avatar {
+          margin: 20px auto;
+          overflow: hidden;
+          width: 110px;
+          height: 110px;
+          border-radius: 70px;
+        }
+
+        .by_user_data {
+          display: table;
+          padding: 0 8px;
+          width: 100%;
+          table-layout: fixed;
+
+          &_item {
+            display: table-cell;
+
+            .headline {
+              color: var(--font-color);
+            }
+
+            .length_num {
+              color: var(--text-highlight-color);
+              font-size: 1.2rem;
+            }
+          }
+        }
+
+
+        hr {
+          margin: 20px auto;
+        }
+
+        &_items {
+          padding: 0 10px 40px;
+          margin: 0;
+          list-style: none;
+        }
+
+        &_item {
+          position: relative;
+          display: block;
+          padding: 8px 30px 8px 22px;
+          list-style: none;
+
+
+          a, i {
+            color: var(--font-color);
+            font-size: 1rem;
+          }
+
+          a {
+            width: 100%;
+            height: auto;
+            display: inline-block;
+          }
+
+          .first {
+            width: 10%;
+            text-align: left;
+            display: inline-block;
+          }
+
+          .last {
+            position: absolute;
+            top: 0.4rem;
+            right: 18px;
+            transition: transform .3s;
+          }
+
+          &_child {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            display: none;
+
+            a {
+              position: relative;
+              display: block;
+              padding: 6px 30px 6px 28px;
+              color: var(--font-color);
+              font-size: 1rem;
+            }
+          }
+        }
+
+
+      }
+
+      &_open {
+        .by_header_sidebar_mask {
+          display: block;
+          animation: 0.5s ease 0s 1 normal none running to_show;
+        }
+
+        .by_header_sidebar_menus {
+          transform: translate3d(-100%, 0, 0);
+
+
+          .by_user_avatar {
+            animation: sidebarItem .2s;
+          }
+
+          .by_user_data {
+            animation: sidebarItem .4s;
+          }
+
+          hr {
+            animation: sidebarItem .6s;
+          }
+
+          &_items {
+            animation: sidebarItem .8s;
+          }
+
+
+          .by_child_show {
+            i.last {
+              transform: rotate(-90deg);
+            }
+          }
+        }
+
+      }
+
+      &_mask {
+        position: fixed;
+        z-index: 102;
+        width: 100%;
+        height: 100%;
+        display: none;
+        background: rgba(0, 0, 0, .8);
+        animation: 0.5s ease 0s 1 normal none running to_hide;
+      }
+
+    }
+
   }
 
   &_nav {
@@ -546,6 +761,15 @@ svg {
     background: var(--card-bg);
     box-shadow: var(--card-box-shadow);
 
+    a:hover {
+      color: #49b1f5 !important;
+    }
+
+    p {
+      line-height: 2rem;
+      margin-bottom: 1rem;
+    }
+
     .by_posts {
       &_item {
         display: flex;
@@ -562,7 +786,7 @@ svg {
         overflow: hidden;
         width: 45%;
         height: 100%;
-        border-radius: 8px 0 0 8px;
+        border-radius: 25px 0 0 25px;
 
         img {
           width: 100%;
@@ -648,9 +872,10 @@ svg {
 
     .by_card_widget {
       padding: 1rem 1.2rem;
+      margin-top: 1rem;
 
-      &:not(:first-child) {
-        margin-top: 1rem;
+      &:not(.by_catalogue):first-child {
+        margin-top: 0;
       }
     }
 
@@ -724,6 +949,11 @@ svg {
       padding-bottom: 6px;
       font-size: 1rem;
 
+
+      i {
+        font-size: 1.3rem;
+      }
+
       span {
         margin-left: 3px;
       }
@@ -733,6 +963,32 @@ svg {
         color: red;
         animation: announ_animation 0.8s linear infinite;
       }
+    }
+
+    .by_catalogue {
+      .toc {
+        padding: 0 1rem;
+
+        .toc-link {
+          display: block;
+          padding-left: 0.3rem;
+          border-left: 3px solid transparent;
+          color: var(--toc-link-color);
+          transition: all .2s ease-in-out;
+          border-radius: 8px;
+          &.is-active-link {
+            border-left-color: #69b469;
+            background: #9c9;
+            color: #fff;
+          }
+        }
+      }
+    }
+
+    .by_post_sticky {
+      position: sticky;
+      top: 20px;
+      transition: top .5s;
     }
 
     .by_latest {
