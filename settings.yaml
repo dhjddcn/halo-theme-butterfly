@@ -62,7 +62,7 @@ theme:
       name: body_background
       label: body背景图可选（url/颜色值）
       type: attachment
-      default: "https://gitee.com/dhjdd/Timo/raw/master/1642695780650.png"
+      default: "linear-gradient(90deg,rgba(247,149,51,.1) 0,rgba(243,112,85,.1) 15%,rgba(239,78,123,.1) 30%,rgba(161,102,171,.1) 44%,rgba(80,115,184,.1) 58%,rgba(16,152,173,.1) 72%,rgba(7,179,155,.1) 86%,rgba(109,186,130,.1) 100%)"
       placeholder: "body背景图"
       description: "建议关闭头部顶部背景图~"
 
@@ -194,7 +194,7 @@ index:
       name: top_index_background_img
       label: 顶部背景图
       type: attachment
-      default: "https://gitee.com/dhjdd/Timo/raw/master/1642695780650.png"
+      default: "https://gitee.com/dhjdd/Timo/raw/master/1642841118869.png"
       placeholder: "顶部背景图"
     top_index_height:
       name: top_index_height
@@ -267,7 +267,7 @@ archives:
       name: top_archives_background_img
       label: 顶部背景图
       type: attachment
-      default: "https://gitee.com/dhjdd/Timo/raw/master/1642695780650.png"
+      default: "https://gitee.com/dhjdd/Timo/raw/master/1642841299688.png"
       placeholder: "顶部背景图"
     enable_archives_aside:
       name: enable_archives_aside
@@ -307,7 +307,7 @@ categories:
       name: top_categories_background_img
       label: 顶部背景图
       type: attachment
-      default: "https://gitee.com/dhjdd/Timo/raw/master/1642695780650.png"
+      default: "https://gitee.com/dhjdd/Timo/raw/master/1642841299688.png"
       placeholder: "顶部背景图"
     enable_categories_aside:
       name: enable_categories_aside
@@ -347,7 +347,7 @@ tags:
       name: top_tags_background_img
       label: 顶部背景图（标签）
       type: attachment
-      default: "https://gitee.com/dhjdd/Timo/raw/master/1642695780650.png"
+      default: "https://gitee.com/dhjdd/Timo/raw/master/1642841299688.png"
       placeholder: "顶部背景图（标签）"
     enable_tags_aside:
       name: enable_tags_aside
@@ -387,7 +387,7 @@ links:
       name: top_links_background_img
       label: 顶部背景图（友链）
       type: attachment
-      default: "https://gitee.com/dhjdd/Timo/raw/master/1642695780650.png"
+      default: "https://gitee.com/dhjdd/Timo/raw/master/1642841299688.png"
       placeholder: "顶部背景图（友链）"
     enable_links_aside:
       name: enable_links_aside
@@ -427,7 +427,7 @@ journals:
       name: top_journals_background_img
       label: 顶部背景图
       type: attachment
-      default: "https://gitee.com/dhjdd/Timo/raw/master/1642695780650.png"
+      default: "https://gitee.com/dhjdd/Timo/raw/master/1642841299688.png"
       placeholder: "顶部背景图"
     enable_journals_aside:
       name: enable_journals_aside
@@ -461,7 +461,7 @@ sheet:
       name: top_sheet_background_img
       label: 顶部背景图
       type: attachment
-      default: "https://gitee.com/dhjdd/Timo/raw/master/1642695780650.png"
+      default: "https://gitee.com/dhjdd/Timo/raw/master/1642841299688.png"
       placeholder: "顶部背景图"
 
 code_block:
