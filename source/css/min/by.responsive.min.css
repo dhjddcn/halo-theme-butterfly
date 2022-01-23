@@ -9,6 +9,15 @@
     width: 300px;
     transform-origin: right bottom;
   }
+  html body #Butterfly.by_post .by_site_info {
+    padding: 0 8%;
+    bottom: 8%;
+    top: auto;
+  }
+  html body #Butterfly.by_post .by_site_info h1,
+  html body #Butterfly.by_post .by_site_info .by_post_wrap {
+    text-align: left;
+  }
 }
 @media (max-width: 768px) {
   html body #Butterfly .by_nav {

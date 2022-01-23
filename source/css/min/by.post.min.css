@@ -294,3 +294,22 @@
 .by_post .by_container .is-position-fixed {
   top: 80px;
 }
+.by_post_meta {
+  color: var(--light-grey);
+  font-size: 95%;
+}
+.by_post_meta a {
+  color: var(--light-grey);
+}
+.by_post_meta svg {
+  width: auto;
+  height: 16px;
+  margin-right: 5px;
+}
+.by_post_wrap .separator {
+  margin: 0 0.3rem;
+}
+.by_post_wrap > div {
+  display: inline-flex;
+  align-items: center;
+}
