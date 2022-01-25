@@ -2,9 +2,12 @@
 <#include "template/common/post_list.ftl">
 <#include "template/common/pagination.ftl">
 <#include "template/common/empty.ftl">
-
-
-<@layout title="${tag.name!}"  top_background_img="${tag.thumbnail!}" >
+<@layout
+title="${tag.name!}"
+type='tags'
+top_background_img="${tag.thumbnail!}"
+is_card = false
+>
     <#if posts.content?size gt 0>
         <#list posts.content as post>
             <@post_list post=post />

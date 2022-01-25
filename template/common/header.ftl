@@ -1,10 +1,12 @@
 <#-- type 类型 title 标题  top_background_img 顶部背景图  -->
 <#macro header type  title top_background_img  >
-    <header class="by_header"
-            <#if type != 'post' && type != '' >
-                style="${(settings.enable_top_background_img && settings['enable_top_${type}_background_img'] )?then('background-image:url(${top_background_img!})','height:60px')}"
-            <#else>
+    <header
+            <#if settings.enable_top_background_img  &&  settings['enable_top_${type}_background_img'] >
+                class="by_header"
                 style="background-image:url(${top_background_img!})"
+            <#else>
+                style="height:60px"
+                class="by_header enable_top_background_img"
             </#if>
     >
         <nav class="by_nav">
@@ -57,27 +59,25 @@
             </div>
         </nav>
 
-        <#if (settings.enable_top_background_img && type == 'index')?then(settings['enable_top_${type}_background_img'],false)  >
+        <#if settings.enable_top_background_img  && settings['enable_top_${type}_background_img'] >
             <div class="by_site_info">
                 <h1 class="by_site_title center ">${title!}</h1>
-                <div class="by_site_subtitle center">
-                    <span class="subtitle"></span>
-                </div>
-                <div class="by_site_social_icons center">
-                    <#if settings.github != '' >
-                        <a href="${settings.github!}" target="_blank" title="github"> <i
-                                    class="by-font by_icon_xinhao"></i></a>
-                    </#if>
-                    <#if settings.email != '' >
-                        <a href="${settings.email!}" target="_blank" title="邮箱"> <i
-                                    class="by-font by_icon_youjian1"></i></a>
-                    </#if>
-                </div>
-            </div>
-        <#else>
-            <div class="by_site_info">
-                <h1 class="by_site_title center ">${title!}</h1>
-                <#if  type == 'post'>
+                <#if type == 'index'   >
+                    <div class="by_site_subtitle center">
+                        <span class="subtitle"></span>
+                    </div>
+                    <div class="by_site_social_icons center">
+                        <#if settings.github != '' >
+                            <a href="${settings.github!}" target="_blank" title="github"> <i
+                                        class="by-font by_icon_xinhao"></i></a>
+                        </#if>
+                        <#if settings.email != '' >
+                            <a href="${settings.email!}" target="_blank" title="邮箱"> <i
+                                        class="by-font by_icon_youjian1"></i></a>
+                        </#if>
+                    </div>
+                </#if>
+                <#if type == 'post'>
                     <div class="by_post_meta center">
                         <div class="by_post_wrap">
                             <div>
@@ -144,16 +144,20 @@
 
                         </div>
                     </div>
-                </#if>
+                </#if >
             </div>
-        </#if>
+        </#if >
+
+
+
 
         <#--移动端-->
         <div class="by_header_sidebar">
             <div class="by_header_sidebar_mask"></div>
             <div class="by_header_sidebar_menus">
                 <div class="by_user_avatar">
-                    <img class="lazyload" data-src="${user.avatar!}" src="${lazy_img}" onerror="this.src='${err_img}'"
+                    <img class="lazyload" data-src="${user.avatar!}" src="${lazy_img}"
+                         onerror="this.src='${err_img}'"
                          alt="${user.nickname!}">
                 </div>
 
@@ -206,7 +210,6 @@
                                                 </a>
                                             </li>
                                         </#list>
-
                                     </ul>
                                 </#if>
                             </li>
@@ -215,6 +218,5 @@
                 </ul>
             </div>
         </div>
-
     </header>
 </#macro>

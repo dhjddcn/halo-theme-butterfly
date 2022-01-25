@@ -6,6 +6,7 @@
 type="index"
 top_background_img="${settings.top_index_background_img!}"
 enable_aside=settings.enable_home_aside
+is_card = false
 >
     <#if (posts.content)?? && posts.content?size gt 0>
         <#list posts.content as post>
