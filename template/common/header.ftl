@@ -1,23 +1,18 @@
 <#-- type 类型 title 标题  top_background_img 顶部背景图  -->
 <#macro header type  title top_background_img  >
     <header
-            <#if settings.enable_top_background_img  &&  settings['enable_top_${type}_background_img'] >
-                class="by_header"
-                style="background-image:url(${top_background_img!})"
-            <#else>
-                style="height:60px"
-                class="by_header enable_top_background_img"
-            </#if>
+    class="by_header ${settings.nav_font_color!}"
+<#--    style="${()?then('','')}"-->
     >
         <nav class="by_nav">
             <a class="by_blog_title" href=${blog_url!}>${blog_title!}</a>
             <div class="by_menu">
-                <div class="by_search">
-                    <a class="by_site">
-                        <i class="by-font by_icon_search"></i>
-                        <span>搜索</span>
-                    </a>
-                </div>
+<#--                <div class="by_search">-->
+<#--                    <a class="by_site">-->
+<#--                        <i class="by-font by_icon_search"></i>-->
+<#--                        <span>搜索</span>-->
+<#--                    </a>-->
+<#--                </div>-->
                 <div class="by_toggle_menu">
                     <a class="by_site">
                         <i class="by-font by_icon_sangang"></i>

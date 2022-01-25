@@ -19,7 +19,7 @@ is_card 是否显示卡片
         <title>${title}</title>
         <@link type=type />
         <@global.head />
-        <@style />
+        <@style   type top_background_img />
     </head>
     <body>
     <div id="Butterfly" class="by_${type}">

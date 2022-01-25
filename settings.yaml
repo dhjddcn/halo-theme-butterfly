@@ -64,8 +64,24 @@ theme:
       type: attachment
       default: "linear-gradient(90deg,rgba(247,149,51,.1) 0,rgba(243,112,85,.1) 15%,rgba(239,78,123,.1) 30%,rgba(161,102,171,.1) 44%,rgba(80,115,184,.1) 58%,rgba(16,152,173,.1) 72%,rgba(7,179,155,.1) 86%,rgba(109,186,130,.1) 100%)"
       placeholder: "body背景图"
-      description: "建议关闭头部顶部背景图~"
+      description: "设置全局背景图，建议关闭头部顶部背景图，导航栏字体浅色~"
 
+
+navbar:
+  label: 导航栏
+  items:
+    nav_font_color:
+      name: nav_font_color
+      label: 导航栏字体颜色
+      type: radio
+      data-type: text
+      default: nav_font_color_light
+      description: "背景浅色的时候建议设置深色，背景深色建议设置浅色。可按照自己搭配设置"
+      options:
+        - value: nav_font_color_light
+          label: 浅色
+        - value: nav_font_color_dark
+          label: 深色
 
 aside:
   label: 侧边栏

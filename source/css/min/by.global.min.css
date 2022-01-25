@@ -812,10 +812,10 @@ html #Butterfly .w-100 {
 html #Butterfly .h-100 {
   height: 100%;
 }
-html #Butterfly .enable_top_background_img:before {
+html #Butterfly .nav_font_color_dark:before {
   display: none;
 }
-html #Butterfly .enable_top_background_img a {
+html #Butterfly .nav_font_color_dark a {
   color: var(--font-color);
   text-shadow: none;
 }
