@@ -17,10 +17,11 @@
     detectIE() && (alert( '当前站点不支持IE浏览器或您开启了兼容模式，请使用其他浏览器访问或关闭兼容模式。' ), (location.href = 'https://www.baidu.com'));
 </script>
 
-<#assign mode = (blog_url?index_of("localhost") == -1 && blog_url?index_of("127.0.0.1") == -1)?then('production', 'development')>
+<#global mode = (blog_url?index_of("127.0.0.1") == -1)?then('production', 'development')>
+
 <#global BASE_RES_URL = (theme_base)>
-<#global lazy_img = BASE_RES_URL+'/source/img/loading.gif' >
-<#global err_img = BASE_RES_URL+'/source/img/404.gif' >
+<#global lazy_img = theme_base+'/source/img/loading.gif' >
+<#global err_img = theme_base+'/source/img/404.gif' >
 <#--定义可变属性，会根据页面的改变而变化  获取当前页面元数据，这里不要做解析-->
 <script id="metas-getter" type='text/javascript'>
     let PageAttr = {

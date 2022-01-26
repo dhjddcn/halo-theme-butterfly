@@ -116,7 +116,7 @@ const commonContext = {
                 } ).on( "success", () => Qmsg.success( "复制成功！" ) );
             }
         } )
-        // $.getScript( `${ ThemeConfig.BASE_RES_URL }/source/lib/prism/prism.min.js` );
+        $.getScript( `${ ThemeConfig.BASE_RES_URL }/source/lib/prism/prism.min.js` );
     },
     //文章图片预览
     initGallery() {
