@@ -6,7 +6,7 @@
 type="categories"
 title="${category.name!}"
 top_background_img="${category.thumbnail!}"
-is_card = false
+is_card = 'none-card'
 >
     <#if posts.content?size gt 0>
         <#list posts.content as post>

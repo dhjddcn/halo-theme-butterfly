@@ -1,7 +1,7 @@
-const gulp = require( 'gulp' );//gulp自身
+const gulp = require( 'gulp' );
 const { src, dest } = require( 'gulp' );
 const less = require( 'gulp-less' );
-const uglify = require( "gulp-uglify" ); //js压缩组件
+const uglify = require( "gulp-uglify" );
 const minifyCSS = require( 'gulp-csso' );
 const autoprefix = require( 'gulp-autoprefixer' );
 const rename = require( 'gulp-rename' );

@@ -76,7 +76,7 @@ navbar:
       type: radio
       data-type: text
       default: nav_font_color_light
-      description: "背景浅色的时候建议设置深色，背景深色建议设置浅色。可按照自己搭配设置"
+      description: "背景浅色的时候建议设置深色，背景深色建议设置浅色。可自己搭配"
       options:
         - value: nav_font_color_light
           label: 浅色

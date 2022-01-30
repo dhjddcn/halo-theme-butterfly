@@ -6,7 +6,7 @@
 title="${tag.name!}"
 type='tags'
 top_background_img="${tag.thumbnail!}"
-is_card = false
+is_card = 'none-card'
 >
     <#if posts.content?size gt 0>
         <#list posts.content as post>
