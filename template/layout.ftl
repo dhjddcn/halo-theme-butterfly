@@ -25,9 +25,9 @@ is_card 是否显示卡片
     <div id="Butterfly" class="by_${type}">
         <@header type  title top_background_img    />
         <main class="by_main">
-            <div class="by_container ${( !settings.enable_aside || !enable_aside)?then('w-100','')}  ${is_card}">
+            <article class="by_container ${( !settings.enable_aside || !enable_aside)?then('w-100','')}  ${is_card}">
                 <#nested >
-            </div>
+            </article>
             <#if settings.enable_aside && enable_aside >
                 <@aside/>
             </#if>

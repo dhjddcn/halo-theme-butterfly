@@ -40,13 +40,15 @@
 <#--&lt;#&ndash;效果&ndash;&gt;-->
 <#--    <link rel="preload stylesheet" as="style" href="${BASE_RES_URL!}/source/lib/hover/hover-min.css">-->
 <#--主题-->
-    <link rel="preload stylesheet" as="style" href="${BASE_RES_URL!}/source/lib/animate/animate.min.css">
-    <link rel="preload stylesheet" as="style" href="${BASE_RES_URL!}/source/lib/pace/pace-theme-flash.min.css">
+
 
     <link rel="preload stylesheet" as="style" href="${BASE_RES_URL!}/source/css/min/by.theme.min.css">
     <link rel="preload stylesheet" as="style" href="${BASE_RES_URL!}/source/css/min/by.global.min.css">
     <link rel="preload stylesheet" as="style" href="${BASE_RES_URL!}/source/css/min/by.responsive.min.css">
     <link rel="preload stylesheet" as="style" href="${BASE_RES_URL!}/source/css/min/by.widget.min.css">
+
+    <link rel="preload stylesheet" as="style" href="${BASE_RES_URL!}/source/lib/animate/animate.min.css">
+    <link rel="preload stylesheet" as="style" href="${BASE_RES_URL!}/source/lib/pace/pace-theme-flash.min.css">
 
     <#if  type !='sheet'>
         <link rel="preload stylesheet" as="style" href="${BASE_RES_URL!}/source/css/min/by.${type}.min.css">

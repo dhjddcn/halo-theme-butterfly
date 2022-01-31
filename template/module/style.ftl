@@ -12,6 +12,21 @@
         </#if>
         }
 
+        <#if settings.enable_top_background_img  &&  settings['enable_top_${type}_background_img'] >
+        html #Butterfly header {
+            background-image: url(${(top_background_img == '')?then(settings.top_index_background_img,top_background_img)})
+        }
+        <#else>
+        html #Butterfly header {
+            height: 60px;
+        }
+
+        html #Butterfly header::before {
+            display: none;
+        }
+        </#if>
+
+
         #Butterfly .by_main {
             max-width: ${settings.content_max_width!}
         }
@@ -28,22 +43,6 @@
         </#if>
 
 
-        <#if settings.enable_top_background_img  &&  settings['enable_top_${type}_background_img'] >
-
-        html #Butterfly header {
-            background-image: url(${top_background_img!})
-        }
-
-        <#else>
-        html #Butterfly header {
-            height: 60px;
-        }
-
-        html #Butterfly header::before {
-            display: none;
-        }
-
-        </#if>
 
 
         <#--        <#if !settings.enable_home_aside>-->
