@@ -60,6 +60,4 @@ enable_aside=settings.enable_journals_aside
                         </#if>
                     </nav>
                 </div>
-
-
 </@layout>
