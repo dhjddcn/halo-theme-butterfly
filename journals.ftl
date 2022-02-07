@@ -26,6 +26,7 @@ enable_aside=settings.enable_journals_aside
                         <div class="ziyan" style="transform-origin: center top;">
                             <div class="ziyan-content">
                                 <div class="ziyan-header">
+                                    <img class="ziyan_lazyload" src="${user.avatar!}" onerror="this.src='${err_img}'" alt="${user.nickname!}">
                                     <span class="ziyan-username">${user.nickname!}</span>
                                 </div>
                                 <div class="ziyan-body markdown-body md-content">
