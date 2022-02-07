@@ -6,7 +6,7 @@
             src: url(${BASE_RES_URL!}/source/font/${settings.web_font!}) format("woff2");
         }
 
-        html {
+        body {
         <#if settings.body_background?contains("http")> --global-bg: url(${settings.body_background!}) no-repeat fixed center / 100%;
         <#else> --global-bg: ${settings.body_background!};
         </#if>
