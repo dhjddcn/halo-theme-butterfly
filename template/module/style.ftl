@@ -1,4 +1,4 @@
-<#macro style>
+<#macro style type top_background_img>
     <style type="text/css">
         @font-face {
             font-family: "Butterfly Font";
@@ -6,8 +6,10 @@
             src: url(${BASE_RES_URL!}/source/font/${settings.web_font!}) format("woff2");
         }
 
-        body {
-        <#if settings.body_background?contains("http")> background-image: url(${settings.body_background!})<#else> background: ${settings.body_background!}</#if>
+        html {
+        <#if settings.body_background?contains("http")> --global-bg: url(${settings.body_background!}) no-repeat fixed center / 100%;
+        <#else> --global-bg: ${settings.body_background!};
+        </#if>
         }
 
         #Butterfly .by_main {
@@ -25,27 +27,46 @@
 
         </#if>
 
-<#--        <#if !settings.enable_home_aside>-->
-<#--        #Butterfly.by_index .by_main .by_aside {-->
-<#--            display: none;-->
-<#--        }-->
 
-<#--        #Butterfly.by_index .by_main .by_container {-->
-<#--            width: 100%;-->
-<#--        }-->
+        <#if settings.enable_top_background_img  &&  settings['enable_top_${type}_background_img'] >
 
-<#--        </#if>-->
+        html #Butterfly header {
+            background-image: url(${top_background_img!})
+        }
 
-<#--        <#if !settings.enable_post_aside>-->
-<#--        #Butterfly.by_post .by_main .by_aside {-->
-<#--            display: none;-->
-<#--        }-->
+        <#else>
+        html #Butterfly header {
+            height: 60px;
+        }
 
-<#--        #Butterfly.by_post .by_main .by_container {-->
-<#--            width: 100%;-->
-<#--        }-->
+        html #Butterfly header::before {
+            display: none;
+        }
 
-<#--        </#if>-->
+        </#if>
+
+
+        <#--        <#if !settings.enable_home_aside>-->
+        <#--        #Butterfly.by_index .by_main .by_aside {-->
+        <#--            display: none;-->
+        <#--        }-->
+
+        <#--        #Butterfly.by_index .by_main .by_container {-->
+        <#--            width: 100%;-->
+        <#--        }-->
+
+        <#--        </#if>-->
+
+        <#--        <#if !settings.enable_post_aside>-->
+        <#--        #Butterfly.by_post .by_main .by_aside {-->
+        <#--            display: none;-->
+        <#--        }-->
+
+        <#--        #Butterfly.by_post .by_main .by_container {-->
+        <#--            width: 100%;-->
+        <#--        }-->
+
+        <#--        </#if>-->
 
 
     </style>

@@ -114,6 +114,8 @@ const commonContext = {
                 new ClipboardJS( $this.children( '.by_code_copy' )[0], {
                     text: () => $this.find( "code[class*='language-']" ).text(),
                 } ).on( "success", () => Qmsg.success( "复制成功！" ) );
+
+                // Prism.highlightAll();
             }
         } )
         // $.getScript( `${ ThemeConfig.BASE_RES_URL }/source/lib/prism/prism.min.js` );

@@ -9,6 +9,18 @@ genernal:
       default: ""
       placeholder: "请填写 ICP 备案号信息"
       description: "ICP 备案信息将展示在页脚中，不填不展示（示例：蜀ICP备xx号）"
+    enable_police:
+      name: enable_police
+      label: 启用公安备案
+      type: switch
+      data-type: bool
+      default: false
+      description: "是否开启显示公安备案信息"
+      options:
+        - value: true
+          label: 是
+        - value: false
+          label: 否
     police:
       name: police
       label: 公网安备号
@@ -64,8 +76,24 @@ theme:
       type: attachment
       default: "linear-gradient(90deg,rgba(247,149,51,.1) 0,rgba(243,112,85,.1) 15%,rgba(239,78,123,.1) 30%,rgba(161,102,171,.1) 44%,rgba(80,115,184,.1) 58%,rgba(16,152,173,.1) 72%,rgba(7,179,155,.1) 86%,rgba(109,186,130,.1) 100%)"
       placeholder: "body背景图"
-      description: "建议关闭头部顶部背景图~"
+      description: "设置全局背景图，建议关闭头部顶部背景图，导航栏字体浅色~"
 
+
+navbar:
+  label: 导航栏
+  items:
+    nav_font_color:
+      name: nav_font_color
+      label: 导航栏字体颜色
+      type: radio
+      data-type: text
+      default: nav_font_color_light
+      description: "背景浅色的时候建议设置深色，背景深色建议设置浅色。可自己搭配"
+      options:
+        - value: nav_font_color_light
+          label: 浅色
+        - value: nav_font_color_dark
+          label: 深色
 
 aside:
   label: 侧边栏
@@ -441,7 +469,18 @@ journals:
           label: 是
         - value: false
           label: 否
-
+    journals_style:
+      name: journals_style
+      label: 日志模板样式
+      type: select
+      data-type: string
+      default: journals_liu
+      description: "修改日志模板"
+      options:
+        - value: "journals_liu"
+          label: "流式日志"
+        - value: "journals_pao"
+          label: "气泡日志"
 sheet:
   label: 自定义
   items:
@@ -602,6 +641,18 @@ post:
       data-type: bool
       default: true
       description: "是否展示侧边栏"
+      options:
+        - value: true
+          label: 是
+        - value: false
+          label: 否
+    enable_top_post_background_img:
+      name: enable_top_post_background_img
+      label: 开启顶部背景图
+      type: switch
+      data-type: bool
+      default: true
+      placeholder: "开启顶部背景图"
       options:
         - value: true
           label: 是
