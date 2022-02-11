@@ -361,12 +361,12 @@ hr:before {
   font-size: 1.3em;
   transition: all 0.5s;
   animation: headerNoOpacity 1s;
+  justify-content: space-between;
 }
 .by_nav a {
   color: var(--light-grey);
 }
 .by_blog_title {
-  flex: 1;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
   font-weight: bold;
 }

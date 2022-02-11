@@ -82,6 +82,32 @@ navbar:
           label: 浅色
         - value: nav_font_color_dark
           label: 深色
+    nav_center:
+      name: nav_center
+      label: 导航栏居中
+      type: switch
+      data-type: bool
+      default: false
+      description: "开启后导航栏居中，标题将被隐藏！"
+      options:
+        - value: true
+          label: 是
+        - value: false
+          label: 否
+    nav_reverse:
+      name: nav_reverse
+      label: 导航栏位置翻转
+      type: switch
+      data-type: bool
+      default: false
+      description: "开启后导航栏在左边，标题在右边"
+      options:
+        - value: true
+          label: 是
+        - value: false
+          label: 否
+
+
 
 aside:
   label: 侧边栏
@@ -212,12 +238,6 @@ index:
       type: attachment
       default: "https://gitee.com/dhjdd/Timo/raw/master/1642841118869.png"
       placeholder: "顶部背景图"
-    top_index_height:
-      name: top_index_height
-      label: 顶部背景图高度
-      type: text
-      default: "100vh"
-      placeholder: "顶部背景图高度"
     enable_home_aside:
       name: enable_home_aside
       label: 是否展示侧边栏
