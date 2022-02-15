@@ -19,7 +19,7 @@ enable_aside=settings.enable_journals_aside
             <@empty showBg = false/>
         </#if>
     <#else>
-        <div class="is-container" id="moreContainer">
+        <div class="is-container container mx-auto px-4 mt-16 max-w-6xl tracking-wider md:leading-relaxed sm:leading-normal ct-container cn-pd content-container" id="moreContainer">
             <div id="ziyan-list">
                 <div style="position: relative">
                     <#list journals.content as journal>
@@ -30,7 +30,7 @@ enable_aside=settings.enable_journals_aside
                                     <span class="ziyan-username">${user.nickname!}</span>
                                     <span class="is-verified-badge"></span>
                                     <span class="ziyan-text">·</span>
-                                    <span class="ziyan-date time-ago" time=${journal.createTime?string("yyyy-MM-dd HH:mm:ss")}>${journal.createTime?string("yyyy/MM/dd HH:mm:ss")}</span>
+                                    <span class="ziyan-date time-ago" time=${journal.createTime?string("yyyy-MM-dd HH:mm")}>${journal.createTime?string("yyyy/MM/dd HH:mm")}</span>
                                 </div>
                                 <div class="ziyan-body markdown-body md-content">
                                     ${journal.content!}
