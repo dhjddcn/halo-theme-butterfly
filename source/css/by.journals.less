@@ -70,3 +70,108 @@
 
   }
 }
+
+.is-container {
+  box-sizing: border-box;
+
+  * {
+    box-sizing: border-box;
+  }
+
+  .ziyan-list {
+    padding-top: 1.25em;
+  }
+  .ziyan {
+    position: relative;
+    padding: .625em 0;
+    display: flex;
+  }
+  .ziyan-content {
+    flex: 1 1;
+    padding: 1em 1.5em;
+    overflow: auto;
+    -webkit-transition: all .25s ease;
+    transition: all .25s ease;
+    border-radius: 10px;
+    background: hsla(0, 0%, 100%, .6);
+    box-shadow: 0 0.625em 3.75em 0 #eaeaea;
+    -webkit-transition: all .25s ease .2s, -webkit-transform .5s cubic-bezier(.6, .2, .1, 1) .2s;
+    transition: all .25s ease .2s, -webkit-transform .5s cubic-bezier(.6, .2, .1, 1) .2s;
+    transition: all .25s ease .2s, transform .5s cubic-bezier(.6, .2, .1, 1) .2s;
+    transition: all .25s ease .2s, transform .5s cubic-bezier(.6, .2, .1, 1) .2s, -webkit-transform .5s cubic-bezier(.6, .2, .1, 1) .2s;
+
+    &:hover {
+      box-shadow: 0 1em 4em 0.5em #d7d7d7;
+      -webkit-transform: translateY(-3px);
+      transform: translateY(-3px);
+      cursor: pointer;
+    }
+  }
+  .ziyan-header {
+    margin-bottom: .5em;
+    font-size: 1em;
+    position: relative;
+
+    // .ziyan-date {
+    //   color: #a1a1a1;
+    //   display: inline-block;
+    //   padding-left: 500px;
+    //   text-shadow:#d9d9d9 0 0 1px,#fffffb 0 0 1px,#fffffb 0 0 2px;
+    // }
+  }
+  .ziyan-username {
+    font-weight: 600;
+    font-size: 1.34rem;
+    color: var(--text-color);
+    text-decoration: none;
+  }
+  .ziyan-body {
+    color: #333;
+  }
+  .markdown-body {
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+  }
+}
+
+.markdown-body {
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  color: var(--text-color);
+  font-size: 1.2rem;
+  line-height: 1.5;
+  word-wrap: break-word;
+
+  &:after, &:before {
+    content: "";
+    display: table;
+  }
+}
+
+.ziyan_lazyload {
+  width: 42px;
+  border-radius: 50%;
+  object-position: center;
+}
+
+.ziyan-date {
+  color: #a1a1a1;
+  text-shadow: #d9d9d9 0 0 1px, #fffffb 0 0 1px, #fffffb 0 0 2px;
+}
+
+.is-container .ziyan-text {
+  margin: auto .3em;
+  font-weight: 600;
+}
+
+.is-container .ziyan-date, .is-container .ziyan-text {
+  color: #a1a1a1;
+  text-shadow: #d9d9d9 0 0 1px, #fffffb 0 0 1px, #fffffb 0 0 2px;
+}
+
+.is-container .is-verified-badge {
+  margin-left: .2em;
+  display: inline-block;
+  -webkit-transform: translateY(3px);
+  transform: translateY(3px);
+}

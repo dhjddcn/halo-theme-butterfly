@@ -28,6 +28,9 @@ enable_aside=settings.enable_journals_aside
                                 <div class="ziyan-header">
                                     <img class="ziyan_lazyload" src="${user.avatar!}" onerror="this.src='${err_img}'" alt="${user.nickname!}">
                                     <span class="ziyan-username">${user.nickname!}</span>
+                                    <span class="is-verified-badge"></span>
+                                    <span class="ziyan-text">·</span>
+                                    <span class="ziyan-date time-ago" time=${journal.createTime?string("yyyy-MM-dd HH:mm:ss")}>${journal.createTime?string("yyyy/MM/dd HH:mm:ss")}</span>
                                 </div>
                                 <div class="ziyan-body markdown-body md-content">
                                     ${journal.content!}

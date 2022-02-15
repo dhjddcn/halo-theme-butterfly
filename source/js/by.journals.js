@@ -33,5 +33,3 @@ const journalsContext = {
         Object.values( journalsContext ).forEach( f => f() );
     } );
 })();
-
-
