@@ -17,9 +17,9 @@ is_card 是否显示卡片
     <html lang="zh-CN" data-theme="light">
     <head>
         <title>${title}</title>
+        <@style   type top_background_img />
         <@link type=type />
         <@global.head />
-        <@style   type top_background_img />
     </head>
     <body>
     <div id="Butterfly" class="by_${type}">
