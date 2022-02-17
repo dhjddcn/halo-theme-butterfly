@@ -2,7 +2,6 @@
 <#include 'common/header.ftl' >
 <#include 'common/footer.ftl' >
 <#include 'module/link.ftl' >
-<#include 'module/style.ftl' >
 <#include 'module/script.ftl' >
 <#include 'common/aside.ftl' >
 <#include 'common/rightside.ftl' >
@@ -17,13 +16,12 @@ is_card 是否显示卡片
     <html lang="zh-CN" data-theme="light">
     <head>
         <title>${title}</title>
-        <@style   type top_background_img />
-        <@link type=type />
+        <@link type top_background_img />
         <@global.head />
     </head>
     <body>
     <div id="Butterfly" class="by_${type}">
-        <@header type  title top_background_img    />
+        <@header type  title   />
         <main class="by_main">
             <article class="by_container ${( !settings.enable_aside || !enable_aside)?then('w-100','')}  ${is_card}">
                 <#nested >

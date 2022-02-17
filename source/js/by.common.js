@@ -45,6 +45,18 @@ const commonContext = {
             }, 200 )();
         } );
     },
+    search(){
+        const $search = $('.by_header_search');
+        const $local = $('.by_local_search');
+        const $close = $('.search_close');
+        $search.click(()=>{
+            $local.show();
+        });
+        $close.click(()=>{
+            console.log( $local );
+            $local.hide();
+        });
+    },
     //左右边小部件
     rightside() {
         const data_theme = localStorage.getItem( 'data-theme' );

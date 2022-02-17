@@ -1,23 +1,14 @@
 <#-- type 类型 title 标题  top_background_img 顶部背景图  -->
-<#macro header type  title top_background_img  >
+<#macro header type  title   >
     <header
     class="by_header ${settings.nav_font_color!}"
 <#--    style="${()?then('','')}"-->
     >
         <nav class="by_nav">
             <a class="by_blog_title" href=${blog_url!}>${blog_title!}</a>
+
             <div class="by_menu">
-<#--                <div class="by_search">-->
-<#--                    <a class="by_site">-->
-<#--                        <i class="by-font by_icon_search"></i>-->
-<#--                        <span>搜索</span>-->
-<#--                    </a>-->
-<#--                </div>-->
-                <div class="by_toggle_menu">
-                    <a class="by_site">
-                        <i class="by-font by_icon_sangang"></i>
-                    </a>
-                </div>
+
                 <ul class="by_menus">
                     <@menuTag method="tree">
                         <#list menus?sort_by('priority') as menu>
@@ -51,6 +42,18 @@
                         </#list>
                     </@menuTag>
                 </ul>
+            </div>
+            <div class="by_header_search">
+                <a class="by_site">
+                    <i class="by-font by_icon_search"></i>
+                    <span>搜索</span>
+                </a>
+            </div>
+
+            <div class="by_toggle_menu">
+                <a class="by_site">
+                    <i class="by-font by_icon_sangang"></i>
+                </a>
             </div>
         </nav>
 
@@ -213,5 +216,22 @@
                 </ul>
             </div>
         </div>
+
+
+        <#--搜索-->
+
+        <div class="by_local_search">
+            <div class="by_search_dialog">
+                <div class="by_search_title">文章搜索</div>
+                <form class="search" method="get" action="${blog_url!}/search">
+                    <input  maxlength="16" name="keyword" class="search_input" autocomplete="off" placeholder="请输入搜索关键字..." type="text"/>
+                </form>
+                <hr>
+                <span class="search_close">
+                    <i class="by-font by_icon_cuowu"></i>
+                </span>
+            </div>
+        </div>
+
     </header>
 </#macro>

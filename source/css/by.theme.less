@@ -1,6 +1,6 @@
 /*! 主题默认样式 */
 //noinspection CssUnknownTarget
-@import url("//at.alicdn.com/t/font_3123425_jn29dz3ffl8.css");
+@import url("//at.alicdn.com/t/font_3123425_cgp0qwul5y8.css");
 
 html  {
   --hl-color: #90a4ae;
@@ -283,6 +283,28 @@ html  {
   }
 
   @keyframes titleScale {
+    0% {
+      opacity: 0;
+      -webkit-transform: scale(.7);
+      -moz-transform: scale(.7);
+      -o-transform: scale(.7);
+      -ms-transform: scale(.7);
+      transform: scale(.7)
+    }
+
+    100% {
+      opacity: 1;
+      -ms-filter: none;
+      filter: none;
+      -webkit-transform: scale(1);
+      -moz-transform: scale(1);
+      -o-transform: scale(1);
+      -ms-transform: scale(1);
+      transform: scale(1)
+    }
+  }
+
+  @keyframes titlescale {
     0% {
       opacity: 0;
       -webkit-transform: scale(.7);

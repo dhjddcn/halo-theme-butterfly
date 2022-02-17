@@ -8,7 +8,7 @@ enable_aside=settings.enable_post_aside
     <#include "template/common/postfooter.ftl">
 <#--    <@global.comment target=post type="post" />-->
 
-    <@comment post,"post" />
+<#--    <@comment post,"post" />-->
 </@layout>
 
 

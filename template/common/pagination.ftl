@@ -1,5 +1,5 @@
-<#macro pagination  method='index' slug="" display = "3">
-    <@paginationTag method="${method!}"  slug="${slug!}" page="${posts.number}" total="${posts.totalPages}" display="3">
+<#macro pagination  method='index' slug="" keyword="" display = "3">
+    <@paginationTag method="${method!}"  keyword="${keyword!}" slug="${slug!}" page="${posts.number}" total="${posts.totalPages}" display="3">
         <ul class="by_pagination">
             <#if pagination.hasPrev>
                 <li class="by_pagination_item">
