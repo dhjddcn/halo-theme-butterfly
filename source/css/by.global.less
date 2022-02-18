@@ -679,6 +679,41 @@ hr {
       margin-bottom: 1rem;
     }
 
+
+    table{
+      width: 100%;
+      max-width: 100%;
+      table-layout: fixed;
+      color: var(--minor);
+      margin-bottom: 18px;
+      font-size: 13px;
+      //border-top: 1px solid var(--classC);
+      border-collapse: collapse;
+      border: 1px solid var(--classC);
+
+      td,th{
+        padding: 8px;
+        //border-bottom: 1px solid var(--classC);
+        //border-right: 1px solid var(--classC)
+        border: 1px solid var(--classC);
+
+      }
+
+      thead th {
+        font-weight: 500;
+        background: var(--classC)
+      }
+
+      tbody tr {
+        -webkit-transition: background .35s;
+        transition: background .35s
+      }
+
+      tbody tr:hover {
+        background: var(--classD)
+      }
+    }
+
     .by_posts {
       &_item {
         display: flex;
