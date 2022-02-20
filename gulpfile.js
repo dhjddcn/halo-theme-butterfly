@@ -17,7 +17,6 @@ gulp.task( "css", function () {
             ],
             cascade: false
         } ) )
-
         .pipe( minifyCSS() )
         .pipe( rename( {
             suffix: '.min'
@@ -39,6 +38,15 @@ gulp.task( "js", function () {
         .pipe( dest( './source/js/min' ) )
 } )
 
+gulp.task(
+    "watch",
+    function (  ) {
+        // noinspection JSCheckFunctionSignatures
+        gulp.watch('./source/css/*.less',gulp.series('css'));
+        // noinspection JSCheckFunctionSignatures
+        gulp.watch('./source/js/*.js',gulp.series('js'));
+    }
+);
 gulp.task(
     "default",
     gulp.series(
