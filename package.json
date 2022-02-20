@@ -5,7 +5,10 @@
   "author": "小红",
   "main": "webpack.config.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "gulp watch",
+    "build": "gulp",
+    "build-js": "gulp js",
+    "build-css": "gulp css"
   },
   "repository": {
     "type": "git",
