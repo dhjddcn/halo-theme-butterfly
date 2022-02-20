@@ -27,10 +27,11 @@
     <link rel="preload stylesheet" as="style" href="//at.alicdn.com/t/font_3123425_cgp0qwul5y8.css">
     <link rel="preload stylesheet" as="style" href="${BASE_RES_URL}/source/css/min/by.theme.min.css">
     <link rel="preload stylesheet" as="style" href="${BASE_RES_URL}/source/css/min/by.global.min.css">
+    <#include "style.ftl">
     <#if type !='empty' >
         <link rel="preload stylesheet" as="style" href="${BASE_RES_URL}/source/css/min/by.${type}.min.css">
     </#if>
-
+    <link rel="preload stylesheet" as="style" href="${BASE_RES_URL}/source/css/min/by.responsive.min.css">
 </#macro>
 
 

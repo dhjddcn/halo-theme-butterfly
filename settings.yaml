@@ -35,17 +35,44 @@ theme:
       default: "1200px"
       placeholder: "请输入"
       description: "限制内容区域的宽度，像素或百分比，默认1200px"
+    theme_color_light:
+      name: theme_color_light
+      label: 主题色（浅色）
+      type: text
+      default: "#49b1f5"
+      placeholder: "请输入"
+      description: "主题色（浅色）："
+    theme_color_dark:
+      name: theme_color_dark
+      label: 主题色（暗黑）
+      type: text
+      default: "#1f1f1f"
+      placeholder: "请输入"
+      description: "主题色（暗黑）："
     web_font:
       name: web_font
       label: 网站字体
       type: select
-      default: "Butterfly Aqqxs"
-      description: "配置网站的字体，暂时提供 2 种供选择，也可以在 “自定义” 一栏中自定义字体来源，如果两边同时配置，优先使用自定义配置中的字体（请注意：中文字体并不能保证所有文字展示正确，请慎用！！！）"
+      default: "By Alibaba"
+      description: "配置网站的字体，暂时提供 3 种供选择！"
       options:
         - value: "by_aqqxs.woff2"
-          label: "Butterfly Aqqxs"
+          label: "By Aqqxs"
         - value: "by_slate.woff2"
-          label: "Butterfly Slate"
+          label: "By Slate"
+        - value: "by_alibaba.woff2"
+          label: "By Alibaba"
+    cursor_skin:
+      name: cursor_skin
+      label: 鼠标皮肤
+      type: select
+      default: "off"
+      description: "配置鼠标光标的皮肤（部分皮肤在暗黑模式下可能不明显），更多皮肤请前往 https://zhutix.com/tag/cursors/"
+      options:
+        - value: "off"
+          label: 无（默认）
+        - value: simple_cursor
+          label: 简洁卡通
     enable_top_background_img:
       name: enable_top_background_img
       label: 启用全局顶部背景图
@@ -60,7 +87,7 @@ theme:
           label: 否
     body_background:
       name: body_background
-      label: body背景图可选（url-https://xxx.cn/img.png/颜色值-#fff）
+      label: body背景图可选（https://xxx.cn/img.png/#fff）
       type: attachment
       default: "linear-gradient(90deg,rgba(247,149,51,.1) 0,rgba(243,112,85,.1) 15%,rgba(239,78,123,.1) 30%,rgba(161,102,171,.1) 44%,rgba(80,115,184,.1) 58%,rgba(16,152,173,.1) 72%,rgba(7,179,155,.1) 86%,rgba(109,186,130,.1) 100%)"
       placeholder: "body背景图"
