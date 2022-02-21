@@ -4,7 +4,7 @@
 <#include 'module/link.ftl' >
 <#include 'module/script.ftl' >
 <#include 'common/aside.ftl' >
-<#include 'common/rightside.ftl' >
+<#include 'template/common/sideWidget.ftl' >
 <#--
 type 页面类型
 top_background_img 顶部背景图

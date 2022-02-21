@@ -1,8 +1,28 @@
 /*! 主题默认样式 */
 html  {
+  --font-size: 14px;
+  --font-color: #4c4948;
+  --btn-color: #fff;
+  --nav-bg:rgba(255,255,255,.8);
+  --nav-box-shadow:rgba(255,255,255,.8);
+  --light-grey: #eee;
   //暗黑模式
-  &[data-theme=dark] {
+  &[data-mode=dark] {
+    --font-color: rgba(255,255,255,0.7);
+    --btn-hover-color: #787878;
+    --btn-color:var(--font-color);
+    --nav-bg:rgba(18,18,18,.8);
+    --nav-box-shadow:0 5px 6px -5px rgb(133 133 133 / 0%);
   }
+
+  --cursor-default:url(https://gitee.com/dhjdd/Timo/raw/master/default.cur), auto;
+  --cursor-link:url(https://gitee.com/dhjdd/Timo/raw/master/link.cur), auto;
 
 }
 
+body,p {
+  cursor: var(--cursor-default);
+}
+a,a:active,img ,button{
+  cursor: var(--cursor-link);
+}

@@ -6,9 +6,10 @@
       <option name="myIgnoreVendorSpecificProperties" value="false" />
       <option name="myCustomPropertiesList">
         <value>
-          <list size="2">
+          <list size="3">
             <item index="0" class="java.lang.String" itemvalue="line-clamp" />
             <item index="1" class="java.lang.String" itemvalue="transform" />
+            <item index="2" class="java.lang.String" itemvalue="background-img" />
           </list>
         </value>
       </option>

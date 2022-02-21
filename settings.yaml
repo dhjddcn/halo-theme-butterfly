@@ -46,7 +46,7 @@ theme:
       name: theme_color_dark
       label: 主题色（暗黑）
       type: text
-      default: "#1f1f1f"
+      default: "#0d0d0d"
       placeholder: "请输入"
       description: "主题色（暗黑）："
     web_font:
