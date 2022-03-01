@@ -1,4 +1,4 @@
-<div class="by_sideWidget">
+<div class="sideWidget">
     <button class="darkmode" type="button" title="浅色和深色模式转换">
         <i class="by-font by_icon_heibaimoshi"></i>
     </button>

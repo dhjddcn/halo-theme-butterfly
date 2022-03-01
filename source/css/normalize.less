@@ -112,9 +112,26 @@ button {
   touch-action: manipulation;
 }
 
-
-
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
+
+body, p {
+  cursor: var(--cursor-default);
+}
+
+a {
+  color: #99a9bf;
+  text-decoration: none;
+  word-wrap: break-word;
+  transition: all 0.2s;
+  overflow-wrap: break-word;
+}
+
+a, a:active, img, button {
+  cursor: var(--cursor-link);
+}
+
+
+
