@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-CN" data-mode="light">
 <#include "template/module/head.ftl">
-<#include "template/module/script.ftl">
 <@head type='index' title='${blog_title!}' />
 <body>
 <div id="by" class="index">
@@ -12,6 +11,7 @@
     <#include "template/common/footer.ftl">
     <#include "template/common/sideWidget.ftl">
 </div>
+<#include "template/module/script.ftl">
 <@script type='index' />
 </body>
 </html>

@@ -174,8 +174,8 @@ hr {
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
-  transition: all 0.5s;
   animation: header-effect 1s;
+  transition: all 0.5s;
 
   &__box {
     animation: headerNoOpacity 1s;
@@ -221,7 +221,7 @@ hr {
     height: 60px;
     line-height: 60px;
 
-    .icon_arrow-down {
+    .by_icon_arrow-down {
       transition: transform .3s;
     }
 
@@ -245,7 +245,7 @@ hr {
         width: 100%
       }
 
-      .icon_arrow-down {
+      .by_icon_arrow-down {
         transform: rotate(180deg);
       }
 
@@ -328,6 +328,51 @@ hr {
       color: var(--theme-font-color);
       text-shadow: none;
     }
+  }
+
+  &__site {
+    position: absolute;
+    top: 43%;
+    padding: 0 0.5rem;
+    width: 100%;
+
+    .site {
+      &_title, &_subtitle {
+        text-align: center;
+        text-shadow: 0.1rem 0.1rem 0.2rem rgb(0 0 0 / 15%);
+        line-height: 1.5;
+      }
+
+      &_title {
+        margin: 0;
+        color: var(--white);
+        font-size: 2.85em;
+      }
+
+      &_subtitle {
+        font-size: 1.72em;
+        color: var(--light-grey);
+      }
+
+      &_icons {
+        margin: 0 auto;
+        width: 15rem;
+        text-align: center;
+
+        .ic_link {
+          margin: 0 0.5rem;
+          color: var(--light-grey);
+          text-shadow: 0.1rem 0.1rem 0.2rem rgb(0 0 0 / 15%);
+          font-size: 1.43em;
+        }
+
+        svg {
+          width: 20px;
+          height: 20px;
+        }
+      }
+    }
+
   }
 
   &__sidebar {
@@ -518,7 +563,6 @@ hr {
 .disable-search .header__search {
   display: block;
 }
-
 
 
 html {

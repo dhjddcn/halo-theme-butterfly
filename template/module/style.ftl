@@ -10,6 +10,7 @@
     html {
         --theme: ${settings.theme_color_light!};
         font-family: "By Font", "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, "sans-serif";
+        <#----base-url: ${BASE_RES_URL!};-->
         --cursor-default: url(${BASE_RES_URL!}/source/cursor/simple_cursor/default.cur), auto;
         --cursor-link: url(${BASE_RES_URL!}/source/cursor/simple_cursor/link.cur), auto;
     }
