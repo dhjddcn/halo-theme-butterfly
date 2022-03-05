@@ -15,6 +15,19 @@
   @media (max-width: 992px) {
   }
   @media (max-width: 900px) {
+    .main {
+      justify-content: flex-start;
+      flex-direction: column;
+
+      .article, .aside {
+        width: 100%;
+      }
+
+      .aside {
+        margin-top: 1rem;
+      }
+
+    }
   }
 
   @media (max-width: 768px) {
@@ -40,6 +53,10 @@
           &_subtitle {
             font-size: 1.15em;
           }
+
+          &_icons {
+            display: block;
+          }
         }
       }
 
@@ -56,6 +73,10 @@
         display: inline-block;
       }
 
+    }
+
+    .main {
+      padding: 1rem 5px;
     }
   }
 

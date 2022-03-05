@@ -1,6 +1,7 @@
 <#-- 全局配置 -->
 <script id="browser-Compatibility">
     <#-- 兼容性检查-->
+
     function detectIE() {
         let n = window.navigator.userAgent, e = n.indexOf( "MSIE " );
         if ( e > 0 ) {
@@ -13,6 +14,7 @@
         let i = n.indexOf( "Edge/" );
         return i > 0 && parseInt( n.substring( i + 5, n.indexOf( ".", i ) ), 10 );
     }
+
     detectIE() && (alert( '当前站点不支持IE浏览器或您开启了兼容模式，请使用其他浏览器访问或关闭兼容模式。' ), (location.href = 'https://www.baidu.com'));
     document.getElementById( 'browser-Compatibility' ).remove();
 </script>
@@ -31,7 +33,19 @@
             </#if>
         },
     }
-    document.getElementById( 'meta-config' ).remove();
+    // document.getElementById( 'meta-config' ).remove();
+
+    document.onreadystatechange = function () {
+        if ( this.readyState === "complete" ) {
+            const loading = document.querySelector( '.loading' );
+            loading.classList.add( 'loaded' );
+            document.body.removeAttribute( 'style' );
+            setTimeout( function () {
+                loading.remove();
+            }, 200 );
+        }
+    };
+
 </script>
 <#--  取出主题配置  -->
 <script id="theme-config">
@@ -40,7 +54,7 @@
     <#assign valueString = settings[key]?string>
     <#assign isNeeded = key?index_of('custom_')==-1 && valueString?index_of('<script')==-1 && valueString?index_of('<link')==-1>
     <#if isNeeded>
-    var  value = '${valueString?js_string}';
+    var value = '${valueString?js_string}';
     value = value.replace( /</g, "&lt;" ).replace( />/g, "&gt;" );
     if ( /^(true|false)$/.test( value ) ) {
         value = JSON.parse( value );
