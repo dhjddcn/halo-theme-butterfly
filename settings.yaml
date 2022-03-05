@@ -16,18 +16,6 @@ genernal:
       default: ""
       placeholder: "请填写公网安备号信息"
       description: "公网安备信息将展示在页脚中，不填不展示，一栏中单独关闭（示例：蜀公网安备xx号）"
-    site_notice:
-      name: site_notice
-      label: 网站公告
-      type: textarea
-      placeholder: 请输入公告信息
-      description: "网站公告信息，将展示在页面右侧，尽量简洁明了（不填不展示该模块，也可单独开关）"
-
-
-# 主题设置
-theme:
-  label: 主题设置
-  items:
     content_max_width:
       name: content_max_width
       label: 内容区最大宽度
@@ -42,13 +30,19 @@ theme:
       default: "#49b1f5"
       placeholder: "请输入"
       description: "主题色（浅色）："
-    theme_color_dark:
-      name: theme_color_dark
-      label: 主题色（暗黑）
-      type: text
-      default: "#0d0d0d"
-      placeholder: "请输入"
-      description: "主题色（暗黑）："
+    loading_style:
+      name: loading_style
+      label: 页面加载样式
+      type: select
+      default: ""
+      description: "页面加载样式，暂时提供 2 种供选择！"
+      options:
+        - value: ""
+          label: "无（默认）"
+        - value: "diamond"
+          label: "菱形加载"
+        - value: "time"
+          label: "流光加载"
     web_font:
       name: web_font
       label: 网站字体
@@ -92,7 +86,17 @@ theme:
       default: "linear-gradient(90deg,rgba(247,149,51,.1) 0,rgba(243,112,85,.1) 15%,rgba(239,78,123,.1) 30%,rgba(161,102,171,.1) 44%,rgba(80,115,184,.1) 58%,rgba(16,152,173,.1) 72%,rgba(7,179,155,.1) 86%,rgba(109,186,130,.1) 100%)"
       placeholder: "body背景图"
       description: "设置全局背景图，建议关闭头部顶部背景图，导航栏字体浅色~"
-
+    post_layout:
+      name: post_layout
+      label: 文章布局方式
+      type: select
+      default: "list"
+      description: "首页 搜索 页面等文章布局方式！"
+      options:
+        - value: "post_layout_list"
+          label: "列表"
+        - value: "post_layout_tile"
+          label: "平铺"
 
 navbar:
   label: 导航栏
@@ -206,6 +210,12 @@ aside:
     #      data-type: long
     #      default: 5
     #      description: "右侧最新评论展示条数，填写数字即可，默认展示最新的5条评论（需开启最新评论）"
+    site_notice:
+      name: site_notice
+      label: 网站公告
+      type: textarea
+      placeholder: 请输入公告信息
+      description: "网站公告信息，将展示在页面右侧，尽量简洁明了（不填不展示该模块，也可单独开关）"
     enable_notice:
       name: enable_notice
       label: 展示网站公告
@@ -265,8 +275,8 @@ index:
       type: attachment
       default: "https://gitee.com/dhjdd/Timo/raw/master/1642841118869.png"
       placeholder: "顶部背景图"
-    enable_home_aside:
-      name: enable_home_aside
+    enable_index_aside:
+      name: enable_index_aside
       label: 是否展示侧边栏
       type: switch
       data-type: bool

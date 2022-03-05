@@ -20,6 +20,8 @@
 </script>
 <#global mode = (blog_url?index_of("127.0.0.1") == -1)?then('production', 'development')>
 <#global BASE_RES_URL = (theme_base)>
+<#if settings.loading_style != ''><script class="loading-script" src="${BASE_RES_URL}/source/lib/loading/${settings.loading_style!}.js"></script></#if>
+
 <#global lazy_img = theme_base+'/source/img/loading.gif' >
 <#global err_img = theme_base+'/source/img/404.gif' >
 <#--定义可变属性，会根据页面的改变而变化  获取当前页面元数据，这里不要做解析-->
@@ -33,19 +35,7 @@
             </#if>
         },
     }
-    // document.getElementById( 'meta-config' ).remove();
-
-    document.onreadystatechange = function () {
-        if ( this.readyState === "complete" ) {
-            const loading = document.querySelector( '.loading' );
-            loading.classList.add( 'loaded' );
-            document.body.removeAttribute( 'style' );
-            setTimeout( function () {
-                loading.remove();
-            }, 200 );
-        }
-    };
-
+    document.getElementById( 'meta-config' ).remove();
 </script>
 <#--  取出主题配置  -->
 <script id="theme-config">

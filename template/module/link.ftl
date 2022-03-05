@@ -20,12 +20,42 @@
     <meta property="og:title" content="${title!} – ${blog_title!}">
     <meta property="twitter:partner" content="ogwp">
     <link rel="canonical" href="${blog_url!}">
-<#--    页面-->
-    <link rel="preload stylesheet" as="style" href="${BASE_RES_URL}/source/css/min/normalize.min.css">
+    <link rel="preload stylesheet" as="style" href="${BASE_RES_URL}/source/css/min/normalize.min.css"><#--    页面-->
     <link rel="preload stylesheet" as="style" href="//at.alicdn.com/t/font_3123425_2ab3mcgk013.css">
     <link rel="preload stylesheet" as="style" href="${BASE_RES_URL}/source/css/min/theme.min.css">
     <link rel="preload stylesheet" as="style" href="${BASE_RES_URL}/source/css/min/global.min.css">
-    <#include "style.ftl">
+    <style type="text/css">
+        @font-face {
+            font-family: "By Font";
+            font-weight: 400;
+            font-style: normal;
+            font-display: swap;
+            src: url(${BASE_RES_URL!}/source/font/${settings.web_font!}) format("woff2");
+        }
+
+        body #by .main {
+            max-width: ${settings.content_max_width!};
+        }
+
+        html {
+            --theme: ${settings.theme_color_light!};
+            font-family: "By Font", "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, "sans-serif";
+            --cursor-default: url(${BASE_RES_URL!}/source/cursor/simple_cursor/default.cur), auto;
+            --cursor-link: url(${BASE_RES_URL!}/source/cursor/simple_cursor/link.cur), auto;
+        }
+
+        html[data-mode='light'] body::after {
+        <#if settings.body_background?contains("http")> background: url(${settings.body_background!}) no-repeat fixed center / cover;
+        <#else> background: ${settings.body_background!} </#if>
+        }
+
+        body #by .header {
+        <#if type=='index'> background-image: url(${settings.top_index_background_img!});
+        </#if>
+        }
+
+
+    </style>
     <#if type !='empty' >
         <link rel="preload stylesheet" as="style" href="${BASE_RES_URL}/source/css/min/${type}.min.css">
     </#if>

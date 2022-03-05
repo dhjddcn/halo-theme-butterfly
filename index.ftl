@@ -2,18 +2,16 @@
 <html lang="zh-CN" data-mode="light">
 <#include "template/module/head.ftl">
 <@head type='index' title='${blog_title!}' />
-<body style="overflow: hidden;">
-<#include "template/common/loading.ftl">
+<body>
 <div id="by" class="index-page">
     <script src="${BASE_RES_URL!}/source/lib/jquery/jquery.min.js"></script>
     <#include "template/common/navbar.ftl">
-    <main class="main">
+    <@navbar type='index'  />
+    <main class="main ${settings.post_layout!}">
         <article class="article">
             <#if (posts.content)?? && posts.content?size gt 0>
                 <#include "template/common/post_list.ftl">
-                <#list posts.content as post>
-                    <@post_list post=post />
-                </#list>
+                <@post_list list=posts.content />
             <#--                <@pagination/>-->
             <#else>
             <#--                <@empty/>-->

@@ -307,7 +307,7 @@ hr {
       margin: 0 0.5rem;
       width: max-content;
       box-shadow: 0 5px 20px -4px rgb(0 0 0 / 50%);
-      border-radius: 5px;
+      border-radius: 10px;
       background-color: var(--sidebar-bg);
       flex-direction: column;
       animation: sub_menus .3s .1s ease both;
@@ -320,13 +320,14 @@ hr {
         color: var(--theme-font-color);
         text-shadow: none;
         font-size: 0.78em;
+        border-radius: 10px;
 
         &:first-child {
-          border-radius: 5px 5px 0 0;
+          border-radius: 10px 10px 0 0;
         }
 
         &:last-child {
-          border-radius: 0 0 5px 5px;
+          border-radius: 0 0 10px 10px;
         }
 
         &:hover {
@@ -605,7 +606,6 @@ hr {
   display: flex;
   margin: 0 auto;
   padding: 2rem 15px;
-  max-width: 1200px;
   justify-content: space-between;
 
   .aside {
@@ -616,8 +616,39 @@ hr {
     width: 75%;
   }
 
+  .posts_box {
+
+  }
 
 }
+.post_layout {
+  &_list .posts_box {
+    .post_item {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      height: 20em;
+
+      &:not(:first-child) {
+        margin-top: 1rem;
+      }
+    }
+  }
+
+  &_tile .posts_box {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 17px 0;
+    justify-content: space-between;
+
+    .post_item {
+      width: 49%;
+      height: 25em;
+    }
+  }
+}
+
+
 
 .footer {
   position: relative;
@@ -647,6 +678,12 @@ hr {
 
 .main, .footer {
   animation: bottom-top 1s;
+}
+
+.aside, .post_item {
+  border-radius: 20px;
+  background: var(--card-bg);
+  box-shadow: var(--card-box-shadow);
 }
 
 .disable-scroll, .disable-search {
