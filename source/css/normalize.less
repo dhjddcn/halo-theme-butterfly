@@ -98,6 +98,10 @@ img:not([src]) {
   opacity: 0;
 }
 
+img[data-lazy-src]:not(.loaded) {
+  filter: blur(8px) brightness(1);
+}
+
 svg,
 canvas {
   vertical-align: middle;

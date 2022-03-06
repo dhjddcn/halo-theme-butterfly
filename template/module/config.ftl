@@ -22,8 +22,8 @@
 <#global BASE_RES_URL = (theme_base)>
 <#if settings.loading_style != ''><script class="loading-script" src="${BASE_RES_URL}/source/lib/loading/${settings.loading_style!}.js"></script></#if>
 
-<#global lazy_img = theme_base+'/source/img/loading.gif' >
-<#global err_img = theme_base+'/source/img/404.gif' >
+<#global lazy_img = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' >
+<#global err_img = theme_base+'/source/img/404.png' >
 <#--定义可变属性，会根据页面的改变而变化  获取当前页面元数据，这里不要做解析-->
 <script id="meta-config" type='text/javascript'>
     let PageAttr = {

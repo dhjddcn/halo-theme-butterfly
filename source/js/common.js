@@ -45,6 +45,12 @@ const commonContext = {
 
     },
     action() {
+        window.lazyLoadInstance = new LazyLoad( {
+            elements_selector: 'img',
+            threshold: 0,
+            data_src: 'lazy-src'
+        } )
+
         $( '.header__action' ).on( 'click', 'a', function ( event ) {
             const t = $( this );
             if ( t.hasClass( 'search' ) ) {
@@ -85,28 +91,6 @@ const commonContext = {
             }
         } );
     },
-    // //移动端菜单
-    // sidebar() {
-    //     const $body = $( "body" );
-    //     const $headerSidebar = $( ".header_sidebar" );
-    //     $( '.toggle_menu' ).click( () => {
-    //         $body.css( { "overflow": "hidden" } );
-    //         $headerSidebar.slideDown( 'slow' ).toggleClass( 'by_header_sidebar_open' );
-    //     } );
-    //     $( '.header_sidebar_mask' ).click( () => {
-    //         $headerSidebar.removeClass( 'by_header_sidebar_open' );
-    //         $body.removeAttr( "style" );
-    //     } );
-    //     //展开/收起
-    //     $( '.header_sidebar_menus_item' ).each( function () {
-    //         $( this ).click( function ( e ) {
-    //             if ( $( this ).children( 'ul' ).length ) {
-    //                 e.stopPropagation();    //  阻止事件冒泡
-    //                 $( this ).children( 'ul' ).slideToggle().parent().toggleClass( 'by_child_show' );
-    //             }
-    //         } )
-    //     } )
-    // },
     // //代码块
     // initCode() {
     //     const $pre = $( ".post pre ,.journals pre" );
