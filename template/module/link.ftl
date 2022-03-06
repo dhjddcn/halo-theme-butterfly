@@ -20,10 +20,6 @@
     <meta property="og:title" content="${title!} – ${blog_title!}">
     <meta property="twitter:partner" content="ogwp">
     <link rel="canonical" href="${blog_url!}">
-    <link rel="preload stylesheet" as="style" href="${BASE_RES_URL}/source/css/min/normalize.min.css"><#--    页面-->
-    <link rel="preload stylesheet" as="style" href="//at.alicdn.com/t/font_3123425_2ab3mcgk013.css">
-    <link rel="preload stylesheet" as="style" href="${BASE_RES_URL}/source/css/min/theme.min.css">
-    <link rel="preload stylesheet" as="style" href="${BASE_RES_URL}/source/css/min/global.min.css">
     <style type="text/css">
         @font-face {
             font-family: "By Font";
@@ -56,12 +52,16 @@
 
 
     </style>
+    <link rel="preload stylesheet" as="style" href="${BASE_RES_URL}/source/lib/animate/animate.min.css"><#--    插件-->
+    <link rel="preload stylesheet" as="style" href="${BASE_RES_URL}/source/css/min/normalize.min.css"><#--    页面-->
+    <link rel="preload stylesheet" as="style" href="//at.alicdn.com/t/font_3123425_2ab3mcgk013.css">
+    <link rel="preload stylesheet" as="style" href="${BASE_RES_URL}/source/css/min/theme.min.css">
+    <link rel="preload stylesheet" as="style" href="${BASE_RES_URL}/source/css/min/global.min.css">
     <#if type !='empty' >
         <link rel="preload stylesheet" as="style" href="${BASE_RES_URL}/source/css/min/${type}.min.css">
     </#if>
     <link rel="preload stylesheet" as="style" href="${BASE_RES_URL}/source/css/min/responsive.min.css">
-<#--    插件-->
-    <link rel="preload stylesheet" as="style" href="${BASE_RES_URL}/source/lib/animate/animate.min.css">
+
 </#macro>
 
 

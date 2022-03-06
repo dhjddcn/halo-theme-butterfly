@@ -76,6 +76,9 @@ li {
 a {
   text-decoration: none;
   overflow-wrap: break-word;
+  color: #99a9bf;
+  word-wrap: break-word;
+  //transition: all 0.2s;
 }
 
 h1,
@@ -98,8 +101,8 @@ img:not([src]) {
   opacity: 0;
 }
 
-img[data-lazy-src]:not(.loaded) {
-  filter: blur(8px) brightness(1);
+img[data-lazy-src]:not(.loaded,.error) {
+  filter: blur(10px) brightness(1);
 }
 
 svg,
@@ -125,13 +128,6 @@ body, p {
   cursor: var(--cursor-default);
 }
 
-a {
-  color: #99a9bf;
-  text-decoration: none;
-  word-wrap: break-word;
-  transition: all 0.2s;
-  overflow-wrap: break-word;
-}
 
 a, a:active, img, button {
   cursor: var(--cursor-link);

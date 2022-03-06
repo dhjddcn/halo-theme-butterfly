@@ -5,7 +5,7 @@
  * @fileName: by.utils
  */
 
-class ByUtils {
+class Utils {
     static debounce( func, wait, immediate ) {
         let timeout
         return function () {

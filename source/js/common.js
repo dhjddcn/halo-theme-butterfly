@@ -7,43 +7,6 @@
 const html = $( "html" );
 
 const commonContext = {
-    //滚动处理
-    scroll() {
-        let initTop = 0;
-        const sideWidget = $( ".sideWidget" );
-        const header = $( ".header" );
-
-        //滚动方向
-        function scrollDirection( currentTop ) {
-            const result = currentTop > initTop // true is down & false is up
-            initTop = currentTop
-            return result
-        }
-
-        window.addEventListener( 'scroll', () => {
-            return ByUtils.throttle( function ( e ) {
-                const currentTop = window.scrollY || document.documentElement.scrollTop;
-                const isDown = scrollDirection( currentTop );
-                if ( currentTop ) {
-                    if ( isDown ) {
-                        if ( header.hasClass( 'visible' ) ) header.removeClass( 'visible' );
-                        if ( !sideWidget.hasClass( 'show' ) ) sideWidget.addClass( 'show' );
-                        // $postSticky.removeAttr( "style", "" );
-                    } else {
-                        if ( !header.hasClass( 'visible' ) ) header.addClass( 'visible' );
-                        // $postSticky.css( { top: '70px' } );
-                    }
-                    header.addClass( 'fixed' );
-                } else {
-                    if ( currentTop === 0 ) {
-                        header.removeClass( 'fixed visible' );
-                        sideWidget.removeClass( 'show' );
-                    }
-                }
-            }, 200 )();
-        } );
-
-    },
     action() {
         window.lazyLoadInstance = new LazyLoad( {
             elements_selector: 'img',
@@ -146,7 +109,43 @@ const commonContext = {
     //     //     $( ".pace" ).remove();
     //     // }, 2000 );
     // }
+    //滚动处理
+    scroll() {
+        let initTop = 0;
+        const sideWidget = $( ".sideWidget" );
+        const header = $( ".header" );
 
+        //滚动方向
+        function scrollDirection( currentTop ) {
+            const result = currentTop > initTop // true is down & false is up
+            initTop = currentTop
+            return result
+        }
+
+        window.addEventListener( 'scroll', () => {
+            return Utils.throttle( function ( e ) {
+                const currentTop = window.scrollY || document.documentElement.scrollTop;
+                const isDown = scrollDirection( currentTop );
+                if ( currentTop > 56 ) {
+                    if ( isDown ) {
+                        if ( header.hasClass( 'visible' ) ) header.removeClass( 'visible' );
+                        if ( !sideWidget.hasClass( 'show' ) ) sideWidget.addClass( 'show' );
+                        // $postSticky.removeAttr( "style", "" );
+                    } else {
+                        if ( !header.hasClass( 'visible' ) ) header.addClass( 'visible' );
+                        // $postSticky.css( { top: '70px' } );
+                    }
+                    header.addClass( 'fixed' );
+                } else {
+                    if ( currentTop === 0 ) {
+                        header.removeClass( 'fixed visible' );
+                        sideWidget.removeClass( 'show' );
+                    }
+                }
+            }, 200 )();
+        } );
+
+    },
 }
 !(function () {
     document.addEventListener( "DOMContentLoaded", function () {

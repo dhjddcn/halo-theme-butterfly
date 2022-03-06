@@ -7,7 +7,7 @@
     <script src="${BASE_RES_URL!}/source/lib/jquery/jquery.min.js"></script>
     <#include "template/common/navbar.ftl">
     <@navbar type='index'  />
-    <main class="main ${settings.post_layout!}">
+    <main class="main ${settings.index_post_layout!}">
         <article class="article">
             <#if (posts.content)?? && posts.content?size gt 0>
                 <#include "template/common/post_list.ftl">

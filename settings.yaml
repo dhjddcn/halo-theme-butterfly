@@ -16,13 +16,6 @@ genernal:
       default: ""
       placeholder: "请填写公网安备号信息"
       description: "公网安备信息将展示在页脚中，不填不展示，一栏中单独关闭（示例：蜀公网安备xx号）"
-    content_max_width:
-      name: content_max_width
-      label: 内容区最大宽度
-      type: text
-      default: "1200px"
-      placeholder: "请输入"
-      description: "限制内容区域的宽度，像素或百分比，默认1200px"
     theme_color_light:
       name: theme_color_light
       label: 主题色（浅色）
@@ -30,6 +23,13 @@ genernal:
       default: "#49b1f5"
       placeholder: "请输入"
       description: "主题色（浅色）："
+    content_max_width:
+      name: content_max_width
+      label: 内容区最大宽度
+      type: text
+      default: "1200px"
+      placeholder: "请输入"
+      description: "限制内容区域的宽度，像素或百分比，默认1200px"
     loading_style:
       name: loading_style
       label: 页面加载样式
@@ -86,17 +86,6 @@ genernal:
       default: "linear-gradient(90deg,rgba(247,149,51,.1) 0,rgba(243,112,85,.1) 15%,rgba(239,78,123,.1) 30%,rgba(161,102,171,.1) 44%,rgba(80,115,184,.1) 58%,rgba(16,152,173,.1) 72%,rgba(7,179,155,.1) 86%,rgba(109,186,130,.1) 100%)"
       placeholder: "body背景图"
       description: "设置全局背景图，建议关闭头部顶部背景图，导航栏字体浅色~"
-    post_layout:
-      name: post_layout
-      label: 文章布局方式
-      type: select
-      default: "list"
-      description: "首页 搜索 页面等文章布局方式！"
-      options:
-        - value: "post_layout_list"
-          label: "列表"
-        - value: "post_layout_tile"
-          label: "平铺"
 
 navbar:
   label: 导航栏
@@ -312,9 +301,30 @@ index:
       type: attachment
       default: "https://picsum.photos/id/1081/210/140"
       description: "文章无配图时生效，可使用占位图服务（210*140）"
-
-
-
+    index_post_layout:
+      name: index_post_layout
+      label: 文章布局方式
+      type: select
+      default: "post_layout_list"
+      description: "首页文章布局方式！"
+      options:
+        - value: "post_layout_list"
+          label: "列表"
+        - value: "post_layout_tile"
+          label: "平铺"
+    index_list_effect_class:
+      name: index_list_effect_class
+      label: 动画效果类名
+      type: select
+      default: fadeInUp
+      description: "首页列表动画效果类名，来自 animate.css，默认 fadeInUp，这里只选取可用类名"
+      options:
+        - value: "fadeInUp"
+          label: "fadeInUp"
+        - value: "bounceIn"
+          label: "bounceIn"
+        - value: "fadeIn"
+          label: "fadeIn"
 archives:
   label: 归档
   items:
