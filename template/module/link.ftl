@@ -52,9 +52,10 @@
 
 
     </style>
-    <link rel="preload stylesheet" as="style" href="${BASE_RES_URL}/source/lib/animate/animate.min.css"><#--    插件-->
-    <link rel="preload stylesheet" as="style" href="${BASE_RES_URL}/source/css/min/normalize.min.css"><#--    页面-->
+    <link rel="preload stylesheet" as="style" href="${BASE_RES_URL}/source/lib/animate/animate.min.css"><#--插件-->
+    <link rel="preload stylesheet" as="style" href="${BASE_RES_URL}/source/css/min/normalize.min.css"><#--页面-->
     <link rel="preload stylesheet" as="style" href="//at.alicdn.com/t/font_3123425_2ab3mcgk013.css">
+    <link rel="preload stylesheet" as="style" href="//at.alicdn.com/t/font_3228391_3xw45t826mo.css"><#--彩色-->
     <link rel="preload stylesheet" as="style" href="${BASE_RES_URL}/source/css/min/theme.min.css">
     <link rel="preload stylesheet" as="style" href="${BASE_RES_URL}/source/css/min/global.min.css">
     <#if type !='empty' >

@@ -1,6 +1,6 @@
-<#macro navbar type  enable=true>
     <header class="header">
         <@menuTag method="tree"><#assign menuList=menus></@menuTag>
+
         <div class="header__box">
             <a title="${blog_title!}" class="site_name" href="${blog_url!}">${blog_title!}</a>
             <nav class="header__nav">
@@ -45,7 +45,8 @@
                 <a href="javascript:;" class="toggle item"><i class="by-font by_icon_sangang"></i></a>
             </div>
         </div>
-        <#if type=='index'>
+
+        <#if is_index??>
             <div class="header__site">
                 <h1 class="site_title">${blog_title!}</h1>
                 <div class="site_subtitle">
@@ -91,8 +92,6 @@
                 </svg>
             </div>
         </#if >
-
-
 
         <div class="header__sidebar">
             <img class="blog_avatar" src="${user.avatar!}" alt="${user.description!}">
@@ -163,4 +162,3 @@
         </div>
         <div class="header__mask"></div>
     </header>
-</#macro>
