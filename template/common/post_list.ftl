@@ -21,32 +21,32 @@
                                 <span class="su">|</span>
                         </span>
                         </#if>
-                        <span class="item">
+                        <span class="item createTime">
                                 <i class="by-color by-color_icon--date"></i>
                                 <time datetime="${post.createTime?string('yyyy-MM-dd')}"
                                       class="txt">发表于<@global.timeline datetime=post.createTime /></time>
                                 <span class="su">|</span>
                         </span>
-                        <span class="item">
+                        <span class="item updateTime">
                                 <i class="by-color by-color_shijian"></i>
                                 <time datetime="${post.updateTime?string('yyyy-MM-dd')}"
                                       class="txt">更新于<@global.timeline datetime=post.updateTime /></time>
                                 <span class="su">|</span>
                         </span>
-                        <span class="item">
+                        <span class="item visits">
                                 <i class="by-color by-color_yanjing-"></i>
                                 <span class="txt">预览 ${post.visits!0}</span>
 <#--                                <span class="su">|</span>-->
                         </span>
                     </div>
                     <div class="info_meta">
-                        <span class="item">
+                        <span class="item commentCount">
                                 <i class="by-color by-color_pinglun1"></i>
                                 <span class="txt">${post.commentCount!0}条评论</span>
                                 <span class="su">|</span>
                         </span>
                         <#if (post.categories)?? && post.categories?size gt 0>
-                            <span class="item">
+                            <span class="item categories">
                                     <i class="by-color by-color_fenlei"></i>
                                     <span class="txt">
                                         <#list post.categories as category>
@@ -59,8 +59,7 @@
                                 </span>
                         </#if>
                         <#if (post.tags)?? && post.tags?size gt 0>
-
-                            <span class="item">
+                            <span class="item tags">
                                 <i class="by-color by-color_biaoqian"></i>
                                 <span class="txt">
                                         <#list post.tags as tag>
@@ -78,5 +77,4 @@
             </li>
         </#list>
     </ul>
-    <ul class="posts_box__loading"></ul>
 </#macro>

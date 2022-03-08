@@ -15,7 +15,7 @@ genernal:
       type: text
       default: ""
       placeholder: "请填写公网安备号信息"
-      description: "公网安备信息将展示在页脚中，不填不展示，一栏中单独关闭（示例：蜀公网安备xx号）"
+      description: "公网安备信息将展示在页脚中，不填不展示（示例：蜀公网安备xx号）"
     theme_color_light:
       name: theme_color_light
       label: 主题色（浅色）
@@ -67,18 +67,6 @@ genernal:
           label: 无（默认）
         - value: simple_cursor
           label: 简洁卡通
-    enable_top_background_img:
-      name: enable_top_background_img
-      label: 启用全局顶部背景图
-      type: switch
-      data-type: bool
-      default: true
-      description: "关闭所有页面都没用顶部图（优先级高于元数据）"
-      options:
-        - value: true
-          label: 是
-        - value: false
-          label: 否
     body_background:
       name: body_background
       label: body背景图可选（https://xxx.cn/img.png/#fff）
@@ -316,15 +304,16 @@ index:
       name: index_list_effect_class
       label: 动画效果类名
       type: select
-      default: fadeInUp
+      default: "fadeIn"
       description: "首页列表动画效果类名，来自 animate.css，默认 fadeInUp，这里只选取可用类名"
       options:
+        - value: "fadeIn"
+          label: "fadeIn"
         - value: "fadeInUp"
           label: "fadeInUp"
         - value: "bounceIn"
           label: "bounceIn"
-        - value: "fadeIn"
-          label: "fadeIn"
+
 archives:
   label: 归档
   items:

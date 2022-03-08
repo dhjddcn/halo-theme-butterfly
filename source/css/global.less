@@ -637,6 +637,7 @@ img[class*='error'] {
       height: 20em;
       overflow: hidden;
       position: relative;
+      background-color: #fff;
 
       &:not(:first-child) {
         margin-top: 1rem;
@@ -691,7 +692,6 @@ img[class*='error'] {
                 .point {
                   margin: 0 0.2rem;
                 }
-
                 .txt {
                   .point:last-child {
                     display: none;
@@ -724,6 +724,85 @@ img[class*='error'] {
     .post_item {
       width: 49%;
       height: 25em;
+      display:flex;
+      flex-direction: column;
+
+      .post{
+        &_cover {
+          width: 100%;
+          height: 230px;
+          img{
+            border-radius: 20px 20px 0 0;
+          }
+        }
+
+        &_info {
+          width: 100%;
+          overflow: hidden;
+          padding: 0 30px;
+          margin-top: 1em;
+          margin-bottom: 1rem;
+          >.info {
+
+            &_title {
+              color: var(--text-highlight-color);
+              line-height: 1.4;
+              -webkit-line-clamp: 1;
+              font-size: 1.28em
+            }
+
+            &_meta {
+              margin: 6px 0;
+              font-size: 90%;
+              -webkit-line-clamp: 1;
+
+              .txt, .link {
+                color: #858585;
+              }
+
+              .icon {
+                width: 16px;
+                height: auto;
+                margin-right: 5px;
+              }
+
+              .item {
+                .by-color {
+                  font-size: 1em;
+                  margin: 0 0.1rem 0 0;
+                }
+
+                .su {
+                  position: relative;
+                  top: -1px;
+                  margin: 0 0.2rem;
+                }
+
+                .point {
+                  margin: 0 0.2rem;
+                }
+
+                .txt {
+                  .point:last-child {
+                    display: none;
+                  }
+                }
+
+                &.updateTime{
+                  display:none;
+                }
+              }
+
+              .sticky {
+                color: #ff7242;
+              }
+            }
+           &_content{
+             display:none;
+           }
+          }
+        }
+      }
     }
   }
 }
@@ -763,7 +842,7 @@ img[class*='error'] {
 }
 
 //.post_info .info_meta,
-.info_title, .post_info .info_content {
+.info_title, .post_info .info_content ,.post_layout_tile .info_meta {
   display: -webkit-box;
   overflow: hidden;
   -webkit-box-orient: vertical;

@@ -21,8 +21,12 @@
     <#include "template/common/footer.ftl">
     <#include "template/common/sideWidget.ftl">
 </div>
-<#include "template/module/script.ftl">
-<@script type='index' />
+<script src="${BASE_RES_URL!}/source/lib/wow/wow.min.js"></script>
+<script src="${BASE_RES_URL!}/source/lib/lazyLoad/lazyLoad.min.js"></script>
+<script src="${BASE_RES_URL!}/source/lib/typed/typed.min.js"></script>
+<script src="${BASE_RES_URL}/source/js/min/utils.min.js"></script>
+<script src="${BASE_RES_URL}/source/js/min/common.min.js"></script>
+<script src="${BASE_RES_URL}/source/js/min/index.min.js"></script>
 </body>
 </html>
 
