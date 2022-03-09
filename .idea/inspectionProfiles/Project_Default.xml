@@ -22,6 +22,17 @@
     </inspection_tool>
     <inspection_tool class="FtlReferencesInspection" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="HtmlDeprecatedAttribute" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="HtmlUnknownAttribute" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="myValues">
+        <value>
+          <list size="2">
+            <item index="0" class="java.lang.String" itemvalue="p-id" />
+            <item index="1" class="java.lang.String" itemvalue="t" />
+          </list>
+        </value>
+      </option>
+      <option name="myCustomValuesEnabled" value="true" />
+    </inspection_tool>
     <inspection_tool class="HtmlUnknownTag" enabled="true" level="WARNING" enabled_by_default="true">
       <option name="myValues">
         <value>

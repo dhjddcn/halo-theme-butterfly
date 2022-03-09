@@ -8,7 +8,7 @@
                     <#list menuList?sort_by('priority') as menu>
                         <#if menu.children?? && menu.children?size gt 0>
                             <div class="dropdown ">
-                                <a href="javascript:;" target="${menu.target!}" title="${menu.name}"
+                                <a href="javascript:" target="${menu.target!}" title="${menu.name}"
                                    class="item ">
                                     <#if  menu.icon?? && menu.icon!=''>
                                         <i class="${menu.icon}"></i>
@@ -41,8 +41,8 @@
                 </@menuTag>
             </nav>
             <div class="header__action">
-                <a href="javascript:;" class="search item"><i class="by-font by_icon_sousuo2"></i><span>搜索</span></a>
-                <a href="javascript:;" class="toggle item"><i class="by-font by_icon_sangang"></i></a>
+                <a href="javascript:" class="search item"><i class="by-font by_icon_sousuo2"></i><span>搜索</span></a>
+                <a href="javascript:" class="toggle item"><i class="by-font by_icon_sangang"></i></a>
             </div>
         </div>
 
@@ -109,7 +109,7 @@
                     </a>
                 </@tagTag>
                 <@commentTag method="count">
-                    <a class="data_item" title="评论" href="javascript:;">
+                    <a class="data_item" title="评论" href="javascript:">
                         <div class="headline ">评论</div>
                         <div class="length-num nowrap">${count!0}</div>
                     </a>
@@ -121,7 +121,7 @@
                 <#list menuList?sort_by('priority') as menu>
                     <#if menu.children?? && menu.children?size gt 0>
                         <div class="menu_item nowrap">
-                            <a href="javascript:;">
+                            <a href="javascript:">
                                 <#if  menu.icon?? && menu.icon!=''><i class="${menu.icon}"></i></#if>
                                 ${menu.name}
                                 <i class="by-font by_icon_arrow-right"></i>
@@ -156,7 +156,9 @@
                 </button>
             </nav>
             <form class="search" method="get" action="${blog_url!}/search">
-                <input maxlength="16" name="keyword" class="search_input" placeholder="请输入搜索关键字..." type="text"/>
+                <label>
+                    <input maxlength="16" name="keyword" class="search_input" placeholder="请输入搜索关键字..." type="text"/>
+                </label>
             </form>
             <hr>
         </div>

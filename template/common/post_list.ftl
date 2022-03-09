@@ -12,15 +12,10 @@
                          alt="${post.title!}">
                 </a>
                 <div class="post_info">
-                    <a href="${post.fullPath!}" title="${post.title!}" class="info_title">${post.title!}</a>
+                    <a href="${post.fullPath!}" title="${post.title!}" class="info_title">
+                        <#if post.topped><i class="by-color by-color_zhiding"></i></#if>
+                        ${post.title!}</a>
                     <div class="info_meta">
-                        <#if post.topped>
-                            <span class="item">
-                                <i class="by-color by-color_zhiding"></i>
-                                <span class="sticky">置顶</span>
-                                <span class="su">|</span>
-                        </span>
-                        </#if>
                         <span class="item createTime">
                                 <i class="by-color by-color_icon--date"></i>
                                 <time datetime="${post.createTime?string('yyyy-MM-dd')}"
@@ -40,11 +35,13 @@
                         </span>
                     </div>
                     <div class="info_meta">
-                        <span class="item commentCount">
+                        <#if post.commentCount != 0>
+                            <span class="item commentCount">
                                 <i class="by-color by-color_pinglun1"></i>
-                                <span class="txt">${post.commentCount!0}条评论</span>
+                                <span class="txt">${post.commentCount}条评论</span>
                                 <span class="su">|</span>
                         </span>
+                        </#if>
                         <#if (post.categories)?? && post.categories?size gt 0>
                             <span class="item categories">
                                     <i class="by-color by-color_fenlei"></i>
