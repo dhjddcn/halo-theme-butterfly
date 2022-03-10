@@ -11,9 +11,9 @@
             <#if (posts.content)?? && posts.content?size gt 0>
                 <#include "template/common/post_list.ftl">
                 <@post_list list=posts.content />
-            <#--                <@pagination/>-->
             <#else>
-            <#--                <@empty/>-->
+                <#include "template/common/empty.ftl">
+                <@empty/>
             </#if>
         </article>
         <#include "template/common/aside.ftl">

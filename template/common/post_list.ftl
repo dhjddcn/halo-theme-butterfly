@@ -1,5 +1,5 @@
 <#import "../module/post_thumbnail.ftl" as tbn>
-<#macro post_list list>
+<#macro post_list  list method='index' slug="" keyword="" display = "3">
     <ul class="posts_box">
         <#list list as post>
             <li class="post_item animated wow" data-wow-delay="0.${post_index}s">
@@ -31,7 +31,6 @@
                         <span class="item visits">
                                 <i class="by-color by-color_yanjing-"></i>
                                 <span class="txt">预览 ${post.visits!0}</span>
-<#--                                <span class="su">|</span>-->
                         </span>
                     </div>
                     <div class="info_meta">
@@ -64,7 +63,6 @@
                                                title="${tag.name!}">${tag.name!}</a><span class="point">•</span>
                                         </#list>
                                 </span>
-<#--                                <span class="su">|</span>-->
                         </span>
                         </#if>
 
@@ -74,4 +72,19 @@
             </li>
         </#list>
     </ul>
+
+    <@paginationTag method="${method!}"  keyword="${keyword!}" slug="${slug!}" page="${posts.number}" total="${posts.totalPages}" display="${display}">
+    <div class="pagination">
+         <#if pagination.hasPrev><a href="${pagination.prevPageFullPath!}" title="上一页" class="prev"><i class="by-font by_icon_zuo"></i></a></#if>
+
+        <#list pagination.rainbowPages as number>
+            <#if number.isCurrent>
+                    <a class="page current" href="${number.fullPath!}">${number.page!}</a>
+            <#else>
+                    <a class="page" href="${number.fullPath!}">${number.page!}</a>
+            </#if>
+        </#list>
+        <#if pagination.hasNext><a href="${pagination.nextPageFullPath!}" title="下一页" class="next"><i class="by-font by_icon_you"></i></a> </#if>
+    </div>
+    </@paginationTag>
 </#macro>
