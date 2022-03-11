@@ -20,7 +20,7 @@
     <meta property="og:title" content="${title!} – ${blog_title!}">
     <meta property="twitter:partner" content="ogwp">
     <link rel="canonical" href="${blog_url!}">
-    <style type="text/css">
+    <style>
         @font-face {
             font-family: "By Font";
             font-weight: 400;
@@ -46,8 +46,7 @@
         }
 
         body #by .header {
-        <#if type=='index'> background-image: url(${settings.top_index_background_img!});
-        </#if>
+        <#if type=='index'> background-image: url(${settings.index_top_background_img!});</#if>
         }
 
 

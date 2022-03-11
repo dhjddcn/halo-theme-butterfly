@@ -10,7 +10,7 @@
         <article class="article">
             <#if (posts.content)?? && posts.content?size gt 0>
                 <#include "template/common/post_list.ftl">
-                <@post_list list=posts.content />
+                <@post_list list=posts.content  display="${settings.index_page!}" />
             <#else>
                 <#include "template/common/empty.ftl">
                 <@empty/>
