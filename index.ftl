@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="zh-CN" data-mode="light">
 <#include "template/module/head.ftl">
-<@head type='index' title='${blog_title!}' />
+<@head type='index' title='${blog_title!}' >
+    <link rel="preload stylesheet" as="style" href="${BASE_RES_URL}/source/css/min/index.min.css">
+</@head>
 <body>
-<div id="by" class="index-page">
-    <script src="${BASE_RES_URL!}/source/lib/jquery/jquery.min.js"></script>
+<div id="Butterfly" class="index-page">
     <#include "template/common/navbar.ftl">
     <main class="main ${settings.index_post_layout!}">
         <article class="article">
@@ -21,12 +22,11 @@
     <#include "template/common/footer.ftl">
     <#include "template/common/sideWidget.ftl">
 </div>
-<script src="${BASE_RES_URL!}/source/lib/wow/wow.min.js"></script>
-<script src="${BASE_RES_URL!}/source/lib/lazyLoad/lazyLoad.min.js"></script>
-<script src="${BASE_RES_URL!}/source/lib/typed/typed.min.js"></script>
-<script src="${BASE_RES_URL}/source/js/min/utils.min.js"></script>
-<script src="${BASE_RES_URL}/source/js/min/common.min.js"></script>
-<script src="${BASE_RES_URL}/source/js/min/index.min.js"></script>
+
+<script type="text/javascript" src="${BASE_RES_URL!}/source/lib/wow/wow.min.js"></script>
+<script type="text/javascript" src="${BASE_RES_URL!}/source/lib/typed/typed.min.js"></script>
+<#include "template/module/script.ftl">
+<script type="text/javascript" src="${BASE_RES_URL}/source/js/min/index.min.js"></script>
 </body>
 </html>
 

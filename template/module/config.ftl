@@ -1,7 +1,6 @@
 <#-- 全局配置 -->
 <script id="browser-Compatibility">
     <#-- 兼容性检查-->
-
     function detectIE() {
         let n = window.navigator.userAgent, e = n.indexOf( "MSIE " );
         if ( e > 0 ) {
@@ -55,6 +54,7 @@
     ThemeConfig['${key}'] = value;
     ThemeConfig['description'] = '${user.description!}';
     ThemeConfig['BASE_RES_URL'] = '${BASE_RES_URL}';
+    ThemeConfig['birthday'] = '${(settings.site_birthday?? && settings.site_birthday?trim != "")?then(settings.site_birthday?trim, options.birthday?replace(",",""))}';
     </#if>
     </#list>
     console.log( ThemeConfig );

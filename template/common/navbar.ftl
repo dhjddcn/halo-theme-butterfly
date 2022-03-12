@@ -1,7 +1,7 @@
 <header class="header">
     <@menuTag method="tree"><#assign menuList=menus></@menuTag>
     <@postTag method="count"> <#assign postCount=count> </@postTag>
-    <@tagTag method="count"> <#assign tagCount=count> </@tagTag>
+    <@categoryTag  method="count"> <#assign categoryCount=count> </@categoryTag>
     <@commentTag method="count"> <#assign commentCount=count> </@commentTag>
 
     <div class="header__box">
@@ -103,9 +103,9 @@
                 <div class="headline">文章</div>
                 <div class="length-num nowrap">${postCount!0}</div>
             </a>
-            <a href="${tags_url!}" title="标签" class="data_item">
-                <div class="headline">标签</div>
-                <div class="length-num nowrap">${tagCount!0}</div>
+            <a href="${categories_url!}" title="分类" class="data_item">
+                <div class="headline">分类</div>
+                <div class="length-num nowrap">${categoryCount!0}</div>
             </a>
             <a class="data_item" title="评论" href="javascript:">
                 <div class="headline ">评论</div>
@@ -144,7 +144,7 @@
             </#list>
         </nav>
     </div>
-    <div class="header__search">
+    <div class="header__search animated bounceIn">
         <nav class="search_nav">
             <span class="n_title">文章搜索</span>
             <button class="n_close">

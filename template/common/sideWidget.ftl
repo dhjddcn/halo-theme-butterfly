@@ -6,6 +6,6 @@
         <i class="by-font by_icon_liuyan"></i>
     </button>
     <button class="top_up" type="button" title="回到顶部">
-        <i class="by-font by_icon_rocket"></i>
+        <i class="by-font by_icon_icon-xs"></i>
     </button>
 </div>
