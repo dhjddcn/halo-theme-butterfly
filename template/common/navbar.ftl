@@ -144,7 +144,7 @@
             </#list>
         </nav>
     </div>
-    <div class="header__search animated bounceIn">
+    <div class="header__search">
         <nav class="search_nav">
             <span class="n_title">文章搜索</span>
             <button class="n_close">
