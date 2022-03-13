@@ -18,6 +18,4 @@ enable_aside=settings.enable_journals_aside
     <#else>
         <@empty showBg = false/>
     </#if>
-
-
 </@layout>
