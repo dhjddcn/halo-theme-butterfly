@@ -36,19 +36,17 @@
 
             html {
                 --theme: ${settings.theme_color_light!};
+                --theme-background: ${(settings.body_background?contains("http"))?then("url(${settings.body_background!}) no-repeat fixed center / cover","${settings.body_background!}")};
                 font-family: "By Font", "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, "sans-serif";
                 --cursor-default: url(${BASE_RES_URL!}/source/cursor/simple_cursor/default.cur), auto;
                 --cursor-link: url(${BASE_RES_URL!}/source/cursor/simple_cursor/link.cur), auto;
+                /*--backdrop-opacity:;*/
             }
 
-            html[data-mode='light'] body::after {
-            <#if settings.body_background?contains("http")> background: url(${settings.body_background!}) no-repeat fixed center / cover;
-            <#else> background: ${settings.body_background!} </#if>
-            }
-
-            body #Butterfly .header {
-            <#if type=='index'> background-image: url(${settings.index_top_background_img!});</#if>
-            }
+            <#--body #Butterfly .header {-->
+            <#--<#if type=='index'> background-image: url(${settings.index_top_background_img!});-->
+            <#--</#if>-->
+            <#--}-->
         </style>
         <link rel="preload stylesheet" as="style" href="${BASE_RES_URL}/source/lib/animate/animate.min.css"><#--插件-->
         <link rel="preload stylesheet" as="style" href="${BASE_RES_URL}/source/css/min/normalize.min.css"><#--页面-->

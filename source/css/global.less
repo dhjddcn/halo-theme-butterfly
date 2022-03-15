@@ -4,8 +4,12 @@ body {
   color: var(--theme-font-color);
   font-size: var(--theme-font-size);
   -webkit-tap-highlight-color: transparent;
-  background: var(--theme-bg);
+  //background: var(--theme-bg);
   line-height: 2;
+
+  &::after {
+    background: var(--theme-background);
+  }
 }
 
 svg {

@@ -1,7 +1,7 @@
 /*! 主题默认样式 */
 html {
   --theme-font-size: 14px;
-  --theme-bg: #fff;
+  //--theme-bg: #fff;
   --theme-font-color: #4c4948;
   --btn-color: #fff;
 
@@ -24,7 +24,7 @@ html {
   --btn-hover-background-color: #ff7242;
   //暗黑模式
   &[data-mode=dark] {
-    --theme-bg: #0d0d0d;
+    --theme: #1f1f1f;
     --theme-font-color: rgba(255, 255, 255, 0.7);
     --btn-color: var(--theme-font-color);
     --sidebar-bg: #121212;
@@ -39,10 +39,17 @@ html {
     --card-bg: #121212;
     --pagination-btn-hover-color: #787878;
     --pagination-btn-color: rgba(255, 255, 255, 0.7);
-
     --btn-text-color: rgba(255, 255, 255, 0.7);
-  }
 
+    body:before {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, .4);
+      content: '';
+      z-index: -1;
+    }
+  }
 
 }
 
