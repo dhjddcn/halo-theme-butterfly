@@ -1,5 +1,5 @@
-<aside class="aside animated wow" data-wow-delay="0.2s">
-    <section class="user">
+<aside class="aside" >
+    <section class="user widget animated wow" data-wow-delay="0.1s">
         <img class="user_avatar"
              src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs="
              data-lazy-src="${user.avatar!}"
@@ -86,8 +86,7 @@
 
         </div>
     </section>
-
-    <section class="notice">
+    <section class="notice widget animated wow" data-wow-delay="0.2s">
         <h1 class="aside_title">
             <i class="by-font by_icon_gonggao"></i>
             <span>公告</span>
@@ -96,8 +95,7 @@
             好博客，一定要 分享出去 呀！
         </div>
     </section>
-
-    <section class="nwe_article">
+    <section class="nwe_article widget animated wow" data-wow-delay="0.3s">
         <h1 class="aside_title">
             <i class="by-font by_icon_shijian2"></i>
             <span>最新文章</span>
@@ -126,8 +124,7 @@
             </@postTag>
         </ul>
     </section>
-
-    <section class="a_categories">
+    <section class="a_categories widget animated wow" data-wow-delay="0.4s">
         <h1 class="aside_title">
             <i class="by-font by_icon_wenjianjia"></i>
             <span>分类</span>
@@ -144,8 +141,7 @@
             </@categoryTag>
         </div>
     </section>
-
-    <section class="a_tags">
+    <section class="a_tags widget animated wow" data-wow-delay="0.5s">
         <h1 class="aside_title">
             <i class="by-font by_icon_tag"></i>
             <span>标签</span>
@@ -161,8 +157,7 @@
             </@tagTag>
         </div>
     </section>
-
-    <section class="web_info">
+    <section class="web_info widget animated wow" data-wow-delay="0.6s">
         <h1 class="aside_title">
             <i class="by-font by_icon_tongji"></i>
             <span>网站资讯</span>
@@ -187,5 +182,4 @@
             </div>
         </div>
     </section>
-
 </aside>

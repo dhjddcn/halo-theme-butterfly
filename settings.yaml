@@ -23,6 +23,35 @@ genernal:
       default: ""
       placeholder: "示例：2022-01-01 00:00"
       description: "自定义博客的起始时间/安装时间，作为计算博客运行时间的参照值，请严格按照示例格式填写，否则将导致报错！"
+    baidu_code:
+      name: baidu_code
+      label: 百度推送Token
+      type: text
+      default: ""
+      placeholder: "百度收录code"
+      description: "文章页未收录时会自动将当前链接推送给百度加快收录，Token在百度收录平台注册账号获取（必须启用“检查百度收录”并填入token才生效），https://ziyuan.baidu.com/linksubmit"
+    enable_random_img_api:
+      name: enable_random_img_api
+      label: 启用随机图
+      type: switch
+      data-type: bool
+      default: true
+      description: "是否启用随机图API（必须先配置 API），开启后将使用随机图填充没有设置封面的 “文章|分类|标签”，未开启时使用主题内置的封面图"
+      options:
+        - value: true
+          label: 是
+        - value: false
+          label: 否
+    random_img_api:
+      name: random_img_api
+      label: 随机图 API
+      type: text
+      default: "https://api.ixiaowai.cn/gqapi/gqapi.php"
+      description: "自定义随机图API，用于填充没有设置封面的 “文章|分类|标签”，为空则使用默认随机图 API，免费 API 不会一直可用，请知悉"
+
+theme:
+  label: 主题设置
+  items:
     theme_color_light:
       name: theme_color_light
       label: 主题色（浅色）
@@ -76,29 +105,25 @@ genernal:
           label: 简洁卡通
     body_background:
       name: body_background
-      label: body背景图可选（https://xxx.cn/img.png/#fff）
+      label: body背景
       type: attachment
       default: "linear-gradient(90deg,rgba(247,149,51,.1) 0,rgba(243,112,85,.1) 15%,rgba(239,78,123,.1) 30%,rgba(161,102,171,.1) 44%,rgba(80,115,184,.1) 58%,rgba(16,152,173,.1) 72%,rgba(7,179,155,.1) 86%,rgba(109,186,130,.1) 100%)"
       placeholder: "body背景图"
-      description: "设置全局背景图，建议关闭头部顶部背景图，导航栏字体浅色~"
-    enable_random_img_api:
-      name: enable_random_img_api
-      label: 启用随机图
-      type: switch
-      data-type: bool
-      default: true
-      description: "是否启用随机图API（必须先配置 API），开启后将使用随机图填充没有设置封面的 “文章|分类|标签”，未开启时使用主题内置的封面图"
-      options:
-        - value: true
-          label: 是
-        - value: false
-          label: 否
-    random_img_api:
-      name: random_img_api
-      label: 随机图 API
+      description: "body背景可选图片和颜色值(https://x.cn/bg.png或-#fff)，如果背景设置为图片，所有第一屏背景图将会失效！"
+    widget_border_radius:
+      name: widget_border_radius
+      label: 卡片小部件圆角
       type: text
-      default: "https://api.ixiaowai.cn/gqapi/gqapi.php"
-      description: "自定义随机图API，用于填充没有设置封面的 “文章|分类|标签”，为空则使用默认随机图 API，免费 API 不会一直可用，请知悉"
+      default: "20px"
+      placeholder: "卡片圆角"
+      description: "文章内容、列表、侧边栏圆角"
+    widget_background:
+      name: widget_background
+      label: 卡片小部件背景透明度
+      type: text
+      default: "rgba(255, 255, 255, 1)"
+      placeholder: "卡片小部件背景透明度"
+      description: "文章内容、列表、侧边栏透明度，透明值可选范围（0.1~1）1为不透明"
     post_thumbnail:
       name: post_thumbnail
       label: 文章默认缩略图
@@ -106,36 +131,6 @@ genernal:
       type: attachment
       default: "https://gitee.com/dhjdd/Timo/raw/master/1647014724843.png"
       description: "文章无配图时生效，可使用占位图服务"
-
-navbar:
-  label: 导航栏
-  items:
-    nav_font_color:
-      name: nav_font_color
-      label: 导航栏字体颜色
-      type: radio
-      data-type: text
-      default: nav_font_color_light
-      description: "背景浅色的时候建议设置深色，背景深色建议设置浅色。可自己搭配"
-      options:
-        - value: nav_font_color_light
-          label: 浅色
-        - value: nav_font_color_dark
-          label: 深色
-    nav_center:
-      name: nav_center
-      label: 导航栏居中
-      type: switch
-      data-type: bool
-      default: false
-      description: "开启后导航栏居中，标题将被隐藏！"
-      options:
-        - value: true
-          label: 是
-        - value: false
-          label: 否
-
-
 
 aside:
   label: 侧边栏
@@ -256,11 +251,11 @@ index:
   items:
     index_enable_top_background_img:
       name: index_enable_top_background_img
-      label: 开启顶部背景图
+      label: 开启第一屏
       type: switch
       data-type: bool
       default: true
-      placeholder: "开启顶部背景图"
+      placeholder: "第一屏"
       options:
         - value: true
           label: 是

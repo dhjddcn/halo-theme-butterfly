@@ -2,7 +2,7 @@
 <#macro post_list  list method='index' slug="" keyword="" display = "3">
     <ul class="posts_box">
         <#list list as post>
-            <li class="post_item animated wow" data-wow-delay="0.${post_index}s">
+            <li class="post_item widget animated wow" data-wow-delay="0.${post_index}s">
                 <@tbn.post_thumbnail post=post />
                 <a class="post_cover" href="${post.fullPath!}" title="${post.title!}">
                     <img class="cover_img"

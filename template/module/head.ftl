@@ -1,4 +1,4 @@
-<#macro head type='empty' title='' >
+<#macro head type title >
     <head>
         <#include 'config.ftl'>
         <meta charset="utf-8">
@@ -21,6 +21,16 @@
         <meta property="og:title" content="${title!} – ${blog_title!}">
         <meta property="twitter:partner" content="ogwp">
         <link rel="canonical" href="${blog_url!}">
+        <link rel="preload stylesheet" as="style" href="${BASE_RES_URL}/source/lib/animate/animate.min.css"><#--插件-->
+        <link rel="preload stylesheet" as="style" href="${BASE_RES_URL}/source/css/min/normalize.min.css"><#--页面-->
+        <link rel="preload stylesheet" as="style" href="//at.alicdn.com/t/font_3123425_o8kdebvfwoi.css">
+        <link rel="preload stylesheet" as="style" href="//at.alicdn.com/t/font_3228391_3xw45t826mo.css"><#--彩色-->
+        <link rel="preload stylesheet" as="style" href="${BASE_RES_URL}/source/css/min/theme.min.css">
+        <link rel="preload stylesheet" as="style" href="${BASE_RES_URL}/source/css/min/global.min.css">
+        <link rel="preload stylesheet" as="style" href="${BASE_RES_URL}/source/css/min/responsive.min.css">
+        <title>${title}</title>
+        <@global.head />
+        <#nested>
         <style type="text/css">
             @font-face {
                 font-family: "By Font";
@@ -36,27 +46,26 @@
 
             html {
                 --theme: ${settings.theme_color_light!};
-                --theme-background: ${(settings.body_background?contains("http"))?then("url(${settings.body_background!}) no-repeat fixed center / cover","${settings.body_background!}")};
                 font-family: "By Font", "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, "sans-serif";
                 --cursor-default: url(${BASE_RES_URL!}/source/cursor/simple_cursor/default.cur), auto;
                 --cursor-link: url(${BASE_RES_URL!}/source/cursor/simple_cursor/link.cur), auto;
-                /*--backdrop-opacity:;*/
+
+            <#if settings.body_background?contains("http")>
+                --theme-background: url(${settings.body_background!}) no-repeat fixed center / cover;
+            <#else >
+                --theme-background: ${settings.body_background!};
+                <#if type == 'index'>
+                --top-background: url(${settings.index_top_background_img!});
+               </#if >
+            </#if >
             }
 
-            <#--body #Butterfly .header {-->
-            <#--<#if type=='index'> background-image: url(${settings.index_top_background_img!});-->
-            <#--</#if>-->
-            <#--}-->
+            .widget {
+                border-radius: 20px;
+                background: var(--card-bg);
+                box-shadow: var(--card-box-shadow);
+            }
+
         </style>
-        <link rel="preload stylesheet" as="style" href="${BASE_RES_URL}/source/lib/animate/animate.min.css"><#--插件-->
-        <link rel="preload stylesheet" as="style" href="${BASE_RES_URL}/source/css/min/normalize.min.css"><#--页面-->
-        <link rel="preload stylesheet" as="style" href="//at.alicdn.com/t/font_3123425_o8kdebvfwoi.css">
-        <link rel="preload stylesheet" as="style" href="//at.alicdn.com/t/font_3228391_3xw45t826mo.css"><#--彩色-->
-        <link rel="preload stylesheet" as="style" href="${BASE_RES_URL}/source/css/min/theme.min.css">
-        <link rel="preload stylesheet" as="style" href="${BASE_RES_URL}/source/css/min/global.min.css">
-        <link rel="preload stylesheet" as="style" href="${BASE_RES_URL}/source/css/min/responsive.min.css">
-        <title>${title}</title>
-        <@global.head />
-        <#nested>
     </head>
 </#macro>
