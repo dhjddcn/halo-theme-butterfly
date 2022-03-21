@@ -1,26 +1,60 @@
 <!DOCTYPE html>
 <html lang="zh-CN" data-mode="light">
 <head>
-    <#include 'template/module/meta.ftl'>
+    <#include 'template/module/config.ftl'>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit">
+    <meta name="format-detection" content="email=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="keywords" content="${meta_keywords!}">
+    <meta name="description" content="${meta_description!}">
+    <meta name="author" content="${user.nickname!}">
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+    <meta name="site" content="${blog_url!}">
+    <meta property="og:description" content="${meta_description!}">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="zh_CN">
+    <meta property="og:site_name" content="${blog_title!}">
+    <meta property="og:url" content="${blog_url!}">
+    <meta property="og:title" content="${blog_title!}">
+    <meta property="twitter:partner" content="ogwp">
+    <link rel="canonical" href="${blog_url!}">
+    <link rel="preload stylesheet" as="style" href="${BASE_RES_URL}/source/lib/animate/animate.min.css">
+    <link rel="preload stylesheet" as="style" href="${BASE_RES_URL}/source/css/min/normalize.min.css">
+    <link rel="preload stylesheet" as="style" href="//at.alicdn.com/t/font_3123425_o8kdebvfwoi.css">
+    <link rel="preload stylesheet" as="style" href="//at.alicdn.com/t/font_3228391_3xw45t826mo.css"><#--彩色-->
+    <link rel="preload stylesheet" as="style" href="${BASE_RES_URL}/source/css/min/theme.min.css">
+    <link rel="preload stylesheet" as="style" href="${BASE_RES_URL}/source/css/min/global.min.css">
+    <link rel="preload stylesheet" as="style" href="${BASE_RES_URL}/source/css/min/responsive.min.css">
     <link rel="preload stylesheet" as="style" href="${BASE_RES_URL}/source/css/min/index.min.css">
+
     <title>${blog_title}</title>
+
+    <@global.head />
     <style type="text/css">
-        <#if settings.body_background?contains("http")>
+        @font-face {  font-family: "By Font";  font-weight: 400;  font-style: normal;  font-display: swap;  src: url(${BASE_RES_URL!}/source/font/${settings.web_font!}) format("woff2");  }
+        #Butterfly .main {max-width: ${settings.content_max_width!};}
         html {
-            --body-background: url(${settings.body_background!}) no-repeat fixed center / cover;
+            --theme: ${settings.theme_color_light!};
+            font-family: "By Font", "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, "sans-serif";
+            --cursor-default: url(${BASE_RES_URL!}/source/cursor/simple_cursor/default.cur), auto;
+            --cursor-link: url(${BASE_RES_URL!}/source/cursor/simple_cursor/link.cur), auto;
+            --widget-border-radius: ${settings.widget_border_radius!};
+            --widget-background: ${settings.widget_background!};
+            <#if settings.body_background?contains("http")>
+                --body-background: url(${settings.body_background!}) no-repeat fixed center / cover;
+            <#else>
+                --body-background: ${settings.body_background!};
+                --top-background: url(${settings.index_top_background_img});
+            </#if>
         }
-
-        <#else>
-        html {
-            --body-background: ${settings.body_background!};
-            --top-background: url(${settings.index_top_background_img});
-        }
-
-        </#if>
     </style>
 </head>
 <body>
-<div id="Butterfly" class="index-page">
+<div id="Butterfly">
     <header class="header ${settings.index_enable_top_background_img?then('','off')}">
         <@menuTag method="tree"><#assign menuList=menus></@menuTag>
         <@postTag method="count"> <#assign postCount=count> </@postTag>
@@ -178,7 +212,6 @@
         </div>
         <div class="header__mask"></div>
     </header>
-
     <main class="main ${settings.aside_position!} ${settings.index_post_layout!}">
         <article class="article">
             <#if (posts.content)?? && posts.content?size gt 0>
