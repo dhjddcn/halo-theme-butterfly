@@ -62,7 +62,7 @@ img[class*='error'] {
 }
 
 //左右小部件
-.sideWidget {
+.side_widget {
   position: fixed;
   right: -48px;
   bottom: 40px;
@@ -117,7 +117,7 @@ img[class*='error'] {
     bottom: 0;
     z-index: -1;
     background-image: var(--top-background);
-     background-position: center center;
+    background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;
     animation: fade-in-top 1s;
@@ -126,6 +126,11 @@ img[class*='error'] {
   &.off {
     background: none;
     height: 60px !important;
+
+    &::after {
+      background-image: none;
+      animation: none;
+    }
 
     .header__down, .header__site {
       display: none;
@@ -490,7 +495,7 @@ img[class*='error'] {
     bottom: 0;
     z-index: 4;
     background: rgba(0, 0, 0, .5);
-    backdrop-filter: blur(5px);
+    //backdrop-filter: blur(5px);
     opacity: 0;
     visibility: hidden;
     transition: visibility .35s, opacity .35s;
@@ -812,12 +817,19 @@ img[class*='error'] {
             }
 
             .icon {
-              width: 16px;
+              width: 13px;
               height: auto;
-              margin-right: 5px;
+              margin-right: 4px;
+
+              path {
+                fill: var(--theme);
+              }
             }
 
             .item {
+              display: inline-flex;
+              align-items: center;
+
               .by-color {
                 font-size: 1em;
                 margin: 0 0.1rem 0 0;
@@ -911,13 +923,22 @@ img[class*='error'] {
               color: #858585;
             }
 
+
             .icon {
-              width: 16px;
+              width: 13px;
               height: auto;
-              margin-right: 5px;
+              margin-right: 4px;
+
+              path {
+                fill: var(--theme);
+              }
             }
 
             .item {
+              display: inline-flex;
+              align-items: center;
+
+
               .by-color {
                 font-size: 1em;
                 margin: 0 0.1rem 0 0;

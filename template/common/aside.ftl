@@ -1,3 +1,4 @@
+<#if settings.aside_enable>
 <aside class="aside" >
     <section class="user widget animated wow" data-wow-delay="0.1s">
         <img class="user_avatar"
@@ -183,3 +184,4 @@
         </div>
     </section>
 </aside>
+</#if >

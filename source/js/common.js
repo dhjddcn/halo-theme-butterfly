@@ -10,7 +10,7 @@ const commonContext = {
     //滚动处理
     scroll() {
         let initTop = 0;
-        const sideWidget = $( ".sideWidget" );
+        const side_widget = $( ".side_widget" );
         const header = $( ".header" );
 
         //滚动方向
@@ -27,7 +27,7 @@ const commonContext = {
                 if ( currentTop > 56 ) {
                     if ( isDown ) {
                         if ( header.hasClass( 'visible' ) ) header.removeClass( 'visible' );
-                        if ( !sideWidget.hasClass( 'show' ) ) sideWidget.addClass( 'show' );
+                        if ( !side_widget.hasClass( 'show' ) ) side_widget.addClass( 'show' );
                         // $postSticky.removeAttr( "style", "" );
                     } else {
                         if ( !header.hasClass( 'visible' ) ) header.addClass( 'visible' );
@@ -37,7 +37,7 @@ const commonContext = {
                 } else {
                     if ( currentTop === 0 ) {
                         header.removeClass( 'fixed visible' );
-                        sideWidget.removeClass( 'show' );
+                        side_widget.removeClass( 'show' );
                     }
                 }
             }, 200 )();
@@ -73,15 +73,15 @@ const commonContext = {
         } )
     },
     // //左右边小部件
-    sideWidget() {
+    side_widget() {
         const data_theme = localStorage.getItem( 'data-mode' );
         if ( data_theme ) html.attr( "data-mode", data_theme );
 
-        $( ".sideWidget  .top_up" ).on( 'click', ( e ) => {
+        $( ".side_widget  .top_up" ).on( 'click', ( e ) => {
             $( 'body,html' ).animate( { scrollTop: 0 }, 500 );
         } );
 
-        $( ".sideWidget>.darkmode" ).on( 'click', ( e ) => {
+        $( ".side_widget>.darkmode" ).on( 'click', ( e ) => {
             if ( html.attr( "data-mode" ) === 'light' ) {
                 html.attr( "data-mode", 'dark' );
                 localStorage.setItem( 'data-mode', 'dark' );

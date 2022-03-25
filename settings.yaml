@@ -107,7 +107,7 @@ theme:
       name: body_background
       label: body背景
       type: attachment
-      default: "linear-gradient(90deg,rgba(247,149,51,.1) 0,rgba(243,112,85,.1) 15%,rgba(239,78,123,.1) 30%,rgba(161,102,171,.1) 44%,rgba(80,115,184,.1) 58%,rgba(16,152,173,.1) 72%,rgba(7,179,155,.1) 86%,rgba(109,186,130,.1) 100%)"
+      default: "linear-gradient(to top, #a8edea 0%, #fed6e3 100%)"
       placeholder: "body背景图"
       description: "body背景可选图片和颜色值(https://x.cn/bg.png或-#fff)，如果背景设置为图片，所有第一屏背景图将会失效！"
     widget_border_radius:
@@ -251,11 +251,22 @@ index:
   items:
     index_enable_top_background_img:
       name: index_enable_top_background_img
-      label: 开启第一屏
+      label: 启用第一屏
       type: switch
       data-type: bool
       default: true
-      placeholder: "第一屏"
+      description: "如果关闭第一屏，建议深色背景或者图片，或者重写颜色！"
+      options:
+        - value: true
+          label: 是
+        - value: false
+          label: 否
+    index_aside_enable:
+      name: index_aside_enable
+      label: 启用侧边栏
+      type: switch
+      data-type: bool
+      default: true
       options:
         - value: true
           label: 是
