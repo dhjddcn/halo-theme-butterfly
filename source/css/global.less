@@ -61,6 +61,14 @@ img[class*='error'] {
   box-shadow: var(--card-box-shadow);
 }
 
+.scale1-1 {
+  transition: filter 375ms ease-in .2s, transform .6s;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
 //左右小部件
 .side_widget {
   position: fixed;
@@ -103,6 +111,24 @@ img[class*='error'] {
     }
   }
 
+  &__site {
+    position: absolute;
+    top: 43%;
+    padding: 0 0.5rem;
+    width: 100%;
+
+    .site {
+      &_title {
+        margin: 0;
+        color: var(--white);
+        font-size: 2.85em;
+        text-align: center;
+        text-shadow: 0.1rem 0.1rem 0.2rem rgb(0 0 0 / 15%);
+        line-height: 1.5;
+      }
+
+    }
+  }
 
   width: 100%;
   position: relative;
@@ -520,14 +546,15 @@ img[class*='error'] {
 
   .article {
     flex: 1;
+    align-self: flex-start;
   }
 
   &:is(.left) .aside {
-    margin-right: 18px;
+    margin-right: 15px;
   }
 
   &:is(.right) .aside {
-    margin-left: 18px;
+    margin-left: 15px;
   }
 
   .aside {
@@ -668,13 +695,13 @@ img[class*='error'] {
             width: 70px;
             height: 50px;
             margin-right: 20px;
+            border-radius: 3px;
 
             img {
               padding: 0;
               max-width: 100%;
               width: 100%;
               height: 100%;
-              border-radius: 3px;
               transition: all 0.6s;
               object-fit: cover;
             }
@@ -780,6 +807,29 @@ img[class*='error'] {
           margin-top: 1rem;
         }
       }
+      &_sticky {
+        position: absolute;
+        z-index: 10;
+        width: 90px;
+        height: 90px;
+        overflow: hidden;
+        top: 0;
+        left: 0;
+        &:before {
+          content: "置顶";
+          text-align: center;
+          position: absolute;
+          transform: rotate(-45deg);
+          font-size: 12px;
+          padding: -1px 0;
+          top: 10px;
+          left: -25px;
+          width: 100px;
+          background-image: linear-gradient(-225deg, #A445B2 0%, #D41872 52%, #FF0066 100%);
+          color: #fff;
+          box-shadow: 0 4px 10px 8px rgb(7 17 27 / 15%);
+        }
+      }
 
       &_cover {
         overflow: hidden;
@@ -799,7 +849,7 @@ img[class*='error'] {
             -webkit-line-clamp: 1;
 
             &:hover {
-              color: var(--theme);
+              color: var(--post_icon);
             }
 
             .by-color {
@@ -884,7 +934,33 @@ img[class*='error'] {
         display: flex;
         flex-direction: column;
         overflow: hidden;
+        position: relative;
 
+      }
+
+      &_sticky {
+        position: absolute;
+        z-index: 10;
+        width: 90px;
+        height: 90px;
+        overflow: hidden;
+        top: 0;
+        left: 0;
+
+        &:before {
+          content: "置顶";
+          text-align: center;
+          position: absolute;
+          transform: rotate(-45deg);
+          font-size: 12px;
+          padding: -1px 0;
+          top: 10px;
+          left: -25px;
+          width: 100px;
+          background-image: linear-gradient(-225deg, #A445B2 0%, #D41872 52%, #FF0066 100%);
+          color: #fff;
+          box-shadow: 0 4px 10px 8px rgb(7 17 27 / 15%);
+        }
       }
 
       &_cover {
@@ -930,7 +1006,7 @@ img[class*='error'] {
               margin-right: 4px;
 
               path {
-                fill: var(--theme);
+                fill: var(--post_icon);
               }
             }
 

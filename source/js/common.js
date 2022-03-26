@@ -51,6 +51,15 @@ const commonContext = {
             data_src: 'lazy-src'
         } )
 
+        new WOW( {
+            boxClass: "wow",
+            animateClass: ThemeConfig.index_list_effect_class,
+            offset: 0,
+            mobile: true,
+            live: true,
+            scrollContainer: null,
+        } ).init();
+
         $( '.header__action' ).on( 'click', 'a', function ( event ) {
             const t = $( this );
             if ( t.hasClass( 'search' ) ) {

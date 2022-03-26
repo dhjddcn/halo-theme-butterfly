@@ -129,7 +129,7 @@ theme:
       label: 文章默认缩略图
       width: 100%
       type: attachment
-      default: "https://gitee.com/dhjdd/Timo/raw/master/1647014724843.png"
+      default: "https://s2.loli.net/2022/03/26/4ubfeUW3sGvkTFX.png"
       description: "文章无配图时生效，可使用占位图服务"
 
 aside:
@@ -320,8 +320,8 @@ archives:
       default: "文章归档"
       placeholder: "请输入"
       description: "修改归档标题"
-    enable_top_archives_background_img:
-      name: enable_top_archives_background_img
+    archives_enable_top_background_img:
+      name: archives_enable_top_background_img
       label: 开启顶部背景图
       type: switch
       data-type: bool
@@ -332,15 +332,15 @@ archives:
           label: 是
         - value: false
           label: 否
-    top_archives_background_img:
-      name: top_archives_background_img
+    archives_top_background_img:
+      name: archives_top_background_img
       label: 顶部背景图
       type: attachment
       default: ""
       placeholder: "顶部背景图"
       description: "不配置默认使用首页背景图"
-    enable_archives_aside:
-      name: enable_archives_aside
+    archives_enable_aside:
+      name: archives_enable_aside
       label: 是否展示侧边栏
       type: switch
       data-type: bool

@@ -15,14 +15,7 @@ const IndexContext = {
         } )
     },
     action() {
-        new WOW( {
-            boxClass: "wow",
-            animateClass: ThemeConfig.index_list_effect_class,
-            offset: 0,
-            mobile: true,
-            live: true,
-            scrollContainer: null,
-        } ).init();
+    
     },
     //打字效果
     subtitleTyping() {
