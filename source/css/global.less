@@ -722,6 +722,11 @@ img[class*='error'] {
               font-size: .8em;
               font-weight: inherit;
               line-height: initial;
+              transition: color 0.2s;
+
+              &:hover {
+                color: var(--post_icon);
+              }
             }
 
             .t {
@@ -807,6 +812,7 @@ img[class*='error'] {
           margin-top: 1rem;
         }
       }
+
       &_sticky {
         position: absolute;
         z-index: 10;
@@ -815,6 +821,7 @@ img[class*='error'] {
         overflow: hidden;
         top: 0;
         left: 0;
+
         &:before {
           content: "置顶";
           text-align: center;
@@ -827,7 +834,7 @@ img[class*='error'] {
           width: 100px;
           background-image: linear-gradient(-225deg, #A445B2 0%, #D41872 52%, #FF0066 100%);
           color: #fff;
-          box-shadow: 0 4px 10px 8px rgb(7 17 27 / 15%);
+          //box-shadow: 1px 0 0 5px rgb(7 17 27 / 15%);
         }
       }
 
@@ -864,6 +871,10 @@ img[class*='error'] {
 
             .txt, .link {
               color: #858585;
+
+              &:hover {
+                color: var(--post_icon);
+              }
             }
 
             .icon {
@@ -959,7 +970,7 @@ img[class*='error'] {
           width: 100px;
           background-image: linear-gradient(-225deg, #A445B2 0%, #D41872 52%, #FF0066 100%);
           color: #fff;
-          box-shadow: 0 4px 10px 8px rgb(7 17 27 / 15%);
+          //box-shadow: 1px 0 0 5px rgb(7 17 27 / 15%);
         }
       }
 
@@ -983,9 +994,10 @@ img[class*='error'] {
             line-height: 1.4;
             -webkit-line-clamp: 1;
             font-size: 1.28em;
+            transition: all 0.2s;
 
             &:hover {
-              color: var(--theme);
+              color: var(--post_icon);
             }
 
           }
@@ -997,6 +1009,10 @@ img[class*='error'] {
 
             .txt, .link {
               color: #858585;
+
+              &:hover {
+                color: var(--post_icon);
+              }
             }
 
 

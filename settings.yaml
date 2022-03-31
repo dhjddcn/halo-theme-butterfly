@@ -220,31 +220,39 @@ aside:
     #      data-type: long
     #      default: 5
     #      description: "右侧最新评论展示条数，填写数字即可，默认展示最新的5条评论（需开启最新评论）"
-    enable_categories:
-      name: enable_categories
+    aside_enable_categories:
+      name: aside_enable_categories
       label: 侧边栏展示分类
       type: switch
       data-type: bool
       default: true
-      description: "在右侧展示分类"
       options:
         - value: true
           label: 开启
         - value: false
           label: 关闭
-    enable_tags:
-      name: enable_tags
+    aside_enable_tags:
+      name: aside_enable_tags
       label: 侧边栏展示标签
       type: switch
       data-type: bool
       default: true
-      description: "在右侧展示标签"
       options:
         - value: true
           label: 开启
         - value: false
           label: 关闭
-
+    aside_enable_web_info:
+      name: aside_enable_web_info
+      label: 侧边栏展示网站资讯
+      type: switch
+      data-type: bool
+      default: true
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
 
 index:
   label: 首页
