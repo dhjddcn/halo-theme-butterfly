@@ -16,7 +16,8 @@
                 <div class="post_info">
                     <a href="${post.fullPath!}" title="${post.title!}" class="info_title">
                         ${post.title!}</a>
-                    <div class="info_meta">
+                    <div class="box">
+                        <div class="info_meta">
                         <span class="item createTime">
 <#--                                <i class="by-color by-color_icon--date"></i>-->
                             <svg t="1648176111910" class="icon" viewBox="0 0 1024 1024" version="1.1"
@@ -37,9 +38,9 @@
                                         fill="#438CFF" p-id="6088"></path></svg>
                                 <time datetime="${post.createTime?string('yyyy-MM-dd')}"
                                       class="txt">发表于<@global.timeline datetime=post.createTime /></time>
-                                <span class="su">|</span>
+<#--                                <span class="su">|</span>-->
                         </span>
-                        <span class="item updateTime">
+                            <span class="item updateTime">
 <#--                                <i class="by-color by-color_shijian"></i>-->
                             <svg t="1648186796696" class="icon" viewBox="0 0 1024 1024" version="1.1"
                                  xmlns="http://www.w3.org/2000/svg" p-id="1111" width="200" height="200"><path
@@ -51,9 +52,9 @@
                                         fill="#438cff" p-id="1114"></path></svg>
                                 <time datetime="${post.updateTime?string('yyyy-MM-dd')}"
                                       class="txt">更新于<@global.timeline datetime=post.updateTime /></time>
-                                <span class="su">|</span>
+<#--                                <span class="su">|</span>-->
                         </span>
-                        <span class="item visits">
+                            <span class="item visits">
 <#--                                <i class="by-color by-color_yanjing-"></i>-->
                             <svg t="1648186843075" class="icon" viewBox="0 0 1075 1024" version="1.1"
                                  xmlns="http://www.w3.org/2000/svg" p-id="1247" width="200" height="200"><path
@@ -63,8 +64,8 @@
                                         fill="#438cff" p-id="1249"></path></svg>
                                 <span class="txt">预览 ${post.visits!0}</span>
                         </span>
-                    </div>
-                    <div class="info_meta">
+                        </div>
+                        <div class="info_meta">
                             <span class="item commentCount">
 <#--                                <i class="by-color by-color_pinglun1"></i>-->
                                 <svg t="1648186889684" class="icon" viewBox="0 0 1024 1024" version="1.1"
@@ -72,10 +73,10 @@
                                             d="M511.99941746 894.16005746c-32.69358023 0-64.5453403-2.96313059-95.53898041-8.07787861L192.54917461 1021.93561827 192.54917461 795.77014045C75.79703296 713.79096121 0.87856242 588.10531043 0.87856242 446.94850674c0-246.98773049 228.84108971-447.21271581 511.12202012-447.21271581 282.26462834 0 511.12202013 200.22614926 511.12202013 447.21271581C1023.12143758 693.95020914 794.26404693 894.16005746 511.99941746 894.16005746zM511.99941746 63.62182542c-246.99668707 0-447.23103971 171.63571997-447.23103972 383.32551737 0 129.89574144 75.57283157 244.50661831 190.87536583 313.82292366l-2.01198478 148.17750244 150.38185358-90.40285355c34.64385422 7.39327317 70.67560505 11.72910877 107.98696904 11.72910877 247.01298688 0 447.22987463-171.60544825 447.22987462-383.32551737C959.23045717 235.25754425 759.01356942 63.62182542 511.99941746 63.62182542zM767.56101006 510.83570517c-35.28424334 0-63.89098041-28.5904293-63.89098041-63.88719843 0-35.28279723 28.60673707-63.88836238 63.89098041-63.88836239s63.89098041 28.60556515 63.89098041 63.88836239C831.45199047 482.24527587 802.84408832 510.83570517 767.56101006 510.83570517zM511.99941746 510.83570517c-35.28307826 0-63.88981533-28.5904293-63.88981533-63.88719843 0-35.28279723 28.60673707-63.88836238 63.88981533-63.88836239 35.28424334 0 63.89098041 28.60556515 63.89098041 63.88836239C575.89039787 482.24527587 547.2836608 510.83570517 511.99941746 510.83570517zM256.43898994 510.83570517c-35.28307826 0-63.88981533-28.5904293-63.88981533-63.88719843 0-35.28279723 28.60673707-63.88836238 63.88981533-63.88836239s63.88981533 28.60556515 63.88981532 63.88836239C320.3288064 482.24527587 291.72206933 510.83570517 256.43898994 510.83570517z"
                                             fill="#438cff" p-id="1383"></path></svg>
                                 <span class="txt">${post.commentCount}条评论</span>
-                                <span class="su">|</span>
+<#--                                <span class="su">|</span>-->
                         </span>
-                        <#if (post.categories)?? && post.categories?size gt 0>
-                            <span class="item categories">
+                            <#if (post.categories)?? && post.categories?size gt 0>
+                                <span class="item categories">
 <#--                                    <i class="by-color by-color_fenlei"></i>-->
                                 <svg t="1648186917105" class="icon" viewBox="0 0 1024 1024" version="1.1"
                                      xmlns="http://www.w3.org/2000/svg" p-id="1516" width="200" height="200"><path
@@ -90,11 +91,11 @@
                                                 class="point">•</span>
                                         </#list>
                                     </span>
-                                    <span class="su">|</span>
+<#--                                    <span class="su">|</span>-->
                                 </span>
-                        </#if>
-                        <#if (post.tags)?? && post.tags?size gt 0>
-                            <span class="item tags">
+                            </#if>
+                            <#if (post.tags)?? && post.tags?size gt 0>
+                                <span class="item tags">
 <#--                                <i class="by-color by-color_biaoqian"></i>-->
                                 <svg t="1648186980115" class="icon" viewBox="0 0 1024 1024" version="1.1"
                                      xmlns="http://www.w3.org/2000/svg" p-id="8092" width="200" height="200"><path
@@ -109,8 +110,9 @@
                                         </#list>
                                 </span>
                         </span>
-                        </#if>
+                            </#if>
 
+                        </div>
                     </div>
                     <div class="info_content">${post.summary!}</div>
                 </div>

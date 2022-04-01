@@ -29,11 +29,21 @@
     <link rel="preload stylesheet" as="style" href="${BASE_RES_URL}/source/css/min/global.min.css">
     <link rel="preload stylesheet" as="style" href="${BASE_RES_URL}/source/css/min/responsive.min.css">
     <link rel="preload stylesheet" as="style" href="${BASE_RES_URL}/source/css/min/archives.min.css">
-    <title>${blog_title}</title>
+    <title>${settings.archives_title!}</title>
     <@global.head />
     <style type="text/css">
-        @font-face {  font-family: "By Font";  font-weight: 400;  font-style: normal;  font-display: swap;  src: url(${BASE_RES_URL!}/source/font/${settings.web_font!}) format("woff2");  }
-        #Butterfly .main {max-width: ${settings.content_max_width!};}
+        @font-face {
+            font-family: "By Font";
+            font-weight: 400;
+            font-style: normal;
+            font-display: swap;
+            src: url(${BASE_RES_URL!}/source/font/${settings.web_font!}) format("woff2");
+        }
+
+        #Butterfly .main {
+            max-width: ${settings.content_max_width!};
+        }
+
         html {
             --theme: ${settings.theme_color_light!};
             font-family: "By Font", "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, "sans-serif";
@@ -41,10 +51,8 @@
             --cursor-link: url(${BASE_RES_URL!}/source/cursor/simple_cursor/link.cur), auto;
             --widget-border-radius: ${settings.widget_border_radius!};
             --widget-background: ${settings.widget_background!};
-        <#if settings.body_background?contains("http")>
-            --body-background: url(${settings.body_background!}) no-repeat fixed center / cover;
-        <#else>
-            --body-background: ${settings.body_background!};
+        <#if settings.body_background?contains("http")> --body-background: url(${settings.body_background!}) no-repeat fixed center / cover;
+        <#else> --body-background: ${settings.body_background!};
             --top-background: url(${(settings.archives_top_background_img != '')?then(settings.archives_top_background_img,settings.index_top_background_img)});
         </#if>
         }
@@ -169,8 +177,45 @@
         <div class="header__mask"></div>
     </header>
     <main class="main ${settings.aside_position!} ${settings.archives_post_layout!}">
-        <article class="article widget">
-        111
+        <article class="article archives widget">
+            <#if  postCount == 0>
+                <#include "template/common/empty.ftl">
+                <@empty background='none' boxShadow='none'  />
+            <#else>
+                <div class="archives_title">
+                    文章归档 - ${postCount!0}
+                </div>
+
+                <div class="archives_sort">
+                    <#list archives as archive>
+                        <div class="archives_item year">${archive.year?c}</div>
+                        <#list archive.posts as post>
+                            <div class="archives_item">
+                                <a href="${post.fullPath!}" title="${post.title!}" class="archives_item--cover">
+                                    <#import "template/module/post_thumbnail.ftl" as tbn>
+                                    <@tbn.post_thumbnail post=post />
+                                    <img
+                                         src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs="
+                                         data-lazy-src="${tbn.thumbnail}"
+                                         onerror="this.onerror=null,this.src='${err_img}'"
+                                         alt="${post.title!}">
+                                </a>
+                                <div class="archives_item--info">
+                                    <div class="info">
+                                        <i class="by-font by_icon_rili1"></i>
+                                        <time datetime="${post.createTime?string('yyyy-MM-dd')}"
+                                              title="发表于 ${post.createTime?string('yyyy-MM-dd')}">${post.createTime?string('yyyy-MM-dd')}
+                                        </time>
+                                    </div>
+                                    <a class="title" href="${post.fullPath!}" title="${post.title!}">
+                                        ${post.title!}
+                                    </a>
+                                </div>
+                            </div>
+                        </#list >
+                    </#list >
+                </div>
+            </#if>
         </article>
         <#if settings.aside_enable><#include "template/common/aside.ftl"></#if >
     </main>

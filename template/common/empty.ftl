@@ -1,5 +1,5 @@
-<#macro empty  text='暂无数据' visibleIcon=true  background='var(--card-bg)' boxShadow='var(--card-box-shadow)'>
-    <div class="empty ${bg!}" style="border-radius: 20px;background: ${background};box-shadow: ${boxShadow};">
+<#macro empty  text='暂无文章' visibleIcon=true  background='var(--card-bg)' boxShadow='var(--card-box-shadow)'>
+    <div class="empty" style="border-radius: 20px;background: ${background};box-shadow: ${boxShadow};">
         <#if visibleIcon>
             <svg class="empty_icon" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="120"
                  height="120">

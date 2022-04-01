@@ -7,15 +7,11 @@
 
 const IndexContext = {
     scrollDown() {
-        // noinspection JSCheckFunctionSignatures
-        // $( ".by_scroll_down_effects" ).click( ( e ) => $( "body" ).animate( { scrollTop: $( ".by_main_wrap" ).offset().top }, 700 ) );
-
         $( '.header__down' ).on( 'click', function () {
             $( "body,html" ).animate( { scrollTop: $( "main" ).offset().top }, 700 );
         } )
     },
     action() {
-    
     },
     //打字效果
     subtitleTyping() {

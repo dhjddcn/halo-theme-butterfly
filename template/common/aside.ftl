@@ -86,7 +86,6 @@
 
             </div>
         </section>
-
         <#if settings.aside_enable_notice && settings.aside_notice != ''>
             <section class="notice widget animated wow" data-wow-delay="0.2s">
                 <h1 class="aside_title">
@@ -129,63 +128,69 @@
                 </ul>
             </section>
         </#if>
-        <section class="a_categories widget animated wow" data-wow-delay="0.4s">
-            <h1 class="aside_title">
-                <i class="by-font by_icon_wenjianjia"></i>
-                <span>分类</span>
-            </h1>
+        <#if settings.aside_enable_categories>
+            <section class="a_categories widget animated wow" data-wow-delay="0.4s">
+                <h1 class="aside_title">
+                    <i class="by-font by_icon_wenjianjia"></i>
+                    <span>分类</span>
+                </h1>
 
-            <div class="a_categories__content">
-                <@categoryTag method="list">
-                    <#list categories?sort_by("postCount") ? reverse as category>
-                        <a class="item" href="${category.fullPath!}" title="${category.name!}">
-                            <span class="name">${category.name!}</span>
-                            <span class="count">${category.postCount!}</span>
-                        </a>
-                    </#list>
-                </@categoryTag>
-            </div>
-        </section>
-        <section class="a_tags widget animated wow" data-wow-delay="0.5s">
-            <h1 class="aside_title">
-                <i class="by-font by_icon_tag"></i>
-                <span>标签</span>
-            </h1>
+                <div class="a_categories__content">
+                    <@categoryTag method="list">
+                        <#list categories?sort_by("postCount") ? reverse as category>
+                            <a class="item" href="${category.fullPath!}" title="${category.name!}">
+                                <span class="name">${category.name!}</span>
+                                <span class="count">${category.postCount!}</span>
+                            </a>
+                        </#list>
+                    </@categoryTag>
+                </div>
+            </section>
+        </#if>
+        <#if settings.aside_enable_tags>
+            <section class="a_tags widget animated wow" data-wow-delay="0.5s">
+                <h1 class="aside_title">
+                    <i class="by-font by_icon_tag"></i>
+                    <span>标签</span>
+                </h1>
 
-            <div class="a_tags__content">
-                <@tagTag method="list">
-                    <#list tags as tag>
-                        <a class="item" href="${tag.fullPath!}" title="${tag.name!}" data-num="${tag.postCount!}">
-                            ${tag.name!}
-                        </a>
-                    </#list>
-                </@tagTag>
-            </div>
-        </section>
-        <section class="web_info widget animated wow" data-wow-delay="0.6s">
-            <h1 class="aside_title">
-                <i class="by-font by_icon_tongji"></i>
-                <span>网站资讯</span>
-            </h1>
+                <div class="a_tags__content">
+                    <@tagTag method="list">
+                        <#list tags as tag>
+                            <a class="item" href="${tag.fullPath!}" title="${tag.name!}" data-num="${tag.postCount!}">
+                                ${tag.name!}
+                            </a>
+                        </#list>
+                    </@tagTag>
+                </div>
+            </section>
+        </#if>
+        <#if settings.aside_enable_web_info>
+            <section class="web_info widget animated wow" data-wow-delay="0.6s">
+                <h1 class="aside_title">
+                    <i class="by-font by_icon_tongji"></i>
+                    <span>网站资讯</span>
+                </h1>
 
-            <div class="web_info__content">
-                <div class="w_item">
-                    <span>文章数目：</span>
-                    <span>${postCount!} 章</span>
+                <div class="web_info__content">
+                    <div class="w_item">
+                        <span>文章数目：</span>
+                        <span>${postCount!} 章</span>
+                    </div>
+                    <div class="w_item">
+                        <span>运行时间：</span>
+                        <span><span class="run_day">0</span> 天</span>
+                    </div>
+                    <div class="w_item">
+                        <span>本站访客：</span>
+                        <span id="busuanzi_value_site_uv">0</span>
+                    </div>
+                    <div class="w_item">
+                        <span>总访问量：</span>
+                        <span id="busuanzi_value_site_pv">0</span>
+                    </div>
                 </div>
-                <div class="w_item">
-                    <span>运行时间：</span>
-                    <span><span class="run_day">0</span> 天</span>
-                </div>
-                <div class="w_item">
-                    <span>本站访客：</span>
-                    <span id="busuanzi_value_site_uv">0</span>
-                </div>
-                <div class="w_item">
-                    <span>总访问量：</span>
-                    <span id="busuanzi_value_site_pv">0</span>
-                </div>
-            </div>
-        </section>
+            </section>
+        </#if>
     </aside>
 </#if >

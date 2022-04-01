@@ -6,6 +6,9 @@ body {
   -webkit-tap-highlight-color: transparent;
   //background: var(--theme-bg);
   line-height: 2;
+  padding-bottom: constant(safe-area-inset-bottom);
+  padding-bottom: env(safe-area-inset-bottom);
+  scroll-behavior: smooth;
 
   &::after {
     background: var(--body-background);
@@ -83,7 +86,7 @@ img[class*='error'] {
     transform: translateX(-58px);
   }
 
-  > button {
+  button {
     display: block;
     margin-bottom: 5px;
     width: 35px;
@@ -848,7 +851,7 @@ img[class*='error'] {
         padding: 0 40px;
         width: 57%;
 
-        > .info {
+        .info {
           &_title {
             color: var(--text-highlight-color);
             font-size: 1.72em;
@@ -865,7 +868,7 @@ img[class*='error'] {
           }
 
           &_meta {
-            margin: 6px 0;
+            margin: 3px 0;
             font-size: 90%;
             -webkit-line-clamp: 1;
 
@@ -887,9 +890,24 @@ img[class*='error'] {
               }
             }
 
+
             .item {
               display: inline-flex;
               align-items: center;
+              position: relative;
+              padding-left: 5px;
+
+              &:not(:first-child) {
+                margin: 0 0.1rem;
+
+                &:before {
+                  position: absolute;
+                  left: -1px;
+                  top: -1px;
+                  content: "|";
+                  color: #858585;
+                }
+              }
 
               .by-color {
                 font-size: 1em;
@@ -941,7 +959,7 @@ img[class*='error'] {
     .post {
       &_item {
         width: 49%;
-        height: 25em;
+        height: 22em;
         display: flex;
         flex-direction: column;
         overflow: hidden;
@@ -987,12 +1005,23 @@ img[class*='error'] {
         margin-top: 1em;
         margin-bottom: 1rem;
 
-        > .info {
+
+        .box {
+          display: flex;
+          justify-content: flex-start;
+          flex-wrap: nowrap;
+
+          .categories, .tags {
+            display: none !important;
+          }
+        }
+
+        .info {
 
           &_title {
             color: var(--text-highlight-color);
             line-height: 1.4;
-            -webkit-line-clamp: 1;
+            //-webkit-line-clamp: 1;
             font-size: 1.28em;
             transition: all 0.2s;
 
@@ -1002,10 +1031,11 @@ img[class*='error'] {
 
           }
 
+
           &_meta {
-            margin: 6px 0;
+            margin: 3px 0;
             font-size: 90%;
-            -webkit-line-clamp: 1;
+            //-webkit-line-clamp: 1;
 
             .txt, .link {
               color: #858585;
@@ -1026,10 +1056,24 @@ img[class*='error'] {
               }
             }
 
+
             .item {
               display: inline-flex;
               align-items: center;
+              position: relative;
 
+              &:not(:first-child) {
+                padding-left: 5px;
+                margin: 0 0.1rem;
+
+                &:before {
+                  position: absolute;
+                  left: -1px;
+                  top: -1px;
+                  content: "|";
+                  color: #858585;
+                }
+              }
 
               .by-color {
                 font-size: 1em;
@@ -1039,7 +1083,6 @@ img[class*='error'] {
               .su {
                 position: relative;
                 top: -1px;
-                margin: 0 0.2rem;
               }
 
               .point {
@@ -1058,6 +1101,22 @@ img[class*='error'] {
 
               &:last-child .su {
                 display: none;
+              }
+            }
+
+            .commentCount {
+              display: inline-flex;
+              align-items: center;
+              position: relative;
+              padding-left: 5px;
+              margin: 0 0.2rem;
+
+              &:before {
+                position: absolute;
+                left: -1px;
+                top: -1px;
+                content: "|";
+                color: #858585;
               }
             }
 
@@ -1181,8 +1240,8 @@ img[class*='error'] {
   }
 }
 
-//.post_info .info_meta,
-.info_title, .post_info .info_content, .post_layout_tile .info_meta, .nwe_article__content .h, .nwe_article__content .t, .a_categories .name, .a_categories .count, .web_info__content {
+//.post_info .info_meta, .post_layout_tile .info_meta
+.info_title, .post_info .info_content, .nwe_article__content .h, .nwe_article__content .t, .a_categories .name, .a_categories .count, .web_info__content {
   display: -webkit-box;
   overflow: hidden;
   -webkit-box-orient: vertical;

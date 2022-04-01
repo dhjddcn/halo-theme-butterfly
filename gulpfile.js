@@ -6,6 +6,7 @@ const minifyCSS = require( 'gulp-csso' );
 const autoprefix = require( 'gulp-autoprefixer' );
 const rename = require( 'gulp-rename' );
 const gulpBabel = require( "gulp-babel" );
+const gzip = require( "gulp-gzip" );
 
 
 gulp.task( "css", function () {
@@ -15,7 +16,7 @@ gulp.task( "css", function () {
             overrideBrowserslist: [
                 "> 2%", "last 2 versions", "not ie 6-9"
             ],
-            cascade: true
+            cascade: false
         } ) )
         .pipe( minifyCSS() )
         .pipe( rename( {
@@ -35,16 +36,17 @@ gulp.task( "js", function () {
         .pipe( rename( {
             extname: '.min.js'
         } ) )
+        // .pipe( gzip() )
         .pipe( dest( './source/js/min' ) )
 } )
 
 gulp.task(
     "watch",
-    function (  ) {
+    function () {
         // noinspection JSCheckFunctionSignatures
-        gulp.watch('./source/css/*.less',gulp.series('css'));
+        gulp.watch( './source/css/*.less', gulp.series( 'css' ) );
         // noinspection JSCheckFunctionSignatures
-        gulp.watch('./source/js/*.js',gulp.series('js'));
+        gulp.watch( './source/js/*.js', gulp.series( 'js' ) );
     }
 );
 gulp.task(

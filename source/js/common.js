@@ -7,6 +7,51 @@
 const html = $( "html" );
 
 const commonContext = {
+
+    init() {
+        // 初始化主题模式
+        const data_theme = localStorage.getItem( 'data-mode' );
+        if ( data_theme ) html.attr( "data-mode", data_theme );
+
+        //图片加载
+        window.lazyLoadInstance = new LazyLoad( {
+            elements_selector: 'img',
+            threshold: 0,
+            data_src: 'lazy-src'
+        } )
+
+        // wow
+        new WOW( {
+            boxClass: "wow",
+            animateClass: ThemeConfig.index_list_effect_class,
+            offset: 0,
+            mobile: true,
+            live: true,
+            scrollContainer: null,
+        } ).init();
+
+        //导航栏
+        $( '.header__action' ).on( 'click', 'a', function ( event ) {
+            const t = $( this );
+            if ( t.hasClass( 'search' ) ) {
+                html.addClass( 'disable-search' );
+            }
+            if ( t.hasClass( 'toggle' ) ) html.addClass( 'disable-scroll' );
+        } );
+
+        $( '.n_close' ).on( 'click', function () {
+            html.removeClass( 'disable-search' );
+        } );
+
+        $( '.header__mask' ).on( 'click', function () {
+            html.removeClass( 'disable-scroll disable-search' );
+        } );
+
+        $( 'nav.blog_menu' ).on( 'click', 'div', function () {
+            $( this ).children( '.child' ).stop().slideToggle();
+            $( this ).children( 'a' ).stop().toggleClass( 'active' );
+        } )
+    },
     //滚动处理
     scroll() {
         let initTop = 0;
@@ -44,48 +89,9 @@ const commonContext = {
         } );
 
     },
-    action() {
-        window.lazyLoadInstance = new LazyLoad( {
-            elements_selector: 'img',
-            threshold: 0,
-            data_src: 'lazy-src'
-        } )
 
-        new WOW( {
-            boxClass: "wow",
-            animateClass: ThemeConfig.index_list_effect_class,
-            offset: 0,
-            mobile: true,
-            live: true,
-            scrollContainer: null,
-        } ).init();
-
-        $( '.header__action' ).on( 'click', 'a', function ( event ) {
-            const t = $( this );
-            if ( t.hasClass( 'search' ) ) {
-                html.addClass( 'disable-search' );
-            }
-            if ( t.hasClass( 'toggle' ) ) html.addClass( 'disable-scroll' );
-        } );
-
-        $( '.n_close' ).on( 'click', function () {
-            html.removeClass( 'disable-search' );
-        } );
-
-        $( '.header__mask' ).on( 'click', function () {
-            html.removeClass( 'disable-scroll disable-search' );
-        } );
-
-        $( 'nav.blog_menu' ).on( 'click', 'div', function () {
-            $( this ).children( '.child' ).stop().slideToggle();
-            $( this ).children( 'a' ).stop().toggleClass( 'active' );
-        } )
-    },
     // //左右边小部件
     side_widget() {
-        const data_theme = localStorage.getItem( 'data-mode' );
-        if ( data_theme ) html.attr( "data-mode", data_theme );
-
         $( ".side_widget  .top_up" ).on( 'click', ( e ) => {
             $( 'body,html' ).animate( { scrollTop: 0 }, 500 );
         } );
