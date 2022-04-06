@@ -24,7 +24,7 @@ const commonContext = {
         new WOW( {
             boxClass: "wow",
             animateClass: ThemeConfig.index_list_effect_class,
-            offset: 0,
+            offset: 15,
             mobile: true,
             live: true,
             scrollContainer: null,

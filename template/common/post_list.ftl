@@ -1,5 +1,5 @@
 <#import "../module/post_thumbnail.ftl" as tbn>
-<#macro post_list  list method='index' slug="" keyword="" display = "3">
+<#macro post_list  list display method='index'  slug="" keyword=""  >
     <ul class="posts_box">
         <#list list as post>
             <li class="post_item widget animated wow" data-wow-delay="0.${post_index}s">

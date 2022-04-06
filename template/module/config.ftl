@@ -1,4 +1,5 @@
 <#-- 全局配置 -->
+<#if settings.loading_style != ''><script class="loading-script" src="${theme_base}/source/lib/loading/min/${settings.loading_style!}.min.js"></script></#if>
 <script id="browser-Compatibility">
     <#-- 兼容性检查-->
     function detectIE() {
@@ -19,7 +20,6 @@
 </script>
 <#global mode = (blog_url?index_of("127.0.0.1") == -1)?then('production', 'development')>
 <#global BASE_RES_URL = (theme_base)>
-<#if settings.loading_style != ''><script class="loading-script" src="${BASE_RES_URL}/source/lib/loading/min/${settings.loading_style!}.min.js"></script></#if>
 <#global lazy_img = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' >
 <#global err_img = theme_base+'/source/img/404.png' >
 <#--定义可变属性，会根据页面的改变而变化  获取当前页面元数据，这里不要做解析-->

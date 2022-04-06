@@ -40,6 +40,21 @@ gulp.task( "js", function () {
         .pipe( dest( './source/js/min' ) )
 } )
 
+gulp.task( "gzip", function () {
+    return src( './source/js/*.js', )
+        .pipe(
+            gulpBabel( {
+                presets: [ '@babel/preset-env' ]
+            } )
+        )
+        .pipe( uglify() )
+        .pipe( rename( {
+            extname: '.min.js'
+        } ) )
+        .pipe( gzip() )
+        .pipe( dest( './source/js/min' ) )
+} )
+
 gulp.task(
     "watch",
     function () {
@@ -47,6 +62,7 @@ gulp.task(
         gulp.watch( './source/css/*.less', gulp.series( 'css' ) );
         // noinspection JSCheckFunctionSignatures
         gulp.watch( './source/js/*.js', gulp.series( 'js' ) );
+        gulp.watch( './source/js/*.js', gulp.series( 'gzip' ) );
     }
 );
 gulp.task(

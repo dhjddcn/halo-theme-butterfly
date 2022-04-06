@@ -22,18 +22,26 @@
     <meta property="og:title" content="${blog_title!}">
     <meta property="twitter:partner" content="ogwp">
     <link rel="canonical" href="${blog_url!}">
-    <link rel="preload stylesheet" as="style" href="${BASE_RES_URL}/source/lib/animate/animate.min.css">
     <link rel="preload stylesheet" as="style" href="${BASE_RES_URL}/source/css/min/normalize.min.css">
     <link rel="preload stylesheet" as="style" href="//at.alicdn.com/t/font_3123425_o8kdebvfwoi.css">
     <link rel="preload stylesheet" as="style" href="${BASE_RES_URL}/source/css/min/theme.min.css">
-    <link rel="preload stylesheet" as="style" href="${BASE_RES_URL}/source/css/min/global.min.css">
+    <link rel="preload stylesheet" as="style" href="${BASE_RES_URL}/source/css/min/main.min.css">
     <link rel="preload stylesheet" as="style" href="${BASE_RES_URL}/source/css/min/responsive.min.css">
     <link rel="preload stylesheet" as="style" href="${BASE_RES_URL}/source/css/min/index.min.css">
+    <link rel="preload stylesheet" as="style" href="${BASE_RES_URL}/source/lib/animate/animate.min.css">
     <title>${blog_title}</title>
     <@global.head />
     <style type="text/css">
-        @font-face {  font-family: "By Font";  font-weight: 400;  font-style: normal;  font-display: swap;  src: url(${BASE_RES_URL!}/source/font/${settings.web_font!}) format("woff2");  }
-        #Butterfly .main {max-width: ${settings.content_max_width!};}
+        @font-face {
+            font-family: "By Font";
+            font-weight: 400;
+            font-style: normal;
+            font-display: swap;
+            src: url(${BASE_RES_URL!}/source/font/${settings.web_font!}) format("woff2");
+        }
+        #Butterfly .main {
+            max-width: ${settings.content_max_width!};
+        }
         html {
             --theme: ${settings.theme_color_light!};
             font-family: "By Font", "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, "sans-serif";
@@ -41,18 +49,16 @@
             --cursor-link: url(${BASE_RES_URL!}/source/cursor/simple_cursor/link.cur), auto;
             --widget-border-radius: ${settings.widget_border_radius!};
             --widget-background: ${settings.widget_background!};
-            <#if settings.body_background?contains("http")>
-                --body-background: url(${settings.body_background!}) no-repeat fixed center / cover;
-            <#else>
-                --body-background: ${settings.body_background!};
-                --top-background: url(${settings.index_top_background_img});
-            </#if>
+        <#if settings.body_background?contains("http")> --body-background: url(${settings.body_background!}) no-repeat fixed center / cover;
+        <#else> --body-background: ${settings.body_background!};
+            --top-background: url(${settings.index_top_background_img});
+        </#if>
         }
     </style>
 </head>
 <body>
-<div id="Butterfly">
-    <header class="header ${settings.index_enable_top_background_img?then('','off')}">
+<div id="Butterfly" style="opacity: 0;">
+    <header class="header ${settings.index_enable_top_background_img?then('',' off')}">
         <@menuTag method="tree"><#assign menuList=menus></@menuTag>
         <@postTag method="count"> <#assign postCount=count> </@postTag>
         <@categoryTag  method="count"> <#assign categoryCount=count> </@categoryTag>
@@ -221,7 +227,6 @@
         </article>
         <#if settings.index_aside_enable><#include "template/common/aside.ftl"></#if >
     </main>
-
     <footer class="footer">
         <div class="copyright"> ©${options.birthday?number_to_datetime?string('yyyy')} - ${.now ? string("yyyy")} By
             ${blog_title!}
@@ -254,12 +259,12 @@
     </div>
 </div>
 
+<script type="text/javascript" src="${BASE_RES_URL!}/source/lib/jquery/jquery.min.js"></script>
 <script type="text/javascript" src="${BASE_RES_URL!}/source/lib/wow/wow.min.js"></script>
 <script type="text/javascript" src="${BASE_RES_URL!}/source/lib/typed/typed.min.js"></script>
-<script type="text/javascript" src="${BASE_RES_URL!}/source/lib/jquery/jquery.min.js"></script>
 <script type="text/javascript" src="${BASE_RES_URL!}/source/lib/lazyLoad/lazyLoad.min.js"></script>
 <script type="text/javascript" src="${BASE_RES_URL}/source/js/min/utils.min.js"></script>
-<script type="text/javascript" src="${BASE_RES_URL}/source/js/min/common.min.js"></script>
+<script type="text/javascript" src="${BASE_RES_URL}/source/js/min/main.min.js"></script>
 <script type="text/javascript" src="${BASE_RES_URL}/source/js/min/index.min.js"></script>
 <script type="text/javascript" async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <#--<script src="//code.tidio.co/us3plaexyjqa3hkht3rrh4n3sdu7ovia.js" ></script>-->

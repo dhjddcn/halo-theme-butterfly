@@ -86,12 +86,12 @@ theme:
       default: "By Alibaba"
       description: "配置网站的字体，暂时提供 3 种供选择！"
       options:
-        - value: "by_aqqxs.woff2"
-          label: "By Aqqxs"
-        - value: "by_slate.woff2"
-          label: "By Slate"
-        - value: "by_alibaba.woff2"
-          label: "By Alibaba"
+        - value: "HarmonyOS.woff2"
+          label: "harmonyos"
+        - value: "aqqxs.woff2"
+          label: "Aqqxs"
+        - value: "alibaba.woff2"
+          label: "Alibaba"
     cursor_skin:
       name: cursor_skin
       label: 鼠标皮肤
@@ -347,8 +347,8 @@ archives:
       default: ""
       placeholder: "顶部背景图"
       description: "不配置默认使用首页背景图"
-    archives_enable_aside:
-      name: archives_enable_aside
+    archives_aside_enable:
+      name: archives_aside_enable
       label: 是否展示侧边栏
       type: switch
       data-type: bool
@@ -359,6 +359,14 @@ archives:
           label: 是
         - value: false
           label: 否
+    archives_page:
+      name: archives_page
+      label: 文章列表分页
+      type: text
+      default: "3"
+      placeholder: "文章列表分页"
+      description: "文字列表分页数量，默认 3 页，每页条数可在halo后台文字设置修改"
+
 
 categories:
   label: 分类
@@ -369,8 +377,8 @@ categories:
       default: "全部分类"
       placeholder: "请输入"
       description: "修改分类页顶部的标题"
-    enable_top_categories_background_img:
-      name: enable_top_categories_background_img
+    categories_enable_top_background_img:
+      name: categories_enable_top_background_img
       label: 开启顶部背景图
       type: switch
       data-type: bool
@@ -381,15 +389,15 @@ categories:
           label: 是
         - value: false
           label: 否
-    top_categories_background_img:
-      name: top_categories_background_img
+    categories_top_background_img:
+      name: categories_top_background_img
       label: 顶部背景图
       type: attachment
       default: ""
       placeholder: "顶部背景图"
       description: "不配置默认使用首页背景图"
-    enable_categories_aside:
-      name: enable_categories_aside
+    categories_aside_enable:
+      name: categories_aside_enable
       label: 是否展示侧边栏
       type: switch
       data-type: bool

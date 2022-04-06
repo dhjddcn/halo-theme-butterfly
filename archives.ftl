@@ -22,13 +22,12 @@
     <meta property="og:title" content="${blog_title!}">
     <meta property="twitter:partner" content="ogwp">
     <link rel="canonical" href="${blog_url!}">
-    <link rel="preload stylesheet" as="style" href="${BASE_RES_URL}/source/lib/animate/animate.min.css">
-    <link rel="preload stylesheet" as="style" href="${BASE_RES_URL}/source/css/min/normalize.min.css">
     <link rel="preload stylesheet" as="style" href="//at.alicdn.com/t/font_3123425_o8kdebvfwoi.css">
     <link rel="preload stylesheet" as="style" href="${BASE_RES_URL}/source/css/min/theme.min.css">
-    <link rel="preload stylesheet" as="style" href="${BASE_RES_URL}/source/css/min/global.min.css">
+    <link rel="preload stylesheet" as="style" href="${BASE_RES_URL}/source/css/min/main.min.css">
     <link rel="preload stylesheet" as="style" href="${BASE_RES_URL}/source/css/min/responsive.min.css">
     <link rel="preload stylesheet" as="style" href="${BASE_RES_URL}/source/css/min/archives.min.css">
+    <link rel="preload stylesheet" as="style" href="${BASE_RES_URL}/source/lib/animate/animate.min.css">
     <title>${settings.archives_title!}</title>
     <@global.head />
     <style type="text/css">
@@ -59,7 +58,7 @@
     </style>
 </head>
 <body>
-<div id="Butterfly">
+<div id="Butterfly" style="opacity: 0;">
     <header class="header ${settings.archives_enable_top_background_img?then('','off')}">
         <@menuTag method="tree"><#assign menuList=menus></@menuTag>
         <@postTag method="count"> <#assign postCount=count> </@postTag>
@@ -176,7 +175,7 @@
         </div>
         <div class="header__mask"></div>
     </header>
-    <main class="main ${settings.aside_position!} ${settings.archives_post_layout!}">
+    <main class="main ${settings.aside_position!}">
         <article class="article archives widget">
             <#if  postCount == 0>
                 <#include "template/common/empty.ftl">
@@ -185,20 +184,19 @@
                 <div class="archives_title">
                     文章归档 - ${postCount!0}
                 </div>
-
-                <div class="archives_sort">
+                <ul class="archives_sort">
                     <#list archives as archive>
-                        <div class="archives_item year">${archive.year?c}</div>
+                        <li class="archives_item year animated wow" data-wow-delay="0.1${archive_index}s" >${archive.year?c}</li>
                         <#list archive.posts as post>
-                            <div class="archives_item">
+                            <li class="archives_item animated wow" data-wow-delay="0.3${post_index}s" >
                                 <a href="${post.fullPath!}" title="${post.title!}" class="archives_item--cover">
                                     <#import "template/module/post_thumbnail.ftl" as tbn>
                                     <@tbn.post_thumbnail post=post />
                                     <img
-                                         src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs="
-                                         data-lazy-src="${tbn.thumbnail}"
-                                         onerror="this.onerror=null,this.src='${err_img}'"
-                                         alt="${post.title!}">
+                                            src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs="
+                                            data-lazy-src="${tbn.thumbnail}"
+                                            onerror="this.onerror=null,this.src='${err_img}'"
+                                            alt="${post.title!}">
                                 </a>
                                 <div class="archives_item--info">
                                     <div class="info">
@@ -211,15 +209,31 @@
                                         ${post.title!}
                                     </a>
                                 </div>
-                            </div>
+                            </li>
                         </#list >
                     </#list >
-                </div>
+                </ul>
+
+                <@paginationTag method="archives"  page="${posts.number}" total="${posts.totalPages}" display="${settings.archives_page!}">
+                    <div class="pagination">
+                        <#if pagination.hasPrev><a href="${pagination.prevPageFullPath!}" title="上一页" class="prev"><i
+                                    class="by-font by_icon_zuo"></i></a></#if>
+
+                        <#list pagination.rainbowPages as number>
+                            <#if number.isCurrent>
+                                <a class="page current" href="${number.fullPath!}">${number.page!}</a>
+                            <#else>
+                                <a class="page" href="${number.fullPath!}">${number.page!}</a>
+                            </#if>
+                        </#list>
+                        <#if pagination.hasNext><a href="${pagination.nextPageFullPath!}" title="下一页" class="next"><i
+                                    class="by-font by_icon_you"></i></a> </#if>
+                    </div>
+                </@paginationTag>
             </#if>
         </article>
-        <#if settings.aside_enable><#include "template/common/aside.ftl"></#if >
+        <#if settings.archives_aside_enable><#include "template/common/aside.ftl"></#if >
     </main>
-
     <footer class="footer">
         <div class="copyright"> ©${options.birthday?number_to_datetime?string('yyyy')} - ${.now ? string("yyyy")} By
             ${blog_title!}
@@ -252,11 +266,11 @@
     </div>
 </div>
 
-<script type="text/javascript" src="${BASE_RES_URL!}/source/lib/wow/wow.min.js"></script>
 <script type="text/javascript" src="${BASE_RES_URL!}/source/lib/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="${BASE_RES_URL!}/source/lib/wow/wow.min.js"></script>
 <script type="text/javascript" src="${BASE_RES_URL!}/source/lib/lazyLoad/lazyLoad.min.js"></script>
 <script type="text/javascript" src="${BASE_RES_URL}/source/js/min/utils.min.js"></script>
-<script type="text/javascript" src="${BASE_RES_URL}/source/js/min/common.min.js"></script>
+<script type="text/javascript" src="${BASE_RES_URL}/source/js/min/main.min.js"></script>
 <script type="text/javascript" src="${BASE_RES_URL}/source/js/min/archives.min.js"></script>
 <script type="text/javascript" async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 </body>

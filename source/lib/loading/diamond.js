@@ -18,6 +18,7 @@ document.onreadystatechange = function () {
         const loading = document.querySelector( '.loading-div' );
         loading.classList.add( 'loaded' );
         document.body.removeAttribute( 'style' );
+        document.querySelector( '#Butterfly' ).removeAttribute( 'style' );
         setTimeout( function () {
             loading.remove();
             document.querySelector( '.loading-script' ).remove();

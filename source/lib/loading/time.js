@@ -2,7 +2,7 @@
  * @Author: 小红
  * @Date: 2022/4/1
  * @createTime: 2022/4/1
- * @Description: 
+ * @Description:
  */
 document.onreadystatechange = function () {
     if ( this.readyState === 'interactive' ) {
@@ -17,6 +17,7 @@ document.onreadystatechange = function () {
         const loading = document.querySelector( '.loading-div' );
         loading.classList.add( 'loaded' );
         document.body.removeAttribute( 'style' );
+        document.querySelector( '#Butterfly' ).removeAttribute( 'style' );
         setTimeout( function () {
             loading.remove();
             document.querySelector( '.loading-script' ).remove();
