@@ -418,8 +418,8 @@ tags:
       default: "全部标签"
       placeholder: "请输入"
       description: "修改标签页顶部的标题"
-    enable_top_tags_background_img:
-      name: enable_top_tags_background_img
+    tags_enable_top_background_img:
+      name: tags_enable_top_background_img
       label: 开启顶部背景图
       type: switch
       data-type: bool
@@ -430,14 +430,14 @@ tags:
           label: 是
         - value: false
           label: 否
-    top_tags_background_img:
-      name: top_tags_background_img
+    tags_top_background_img:
+      name: tags_top_background_img
       label: 顶部背景图（标签）
       type: attachment
       default: ""
       placeholder: "顶部背景图（标签）"
-    enable_tags_aside:
-      name: enable_tags_aside
+    tags_aside_enable:
+      name: tags_aside_enable
       label: 是否展示侧边栏
       type: switch
       data-type: bool

@@ -114,7 +114,7 @@
         <div class="header__sidebar">
             <img class="blog_avatar" src="${user.avatar!}" alt="${user.description!}">
             <div class="blog_data ">
-                <a class="data_item" title="文章" href="${tags_url!}">
+                <a class="data_item" title="文章" href="${archives_url!}">
                     <div class="headline">文章</div>
                     <div class="length-num nowrap">${postCount!0}</div>
                 </a>
@@ -175,47 +175,16 @@
         </div>
         <div class="header__mask"></div>
     </header>
-    <main class="main ${settings.aside_position!} ${settings.tags_post_layout!}">
+    <main class="main ${settings.aside_position!}">
         <article class="article tags widget">
-            <#if  postCount == 0>
+            <#if  categoryCount == 0>
                 <#include "template/common/empty.ftl">
                 <@empty background='none' boxShadow='none'  />
             <#else>
-                <div class="tags_title">
-                    文章归档 - ${postCount!0}
-                </div>
-                <div class="tags_sort">
-                    <#list tags as archive>
-                        <div class="tags_item year">${archive.year?c}</div>
-                        <#list archive.posts as post>
-                            <div class="tags_item">
-                                <a href="${post.fullPath!}" title="${post.title!}" class="tags_item--cover">
-                                    <#import "template/module/post_thumbnail.ftl" as tbn>
-                                    <@tbn.post_thumbnail post=post />
-                                    <img
-                                            src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs="
-                                            data-lazy-src="${tbn.thumbnail}"
-                                            onerror="this.onerror=null,this.src='${err_img}'"
-                                            alt="${post.title!}">
-                                </a>
-                                <div class="tags_item--info">
-                                    <div class="info">
-                                        <i class="by-font by_icon_rili1"></i>
-                                        <time datetime="${post.createTime?string('yyyy-MM-dd')}"
-                                              title="发表于 ${post.createTime?string('yyyy-MM-dd')}">${post.createTime?string('yyyy-MM-dd')}
-                                        </time>
-                                    </div>
-                                    <a class="title" href="${post.fullPath!}" title="${post.title!}">
-                                        ${post.title!}
-                                    </a>
-                                </div>
-                            </div>
-                        </#list >
-                    </#list >
-                </div>
+   11
             </#if>
         </article>
-        <#if settings.aside_enable><#include "template/common/aside.ftl"></#if >
+        <#if settings.tags_aside_enable><#include "template/common/aside.ftl"></#if >
     </main>
     <footer class="footer">
         <div class="copyright"> ©${options.birthday?number_to_datetime?string('yyyy')} - ${.now ? string("yyyy")} By
@@ -258,3 +227,16 @@
 <script type="text/javascript" async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
