@@ -6,13 +6,13 @@
     <meta name="renderer" content="webkit">
     <meta name="format-detection" content="email=no">
     <meta name="format-detection" content="telephone=no">
-    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta content="no-siteapp">
     <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
     <meta name="keywords" content="${meta_keywords!}">
     <meta name="description" content="${meta_description!}">
     <meta name="author" content="${user.nickname!}">
-    <meta http-equiv="x-dns-prefetch-control" content="on">
+    <meta content="on">
     <meta name="site" content="${blog_url!}">
     <meta property="og:description" content="${meta_description!}">
     <meta property="og:type" content="website">

@@ -1,96 +1,11 @@
-/*! 首页修饰 */
+/**
+ * @Author: 小红
+ * @Date: 2022/4/12
+ * @createTime: 2022/4/12
+ * @Description: 首页样式
+ */
 .header {
   height: 100vh;
-
-  &__site {
-    position: absolute;
-    top: 43%;
-    padding: 0 0.5rem;
-    width: 100%;
-
-    .site {
-      &_title, &_subtitle {
-        text-align: center;
-        text-shadow: 0.1rem 0.1rem 0.2rem rgb(0 0 0 / 15%);
-        line-height: 1.5;
-      }
-
-      &_title {
-        margin: 0;
-        color: var(--white);
-        font-size: 2.85em;
-      }
-
-      &_subtitle {
-        font-size: 1.72em;
-        color: var(--light-grey);
-      }
-
-      &_icons {
-
-        margin: 8px auto 0;
-        width: 15rem;
-        text-align: center;
-        display: none;
-
-        .ic_link {
-          margin: 0 0.5rem;
-          color: var(--light-grey);
-          text-shadow: 0.1rem 0.1rem 0.2rem rgb(0 0 0 / 15%);
-          font-size: 1.43em;
-        }
-
-        .icon {
-          width: 24px;
-          height: 24px;
-        }
-      }
-    }
-
-  }
-
-  &__down {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    text-align: center;
-    padding-bottom: 10px;
-    @keyframes scroll-down-effect {
-      0% {
-        top: 0;
-        opacity: 0.4;
-        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=40)";
-        filter: alpha(opacity=40);
-      }
-      50% {
-        top: -16px;
-        opacity: 1;
-        -ms-filter: none;
-        filter: none;
-      }
-      100% {
-        top: 0;
-        opacity: 0.4;
-        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=40)";
-        filter: alpha(opacity=40);
-      }
-    }
-
-    .icon {
-      position: relative;
-      color: var(--light-grey);
-      width: 25px;
-      height: 25px;
-      text-shadow: 0.1rem 0.1rem 0.2rem rgb(0 0 0 / 15%);
-      line-height: 1.5;
-      animation: scroll-down-effect 1.5s infinite;
-      cursor: var(--cursor-link);
-
-    }
-  }
+  background-attachment: fixed;
 }
-
-.main {
-}
-
 

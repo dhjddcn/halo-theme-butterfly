@@ -1,60 +1,26 @@
-/*! 主题默认样式 */
+/**
+ * @Author: 小红
+ * @Date: 2022/4/12
+ * @createTime: 2022/4/12
+ * @Description: 变量
+ */
 html {
-  --theme-font-size: 14px;
-  //--theme-bg: #fff;
-  --theme-font-color: #4c4948;
-  --btn-color: #fff;
+  --theme-font-size: 14px; // 字体大小
+  --theme-font-family: "Butterfly Font", "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, "sans-serif"; // 字体
 
-  --text-bg-hover: rgba(35, 173, 229, 0.7);
-  --light-grey: #eee;
-  --sidebar-bg: #f6f8fa;
-  --text-highlight-color: #1f2d3d;
-  --hr-border: #a4d8fa;
-  --hr-before-color: #80c8f8;
-  --search-bg: #f6f8fa;
-  --search-input-color: #4c4948;
-  --search-result-title: #4c4948;
-  --white: #fff;
-  --card-bg: #fff;
-  --card-box-shadow: 0 3px 8px 6px rgba(7, 17, 27, 0.05);
-  --pagination-btn-hover-color: #ff7242;
-  --pagination-btn-color: #fff;
-  --btn-text-color: #fff;
+  --theme-color: #49b1f5; // 主题颜色
+  --theme-font-color: #4c4948; // 主题字体颜色
+  --card-widget: #fff; // 卡片颜色
+  --link-cursor-color: var(--theme-color); // 链接悬停颜色
+  --btn-font-color: #fff; // 按钮字体颜色
 
-  --btn-hover-background-color: #ff7242;
-
-  --post_icon:var(--theme);
   //暗黑模式
   &[data-mode=dark] {
-    --theme: #1f1f1f;
-    --theme-font-color: rgba(255, 255, 255, 0.7);
-    --btn-color: var(--theme-font-color);
-    --sidebar-bg: #121212;
-    --text-highlight-color: rgba(255, 255, 255, 0.9);
-    --text-bg-hover: #383838;
-    --hr-border: rgba(255, 255, 255, 0.4);
-    --hr-before-color: rgba(255, 255, 255, 0.7);
-    --search-bg: #121212;
-    --search-input-color: rgba(255, 255, 255, 0.7);
-    --search-result-title: rgba(255, 255, 255, 0.9);
-    --white: rgba(255, 255, 255, 0.9);
-    --card-bg: #121212;
-    --pagination-btn-hover-color: #787878;
-    --pagination-btn-color: rgba(255, 255, 255, 0.7);
-    --btn-text-color: rgba(255, 255, 255, 0.7);
-
-    --widget-background: #121212;
-    --post_icon:#fff;
-
-
-    body:before {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.3);
-      content: '';
-      z-index: -1;
-    }
+    --theme-color: #1f1f1f; // 主题颜色
+    --theme-font-color: rgba(255, 255, 255, 0.7); // 主题字体颜色
+    --card-widget: #fff; // 卡片颜色
+    --link-cursor-color: #fff; // 链接悬停颜色
+    --btn-font-color: var(--theme-font-color); // 按钮字体颜色
   }
 
 }

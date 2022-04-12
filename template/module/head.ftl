@@ -1,4 +1,3 @@
-<#macro head type title >
     <head>
         <#include 'config.ftl'>
         <meta charset="utf-8">
@@ -30,7 +29,6 @@
         <link rel="preload stylesheet" as="style" href="${BASE_RES_URL}/source/css/min/responsive.min.css">
         <title>${title}</title>
         <@global.head />
-        <#nested>
         <style type="text/css">
             @font-face {
                 font-family: "By Font";
@@ -68,4 +66,3 @@
 
         </style>
     </head>
-</#macro>
