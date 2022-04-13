@@ -4,7 +4,6 @@
             src="${theme_base}/source/lib/loading/min/${settings.loading_style!}.min.js"></script></#if>
 <script id="browser-Compatibility">
     <#-- 兼容性检查-->
-
     function detectIE() {
         let n = window.navigator.userAgent, e = n.indexOf( "MSIE " );
         if ( e > 0 ) {
@@ -89,7 +88,21 @@
 <link rel="preload stylesheet" as="style" href="${BASE_RES_URL}/source/css/min/responsive.min.css">
 <link rel="preload stylesheet" as="style" href="${BASE_RES_URL}/source/lib/animate/animate.min.css">
 <@global.head />
+<style>
+    @font-face {
+        font-family: "Butterfly Font";
+        font-weight: 400;
+        font-style: normal;
+        font-display: swap;
+        src: url(${BASE_RES_URL!}/source/font/${settings.web_font!}) format("woff2");
+    }
 
+    html {
+        --cursor-default: url(${BASE_RES_URL!}/source/cursor/simple_cursor/default.cur), auto;
+        --cursor-link: url(${BASE_RES_URL!}/source/cursor/simple_cursor/link.cur), auto;
+    }
+
+</style>
 
 
 

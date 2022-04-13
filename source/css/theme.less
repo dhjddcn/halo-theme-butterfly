@@ -12,15 +12,24 @@ html {
   --theme-font-color: #4c4948; // 主题字体颜色
   --card-widget: #fff; // 卡片颜色
   --link-cursor-color: var(--theme-color); // 链接悬停颜色
-  --btn-font-color: #fff; // 按钮字体颜色
+  --btn-color: #fff; // 按钮字体颜色
+
+  //悬挂按钮
+  --suspend-btn-color: #fff; // 挂起按钮字体颜色
+  --suspend-btn-background-color: #fff; // 挂起按钮背景颜色
 
   //暗黑模式
   &[data-mode=dark] {
     --theme-color: #1f1f1f; // 主题颜色
     --theme-font-color: rgba(255, 255, 255, 0.7); // 主题字体颜色
+
+
     --card-widget: #fff; // 卡片颜色
     --link-cursor-color: #fff; // 链接悬停颜色
-    --btn-font-color: var(--theme-font-color); // 按钮字体颜色
+
+    //悬挂按钮
+    --suspend-btn-color: rgba(255, 255, 255, 0.7); // 挂起按钮字体颜色
+    --suspend-btn-background-color: #fff; // 挂起按钮背景颜色
   }
 
 }
