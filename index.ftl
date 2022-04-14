@@ -6,10 +6,13 @@
     <link rel="preload stylesheet" as="style" href="${BASE_RES_URL}/source/css/min/index.min.css">
     <style>
         body {
-        <#if settings.body_background?contains("http")> --theme-background: url(${settings.body_background!}) no-repeat fixed center / cover;
-        <#else> --theme-background: ${settings.body_background!};
+        <#if settings.body_background?contains("http")>
+            --theme-background: url(${settings.body_background!}) no-repeat fixed center / cover;
+        <#else>
+            --theme-background: ${settings.body_background!};
             --top-background-img: url(${settings.index_top_background_img});
-        </#if> --main-content-width: ${settings.content_max_width!};
+        </#if>
+            --main-content-width: ${settings.content_max_width!};
         }
     </style>
 </head>
