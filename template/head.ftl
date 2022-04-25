@@ -98,10 +98,10 @@
     }
 
     html {
+        --main-content-width: ${settings.content_max_width!};
         --cursor-default: url(${BASE_RES_URL!}/source/cursor/simple_cursor/default.cur), auto;
         --cursor-link: url(${BASE_RES_URL!}/source/cursor/simple_cursor/link.cur), auto;
     }
-
 </style>
 
 

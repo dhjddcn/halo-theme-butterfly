@@ -12,7 +12,6 @@
             --theme-background: ${settings.body_background!};
             --top-background-img: url(${settings.index_top_background_img});
         </#if>
-            --main-content-width: ${settings.content_max_width!};
         }
     </style>
 </head>
