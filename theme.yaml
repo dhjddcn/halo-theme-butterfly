@@ -8,7 +8,7 @@ logo: https://dhjdd.cn/logo
 website: https://dhjdd.cn
 repo: https://github.com/dhjddcn/halo-theme-butterfly
 cover: https://gitee.com/dhjdd/Timo/raw/master/1642841299688.png
-version: 1.0.0
+version: 1.5.0
 require: ^1.4.11
 ## 文章页 meta 变量
 #postMetaField:
