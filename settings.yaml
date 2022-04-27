@@ -1,5 +1,4 @@
-# 配置详情请参考：https://docs.halo.run/zh/developer-guide/theme/config-files
-genernal:
+base:
   label: 基本设置
   items:
     icp:
@@ -30,24 +29,7 @@ genernal:
       default: ""
       placeholder: "百度收录code"
       description: "文章页未收录时会自动将当前链接推送给百度加快收录，Token在百度收录平台注册账号获取（必须启用“检查百度收录”并填入token才生效），https://ziyuan.baidu.com/linksubmit"
-    enable_random_img_api:
-      name: enable_random_img_api
-      label: 启用随机图
-      type: switch
-      data-type: bool
-      default: true
-      description: "是否启用随机图API（必须先配置 API），开启后将使用随机图填充没有设置封面的 “文章|分类|标签”，未开启时使用主题内置的封面图"
-      options:
-        - value: true
-          label: 是
-        - value: false
-          label: 否
-    random_img_api:
-      name: random_img_api
-      label: 随机图 API
-      type: text
-      default: "https://api.ixiaowai.cn/gqapi/gqapi.php"
-      description: "自定义随机图API，用于填充没有设置封面的 “文章|分类|标签”，为空则使用默认随机图 API，免费 API 不会一直可用，请知悉"
+
 
 theme:
   label: 主题设置
@@ -318,6 +300,74 @@ index:
       placeholder: "文章列表分页"
       description: "文字列表分页数量，默认 3 页，每页条数可在halo后台文字设置修改"
 
+post:
+  label: 文章
+  items:
+    enable_post_aside:
+      name: enable_post_aside
+      label: 是否展示侧边栏
+      type: switch
+      data-type: bool
+      default: true
+      description: "是否展示侧边栏"
+      options:
+        - value: true
+          label: 是
+        - value: false
+          label: 否
+    enable_top_post_background_img:
+      name: enable_top_post_background_img
+      label: 开启顶部背景图
+      type: switch
+      data-type: bool
+      default: true
+      placeholder: "开启顶部背景图"
+      options:
+        - value: true
+          label: 是
+        - value: false
+          label: 否
+    enable_donate:
+      name: enable_donate
+      label: 开启打赏
+      type: switch
+      data-type: bool
+      default: false
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+    enable_random_img_api:
+      name: enable_random_img_api
+      label: 启用随机图
+      type: switch
+      data-type: bool
+      default: true
+      description: "是否启用随机图API（必须先配置 API），开启后将使用随机图填充没有设置封面的 “文章|分类|标签”，未开启时使用主题内置的封面图"
+      options:
+        - value: true
+          label: 是
+        - value: false
+          label: 否
+    random_img_api:
+      name: random_img_api
+      label: 随机图 API
+      type: text
+      default: "https://api.ixiaowai.cn/gqapi/gqapi.php"
+      description: "自定义随机图API，用于填充没有设置封面的 “文章|分类|标签”，为空则使用默认随机图 API，免费 API 不会一直可用，请知悉"
+    qrcode_zfb:
+      name: qrcode_zfb
+      label: "支付宝二维码"
+      type: attachment
+      default: ""
+      placeholder: "打赏用的支付宝收款二维码链接，不填不显示"
+    qrcode_wx:
+      name: qrcode_wx
+      label: "微信二维码"
+      type: attachment
+      default: ""
+      placeholder: "打赏用的微信收款二维码链接，不填不显示"
 
 archives:
   label: 归档
@@ -366,7 +416,6 @@ archives:
       default: "3"
       placeholder: "文章列表分页"
       description: "文字列表分页数量，默认 3 页，每页条数可在halo后台文字设置修改"
-
 
 categories:
   label: 分类
@@ -594,7 +643,6 @@ sheet:
       placeholder: "顶部背景图"
       description: "不配置默认使用首页背景图"
 
-
 code_block:
   label: 代码块
   items:
@@ -723,68 +771,6 @@ code_block:
         - value: "z-touch"
           label: "z-touch"
 
-post:
-  label: 文章
-  items:
-    enable_post_aside:
-      name: enable_post_aside
-      label: 是否展示侧边栏
-      type: switch
-      data-type: bool
-      default: true
-      description: "是否展示侧边栏"
-      options:
-        - value: true
-          label: 是
-        - value: false
-          label: 否
-    enable_top_post_background_img:
-      name: enable_top_post_background_img
-      label: 开启顶部背景图
-      type: switch
-      data-type: bool
-      default: true
-      placeholder: "开启顶部背景图"
-      options:
-        - value: true
-          label: 是
-        - value: false
-          label: 否
-    #    enable_aside_expander:
-    #      name: enable_aside_expander
-    #      label: 展示侧边栏切换按钮
-    #      type: switch
-    #      data-type: bool
-    #      default: true
-    #      description: "文章页顶部显示用于切换侧边栏显示/隐藏状态的按钮（仅在展示侧边栏情况下生效）"
-    #      options:
-    #        - value: true
-    #          label: 是
-    #        - value: false
-    #          label: 否
-    enable_donate:
-      name: enable_donate
-      label: 开启打赏
-      type: switch
-      data-type: bool
-      default: false
-      options:
-        - value: true
-          label: 开启
-        - value: false
-          label: 关闭
-    qrcode_zfb:
-      name: qrcode_zfb
-      label: "支付宝二维码"
-      type: attachment
-      default: ""
-      placeholder: "打赏用的支付宝收款二维码链接，不填不显示"
-    qrcode_wx:
-      name: qrcode_wx
-      label: "微信二维码"
-      type: attachment
-      default: ""
-      placeholder: "打赏用的微信收款二维码链接，不填不显示"
 
 social:
   label: 社交
