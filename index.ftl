@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <#include 'src/config.ftl' >
+    <#include 'src/head.ftl' >
+    <link rel="preload stylesheet" as="style" href="${base_url}/source/css/min/index.min.css">
     <title>首页</title>
 </head>
 <body>
