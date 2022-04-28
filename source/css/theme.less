@@ -10,11 +10,24 @@ html {
 
   --theme: #49b1f5; // 主题颜色
   --font-color: #4c4948; // 主题字体颜色
+  --site-title-color: #fff; // 网站标题颜色
+  --site-subtitle-color: #eee; // 网站副标题颜色
+
+
+
+  --white: #fff; // 白色
 
   //暗黑模式
   &[data-mode=dark] {
     --theme: #49b1f5; // 主题颜色
     --font-color: #4c4948; // 主题字体颜色
+    --site-title-color: rgba(255, 255, 255, 0.9); // 网站标题颜色
+    --site-subtitle-color: rgba(255,255,255,0.7); // 网站副标题颜色
+
+
+
+    --white: rgba(255, 255, 255, 0.9); // 白色
+
   }
 
 }
