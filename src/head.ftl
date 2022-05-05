@@ -77,7 +77,7 @@
 <meta property="twitter:partner" content="ogwp">
 <link rel="canonical" href="${blog_url!}">
 <link rel="preload stylesheet" as="style" href="${base_url}/source/lib/animate/animate.min.css"><#--插件-->
-<link rel="preload stylesheet" as="style" href="//at.alicdn.com/t/font_3318283_to1xkmck11i.css">
+<link rel="preload stylesheet" as="style" href="//at.alicdn.com/t/font_3318283_c96ntv13jo.css">
 <link rel="preload stylesheet" as="style" href="${base_url}/source/css/min/theme.min.css">
 <link rel="preload stylesheet" as="style" href="${base_url}/source/css/min/main.min.css">
 <link rel="preload stylesheet" as="style" href="${base_url}/source/css/min/responsive.min.css">

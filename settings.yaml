@@ -781,6 +781,12 @@ social:
       type: text
       default: ""
       placeholder: "邮箱地址"
+    qq:
+      name: qq
+      label: QQ
+      type: text
+      default: ""
+      placeholder: "qq号码"
     github:
       name: github
       label: Github

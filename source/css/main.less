@@ -27,6 +27,7 @@ a {
   text-decoration: none;
   overflow-wrap: break-word;
   word-wrap: break-word;
+  transition: all 0.2s;
 }
 
 h1,
@@ -76,6 +77,11 @@ body, p {
   cursor: var(--cursor-default);
 }
 
+svg {
+  width: 20px;
+  height: 20px;
+}
+
 
 a, a:active, img, button {
   cursor: var(--cursor-link);
@@ -100,6 +106,17 @@ a, a:active, img, button {
   background: var(--theme);
 }
 
+.butterfly-icon {
+  width: 20px;
+  height: 20px;
+  vertical-align: -1px;
+  fill: currentColor;
+  overflow: hidden;
+}
+
+.butterfly-iconfont {
+  font-size: inherit;
+}
 
 body {
   position: relative;
