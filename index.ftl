@@ -6,7 +6,7 @@
     <title>首页</title>
 </head>
 <body>
-<div id="Butterfly">
+<div id="Butterfly" class="index-page">
     <header class="header">
 
         <div class="site">

@@ -6,7 +6,7 @@ yarn-error.log
 run/
 logs/
 .DS_Store
-.idea
+.idea/
 .vscode
 .settings/
 *.swp
