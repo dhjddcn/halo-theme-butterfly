@@ -41,8 +41,8 @@ theme:
       default: "#49b1f5"
       placeholder: "请输入"
       description: "主题色（浅色）："
-    content_max_width:
-      name: content_max_width
+    layout_max_width:
+      name: layout_max_width
       label: 内容区最大宽度
       type: text
       default: "1200px"

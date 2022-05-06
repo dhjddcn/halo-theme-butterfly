@@ -6,6 +6,44 @@
  */
 
 .layout {
+  max-width: 1200px;
+  display: flex;
+  margin: 0 auto;
+  padding: 2rem 15px;
+  flex: 1;
+  height: 2000px;
+
+  &.aside_right {
+    flex-direction: row;
+  }
+
+  &.aside_left {
+    flex-direction: row-reverse;
+  }
+
+  &:is(.aside_right) .aside {
+    margin-left: 15px;
+  }
+
+  &:is(.aside_left) .aside {
+    margin-right: 15px;
+  }
+
+  .container {
+    flex: 1;
+    height: 500px;
+    background-color: red;
+  }
+
+  .aside {
+    width: 23.5%;
+    align-self: flex-start;
+    background-color: green;
+    height: 500px;
+
+
+  }
+
 
 }
 

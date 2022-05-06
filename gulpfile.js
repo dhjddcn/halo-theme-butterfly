@@ -62,7 +62,7 @@ gulp.task(
         gulp.watch( './source/css/*.less', gulp.series( 'css' ) );
         // noinspection JSCheckFunctionSignatures
         gulp.watch( './source/js/*.js', gulp.series( 'js' ) );
-        gulp.watch( './source/js/*.js', gulp.series( 'gzip' ) );
+        // gulp.watch( './source/js/*.js', gulp.series( 'gzip' ) );
     }
 );
 gulp.task(

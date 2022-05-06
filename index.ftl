@@ -1,12 +1,21 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
+    <title>首页</title>
     <#include 'src/head.ftl' >
     <link rel="preload stylesheet" as="style" href="${base_url}/source/css/min/index.min.css">
-    <title>首页</title>
+
+    <style>
+        body {
+            --layout-max-width: ${settings.layout_max_width};
+        }
+
+    </style>
 </head>
 <body>
-<div id="Butterfly" class="index-page">
+<div id="Butterfly" class="index">
+    <nav class="nav"></nav>
+
     <header class="header">
 
         <div class="site">
@@ -32,18 +41,17 @@
                 </a>
             </section>
         </div>
-
     </header>
 
-    <nav class="nav"></nav>
-
-    <main class="layout">
+    <main class="layout aside_right">
         <section class="container"></section>
         <aside class="aside"></aside>
     </main>
 
     <footer class="footer"></footer>
 </div>
+<script type="text/javascript" src="${base_url}/source/lib/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="${base_url}/source/js/min/main.min.js"></script>
 </body>
 </html>
 
