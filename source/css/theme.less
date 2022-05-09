@@ -2,33 +2,162 @@
  * @Author: 小红
  * @Date: 2022/4/12
  * @createTime: 2022/4/12
- * @Description: 变量
+ * @Description: 配置 | 变量
  */
 html {
+
+  @media (max-width: 640px) {
+    font-size: 14px;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 16px;
+
+  }
+  @media (max-width: 1024px) {
+    font-size: 18px;
+
+  }
+  @media (max-width: 1280px) {
+    font-size: 20px;
+  }
+  @media (max-width: 1536px) {
+    font-size: 22px;
+
+  }
+
+  // 变量
   --font-size: 14px; // 字体大小
   --font-family: "Butterfly Font", "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, "sans-serif"; // 字体
 
-  --theme: #49b1f5; // 主题颜色
-  --font-color: #4c4948; // 主题字体颜色
-  --site-title-color: #fff; // 网站标题颜色
-  --site-subtitle-color: #eee; // 网站副标题颜色
-
-
-
-  --white: #fff; // 白色
 
   //暗黑模式
   &[data-mode=dark] {
-    --theme: #49b1f5; // 主题颜色
-    --font-color: #4c4948; // 主题字体颜色
-    --site-title-color: rgba(255, 255, 255, 0.9); // 网站标题颜色
-    --site-subtitle-color: rgba(255,255,255,0.7); // 网站副标题颜色
 
-
-
-    --white: rgba(255, 255, 255, 0.9); // 白色
 
   }
 
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+textarea {
+  resize: none;
+  -webkit-appearance: none;
+}
+
+ul,
+ol,
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  transition: all 0.2s;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  position: relative;
+  margin: 1rem 0 0.7rem;
+  font-weight: 500;
+}
+
+img {
+  border: 0;
+  vertical-align: middle;
+  max-width: 100%;
+}
+
+img[src=""],
+img:not([src]) {
+  border: 0;
+  opacity: 0;
+}
+
+img[data-lazy-src]:not(.loaded,.error) {
+  filter: blur(10px) brightness(1);
+}
+
+svg,
+canvas {
+  vertical-align: middle;
+}
+
+button {
+  border: none;
+  font-size: 100%;
+  line-height: 1.15;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+body, p {
+  cursor: var(--cursor-default);
+}
+
+svg {
+  width: 20px;
+  height: 20px;
+}
+
+
+a, a:active, img, button {
+  cursor: var(--cursor-link);
+}
+
+::-webkit-scrollbar {
+  height: 6px;
+  width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background: var(--theme);
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::selection {
+  color: #fff;
+  background: var(--theme);
+}

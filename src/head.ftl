@@ -1,6 +1,7 @@
 <#-- 全局配置 -->
 <script id="browser-Compatibility">
     <#-- 兼容性检查-->
+
     function detectIE() {
         let n = window.navigator.userAgent, e = n.indexOf( "MSIE " );
         if ( e > 0 ) {
@@ -76,11 +77,10 @@
 <meta property="og:title" content="${blog_title!}">
 <meta property="twitter:partner" content="ogwp">
 <link rel="canonical" href="${blog_url!}">
-<link rel="preload stylesheet" as="style" href="${base_url}/source/lib/animate/animate.min.css"><#--插件-->
-<link rel="preload stylesheet" as="style" href="//at.alicdn.com/t/font_3318283_c96ntv13jo.css">
+<link rel="preload stylesheet" as="style" href="${base_url}/source/lib/animate/animate.min.css">
+<link rel="preload stylesheet" as="style" href="//at.alicdn.com/t/font_3318283_u905ffzuq99.css">
 <link rel="preload stylesheet" as="style" href="${base_url}/source/css/min/theme.min.css">
-<link rel="preload stylesheet" as="style" href="${base_url}/source/css/min/main.min.css">
-<link rel="preload stylesheet" as="style" href="${base_url}/source/css/min/responsive.min.css">
+<link rel="preload stylesheet" as="style" href="${base_url}/source/css/min/global.min.css">
 <@global.head />
 <style>
     @font-face {
@@ -90,9 +90,12 @@
         font-display: swap;
         src: url(${base_url!}/source/font/${settings.web_font!}) format("woff2");
     }
+
     html {
+        --theme: var(${settings.theme_color_light!});
         --main-content-width: ${settings.content_max_width!};
         --cursor-default: url(${base_url!}/source/cursor/simple_cursor/default.cur), auto;
         --cursor-link: url(${base_url!}/source/cursor/simple_cursor/link.cur), auto;
     }
+
 </style>
