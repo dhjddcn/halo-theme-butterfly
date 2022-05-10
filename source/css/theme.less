@@ -6,30 +6,9 @@
  */
 html {
 
-  @media (max-width: 640px) {
-    font-size: 14px;
-  }
-
-  @media (max-width: 768px) {
-    font-size: 16px;
-
-  }
-  @media (max-width: 1024px) {
-    font-size: 18px;
-
-  }
-  @media (max-width: 1280px) {
-    font-size: 20px;
-  }
-  @media (max-width: 1536px) {
-    font-size: 22px;
-
-  }
-
   // 变量
-  --font-size: 14px; // 字体大小
   --font-family: "Butterfly Font", "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, "sans-serif"; // 字体
-
+  --font-color: #333; // 字体颜色
 
   //暗黑模式
   &[data-mode=dark] {
@@ -38,27 +17,6 @@ html {
   }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 * {
@@ -80,6 +38,7 @@ li {
 }
 
 a {
+  color: var(--theme);
   text-decoration: none;
   overflow-wrap: break-word;
   word-wrap: break-word;
