@@ -4,6 +4,102 @@
  * @createTime: 2022/4/12
  * @Description: 全局样式
  */
+* {
+  box-sizing: border-box;
+  outline: none;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  position: relative;
+  min-height: 100%;
+  background: var(--body-background);
+  color: #4c4948;
+  font-size: var(--font-size);
+  font-family: var(--font-family);
+  line-height: 2;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+button {
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+ul,
+ol,
+li {
+  list-style: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  position: relative;
+  margin: 1rem 0 0.7rem;
+  font-weight: 500;
+}
+
+a {
+  color: #638fff;
+  text-decoration: none;
+  word-wrap: break-word;
+  transition: all 0.2s;
+  overflow-wrap: break-word;
+}
+
+a:hover {
+  color: #9fefaf;
+}
+
+
+img {
+  border: 0;
+  vertical-align: middle;
+  max-width: 100%;
+  transition: all 0.2s;
+}
+
+img[src=""],
+img:not([src]) {
+  border: 0;
+  opacity: 0;
+}
+
+img[data-lazy-src]:not(.loaded,.error) {
+  filter: blur(10px) brightness(1);
+}
+
+body, p {
+  cursor: var(--cursor-default);
+}
+
+a, a:active, img, button {
+  cursor: var(--cursor-link);
+}
+
+*::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--theme);
+}
+
+
+*::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+*::selection {
+  background-color: var(--theme);
+  color: #e21616;
+}
+
 .by-icon {
   width: 20px;
   height: 20px;
@@ -13,6 +109,7 @@
   font-size: inherit;
 }
 
-
+@import './header.less';
+@import './main.less';
 
 

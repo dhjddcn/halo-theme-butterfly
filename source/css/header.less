@@ -1,0 +1,34 @@
+/**
+ * @Author: 小红
+ * @Date: 2022/5/11
+ * @createTime: 2022/5/11
+ * @Description: 头部
+ */
+
+
+@keyframes header-down {
+  0% {
+    opacity: 0;
+    filter: alpha(opacity=0);
+    transform: translateY(-50px);
+  }
+  100% {
+    opacity: 1;
+    filter: none;
+    transform: translateY(0);
+  }
+}
+
+.header {
+  position: relative;
+  width: 100%;
+  background-color: var(--theme);
+  background-attachment: scroll;
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  transition: all 0.5s;
+  background-image: var(--top-background-img);
+  animation: header-down 1s;
+}
+

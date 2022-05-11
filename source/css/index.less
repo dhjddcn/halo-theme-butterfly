@@ -1,0 +1,88 @@
+/**
+ * @Author: 小红
+ * @Date: 2022/5/11
+ * @createTime: 2022/5/11
+ * @Description: 首页
+ */
+@import './global.less';
+
+@keyframes title-scale {
+  0% {
+    opacity: 0;
+    filter: alpha(opacity=0);
+    transform: scale(0.7);
+  }
+  100% {
+    opacity: 1;
+    filter: none;
+    transform: scale(1);
+  }
+}
+
+.index {
+  .header {
+    height: 100vh;
+    background-attachment: fixed;
+  }
+
+  .site {
+    &-info {
+      position: absolute;
+      top: 40%;
+      padding: 0 0.5rem;
+      width: 100%;
+    }
+
+    &_title {
+      font-size: 2.7rem;
+    }
+
+    &_subtitle {
+      font-size: 1.6rem;
+    }
+
+    &_title, &_subtitle {
+      color: #fff;
+      text-align: center;
+      text-shadow: 0.1rem 0.1rem 0.2rem rgb(0 0 0 / 15%);
+      line-height: 1.5;
+      animation: title-scale 1s;
+    }
+
+    &_icons {
+      display: none;
+      margin: 0 auto;
+      text-align: center;
+
+      a {
+        margin: 0 0.4rem;
+        color: #fff;
+        text-shadow: 0.1rem 0.1rem 0.2rem rgb(0 0 0 / 15%);
+        font-size: 1.7rem;
+      }
+    }
+
+  }
+
+}
+
+@media screen and (max-width: 768px) {
+  .header {
+
+    .site {
+
+      &_title {
+        font-size: 1.6rem;
+        font-weight: bold;
+      }
+
+      &_subtitle {
+        font-size: 1rem;
+      }
+
+      &_icons {
+        display: block;
+      }
+    }
+  }
+}
