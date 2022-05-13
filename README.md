@@ -7,6 +7,7 @@
 6. 修复目录页无法跳转的问题
 7. markdown样式>语法默认样式修改
 
+[我的个人博客](https://blog.tianray.cc/)
 
 
 <p align="center">Butterfly 主题 Halo 移植版</p>
