@@ -44,6 +44,10 @@
 
             </section>
 
+            <section class="header-down">
+                <i class="by-icon downArrow"></i>
+            </section>
+
         </header>
     </#if>
     <main class="main"></main>

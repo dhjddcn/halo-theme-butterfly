@@ -19,10 +19,48 @@
   }
 }
 
+@keyframes scroll-down-effect {
+  0% {
+    top: 0;
+    opacity: 0.4;
+    filter: alpha(opacity=40);
+  }
+  50% {
+    top: -16px;
+    opacity: 1;
+    filter: none;
+  }
+  100% {
+    top: 0;
+    opacity: 0.4;
+    filter: alpha(opacity=40);
+  }
+}
+
 .index {
   .header {
     height: 100vh;
     background-attachment: fixed;
+
+    &-down {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      text-align: center;
+      padding-bottom: 10px;
+
+      .by-icon {
+        position: relative;
+        font-size: 1.7rem;
+        font-weight: bold;
+        color: #fff;
+        text-align: center;
+        text-shadow: 0.1rem 0.1rem 0.2rem rgb(0 0 0 / 15%);
+        line-height: 1.5;
+        animation: scroll-down-effect 1.5s infinite;
+        cursor: var(--cursor-link);
+      }
+    }
   }
 
   .site {
@@ -34,11 +72,11 @@
     }
 
     &_title {
-      font-size: 2.7rem;
+      font-size: 2.6rem;
     }
 
     &_subtitle {
-      font-size: 1.6rem;
+      font-size: 1.5rem;
     }
 
     &_title, &_subtitle {
