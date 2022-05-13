@@ -67,7 +67,7 @@
                                         class="by-font by_icon_xinhao"></i></a>
                         </#if>
                         <#if settings.email != '' >
-                            <a href="${settings.email!}" target="_blank" title="邮箱"> <i
+                            <a href="mailto:${settings.email!}" target="_blank" title="邮箱"> <i
                                         class="by-font by_icon_youjian1"></i></a>
                         </#if>
                     </div>

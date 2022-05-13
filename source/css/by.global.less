@@ -816,7 +816,21 @@ hr {
 
     .by_catalogue {
       .toc {
-        padding: 0 1rem;
+        // padding: 0 1rem;
+        
+        .toc-list{
+          padding-left: 10px;
+        }
+  
+        .is-collapsed{
+          max-height: 0 !important;
+        }
+  
+        .is-collapsible {
+          max-height: 1000px;
+          overflow: hidden;
+          transition: all .3s ease-in-out;
+        }
 
         .toc-link {
           display: block;

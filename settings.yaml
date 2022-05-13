@@ -58,6 +58,18 @@ theme:
           label: 是
         - value: false
           label: 否
+    enable_background_strip:
+      name: enable_background_strip
+      label: 启用全局背景彩条
+      type: switch
+      data-type: bool
+      default: true
+      description: "关闭所有页面背景上的动态彩条"
+      options:
+        - value: true
+          label: 是
+        - value: false
+          label: 否
     body_background:
       name: body_background
       label: body背景图可选（url/颜色值）
@@ -635,6 +647,18 @@ post:
           label: 是
         - value: false
           label: 否
+    enable_top_random_img:
+      name: enable_top_random_img
+      label: 开启顶部背景图随机图API
+      type: switch
+      data-type: bool
+      default: true
+      placeholder: "开启顶部背景图随机图API"
+      options:
+        - value: true
+          label: 是
+        - value: false
+          label: 否
     #    enable_aside_expander:
     #      name: enable_aside_expander
     #      label: 展示侧边栏切换按钮
@@ -686,6 +710,12 @@ social:
       type: text
       default: ""
       placeholder: "github主页地址"
+    gitee:
+      name: gitee
+      label: Gitee
+      type: text
+      default: ""
+      placeholder: "gitee主页地址"
     zhihu:
       name: zhihu
       label: 知乎

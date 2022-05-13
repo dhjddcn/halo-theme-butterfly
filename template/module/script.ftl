@@ -5,8 +5,10 @@
 <#--加载-->
 <#--    <script src="${BASE_RES_URL!}/source/lib/pace/pace.min.js"></script>-->
 <#--背景-->
+    <#if settings.enable_background_strip>
+    <!-- 背景的动态条生成 -->
     <script src="${BASE_RES_URL!}/source/lib/effect/backdrop/silk.js"></script>
-
+    </#if>
     <#if type == 'index' && (settings.enable_top_background_img &&   settings.enable_top_index_background_img)>
         <script src="${BASE_RES_URL!}/source/lib/typed/typed.min.js"></script>
     </#if>
