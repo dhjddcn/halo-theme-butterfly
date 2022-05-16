@@ -2,9 +2,8 @@
 <html lang="zh-CN" data-mode="light">
 <head>
     <title>首页</title>
-    <#include 'src/config.ftl'>
+    <#include 'template/config.ftl'>
     <link rel="preload stylesheet" as="style" href="${base_url}/source/css/min/index.min.css">
-
     <style>
         body {
         <#if settings.body_background?contains("http")> --body-background: url(${settings.body_background!}) no-repeat fixed center / cover;
@@ -27,29 +26,52 @@
                 </div>
 
                 <div class="site_icons">
-                    <a href="${settings.github!}" target="_blank" class="icon_link" title="github">
-                        <i class="by-icon github"> </i>
+                    <a href="${settings.github!}" target="_blank" title="github">
+                        <i class="by-font by-icon-github"> </i>
                     </a>
                     <a href="tencent://AddContact/?fromId=45&fromSubId=1&subcmd=all&uin=${settings.qq}&website=${blog_url!}"
-                       class="icon_link" title="QQ">
-                        <i class="by-icon qq"> </i>
+                       title="QQ">
+                        <i class="by-font by-icon-qq"> </i>
                     </a>
-                    <a href="${settings.zhihu!}" target="_blank" class="icon_link" title="知乎">
-                        <i class="by-icon zhihu"> </i>
+                    <a href="${settings.zhihu!}" target="_blank" title="知乎">
+                        <i class="by-font by-icon-zhihu"> </i>
                     </a>
-                    <a href="mailto:${settings.email!}" class="icon_link" title="邮箱">
-                        <i class="by-icon email"> </i>
+                    <a href="mailto:${settings.email!}" title="邮箱">
+                        <i class="by-font by-icon-email"> </i>
                     </a>
                 </div>
 
             </section>
 
             <section class="header-down">
-                <i class="by-icon downArrow"></i>
+                <i class="by-font by-icon-downArrow"></i>
             </section>
 
         </header>
     </#if>
+    <nav class="nav">
+        <section class="nav-title">
+            <a href="/">
+                ${blog_title!}
+            </a>
+        </section>
+
+        <section class="nav-menus">
+            <div class="search">
+                <a href="">
+                    <i class="by-font by-icon-search"></i>
+                    <span>搜索</span>
+                </a>
+
+            </div>
+            <span class="toggle">
+                <a href="">
+                    <i class="by-font by-icon-toggle"></i>
+                </a>
+            </span>
+
+        </section>
+    </nav>
     <main class="main"></main>
     <footer class="footer"></footer>
 </div>

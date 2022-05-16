@@ -68,8 +68,8 @@ theme:
       default: "By Alibaba"
       description: "配置网站的字体，暂时提供 3 种供选择！"
       options:
-        - value: "HarmonyOS.woff2"
-          label: "harmonyos"
+        - value: "HarmonyOS_Sans_SC_Medium.woff2"
+          label: "Harmonyos"
         - value: "aqqxs.woff2"
           label: "Aqqxs"
         - value: "alibaba.woff2"
