@@ -1,3 +1,15 @@
+### 目前的修改记录
+1. 新增了新的社交媒体Gitee
+2. 首页打字效果修改为多行切换,需将个人说明以;分割
+3. 彩条可以在主题设置中关闭
+4. 文章页顶部背景图现在可以根据随机图API显示背景
+5. 修复邮箱地址跳转bug
+6. 修复目录页无法跳转的问题
+7. markdown样式>语法默认样式修改
+
+[我的个人博客](https://blog.tianray.cc/)
+
+
 <p align="center">Butterfly 主题 Halo 移植版</p>
 
 > `Butterfly` 是Hexo社区[hexo-theme-Butterfly](https://github.com/jerryc127) 此次移植Halo由原版的 pug模板引擎 调整为 freemarker， 保持灵活性的同时最大限度的移植了原版功能，希望大家喜欢 ❤️ <br>
