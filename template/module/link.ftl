@@ -47,7 +47,7 @@
     <link rel="preload stylesheet" as="style" href="${BASE_RES_URL!}/source/css/min/by.global.min.css">
     <link rel="preload stylesheet" as="style" href="${BASE_RES_URL!}/source/css/min/by.responsive.min.css">
     <link rel="preload stylesheet" as="style" href="${BASE_RES_URL!}/source/css/min/by.widget.min.css">
-
+    <link rel="preload" href="${BASE_RES_URL!}/source/font/${settings.web_font!}" as="font" type="font/woff2" crossorigin>
     <#if  type !='sheet'>
         <link rel="preload stylesheet" as="style" href="${BASE_RES_URL!}/source/css/min/by.${type}.min.css">
     </#if>
