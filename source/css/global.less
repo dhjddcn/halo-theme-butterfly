@@ -28,7 +28,7 @@ button {
   outline: 0;
   border: none;
   background: none;
-  cursor: pointer;
+  cursor: var(--cursor-link);
 }
 
 ul,
@@ -55,7 +55,6 @@ a:hover {
   color: #9fefaf;
 }
 
-
 img {
   border: 0;
   vertical-align: middle;
@@ -63,8 +62,7 @@ img {
   transition: all 0.2s;
 }
 
-img[src=""],
-img:not([src]) {
+img[src=""], img:not([src]) {
   border: 0;
   opacity: 0;
 }
@@ -105,6 +103,5 @@ a, a:active, img, button {
 }
 
 @import './header.less';
-@import './nav.less';
 @import './main.less';
 

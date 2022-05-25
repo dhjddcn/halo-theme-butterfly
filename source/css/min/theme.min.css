@@ -1,1 +1,1 @@
-html{--font-size:15px;--font-family:"Butterfly Font", "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, "sans-serif"}html,html[data-theme=dark]{--classAD:#eee}
+html{--font-size:14px;--font-family:"Butterfly Font", "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, "sans-serif";--font-color:#4c4948;--light-grey:#eee}html[data-theme=dark]{--font-color:rgba(255, 255, 255, 0.7);--light-grey:rgba(255, 255, 255, 0.7)}
