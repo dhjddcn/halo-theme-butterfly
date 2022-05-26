@@ -6,9 +6,10 @@
  */
 * {
   box-sizing: border-box;
-  outline: none;
   margin: 0;
   padding: 0;
+  outline: 0;
+  border: none;
 }
 
 body {
@@ -23,10 +24,7 @@ body {
 }
 
 button {
-  margin: 0;
-  padding: 0;
-  outline: 0;
-  border: none;
+
   background: none;
   cursor: var(--cursor-link);
 }
@@ -100,6 +98,8 @@ a, a:active, img, button {
 
 .by-font {
   font-size: inherit;
+  width: 20px;
+  height: 20px;
 }
 
 @import './header.less';

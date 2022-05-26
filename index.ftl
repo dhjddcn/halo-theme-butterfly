@@ -18,7 +18,7 @@
 
     <header class="header">
         <section class="navbar">
-            <a href="/" class="site-title" title="${blog_title!}">${blog_title!}</a>
+            <a href="${blog_url!}" class="site-title" title="${blog_title!}">${blog_title!}</a>
 
             <div class="action">
                 <a class="search item" href="javascript:void(0)">
@@ -32,11 +32,27 @@
 
 
             <nav class="menus">
-                <a href="" class="item">
-                    <i class="by-font by-icon-search"></i>
-                    <span>首页</span>
-                </a>
-                <a href="" class="item">分类</a>
+                <@menuTag method="tree"><#assign menuList=menus></@menuTag>
+
+                <@menuTag method="tree">
+
+                    <#list menuList?sort_by('priority') as menu>
+                        <#if menu.children?? && menu.children?size gt 0>
+                        <#else>
+                            <a href="${menu.url}" target="${menu.target!}" title="${menu.name}"
+                               class="item">
+                                <#if  menu.icon?? && menu.icon!=''>
+                                    <i class="${menu.icon}"></i>
+                                </#if>
+                                <span>${menu.name}</span>
+                            </a>
+                        </#if>
+
+                    </#list>
+                </@menuTag>
+
+
+
             </nav>
 
         </section>

@@ -74,7 +74,7 @@
 <meta property="og:title" content="${blog_title!}">
 <meta property="twitter:partner" content="ogwp">
 <link rel="canonical" href="${blog_url!}">
-<link rel="preload stylesheet" as="style" href="//at.alicdn.com/t/font_3318283_pet5a7rb7gn.css">
+<link rel="preload stylesheet" as="style" href="//at.alicdn.com/t/font_3318283_ity2d5rtanr.css">
 <link rel="preload stylesheet" as="style" href="${base_url}/source/css/min/theme.min.css">
 <link rel="preload stylesheet" as="style" href="${base_url}/source/css/min/global.min.css">
 <@global.head />
