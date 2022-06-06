@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN" data-mode="light">
+<html lang="zh-CN" data-theme="light">
 <head>
     <title>首页 ~ ${blog_title!}</title>
     <#include 'template/config.ftl'>
@@ -38,6 +38,14 @@
 
                     <#list menuList?sort_by('priority') as menu>
                         <#if menu.children?? && menu.children?size gt 0>
+                            <div class="nav-dropdown">
+                                <div class="item">
+                                    <#if  menu.icon?? && menu.icon!=''>
+                                        <i class="${menu.icon}"></i>
+                                    </#if>
+                                    <span>${menu.name}</span>
+                                </div>
+                            </div>
                         <#else>
                             <a href="${menu.url}" target="${menu.target!}" title="${menu.name}"
                                class="item">
@@ -50,7 +58,6 @@
 
                     </#list>
                 </@menuTag>
-
 
 
             </nav>
