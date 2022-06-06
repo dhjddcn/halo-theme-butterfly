@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN" data-theme="light">
+<html lang="zh-CN">
 <head>
     <title>首页 ~ ${blog_title!}</title>
     <#include 'template/config.ftl'>
@@ -13,62 +13,47 @@
         }
     </style>
 </head>
-<body>
+<body data-theme="light">
 <div id="Butterfly" class="index">
+    <@menuTag method="tree"><#assign menuList=menus></@menuTag>
+    <header class="by_header">
+        <section class="by_header__container">
 
-    <header class="header">
-        <section class="navbar">
-            <a href="${blog_url!}" class="site-title" title="${blog_title!}">${blog_title!}</a>
+            <a href="${blog_url!}" class="by_header__title" title="${blog_title!}">
+                ${blog_title!}
+            </a>
 
-            <div class="action">
-                <a class="search item" href="javascript:void(0)">
-                    <i class="by-font by-icon-search"></i>
-                    <span>搜索</span>
-                </a>
-                <a class="toggle item" href="javascript:void(0)">
-                    <i class="by-font by-icon-toggle"></i>
-                </a>
-            </div>
-
-
-            <nav class="menus">
-                <@menuTag method="tree"><#assign menuList=menus></@menuTag>
-
-                <@menuTag method="tree">
-
-                    <#list menuList?sort_by('priority') as menu>
-                        <#if menu.children?? && menu.children?size gt 0>
-                            <div class="nav-dropdown">
-                                <div class="item">
-                                    <#if  menu.icon?? && menu.icon!=''>
-                                        <i class="${menu.icon}"></i>
-                                    </#if>
-                                    <span>${menu.name}</span>
-                                </div>
-                            </div>
-                        <#else>
-                            <a href="${menu.url}" target="${menu.target!}" title="${menu.name}"
-                               class="item">
-                                <#if  menu.icon?? && menu.icon!=''>
-                                    <i class="${menu.icon}"></i>
-                                </#if>
-                                <span>${menu.name}</span>
+            <nav class="by_header__nav">
+                <#list menuList?sort_by('priority') as menu>
+                    <#if menu.children?? && menu.children?size gt 0>
+                        <div class="by_dropdown">
+                            <a class="item" href="javascript:" target="${menu.target!}" title="${menu.name}">
+                                <i class="${menu.icon}"></i>
+                                ${menu.name}
+                                <i class="by-font by-icon-downArrow"></i>
                             </a>
-                        </#if>
+                            <nav class="by_dropdown__menu">
+                            </nav>
+                        </div>
+                    <#else>
 
-                    </#list>
-                </@menuTag>
+                        <a class="item" href="${menu.url}" target="${menu.target!}" title="${menu.name}">
+                            <#if  menu.icon?? && menu.icon!=''>
+                                <i class="${menu.icon}"></i>
+                            </#if>
+                            ${menu.name}
+                        </a>
 
+                    </#if>
+                </#list>
 
             </nav>
 
+            <div class="by_header__action"></div>
+
         </section>
 
-        <section class="site-info"></section>
-
-        <section class="scroll-down"></section>
     </header>
-
 
     <main class="main"></main>
 
