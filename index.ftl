@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <title>首页 ~ ${blog_title!}</title>
+    <title>${blog_title!}</title>
     <#include 'template/config.ftl'>
     <link rel="preload stylesheet" as="style" href="${base_url}/source/css/min/index.min.css">
     <style>
@@ -17,7 +17,7 @@
 <div id="Butterfly" class="index">
     <@menuTag method="tree"><#assign menuList=menus></@menuTag>
     <header class="by_header">
-        <section class="by_header__container">
+        <section class="by_header__navbar">
 
             <a href="${blog_url!}" class="by_header__title" title="${blog_title!}">
                 ${blog_title!}
@@ -26,22 +26,32 @@
             <nav class="by_header__nav">
                 <#list menuList?sort_by('priority') as menu>
                     <#if menu.children?? && menu.children?size gt 0>
-                        <div class="by_dropdown">
-                            <a class="item" href="javascript:" target="${menu.target!}" title="${menu.name}">
+                        <div class="by_dropdown" trigger="hover" placement="60px">
+                            <a class="item" href="javascript:" target="${menu.target!}">
                                 <i class="${menu.icon}"></i>
-                                ${menu.name}
+                                <span>${menu.name}</span>
                                 <i class="by-font by-icon-downArrow"></i>
                             </a>
+
                             <nav class="by_dropdown__menu">
+                                <#list menu.children as child>
+                                    <a href="${child.url}" target="${child.target!}"
+                                       class="item ">
+                                        <#if  child.icon?? && child.icon!=''>
+                                            <i class="${child.icon}"></i>
+                                        </#if>
+                                        <span>${child.name}</span>
+                                    </a>
+                                </#list>
                             </nav>
                         </div>
                     <#else>
 
-                        <a class="item" href="${menu.url}" target="${menu.target!}" title="${menu.name}">
+                        <a class="item" href="${menu.url}" target="${menu.target!}">
                             <#if  menu.icon?? && menu.icon!=''>
                                 <i class="${menu.icon}"></i>
                             </#if>
-                            ${menu.name}
+                            <span>${menu.name}</span>
                         </a>
 
                     </#if>
@@ -49,7 +59,10 @@
 
             </nav>
 
-            <div class="by_header__action"></div>
+            <div class="by_header__action">
+                <i class="by-font by-icon-search"></i>
+                <i class="by-font by-icon-toggle"></i>
+            </div>
 
         </section>
 
@@ -63,6 +76,8 @@
 <script type="text/javascript" src="${base_url!}/source/lib/jquery/jquery.min.js"></script>
 <script type="text/javascript" src="${base_url!}/source/lib/wow/wow.min.js"></script>
 <script type="text/javascript" src="${base_url!}/source/lib/typed/typed.min.js"></script>
+<script type="text/javascript" src="${base_url!}/source/js/min/utils.min.js"></script>
+<script type="text/javascript" src="${base_url!}/source/js/min/main.min.js"></script>
 <script type="text/javascript" src="${base_url!}/source/js/min/index.min.js"></script>
 </body>
 </html>

@@ -1,17 +1,17 @@
 <#-- 全局配置 -->
 <script id="browser-Compatibility">
     function detectIE() {
-        let e = window.navigator.userAgent, t = e.indexOf( "MSIE " );
-        if ( t > 0 ) return parseInt( e.substring( t + 5, e.indexOf( ".", t ) ), 10 );
-        if ( e.indexOf( "Trident/" ) > 0 ) {
-            let t = e.indexOf( "rv:" );
-            return parseInt( e.substring( t + 3, e.indexOf( ".", t ) ), 10 )
+        let e = window.navigator.userAgent, t = e.indexOf("MSIE ");
+        if (t > 0) return parseInt(e.substring(t + 5, e.indexOf(".", t)), 10);
+        if (e.indexOf("Trident/") > 0) {
+            let t = e.indexOf("rv:");
+            return parseInt(e.substring(t + 3, e.indexOf(".", t)), 10)
         }
-        let n = e.indexOf( "Edge/" );
-        return n > 0 && parseInt( e.substring( n + 5, e.indexOf( ".", n ) ), 10 )
+        let n = e.indexOf("Edge/");
+        return n > 0 && parseInt(e.substring(n + 5, e.indexOf(".", n)), 10)
     }
 
-    detectIE() && (alert( "当前站点不支持IE浏览器或您开启了兼容模式，请使用其他浏览器访问或关闭兼容模式。" ), location.href = "https://www.baidu.com"), document.getElementById( "browser-Compatibility" ).remove();
+    detectIE() && (alert("当前站点不支持IE浏览器或您开启了兼容模式，请使用其他浏览器访问或关闭兼容模式。"), location.href = "https://www.baidu.com"), document.getElementById("browser-Compatibility").remove();
 </script>
 <#--定义可变属性，会根据页面的改变而变化  获取当前页面元数据，这里不要做解析-->
 <script id="meta-config" type='text/javascript'>
@@ -24,7 +24,7 @@
             </#if>
         },
     }
-    document.getElementById( 'meta-config' ).remove();
+    document.getElementById('meta-config').remove();
 </script>
 
 <#global mode = (blog_url?index_of("127.0.0.1") == -1)?then('production', 'development')>
@@ -37,12 +37,12 @@
     <#assign isNeeded = (key)?index_of('custom_')==-1 && valueString?index_of('<script')==-1 && valueString?index_of('<link')==-1>
     <#if isNeeded>
     var value = '${valueString?js_string}';
-    value = value.replace( /</g, "&lt;" ).replace( />/g, "&gt;" );
-    if ( /^(true|false)$/.test( value ) ) {
-        value = JSON.parse( value );
+    value = value.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+    if (/^(true|false)$/.test(value)) {
+        value = JSON.parse(value);
     }
-    if ( /^\d+$/.test( value ) ) {
-        value = Number( value );
+    if (/^\d+$/.test(value)) {
+        value = Number(value);
     }
     ThemeConfig['${key}'] = value;
     </#if>
@@ -50,8 +50,8 @@
     ThemeConfig['description'] = '${user.description!}';
     ThemeConfig['base_url'] = '${base_url}';
     ThemeConfig['birthday'] = '${(settings.site_birthday?? && settings.site_birthday?trim != "")?then(settings.site_birthday?trim, options.birthday?replace(",",""))}';
-    console.log( ThemeConfig );
-    document.getElementById( 'theme-config' ).remove();
+    console.log(ThemeConfig);
+    document.getElementById('theme-config').remove();
 </script>
 
 <meta charset="utf-8">
@@ -74,9 +74,12 @@
 <meta property="og:title" content="${blog_title!}">
 <meta property="twitter:partner" content="ogwp">
 <link rel="canonical" href="${blog_url!}">
-<link rel="preload stylesheet" as="style" href="//at.alicdn.com/t/font_3318283_ity2d5rtanr.css">
+<link rel="preload stylesheet" as="style" href="//at.alicdn.com/t/font_3318283_s9x8xik6fdr.css">
 <link rel="preload stylesheet" as="style" href="${base_url}/source/css/min/theme.min.css">
 <link rel="preload stylesheet" as="style" href="${base_url}/source/css/min/global.min.css">
+<link rel="preload stylesheet" as="style" href="${base_url}/source/css/min/responsive.min.css">
+<link rel="preload stylesheet" as="style" href="${base_url}/source/lib/animate/animate.min.css">
+<link rel="preload stylesheet" as="style" href="${base_url}/source/lib/hover/hover.min.css">
 <@global.head />
 
 <style>
