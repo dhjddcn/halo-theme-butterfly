@@ -67,22 +67,21 @@
       width: 100%;
       height: 60px;
       animation: navOpacity 1s;
-      //will-change: opacity, transform;
+      will-change: transform;
       display: flex;
-      transition: all .5s;
       flex-wrap: nowrap;
       justify-content: flex-start;
       align-items: center;
+      transition: .3s ease-out;
+      transform: translateY(0%);
 
       &.active {
-        transform: translate3d(0, -60px, 0);
+        transform: translateY(-100%);
       }
 
       &.down {
         background: rgba(255, 255, 255, 0.8);
         box-shadow: 0 5px 6px -5px rgb(133 133 133 / 60%);
-        transition: transform .5s ease-in-out, opacity .5s ease-in-out;
-
 
         .by_header__title, .by_header__nav .item, .by_header__action {
           color: var(--font-color);
@@ -95,7 +94,7 @@
       //flex: 1;
       text-shadow: 2px 2px 4px rgb(0 0 0 / 15%);
       font-weight: bold;
-      color: var(--Hee);
+      color: var(--HA);
       font-size: 1.2rem;
     }
 
@@ -116,7 +115,7 @@
         user-select: none;
         white-space: nowrap;
         transition: color .35s;
-        color: var(--Hee);
+        color: var(--HA);
         display: flex;
         align-items: center;
 
@@ -158,13 +157,60 @@
     &__action {
       text-align: right;
       flex: 1;
-      color: var(--Hee);
+      color: var(--HA);
       font-size: 1.1rem;
       cursor: var(--cursor-link);
 
       .by-icon-toggle > {
         display: none;
         margin-left: .4rem;
+      }
+    }
+
+    &__mask {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 4;
+      background: rgba(0, 0, 0, .5);
+      opacity: 0;
+      visibility: hidden;
+      transition: visibility .35s, opacity .35s;
+    }
+
+    &_search {
+      position: fixed;
+      top: 100px;
+      left: 50%;
+      z-index: 1001;
+      display: none;
+      margin-left: -300px;
+      padding: 20px;
+      width: 600px;
+      border-radius: 8px;
+      background: var(--search-bg);
+      animation: scale-up-center .5s;
+    }
+
+
+    &.slideOut {
+
+      .by_header__mask {
+        visibility: visible;
+        opacity: 1;
+      }
+
+    }
+
+
+    &.search {
+
+
+      .by_header__mask {
+        visibility: visible;
+        opacity: 1;
       }
     }
 
@@ -178,7 +224,7 @@
       position: absolute;
       display: none;
       width: max-content;
-      background-color: #f6f8fa;
+      background-color: var(--HB);
       box-shadow: 0 5px 20px -4px rgb(0 0 0 / 50%);
       animation: fadeIn 0.3s 0.1s ease both;
       border-radius: 5px;

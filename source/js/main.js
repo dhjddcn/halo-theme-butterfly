@@ -14,40 +14,25 @@ const MainContext = {
 
     // 滚动条相关
     scroll() {
-        let position = $(document).scrollTop();
+        let position = 0;
         const navbar = $('.by_header__navbar');
-        let initTop = 0;
         if (!navbar) return
+        const handleScroll = () => {
+            const currentTop = window.scrollY
 
-        //滚动方向
-        function scrollDirection(currentTop) {
-            const result = currentTop > initTop // true is down & false is up
-            initTop = currentTop
-            return result
-        }
-
-        const handleHeader = () => {
-            const currentTop = window.scrollY || document.documentElement.scrollTop;
-            const isDown = scrollDirection(currentTop);
-
-            if (currentTop > 56) {
-                if (isDown) {
-                    if (!navbar.hasClass('active')) navbar.addClass('active');
+            if (position > 0 && currentTop > 100) {
+                if (position > currentTop) {
+                    navbar.removeClass('active').addClass('down');
                 } else {
-                    if (navbar.hasClass('active')) navbar.removeClass('active');
+                    navbar.addClass('active').removeClass('down');
                 }
-                navbar.addClass('down');
             } else {
-                if (currentTop === 0) {
-                    navbar.removeClass('active down');
-
-                }
+                navbar.removeClass('active down');
             }
-
+            position = currentTop;
         };
 
-
-        document.addEventListener("scroll", Utils.throttle(handleHeader, 200));
+        document.addEventListener("scroll", Utils.throttle(handleScroll, 150));
     }
 
 };

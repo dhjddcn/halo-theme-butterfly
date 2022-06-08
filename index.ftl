@@ -16,7 +16,7 @@
 <body data-theme="light">
 <div id="Butterfly" class="index">
     <@menuTag method="tree"><#assign menuList=menus></@menuTag>
-    <header class="by_header">
+    <header class="by_header search">
         <section class="by_header__navbar">
 
             <a href="${blog_url!}" class="by_header__title" title="${blog_title!}">
@@ -66,9 +66,21 @@
 
         </section>
 
-    </header>
+        <section class="by_header__slideOut">
+        </section>
 
+
+        <section class="by_header__search"></section>
+
+        <div class="by_header__mask"></div>
+    </header>
     <main class="main"></main>
+
+    <div class="by_action">
+        <button class="darkMode" title="浅色和深色模式转换"></button>
+        <button class="message" title="在线留言"></button>
+        <button class="topUp" title="回到顶部"></button>
+    </div>
 
     <footer class="footer"></footer>
 </div>
