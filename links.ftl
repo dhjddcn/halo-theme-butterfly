@@ -12,7 +12,7 @@ enable_aside=settings.enable_links_aside
             <#list links as link>
                 <a class="by_link_card" href="${link.url}" target="_blank" title="${link.name!}">
                     <div class="info">
-                        <img src="${link.logo!}" alt="">
+                        <img src="${link.logo!}" alt="" onerror="this.src='${lazy_img}'">
                         <span>${link.name!}</span>
                     </div>
                     <div class="desc ">
