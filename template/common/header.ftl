@@ -61,10 +61,28 @@
                     <div class="by_site_subtitle center">
                         <span class="subtitle"></span>
                     </div>
+                    <div class="by_site_yiyan center"  style="color:#FFF;width:300px;margin:0 auto;">
+                        <div style="float:left;font-size:1.2rem">『</div>
+                        <div id="hitokoto_text" style="font-size:1.3rem;font-wight:30;"></div>
+                        <div style="float:right;font-size:1.2rem;position:relative;top:-35px">』</div>
+                        <div id="hitokoto_from" style="float:right;margin-top:20px"></div>
+                    </div>
+                    <!-- 现代写法，推荐(不支持 IE) -->
+                    <script>
+                    fetch('https://v1.hitokoto.cn')
+                        .then(response => response.json())
+                        .then(data => {
+                        const hitokoto = document.getElementById('hitokoto_text')
+                        hitokoto.innerText = data.hitokoto
+                        const hitokoto_from = document.getElementById('hitokoto_from')
+                        hitokoto_from.innerText = '—— 「' + data.from + '」'
+                        })
+                        .catch(console.error)
+                    </script>
                     <div class="by_site_social_icons center">
                         <#if settings.github != '' >
                             <a href="${settings.github!}" target="_blank" title="github"> <i
-                                        class="by-font by_icon_xinhao"></i></a>
+                                        class="by-font by_icon_github"></i></a>
                         </#if>
                         <#if settings.email != '' >
                             <a href="${settings.email!}" target="_blank" title="邮箱"> <i
