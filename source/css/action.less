@@ -14,4 +14,22 @@
   //opacity: 0;
 
   transition: all .5s;
+
+  > button {
+    display: block;
+    margin-bottom: 5px;
+    width: 35px;
+    height: 35px;
+    background-color: var(--theme);
+    color: var(--HC);
+    border-radius: 12px;
+    text-align: center;
+    font-size: 16px;
+    line-height: 35px;
+  }
+
+  &.active{
+    opacity: 1;
+    transform: translateX(-58px);
+  }
 }

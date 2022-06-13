@@ -8,26 +8,28 @@
 
 const IndexContext = {
     init() {
-        console.log( 111 );
-
+        // 箭头
+        $(".by_header__down").on('click', () => {
+            $( "body,html" ).animate( { scrollTop: $( ".by_main" ).offset().top }, 500 );
+        });
     },
     subtitleTyping() {
-        const subtitle = $( ".T" );
-        if ( !subtitle.length ) return;
+        const subtitle = $(".sub-text");
+        if (!subtitle.length) return;
 
-        new Typed( '.T', {
-            strings: [ ThemeConfig.description ],
+        new Typed('.sub-text', {
+            strings: [ThemeConfig.description],
             startDelay: 300,
             typeSpeed: 200,
             loop: true,
             backSpeed: 50,
-        } )
+        })
     }
 };
 
 
 !(function () {
-    document.addEventListener( "DOMContentLoaded", function () {
-        Object.values( IndexContext ).forEach( f => f() );
-    } );
+    document.addEventListener("DOMContentLoaded", function () {
+        Object.values(IndexContext).forEach(f => f());
+    });
 })();

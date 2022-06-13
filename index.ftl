@@ -16,7 +16,8 @@
 <body data-theme="light">
 <div id="Butterfly" class="index">
     <@menuTag method="tree"><#assign menuList=menus></@menuTag>
-    <header class="by_header search">
+    <#--头部-->
+    <header class="by_header">
         <section class="by_header__navbar">
 
             <a href="${blog_url!}" class="by_header__title" title="${blog_title!}">
@@ -69,20 +70,66 @@
         <section class="by_header__slideOut">
         </section>
 
+        <section class="by_header__search">
+            <div class="title-action">
+                <span class="title">文章搜索</span>
+                <img class="action" src="${base_url!}/source/svg/close.svg" alt="">
+            </div>
 
-        <section class="by_header__search"></section>
+            <form class="form" method="get" action="${blog_url!}/search">
+                <label>
+                    <input maxlength="16" autocomplete="off" name="keyword" class="form_input" placeholder="请输入搜索关键字..."
+                           type="text">
+                </label>
+            </form>
+            <hr>
+
+            <div> 回车搜索哟~</div>
+        </section>
+
+        <section class="by_header__site">
+            <h1 class="title">${blog_title!}</h1>
+            <div class="subtitle">
+                <span class="sub-text"></span>
+            </div>
+            <div class="icons">
+                <a href="index.ftl">
+                    <img src="${base_url!}/source/svg/github.svg" alt="">
+                </a>
+                <a href="index.ftl">
+                    <img src="${base_url!}/source/svg/qq.svg" alt="">
+                </a>
+                <a href="index.ftl">
+                    <img src="${base_url!}/source/svg/zhihu.svg" alt="">
+                </a>
+                <a href="index.ftl">
+                    <img src="${base_url!}/source/svg/email.svg" alt="">
+                </a>
+            </div>
+        </section>
+
+        <div class="by_header__down">
+            <img src="${base_url!}/source/svg/down.svg" alt="">
+        </div>
 
         <div class="by_header__mask"></div>
     </header>
-    <main class="main"></main>
-
+    <#--主内容-->
+    <main class="by_main"></main>
+    <#--操作-->
     <div class="by_action">
-        <button class="darkMode" title="浅色和深色模式转换"></button>
-        <button class="message" title="在线留言"></button>
-        <button class="topUp" title="回到顶部"></button>
-    </div>
+        <button class="by_action__model" title="浅色和深色模式转换">
 
-    <footer class="footer"></footer>
+        </button>
+        <button class="by_action__msg" title="在线留言">
+
+        </button>
+        <button class="by_action__topUp" title="回到顶部">
+
+        </button>
+    </div>
+    <#--页脚-->
+    <footer class="by_footer"></footer>
 </div>
 
 <script type="text/javascript" src="${base_url!}/source/lib/jquery/jquery.min.js"></script>

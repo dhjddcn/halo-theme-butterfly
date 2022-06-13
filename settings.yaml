@@ -34,13 +34,13 @@ base:
 theme:
   label: 主题设置
   items:
-    theme_color_light:
-      name: theme_color_light
-      label: 主题色（浅色）
+    theme_color:
+      name: theme_color
+      label: 主题色
       type: text
       default: "#49b1f5"
       placeholder: "请输入"
-      description: "主题色（浅色）："
+      description: "主题色）："
     main_max_width:
       name: main_max_width
       label: 内容区最大宽度

@@ -38,6 +38,70 @@
 .index {
   .by_header {
     height: 100vh;
+
+    &__site {
+      position: absolute;
+      margin: auto;
+      left: 0;
+      right: 0;
+      top: 43%;
+      padding: 0 2rem;
+      width: 100%;
+      text-align: center;
+      white-space: normal;
+
+      .title, .subtitle {
+        text-align: center;
+        text-shadow: 0.1rem 0.1rem 0.2rem rgb(0 0 0 / 15%);
+        line-height: 1.5;
+        animation: titleScale 1s;
+
+      }
+
+      .title {
+        margin: 0;
+        color: var(--HD);
+        font-size: 2rem;
+      }
+
+      .subtitle {
+        font-size: 1.45rem;
+        color: var(--HA);
+      }
+
+      .icons {
+        margin: 8px auto 0;
+        width: 15rem;
+        text-align: center;
+        display: none;
+
+        > a {
+          color: var(--HA);
+          text-shadow: 0.1rem 0.1rem 0.2rem rgb(0 0 0 / 15%);
+          margin: 0 0.5rem;
+          font-size: 1rem;
+        }
+
+      }
+    }
+
+
+    &__down {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      text-align: center;
+      padding-bottom: 10px;
+
+      > img {
+        position: relative;
+        width: 25px;
+        height: 25px;
+        line-height: 1.5;
+        animation: scrollDownEffect 1.5s infinite;
+        cursor: var(--cursor-link);
+      }
+    }
   }
 }
 

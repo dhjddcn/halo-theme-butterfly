@@ -1,4 +1,4 @@
-html {
+html #Butterfly {
   @media (max-width: 1760px) {
 
   }
@@ -28,23 +28,51 @@ html {
 
   @media (max-width: 768px) {
 
-    .by_header__navbar {
-      padding: 0 1.5rem;
-      font-size: 2rem;
+    .by_header {
 
-    }
-
-    .by_header__nav {
-      display: none;
-    }
-
-    .by_header__action {
-      font-size: 1.1rem;
-
-      .by-icon-toggle {
-        display: inline-block;
+      &__navbar {
+        padding: 0 1.5rem;
+        font-size: 2rem;
       }
+
+      &__nav {
+        display: none;
+      }
+
+      &__action {
+        font-size: 1.1rem;
+
+        .by-icon-toggle {
+          display: inline-block;
+        }
+      }
+
+      &__site {
+        > .title {
+          font-size: 2rem;
+        }
+
+        > .subtitle {
+          font-size: 1rem;
+        }
+
+        .icons {
+          display: block;
+        }
+      }
+
+      &__search{
+        top: 0;
+        left: 0;
+        margin: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+      }
+
     }
+
+
   }
 
   @media (max-width: 650px) {

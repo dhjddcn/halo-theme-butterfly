@@ -92,7 +92,7 @@
     }
 
     html {
-        --theme: ${settings.theme_color_light!};
+        --theme: ${settings.theme_color!};
         --main-max-width: ${settings.main_max_width!};
         --cursor-default: url(${base_url!}/source/cursor/simple_cursor/default.cur), auto;
         --cursor-link: url(${base_url!}/source/cursor/simple_cursor/link.cur), auto;
