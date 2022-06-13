@@ -1,23 +1,93 @@
 <#-- type 类型 title 标题  top_background_img 顶部背景图  -->
 <#macro header type  title top_background_img  >
     <header
-    class="by_header ${settings.nav_font_color!}"
-<#--    style="${()?then('','')}"-->
-    >
+    class="by_header ${settings.nav_font_color!}">
         <nav class="by_nav">
             <a class="by_blog_title" href=${blog_url!}>${blog_title!}</a>
-            <div class="by_menu">
-<#--                <div class="by_search">-->
-<#--                    <a class="by_site">-->
-<#--                        <i class="by-font by_icon_search"></i>-->
-<#--                        <span>搜索</span>-->
-<#--                    </a>-->
-<#--                </div>-->
+            <div class="by_menu"> 
                 <div class="by_toggle_menu">
                     <a class="by_site">
                         <i class="by-font by_icon_sangang"></i>
                     </a>
                 </div>
+                <script>
+                function search() {
+                  $('.by_local_search').css({"display":"block"});
+                }
+
+                function closed(){
+                  $('.by_local_search').css({"display":"none"});
+                }
+              </script>
+              <div class="by_search" onclick='search()'>
+                    <a class="by_site">
+                        <i class="by-font by_icon_search"></i>
+                        <span>搜索</span>
+                    </a>
+                </div>
+              <style>
+                .by_local_search{
+                  position: fixed;
+                  top: 0;
+                  right: 0;
+                  bottom: 0;
+                  left: 0;
+                  z-index: 200;
+                  display: none;
+                  background: rgba(0, 0, 0, 0.6);
+                }
+                .by_search_dialog{
+                  position: fixed;
+                  top: 5rem;
+                  left: 50%;
+                  z-index: 1001;
+                  margin-left: -15rem;
+                  padding: 1.5rem 1rem;
+                  width: 35rem;
+                  border-radius: 8px;
+                  background: var(--search-bg);
+                  animation: titlescale 0.5s;
+                }
+                .by_search_title {
+                  padding: 0 0 0.7rem;
+                  color: #49b1f5;
+                  font-size: 1.2rem;
+                  line-height: 1;
+                }
+                .search_close {
+                  position: absolute;
+                  top: 1rem;
+                  right: 1rem;
+                  color: #858585;
+                  font-size: 1.4em;
+                  line-height: 1;
+                  cursor: pointer;
+                  transition: color 0.2s ease-in-out;
+                }
+                .by_search_dialog input {
+                  padding: 0.25rem 0.7rem;
+                  width: 100%;
+                  outline: 0;
+                  border: 2px solid #49b1f5;
+                  border-radius: 2rem;
+                  background: var(--search-bg);
+                  color: var(--search-input-color);
+                  -webkit-appearance: none;
+                  font-family: var(--global-font-family);
+              }
+              </style>
+              <div class="by_local_search" style="display: none;">
+                <div class="by_search_dialog">
+                  <div class="by_search_title">文章搜索</div>
+                    <form class="search" method="get" action="${blog_url!}/search">
+                      <input maxlength="16" name="keyword" class="search_input" autocomplete="off" placeholder="请输入搜索关键字..." type="text">
+                    </form>
+                    <hr>
+                  <span class="search_close" onclick='closed()'>
+                    <i class="by-font by_icon_cuowu"></i>
+                  </span>
+                </div>
+              </div>
                 <ul class="by_menus">
                     <@menuTag method="tree">
                         <#list menus?sort_by('priority') as menu>
