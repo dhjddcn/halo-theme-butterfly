@@ -151,6 +151,23 @@
                     <input maxlength="16" name="keyword" class="search_input" autocomplete="off" placeholder="请输入搜索关键字..." type="text">
                 </form>
                 <hr>
+                <div>
+                  <i class="by-font by_icon_tag"></i>
+                  标签
+                </div>
+                <@tagTag method="list">
+                  <#if tags?? && tags?size gt 0>
+                      <#list tags as tag>
+                          <a class="by_tag hvr-float-shadow" href="${tag.fullPath!}"
+                            title="${tag.name!}">
+                              ${tag.name!}
+                              <span>${tag.postCount!}</span>
+                          </a>
+                      </#list>
+                  <#else>
+                      <@empty showBg = false/>
+                  </#if>
+                </@tagTag>
                 <span class="search_close">
                     <i class="by-font by_icon_cuowu"></i>
                 </span>

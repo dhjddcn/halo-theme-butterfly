@@ -45,7 +45,7 @@ const journalsContext = {
         if ( !$links.length ) return;
 
         $links.each( function () {
-            $( this ).css( { background: colors[parseInt( Math.random() * 28 )] } )
+            $( this ).css( { background: colors[parseInt( Math.random() * colors.length )] } )
         } )
     },
     initLike() {
