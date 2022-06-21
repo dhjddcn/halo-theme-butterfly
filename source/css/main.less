@@ -6,7 +6,24 @@
  */
 
 .by_main {
-  height: 2000px
+  width: var(--main-max-width);
+  margin: 0 auto;
+  padding: 2rem 15px;
+  display: flex;
+  justify-content: space-between;
+  flex: 1;
+
+
+  &__content {
+    flex: 1;
+    height: 2000px;
+    border: red solid 1px;
+  }
+
+  &__aside {
+    width: 23.5%;
+    align-self: flex-start;
+    border: red solid 1px;
+  }
+
 }
-
-

@@ -115,7 +115,14 @@
         <div class="by_header__mask"></div>
     </header>
     <#--主内容-->
-    <main class="by_main"></main>
+    <main class="by_main">
+        <section class="by_main__content">
+        </section>
+        <aside class="by_main__aside">
+121
+        </aside>
+
+    </main>
     <#--操作-->
     <div class="by_action">
         <button class="by_action__model" title="浅色和深色模式转换">
