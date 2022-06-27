@@ -79,7 +79,6 @@
 <link rel="preload stylesheet" as="style" href="${base_url}/source/css/min/global.min.css">
 <link rel="preload stylesheet" as="style" href="${base_url}/source/css/min/responsive.min.css">
 <link rel="preload stylesheet" as="style" href="${base_url}/source/lib/animate/animate.min.css">
-<link rel="preload stylesheet" as="style" href="${base_url}/source/lib/hover/hover.min.css">
 <@global.head />
 
 <style>
