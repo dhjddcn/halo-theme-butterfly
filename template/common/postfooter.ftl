@@ -5,15 +5,15 @@
     </div>
 
     <div class="by_copyright_author ellipsis">
-        <span class="by_copyright_meta">文章连结:</span>
+        <span class="by_copyright_meta">文章链接:</span>
         <span class="by_copyright_info"><a href="${post.fullPath!}" target="_blank"
                                            title="${post.fullPath!}">${post.fullPath!}</a></span>
     </div>
 
     <div class="by_copyright_author ellipsis">
         <span class="by_copyright_meta">版权声明:</span>
-        <span class="by_copyright_info">本部落格所有文章除特别声明外，均採用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
-                                                              rel="external nofollow noreferrer" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请註明来自 <a
+        <span class="by_copyright_info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
+                                                              rel="external nofollow noreferrer" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a
                     href="/" title="${user.nickname!}" target="_blank">${user.nickname!}</a>！</span>
     </div>
 </div>
