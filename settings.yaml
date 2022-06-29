@@ -399,6 +399,18 @@ links:
       default: "友情链接"
       placeholder: "请输入"
       description: "修改友链页顶部展示的标题"
+    links_type:
+      name: links_type
+      label: 友链展示方式
+      type: select
+      data-type: text
+      default: list
+      description: "配置友链的展示方式，默认按列表顺序展示，可在后台管理中配置排序值（分组暂不支持排序）"
+      options:
+        - value: list
+          label: 列表
+        - value: group
+          label: 分组
     enable_top_links_background_img:
       name: enable_top_links_background_img
       label: 开启顶部背景图
