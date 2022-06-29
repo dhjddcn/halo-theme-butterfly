@@ -24,7 +24,7 @@
     </header>
     <#--主内容-->
     <main class="main right">
-        <section class="box post_tile"></section>
+        <section class="box post_list"></section>
         <aside class="aside"></aside>
     </main>
     <#--底部-->
