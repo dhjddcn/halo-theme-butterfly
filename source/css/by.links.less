@@ -30,6 +30,15 @@
       border-radius: 0 0 29px 5px;
       //border: 1px #f8f8f8 solid;
       overflow: hidden;
+
+      &:hover {
+        box-shadow: var(--card-hover-box-shadow);
+
+        img {
+          animation: bounce-down 1.6s linear infinite;
+        }
+
+      }
   
       .desc {
         padding: 8px 20px;
@@ -64,6 +73,18 @@
       }
     }
   
+  }
+
+  @keyframes bounce-down {
+    25% {
+      transform: translateY(-4px);
+    }
+    50%, 100% {
+      transform: translateY(0);
+    }
+    75% {
+      transform: translateY(4px);
+    }
   }
 }
 
