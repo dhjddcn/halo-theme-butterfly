@@ -24,7 +24,7 @@ is_card 是否显示卡片
     <body>
     <div id="Butterfly" class="by_${type}">
         <@header type  title top_background_img  is_search  />
-        <main class="by_main">
+        <main class="by_main" id="content-inner">
             <div class="by_container ${( !settings.enable_aside || !enable_aside)?then('w-100','')}  ${is_card}">
                 <#nested >
             </div>
