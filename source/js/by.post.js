@@ -58,8 +58,8 @@ const postContext = {
             positionFixedSelector: ".by_catalogue", // 固定类添加的容器
             // positionFixedClass: "is-position-fixed", // 固定类名称
             fixedSidebarOffset: "auto",
-            disableTocScrollSync: true,
-            headingsOffset: $("#page").find(".pattern-center").length > 0 ? -500 : -230,
+            // disableTocScrollSync: true,
+            // headingsOffset: $("#page").find(".pattern-center").length > 0 ? -500 : -230,
             scrollEndCallback: function (e) {
               if ($(".is-active-link").length == 0) {
                 return;
