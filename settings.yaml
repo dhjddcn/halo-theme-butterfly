@@ -482,6 +482,32 @@ journals:
         - value: false
           label: 否
 
+comment:
+  label: 评论设置
+  items:
+    autoLoad:
+      name: autoLoad
+      label: 自动加载评论
+      type: radio
+      data-type: bool
+      default: true
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+    showUserAgent:
+      name: showUserAgent
+      label: 评论者 UA 信息
+      type: radio
+      data-type: bool
+      default: true
+      options:
+        - value: true
+          label: 显示
+        - value: false
+          label: 隐藏
+
 sheet:
   label: 自定义
   items:

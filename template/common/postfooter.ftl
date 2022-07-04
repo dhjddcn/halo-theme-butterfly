@@ -1,3 +1,4 @@
+<#macro postfooter>
 <div class="by_copyright">
     <div class="by_copyright_author">
         <span class="by_copyright_meta">文章作者:</span>
@@ -98,4 +99,6 @@
         <a href="${nextPost.fullPath!}" title="${nextPost.title!}">下一篇</a>
     </#if>
 </div>
-
+<#include "comments.ftl">
+<#--  <@comment post,'post' />  -->
+</#macro>

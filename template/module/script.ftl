@@ -26,7 +26,17 @@
         <script src="${BASE_RES_URL!}/source/lib/echarts/echarts.min.js"></script>
     </#if>
 
-
+    <#--  评论模块  -->
+    <#if type == 'post' || type == 'sheet'>
+        <script src="//cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.min.js"></script>
+        <script src="${options.comment_internal_plugin_js!'//cdn.jsdelivr.net/npm/halo-comment-normal@1.1.1/dist/halo-comment.min.js'}"></script>
+        <script>
+        var configs = {
+            autoLoad: ${settings.autoLoad?string("true", "false")},
+            showUserAgent: ${settings.showUserAgent?string("true", "false")}
+        }
+        </script>
+    </#if>
 
 <#-- 开发   -->
     <#if  mode == 'development'>
