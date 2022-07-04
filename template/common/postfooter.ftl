@@ -100,5 +100,5 @@
     </#if>
 </div>
 <#include "comments.ftl">
-<#--  <@comment post,'post' />  -->
+<@comment post,'post' />
 </#macro>
