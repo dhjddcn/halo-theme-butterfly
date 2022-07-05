@@ -481,6 +481,18 @@ journals:
           label: 是
         - value: false
           label: 否
+    journals_comment:
+      name: journals_comment
+      label: 评论功能
+      type: switch
+      data-type: bool
+      default: true
+      placeholder: "开启自定义页评论功能"
+      options:
+        - value: true
+          label: 是
+        - value: false
+          label: 否
 
 comment:
   label: 评论框
@@ -594,6 +606,18 @@ sheet:
       type: attachment
       default: "https://gitee.com/dhjdd/Timo/raw/master/1642841299688.png"
       placeholder: "顶部背景图"
+    sheet_comment:
+      name: sheet_comment
+      label: 评论功能
+      type: switch
+      data-type: bool
+      default: true
+      placeholder: "开启自定义页评论功能"
+      options:
+        - value: true
+          label: 是
+        - value: false
+          label: 否
 
 code_block:
   label: 代码块
@@ -797,6 +821,18 @@ post:
       type: attachment
       default: ""
       placeholder: "打赏用的微信收款二维码链接，不填不显示"
+    post_comment:
+      name: post_comment
+      label: 评论功能
+      type: switch
+      data-type: bool
+      default: true
+      placeholder: "开启自定义页评论功能"
+      options:
+        - value: true
+          label: 是
+        - value: false
+          label: 否
 
 social:
   label: 社交

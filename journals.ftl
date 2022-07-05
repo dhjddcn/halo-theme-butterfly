@@ -46,8 +46,12 @@ enable_aside=settings.enable_journals_aside
                     </div>
                 </div>
                 <div class="by_journal_comments">
-                  <#include "template/common/comments.ftl">
-                  <@comment journal,'journal' />
+                  <#if settings.journals_comment!false>
+                    <#include "template/common/comments.ftl">
+                    <@comment journal,'journal' />
+                  <#else>
+                    <span>博主关闭了评论功能</span>
+                  </#if>
                 </div>
             </div>
           </li>

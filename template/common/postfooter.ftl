@@ -99,6 +99,8 @@
         <a href="${nextPost.fullPath!}" title="${nextPost.title!}">下一篇</a>
     </#if>
 </div>
-<#include "comments.ftl">
-<@comment post,'post' />
+<#if settings.post_comment>
+    <#include "comments.ftl">
+    <@comment post,'post' />
+</#if>
 </#macro>
