@@ -3,7 +3,7 @@
         @font-face {
             font-family: "Butterfly Font";
             font-display: swap;
-            src: url(https://tianray.cc/blog/${settings.web_font!}) format("woff2");
+            src: url(${BASE_RES_URL!}/source/font/${settings.web_font!}) format("woff2");
         }
 
         html {
