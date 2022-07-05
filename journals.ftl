@@ -45,6 +45,10 @@ enable_aside=settings.enable_journals_aside
                       ${journal.commentCount!0}
                     </div>
                 </div>
+                <div class="by_journal_comments">
+                  <#include "template/common/comments.ftl">
+                  <@comment journal,'journal' />
+                </div>
             </div>
           </li>
         </#list>

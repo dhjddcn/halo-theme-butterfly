@@ -109,6 +109,31 @@ const journalsContext = {
 
 
     },
+    initComment(){
+
+        // 获取动态列表
+        const $allItems = $(".by_journal_item");
+        if ($allItems.length) {
+            $allItems.each(function (_, item) {
+                const $this = $(this);
+                var flag = false;
+                
+                // 获取点赞按钮和模块
+                const $comment = $this.find('.by_journal_comment')
+                const $commentModel = $this.find('.by_journal_comments')
+                $comment.on('click',function(e){
+                    if(!flag){
+                        $commentModel.show();
+                    }else{
+                        $commentModel.hide();
+                    }
+                    flag = !flag;
+                })
+            })
+        }
+
+        
+    },
     chart() {
         // const $categories = $( '.by_category' );
         //

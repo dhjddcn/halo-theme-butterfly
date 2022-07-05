@@ -483,30 +483,95 @@ journals:
           label: 否
 
 comment:
-  label: 评论设置
+  label: 评论框
   items:
-    autoLoad:
-      name: autoLoad
+    gravatar_source:
+      name: gravatar_source
+      label: 评论头像源
+      type: text
+      default: "https://gravatar.orangejx.cn/avatar"
+      placeholder: 请输入源地址，末尾不需要斜杠
+      description: "用于修改全站评论的头像源地址（优先取主题中配置的源，取不到时才从后台管理中取），默认为 https://gravatar.orangejx.cn/avatar（若头像显示不出来，请自行更换源）。关于头像类型，可以到 “后台管理-系统-博客设置-评论设置” 中配置"
+    enable_comment_autoload:
+      name: enable_comment_autoload
       label: 自动加载评论
-      type: radio
+      type: switch
       data-type: bool
       default: true
+      description: "是否自动加载评论数据，分页大小可在 “后台管理-系统-博客设置-评论设置-每页显示条数” 中统一配置"
       options:
         - value: true
           label: 开启
         - value: false
           label: 关闭
-    showUserAgent:
-      name: showUserAgent
-      label: 评论者 UA 信息
-      type: radio
+    enable_comment_ua:
+      name: enable_comment_ua
+      label: 展示评论者UA信息
+      type: switch
       data-type: bool
-      default: true
+      default: false
+      description: "用来控制全局评论组件中是否展示评论者的UA信息（浏览器、操作系统等）"
       options:
         - value: true
-          label: 显示
+          label: 开启
         - value: false
-          label: 隐藏
+          label: 关闭
+    comment_loading_style:
+      name: comment_loading_style
+      label: 评论加载样式
+      type: radio
+      data-type: text
+      default: default
+      description: "选择加载评论时的样式"
+      options:
+        - value: default
+          label: 默认
+        - value: circle
+          label: 圆圈
+        - value: balls
+          label: 小球
+    comment_aword:
+      name: comment_aword
+      label: "评论框内的一言"
+      type: text
+      default: "你是我一生只会遇见一次的惊喜 ..."
+      placeholder: 请输入
+      description: "输入内容时展示的的一言内容"
+    comment_author_poptext:
+      name: comment_author_poptext
+      label: "提示文案（输入昵称时）"
+      type: text
+      default: "你的昵称是啥呢？"
+      placeholder: 请输入
+      description: "填写昵称时的提示文字"
+    comment_email_poptext:
+      name: comment_email_poptext
+      label: "提示文案（输入邮箱时）"
+      type: text
+      default: "你将收到回复通知"
+      placeholder: 请输入
+      description: "填写邮箱时的提示文字"
+    comment_avatar_error:
+      name: comment_avatar_error
+      label: 缺省头像
+      type: text
+      placeholder: 请输入
+      default: "/themes/butterfly/source/img/error_avatar.jpg"
+      description: "当评论头像加载不出来时展示的默认头像"
+    comment_avatar_loading:
+      name: comment_avatar_loading
+      label: 头像加载图
+      type: text
+      placeholder: 请输入
+      default: "/themes/butterfly/source/img/loading.gif"
+      description: "头像加载时展示的loading图片"
+    comment_empty_text:
+      name: comment_empty_text
+      label: 无评论时的文案
+      type: text
+      default: "暂无评论"
+      placeholder: 请输入
+      description: "没有评论数据时显示的文字"
 
 sheet:
   label: 自定义
