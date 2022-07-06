@@ -5,22 +5,26 @@
  * @fileName: header
  */
 
-@keyframes fade-in-top {
-  0% {
-    opacity: 0;
-    filter: alpha(opacity=0);
-    transform: translateY(-50px);
-  }
-  100% {
-    opacity: 1;
-    filter: none;
-    transform: translateY(0);
-  }
-}
-
-
 .header {
   position: relative;
+  width: 100%;
+  height: 100vh;
+  transition: all .5s;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    background-image: var(--top-background-img);
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    animation: fade-in-top 1s;
+  }
 
   .navbar {
     width: 100%;
@@ -33,13 +37,13 @@
 
   //第一屏
   .above {
-    position: relative;
-    top: 0;
-    width: 100%;
-    height: 100vh;
-    transition: all 0.5s;
-    background: var(--top-background-img);
-    animation: fade-in-top 1s;
+    //position: relative;
+    //top: 0;
+    //width: 100%;
+    //height: 100vh;
+    //transition: all 0.5s;
+    //background: var(--top-background-img);
+    //animation: fade-in-top 1s;
   }
 
 

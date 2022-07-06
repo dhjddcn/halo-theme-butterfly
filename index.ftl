@@ -8,7 +8,7 @@
         body {
         <#if settings.body_background?contains("http")> --body-background: url(${settings.body_background!}) no-repeat fixed center / cover;
         <#else> --body-background: ${settings.body_background!};
-            --top-background-img: url(${settings.index_top_background_img}) no-repeat fixed center / cover;
+            --top-background-img: url(${settings.index_top_background_img});
         </#if>
         }
     </style>
@@ -20,11 +20,19 @@
         <section class="navbar">
         </section>
         <#include "template/above.ftl">
-        <@aboveIndex/>
+        <#--        <@aboveIndex/>-->
     </header>
     <#--主内容-->
     <main class="main right">
-        <section class="box post_list"></section>
+        <section class="box post_list">
+            <ul class="post_list--container">
+                <li class="post_item"></li>
+                <li class="post_item"></li>
+                <li class="post_item"></li>
+                <li class="post_item"></li>
+                <li class="post_item"></li>
+            </ul>
+        </section>
         <aside class="aside"></aside>
     </main>
     <#--底部-->
