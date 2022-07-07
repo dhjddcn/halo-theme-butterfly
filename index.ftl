@@ -19,27 +19,26 @@
     <header class="header">
         <section class="navbar">
         </section>
-        <#include "template/above.ftl">
+        <#--        <#include "template/above.ftl">-->
         <#--        <@aboveIndex/>-->
     </header>
     <#--主内容-->
     <main class="main right">
         <section class="box post_list">
-            <ul class="post_list--container">
-                <li class="post_item"></li>
-                <li class="post_item"></li>
-                <li class="post_item"></li>
-                <li class="post_item"></li>
-                <li class="post_item"></li>
-            </ul>
+
+            <#if (posts.content)?? && posts.content?size gt 0>
+                <#include "template/posts.ftl"><@Posts display="${settings.index_page!}"  />
+            <#else>
+                <#include "template/empty.ftl"><@empty/>
+            </#if>
         </section>
         <aside class="aside"></aside>
     </main>
     <#--底部-->
     <footer class=footer"></footer>
 </div>
-
 <script type="text/javascript" src="${base_url!}/source/lib/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="${base_url!}/source/lib/lazyLoad/lazyLoad.min.js"></script>
 <script type="text/javascript" src="${base_url!}/source/lib/wow/wow.min.js"></script>
 <script type="text/javascript" src="${base_url!}/source/lib/typed/typed.min.js"></script>
 <script type="text/javascript" src="${base_url!}/source/js/min/utils.min.js"></script>

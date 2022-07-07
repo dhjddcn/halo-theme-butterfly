@@ -41,7 +41,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 a {
-  color: #638fff;
+  //color: #638fff;
   text-decoration: none;
   word-wrap: break-word;
   transition: all 0.2s;
@@ -130,6 +130,34 @@ hr {
     opacity: 1;
     filter: none;
     transform: translateY(0);
+  }
+}
+
+.empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 32px 0;
+  margin: 0 0 20px;
+  color: #888;
+
+  &_icon {
+    width: 90px;
+    height: 90px;
+    margin-bottom: 20px;
+    fill: #888;
+  }
+}
+
+.widget {
+  transition: box-shadow .3s;
+  border-radius: var(--card-widget-border-radius);
+  background-color: var(--card-widget-background-color);
+  box-shadow: var(--card-widget-shadow);
+
+  &:hover {
+    box-shadow: 0 4px 12px 12px rgba(7, 17, 27, .15)
   }
 }
 

@@ -29,6 +29,8 @@
 
 <#global mode = (blog_url?index_of("127.0.0.1") == -1)?then('production', 'development')>
 <#global base_url = (theme_base)>
+<#global lazy_img = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' >
+<#global err_img = theme_base+'/source/img/404.png' >
 
 <script id="theme-config">
     let ThemeConfig = {};
@@ -80,6 +82,7 @@
 <link rel="preload stylesheet" as="style" href="${base_url}/source/css/min/responsive.min.css">
 <link rel="preload stylesheet" as="style" href="${base_url}/source/lib/animate/animate.min.css">
 <@global.head />
+
 
 <style>
     @font-face {

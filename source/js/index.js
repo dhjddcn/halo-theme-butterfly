@@ -9,9 +9,10 @@
 const IndexContext = {
     init() {
         // 箭头
-        $(".by_header__down").on('click', () => {
-            $( "body,html" ).animate( { scrollTop: $( ".by_main" ).offset().top }, 500 );
-        });
+        // $(".by_header__down").on('click', () => {
+        //     $( "body,html" ).animate( { scrollTop: $( ".by_main" ).offset().top }, 500 );
+        // });
+        console.log("首页");
     },
     subtitleTyping() {
         const subtitle = $(".sub-text");

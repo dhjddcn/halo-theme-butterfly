@@ -4,10 +4,19 @@ body {
   --font-family: "Butterfly Font", "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, "sans-serif"; // 字体
   --font-color: #4c4948;
 
+  --card-widget-border-radius: 20px; // 卡片边框圆角
+  --card-widget-background-color: rgba(255, 255, 255, 1); // 卡片背景色
+  --card-widget-shadow: 0 3px 8px 6px rgba(7, 17, 27, 0.05); // 卡片阴影
+  --posts-title-color: #1f2d3d; // 文章标题颜色
+
+
 
   //暗黑模式
   &[data-theme=dark] {
 
+    --card-widget-background-color: #121212; // 卡片背景色
+    --card-widget-shadow: 0 3px 8px 6px rgba(7, 17, 27, 0.05); // 卡片阴影
+    --posts-title-color: rgba(255, 255, 255, 0.9); // 文章标题颜色
 
   }
 
