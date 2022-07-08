@@ -25,7 +25,6 @@
     <#--主内容-->
     <main class="main right">
         <section class="box post_list">
-
             <#if (posts.content)?? && posts.content?size gt 0>
                 <#include "template/posts.ftl"><@Posts display="${settings.index_page!}"  />
             <#else>

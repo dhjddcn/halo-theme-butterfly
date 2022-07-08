@@ -17,6 +17,12 @@ const MainContext = {
         });
 
 
+    //    innerHeight
+
+        // $(".header").css("height", $(window).height() + "px");
+
+
+
     },
     // 滚动条相关
     scroll() {

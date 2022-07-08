@@ -89,7 +89,7 @@ theme:
       name: body_background
       label: body背景
       type: attachment
-      default: "linear-gradient(to top, #a8edea 0%, #fed6e3 100%)"
+      default: "#f6f7f9"
       placeholder: "body背景图"
       description: "body背景可选图片和颜色值(https://x.cn/bg.png或-#fff)，如果背景设置为图片，所有第一屏背景图将会失效！"
     widget_border_radius:

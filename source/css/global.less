@@ -14,7 +14,6 @@
 
 body {
   position: relative;
-  min-height: 100%;
   background: var(--body-background);
   color: #4c4948;
   font-size: var(--font-size);
@@ -41,22 +40,21 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 a {
-  //color: #638fff;
+
   text-decoration: none;
   word-wrap: break-word;
-  transition: all 0.2s;
   overflow-wrap: break-word;
+
+  &:hover {
+    color: var(--theme);
+  }
 }
 
-a:hover {
-  color: #9fefaf;
-}
 
 img {
   border: 0;
   vertical-align: middle;
   max-width: 100%;
-  transition: all 0.2s;
 }
 
 img[src=""], img:not([src]) {
@@ -152,12 +150,12 @@ hr {
 
 .widget {
   transition: box-shadow .3s;
-  border-radius: var(--card-widget-border-radius);
-  background-color: var(--card-widget-background-color);
-  box-shadow: var(--card-widget-shadow);
+  border-radius: var(--card-border-radius);
+  background-color: var(--card-background-color);
+  box-shadow: var(--card-box-shadow);
 
   &:hover {
-    box-shadow: 0 4px 12px 12px rgba(7, 17, 27, .15)
+    box-shadow: var(--card-box-shadow-hover)
   }
 }
 

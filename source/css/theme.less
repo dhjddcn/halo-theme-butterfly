@@ -2,21 +2,26 @@ body {
   // 变量
   --font-size: 14px; // 字体大小
   --font-family: "Butterfly Font", "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, "sans-serif"; // 字体
-  --font-color: #4c4948;
+  --font-color: #4c4948; // 字体颜色
 
-  --card-widget-border-radius: 20px; // 卡片边框圆角
-  --card-widget-background-color: rgba(255, 255, 255, 1); // 卡片背景色
-  --card-widget-shadow: 0 3px 8px 6px rgba(7, 17, 27, 0.05); // 卡片阴影
+  --card-border-radius: 10px; // 卡片边框圆角
+  --card-background-color: #fff; // 卡片背景色
+  --card-box-shadow: 0 2px 11px 0 rgba(0, 0, 0, 5%); // 卡片阴影
+  --card-box-shadow-hover: 0 2px 11px 0 rgba(0, 0, 0, 13%); // 卡片阴影（鼠标移入）
+
   --posts-title-color: #1f2d3d; // 文章标题颜色
-
-
+  --posts-meta-color: #858585; // 文章元数据颜色
 
   //暗黑模式
   &[data-theme=dark] {
+    --font-color: rgba(255, 255, 255, 0.6); // 字体颜色
 
-    --card-widget-background-color: #121212; // 卡片背景色
-    --card-widget-shadow: 0 3px 8px 6px rgba(7, 17, 27, 0.05); // 卡片阴影
+    --card-background-color: #121212; // 卡片背景色
+    --card-box-shadow: 0 3px 8px 6px rgba(7, 17, 27, 0.05); // 卡片阴影
+
     --posts-title-color: rgba(255, 255, 255, 0.9); // 文章标题颜色
+    --posts-meta-color: rgba(255, 255, 255, 0.6); // 文章元数据颜色
+
 
   }
 
