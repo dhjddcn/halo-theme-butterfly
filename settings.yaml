@@ -68,8 +68,8 @@ theme:
       default: "By Alibaba"
       description: "配置网站的字体，暂时提供 3 种供选择！"
       options:
-        - value: "HarmonyOS_Sans_SC_Medium.woff2"
-          label: "Harmonyos"
+        - value: "HarmonyOS_Sans_SC_Regular.woff"
+          label: "HarmonyOS_Sans_SC_Regular"
         - value: "aqqxs.woff2"
           label: "Aqqxs"
         - value: "alibaba.woff2"
@@ -106,13 +106,7 @@ theme:
       default: "rgba(255, 255, 255, 1)"
       placeholder: "卡片小部件背景透明度"
       description: "文章内容、列表、侧边栏透明度，透明值可选范围（0.1~1）1为不透明"
-    post_thumbnail:
-      name: post_thumbnail
-      label: 文章默认缩略图
-      width: 100%
-      type: attachment
-      default: "https://s2.loli.net/2022/03/26/4ubfeUW3sGvkTFX.png"
-      description: "文章无配图时生效，可使用占位图服务"
+
 
 aside:
   label: 侧边栏
@@ -272,12 +266,12 @@ index:
       name: index_post_layout
       label: 文章布局方式
       type: select
-      default: "post_layout_list"
+      default: "post_list"
       description: "文章布局方式 提供列表、平铺两种，仅首页生效！ "
       options:
-        - value: "post_layout_list"
+        - value: "post_list"
           label: "列表"
-        - value: "post_layout_tile"
+        - value: "post_tile"
           label: "平铺"
     index_list_effect_class:
       name: index_list_effect_class
@@ -338,6 +332,25 @@ post:
           label: 开启
         - value: false
           label: 关闭
+    enable_post_thumbnail:
+      name: enable_post_thumbnail
+      label: 启用文章默认缩略图
+      type: switch
+      data-type: bool
+      default: true
+      description: "是否启用文章默认缩略图  “文章|分类|标签”，未开启时，文章默认缩略图为空！"
+      options:
+        - value: true
+          label: 是
+        - value: false
+          label: 否
+    post_thumbnail:
+      name: post_thumbnail
+      label: 文章默认缩略图
+      width: 100%
+      type: attachment
+      default: "https://s2.loli.net/2022/03/26/4ubfeUW3sGvkTFX.png"
+      description: "文章无配图时生效，可使用占位图服务"
     enable_random_img_api:
       name: enable_random_img_api
       label: 启用随机图

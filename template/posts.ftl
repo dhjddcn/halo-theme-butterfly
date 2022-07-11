@@ -1,12 +1,13 @@
+<#--文章-->
 <#macro Posts  display method=""  slug="" keyword="" >
-    <ul class="post_list-content">
+    <ul class="posts_content">
         <#list posts.content as post>
-            <li class="post_list-item widget">
+            <li class="posts_item widget">
                 <a class="cover" href="${post.fullPath!}" title="${post.title!}">
+                    <@post_thumbnail thumbnail=post.thumbnail />
                     <img
                             src="${lazy_img}"
-                            data-lazy-src="${post.thumbnail!}"
-                            onerror="this.onerror=null,this.src='${err_img}'"
+                            data-lazy-src="${cover!}"
                             alt="${post.title!}"
                     />
                 </a>
@@ -14,7 +15,7 @@
                     <a class="info_title" href="${post.fullPath!}" title="${post.title!}">${post.title!}</a>
                     <div class="info_meta">
                         <span class="item createTime">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 48 45"><path
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 40 51"><path
                                         stroke-linejoin="round" stroke-width="4" stroke="#333"
                                         d="M5 19h38v21a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V19ZM5 9a2 2 0 0 1 2-2h34a2 2 0 0 1 2 2v10H5V9Z"
                                         data-follow-stroke="#333"/><path stroke-linejoin="round" stroke-linecap="round"
@@ -27,7 +28,7 @@
                         </span>
 
                         <span class="item updateTime">
-                            <svg viewBox="0 0 48 48" fill="none"
+                            <svg viewBox="0 0 48 52" fill="none"
                                  xmlns="http://www.w3.org/2000/svg"><path
                                         d="M24 44C35.0457 44 44 35.0457 44 24C44 12.9543 35.0457 4 24 4C12.9543 4 4 12.9543 4 24C4 35.0457 12.9543 44 24 44Z"
                                         fill="none" stroke="#333" stroke-width="4" stroke-linejoin="round"/><path
@@ -39,7 +40,7 @@
                         </span>
 
                         <span class="item visits">
-                            <svg viewBox="0 0 48 45" fill="none"
+                            <svg viewBox="0 0 48 50" fill="none"
                                  xmlns="http://www.w3.org/2000/svg"><path
                                         d="M24 36C35.0457 36 44 24 44 24C44 24 35.0457 12 24 12C12.9543 12 4 24 4 24C4 24 12.9543 36 24 36Z"
                                         fill="none" stroke="#333" stroke-width="4" stroke-linejoin="round"/><path
@@ -52,60 +53,87 @@
 
 
                     </div>
-                    <div class="info_meta">
-                        <span class="item commentCount">
-                            <svg viewBox="0 0 48 45" fill="none" xmlns="http://www.w3.org/2000/svg"><path
-                                        d="M4 6H44V36H29L24 41L19 36H4V6Z" fill="none" stroke="#333" stroke-width="4"
-                                        stroke-linecap="round" stroke-linejoin="round"/><path d="M23 21H25.0025"
-                                                                                              stroke="#333"
-                                                                                              stroke-width="4"
-                                                                                              stroke-linecap="round"/><path
-                                        d="M33.001 21H34.9999" stroke="#333" stroke-width="4" stroke-linecap="round"/><path
-                                        d="M13.001 21H14.9999" stroke="#333" stroke-width="4"
-                                        stroke-linecap="round"/></svg>
-                            <span>
-                               ${post.commentCount!0} 条评论
-                            </span>
-                        </span>
+                    <#--                    <div class="info_meta">-->
+                    <#--                        <span class="item commentCount">-->
+                    <#--                            <svg viewBox="0 0 48 45" fill="none" xmlns="http://www.w3.org/2000/svg"><path-->
+                    <#--                                        d="M4 6H44V36H29L24 41L19 36H4V6Z" fill="none" stroke="#333" stroke-width="4"-->
+                    <#--                                        stroke-linecap="round" stroke-linejoin="round"/><path d="M23 21H25.0025"-->
+                    <#--                                                                                              stroke="#333"-->
+                    <#--                                                                                              stroke-width="4"-->
+                    <#--                                                                                              stroke-linecap="round"/><path-->
+                    <#--                                        d="M33.001 21H34.9999" stroke="#333" stroke-width="4" stroke-linecap="round"/><path-->
+                    <#--                                        d="M13.001 21H14.9999" stroke="#333" stroke-width="4"-->
+                    <#--                                        stroke-linecap="round"/></svg>-->
+                    <#--                            <span>-->
+                    <#--                               ${post.commentCount!0} 条评论-->
+                    <#--                            </span>-->
+                    <#--                        </span>-->
 
-                        <span class="item categories">
-                            <svg viewBox="0 0 48 40" fill="none"
-                                 xmlns="http://www.w3.org/2000/svg"><path
-                                        d="M18 6H8C6.89543 6 6 6.89543 6 8V18C6 19.1046 6.89543 20 8 20H18C19.1046 20 20 19.1046 20 18V8C20 6.89543 19.1046 6 18 6Z"
-                                        fill="none" stroke="#333" stroke-width="4" stroke-linejoin="round"/><path
-                                        d="M18 28H8C6.89543 28 6 28.8954 6 30V40C6 41.1046 6.89543 42 8 42H18C19.1046 42 20 41.1046 20 40V30C20 28.8954 19.1046 28 18 28Z"
-                                        fill="none" stroke="#333" stroke-width="4" stroke-linejoin="round"/><path
-                                        d="M40 6H30C28.8954 6 28 6.89543 28 8V18C28 19.1046 28.8954 20 30 20H40C41.1046 20 42 19.1046 42 18V8C42 6.89543 41.1046 6 40 6Z"
-                                        fill="none" stroke="#333" stroke-width="4" stroke-linejoin="round"/><path
-                                        d="M40 28H30C28.8954 28 28 28.8954 28 30V40C28 41.1046 28.8954 42 30 42H40C41.1046 42 42 41.1046 42 40V30C42 28.8954 41.1046 28 40 28Z"
-                                        fill="none" stroke="#333" stroke-width="4" stroke-linejoin="round"/></svg>
-                            <span>
-                                  <#list post.categories as category>
-                                      <a class="link" href="${category.fullPath!}"
-                                         title="${category.name!}">${category.name!}</a>
-                                  </#list>
-                            </span>
-                        </span>
+                    <#--                        <span class="item categories">-->
+                    <#--                            <svg viewBox="0 0 48 40" fill="none"-->
+                    <#--                                 xmlns="http://www.w3.org/2000/svg"><path-->
+                    <#--                                        d="M18 6H8C6.89543 6 6 6.89543 6 8V18C6 19.1046 6.89543 20 8 20H18C19.1046 20 20 19.1046 20 18V8C20 6.89543 19.1046 6 18 6Z"-->
+                    <#--                                        fill="none" stroke="#333" stroke-width="4" stroke-linejoin="round"/><path-->
+                    <#--                                        d="M18 28H8C6.89543 28 6 28.8954 6 30V40C6 41.1046 6.89543 42 8 42H18C19.1046 42 20 41.1046 20 40V30C20 28.8954 19.1046 28 18 28Z"-->
+                    <#--                                        fill="none" stroke="#333" stroke-width="4" stroke-linejoin="round"/><path-->
+                    <#--                                        d="M40 6H30C28.8954 6 28 6.89543 28 8V18C28 19.1046 28.8954 20 30 20H40C41.1046 20 42 19.1046 42 18V8C42 6.89543 41.1046 6 40 6Z"-->
+                    <#--                                        fill="none" stroke="#333" stroke-width="4" stroke-linejoin="round"/><path-->
+                    <#--                                        d="M40 28H30C28.8954 28 28 28.8954 28 30V40C28 41.1046 28.8954 42 30 42H40C41.1046 42 42 41.1046 42 40V30C42 28.8954 41.1046 28 40 28Z"-->
+                    <#--                                        fill="none" stroke="#333" stroke-width="4" stroke-linejoin="round"/></svg>-->
+                    <#--                            <span>-->
+                    <#--                                  <#list post.categories as category>-->
+                    <#--                                      <a class="link" href="${category.fullPath!}"-->
+                    <#--                                         title="${category.name!}">${category.name!}</a>-->
+                    <#--                                  </#list>-->
+                    <#--                            </span>-->
+                    <#--                        </span>-->
 
-                        <span class="item tags">
-                     <svg viewBox="0 0 48 38" fill="none" xmlns="http://www.w3.org/2000/svg"><path
-                                 d="M34 10V4H8V38L14 35" stroke="#333" stroke-width="4" stroke-linecap="round"
-                                 stroke-linejoin="round"/><path d="M14 44V10H40V44L27 37.7273L14 44Z" fill="none"
-                                                                stroke="#333" stroke-width="4" stroke-linejoin="round"/></svg>
-                            <span>
-                             <#list post.tags as tag>
-                                 <a class="link" href="${tag.fullPath!}" title="${tag.name!}">${tag.name!}</a>
-                             </#list>
-                            </span>
-                        </span>
+                    <#--                        <span class="item tags">-->
+                    <#--                     <svg viewBox="0 0 48 38" fill="none" xmlns="http://www.w3.org/2000/svg"><path-->
+                    <#--                                 d="M34 10V4H8V38L14 35" stroke="#333" stroke-width="4" stroke-linecap="round"-->
+                    <#--                                 stroke-linejoin="round"/><path d="M14 44V10H40V44L27 37.7273L14 44Z" fill="none"-->
+                    <#--                                                                stroke="#333" stroke-width="4" stroke-linejoin="round"/></svg>-->
+                    <#--                            <span>-->
+                    <#--                             <#list post.tags as tag>-->
+                    <#--                                 <a class="link" href="${tag.fullPath!}" title="${tag.name!}">${tag.name!}</a>-->
+                    <#--                             </#list>-->
+                    <#--                            </span>-->
+                    <#--                        </span>-->
 
 
-                    </div>
+                    <#--                    </div>-->
                     <div class="info_content">${post.summary!}</div>
                 </div>
             </li>
         </#list>
     </ul>
+    <@pagination/>
 </#macro>
 
 
+<#--文章图片-->
+<#macro post_thumbnail thumbnail>
+    <#assign cover = thumbnail!?trim>
+    <#if cover == "">
+    <#--默认图-->
+        <#if settings.enable_post_thumbnail >
+            <#assign cover = settings.post_thumbnail>
+        </#if >
+    <#--随机图-->
+        <#if settings.enable_random_img_api  && settings.random_img_api != "">
+            <#assign cover = settings.random_img_api>
+        </#if >
+    </#if>
+</#macro>
+
+
+<#-- 页码-->
+<#macro pagination>
+    <ul class="pagination">
+        <li class="pagination_page prev"><a rel="prev" href=""><</a></li>
+        <li class="pagination_page active"><a href="">1</a></li>
+        <li class="pagination_page"><a href="">2</a></li>
+        <li class="pagination_page"><a href="">3</a></li>
+        <li class="pagination_page next"><a rel="next" href="">></a></li>
+    </ul>
+</#macro>

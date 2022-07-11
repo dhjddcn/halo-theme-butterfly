@@ -15,6 +15,7 @@
 </head>
 <body data-theme="light">
 <div id="Butterfly">
+    <#include "template/macro.ftl">
     <#--头部-->
     <header class="header">
         <section class="navbar">
@@ -23,18 +24,19 @@
         <#--        <@aboveIndex/>-->
     </header>
     <#--主内容-->
-    <main class="main right">
-        <section class="box post_list">
+    <main class="main ${settings.aside_position!}">
+        <section class="box ${settings.index_post_layout!}">
             <#if (posts.content)?? && posts.content?size gt 0>
                 <#include "template/posts.ftl"><@Posts display="${settings.index_page!}"  />
             <#else>
-                <#include "template/empty.ftl"><@empty/>
+                <@Empty/>
             </#if>
         </section>
         <aside class="aside"></aside>
     </main>
     <#--底部-->
     <footer class=footer"></footer>
+    <@NavigationWidget/>
 </div>
 <script type="text/javascript" src="${base_url!}/source/lib/jquery/jquery.min.js"></script>
 <script type="text/javascript" src="${base_url!}/source/lib/lazyLoad/lazyLoad.min.js"></script>

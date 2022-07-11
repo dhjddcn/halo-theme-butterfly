@@ -15,7 +15,7 @@
 body {
   position: relative;
   background: var(--body-background);
-  color: #4c4948;
+  color: var(--font-color);
   font-size: var(--font-size);
   font-family: var(--font-family);
   line-height: 2;
@@ -40,7 +40,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 a {
-
+  color: #6389b9;
   text-decoration: none;
   word-wrap: break-word;
   overflow-wrap: break-word;
@@ -157,6 +157,35 @@ hr {
   &:hover {
     box-shadow: var(--card-box-shadow-hover)
   }
+}
+
+.navigationWidget {
+  position: fixed;
+  right: -48px;
+  bottom: 40px;
+  z-index: 100;
+  transition: transform .5s;
+
+  &.active {
+    opacity: 0.8;
+    transform: translateX(-77px);
+  }
+
+  > button {
+    display: block;
+    margin-bottom: 5px;
+    width: 35px;
+    height: 35px;
+    border-radius: 5px;
+    background-color: var(--btn-bg);
+    color: var(--btn-color);
+    text-align: center;
+    font-size: 16px;
+    line-height: 35px;
+
+  }
+
+
 }
 
 @import './header.less';

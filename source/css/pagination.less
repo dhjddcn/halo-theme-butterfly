@@ -1,0 +1,42 @@
+/**
+ * @Description: 页码
+ * @author: Xiao'Hong
+ * @date: 2022/7/11
+ * @fileName: pagination
+ */
+
+.pagination {
+  margin-top: 20px;
+  text-align: center;
+
+  &_page {
+    display: inline-block;
+    margin: 0 6px;
+
+    & > a {
+      display: inline-block;
+      background-color: var(--card-background-color);
+      box-shadow: var(--card-box-shadow);
+      border-radius: 5px;
+      width: 33px;
+      height: 33px;
+      line-height: 33px;
+      transition: color .3s;
+
+
+      &:hover {
+        background-color: var(--pagination-hover-background-color);
+        color: var(--pagination-hover-color);
+      }
+    }
+
+    &.active a {
+      background-color: var(--theme);
+      color: var(--pagination-active-color);
+
+    }
+
+
+  }
+
+}
