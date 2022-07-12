@@ -4,29 +4,40 @@
  * @date: 2022/6/8
  * @fileName: action
  */
-
-#action {
+@import "fun";
+.actionWidget {
   position: fixed;
   right: -48px;
   bottom: 40px;
   z-index: 100;
-  transition: all .5s;
+  transition: transform .5s;
+
+  &.active {
+    opacity: 0.8;
+    transform: translateX(-77px);
+  }
 
   > button {
-    display: block;
+    .flex();
     margin-bottom: 5px;
     width: 35px;
     height: 35px;
-    background-color: var(--theme);
-    color: var(--HC);
-    border-radius: 12px;
+    border-radius: 5px;
+    background-color: var(--button-background-color);
+    color: var(--button-color);
     text-align: center;
     font-size: 16px;
     line-height: 35px;
+
+    > svg {
+      width: 20px;
+      height: 20px;
+      //vertical-align: middle;
+
+      path {
+        stroke: var(--button-color);;
+      }
+    }
   }
 
-  &.active {
-    opacity: 1;
-    transform: translateX(-58px);
-  }
 }

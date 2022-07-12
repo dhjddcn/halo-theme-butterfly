@@ -7,24 +7,28 @@
 
 
 const MainContext = {
-    // 初始化
-    init() {
-        //图片加载
+    //图片加载
+    lazyLoad() {
         window.lazyLoadInstance = new LazyLoad({
-            elements_selector: 'img',
-            threshold: 0,
-            data_src: 'lazy-src'
+            elements_selector: 'img', threshold: 0, data_src: 'lazy-src'
+        });
+    }, //主题
+    dataTheme() {
+        const body = $(document.body);
+        body.attr("data-theme", localStorage.getItem("data-theme") || "light");
+        const themeSwitch = $(".theme-switch")
+        themeSwitch.on("click", () => {
+            if (body.attr("data-theme") === 'light') {
+                body.attr("data-theme", "dark");
+                localStorage.setItem("data-theme", "dark");
+            } else {
+                body.attr("data-theme", 'light');
+                localStorage.setItem('data-theme', 'light')
+            }
         });
 
 
-    //    innerHeight
-
-        // $(".header").css("height", $(window).height() + "px");
-
-
-
-    },
-    // 滚动条相关
+    }, // 滚动条相关
     scroll() {
         // let position = 0;
         // const navbar = $('.by_header__navbar');
@@ -50,8 +54,7 @@ const MainContext = {
         // };
         //
         // document.addEventListener("scroll", Utils.throttle(handleScroll, 150));
-    },
-    action() {
+    }, action() {
         // const header = $('.by_header');
         // const search = $('.by-icon-search');
         // const mask = $('.by_header__mask');

@@ -94,6 +94,8 @@
     }
 
     html {
+        --font-size: 14px;
+        --font-family: "Butterfly Font", "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, "sans-serif";
         --theme: ${settings.theme_color!};
         --main-max-width: ${settings.main_max_width!};
         --cursor-default: url(${base_url!}/source/cursor/simple_cursor/default.cur), auto;

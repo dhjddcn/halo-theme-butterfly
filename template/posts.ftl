@@ -1,5 +1,5 @@
 <#--文章-->
-<#macro Posts  display method=""  slug="" keyword="" >
+<#macro Posts method  display   >
     <ul class="posts_content">
         <#list posts.content as post>
             <li class="posts_item widget">
@@ -15,37 +15,43 @@
                     <a class="info_title" href="${post.fullPath!}" title="${post.title!}">${post.title!}</a>
                     <div class="info_meta">
                         <span class="item createTime">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 40 51"><path
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 40 55">
+                                <path
                                         stroke-linejoin="round" stroke-width="4" stroke="#333"
                                         d="M5 19h38v21a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V19ZM5 9a2 2 0 0 1 2-2h34a2 2 0 0 1 2 2v10H5V9Z"
-                                        data-follow-stroke="#333"/><path stroke-linejoin="round" stroke-linecap="round"
-                                                                         stroke-width="4" stroke="#333"
-                                                                         d="M16 4v8M32 4v8M28 34h6M14 34h6M28 26h6M14 26h6"
-                                                                         data-follow-stroke="#333"/></svg>
+                                        data-follow-stroke="#333"/>
+                                <path stroke-linejoin="round" stroke-linecap="round"
+                                      stroke-width="4" stroke="#333"
+                                      d="M16 4v8M32 4v8M28 34h6M14 34h6M28 26h6M14 26h6"
+                                      data-follow-stroke="#333"/>
+                            </svg>
                             <time datetime="${post.createTime?string('yyyy-MM-dd')}">
                                 发表于<@global.timeline datetime=post.createTime />
                             </time>
                         </span>
 
                         <span class="item updateTime">
-                            <svg viewBox="0 0 48 52" fill="none"
-                                 xmlns="http://www.w3.org/2000/svg"><path
-                                        d="M24 44C35.0457 44 44 35.0457 44 24C44 12.9543 35.0457 4 24 4C12.9543 4 4 12.9543 4 24C4 35.0457 12.9543 44 24 44Z"
-                                        fill="none" stroke="#333" stroke-width="4" stroke-linejoin="round"/><path
+                            <svg viewBox="0 0 48 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M24 44C35.0457 44 44 35.0457 44 24C44 12.9543 35.0457 4 24 4C12.9543 4 4 12.9543 4 24C4 35.0457 12.9543 44 24 44Z"
+                                      fill="none" stroke="#333" stroke-width="4" stroke-linejoin="round"/>
+                                <path
                                         d="M24.0084 12.0001L24.0072 24.0089L32.4866 32.4883" stroke="#333"
-                                        stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                        stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
                             <time datetime="${post.updateTime?string('yyyy-MM-dd')}">
                                 更新于<@global.timeline datetime=post.updateTime />
                             </time>
                         </span>
 
                         <span class="item visits">
-                            <svg viewBox="0 0 48 50" fill="none"
-                                 xmlns="http://www.w3.org/2000/svg"><path
+                            <svg viewBox="0 0 48 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path
                                         d="M24 36C35.0457 36 44 24 44 24C44 24 35.0457 12 24 12C12.9543 12 4 24 4 24C4 24 12.9543 36 24 36Z"
-                                        fill="none" stroke="#333" stroke-width="4" stroke-linejoin="round"/><path
+                                        fill="none" stroke="#333" stroke-width="4" stroke-linejoin="round"/>
+                                <path
                                         d="M24 29C26.7614 29 29 26.7614 29 24C29 21.2386 26.7614 19 24 19C21.2386 19 19 21.2386 19 24C19 26.7614 21.2386 29 24 29Z"
-                                        fill="none" stroke="#333" stroke-width="4" stroke-linejoin="round"/></svg>
+                                        fill="none" stroke="#333" stroke-width="4" stroke-linejoin="round"/>
+                            </svg>
                             <span>
                                 预览 ${post.visits!0}
                             </span>
@@ -107,7 +113,7 @@
             </li>
         </#list>
     </ul>
-    <@pagination/>
+    <@Pagination  method display  />
 </#macro>
 
 
@@ -128,12 +134,32 @@
 
 
 <#-- 页码-->
-<#macro pagination>
-    <ul class="pagination">
-        <li class="pagination_page prev"><a rel="prev" href=""><</a></li>
-        <li class="pagination_page active"><a href="">1</a></li>
-        <li class="pagination_page"><a href="">2</a></li>
-        <li class="pagination_page"><a href="">3</a></li>
-        <li class="pagination_page next"><a rel="next" href="">></a></li>
-    </ul>
+<#macro Pagination method  display = "3" keyword="" slug="">
+    <@paginationTag method=method  keyword="${keyword!}" slug="${slug!}" page="${posts.number}" total="${posts.totalPages}" display=display >
+        <ul class="pagination">
+            <#if pagination.hasPrev>
+                <li class="pagination_page prev">
+                    <a rel="prev" href="${pagination.prevPageFullPath!}" title="上一页"><</a>
+                </li>
+            </#if>
+
+            <#list pagination.rainbowPages as number>
+                <#if number.isCurrent>
+                    <li class="pagination_page active">
+                        <a href="${number.fullPath!}" rel="index">${number.page!}</a>
+                    </li>
+                <#else >
+                    <li class="pagination_page">
+                        <a href="${number.fullPath!}" rel="index">${number.page!}</a>
+                    </li>
+                </#if>
+            </#list>
+
+            <#if pagination.hasNext>
+                <li class="pagination_page next">
+                    <a rel="next" href="${pagination.nextPageFullPath!}" title="下一页">></a>
+                </li>
+            </#if>
+        </ul>
+    </@paginationTag>
 </#macro>
