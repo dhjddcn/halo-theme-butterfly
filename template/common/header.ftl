@@ -1,5 +1,5 @@
 <#-- type 类型 title 标题  top_background_img 顶部背景图  -->
-<#macro header type  title top_background_img  >
+<#macro header type  title top_background_img is_search >
     <header
     class="by_header ${settings.nav_font_color!}"
 <#--    style="${()?then('','')}"-->
@@ -7,12 +7,12 @@
         <nav class="by_nav">
             <a class="by_blog_title" href=${blog_url!}>${blog_title!}</a>
             <div class="by_menu">
-<#--                <div class="by_search">-->
-<#--                    <a class="by_site">-->
-<#--                        <i class="by-font by_icon_search"></i>-->
-<#--                        <span>搜索</span>-->
-<#--                    </a>-->
-<#--                </div>-->
+                <div class="by_search">
+                    <a class="by_site">
+                        <i class="by-font by_icon_search"></i>
+                        <span>搜索</span>
+                    </a>
+                </div>
                 <div class="by_toggle_menu">
                     <a class="by_site">
                         <i class="by-font by_icon_sangang"></i>
@@ -54,7 +54,7 @@
             </div>
         </nav>
 
-        <#if settings.enable_top_background_img  && settings['enable_top_${type}_background_img'] >
+        <#if !is_search && settings.enable_top_background_img  && settings['enable_top_${type}_background_img'] >
             <div class="by_site_info">
                 <h1 class="by_site_title center ">${title!}</h1>
                 <#if type == 'index'   >
@@ -67,7 +67,7 @@
                                         class="by-font by_icon_xinhao"></i></a>
                         </#if>
                         <#if settings.email != '' >
-                            <a href="${settings.email!}" target="_blank" title="邮箱"> <i
+                            <a href="mailto:${settings.email!}" target="_blank" title="邮箱"> <i
                                         class="by-font by_icon_youjian1"></i></a>
                         </#if>
                     </div>
@@ -143,8 +143,36 @@
             </div>
         </#if >
 
-
-
+        <#--搜索弹窗-->
+        <div class="by_local_search">
+            <div class="by_search_dialog">
+                <div class="by_search_title">文章搜索</div>
+                <form class="search" method="get" action="/search">
+                    <input maxlength="16" name="keyword" class="search_input" autocomplete="off" placeholder="请输入搜索关键字..." type="text">
+                </form>
+                <hr>
+                <div>
+                  <i class="by-font by_icon_tag"></i>
+                  标签
+                </div>
+                <@tagTag method="list">
+                  <#if tags?? && tags?size gt 0>
+                      <#list tags as tag>
+                          <a class="by_tag hvr-float-shadow" href="${tag.fullPath!}"
+                            title="${tag.name!}">
+                              ${tag.name!}
+                              <span>${tag.postCount!}</span>
+                          </a>
+                      </#list>
+                  <#else>
+                      <@empty showBg = false/>
+                  </#if>
+                </@tagTag>
+                <span class="search_close">
+                    <i class="by-font by_icon_cuowu"></i>
+                </span>
+            </div>
+        </div>
 
         <#--移动端-->
         <div class="by_header_sidebar">

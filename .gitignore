@@ -12,6 +12,7 @@ logs/
 *.swp
 *.lock
 !.autod.conf.js
+.history
 
 dist/
 bak/

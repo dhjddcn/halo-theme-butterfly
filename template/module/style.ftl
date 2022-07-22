@@ -1,4 +1,4 @@
-<#macro style type top_background_img>
+<#macro style type top_background_img is_search>
     <style type="text/css">
         @font-face {
             font-family: "Butterfly Font";
@@ -28,7 +28,7 @@
         </#if>
 
 
-        <#if settings.enable_top_background_img  &&  settings['enable_top_${type}_background_img'] >
+        <#if !is_search && settings.enable_top_background_img  &&  settings['enable_top_${type}_background_img'] >
 
         html #Butterfly header {
             background-image: url(${top_background_img!})

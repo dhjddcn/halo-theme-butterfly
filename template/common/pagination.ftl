@@ -12,11 +12,15 @@
             <#list pagination.rainbowPages as number>
                 <#if number.isCurrent>
                     <li class="by_pagination_item active">
+                        <span>${number.page!}</span>
+                    </li>
+                <#elseif number.page == 1>
+                    <li class="by_pagination_item">
                         <a href="${number.fullPath!}">${number.page!}</a>
                     </li>
                 <#else>
                     <li class="by_pagination_item">
-                        <a href="${number.fullPath!}">${number.page!}</a>
+                        <a href="${number.fullPath!}/#content-inner">${number.page!}</a>
                     </li>
                 </#if>
             </#list>

@@ -14,11 +14,15 @@ const IndexContext = {
     subtitleTyping() {
         const subtitle = $( ".by_site_subtitle > .subtitle" );
         if ( !subtitle.length ) return;
+        var description = []
+        if ( ThemeConfig.description ) {
+          description = ThemeConfig.description.split(';');
+        }
         new Typed( '.by_site_subtitle > .subtitle', {
-            strings: [ ThemeConfig.description ],
-            startDelay: 300,
-            typeSpeed: 150,
-            loop: true,
+            strings: description,
+            startDelay: 300, // 开始之前延迟
+            typeSpeed: 150, // 打印速度
+            loop: true, // 是否循环
             backSpeed: 50,
         } )
     },
