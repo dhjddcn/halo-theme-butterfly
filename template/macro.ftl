@@ -1,3 +1,8 @@
+<@menuTag method="tree"><#assign menuList=menus></@menuTag>
+<@postTag method="count"> <#assign postCount=count> </@postTag>
+<@categoryTag  method="count"> <#assign categoryCount=count> </@categoryTag>
+<@commentTag method="count"> <#assign commentCount=count> </@commentTag>
+
 <#--empty-->
 <#macro Empty text='暂无数据' visibleIcon=true>
     <div class="empty">

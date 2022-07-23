@@ -8,6 +8,7 @@
                     <img
                             src="${lazy_img}"
                             data-lazy-src="${cover!}"
+                            onerror="this.src='${err_img}'"
                             alt="${post.title!}"
                     />
                 </a>
@@ -122,7 +123,7 @@
     <#assign cover = thumbnail!?trim>
     <#if cover == "">
     <#--默认图-->
-        <#if settings.enable_post_thumbnail >
+        <#if settings.enable_post_thumbnail  && !settings.enable_random_img_api>
             <#assign cover = settings.post_thumbnail>
         </#if >
     <#--随机图-->
@@ -139,7 +140,7 @@
         <ul class="pagination">
             <#if pagination.hasPrev>
                 <li class="pagination_page prev">
-                    <a rel="prev" href="${pagination.prevPageFullPath!}" title="上一页"><</a>
+                    <a rel="prev" href="${pagination.prevPageFullPath!}" title="上一页"></a>
                 </li>
             </#if>
 
@@ -156,8 +157,8 @@
             </#list>
 
             <#if pagination.hasNext>
-                <li class="pagination_page next">
-                    <a rel="next" href="${pagination.nextPageFullPath!}" title="下一页">></a>
+                <li class="pagination_page next aaaaaa">
+                    <a rel="next" href="${pagination.nextPageFullPath!}" title="下一页"></a>
                 </li>
             </#if>
         </ul>

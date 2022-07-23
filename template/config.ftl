@@ -31,6 +31,7 @@
 <#global base_url = (theme_base)>
 <#global lazy_img = 'data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=' >
 <#global cover_img = theme_base+'/source/img/cover.png' >
+<#global err_img = theme_base+'/source/img/404.png' >
 
 <script id="theme-config">
     let ThemeConfig = {};
@@ -94,7 +95,7 @@
     }
 
     html {
-        --font-size: 14px;
+        --font-size: 15px;
         --font-family: "Butterfly Font", "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, "sans-serif";
         --theme: ${settings.theme_color!};
         --main-max-width: ${settings.main_max_width!};

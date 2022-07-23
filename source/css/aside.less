@@ -5,9 +5,140 @@
  * @fileName: aside
  */
 
-
 .aside {
   width: 23.5%;
   align-self: flex-start;
-  //border: 1px solid red;
+
+  > section {
+    padding: 15px;
+
+    &:not(:first-child) {
+      margin-top: 15px;
+    }
+  }
+
+  &_info {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &--avatar {
+      width: 110px;
+      height: 110px;
+      border-radius: 100%;
+      overflow: hidden;
+
+      > img {
+        width: 100%;
+        height: 100%;
+        transition: filter 375ms ease-in .2s, transform .5s;
+        object-fit: cover;
+
+        &:hover {
+          transform: rotate(360deg);
+        }
+      }
+
+    }
+
+    &--name {
+      font-weight: 500;
+      font-size: 25px;
+    }
+
+    &--desc {
+      margin-top: -10px;
+    }
+
+    &--data {
+      text-align: center;
+      margin: 14px 0 4px;
+      display: table;
+      width: 100%;
+      table-layout: fixed;
+
+      > a {
+        display: table-cell;
+
+        .name {
+          color: var(--font-color);
+        }
+
+        .num {
+          color: var(--text-highlight-color);
+          font-size: 20px;
+          margin-top: -5px;
+        }
+      }
+    }
+
+    &--btn {
+      background-color: var(--button-background-color);
+      display: block;
+      border-radius: 18px;
+      overflow: hidden;
+      margin-top: 14px;
+      color: var(--button-color);
+      text-align: center;
+      line-height: 2.4;
+      width: 90%;
+      position: relative;
+      z-index: 0;
+
+      &:hover {
+        color: var(--button-color);
+
+        &:after {
+          height: 100%;
+        }
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        transition: height .3s ease;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 0;
+        background-color: var(--button-background-hover-color);
+      }
+
+    }
+
+    &--social {
+      margin: 15px 0 -6px;
+
+      a > {
+        display: inline-block;
+        margin: 0 10px;
+        transition: transform .3s;
+
+        &:hover {
+          transform: scale(1.1);
+        }
+      }
+    }
+
+
+  }
+
+  &_title {
+    margin: 0 0 8px;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+
+    > .name {
+      margin-left: 5px;
+    }
+  }
+
+  &_notice {
+    &--content {
+
+    }
+  }
 }
