@@ -92,20 +92,20 @@ theme:
       default: "#f6f7f9"
       placeholder: "body背景图"
       description: "body背景可选图片和颜色值(https://x.cn/bg.png或-#fff)，如果背景设置为图片，所有第一屏背景图将会失效！"
-    widget_border_radius:
-      name: widget_border_radius
+    card_border_radius:
+      name: card_border_radius
       label: 卡片小部件圆角
       type: text
-      default: "20px"
+      default: "15px"
       placeholder: "卡片圆角"
-      description: "文章内容、列表、侧边栏圆角"
-    widget_background:
-      name: widget_background
+      description: "文章内容、列表、侧边栏卡片圆角"
+    card_background_color:
+      name: card_background_color
       label: 卡片小部件背景透明度
       type: text
       default: "rgba(255, 255, 255, 1)"
       placeholder: "卡片小部件背景透明度"
-      description: "文章内容、列表、侧边栏透明度，透明值可选范围（0.1~1）1为不透明"
+      description: "文章内容、列表、侧边栏卡片透明度，透明值可选范围（0.1~1）1为不透明"
 
 
 aside:
@@ -177,25 +177,25 @@ aside:
       label: 最新文章条数
       default: 5
       description: "右侧最新文章展示条数，填写数字即可，默认展示最新的5篇文章（需开启最新文章）"
-    #    show_newreply:
-    #      name: show_newreply
-    #      label: 展示最新评论
-    #      type: switch
-    #      data-type: bool
-    #      default: true
-    #      description: "在右侧展示最新的评论"
-    #      options:
-    #        - value: true
-    #          label: 开启
-    #        - value: false
-    #          label: 关闭
-    #    newreply_page_size:
-    #      name: newreply_page_size
-    #      label: 最新评论条数
-    #      type: text
-    #      data-type: long
-    #      default: 5
-    #      description: "右侧最新评论展示条数，填写数字即可，默认展示最新的5条评论（需开启最新评论）"
+    aside_enable_comment:
+      name: aside_enable_comment
+      label: 展示最新评论
+      type: switch
+      data-type: bool
+      default: true
+      description: "在右侧展示最新的评论"
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+    aside_comment_page_size:
+      name: aside_comment_page_size
+      label: 最新评论条数
+      type: text
+      data-type: long
+      default: 5
+      description: "右侧最新评论展示条数，填写数字即可，默认展示最新的5条评论（需开启最新评论）"
     aside_enable_categories:
       name: aside_enable_categories
       label: 侧边栏展示分类
@@ -260,7 +260,7 @@ index:
       name: index_top_background_img
       label: 顶部背景图
       type: attachment
-      default: "https://gitee.com/dhjdd/Timo/raw/master/1646490291829.jpg"
+      default: ""
       placeholder: "顶部背景图"
     index_post_layout:
       name: index_post_layout

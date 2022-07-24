@@ -2,8 +2,8 @@ body {
   // 变量
   --font-color: #4c4948; // 字体颜色
 
-  --card-border-radius: 10px; // 卡片边框圆角
-  --card-background-color: #fff; // 卡片背景色
+  //--card-border-radius: 10px; // 卡片边框圆角
+  //--card-background-color: #fff; // 卡片背景色
   --card-box-shadow: 0 2px 11px 0 rgba(0, 0, 0, 5%); // 卡片阴影
   --card-box-shadow-hover: 0 2px 11px 0 rgba(0, 0, 0, 13%); // 卡片阴影（鼠标移入）
 
@@ -15,17 +15,21 @@ body {
   --pagination-active-color: #fff; // 页码（当前页）字体颜色
 
   --button-background-color: var(--theme); // 按钮背景色
-  --button-color:#fff; // 按钮颜色
+  --button-color: #fff; // 按钮颜色
   --button-background-hover-color: #ff7242; // 按钮背景色（鼠标移入）
 
   --scrollbar-thumb-color: var(--theme); // 滚动条滑块颜色
 
-  --text-highlight-color: #1f2d3d;  // 文本高亮颜色
+  --text-highlight-color: #1f2d3d; // 文本高亮颜色
+
+  --footer-background-color:rgba(255,255,255,-0.6); // 页脚背景色
 
 
   //暗黑模式
   &[data-theme=dark] {
-    --font-color: rgba(255,255,255,0.7); // 字体颜色
+    //--theme: #e3e3e3; // 主题色
+
+    --font-color: rgba(255, 255, 255, 0.7); // 字体颜色
 
     --card-background-color: #121212; // 卡片背景色
     --card-box-shadow: 0 3px 8px 6px rgba(7, 17, 27, 0.05); // 卡片阴影
@@ -38,7 +42,7 @@ body {
     --pagination-active-color: rgba(255, 255, 255, 0.9); // 页码（当前页）字体颜色
 
     --button-background-color: #3e3e48; // 按钮背景色
-    --button-color: rgba(255,255,255,0.7); // 按钮背景色
+    --button-color: rgba(255, 255, 255, 0.7); // 按钮背景色
     --button-background-hover-color: #787878; // 按钮背景色（鼠标移入）
 
 
@@ -46,8 +50,9 @@ body {
 
     --scrollbar-thumb-color: rgb(120, 120, 120); // 滚动条滑块颜色
 
-    --text-highlight-color: rgba(255,255,255,0.9);  // 文本高亮颜色
+    --text-highlight-color: rgba(255, 255, 255, 0.9); // 文本高亮颜色
 
+    --footer-background-color:rgba(255,255,255,0); // 页脚背景色
 
   }
 

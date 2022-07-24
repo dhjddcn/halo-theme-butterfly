@@ -23,9 +23,6 @@ html #Butterfly {
   }
 
   @media (max-width: 992px) {
-
-  }
-  @media (max-width: 955px) {
     .main {
       flex-direction: column;
       padding: 8px;
@@ -34,12 +31,20 @@ html #Butterfly {
     .aside {
       display: none;
     }
-  }
 
-  @media (max-width: 795px) {
+  }
+  @media (max-width: 955px) {
+
+  }
+  @media (max-width: 815px) {
+
+    .container .posts {
+      &_item {
+        font-size: 80%;
+      }
+    }
 
     .post_list .posts {
-
       &_item {
         flex-direction: column;
         height: auto;
@@ -56,6 +61,18 @@ html #Butterfly {
       }
 
     }
+
+
+    .post_tile .posts {
+      &_item {
+        width: 100%;
+        height: auto;
+      }
+    }
+  }
+
+  @media (max-width: 795px) {
+
 
   }
   @media (max-width: 768px) {

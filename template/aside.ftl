@@ -91,19 +91,188 @@
             </div>
         </section>
 
-        <section class="aside_notice widget">
-            <h2 class="aside_title">
-                <svg t="1658602358477" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
-                     p-id="6093" width="25" height="25">
-                    <path d="M921.9 468.6H749.6c-9.4 0-18.4 3.8-25 10.5-6.6 6.7-10.3 15.7-10.3 25.1v11.1c0 19.6 15.9 35.5 35.4 35.5h172.2c19.5 0 35.3-15.9 35.3-35.5v-11.1c0-9.4-3.7-18.4-10.3-25.1-6.6-6.7-15.6-10.5-25-10.5zM522.4 163.9c-53.6 42.6-165.7 102.3-246.3 159.8h-0.1c-0.9 0.6-1.8 3.8-2.8 4.3-9.5 5.4-13.8 20.1-65.6 20.1h-101c-26 0-42 12.2-42 39.6V631c0 27.4 14.7 40.9 42 40.9H208c51.5 0.1 55.7 14.8 65.2 20.1 0.9 0.5 1.8 3.7 2.7 4.3h0.1c78.2 57.5 191 121.8 246.4 162.7 16.7 12.3 72.1 33.9 72.1-42.1v-614c0-76.1-55.9-51.8-72.1-39z m159 167.8c9.2 16.1 27.3 20.2 40.5 9l141.5-119.3c13.3-11.1 16.5-33.2 7.4-49.4l-5.2-9.1c-9.1-16.1-27.3-20.1-40.5-9L683.6 273.2c-13.2 11.2-16.5 33.2-7.4 49.4l5.2 9.1z m40.4 347.4c-13.2-11.1-31.3-7-40.4 9l-5.2 9.1c-9.1 16.1-5.8 38.2 7.4 49.4L825.1 866c13.2 11.1 31.3 7.1 40.4-9l5.2-9.1c9.1-16.1 5.8-38.2-7.4-49.4L721.8 679.1z m0 0"
-                          p-id="6094" fill="#ff0000"></path>
-                </svg>
-                <span class="name">公告</span>
-            </h2>
+        <#if settings.aside_enable_notice && settings.aside_notice != ''>
+            <section class="aside_notice widget">
+                <h2 class="aside_title">
+                    <svg t="1658602358477" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                         p-id="6093" width="18">
+                        <path d="M921.9 468.6H749.6c-9.4 0-18.4 3.8-25 10.5-6.6 6.7-10.3 15.7-10.3 25.1v11.1c0 19.6 15.9 35.5 35.4 35.5h172.2c19.5 0 35.3-15.9 35.3-35.5v-11.1c0-9.4-3.7-18.4-10.3-25.1-6.6-6.7-15.6-10.5-25-10.5zM522.4 163.9c-53.6 42.6-165.7 102.3-246.3 159.8h-0.1c-0.9 0.6-1.8 3.8-2.8 4.3-9.5 5.4-13.8 20.1-65.6 20.1h-101c-26 0-42 12.2-42 39.6V631c0 27.4 14.7 40.9 42 40.9H208c51.5 0.1 55.7 14.8 65.2 20.1 0.9 0.5 1.8 3.7 2.7 4.3h0.1c78.2 57.5 191 121.8 246.4 162.7 16.7 12.3 72.1 33.9 72.1-42.1v-614c0-76.1-55.9-51.8-72.1-39z m159 167.8c9.2 16.1 27.3 20.2 40.5 9l141.5-119.3c13.3-11.1 16.5-33.2 7.4-49.4l-5.2-9.1c-9.1-16.1-27.3-20.1-40.5-9L683.6 273.2c-13.2 11.2-16.5 33.2-7.4 49.4l5.2 9.1z m40.4 347.4c-13.2-11.1-31.3-7-40.4 9l-5.2 9.1c-9.1 16.1-5.8 38.2 7.4 49.4L825.1 866c13.2 11.1 31.3 7.1 40.4-9l5.2-9.1c9.1-16.1 5.8-38.2-7.4-49.4L721.8 679.1z m0 0"
+                              p-id="6094" fill="#ff0000"></path>
+                    </svg>
+                    <span class="name">公告</span>
+                </h2>
 
-            <div class="aside_notice--content">${settings.aside_notice!}</div>
-        </section>
+                <div class="aside_notice--content">${settings.aside_notice!}</div>
+            </section>
+        </#if >
 
+        <#if postCount?number gt 0 >
+            <#if settings.aside_enable_newest_post >
+                <section class="aside_article widget">
+                    <h2 class="aside_title">
+                        <svg t="1658632374717" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                             p-id="28545" width="18">
+                            <path d="M512 924c-55.6 0-109.6-10.9-160.4-32.4-49.1-20.8-93.1-50.5-131-88.3-37.8-37.8-67.5-81.9-88.3-131C110.9 621.6 100 567.6 100 512s10.9-109.6 32.4-160.4c20.8-49.1 50.5-93.1 88.3-131 37.8-37.8 81.9-67.5 131-88.3C402.4 110.9 456.4 100 512 100c75.8 0 150 20.8 214.4 60.1 11.8 7.2 15.5 22.6 8.3 34.4-7.2 11.8-22.6 15.5-34.4 8.3C643.8 168.2 578.6 150 512 150c-199.6 0-362 162.4-362 362s162.4 362 362 362 362-162.4 362-362c0-11.6-0.6-23.3-1.7-34.8-1.3-13.7 8.8-26 22.5-27.3 13.7-1.3 26 8.8 27.3 22.5 1.2 13.1 1.9 26.4 1.9 39.6 0 55.6-10.9 109.6-32.4 160.4-20.8 49.1-50.5 93.1-88.3 131-37.8 37.8-81.9 67.5-131 88.3C621.6 913.1 567.6 924 512 924z"
+                                  p-id="28546" fill="#1296db"></path>
+                            <path d="M696.4 512.5H508.3c-13.8 0-25 11.3-25 25s11.2 25 25 25h188.1c13.8 0 25-11.3 25-25s-11.2-25-25-25z"
+                                  p-id="28547" fill="#1296db"></path>
+                            <path d="M508.3 313c-13.8 0-25 11.3-25 25v199.5c0 13.8 11.3 25 25 25s25-11.3 25-25V338c0-13.7-11.2-25-25-25zM865.7 258.9l-42.4-137.7c-7.2-23.4-37.9-28.8-52.6-9.3L669 246.4c-14.8 19.5-1.2 47.5 23.3 48.1l144.1 3.2c20.4 0.5 35.3-19.2 29.3-38.8zM510 798.3c-13.8 0-25 11.3-25 25v11.5c0 13.8 11.3 25 25 25s25-11.3 25-25v-11.5c0-13.8-11.2-25-25-25zM509 167.3c-13.8 0-25 11.3-25 25v11.5c0 13.8 11.3 25 25 25s25-11.3 25-25v-11.5c0-13.8-11.2-25-25-25zM205.3 515.5h-11.5c-13.8 0-25 11.3-25 25s11.3 25 25 25h11.5c13.8 0 25-11.3 25-25s-11.3-25-25-25zM828.3 515.5h-12.5c-13.8 0-25 11.3-25 25s11.3 25 25 25h12.5c13.8 0 25-11.3 25-25s-11.3-25-25-25z"
+                                  p-id="28548" fill="#1296db"></path>
+                        </svg>
+                        <span class="name">最新文章</span>
+                    </h2>
 
+                    <ul class="aside_article--content">
+                        <@postTag method="latest" top="${settings.aside_newest_page_size!}">
+                            <#list posts?sort_by("editTime")?reverse as post>
+                                <@post_thumbnail thumbnail=post.thumbnail />
+
+                                <li class="item">
+                                    <a class="cover" href="${post.fullPath!}" title="${post.title!}">
+                                        <img
+                                                src="${lazy_img}"
+                                                data-lazy-src="${cover!}"
+                                                onerror="this.src='${err_img}'"
+                                                alt="${post.title!}"
+                                        />
+
+                                    </a>
+                                    <a class="info" href="${post.fullPath!}" title="${post.title!}">
+                                        <h2 class="h">${post.title!}</h2>
+                                        <time class="t"
+                                              datetime="${post.updateTime?string('yyyy-MM-dd')}">${post.updateTime?string('yyyy-MM-dd')}</time>
+                                    </a>
+                                </li>
+                            </#list>
+                        </@postTag>
+
+                    </ul>
+
+                </section>
+            </#if >
+
+            <#if settings.aside_enable_categories>
+                <section class="aside_categories widget">
+                    <h2 class="aside_title">
+                        <svg t="1658633819267" viewBox="0 0 1024 1024" version="1.1"
+                             xmlns="http://www.w3.org/2000/svg" p-id="29548" width="18">
+                            <path d="M895.8 592.1a32.2 32.1 0 1 0 64.4 0 32.2 32.1 0 1 0-64.4 0Z" fill="#515151"
+                                  p-id="29549"></path>
+                            <path d="M928 687.9c-17.8 0-32.2 14.4-32.2 32.1v80.7c0 35.3-28.7 64-64 64H192.5c-35.3 0-64-28.7-64-64V225c0-35.3 28.7-64 64-64H415l82.7 143.3c6.6 11.4 19.2 17.2 31.5 15.8h302.5c35.3 0 64 28.7 64 64v80c0 17.7 14.4 32.1 32.2 32.1s32.2-14.4 32.2-32.1c0-0.8 0-1.6-0.1-2.4v-77.5C960 329 925.1 282 876.1 264v-1c0-68.2-55.8-124-124-124H476.2l-14.8-25.7c-7.4-12.9-18-16.2-27.3-16l-0.1-0.1H192.1c-70.7 0-128 57.3-128 128v574.1c0 70.7 57.3 128 128 128h640c70.7 0 128-57.3 128-128v-76.9c0.1-0.8 0.1-1.6 0.1-2.4 0-17.7-14.4-32.1-32.2-32.1zM747.1 202.8c31.6 0 58 23.2 63.1 53.4H543.9l-30.8-53.4h234z"
+                                  fill="#515151" p-id="29550"></path>
+                        </svg>
+                        <span class="name">分类</span>
+                    </h2>
+                    <div class="aside_categories--content">
+                        <@categoryTag method="list">
+                            <#list categories as category>
+                                <a class="item" href="${category.fullPath!}" title="${category.name!}">
+                                    <span class="name">${category.name!}</span>
+                                    <span class="count">${category.postCount!0}</span>
+                                </a>
+                            </#list>
+                        </@categoryTag>
+                    </div>
+                </section>
+            </#if >
+
+            <#if commentCount?number gt 0 && settings.aside_enable_comment>
+                <section class="aside_comment widget">
+                    <h2 class="aside_title">
+                        <svg t="1658641561936" viewBox="0 0 1024 1024" version="1.1"
+                             xmlns="http://www.w3.org/2000/svg" p-id="32371" width="18">
+                            <path d="M85.333333 383.744A255.573333 255.573333 0 0 1 341.333333 128h341.333334c141.354667 0 256 114.986667 256 255.744V853.333333a42.666667 42.666667 0 0 1-42.666667 42.666667H341.333333c-141.354667 0-256-114.986667-256-255.744V383.744zM853.333333 789.333333V383.744A170.837333 170.837333 0 0 0 682.666667 213.333333H341.333333a170.24 170.24 0 0 0-170.666666 170.410667v256.512A170.837333 170.837333 0 0 0 341.333333 810.666667h490.666667a21.333333 21.333333 0 0 0 21.333333-21.333334z m-218.282666-361.642666a64 64 0 1 1 0 128 64 64 0 0 1 0-128zM383.872 426.666667a64 64 0 1 1 0 128 64 64 0 0 1 0-128z"
+                                  fill="#5D6E7F" p-id="32372"></path>
+                        </svg>
+                        <span class="name">最新评论</span>
+                    </h2>
+                    <ul class="aside_comment--content">
+                        <@commentTag method="latest" top="${settings.aside_comment_page_size!}">
+                            <#list comments.content as comment>
+                                <li class="item">
+                                    <a class="comment" href="${comment.post.fullPath!}"
+                                       title="${comment.content!}">${comment.content!}</a>
+                                    <div class="info">
+                                        <span>${comment.author!}</span>
+                                        /
+                                        <time datetime="${comment.createTime!}">
+                                            <@global.timeline datetime=comment.createTime />
+                                        </time>
+                                    </div>
+                                </li>
+                            </#list>
+                        </@commentTag>
+                    </ul>
+                </section>
+            </#if>
+
+            <#if settings.aside_enable_tags>
+                <section class="aside_tags widget">
+                    <h2 class="aside_title">
+                        <svg t="1658645213103" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                             xmlns="http://www.w3.org/2000/svg" p-id="46385" width="16">
+                            <path d="M256 64h640V0H256C185.6 0 128 57.6 128 128v768c0 70.4 57.6 128 128 128h640V256H256c-38.4 0-64-25.6-64-64h704V128H192c0-38.4 25.6-64 64-64z m384 256v230.4l-19.2-19.2-44.8-44.8-44.8 44.8-19.2 19.2V320h128zM256 320h192v384l128-128 128 128V320h128v640H256c-38.4 0-64-25.6-64-64V300.8c19.2 12.8 38.4 19.2 64 19.2z"
+                                  p-id="46386"></path>
+                        </svg>
+                        <span class="name">标签</span>
+                    </h2>
+
+                    <div class="aside_tags--content">
+                        <@tagTag method="list">
+                            <#list tags as tag>
+                                <a class="item"
+                                   style="color: ${tag.color!}"
+                                   href="${tag.fullPath!}"
+                                   title="${tag.name!}"
+                                   data-num="${tag.postCount!}">
+                                    ${tag.name!}
+                                </a>
+                            </#list>
+                        </@tagTag>
+                    </div>
+
+                </section>
+            </#if>
+        </#if>
+
+        <#if settings.aside_enable_web_info>
+            <section class="aside_webInfo widget animated wow" data-wow-delay="0.6s">
+                <h2 class="aside_title">
+                    <svg t="1658645943500" viewBox="0 0 1024 1024" version="1.1"
+                         xmlns="http://www.w3.org/2000/svg" p-id="49794" width="18">
+                        <path d="M512 989.866667C249.173333 989.866667 34.133333 774.826667 34.133333 512S249.173333 34.133333 512 34.133333s477.866667 215.04 477.866667 477.866667c0 13.653333-11.946667 25.6-25.6 25.6H559.786667c-11.946667 0-22.186667 10.24-22.186667 22.186667v404.48c0 13.653333-11.946667 25.6-25.6 25.6z m0-904.533334C276.48 85.333333 85.333333 276.48 85.333333 512c0 226.986667 177.493333 413.013333 401.066667 426.666667V559.786667c0-40.96 32.426667-73.386667 73.386667-73.386667H938.666667C925.013333 262.826667 738.986667 85.333333 512 85.333333z"
+                              fill="#333333" p-id="49795"></path>
+                        <path d="M940.373333 965.973333H655.36c-13.653333 0-25.6-11.946667-25.6-25.6V655.36c0-13.653333 11.946667-25.6 25.6-25.6h285.013333c13.653333 0 25.6 11.946667 25.6 25.6v285.013333c0 13.653333-11.946667 25.6-25.6 25.6z m-259.413333-51.2h233.813333V680.96H680.96v233.813333z"
+                              fill="#333333" p-id="49796"></path>
+                    </svg>
+                    <span class="name">标签</span>
+                </h2>
+
+                <div class="aside_webInfo--content">
+                    <div class="item article">
+                        <span>文章数目：</span>
+                        <span>${postCount!} 章</span>
+                    </div>
+                    <div class="item birthday">
+                        <span>运行时间：</span>
+                        <span class="run_day">
+                            加载中..
+                        </span>
+                    </div>
+                    <div class="item pageVisits">
+                        <span>本页访客：</span>
+                        <span id="busuanzi_value_page_pv">加载中...</span>
+                    </div>
+                    <div class="item visitor">
+                        <span>本站访客：</span>
+                        <span id="busuanzi_value_site_uv">加载中...</span>
+                    </div>
+                    <div class="item totalVisits">
+                        <span>总访问量：</span>
+                        <span id="busuanzi_value_site_pv">加载中...</span>
+                    </div>
+                </div>
+            </section>
+        </#if>
     </aside>
 </#if>
