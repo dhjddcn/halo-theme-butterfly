@@ -17,9 +17,9 @@
 <div id="Butterfly">
     <#include "template/macro.ftl">
     <#--头部-->
-    <header class="header ${settings.index_enable_above?then("","h60")}">
+    <header class="header">
         <section class="navbar"></section>
-        <#if settings.index_enable_above><@aboveIndex/></#if>
+        <#if settings.index_enable_above><@AboveIndex/></#if>
     </header>
     <#--主内容-->
     <main class="main animated ${settings.aside_position!}">
@@ -30,11 +30,11 @@
                 <@Empty/>
             </#if>
         </section>
-        <#if settings.index_aside_enable><#include "template/aside.ftl"></#if >
+        <#if settings.index_aside_enable><#include "template/aside.ftl"></#if>
     </main>
     <#--底部-->
-    <@footer/>
-    <@actionWidget/>
+    <@Footer/>
+    <@AsideWidget/>
 </div>
 <script type="text/javascript" src="${base_url!}/source/lib/jquery/jquery.min.js"></script>
 <script type="text/javascript" src="${base_url!}/source/lib/lazyLoad/lazyLoad.min.js"></script>

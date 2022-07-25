@@ -316,4 +316,64 @@
 
     }
   }
+
+  &_widget {
+    position: fixed;
+    right: -48px;
+    bottom: 40px;
+    z-index: 100;
+    transition: transform .5s;
+
+    &.active {
+      opacity: 0.8;
+      transform: translateX(-77px);
+    }
+
+    &.setup {
+      display: block;
+    }
+
+
+    .set {
+      display: none;
+    }
+
+    button {
+      .flex();
+      margin-bottom: 5px;
+      width: 35px;
+      height: 35px;
+      border-radius: 5px;
+      background-color: var(--button-background-color);
+      color: var(--button-color);
+      text-align: center;
+      font-size: 16px;
+      line-height: 35px;
+
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg)
+        }
+
+        to {
+          transform: rotate(1turn)
+        }
+      }
+
+      &.setting svg {
+        animation: spin 1.8s linear infinite;
+      }
+
+
+      > svg {
+
+        path {
+          fill: var(--button-color);;
+        }
+      }
+    }
+
+  }
+
 }

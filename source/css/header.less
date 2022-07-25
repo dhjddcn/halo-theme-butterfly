@@ -20,10 +20,8 @@
   position: relative;
   width: 100%;
   transition: height .5s;
+  min-height: 60px;
 
-  &.h60 {
-    height: 60px;
-  }
 
   .navbar {
     position: absolute;
@@ -36,14 +34,23 @@
   }
 
   .above {
+    position: relative;
     width: 100%;
     height: 100vh;
-    transition: height 0.5s;
+    transition: height 0.5s, width 0.5s;
     background-image: var(--top-background-img);
     background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;
     animation: fade-in-top 1s;
+
+    &::before {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-color: var(--above-mask-background-color);
+      content: '';
+    }
   }
 
 }

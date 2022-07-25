@@ -162,6 +162,11 @@ aside:
       label: 知乎
       type: text
       placeholder: "知乎主页地址"
+    bili:
+      name: bili
+      label: B站
+      type: text
+      placeholder: "B站主页地址"
     aside_enable_notice:
       name: aside_enable_notice
       label: 展示网站公告
@@ -276,6 +281,12 @@ index:
           label: 是
         - value: false
           label: 否
+    index_custom_description:
+      name: index_custom_description
+      label: 自定义打字机描述
+      type: textarea
+      placeholder: 格式：描述一&&描述二&&描述三
+      description: "默认为网站描述，可自定义打字机描述。请按照格式填写否则报错！！！ 格式：描述一&&描述二&&描述三"
     index_top_background_img:
       name: index_top_background_img
       label: 顶部背景图

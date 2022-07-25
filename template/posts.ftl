@@ -4,7 +4,7 @@
         <#list posts.content as post>
             <li class="posts_item widget">
                 <a class="cover" href="${post.fullPath!}" title="${post.title!}">
-                    <@post_thumbnail thumbnail=post.thumbnail />
+                    <@Post_thumbnail thumbnail=post.thumbnail />
                     <img
                             src="${lazy_img}"
                             data-lazy-src="${cover!}"
@@ -110,6 +110,15 @@
 
                     <#--                    </div>-->
                     <div class="info_content">${post.summary!}</div>
+                    <#if post.topped>
+                        <div class="info_top">
+                            <svg t="1658765684294" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                                 xmlns="http://www.w3.org/2000/svg" p-id="7193" width="25">
+                                <path d="M876.8 572.586667l-218.88-213.333334c-5.12-5.12-11.52-8.533333-17.92-11.52V128h42.666667c23.466667 0 42.666667-19.2 42.666666-42.666667s-19.2-42.666667-42.666666-42.666666H341.76c-23.466667 0-42.666667 19.2-42.666667 42.666666s19.2 42.666667 42.666667 42.666667h42.666667v219.733333c-6.4 2.986667-12.373333 6.826667-17.92 11.946667l-218.88 213.333333c-18.773333 18.346667-24.32 45.653333-14.506667 69.973334s33.28 39.68 59.306667 39.68H469.333333v256c0 23.466667 19.2 42.666667 42.666667 42.666666s42.666667-19.2 42.666667-42.666666v-256h277.333333c26.026667 0 49.493333-15.786667 59.306667-40.106667 9.813333-23.893333 4.266667-51.626667-14.506667-69.973333zM554.666667 128v213.333333h-84.906667V128H554.666667zM244.906667 597.333333l175.36-170.666666h184.32l175.36 170.666666H244.906667z"
+                                      p-id="7194"></path>
+                            </svg>
+                        </div>
+                    </#if>
                 </div>
             </li>
         </#list>
@@ -119,7 +128,7 @@
 
 
 <#--文章图片-->
-<#macro post_thumbnail thumbnail>
+<#macro Post_thumbnail thumbnail>
     <#assign cover = thumbnail!?trim>
     <#if cover == "">
     <#--默认图-->
