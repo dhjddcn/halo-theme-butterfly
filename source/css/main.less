@@ -5,6 +5,18 @@
  * @Description: 主体
  */
 
+@keyframes mainInUp {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 100px, 0)
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0)
+  }
+}
+
 .main {
   width: 100%;
   max-width: var(--main-max-width);
@@ -12,6 +24,7 @@
   margin: 0 auto;
   padding: 40px 15px;
   display: flex;
+  animation: mainInUp .35s;
 
   &.left {
     flex-direction: row-reverse;

@@ -142,6 +142,26 @@ aside:
       placeholder: 请输入
       default: "by-font by_icon_github || 按钮文字 || /"
       description: "侧边栏按钮信息请按照格式填写否则报错 icon图标类名 || 按钮文字 || 跳转url"
+    email:
+      name: email
+      label: 邮箱
+      type: text
+      placeholder: "邮箱地址"
+    qq:
+      name: qq
+      label: QQ
+      type: text
+      placeholder: "qq号码"
+    github:
+      name: github
+      label: Github
+      type: text
+      placeholder: "github主页地址"
+    zhihu:
+      name: zhihu
+      label: 知乎
+      type: text
+      placeholder: "知乎主页地址"
     aside_enable_notice:
       name: aside_enable_notice
       label: 展示网站公告
@@ -785,33 +805,10 @@ code_block:
           label: "z-touch"
 
 
-social:
-  label: 社交
-  items:
-    email:
-      name: email
-      label: 邮箱
-      type: text
-      default: ""
-      placeholder: "邮箱地址"
-    qq:
-      name: qq
-      label: QQ
-      type: text
-      default: ""
-      placeholder: "qq号码"
-    github:
-      name: github
-      label: Github
-      type: text
-      default: ""
-      placeholder: "github主页地址"
-    zhihu:
-      name: zhihu
-      label: 知乎
-      type: text
-      default: ""
-      placeholder: "知乎主页地址"
+    #social:
+    #  label: 社交
+    #  items:
+
     #
     #others:
     #  label: 其它

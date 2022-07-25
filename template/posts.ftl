@@ -157,7 +157,7 @@
             </#list>
 
             <#if pagination.hasNext>
-                <li class="pagination_page next aaaaaa">
+                <li class="pagination_page next">
                     <a rel="next" href="${pagination.nextPageFullPath!}" title="下一页"></a>
                 </li>
             </#if>

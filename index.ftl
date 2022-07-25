@@ -24,7 +24,7 @@
         <#--        <@aboveIndex/>-->
     </header>
     <#--主内容-->
-    <main class="main ${settings.aside_position!}">
+    <main class="main animated ${settings.aside_position!}">
         <section class="container ${settings.index_post_layout!}">
             <#if (posts.content)?? && posts.content?size gt 0>
                 <#include "template/posts.ftl"><@Posts  method="index"  display="${settings.index_page!}"  />
