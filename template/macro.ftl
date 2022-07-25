@@ -3,6 +3,22 @@
 <@categoryTag  method="count"> <#assign categoryCount=count> </@categoryTag>
 <@commentTag method="count"> <#assign commentCount=count> </@commentTag>
 
+
+
+
+<#macro aboveIndex >
+    <section class="above">
+    </section>
+</#macro>
+
+
+
+<#macro abovePublic >
+
+</#macro>
+
+
+
 <#--empty-->
 <#macro Empty text='暂无数据' visibleIcon=true>
     <div class="empty">
@@ -15,7 +31,6 @@
         <span>${text!}</span>
     </div>
 </#macro>
-
 
 <#--导航小部件-->
 <#macro  actionWidget>
@@ -54,4 +69,6 @@
         </div>
     </footer>
 </#macro>
+
+
 

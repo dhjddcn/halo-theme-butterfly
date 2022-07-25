@@ -253,8 +253,8 @@ aside:
 index:
   label: 首页
   items:
-    index_enable_top_background_img:
-      name: index_enable_top_background_img
+    index_enable_above:
+      name: index_enable_above
       label: 启用第一屏
       type: switch
       data-type: bool
@@ -411,8 +411,8 @@ archives:
       default: "文章归档"
       placeholder: "请输入"
       description: "修改归档标题"
-    archives_enable_top_background_img:
-      name: archives_enable_top_background_img
+    archives_enable_above:
+      name: archives_enable_above
       label: 开启顶部背景图
       type: switch
       data-type: bool
@@ -459,8 +459,8 @@ categories:
       default: "全部分类"
       placeholder: "请输入"
       description: "修改分类页顶部的标题"
-    categories_enable_top_background_img:
-      name: categories_enable_top_background_img
+    categories_enable_above:
+      name: categories_enable_above
       label: 开启顶部背景图
       type: switch
       data-type: bool
@@ -500,8 +500,8 @@ tags:
       default: "全部标签"
       placeholder: "请输入"
       description: "修改标签页顶部的标题"
-    tags_enable_top_background_img:
-      name: tags_enable_top_background_img
+    tags_enable_above:
+      name: tags_enable_above
       label: 开启顶部背景图
       type: switch
       data-type: bool

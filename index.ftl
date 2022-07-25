@@ -17,11 +17,9 @@
 <div id="Butterfly">
     <#include "template/macro.ftl">
     <#--头部-->
-    <header class="header">
-        <section class="navbar">
-        </section>
-        <#--        <#include "template/above.ftl">-->
-        <#--        <@aboveIndex/>-->
+    <header class="header ${settings.index_enable_above?then("","h60")}">
+        <section class="navbar"></section>
+        <#if settings.index_enable_above><@aboveIndex/></#if>
     </header>
     <#--主内容-->
     <main class="main animated ${settings.aside_position!}">

@@ -15,15 +15,15 @@
             <div class="aside_info--desc">${user.description!}</div>
 
             <div class="aside_info--data">
-                <a title="文章" href="${archives_url!}">
+                <a title="文章" href="${archives_url!}" rel="noopener noreferrer nofollow">
                     <div class="name">文章</div>
                     <div class="num">${postCount!}</div>
                 </a>
-                <a href="${categories_url!}" title="分类">
+                <a href="${categories_url!}" title="分类" rel="noopener noreferrer nofollow">
                     <div class="name">分类</div>
                     <div class="num">${categoryCount!}</div>
                 </a>
-                <a title="评论" href="javascript:">
+                <a title="评论" href="javascript:" rel="noopener noreferrer nofollow">
                     <div class="name">评论</div>
                     <div class="num">${commentCount!}</div>
                 </a>
