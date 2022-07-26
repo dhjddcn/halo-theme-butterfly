@@ -18,7 +18,20 @@
     <#include "template/macro.ftl">
     <#--头部-->
     <header class="header">
-        <section class="navbar"></section>
+        <section class="navbar">
+            <a class="title" href="${context!}">${blog_title!}</a>
+            <nav class="menu">
+                <@menuTag method="tree">
+                    <#list menuList?sort_by('priority') as menu>
+                        <a class="menu_link" href="${menu.url}" target="${menu.target!}">
+                            <#if  menu.icon??><i class="${menu.icon}"></i></#if>
+                            <span class="menu_name">${menu.name}</span>
+                            <i class="menu_arrow"></i>
+                        </a>
+                    </#list>
+                </@menuTag>
+            </nav>
+        </section>
         <#if settings.index_enable_above><@AboveIndex/></#if>
     </header>
     <#--主内容-->
