@@ -127,20 +127,7 @@
 </#macro>
 
 
-<#--文章图片-->
-<#macro Post_thumbnail thumbnail>
-    <#assign cover = thumbnail!?trim>
-    <#if cover == "">
-    <#--默认图-->
-        <#if settings.enable_post_thumbnail  && !settings.enable_random_img_api>
-            <#assign cover = settings.post_thumbnail>
-        </#if >
-    <#--随机图-->
-        <#if settings.enable_random_img_api  && settings.random_img_api != "">
-            <#assign cover = settings.random_img_api>
-        </#if >
-    </#if>
-</#macro>
+
 
 
 <#-- 页码-->

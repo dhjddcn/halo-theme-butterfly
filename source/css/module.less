@@ -7,7 +7,6 @@
 @import "fun";
 
 
-
 //布局
 .post_layout() {
   .container .posts {
@@ -311,6 +310,42 @@
           margin: 0 10px;
         }
       }
+    }
+
+
+    @keyframes scroll-down-effect {
+      0% {
+        bottom: 35px;
+        opacity: .4
+      }
+
+      50% {
+        bottom: 45px;
+        opacity: 1;
+        filter: none
+      }
+
+      100% {
+        bottom: 35px;
+        opacity: .4
+      }
+    }
+
+    &_down {
+      width: 18px;
+      height: 18px;
+      border-right: 4px solid var(--head--blog-title-color);
+      border-bottom: 4px solid var(--head--blog-title-color);
+      position: absolute;
+      bottom: 35px;
+      margin: auto;
+      left: 0;
+      right: 0;
+      transform: rotate(45deg);
+      cursor: var(--cursor-link);
+      text-shadow: 2px 2px 4px rgb(0 0 0 / 15%);
+      border-radius: 0 0 3px 0;
+      animation: scroll-down-effect 1.5s infinite;
     }
   }
 }

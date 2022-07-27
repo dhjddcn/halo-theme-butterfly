@@ -1,17 +1,17 @@
 <#-- 全局配置 -->
 <script id="browser-Compatibility">
     function detectIE() {
-        let e = window.navigator.userAgent, t = e.indexOf( "MSIE " );
-        if ( t > 0 ) return parseInt( e.substring( t + 5, e.indexOf( ".", t ) ), 10 );
-        if ( e.indexOf( "Trident/" ) > 0 ) {
-            let t = e.indexOf( "rv:" );
-            return parseInt( e.substring( t + 3, e.indexOf( ".", t ) ), 10 )
+        let e = window.navigator.userAgent, t = e.indexOf("MSIE ");
+        if (t > 0) return parseInt(e.substring(t + 5, e.indexOf(".", t)), 10);
+        if (e.indexOf("Trident/") > 0) {
+            let t = e.indexOf("rv:");
+            return parseInt(e.substring(t + 3, e.indexOf(".", t)), 10)
         }
-        let n = e.indexOf( "Edge/" );
-        return n > 0 && parseInt( e.substring( n + 5, e.indexOf( ".", n ) ), 10 )
+        let n = e.indexOf("Edge/");
+        return n > 0 && parseInt(e.substring(n + 5, e.indexOf(".", n)), 10)
     }
 
-    detectIE() && (alert( "当前站点不支持IE浏览器或您开启了兼容模式，请使用其他浏览器访问或关闭兼容模式。" ), location.href = "https://www.baidu.com"), document.getElementById( "browser-Compatibility" ).remove();
+    detectIE() && (alert("当前站点不支持IE浏览器或您开启了兼容模式，请使用其他浏览器访问或关闭兼容模式。"), location.href = "https://www.baidu.com"), document.getElementById("browser-Compatibility").remove();
 </script>
 <#--定义可变属性，会根据页面的改变而变化  获取当前页面元数据，这里不要做解析-->
 <script id="meta-config" type='text/javascript'>
@@ -24,7 +24,7 @@
             </#if>
         },
     }
-    document.getElementById( 'meta-config' ).remove();
+    document.getElementById('meta-config').remove();
 </script>
 
 <#global mode = (blog_url?index_of("127.0.0.1") == -1)?then('production', 'development')>
@@ -40,12 +40,12 @@
     <#assign isNeeded = (key)?index_of('custom_')==-1 && valueString?index_of('<script')==-1 && valueString?index_of('<link')==-1>
     <#if isNeeded>
     var value = '${valueString?js_string}';
-    value = value.replace( /</g, "&lt;" ).replace( />/g, "&gt;" );
-    if ( /^(true|false)$/.test( value ) ) {
-        value = JSON.parse( value );
+    value = value.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+    if (/^(true|false)$/.test(value)) {
+        value = JSON.parse(value);
     }
-    if ( /^\d+$/.test( value ) ) {
-        value = Number( value );
+    if (/^\d+$/.test(value)) {
+        value = Number(value);
     }
     ThemeConfig['${key}'] = value;
     </#if>
@@ -53,8 +53,8 @@
     ThemeConfig['description'] = '${user.description!}';
     ThemeConfig['base_url'] = '${base_url}';
     ThemeConfig['birthday'] = '${(settings.site_birthday?? && settings.site_birthday?trim != "")?then(settings.site_birthday?trim, options.birthday?replace(",",""))}';
-    console.log( ThemeConfig );
-    document.getElementById( 'theme-config' ).remove();
+    console.log(ThemeConfig);
+    document.getElementById('theme-config').remove();
 </script>
 
 <meta charset="utf-8">
@@ -94,7 +94,7 @@
         src: url(${base_url!}/source/font/${settings.web_font!}) format("woff2");
     }
 
-    html {
+    :root {
         --font-size: 15px;
         --font-family: "Butterfly Font", "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, "sans-serif";
         --theme: ${settings.theme_color!};

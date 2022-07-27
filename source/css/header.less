@@ -12,8 +12,8 @@
     transform: translateY(-60px);
   }
   100% {
-    opacity: 1;
     transform: translateY(0);
+    opacity: 1;
   }
 }
 
@@ -23,17 +23,16 @@
   transition: height .5s;
   min-height: 60px;
 
-
   .navbar {
     .flex();
     position: absolute;
     top: 0;
     width: 100%;
     height: 60px;
-    //background: rgba(255, 255, 255, 0.5);
     z-index: 100;
     animation: fade-in-top 1.2s;
     padding: 0 36px;
+    transition: all .5s;
 
     a {
       color: var(--head--blog-title-color);
@@ -54,7 +53,7 @@
       }
 
       &_name {
-        padding: 0 5px;
+        padding: 0 2px 0 5px;
       }
 
       &_link {
@@ -65,17 +64,36 @@
         padding: 0 12px;
         font-size: 15px;
 
+        &:hover {
+          .menu_arrow, .by_icon_arrow-down {
+            transform: rotate(180deg);
+          }
+        }
       }
 
-      &_arrow {
-        display: inline-block;
-        width: 8px;
-        height: 8px;
-        border-bottom: 2.8px solid var(--head--blog-title-color);
-        border-right: 2.8px solid var(--head--blog-title-color);
-        transform: rotate(45deg);
+      .by_icon_arrow-down {
+        transition: transform .3s;
       }
 
+    }
+
+    &.active-fixed {
+      position: fixed;
+      z-index: 90;
+      background: rgba(255, 255, 255, 0.8);
+      top: -60px;
+      box-shadow: 0 5px 6px -5px rgb(133 133 133 / 60%);
+      transition: transform .2s ease-in-out, opacity .2s ease-in-out;
+
+      a {
+        color: var(--font-color);
+        text-shadow: none;
+      }
+    }
+
+    &.active-visible {
+      transition: transform .5s;
+      transform: translateY(100%);
     }
   }
 

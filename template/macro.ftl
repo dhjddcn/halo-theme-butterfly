@@ -3,7 +3,35 @@
 <@categoryTag  method="count"> <#assign categoryCount=count> </@categoryTag>
 <@commentTag method="count"> <#assign commentCount=count> </@commentTag>
 
+<#--导航-->
+<#macro Navbar>
+    <section class="navbar">
+        <a class="title" href="${context!}">${blog_title!}</a>
+        <nav class="menu">
+            <@menuTag method="tree">
+                <#list menuList?sort_by('priority') as menu>
+                    <#if menu.children?? && menu.children?size gt 0>
+                        <div class="dropdown">
+                            <a class="menu_link" href="javascript:" target="${menu.target!}">
+                                <#if  menu.icon??><i class="${menu.icon}"></i></#if>
+                                <span class="menu_name">${menu.name}</span>
+<#--                                <i class="menu_arrow"></i>-->
+                                <i class="by-font by_icon_arrow-down"></i>
+                            </a>
 
+                            <nav class="dropdown_menu"></nav>
+                        </div>
+                    <#else>
+                        <a class="menu_link" href="${menu.url}" target="${menu.target!}">
+                            <#if  menu.icon??><i class="${menu.icon}"></i></#if>
+                            <span class="menu_name">${menu.name}</span>
+                        </a>
+                    </#if>
+                </#list>
+            </@menuTag>
+        </nav>
+    </section>
+</#macro>
 
 
 <#macro AboveIndex >
@@ -64,16 +92,30 @@
                 </#if>
             </div>
         </div>
+        <div class="above_down"></div>
     </section>
 </#macro>
-
-
 
 <#macro AbovePublic >
 
 </#macro>
 
 
+
+<#--文章图片-->
+<#macro Post_thumbnail thumbnail>
+    <#assign cover = thumbnail!?trim>
+    <#if cover == "">
+    <#--默认图-->
+        <#if settings.enable_post_thumbnail  && !settings.enable_random_img_api>
+            <#assign cover = settings.post_thumbnail>
+        </#if >
+    <#--随机图-->
+        <#if settings.enable_random_img_api  && settings.random_img_api != "">
+            <#assign cover = settings.random_img_api>
+        </#if >
+    </#if>
+</#macro>
 
 <#--empty-->
 <#macro Empty text='暂无数据' visibleIcon=true>
@@ -90,7 +132,7 @@
 
 <#--导航小部件-->
 <#macro  AsideWidget>
-    <div class="aside_widget active  setup">
+    <div class="aside_widget   setup">
 
         <div class="set">
             <button class="theme-switch control" title="浅色和深色模式转换">
