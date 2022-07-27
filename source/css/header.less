@@ -96,17 +96,36 @@
       transform: translateY(100%);
     }
   }
-
   .above {
     position: relative;
     width: 100%;
-    height: 100vh;
+    height: 400px;
     transition: height 0.5s, width 0.5s;
     background-image: var(--top-background-img);
     background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;
     animation: fade-in-top 1s;
+
+    &_content {
+      text-align: center;
+      position: absolute;
+      top: 40%;
+      padding: 0 10px;
+      width: 100%;
+    }
+
+    &_site {
+      &--title {
+        color: var(--above-site-title-color);
+        margin: 0;
+        font-size: 40px;
+        text-align: center;
+        text-shadow: 2px 2px 4px rgb(0 0 0 / 15%);
+        line-height: 1.5;
+        animation: siteScale 1s;
+      }
+    }
 
     &::before {
       position: absolute;

@@ -8,7 +8,7 @@
         body {
         <#if settings.body_background?contains("http")> --body-background: url(${settings.body_background!}) no-repeat fixed center / cover;
         <#else> --body-background: ${settings.body_background!};
-            --top-background-img: url(${settings.index_top_background_img});
+            --top-background-img: url(${settings.index_above_background_img});
         </#if>
         }
     </style>

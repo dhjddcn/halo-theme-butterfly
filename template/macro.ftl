@@ -15,7 +15,7 @@
                             <a class="menu_link" href="javascript:" target="${menu.target!}">
                                 <#if  menu.icon??><i class="${menu.icon}"></i></#if>
                                 <span class="menu_name">${menu.name}</span>
-<#--                                <i class="menu_arrow"></i>-->
+                                <#--                                <i class="menu_arrow"></i>-->
                                 <i class="by-font by_icon_arrow-down"></i>
                             </a>
 
@@ -96,8 +96,12 @@
     </section>
 </#macro>
 
-<#macro AbovePublic >
-
+<#macro AbovePublic title>
+    <section class="above">
+        <div class="above_content">
+            <h1 class="above_site--title">${title!}</h1>
+        </div>
+    </section>
 </#macro>
 
 
@@ -107,11 +111,11 @@
     <#assign cover = thumbnail!?trim>
     <#if cover == "">
     <#--默认图-->
-        <#if settings.enable_post_thumbnail  && !settings.enable_random_img_api>
+        <#if settings.post_thumbnail_enable  && !settings.post_random_img_api_enable>
             <#assign cover = settings.post_thumbnail>
         </#if >
     <#--随机图-->
-        <#if settings.enable_random_img_api  && settings.random_img_api != "">
+        <#if settings.post_random_img_api_enable  && settings.random_img_api != "">
             <#assign cover = settings.random_img_api>
         </#if >
     </#if>

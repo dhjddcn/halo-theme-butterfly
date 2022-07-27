@@ -167,8 +167,8 @@ aside:
       label: B站
       type: text
       placeholder: "B站主页地址"
-    aside_enable_notice:
-      name: aside_enable_notice
+    aside_notice_enable:
+      name: aside_notice_enable
       label: 展示网站公告
       type: switch
       data-type: bool
@@ -185,8 +185,8 @@ aside:
       type: textarea
       placeholder: 请输入公告信息
       description: "网站公告信息，将展示在页面右侧，尽量简洁明了（不填不展示该模块，也可单独开关）"
-    aside_enable_newest_post:
-      name: aside_enable_newest_post
+    aside_newest_post_enable:
+      name: aside_newest_post_enable
       label: 展示最新文章
       type: switch
       data-type: bool
@@ -202,8 +202,8 @@ aside:
       label: 最新文章条数
       default: 5
       description: "右侧最新文章展示条数，填写数字即可，默认展示最新的5篇文章（需开启最新文章）"
-    aside_enable_comment:
-      name: aside_enable_comment
+    aside_comment_enable:
+      name: aside_comment_enable
       label: 展示最新评论
       type: switch
       data-type: bool
@@ -221,8 +221,8 @@ aside:
       data-type: long
       default: 5
       description: "右侧最新评论展示条数，填写数字即可，默认展示最新的5条评论（需开启最新评论）"
-    aside_enable_categories:
-      name: aside_enable_categories
+    aside_categories_enable:
+      name: aside_categories_enable
       label: 侧边栏展示分类
       type: switch
       data-type: bool
@@ -232,8 +232,8 @@ aside:
           label: 开启
         - value: false
           label: 关闭
-    aside_enable_tags:
-      name: aside_enable_tags
+    aside_tags_enable:
+      name: aside_tags_enable
       label: 侧边栏展示标签
       type: switch
       data-type: bool
@@ -243,8 +243,8 @@ aside:
           label: 开启
         - value: false
           label: 关闭
-    aside_enable_web_info:
-      name: aside_enable_web_info
+    aside_web_info_enable:
+      name: aside_web_info_enable
       label: 侧边栏展示网站资讯
       type: switch
       data-type: bool
@@ -258,8 +258,8 @@ aside:
 index:
   label: 首页
   items:
-    index_enable_above:
-      name: index_enable_above
+    index_above_enable:
+      name: index_above_enable
       label: 启用第一屏
       type: switch
       data-type: bool
@@ -287,8 +287,8 @@ index:
       type: textarea
       placeholder: 格式：描述一&&描述二&&描述三
       description: "默认为网站描述，可自定义打字机描述。请按照格式填写否则报错！！！ 格式：描述一&&描述二&&描述三"
-    index_top_background_img:
-      name: index_top_background_img
+    index_above_background_img:
+      name: index_above_background_img
       label: 顶部背景图
       type: attachment
       default: ""
@@ -328,8 +328,8 @@ index:
 post:
   label: 文章
   items:
-    enable_post_aside:
-      name: enable_post_aside
+    post_aside_enable:
+      name: post_aside_enable
       label: 是否展示侧边栏
       type: switch
       data-type: bool
@@ -340,8 +340,8 @@ post:
           label: 是
         - value: false
           label: 否
-    enable_top_post_background_img:
-      name: enable_top_post_background_img
+    post_above_enable:
+      name: post_above_enable
       label: 开启顶部背景图
       type: switch
       data-type: bool
@@ -352,8 +352,8 @@ post:
           label: 是
         - value: false
           label: 否
-    enable_donate:
-      name: enable_donate
+    post_donate_enable:
+      name: post_donate_enable
       label: 开启打赏
       type: switch
       data-type: bool
@@ -363,8 +363,8 @@ post:
           label: 开启
         - value: false
           label: 关闭
-    enable_post_thumbnail:
-      name: enable_post_thumbnail
+    post_thumbnail_enable:
+      name: post_thumbnail_enable
       label: 启用文章默认缩略图
       type: switch
       data-type: bool
@@ -382,8 +382,8 @@ post:
       type: attachment
       default: "https://s2.loli.net/2022/03/26/4ubfeUW3sGvkTFX.png"
       description: "文章无配图时生效，可使用占位图服务"
-    enable_random_img_api:
-      name: enable_random_img_api
+    post_random_img_api_enable:
+      name: post_random_img_api_enable
       label: 启用随机图
       type: switch
       data-type: bool
@@ -422,25 +422,35 @@ archives:
       default: "文章归档"
       placeholder: "请输入"
       description: "修改归档标题"
-    archives_enable_above:
-      name: archives_enable_above
-      label: 开启顶部背景图
+    archives_above_enable:
+      name: archives_above_enable
+      label: 启用第一屏
       type: switch
       data-type: bool
       default: true
-      placeholder: "开启顶部背景图"
+      placeholder: "如果关闭第一屏，建议深色背景或者图片，或者重写颜色！ 不填则默认为首页背景"
       options:
         - value: true
           label: 是
         - value: false
           label: 否
-    archives_top_background_img:
-      name: archives_top_background_img
+    archives_above_background_img:
+      name: archives_above_background_img
       label: 顶部背景图
       type: attachment
-      default: ""
       placeholder: "顶部背景图"
       description: "不配置默认使用首页背景图"
+    archives_post_layout:
+      name: index_post_layout
+      label: 文章布局方式
+      type: select
+      default: "post_list"
+      description: "文章布局方式 提供列表、平铺两种！ "
+      options:
+        - value: "post_list"
+          label: "列表"
+        - value: "post_tile"
+          label: "平铺"
     archives_aside_enable:
       name: archives_aside_enable
       label: 是否展示侧边栏
@@ -470,8 +480,8 @@ categories:
       default: "全部分类"
       placeholder: "请输入"
       description: "修改分类页顶部的标题"
-    categories_enable_above:
-      name: categories_enable_above
+    categories_above_enable:
+      name: categories_above_enable
       label: 开启顶部背景图
       type: switch
       data-type: bool
@@ -482,8 +492,8 @@ categories:
           label: 是
         - value: false
           label: 否
-    categories_top_background_img:
-      name: categories_top_background_img
+    categories_above_background_img:
+      name: categories_above_background_img
       label: 顶部背景图
       type: attachment
       default: ""
@@ -511,8 +521,8 @@ tags:
       default: "全部标签"
       placeholder: "请输入"
       description: "修改标签页顶部的标题"
-    tags_enable_above:
-      name: tags_enable_above
+    tags_above_enable:
+      name: tags_above_enable
       label: 开启顶部背景图
       type: switch
       data-type: bool
@@ -523,8 +533,8 @@ tags:
           label: 是
         - value: false
           label: 否
-    tags_top_background_img:
-      name: tags_top_background_img
+    tags_above_background_img:
+      name: tags_above_background_img
       label: 顶部背景图（标签）
       type: attachment
       default: ""
@@ -551,8 +561,8 @@ links:
       default: "友情链接"
       placeholder: "请输入"
       description: "修改友链页顶部展示的标题"
-    enable_top_links_background_img:
-      name: enable_top_links_background_img
+    links_above_background_img_enable:
+      name: links_above_background_img_enable
       label: 开启顶部背景图
       type: switch
       data-type: bool
@@ -563,14 +573,14 @@ links:
           label: 是
         - value: false
           label: 否
-    top_links_background_img:
-      name: top_links_background_img
+    links_above_background_img:
+      name: links_above_background_img
       label: 顶部背景图（友链）
       type: attachment
       default: ""
       placeholder: "顶部背景图（友链）"
-    enable_links_aside:
-      name: enable_links_aside
+    links_aside_enable:
+      name: links_aside_enable
       label: 是否展示侧边栏
       type: switch
       data-type: bool
@@ -591,8 +601,8 @@ journals:
       default: "我的动态"
       placeholder: "请输入"
       description: "修改日志页顶部展示的标题"
-    enable_top_journals_background_img:
-      name: enable_top_journals_background_img
+    journals_above_background_img_enable:
+      name: journals_above_background_img_enable
       label: 开启顶部背景图
       type: switch
       data-type: bool
@@ -603,15 +613,15 @@ journals:
           label: 是
         - value: false
           label: 否
-    top_journals_background_img:
-      name: top_journals_background_img
+    journals_above_background_img:
+      name: journals_above_background_img
       label: 顶部背景图
       type: attachment
       default: ""
       placeholder: "顶部背景图"
       description: "不配置默认使用首页背景图"
-    enable_journals_aside:
-      name: enable_journals_aside
+    journals_aside_enable:
+      name: journals_aside_enable
       label: 是否展示侧边栏
       type: switch
       data-type: bool
@@ -632,8 +642,8 @@ search:
       default: "文章搜索"
       placeholder: "请输入"
       description: "修改文章搜索顶部展示的标题"
-    enable_top_search_background_img:
-      name: enable_top_search_background_img
+    search_above_background_img_enable:
+      name: search_above_background_img_enable
       label: 开启顶部背景图
       type: switch
       data-type: bool
@@ -644,15 +654,15 @@ search:
           label: 是
         - value: false
           label: 否
-    top_search_background_img:
-      name: top_search_background_img
+    search_above_background_img:
+      name: search_above_background_img
       label: 顶部背景图
       type: attachment
       default: ""
       placeholder: "顶部背景图"
       description: "不配置默认使用首页背景图"
-    enable_search_aside:
-      name: enable_search_aside
+    search_aside_enable:
+      name: search_aside_enable
       label: 是否展示侧边栏
       type: switch
       data-type: bool
@@ -667,8 +677,8 @@ search:
 sheet:
   label: 自定义
   items:
-    enable_top_sheet_background_img:
-      name: enable_top_sheet_background_img
+    sheet_above_background_img_enable:
+      name: sheet_above_background_img_enable
       label: 开启顶部背景图
       type: switch
       data-type: bool
@@ -679,8 +689,8 @@ sheet:
           label: 是
         - value: false
           label: 否
-    top_sheet_background_img:
-      name: top_sheet_background_img
+    sheet_above_background_img:
+      name: sheet_above_background_img
       label: 顶部背景图
       type: attachment
       default: ""

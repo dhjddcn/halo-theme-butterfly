@@ -113,7 +113,7 @@
             </div>
         </section>
 
-        <#if settings.aside_enable_notice && settings.aside_notice?? >
+        <#if settings.aside_notice_enable && settings.aside_notice?? >
             <section class="aside_notice widget">
                 <h2 class="aside_title">
                     <svg t="1658602358477" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
@@ -129,7 +129,7 @@
         </#if >
 
         <#if postCount?number gt 0 >
-            <#if settings.aside_enable_newest_post >
+            <#if settings.aside_newest_post_enable >
                 <section class="aside_article widget">
                     <h2 class="aside_title">
                         <svg t="1658632374717" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
@@ -172,7 +172,7 @@
                 </section>
             </#if >
 
-            <#if settings.aside_enable_categories>
+            <#if settings.aside_categories_enable>
                 <section class="aside_categories widget">
                     <h2 class="aside_title">
                         <svg t="1658633819267" viewBox="0 0 1024 1024" version="1.1"
@@ -197,7 +197,7 @@
                 </section>
             </#if >
 
-            <#if commentCount?number gt 0 && settings.aside_enable_comment>
+            <#if commentCount?number gt 0 && settings.aside_comment_enable>
                 <section class="aside_comment widget">
                     <h2 class="aside_title">
                         <svg t="1658641561936" viewBox="0 0 1024 1024" version="1.1"
@@ -227,7 +227,7 @@
                 </section>
             </#if>
 
-            <#if settings.aside_enable_tags>
+            <#if settings.aside_tags_enable>
                 <section class="aside_tags widget">
                     <h2 class="aside_title">
                         <svg t="1658645213103" class="icon" viewBox="0 0 1024 1024" version="1.1"
@@ -256,7 +256,7 @@
             </#if>
         </#if>
 
-        <#if settings.aside_enable_web_info>
+        <#if settings.aside_web_info_enable>
             <section class="aside_webInfo widget animated wow" data-wow-delay="0.6s">
                 <h2 class="aside_title">
                     <svg t="1658645943500" viewBox="0 0 1024 1024" version="1.1"

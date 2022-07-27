@@ -1,5 +1,5 @@
 <#--文章-->
-<#macro Posts method  display   >
+<#macro PostIndex method  display   >
     <ul class="posts_content">
         <#list posts.content as post>
             <li class="posts_item widget">
@@ -127,8 +127,9 @@
 </#macro>
 
 
-
-
+<#macro PostArchives method display>
+    12346
+</#macro>
 
 <#-- 页码-->
 <#macro Pagination method  display = "3" keyword="" slug="">

@@ -8,7 +8,7 @@
         body {
         <#if settings.body_background?contains("http")> --body-background: url(${settings.body_background!}) no-repeat fixed center / cover;
         <#else> --body-background: ${settings.body_background!};
-            --top-background-img: url(${settings.index_top_background_img});
+            --top-background-img: url(${settings.index_above_background_img!});
         </#if>
         }
     </style>
@@ -19,13 +19,13 @@
     <#--头部-->
     <header class="header">
         <@Navbar/>
-        <#if settings.index_enable_above><@AboveIndex/></#if>
+        <#if settings.index_above_enable><@AboveIndex/></#if>
     </header>
     <#--主内容-->
     <main class="main animated ${settings.aside_position!}">
         <section class="container ${settings.index_post_layout!}">
-            <#if (posts.content)?? && posts.content?size gt 0>
-                <#include "template/posts.ftl"><@Posts  method="index"  display="${settings.index_page!}"  />
+            <#if postCount gt 0>
+                <#include "template/posts.ftl"><@PostIndex  method="index"  display="${settings.index_page!}"  />
             <#else>
                 <@Empty/>
             </#if>
