@@ -37,26 +37,31 @@ const MainContext = {
         const day = (new Date() - birthday) / (1000 * 24 * 60 * 60);
         run_day.html(`${parseInt(day)} 天`);
     },
-    scroll() {
+    scroll: function () {
         const navbar = $('.navbar');
+
         const asideWidget = $('.aside_widget');
+
         let scrollTop = 0;
-        window.onscroll = Utils.throttle(function () {
+
+        const onscroll = Utils.throttle(function () {
             const currentTop = window.scrollY || document.documentElement.scrollTop;
-            if (currentTop > 60) {
+            if (currentTop > 56) {
                 if (currentTop > scrollTop) {
                     navbar.hasClass("active-visible") && navbar.removeClass("active-visible");
                     asideWidget.addClass("active");
                 } else {
                     !navbar.hasClass("active-visible") && navbar.addClass("active-visible");
                 }
-                navbar.addClass('active-fixed');
+                navbar.addClass("active-fixed");
             } else {
-                !currentTop && navbar.removeClass('active-fixed active-visible');
+                !currentTop && navbar.removeClass("active-fixed active-visible");
                 !currentTop && asideWidget.removeClass("active");
             }
             scrollTop = currentTop;
         }, 200);
+
+        window.addEventListener('scroll', onscroll);
     }
 
 };

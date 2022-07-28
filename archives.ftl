@@ -18,8 +18,8 @@
     <#include "template/macro.ftl">
     <#--头部-->
     <header class="header">
-        <@Navbar/>
         <#if settings.archives_above_enable><@AbovePublic title=settings.archives_title!/></#if>
+        <@Navbar/>
     </header>
     <#--主内容-->
     <main class="main animated ${settings.aside_position!}">

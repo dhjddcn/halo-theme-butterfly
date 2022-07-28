@@ -18,8 +18,8 @@
     <#include "template/macro.ftl">
     <#--头部-->
     <header class="header">
-        <@Navbar/>
         <#if settings.index_above_enable><@AboveIndex/></#if>
+        <@Navbar/>
     </header>
     <#--主内容-->
     <main class="main animated ${settings.aside_position!}">

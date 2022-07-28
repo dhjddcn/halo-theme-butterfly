@@ -19,7 +19,6 @@ base:
       name: site_birthday
       label: 建站时间
       type: text
-      default: ""
       placeholder: "示例：2022-01-01 00:00"
       description: "自定义博客的起始时间/安装时间，作为计算博客运行时间的参照值，请严格按照示例格式填写，否则将导致报错！"
     baidu_code:
@@ -255,75 +254,6 @@ aside:
         - value: false
           label: 关闭
 
-index:
-  label: 首页
-  items:
-    index_above_enable:
-      name: index_above_enable
-      label: 启用第一屏
-      type: switch
-      data-type: bool
-      default: true
-      description: "如果关闭第一屏，建议深色背景或者图片，或者重写颜色！"
-      options:
-        - value: true
-          label: 是
-        - value: false
-          label: 否
-    index_aside_enable:
-      name: index_aside_enable
-      label: 启用侧边栏
-      type: switch
-      data-type: bool
-      default: true
-      options:
-        - value: true
-          label: 是
-        - value: false
-          label: 否
-    index_custom_description:
-      name: index_custom_description
-      label: 自定义打字机描述
-      type: textarea
-      placeholder: 格式：描述一&&描述二&&描述三
-      description: "默认为网站描述，可自定义打字机描述。请按照格式填写否则报错！！！ 格式：描述一&&描述二&&描述三"
-    index_above_background_img:
-      name: index_above_background_img
-      label: 顶部背景图
-      type: attachment
-      default: ""
-      placeholder: "顶部背景图"
-    index_post_layout:
-      name: index_post_layout
-      label: 文章布局方式
-      type: select
-      default: "post_list"
-      description: "文章布局方式 提供列表、平铺两种，仅首页生效！ "
-      options:
-        - value: "post_list"
-          label: "列表"
-        - value: "post_tile"
-          label: "平铺"
-    index_list_effect_class:
-      name: index_list_effect_class
-      label: 动画效果类名
-      type: select
-      default: "fadeIn"
-      description: "首页列表动画效果类名，来自 animate.css，默认 fadeInUp，这里只选取可用类名"
-      options:
-        - value: "fadeIn"
-          label: "fadeIn"
-        - value: "fadeInUp"
-          label: "fadeInUp"
-        - value: "bounceIn"
-          label: "bounceIn"
-    index_page:
-      name: index_page
-      label: 文章列表分页
-      type: text
-      default: "3"
-      placeholder: "文章列表分页"
-      description: "文字列表分页数量，默认 3 页，每页条数可在halo后台文字设置修改"
 
 post:
   label: 文章
@@ -412,6 +342,77 @@ post:
       type: attachment
       default: ""
       placeholder: "打赏用的微信收款二维码链接，不填不显示"
+
+index:
+  label: 首页
+  items:
+    index_above_enable:
+      name: index_above_enable
+      label: 启用第一屏
+      type: switch
+      data-type: bool
+      default: true
+      description: "如果关闭第一屏，建议深色背景或者图片，或者重写颜色！"
+      options:
+        - value: true
+          label: 是
+        - value: false
+          label: 否
+    index_aside_enable:
+      name: index_aside_enable
+      label: 启用侧边栏
+      type: switch
+      data-type: bool
+      default: true
+      options:
+        - value: true
+          label: 是
+        - value: false
+          label: 否
+    index_custom_description:
+      name: index_custom_description
+      label: 自定义打字机描述
+      type: textarea
+      placeholder: 格式：描述一&&描述二&&描述三
+      description: "默认为网站描述，可自定义打字机描述。请按照格式填写否则报错！！！ 格式：描述一&&描述二&&描述三"
+    index_above_background_img:
+      name: index_above_background_img
+      label: 顶部背景图
+      type: attachment
+      default: ""
+      placeholder: "顶部背景图"
+    index_post_layout:
+      name: index_post_layout
+      label: 文章布局方式
+      type: select
+      default: "post_list"
+      description: "文章布局方式 提供列表、平铺两种，仅首页生效！ "
+      options:
+        - value: "post_list"
+          label: "列表"
+        - value: "post_tile"
+          label: "平铺"
+    index_list_effect_class:
+      name: index_list_effect_class
+      label: 动画效果类名
+      type: select
+      default: "fadeIn"
+      description: "首页列表动画效果类名，来自 animate.css，默认 fadeInUp，这里只选取可用类名"
+      options:
+        - value: "fadeIn"
+          label: "fadeIn"
+        - value: "fadeInUp"
+          label: "fadeInUp"
+        - value: "bounceIn"
+          label: "bounceIn"
+    index_page:
+      name: index_page
+      label: 文章列表分页
+      type: text
+      default: "3"
+      placeholder: "文章列表分页"
+      description: "文字列表分页数量，默认 3 页，每页条数可在halo后台文字设置修改"
+
 
 archives:
   label: 归档

@@ -1,43 +1,5 @@
-html #Butterfly {
-  @media (max-width: 1760px) {
-
-  }
-
-  @media (max-width: 1400px) {
-
-  }
-
-  @media (max-width: 1100px) {
-  }
-
-  @media (max-width: 1200px) {
-
-  }
-
-  @media (max-width: 1130px) {
-
-  }
-
-  @media (max-width: 1000px) {
-
-  }
-
-  @media (max-width: 992px) {
-    .main {
-      flex-direction: column;
-      padding: 8px;
-    }
-
-    .aside {
-      display: none;
-    }
-
-  }
-  @media (max-width: 955px) {
-
-  }
-  @media (max-width: 815px) {
-
+.Index() {
+  .w768 {
     .container .posts {
       &_item {
         font-size: 80%;
@@ -51,7 +13,7 @@ html #Butterfly {
 
         > .cover {
           width: 100%;
-          height: 300px;
+          height: 188px;
         }
 
         > .info {
@@ -84,13 +46,77 @@ html #Butterfly {
 
     }
   }
+}
+
+.Archives() {
+  .w768 {
+    .main {
+      .container {
+        padding: 36px 14px;
+      }
+    }
+  }
+}
+
+
+html #Butterfly {
+  @media (max-width: 1760px) {
+  }
+
+  @media (max-width: 1400px) {
+
+  }
+
+  @media (max-width: 1100px) {
+  }
+
+  @media (max-width: 1200px) {
+
+  }
+
+  @media (max-width: 1130px) {
+
+  }
+
+  @media (max-width: 1000px) {
+
+  }
+
+  @media (max-width: 992px) {
+    .aside {
+      display: none;
+    }
+  }
+  @media (max-width: 955px) {
+    .main {
+      flex-direction: column;
+    }
+  }
+  @media (max-width: 815px) {
+  }
 
   @media (max-width: 795px) {
-
+    .header .menu {
+      display: none;
+    }
 
   }
   @media (max-width: 768px) {
+    .main {
+      padding: 20px 8px;
+    }
 
+    .navbar {
+      padding: 0 16px;
+    }
+
+    &.index {
+      .Index.w768();
+    }
+
+    &.archives {
+      .Archives.w768();
+    }
   }
 
   @media (max-width: 650px) {
@@ -101,6 +127,5 @@ html #Butterfly {
   }
 
   @media (max-width: 375px) {
-
   }
 }
