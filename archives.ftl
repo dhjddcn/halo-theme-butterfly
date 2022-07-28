@@ -40,7 +40,6 @@
 <script type="text/javascript" src="${base_url!}/source/lib/lazyLoad/lazyLoad.min.js"></script>
 <script type="text/javascript" src="${base_url!}/source/lib/wow/wow.min.js"></script>
 <script type="text/javascript" src="${base_url!}/source/lib/msg/msg.min.js"></script>
-<script type="text/javascript" src="${base_url!}/source/lib/typed/typed.min.js"></script>
 <script type="text/javascript" src="${base_url!}/source/js/min/utils.min.js"></script>
 <script type="text/javascript" src="${base_url!}/source/js/min/main.min.js"></script>
 <script type="text/javascript" src="${base_url!}/source/js/min/archives.min.js"></script>
