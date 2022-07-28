@@ -14,7 +14,7 @@
     </style>
 </head>
 <body data-theme="light">
-<div id="Butterfly">
+<div id="Butterfly" class="index">
     <#include "template/macro.ftl">
     <#--头部-->
     <header class="header">
@@ -25,7 +25,7 @@
     <main class="main animated ${settings.aside_position!}">
         <section class="container ${settings.index_post_layout!}">
             <#if postCount gt 0>
-                <#include "template/posts.ftl"><@PostIndex  method="index"  display="${settings.index_page!}"  />
+                <#include "template/posts.ftl"><@PostPublic  method="index"  display="${settings.index_page!}"  />
             <#else>
                 <@Empty/>
             </#if>

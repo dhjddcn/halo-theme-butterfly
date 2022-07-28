@@ -105,7 +105,6 @@
 </#macro>
 
 
-
 <#--文章图片-->
 <#macro Post_thumbnail thumbnail>
     <#assign cover = thumbnail!?trim>

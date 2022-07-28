@@ -1,5 +1,5 @@
 <#--文章-->
-<#macro PostIndex method  display   >
+<#macro PostPublic method  display   >
     <ul class="posts_content">
         <#list posts.content as post>
             <li class="posts_item widget">
@@ -127,8 +127,38 @@
 </#macro>
 
 
-<#macro PostArchives method display>
-    12346
+<#macro PostArchives>
+    <h1 class="archive_sort--title">
+        ${settings.archives_title!} - ${postCount!}
+    </h1>
+    <ul class="archive_sort--content">
+        <#list archives as archive>
+            <li class="archive_sort--item year">${archive.year?c}</li>
+            <#list archive.posts as post>
+                <li class="archive_sort--item">
+                    <a class="cover" href="${post.fullPath!}" title="${post.title!}">
+                        <@Post_thumbnail thumbnail=post.thumbnail />
+                        <img
+                                src="${lazy_img}"
+                                data-lazy-src="${cover!}"
+                                onerror="this.src='${err_img}'"
+                                alt="${post.title!}"
+                        />
+                    </a>
+                    <div class="info">
+                        <div class="info_title">
+                            <time datetime="${post.createTime?string('yyyy-MM-dd')}">${post.createTime?string('yyyy-MM-dd')}</time>
+                        </div>
+                        <a class="info_link" href="${post.fullPath!}" title="${post.title!}">
+                            ${post.title!}
+                        </a>
+                    </div>
+                </li>
+            </#list>
+        </#list>
+    </ul>
+
+    <@Pagination  method="archives"  display="${settings.archives_page!}"  />
 </#macro>
 
 <#-- 页码-->

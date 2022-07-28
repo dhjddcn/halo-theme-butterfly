@@ -1,22 +1,20 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <title>${blog_title!}</title>
+    <title>${settings.archives_title!}</title>
     <#include 'template/config.ftl'>
     <link rel="preload stylesheet" as="style" href="${base_url}/source/css/min/archives.min.css">
     <style>
         body {
-        <#if settings.body_background?contains("http")>
-            --body-background: url(${settings.body_background!}) no-repeat fixed center / cover;
-        <#else>
-            --body-background: ${settings.body_background!};
+        <#if settings.body_background?contains("http")> --body-background: url(${settings.body_background!}) no-repeat fixed center / cover;
+        <#else> --body-background: ${settings.body_background!};
             --top-background-img: url(${settings.archives_above_background_img!settings.index_above_background_img});
         </#if>
         }
     </style>
 </head>
 <body data-theme="light">
-<div id="Butterfly">
+<div id="Butterfly" class="archives">
     <#include "template/macro.ftl">
     <#--头部-->
     <header class="header">
@@ -27,7 +25,7 @@
     <main class="main animated ${settings.aside_position!}">
         <section class="container ${settings.archives_post_layout!} widget">
             <#if postCount gt 0>
-                <#include "template/posts.ftl"><@PostArchives  method="index"  display="${settings.index_page!}"  />
+                <#include "template/posts.ftl"><@PostArchives/>
             <#else>
                 <@Empty/>
             </#if>

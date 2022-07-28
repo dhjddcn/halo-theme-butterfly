@@ -4,6 +4,127 @@
  * @createTime: 2022/5/11
  * @Description: archives
  */
-
+@import "fun";
 @import "module";
+
+.archives .container {
+  padding: 40px;
+
+  .archive_sort {
+    &--title {
+      position: relative;
+      margin: 0 0 0 10px;
+      padding-bottom: 15px;
+      padding-left: 20px;
+      font-size: 22px;
+
+      &:before {
+        position: absolute;
+        top: calc(((100% - 36px) / 2));
+        left: -9px;
+        z-index: 1;
+        width: 10px;
+        height: 10px;
+        border: 5px solid var(--theme);
+        border-radius: 10px;
+        background: var(--card-background-color);
+        content: '';
+        line-height: 10px;
+        transition: border-color .2s;
+      }
+
+      &:after {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        z-index: 0;
+        width: 2px;
+        height: 40px;
+        background: #aadafa;
+        content: '';
+      }
+
+      &:hover:before {
+        border-color: var(--button-background-hover-color);
+      }
+    }
+
+    &--content {
+      margin-left: 10px;
+      padding-left: 20px;
+      border-left: 2px solid #aadafa;
+    }
+
+    &--item {
+      position: relative;
+      display: flex;
+      align-items: center;
+      margin: 0 0 25px 10px;
+      transition: border-color .2s ease-in-out;
+
+      &:before {
+        position: absolute;
+        left: calc(-20px - 17px);
+        width: 6px;
+        height: 6px;
+        border: 3px solid #49b1f5;
+        border-radius: 6px;
+        background: var(--card-background-color);
+        content: '';
+        transition: border-color .2s ease-in-out;
+      }
+
+      &.year {
+        font-size: 18px;
+
+        &:before {
+          border-color: var(--button-background-hover-color);
+        }
+
+        &:hover:before {
+          border-color: var(--theme);
+        }
+      }
+
+      &:hover:before {
+        border-color: var(--button-background-hover-color);
+      }
+
+      .cover {
+        overflow: hidden;
+        width: 100px;
+        height: 65px;
+        border-radius: 5px;
+
+        > img {
+          .imgCover();
+        }
+      }
+
+      .info {
+        flex: 1;
+        padding: 0 16px;
+
+        &_title {
+          color: var(--posts-meta-color);
+          font-size: 13px;
+        }
+
+        &_link {
+          color: var(--font-color);
+          font-size: 15px;
+          .clamp(2);
+          transition: color .2s, transform .2s;
+
+          &:hover {
+            color: var(--theme);
+            transform: translateX(10px);
+          }
+        }
+      }
+    }
+  }
+
+  .pagination();
+}
 

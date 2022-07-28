@@ -30,7 +30,7 @@ const IndexContext = {
             typeSpeed: 200,
             loop: true,
             backSpeed: 50,
-        })
+        });
     }
 };
 
