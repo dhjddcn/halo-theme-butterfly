@@ -92,10 +92,26 @@ html #Butterfly {
   }
 
   @media (max-width: 795px) {
-    .header .menu {
-      display: none;
-    }
+    .header {
+      .menu {
+        display: none;
+      }
 
+      .action .item {
+        .name {
+          display: none;
+        }
+
+        svg {
+          width: 20px;
+          height: 20px;
+        }
+
+        &:last-child {
+          display: flex;
+        }
+      }
+    }
   }
   @media (max-width: 768px) {
     .main {

@@ -276,7 +276,7 @@
                     </div>
                     <div class="item birthday">
                         <span>运行时间：</span>
-                        <span class="run_day">
+                        <span class="run_day" data-birthday="${settings.site_birthday!options.birthday}">
                             加载中..
                         </span>
                     </div>

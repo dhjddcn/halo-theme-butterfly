@@ -8,7 +8,7 @@
         body {
         <#if settings.body_background?contains("http")> --body-background: url(${settings.body_background!}) no-repeat fixed center / cover;
         <#else> --body-background: ${settings.body_background!};
-            --top-background-img: url(${settings.tags_above_background_img!settings.index_above_background_img});
+            --above_background_img: url(${settings.tags_above_background_img!settings.index_above_background_img});
         </#if>
         }
     </style>
@@ -26,7 +26,13 @@
         <section class="container ${settings.tags_post_layout!} widget">
             <@tagTag method="list">
                 <#if tags?? && tags?size gt 0>
-
+                    <#list tags as tag>
+<#--                        <a class="tags_link" href="${tag.fullPath!}"-->
+<#--                           title="${tag.name!}">-->
+<#--                            ${tag.name!}-->
+<#--                            <span>${tag.postCount!}</span>-->
+<#--                        </a>-->
+                    </#list>
                 <#else>
                     <@Empty/>
                 </#if>

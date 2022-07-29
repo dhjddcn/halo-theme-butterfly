@@ -538,7 +538,6 @@ tags:
       name: tags_above_background_img
       label: 顶部背景图（标签）
       type: attachment
-      default: ""
       placeholder: "顶部背景图（标签）"
     tags_aside_enable:
       name: tags_aside_enable
