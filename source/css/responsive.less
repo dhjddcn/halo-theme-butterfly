@@ -13,7 +13,7 @@
 
         > .cover {
           width: 100%;
-          height: 188px;
+          height: 250px;
         }
 
         > .info {
@@ -98,6 +98,8 @@ html #Butterfly {
       }
 
       .action .item {
+        line-height: 68px;
+
         .name {
           display: none;
         }
@@ -108,12 +110,31 @@ html #Butterfly {
         }
 
         &:last-child {
-          display: flex;
+          display: inline-block;
+        }
+
+        &:first-child {
+          transform: translateY(-1.5px);
         }
       }
     }
   }
   @media (max-width: 768px) {
+
+    .header {
+
+      .search {
+        top: 0;
+        left: 0;
+        margin: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+      }
+
+
+    }
+
     .main {
       padding: 20px 8px;
     }

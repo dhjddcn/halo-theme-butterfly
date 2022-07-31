@@ -86,13 +86,15 @@
       width: 90%;
       position: relative;
       z-index: 0;
+      transition: background-color .3s;
 
       &:hover {
         color: var(--button-color);
+        background-color: var(--button-background-hover-color);
 
-        &:after {
-          width: 100%;
-        }
+        //&:after {
+        //  width: 100%;
+        //}
       }
 
       &::after {
@@ -215,7 +217,7 @@
         &:not(:last-child) {
           border-bottom: 1px dashed #f5f5f5;
         }
-        
+
       }
     }
   }
@@ -227,7 +229,7 @@
         .flex();
         padding: 3px 12px;
         width: 100%;
-        color: #4c4948;
+        color: var(--font-color);
         transition: all .4s;
         border-radius: 8px;
 

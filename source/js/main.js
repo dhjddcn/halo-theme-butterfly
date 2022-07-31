@@ -4,8 +4,6 @@
  * @createTime: 2022/5/11
  * @Description: main
  */
-
-
 const MainContext = {
     //图片加载
     lazyLoad() {
@@ -27,6 +25,23 @@ const MainContext = {
             }
         } );
     },
+    navbar() {
+        const action = $( ".navbar > .action" );
+        const search = $( ".header > .search" );
+        const close = $( ".header > .search  .close,.header > .mask" );
+        const body = $( document.body );
+        $( action ).children( ":first" ).on( "click", () => {
+            body.addClass( "disable-scroll" );
+            search.show().css( { "animation": " 0.5s  search-scale-show" } );
+        } )
+        close.unbind( "click" ).click( () => {
+            body.removeClass( "disable-scroll" );
+            search.css( { "animation": " 0.5s  search-scale-hide" } );
+            setTimeout( () => {
+                search.hide();
+            }, 500 )
+        } )
+    },
     asideRunDay() {
         const run_day = $( '.run_day' );
         const birthday = new Date( Number( run_day.attr( 'data-birthday' ).replace( /,/g, "" ) ) );
@@ -37,7 +52,7 @@ const MainContext = {
         const day = (new Date() - birthday) / (1000 * 24 * 60 * 60);
         run_day.html( `${ parseInt( day ) } 天` );
     },
-    scroll: function () {
+    scroll() {
         const navbar = $( '.navbar' );
 
         const asideWidget = $( '.aside_widget' );

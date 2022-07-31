@@ -13,13 +13,30 @@
         }
     </style>
 </head>
-<body data-theme="light">
+<body data-theme="light" >
 <div id="Butterfly" class="index">
     <#include "template/macro.ftl">
     <#--头部-->
     <header class="header">
         <#if settings.index_above_enable><@AboveIndex/></#if>
         <@Navbar/>
+
+        <section class="search">
+            <div class="search_head">
+                <h2 class="title">文章搜索</h2>
+                <div class="close"></div>
+            </div>
+
+            <form class="search_content" method="get" action="${context!}search">
+                <label>
+                    <input autocomplete="off" maxlength="16" name="keyword" class="search_input"
+                           placeholder="请输入搜索关键字..." type="text">
+                </label>
+            </form>
+            <hr>
+        </section>
+
+        <div class="mask"></div>
     </header>
     <#--主内容-->
     <main class="main animated ${settings.aside_position!}">

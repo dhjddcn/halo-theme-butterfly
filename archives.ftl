@@ -13,7 +13,7 @@
         }
     </style>
 </head>
-<body data-theme="light">
+<body data-theme="light" >
 <div id="Butterfly" class="archives">
     <#include "template/macro.ftl">
     <#--头部-->
