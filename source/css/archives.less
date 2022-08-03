@@ -90,12 +90,17 @@
 
       .cover {
         overflow: hidden;
-        width: 100px;
-        height: 65px;
+        width: 80px;
+        height: 80px;
         border-radius: 5px;
 
         > img {
           .imgCover();
+
+          &:hover {
+            transform: scale(1.1);
+          }
+
         }
       }
 

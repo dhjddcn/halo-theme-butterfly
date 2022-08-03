@@ -27,11 +27,11 @@
             <@tagTag method="list">
                 <#if tags?? && tags?size gt 0>
                     <#list tags as tag>
-<#--                        <a class="tags_link" href="${tag.fullPath!}"-->
-<#--                           title="${tag.name!}">-->
-<#--                            ${tag.name!}-->
-<#--                            <span>${tag.postCount!}</span>-->
-<#--                        </a>-->
+                        <a class="tags_link" href="${tag.fullPath!}"
+                           title="${tag.name!}">
+                            ${tag.name!}
+                            <span class="num">${tag.postCount!}</span>
+                        </a>
                     </#list>
                 <#else>
                     <@Empty/>

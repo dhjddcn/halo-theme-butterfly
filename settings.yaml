@@ -260,11 +260,11 @@ post:
   items:
     post_aside_enable:
       name: post_aside_enable
-      label: 是否展示侧边栏
+      label: 启用侧边栏
       type: switch
       data-type: bool
       default: true
-      description: "是否展示侧边栏"
+      description: "启用侧边栏"
       options:
         - value: true
           label: 是
@@ -272,11 +272,11 @@ post:
           label: 否
     post_above_enable:
       name: post_above_enable
-      label: 开启顶部背景图
+      label: 启用第一屏
       type: switch
       data-type: bool
       default: true
-      placeholder: "开启顶部背景图"
+      placeholder: "启用第一屏"
       options:
         - value: true
           label: 是
@@ -377,10 +377,9 @@ index:
       description: "默认为网站描述，可自定义打字机描述。请按照格式填写否则报错！！！ 格式：描述一&&描述二&&描述三"
     index_above_background_img:
       name: index_above_background_img
-      label: 顶部背景图
+      label: 第一屏背景图
       type: attachment
-      default: ""
-      placeholder: "顶部背景图"
+      placeholder: "第一屏背景图"
     index_post_layout:
       name: index_post_layout
       label: 文章布局方式
@@ -417,12 +416,6 @@ index:
 archives:
   label: 归档
   items:
-    archives_title:
-      name: archives_title
-      label: 归档页标题
-      default: "文章归档"
-      placeholder: "请输入"
-      description: "修改归档标题"
     archives_above_enable:
       name: archives_above_enable
       label: 启用第一屏
@@ -435,11 +428,29 @@ archives:
           label: 是
         - value: false
           label: 否
+    archives_aside_enable:
+      name: archives_aside_enable
+      label: 启用侧边栏
+      type: switch
+      data-type: bool
+      default: true
+      description: "启用侧边栏"
+      options:
+        - value: true
+          label: 是
+        - value: false
+          label: 否
+    archives_title:
+      name: archives_title
+      label: 归档页标题
+      default: "文章归档"
+      placeholder: "请输入"
+      description: "修改归档标题"
     archives_above_background_img:
       name: archives_above_background_img
-      label: 顶部背景图
+      label: 第一屏背景图
       type: attachment
-      placeholder: "顶部背景图"
+      placeholder: "第一屏背景图"
       description: "不配置默认使用首页背景图"
     archives_post_layout:
       name: index_post_layout
@@ -452,18 +463,6 @@ archives:
           label: "列表"
         - value: "post_tile"
           label: "平铺"
-    archives_aside_enable:
-      name: archives_aside_enable
-      label: 是否展示侧边栏
-      type: switch
-      data-type: bool
-      default: true
-      description: "是否展示侧边栏"
-      options:
-        - value: true
-          label: 是
-        - value: false
-          label: 否
     archives_page:
       name: archives_page
       label: 文章列表分页
@@ -483,11 +482,11 @@ categories:
       description: "修改分类页顶部的标题"
     categories_above_enable:
       name: categories_above_enable
-      label: 开启顶部背景图
+      label: 启用第一屏
       type: switch
       data-type: bool
       default: true
-      placeholder: "开启顶部背景图"
+      placeholder: "启用第一屏"
       options:
         - value: true
           label: 是
@@ -495,18 +494,17 @@ categories:
           label: 否
     categories_above_background_img:
       name: categories_above_background_img
-      label: 顶部背景图
+      label: 第一屏背景图
       type: attachment
-      default: ""
-      placeholder: "顶部背景图"
+      placeholder: "第一屏背景图"
       description: "不配置默认使用首页背景图"
     categories_aside_enable:
       name: categories_aside_enable
-      label: 是否展示侧边栏
+      label: 启用侧边栏
       type: switch
       data-type: bool
       default: true
-      description: "是否展示侧边栏"
+      description: "启用侧边栏"
       options:
         - value: true
           label: 是
@@ -524,11 +522,11 @@ tags:
       description: "修改标签页顶部的标题"
     tags_above_enable:
       name: tags_above_enable
-      label: 开启顶部背景图
+      label: 启用第一屏
       type: switch
       data-type: bool
       default: true
-      placeholder: "开启顶部背景图"
+      placeholder: "启用第一屏"
       options:
         - value: true
           label: 是
@@ -536,16 +534,16 @@ tags:
           label: 否
     tags_above_background_img:
       name: tags_above_background_img
-      label: 顶部背景图（标签）
+      label: 第一屏背景图
       type: attachment
-      placeholder: "顶部背景图（标签）"
+      placeholder: "第一屏背景图"
     tags_aside_enable:
       name: tags_aside_enable
-      label: 是否展示侧边栏
+      label: 启用侧边栏
       type: switch
       data-type: bool
       default: true
-      description: "是否展示侧边栏"
+      description: "启用侧边栏"
       options:
         - value: true
           label: 是
@@ -563,11 +561,11 @@ links:
       description: "修改友链页顶部展示的标题"
     links_above_background_img_enable:
       name: links_above_background_img_enable
-      label: 开启顶部背景图
+      label: 启用第一屏
       type: switch
       data-type: bool
       default: true
-      placeholder: "开启顶部背景图"
+      placeholder: "启用第一屏"
       options:
         - value: true
           label: 是
@@ -575,17 +573,17 @@ links:
           label: 否
     links_above_background_img:
       name: links_above_background_img
-      label: 顶部背景图（友链）
+      label: 第一屏背景图
       type: attachment
       default: ""
-      placeholder: "顶部背景图（友链）"
+      placeholder: "第一屏背景图"
     links_aside_enable:
       name: links_aside_enable
-      label: 是否展示侧边栏
+      label: 启用侧边栏
       type: switch
       data-type: bool
       default: true
-      description: "是否展示侧边栏"
+      description: "启用侧边栏"
       options:
         - value: true
           label: 是
@@ -603,11 +601,11 @@ journals:
       description: "修改日志页顶部展示的标题"
     journals_above_background_img_enable:
       name: journals_above_background_img_enable
-      label: 开启顶部背景图
+      label: 启用第一屏
       type: switch
       data-type: bool
       default: true
-      placeholder: "开启顶部背景图"
+      placeholder: "启用第一屏"
       options:
         - value: true
           label: 是
@@ -615,18 +613,17 @@ journals:
           label: 否
     journals_above_background_img:
       name: journals_above_background_img
-      label: 顶部背景图
+      label: 第一屏背景图
       type: attachment
-      default: ""
-      placeholder: "顶部背景图"
+      placeholder: "第一屏背景图"
       description: "不配置默认使用首页背景图"
     journals_aside_enable:
       name: journals_aside_enable
-      label: 是否展示侧边栏
+      label: 启用侧边栏
       type: switch
       data-type: bool
       default: true
-      description: "是否展示侧边栏"
+      description: "启用侧边栏"
       options:
         - value: true
           label: 是
@@ -644,11 +641,11 @@ search:
       description: "修改文章搜索顶部展示的标题"
     search_above_background_img_enable:
       name: search_above_background_img_enable
-      label: 开启顶部背景图
+      label: 启用第一屏
       type: switch
       data-type: bool
       default: true
-      placeholder: "开启顶部背景图"
+      placeholder: "启用第一屏"
       options:
         - value: true
           label: 是
@@ -656,18 +653,17 @@ search:
           label: 否
     search_above_background_img:
       name: search_above_background_img
-      label: 顶部背景图
+      label: 第一屏背景图
       type: attachment
-      default: ""
-      placeholder: "顶部背景图"
+      placeholder: "第一屏背景图"
       description: "不配置默认使用首页背景图"
     search_aside_enable:
       name: search_aside_enable
-      label: 是否展示侧边栏
+      label: 启用侧边栏
       type: switch
       data-type: bool
       default: true
-      description: "是否展示侧边栏"
+      description: "启用侧边栏"
       options:
         - value: true
           label: 是
@@ -679,11 +675,11 @@ sheet:
   items:
     sheet_above_background_img_enable:
       name: sheet_above_background_img_enable
-      label: 开启顶部背景图
+      label: 启用第一屏
       type: switch
       data-type: bool
       default: true
-      placeholder: "开启顶部背景图"
+      placeholder: "启用第一屏"
       options:
         - value: true
           label: 是
@@ -691,10 +687,9 @@ sheet:
           label: 否
     sheet_above_background_img:
       name: sheet_above_background_img
-      label: 顶部背景图
+      label: 第一屏背景图
       type: attachment
-      default: ""
-      placeholder: "顶部背景图"
+      placeholder: "第一屏背景图"
       description: "不配置默认使用首页背景图"
 
 code_block:

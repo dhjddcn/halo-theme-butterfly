@@ -93,6 +93,7 @@
         <div class="title">
             <a href="${context!}">${blog_title!}</a>
         </div>
+
         <nav class="menu">
             <@menuTag method="tree">
                 <#list menuList?sort_by('priority') as menu>
@@ -124,7 +125,7 @@
         </nav>
 
         <div class="action">
-            <div class="item">
+            <div class="item s">
                 <svg t="1659120066292" viewBox="0 0 1024 1024" version="1.1"
                      xmlns="http://www.w3.org/2000/svg" p-id="14055">
                     <path d="M932.140361 933.699368c-32.619932 32.832779-85.518722 32.832779-118.160143 0L666.508491 785.285177c-60.631916 39.089273-132.315538 62.448284-209.680557 62.448284-215.337393 0-389.92571-175.666882-389.92571-392.398018C66.902224 238.617609 241.490541 62.936401 456.827935 62.936401c215.362976 0 389.926734 175.681208 389.926734 392.399041 0 77.862345-23.203468 149.993153-62.08194 211.024158l147.46661 148.413168C964.785875 847.630107 964.785875 900.845099 932.140361 933.699368zM456.827935 175.049828c-153.809061 0-278.522458 125.491109-278.522458 280.285614 0 154.805762 124.713396 280.284591 278.522458 280.284591 153.834644 0 278.521434-125.478829 278.521434-280.284591C735.350392 300.540937 610.662579 175.049828 456.827935 175.049828z"
@@ -132,7 +133,7 @@
                 </svg>
                 <span class="name">搜索</span>
             </div>
-            <div class="item">
+            <div class="item t">
                 <svg t="1659120001787" viewBox="0 0 1024 1024" version="1.1"
                      xmlns="http://www.w3.org/2000/svg" p-id="11381">
                     <path d="M868.7 126.6H157.3c-32.7 0-59.3 26.5-59.3 59.3 0 32.7 26.5 59.3 59.3 59.3h711.4c32.7 0 59.3-26.5 59.3-59.3 0-32.7-26.5-59.3-59.3-59.3z m0 652.2H157.3c-32.7 0-59.3 26.5-59.3 59.3 0 32.7 26.5 59.3 59.3 59.3h711.4c32.7 0 59.3-26.5 59.3-59.3s-26.5-59.3-59.3-59.3z m0-326.1H157.3c-32.7 0-59.3 26.5-59.3 59.3 0 32.7 26.5 59.3 59.3 59.3h711.4c32.7 0 59.3-26.5 59.3-59.3 0-32.7-26.5-59.3-59.3-59.3z"
@@ -141,6 +142,75 @@
             </div>
         </div>
     </section>
+
+    <section class="search">
+        <div class="search_head">
+            <h2 class="title">文章搜索</h2>
+            <div class="close"></div>
+        </div>
+
+        <form class="search_content" method="get" action="${context!}search">
+            <label>
+                <input autocomplete="off" maxlength="16" name="keyword" class="search_input"
+                       placeholder="请输入搜索关键字..." type="text">
+            </label>
+        </form>
+        <hr>
+    </section>
+
+    <section class="sidebar active">
+        <img class="sidebar_avatar" src="${user.avatar!}" alt="${user.nickname!}">
+
+        <div class="sidebar_data">
+            <a title="文章" href="${archives_url!}" rel="noopener noreferrer nofollow">
+                <div class="name">文章</div>
+                <div class="num">${postCount!}</div>
+            </a>
+            <a href="${categories_url!}" title="分类" rel="noopener noreferrer nofollow">
+                <div class="name">分类</div>
+                <div class="num">${categoryCount!}</div>
+            </a>
+            <a title="评论" href="javascript:" rel="noopener noreferrer nofollow">
+                <div class="name">评论</div>
+                <div class="num">${commentCount!}</div>
+            </a>
+        </div>
+
+        <hr>
+
+        <nav class="sidebar_menu">
+            <@menuTag method="tree">
+                <#list menuList?sort_by('priority') as menu>
+                    <#if menu.children?? && menu.children?size gt 0>
+                        <div class="sidebar_menu--dropdown">
+                            <a class="sidebar_menu--link" href="javascript:" target="${menu.target!}">
+                                <#if  menu.icon??><i class="${menu.icon}"></i></#if>
+                                <span class="sidebar_menu--name">${menu.name}</span>
+                                <i class="by-font by_icon_arrow-down"></i>
+                            </a>
+                            <nav class="sidebar_menu--child">
+                                <#list menu.children?sort_by('priority') as child>
+                                    <a class="link" href="${child.url}" target="${child.target!}">
+                                        <#if  child.icon != ""><i class="${child.icon}"></i></#if>
+                                        <span class="name">${child.name}</span>
+                                    </a>
+                                </#list>
+                            </nav>
+                        </div>
+                    <#else>
+                        <a class="sidebar_menu--link" href="${menu.url}" target="${menu.target!}">
+                            <#if  menu.icon??><i class="${menu.icon}"></i></#if>
+                            <span class="sidebar_menu--name">${menu.name}</span>
+                        </a>
+                    </#if>
+                </#list>
+            </@menuTag>
+        </nav>
+
+    </section>
+
+
+    <div class="mask"></div>
 </#macro>
 
 

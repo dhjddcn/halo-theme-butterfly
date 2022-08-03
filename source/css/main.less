@@ -8,12 +8,13 @@
 @keyframes mainInUp {
   0% {
     opacity: 0;
-    transform: translate3d(0, 100px, 0)
+    filter: alpha(opacity=0);
+    transform: translateY(50px);
   }
-
-  to {
+  100% {
     opacity: 1;
-    transform: translate3d(0, 0, 0)
+    filter: none;
+    transform: translateY(0);
   }
 }
 

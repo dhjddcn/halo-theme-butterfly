@@ -226,17 +226,36 @@
 
     &--content {
       .item {
+        position: relative;
         .flex();
-        padding: 3px 12px;
+        padding: 3px 20px 3px 30px;
         width: 100%;
         color: var(--font-color);
-        transition: all .4s;
+        transition: transform .3s;
         border-radius: 8px;
 
+        &:before {
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          width: 7px;
+          height: 7px;
+          margin: auto;
+          border: 3px solid var(--theme);
+          border-radius: 50%;
+          background: 0 0;
+          content: '';
+          cursor: pointer;
+          transition: color 0.3s ease-out;
+        }
+
         &:hover {
-          background-color: var(--theme);
-          color: #fff;
-          padding: 3px 17px;
+          transform: translateX(8px);
+
+          &:before {
+            border-color: var(--button-background-hover-color);
+          }
         }
 
         .name, .count {

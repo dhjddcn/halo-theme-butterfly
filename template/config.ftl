@@ -1,17 +1,17 @@
 <#-- 全局配置 -->
 <script id="browser-Compatibility">
     function detectIE() {
-        let e = window.navigator.userAgent, t = e.indexOf( "MSIE " );
-        if ( t > 0 ) return parseInt( e.substring( t + 5, e.indexOf( ".", t ) ), 10 );
-        if ( e.indexOf( "Trident/" ) > 0 ) {
-            let t = e.indexOf( "rv:" );
-            return parseInt( e.substring( t + 3, e.indexOf( ".", t ) ), 10 )
+        let e = window.navigator.userAgent, t = e.indexOf("MSIE ");
+        if (t > 0) return parseInt(e.substring(t + 5, e.indexOf(".", t)), 10);
+        if (e.indexOf("Trident/") > 0) {
+            let t = e.indexOf("rv:");
+            return parseInt(e.substring(t + 3, e.indexOf(".", t)), 10)
         }
-        let n = e.indexOf( "Edge/" );
-        return n > 0 && parseInt( e.substring( n + 5, e.indexOf( ".", n ) ), 10 )
+        let n = e.indexOf("Edge/");
+        return n > 0 && parseInt(e.substring(n + 5, e.indexOf(".", n)), 10)
     }
 
-    detectIE() && (alert( "当前站点不支持IE浏览器或您开启了兼容模式，请使用其他浏览器访问或关闭兼容模式。" ), location.href = "https://www.baidu.com"), document.getElementById( "browser-Compatibility" ).remove();
+    detectIE() && (alert("当前站点不支持IE浏览器或您开启了兼容模式，请使用其他浏览器访问或关闭兼容模式。"), location.href = "https://www.baidu.com"), document.getElementById("browser-Compatibility").remove();
 </script>
 <#--定义可变属性，会根据页面的改变而变化  获取当前页面元数据，这里不要做解析-->
 <script id="meta-config" type='text/javascript'>
@@ -24,7 +24,7 @@
             </#if>
         },
     }
-    document.getElementById( 'meta-config' ).remove();
+    document.getElementById('meta-config').remove();
 </script>
 
 <#global mode = (blog_url?index_of("127.0.0.1") == -1)?then('production', 'development')>
@@ -72,7 +72,7 @@
 
     :root {
         --font-size: 15px;
-        --font-family: "Butterfly Font", "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, "sans-serif";
+        --font-family: "Butterfly Font";
         --theme: ${settings.theme_color!};
         --main-max-width: ${settings.main_max_width!};
         --cursor-default: url(${base_url!}/source/cursor/simple_cursor/default.cur), auto;
