@@ -158,7 +158,7 @@
         <hr>
     </section>
 
-    <section class="sidebar active">
+    <section class="sidebar ">
         <img class="sidebar_avatar" src="${user.avatar!}" alt="${user.nickname!}">
 
         <div class="sidebar_data">

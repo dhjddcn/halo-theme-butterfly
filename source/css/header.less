@@ -434,7 +434,7 @@
         .ellipsis();
 
         &:hover {
-          background: var(--theme);
+          //background: var(--theme);
         }
 
         i:first-child {
@@ -443,15 +443,22 @@
 
         i:last-child {
           position: absolute;
-          top: 10px;
           right: 18px;
           transition: transform .3s;
         }
       }
 
       &--child {
-        display: flex;
-        flex-direction: column;
+        display: none;
+        padding-left: 40px;
+
+        .link {
+          position: relative;
+          display: block;
+          padding: 6px 30px 6px 22px;
+          color: var(--font-color);
+          font-size: 15px;
+        }
 
       }
 
