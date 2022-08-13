@@ -44,6 +44,7 @@
 <script type="text/javascript" src="${base_url!}/source/js/min/utils.min.js"></script>
 <script type="text/javascript" src="${base_url!}/source/js/min/main.min.js"></script>
 <script type="text/javascript" src="${base_url!}/source/js/min/index.min.js"></script>
+<script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 </body>
 </html>
 

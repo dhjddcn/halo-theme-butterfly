@@ -54,7 +54,7 @@
 <meta property="twitter:partner" content="ogwp">
 <link rel="canonical" href="${blog_url!}">
 <link rel="preload stylesheet" as="style" href="//at.alicdn.com/t/font_3123425_cgp0qwul5y8.css">
-<link rel="preload stylesheet" as="style" href="//at.alicdn.com/t/c/font_3318283_7m8j6n5061l.css">
+<link rel="preload stylesheet" as="style" href="//at.alicdn.com/t/c/font_3318283_7brznxf2uk.css">
 <link rel="preload stylesheet" as="style" href="${base_url}/source/css/min/theme.min.css">
 <link rel="preload stylesheet" as="style" href="${base_url}/source/css/min/global.min.css">
 <link rel="preload stylesheet" as="style" href="${base_url}/source/css/min/responsive.min.css">
