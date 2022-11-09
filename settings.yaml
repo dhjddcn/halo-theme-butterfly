@@ -1,0 +1,39 @@
+apiVersion: v1alpha1
+kind: Setting
+metadata:
+  name: theme-default-setting
+spec:
+  forms:
+    - group: post
+      label: 文章
+      formSchema:
+        - $formkit: select
+          name: content_size
+          label: 字体大小
+          value: prose-base
+          options:
+            - value: prose-base
+              label: prose-base
+            - value: prose-sm
+              label: prose-sm
+            - value: prose-lg
+              label: prose-lg
+            - value: prose-xl
+              label: prose-xl
+            - value: prose-2xl
+              label: prose-2xl
+        - $formkit: select
+          name: content_theme
+          label: 颜色主题
+          value: prose-gray
+          options:
+            - value: prose-gray
+              label: prose-gray
+            - value: prose-slate
+              label: prose-slate
+            - value: prose-zinc
+              label: prose-zinc
+            - value: prose-neutral
+              label: prose-neutral
+            - value: prose-stone
+              label: prose-stone

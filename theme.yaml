@@ -1,39 +1,17 @@
-id: butterfly
-name: Butterfly
-author:
-  name: 小红
-  website: https://dhjdd.cn
-description: Halo主题 butterfly
-logo: https://dhjdd.cn/logo
-website: https://dhjdd.cn
-repo: https://github.com/dhjddcn/halo-theme-butterfly
-cover: https://gitee.com/dhjdd/Timo/raw/master/1642841299688.png
-version: 1.5.0
-require: ^1.4.11
-## 文章页 meta 变量
-#postMetaField:
-#  - enable_aside
-#  - enable_comment
-#  - enable_collect_check
-#  - enable_toc
-#  - toc_depth
-#  - img_align
-#  - img_max_width
-#  - enable_copy
-#  - enable_donate
-#  - enable_share
-#  - enable_like
-#  - code_theme
-#  - enable_mathjax
-#  - enable_mermaid
-#
-## 自定义页 meta 变量
-#sheetMetaField:
-#  - enable_aside
-#  - enable_page_meta
-#  - enable_collect_check
-#  - enable_comment
-#  - enable_mathjax
-#  - enable_mermaid
-#  - img_align
-#  # - show_thumbnail
+apiVersion: theme.halo.run/v1alpha1
+kind: Theme
+metadata:
+  name: theme-butterfly
+spec:
+  displayName: Butterfly
+  author:
+    name: 小红
+    website: https://dhjdd.cn
+  description: 一个Halo博客主题，Butterfly 🦋
+  logo: https://halo.run/logo
+  website: https://halo.run/archives/butterfly.html
+  repo: https://github.com/dhjddcn/halo-theme-butterfly.git
+  settingName: theme-default-setting
+  configMapName: theme-default-configMap
+  version: 2.0.0
+  require: 2.0.0

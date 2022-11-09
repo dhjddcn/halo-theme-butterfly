@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" th:replace="modules/layout :: html(content = ~{::content})">
+  <th:block th:fragment="content">
+    <div class="flex flex-col h-screen items-center justify-center w-96 mx-auto">
+      <ul class="list-disc list-inside w-full">
+        <li th:each="post : ${posts.items}">
+          <a th:text="${post.spec.title}" th:href="${post.status.permalink}" class="hover:underline hover:text-gray-600"></a>
+        </li>
+      </ul>
+      <div class="mt-6 w-full flex items-center justify-between" th:if="${posts.hasPrevious() || posts.hasNext()}">
+        <a
+          th:href="@{${posts.prevUrl}}"
+          class="whitespace-no-wrap group inline-flex items-center justify-center gap-1 rounded-md border border-gray-200 bg-white px-4 py-1 text-sm font-medium leading-6 text-gray-600 shadow-sm hover:bg-gray-50 focus:shadow-none focus:outline-none"
+        >
+          <span data-icon="tabler:arrow-left" class="iconify text-lg transition-all group-hover:-translate-x-1"></span>
+          <span>上一页</span>
+        </a>
+        <span class="text-sm text-gray-900" th:text="${posts.page} +' / '+ ${posts.total}"></span>
+        <a
+          th:href="@{${posts.nextUrl}}"
+          class="whitespace-no-wrap group inline-flex items-center justify-center gap-1 rounded-md border border-gray-200 bg-white px-4 py-1 text-sm font-medium leading-6 text-gray-600 shadow-sm hover:bg-gray-50 focus:shadow-none focus:outline-none"
+        >
+          <span>下一页</span>
+          <span data-icon="tabler:arrow-right" class="iconify text-lg transition-all group-hover:translate-x-1"></span>
+        </a>
+      </div>
+    </div>
+  </th:block>
+</html>

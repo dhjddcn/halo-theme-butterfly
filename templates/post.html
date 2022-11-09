@@ -1,0 +1,9 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" th:replace="modules/layout :: html(content = ~{::content})">
+  <th:block th:fragment="content">
+    <article class="prose !max-w-none p-4" th:classappend="${theme.config.post.content_size} + ' ' + ${theme.config.post.content_theme}">
+      <h1 th:text="${post.spec.title}"></h1>
+      <th:block th:utext="${post.content.content}"> </th:block>
+    </article>
+  </th:block>
+</html>
