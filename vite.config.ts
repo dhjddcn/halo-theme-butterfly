@@ -9,10 +9,12 @@ export default defineConfig({
     outDir: fileURLToPath(new URL("./templates/assets/dist", import.meta.url)),
     emptyOutDir: true,
     lib: {
-      entry: path.resolve(__dirname, "src/main.ts"),
+      entry: [
+        path.resolve(__dirname, "src/main.ts"),
+      ],
       name: "main",
       fileName: "main",
-      formats: ["iife"],
+      formats: ["umd"],
     },
   },
 });
