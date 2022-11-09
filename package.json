@@ -2,7 +2,7 @@
   "name": "halo-theme-butterfly",
   "private": true,
   "version": "0.0.0",
-  "description": "A development starter theme with modern front-end technology stack for Halo",
+  "description": "一个Halo博客主题，Butterfly \uD83E\uDD8B",
   "scripts": {
     "dev": "vite build --watch",
     "build": "tsc && vite build",

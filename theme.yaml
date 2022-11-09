@@ -9,7 +9,7 @@ spec:
     website: https://dhjdd.cn
   description: 一个Halo博客主题，Butterfly 🦋
   logo: https://halo.run/logo
-  website: https://halo.run/archives/butterfly.html
+  website: https://dhjdd.cn
   repo: https://github.com/dhjddcn/halo-theme-butterfly.git
   settingName: theme-default-setting
   configMapName: theme-default-configMap
