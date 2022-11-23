@@ -3,15 +3,15 @@ const { src, dest } = require( 'gulp' );
 const less = require( 'gulp-less' );
 const uglify = require( "gulp-uglify" );
 const minifyCSS = require( 'gulp-csso' );
-const autoprefix = require( 'gulp-autoprefixer' );
+const autoPrefix = require( 'gulp-autoprefixer' );
 const rename = require( 'gulp-rename' );
 const gulpBabel = require( "gulp-babel" );
 
 
 gulp.task( "css", function () {
-  return src( './source/css/*.less' )
+  return src( './src/css/*.less' )
     .pipe( less() )
-    .pipe( autoprefix( {
+    .pipe( autoPrefix( {
       overrideBrowserslist: [
         "> 2%", "last 2 versions", "not ie 6-9"
       ],
@@ -21,11 +21,11 @@ gulp.task( "css", function () {
     .pipe( rename( {
       suffix: '.min'
     } ) )
-    .pipe( dest( './source/css/min' ) )
+    .pipe( dest( './templates/assets/css' ) )
 } )
 
 gulp.task( "js", function () {
-  return src( './source/js/*.js', )
+  return src( './src/js/*.js', )
     .pipe(
       gulpBabel( {
         presets: [ '@babel/preset-env' ]
@@ -35,16 +35,16 @@ gulp.task( "js", function () {
     .pipe( rename( {
       extname: '.min.js'
     } ) )
-    .pipe( dest( './source/js/min' ) )
+    .pipe( dest( './templates/assets/js' ) )
 } )
 
 gulp.task(
   "watch",
   function (  ) {
     // noinspection JSCheckFunctionSignatures
-    gulp.watch('./source/css/*.less',gulp.series('css'));
+    gulp.watch('./src/css/*.less',gulp.series('css'));
     // noinspection JSCheckFunctionSignatures
-    gulp.watch('./source/js/*.js',gulp.series('js'));
+    gulp.watch('./src/js/*.js',gulp.series('js'));
   }
 );
 gulp.task(

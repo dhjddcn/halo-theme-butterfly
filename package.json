@@ -4,14 +4,15 @@
   "version": "0.0.0",
   "description": "一个Halo博客主题，Butterfly ",
   "scripts": {
-    "dev": "vite build --watch",
-    "build": "tsc && vite build",
-    "lint": "eslint ./src --ext .js,.cjs,.mjs,.ts,.cts,.mts --ignore-path .gitignore",
-    "prettier": "prettier --write './src/**/*.{js,ts,css,json,ml,yaml,html}' './templates/**/*.html'"
+    "dev": "gulp watch",
+    "build": "gulp",
+    "build-js": "gulp js",
+    "build-css": "gulp css"
   },
   "keywords": [
     "halo",
-    "halo-theme"
+    "halo-theme",
+    "halo-theme-butterfly"
   ],
   "homepage": "https://github.com/dhjddcn/halo-theme-butterfly#readme",
   "bugs": {
@@ -44,6 +45,7 @@
     "gulp-less": "^5.0.0",
     "gulp-notify": "^4.0.0",
     "gulp-rename": "^2.0.0",
-    "gulp-uglify": "^3.0.2"
+    "gulp-uglify": "^3.0.2",
+    "@babel/core": "^7.17.5"
   }
 }
