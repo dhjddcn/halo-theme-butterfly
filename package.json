@@ -1,7 +1,6 @@
 {
   "name": "halo-theme-butterfly",
-  "private": true,
-  "version": "0.0.0",
+  "version": "2.0.0",
   "description": "一个Halo博客主题，Butterfly ",
   "scripts": {
     "dev": "gulp watch",
