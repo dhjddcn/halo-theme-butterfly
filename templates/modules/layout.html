@@ -1,28 +1,15 @@
 <!DOCTYPE html>
-<html lang="en" th:fragment="html (content)">
-  <head>
-    <meta charset="UTF-8" />
-    <title th:text="${site.title}"></title>
-    <meta charset="utf-8">
-    <meta name="renderer" content="webkit">
-    <meta name="format-detection" content="email=no">
-    <meta name="format-detection" content="telephone=no">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-    <meta name="keywords" content="${meta_keywords!}">
-    <meta name="description" content="${meta_description!}">
-    <meta name="author" content="${user.nickname!}">
-    <meta name="site" content="${blog_url!}">
-    <meta property="og:description" content="${meta_description!}">
-    <meta property="og:type" content="website">
-    <meta property="og:locale" content="zh_CN">
-    <meta property="og:site_name" content="${blog_title!}">
-    <meta property="og:url" content="${blog_url!}">
-    <meta property="og:title" content="${title!} – ${blog_title!}">
-    <meta property="twitter:partner" content="ogwp">
-    <link rel="canonical" th:href="${site.url}">
-  </head>
-  <body>
-    <th:block th:replace="${content}" />
-  </body>
+<html lang="en" xmlns:th="https://www.thymeleaf.org" th:fragment="html (head,content)">
+<head>
+  <meta charset="UTF-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+  <title th:text="${site.title}"></title>
+  <th:block th:if="${head != null}">
+    <th:block th:replace="${head}"/>
+  </th:block>
+</head>
+<body>
+<th:block  th:replace="${content}"/>
+</body>
 </html>

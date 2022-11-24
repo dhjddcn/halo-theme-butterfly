@@ -1,23 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8"/>
-  <meta charset="utf-8">
-  <meta name="renderer" content="webkit">
-  <meta name="format-detection" content="email=no">
-  <meta name="format-detection" content="telephone=no">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-  <meta property="og:type" content="website">
-  <meta property="og:locale" content="zh_CN">
-  <meta property="twitter:partner" content="ogwp">
-  
-  <title th:text="${site.title}"></title>
-  <link rel="canonical" th:href="${site.url}">
-  
-</head>
-<body>
+<html
+  xmlns:th="https://www.thymeleaf.org"
+  th:replace="~{modules/layout :: html(head = null,content = ~{::content})}"
+>
+<th:block th:fragment="head">
+  <!-- 文章列表 -->
+11111111111
+</th:block>
 
-12122
-</body>
+<th:block th:fragment="content">
+  <!-- 文章列表 -->
+22222222222
+</th:block>
 </html>
