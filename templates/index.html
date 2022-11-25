@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html
   xmlns:th="https://www.thymeleaf.org"
-  th:replace="~{modules/layout :: html(head = null,content = ~{::content})}"
+  th:replace="~{modules/layout :: html(head = ~{::head},content = ~{::content})}"
 >
 <th:block th:fragment="head">
-  <!-- 文章列表 -->
-11111111111
+<!--  <link rel="preload stylesheet" as="style">-->
 </th:block>
 
 <th:block th:fragment="content">
-  <!-- 文章列表 -->
-22222222222
+  <main class="page-index">
+1212
+  </main>
 </th:block>
 </html>

@@ -8,8 +8,11 @@
   <th:block th:if="${head != null}">
     <th:block th:replace="${head}"/>
   </th:block>
+
+  <link rel="preload stylesheet" as="style" th:href="@{/assets/css/global.min.css}">
+  
 </head>
-<body>
-<th:block  th:replace="${content}"/>
+<body id="butterfly">
+<th:block th:replace="${content}"/>
 </body>
 </html>

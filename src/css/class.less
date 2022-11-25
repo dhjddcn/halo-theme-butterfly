@@ -1,0 +1,308 @@
+/**
+ * @Description: 一些class
+ * @author: 小红
+ * @date: 2022/11/25
+ * @fileName: class
+ */
+
+.box {
+  &-border {
+    box-sizing: border-box;
+  }
+
+  &-content {
+    box-sizing: content-box;
+  }
+}
+
+.display {
+  &-block {
+    display: block;
+  }
+
+  &-inline-block {
+    display: inline-block;
+  }
+
+  &-flex {
+    display: flex;
+  }
+
+  &-inline-flex {
+    display: inline-flex;
+  }
+
+  &-none {
+    display: none;
+  }
+
+  &-table {
+    display: table;
+  }
+}
+
+.flex {
+  &-row {
+    flex-direction: row;
+  }
+
+  &-row-reverse {
+    flex-direction: row-reverse;
+  }
+
+  &-column {
+    flex-direction: column;
+  }
+
+  &-column-reverse {
+    flex-direction: column-reverse;
+  }
+
+  &-wrap {
+    flex-wrap: wrap;
+  }
+
+  &-nowrap {
+    flex-wrap: nowrap;
+  }
+
+  &-wrap-reverse {
+    flex-wrap: wrap-reverse;
+  }
+
+  &-justify-start {
+    justify-content: flex-start;
+  }
+
+  &-justify-end {
+    justify-content: flex-end;
+  }
+
+  &-justify-center {
+    justify-content: center;
+  }
+
+  &-justify-between {
+    justify-content: space-between;
+  }
+
+  &-justify-around {
+    justify-content: space-around;
+  }
+
+  &-align-start {
+    align-items: flex-start;
+  }
+
+  &-align-end {
+    align-items: flex-end;
+  }
+
+  &-align-center {
+    align-items: center;
+  }
+
+  &-align-baseline {
+    align-items: baseline;
+  }
+
+  &-align-stretch {
+    align-items: stretch;
+  }
+
+  &-align-content-start {
+    align-content: flex-start;
+  }
+
+  &-align-content-end {
+    align-content: flex-end;
+  }
+
+  &-align-content-center {
+    align-content: center;
+  }
+
+  &-align-content-between {
+    align-content: space-between;
+  }
+
+  &-align-content-around {
+    align-content: space-around;
+  }
+
+  &-align-content-stretch {
+    align-content: stretch;
+  }
+
+  &-align-self-auto {
+    align-self: auto;
+  }
+
+  &-align-self-start {
+    align-self: flex-start;
+  }
+
+  &-align-self-end {
+    align-self: flex-end;
+  }
+
+  &-align-self-center {
+    align-self: center;
+  }
+
+  &-align-self-baseline {
+    align-self: baseline;
+  }
+
+  &-align-self-stretch {
+    align-self: stretch;
+  }
+
+  &-1 {
+    flex: 1 1 0;
+  }
+
+  &-auto {
+    flex: 1 1 auto;
+  }
+
+  &-initial {
+    flex: 0 1 auto;
+  }
+
+  &-none {
+    flex: none;
+  }
+}
+
+.overflow {
+  &-hidden {
+    overflow: hidden;
+  }
+
+  &-auto {
+    overflow: auto;
+  }
+
+  &-scroll {
+    overflow: scroll;
+  }
+
+  &-visible {
+    overflow: visible;
+  }
+
+  &-x-hidden {
+    overflow-x: hidden;
+  }
+
+  &-x-auto {
+    overflow-x: auto;
+  }
+
+  &-x-scroll {
+    overflow-x: scroll;
+  }
+
+  &-x-visible {
+    overflow-x: visible;
+  }
+
+  &-y-hidden {
+    overflow-y: hidden;
+  }
+
+  &-y-auto {
+    overflow-y: auto;
+  }
+
+  &-y-scroll {
+    overflow-y: scroll;
+  }
+
+  &-y-visible {
+    overflow-y: visible;
+  }
+
+  &-clip {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &-ellipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+
+  &-ellipsis-3 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+  }
+}
+
+.position {
+  &-static {
+    position: static;
+  }
+
+  &-relative {
+    position: relative;
+  }
+
+  &-absolute {
+    position: absolute;
+  }
+
+  &-fixed {
+    position: fixed;
+  }
+
+  &-sticky {
+    position: sticky;
+  }
+}
+
+.visible {
+  visibility: visible;
+}
+
+.invisible {
+  visibility: hidden;
+}
+
+.z {
+  &-0 {
+    z-index: 0;
+  }
+
+  &-10 {
+    z-index: 10;
+  }
+
+  &-20 {
+    z-index: 20;
+  }
+
+  &-30 {
+    z-index: 30;
+  }
+
+  &-40 {
+    z-index: 40;
+  }
+
+  &-50 {
+    z-index: 50;
+  }
+
+  &-auto {
+    z-index: auto;
+  }
+}
