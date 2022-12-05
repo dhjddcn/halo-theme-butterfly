@@ -1,15 +1,13 @@
 <!DOCTYPE html>
 <html
   xmlns:th="https://www.thymeleaf.org"
-  th:replace="~{modules/layout :: html(head = ~{::head},content = ~{::content})}"
+  th:replace="~{modules/layout :: p (title = ${site.title},links = ~{::links},main =~{::main},scripts = '1234')}"
 >
-<th:block th:fragment="head">
-<!--  <link rel="preload stylesheet" as="style">-->
-</th:block>
+<link th:fragment="links" rel="stylesheet" th:href="@{/assets/css/index.min.css}">
 
-<th:block th:fragment="content">
-  <main class="page-index">
-1212
+<th:block th:fragment="main">
+  <main class="main">
   </main>
 </th:block>
+
 </html>

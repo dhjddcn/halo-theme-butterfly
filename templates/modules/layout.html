@@ -1,17 +1,18 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="https://www.thymeleaf.org" th:fragment="html (head,content)">
+<html lang="en" xmlns:th="https://www.thymeleaf.org" th:fragment="p (title,links,main,scripts)">
 <head>
   <meta charset="UTF-8"/>
   <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
-  <title th:text="${site.title}"></title>
-  <th:block th:if="${head != null}">
-    <th:block th:replace="${head}"/>
+  <title th:text="${title}"></title>
+  <link rel="stylesheet" th:href="@{/assets/css/global.min.css}">
+  <th:block th:if="${links != null}">
+    <th:block th:replace="${links}"/>
   </th:block>
-  <link rel="preload stylesheet" as="style" th:href="@{/assets/css/global.min.css}">
-  
 </head>
-<body id="butterfly">
-<th:block th:replace="${content}"/>
+<body>
+<div id="Butterfly">
+  <th:block th:replace="${main}"/>
+</div>
 </body>
 </html>
