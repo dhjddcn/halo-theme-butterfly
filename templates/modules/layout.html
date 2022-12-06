@@ -5,13 +5,12 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
   <link rel="stylesheet" th:href="@{/assets/css/global.min.css}">
-  <style th:inline="text">
+  <style type="text/css" th:inline="css">
     #Butterfly .main{
-      max-width:[[${theme.config.style.content_max_width}]]px;
+      max-width: /*[(${theme.config.style.content_max_width + 'px'})]*/ ;
     }
   </style>
   <th:block th:replace="${head}"></th:block>
-  <title></title>
 </head>
 <body>
 <div id="Butterfly" th:class="${page}">
