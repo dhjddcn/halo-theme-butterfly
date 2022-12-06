@@ -1,4 +1,14 @@
 <!DOCTYPE html>
-<html xmlns:th="https://www.thymeleaf.org" >
-111
+<html
+  xmlns:th="https://www.thymeleaf.org"
+  th:replace="~{modules/layout :: params (
+  page = 'post'
+  )}">
+>
+<link th:fragment="links" rel="stylesheet" th:href="@{/assets/css/index.min.css}">
+
+<th:block th:fragment="main">
+  1212
+</th:block>
+
 </html>

@@ -1,18 +1,23 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="https://www.thymeleaf.org" th:fragment="p (title,links,main,scripts)">
+<html lang="en" xmlns:th="https://www.thymeleaf.org" th:fragment="params (page,head,content,script)">
 <head>
   <meta charset="UTF-8"/>
   <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
-  <title th:text="${title}"></title>
   <link rel="stylesheet" th:href="@{/assets/css/global.min.css}">
-  <th:block th:if="${links != null}">
-    <th:block th:replace="${links}"/>
-  </th:block>
+  <style th:inline="text">
+    #Butterfly .main{
+      max-width:[[${theme.config.style.content_max_width}]]px;
+    }
+  </style>
+  <th:block th:replace="${head}"></th:block>
+  <title></title>
 </head>
 <body>
-<div id="Butterfly">
-  <th:block th:replace="${main}"/>
+<div id="Butterfly" th:class="${page}">
+  <main class="main" th:insert="${content}"></main>
 </div>
+<script type="text/javascript" th:src="@{/assets/js/global.min.js}"></script>
+<th:block th:insert="${script}"/>
 </body>
 </html>

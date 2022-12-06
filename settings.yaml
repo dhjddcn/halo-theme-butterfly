@@ -1,11 +1,11 @@
-apiVersion: v1alpha1
+apiVersion: 2.0
 kind: Setting
 metadata:
   name: theme-default-setting
 spec:
   forms:
-    - group: post
-      label: 文章
+    - group: base
+      label: 基本设置
       formSchema:
         - $formkit: select
           name: content_size
@@ -14,26 +14,14 @@ spec:
           options:
             - value: prose-base
               label: prose-base
-            - value: prose-sm
-              label: prose-sm
-            - value: prose-lg
-              label: prose-lg
-            - value: prose-xl
-              label: prose-xl
-            - value: prose-2xl
-              label: prose-2xl
-        - $formkit: select
-          name: content_theme
-          label: 颜色主题
-          value: prose-gray
-          options:
-            - value: prose-gray
-              label: prose-gray
-            - value: prose-slate
-              label: prose-slate
-            - value: prose-zinc
-              label: prose-zinc
-            - value: prose-neutral
-              label: prose-neutral
-            - value: prose-stone
-              label: prose-stone
+      
+    - group: style
+      label: 主题设置
+      formSchema:
+        - $formkit: text
+          name: content_max_width
+          label: 内容区最大宽度
+          value: 1200
+          placeholder: 请输入内容区最大宽度
+          validation: required|number
+

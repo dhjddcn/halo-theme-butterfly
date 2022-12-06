@@ -1,4 +1,4 @@
-apiVersion: theme.halo.run/v1alpha1
+apiVersion: theme.halo.run/2.0
 kind: Theme
 metadata:
   name: theme-butterfly
