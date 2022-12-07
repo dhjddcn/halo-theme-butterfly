@@ -1,20 +1,36 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="https://www.thymeleaf.org" th:fragment="params (page,head,content,script)">
+<html lang="en" data-theme="light" xmlns:th="https://www.thymeleaf.org"
+      th:fragment="layout (page,title,head,content,script)">
 <head>
+  <title th:text="${title}"></title>
   <meta charset="UTF-8"/>
   <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
-  <link rel="stylesheet" th:href="@{/assets/css/global.min.css}">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, shrink-to-fit=no, viewport-fit=cover">
   <style type="text/css" th:inline="css">
-    #Butterfly .main{
-      max-width: /*[(${theme.config.style.content_max_width + 'px'})]*/ ;
+    @font-face {
+      font-family: "Butterfly Font";
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+      src: url("[(${#theme.assets('/font/HarmonyOS_Sans_SC_Regular.ttf')})]") format("truetype");
+    }
+
+    html {
+      --main_max_width: /*[(${theme.config.style.content_max_width + 'px'})]*/;
+      --theme: #49b1f5;
     }
   </style>
+  <link rel="stylesheet" th:href="@{/assets/css/normalize.min.css}">
+  <link rel="stylesheet" th:href="@{/assets/css/theme.min.css}">
+  <link rel="stylesheet" th:href="@{/assets/css/global.min.css}">
   <th:block th:replace="${head}"></th:block>
 </head>
 <body>
 <div id="Butterfly" th:class="${page}">
-  <main class="main" th:insert="${content}"></main>
+  <th:block th:replace="~{modules/navbar}"></th:block>
+  <th:block th:replace="~{modules/above}"></th:block>
+  <main class="main flex" th:insert="${content}"></main>
 </div>
 <script type="text/javascript" th:src="@{/assets/js/global.min.js}"></script>
 <th:block th:insert="${script}"/>

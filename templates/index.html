@@ -1,25 +1,21 @@
 <!DOCTYPE html>
 <html
   xmlns:th="https://www.thymeleaf.org"
-  th:replace="~{modules/layout :: params (
+  th:replace="~{modules/layout :: layout (
   page = 'index',
+  title = ${site.title},
   head = ~{::head},
   content = ~{::content},
   script = ~{::script}
   )}">
 >
 
-<head th:fragment="head">
-  <title th:text="${site.title}"></title>
+<th:block th:fragment="head">
   <link rel="stylesheet" th:href="@{/assets/css/index.min.css}">
-  <style>
-    
-    
-  </style>
-</head>
+</th:block>
 
 <th:block th:fragment="content">
-  121212
+  121212 你好
 </th:block>
 
 <th:block th:fragment="script">
