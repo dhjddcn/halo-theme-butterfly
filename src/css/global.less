@@ -5,5 +5,27 @@
  * @fileName: global
  */
 
-
 @import "header.less";
+@import "main.less";
+
+
+body {
+  font-size: var(--size);
+  color: var(--color);
+  line-height: 2;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  position: relative;
+  scroll-behavior: smooth;
+
+  &::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -10;
+    pointer-events: none;
+    background: var(--body-background);
+  }
+}

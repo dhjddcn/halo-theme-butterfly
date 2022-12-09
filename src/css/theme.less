@@ -7,10 +7,13 @@
 
 
 html {
-  --font-color: #4c4948;
-  
-  &[data-mode=dark] {
-    
+  --color: #4c4948;
+  --size: 14px;
 
+  --nav-default-font-color: #eee;
+
+  &[data-mode=dark] {
+    --color: rgba(255, 255, 255, 0.7);
+    --nav-default-font-color: rgba(255,255,255,0.7);
   }
 }

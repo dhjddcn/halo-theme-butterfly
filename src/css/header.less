@@ -6,46 +6,84 @@
  */
 
 
-@keyframes fade-in-top {
+@keyframes above-down {
   0% {
+    opacity: 0;
+    filter: alpha(opacity=0);
     transform: translateY(-50px);
-    opacity: 0
   }
-
-  to {
+  100% {
+    opacity: 1;
+    filter: none;
     transform: translateY(0);
-    opacity: 1
   }
 }
 
+@keyframes nav-down {
+  0% {
+    transform: translateY(-50px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
 
 .header {
   min-height: 60px;
-  transition: all .5s;
 
   .nav {
     user-select: none;
     height: 60px;
     padding: 0 36px;
-    animation: fade-in-top 1.2s;
+    animation: nav-down 1s;
+    font-size: 1.1rem;
+    transition: top 0.5s, background 0.5s, box-shadow 0.5s;
+    top: 0;
+
+
+    &.style {
+      position: fixed;
+      top: -60px;
+      background: rgba(255, 255, 255, 0.8);
+      box-shadow: 0 5px 6px -5px rgb(133 133 133 / 60%);
+      transition: none;
+
+      > a {
+        --nav-default-font-color: var(--color);
+        text-shadow: none;
+      }
+    }
+
+    &.visible {
+      transition: top 0.5s;
+      top: 0;
+    }
+
+    &.hidden {
+      transition: top 0.5s;
+      top: -60px;
+    }
+
   }
 
   .above {
     height: 30rem;
     transition: all 0.5s;
     background-image: url("https://dhjdd.cn/file/screenshot_1641478512166.jpg");
+    //background-attachment: fixed;
     background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;
-    animation: fade-in-top 1.2s;
+    animation: above-down 1.2s;
   }
-  
-  
-  .site{
-    &-title{
+
+
+  .site {
+    &-title {
       text-shadow: 0.1rem 0.1rem 0.2rem rgb(0 0 0 / 15%);
       font-weight: 700;
+      color: var(--nav-default-font-color);
     }
   }
-  
+
 }
