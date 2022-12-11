@@ -9,6 +9,7 @@
         content="width=device-width, user-scalable=no, initial-scale=1.0, shrink-to-fit=no, viewport-fit=cover">
   <meta name="author" th:content="${site.title}">
   <meta name="site" th:content="${site.url}">
+  <meta property="og:keywords" th:content="${site.seo.keywords}">
   <meta property="og:description" th:content="${site.seo.description}">
   <meta property="og:site_name" th:content="${site.title}">
   <meta property="og:url" th:content="${site.url}">
@@ -17,7 +18,7 @@
   <meta property="og:locale" content="zh_CN">
   <meta property="og:type" content="website">
   <meta property="twitter:partner" content="ogwp">
-  <style th:inline="css">
+  <style th:inline="css" rel="preload" onload="this.rel='stylesheet'">
     @font-face {
       font-family: "Butterfly Font";
       font-weight: 400;
@@ -28,21 +29,24 @@
 
     body {
       font-family: "Butterfly Font", "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, "sans-serif";
-      --main_max_width: /*[(${theme.config.style.content_max_width + 'px'})]*/ 1200px;
+      --main-max-width: /*[(${theme.config.style.content_max_width + 'px'})]*/ 1200px;
       --theme: #49b1f5;
       --body-background: linear-gradient(90deg, rgba(247, 149, 51, .1) 0, rgba(243, 112, 85, .1) 15%, rgba(239, 78, 123, .1) 30%, rgba(161, 102, 171, .1) 44%, rgba(80, 115, 184, .1) 58%, rgba(16, 152, 173, .1) 72%, rgba(7, 179, 155, .1) 86%, rgba(109, 186, 130, .1) 100%);
     }
   </style>
   <link rel="stylesheet" th:href="@{/assets/css/style.min.css}">
   <link rel="stylesheet" th:href="@{/assets/css/global.min.css}">
+  <link rel="stylesheet" th:href="@{/assets/plugins/icomoon/icomoon.css}">
   <th:block th:replace="${head}"></th:block>
 </head>
 <body>
 <div id="Butterfly" th:class="${page}">
-  <th:block th:replace="~{modules/header}"></th:block>
+  <th:block th:replace="~{modules/header:: header(${page})}"></th:block>
   <main class="main flex flex-justify-content-between m-0-auto" th:insert="${content}"></main>
+
+  <th:block th:replace="~{modules/public:: adsorption}"></th:block>
 </div>
-<script type="text/javascript" th:src="@{/assets/plugins/js/jquery.min.js}"></script>
+<script type="text/javascript" th:src="@{/assets/plugins/jquery/jquery.min.js}"></script>
 <script type="text/javascript" th:src="@{/assets/js/global.min.js}"></script>
 <th:block th:insert="${script}"/>
 </body>

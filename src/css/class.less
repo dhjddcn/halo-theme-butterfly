@@ -203,3 +203,41 @@
 .m-0-auto {
   margin: 0 auto;
 }
+
+.text {
+  &-center {
+    text-align: center;
+  }
+
+  &-left {
+    text-align: left;
+  }
+
+  &-right {
+    text-align: right;
+  }
+
+  &-nowrap {
+    white-space: nowrap;
+  }
+
+  &-break {
+    word-break: break-all;
+  }
+
+  &-overflow {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+.transition {
+  &-all-3s {
+    transition: all 1.3s;
+  }
+
+  &-all-5s {
+    transition: all 0.5s;
+  }
+}
