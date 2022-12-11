@@ -7,8 +7,6 @@
 
 
 class Utils {
-  static scrollNum = 0;
-
   static debounce(func, wait, immediate) {
     let timeout
     return function () {
@@ -57,16 +55,26 @@ class Utils {
     }
 
   }
-
 }
-
 
 class Global {
   constructor() {
     console.log('global');
+    this.html = $('html');
     this.Butterfly = $('#Butterfly');
     this.Header = this.Butterfly.find('.header');
+    this.init();
     this.scroll();
+    this.adsorption();
+  }
+
+  //初始化一些配置
+  init() {
+    //主题模式
+    const locDataTheme = localStorage.getItem('Butterfly-data-theme');
+
+    if (locDataTheme) this.html.attr('data-theme', locDataTheme);
+
   }
 
   // 滚动
@@ -86,7 +94,7 @@ class Global {
             nav.addClass('hidden');
             nav.removeClass('visible');
           }
-          
+
           if (!adsorption.hasClass('active')) adsorption.addClass('active');
 
         } else {
@@ -113,6 +121,33 @@ class Global {
     }
 
     window.addEventListener('scroll', Utils.throttle(fn, 150));
+  }
+
+  //左右吸附小部件
+  adsorption() {
+    const adsorption = this.Butterfly.find('.adsorption');
+
+    // 夜间模式切换
+    adsorption.find('.switch-model').on('click', () => {
+
+      const locDataTheme = localStorage.getItem('Butterfly-data-theme');
+
+      if (locDataTheme === 'light') {
+        this.html.attr('data-theme', 'dark');
+        localStorage.setItem('Butterfly-data-theme', 'dark');
+      } else {
+        this.html.attr('data-theme', 'light');
+        localStorage.setItem('Butterfly-data-theme', 'light');
+      }
+
+    });
+
+    // 返回顶部
+    adsorption.find('.back-top').on('click', () => {
+      this.html.animate({scrollTop: 0}, 300);
+    });
+
+
   }
 }
 
