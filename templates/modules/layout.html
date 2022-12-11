@@ -42,7 +42,12 @@
 <body>
 <div id="Butterfly" th:class="${page}">
   <th:block th:replace="~{modules/header:: header(${page})}"></th:block>
-  <main class="main flex flex-justify-content-between m-0-auto" th:insert="${content}"></main>
+
+  <main class="main flex flex-justify-content-between m-0-auto">
+    <article class="content flex-1 " th:insert="${content}"></article>
+
+    <th:block th:replace="~{modules/public:: aside}"></th:block>
+  </main>
 
   <th:block th:replace="~{modules/public:: adsorption}"></th:block>
 </div>
