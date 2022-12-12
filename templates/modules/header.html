@@ -1,6 +1,31 @@
 <header xmlns:th="https://www.thymeleaf.org" th:fragment="header(page)" class="header relative w-100">
   <nav class="nav flex flex-wrap flex-align-items-center top-0 absolute z-80 w-100">
     <a th:title="${site.title}" th:text="${site.title}" class="site-title flex-1" href="/"></a>
+
+
+    <ul class="menu inline">
+      <li th:each="menuItem : ${menuFinder.getPrimary().menuItems}" class="menu-item">
+
+        <a th:if="${#lists.isEmpty(menuItem.children)}" class="menu-link relative inline-block"
+           th:href="${menuItem.status.href}">
+          <span class="byIcon-home"></span>
+          <span class="menu-name" th:text="${menuItem.status.displayName}"> </span>
+        </a>
+
+        <div th:unless="${#lists.isEmpty(menuItem.children)}" class="menu-children menu-link relative cursor-pointer">
+          <span class="byIcon-podcast"></span>
+          <span class="menu-name" th:text="${menuItem.status.displayName}"></span>
+          <span class="byIcon-chevron-down"></span>
+
+          <ul class="menu-children">
+            <li></li>
+          </ul>
+        </div>
+
+
+      </li>
+    </ul>
+
   </nav>
 
   <th:block th:replace="~{modules/above:: ${page}}"></th:block>

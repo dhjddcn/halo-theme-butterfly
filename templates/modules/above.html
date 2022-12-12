@@ -1,16 +1,18 @@
 <!--首页首屏-->
-<section xmlns:th="https://www.thymeleaf.org" th:fragment="index" class="above">
-
+<section xmlns:th="https://www.thymeleaf.org" th:fragment="index" class="above relative">
+  <div class="above-info">
+    <h1 class="above-title" th:text="${site.title}"></h1>
+  </div>
 </section>
 
 
 <!--默认公共首屏-->
-<section xmlns:th="https://www.thymeleaf.org" th:fragment="above" class="above">
+<section xmlns:th="https://www.thymeleaf.org" th:fragment="above" class="above relative">
 
 </section>
 
 
 <!--文章首屏-->
-<section xmlns:th="https://www.thymeleaf.org" th:fragment="post" class="above">
+<section xmlns:th="https://www.thymeleaf.org" th:fragment="post" class="above relative">
 
 </section>

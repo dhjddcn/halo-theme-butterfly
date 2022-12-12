@@ -1,1 +1,1 @@
-html{--color:#4c4948;--size:14px;--nav-default-font-color:#eee;--btn-color:#fff}html[data-mode=dark]{--color:rgba(255, 255, 255, 0.7);--nav-default-font-color:rgba(255, 255, 255, 0.7);--btn-color:var(--color)}
+html,html[data-mode=dark]{--nav-scroll-font-color:var(--color)}html{--color:#4c4948;--size:14px;--btn-color:#fff;--nav-default-font-color:#eee}html[data-mode=dark]{--color:rgba(255, 255, 255, 0.7);--btn-color:var(--color);--nav-default-font-color:var(--color)}
