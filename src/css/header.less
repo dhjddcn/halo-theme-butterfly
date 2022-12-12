@@ -40,6 +40,27 @@
     transition: top 0.5s, background 0.5s, box-shadow 0.5s;
     top: 0;
 
+    .menu {
+      &-item {
+        position: relative;
+        display: inline-block;
+        padding-left: 20px;
+      }
+
+      &-link {
+        position: relative;
+        padding-bottom: 6px;
+        text-shadow: 1px 1px 2px rgb(0 0 0 / 30%);
+        font-size: 1rem;
+        color: var(--nav-default-font-color);
+      }
+    }
+
+    .site-title {
+      text-shadow: 0.1rem 0.1rem 0.2rem rgb(0 0 0 / 15%);
+      font-weight: 700;
+      color: var(--nav-default-font-color);
+    }
 
     &.style {
       position: fixed;
@@ -48,8 +69,8 @@
       box-shadow: 0 5px 6px -5px rgb(133 133 133 / 60%);
       transition: none;
 
-      > a {
-        --nav-default-font-color: var(--color);
+      .site-title, .menu-link {
+        color: var(--nav-scroll-font-color);
         text-shadow: none;
       }
     }
@@ -68,7 +89,6 @@
 
   .above {
     height: 30rem;
-    transition: all 0.5s;
     background-image: url("https://dhjdd.cn/file/5se.png");
     //background-attachment: fixed;
     background-position: center center;
@@ -77,12 +97,5 @@
     animation: above-down 1.2s;
   }
 
-  .site {
-    &-title {
-      text-shadow: 0.1rem 0.1rem 0.2rem rgb(0 0 0 / 15%);
-      font-weight: 700;
-      color: var(--nav-default-font-color);
-    }
-  }
 
 }
