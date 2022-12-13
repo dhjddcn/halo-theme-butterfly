@@ -9,21 +9,36 @@
 html {
   --color: #4c4948;
   --size: 14px;
- 
+
   --btn-color: #fff;
 
-  --nav-default-font-color: #eee;
-  --nav-scroll-font-color: var(--color);
-  
+  --nav-default-font-color: #eee; //todo 需要写入配置
+  --nav-scroll-bg-color: rgba(255,255,255,.8); //todo 需要写入配置
+  --nav-scroll-font-color: var(--color); //todo 需要写入配置
+  --nav-scroll-shadow: 0 5px 6px -5px rgb(133 133 133 / 60%); //todo 需要写入配置
+
+  --nav-content-bg-color: #fff;
 
 
-  &[data-mode=dark] {
+  &[data-theme=dark] {
     --color: rgba(255, 255, 255, 0.7);
-    
-    --btn-color: var(--color);
-    
-    --nav-default-font-color: var(--color);
-    --nav-scroll-font-color: var(--color);
 
+    --btn-color: var(--color);
+
+    --nav-default-font-color: var(--color);
+    --nav-scroll-bg-color: rgba(18,18,18,.8);
+    --nav-scroll-font-color: var(--color);
+    --nav-scroll-shadow: 0 5px 6px -5px rgb(133 133 133 / 0%); 
+    --nav-content-bg-color: #121212;
+
+
+    body:before {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, .3);
+      content: '';
+      z-index: -1;
+    }
   }
 }

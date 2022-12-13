@@ -1,29 +1,47 @@
 <header xmlns:th="https://www.thymeleaf.org" th:fragment="header(page)" class="header relative w-100">
-  <nav class="nav flex flex-wrap flex-align-items-center top-0 absolute z-80 w-100">
+  <nav class="nav flex flex-wrap flex-align-items-center  top-0 absolute z-80 w-100">
     <a th:title="${site.title}" th:text="${site.title}" class="site-title flex-1" href="/"></a>
 
 
     <ul class="menu inline">
-      <li th:each="menuItem : ${menuFinder.getPrimary().menuItems}" class="menu-item">
+      <th:block th:each="menuItem : ${menuFinder.getPrimary().menuItems}">
 
-        <a th:if="${#lists.isEmpty(menuItem.children)}" class="menu-link relative inline-block"
-           th:href="${menuItem.status.href}">
-          <span class="byIcon-home"></span>
-          <span class="menu-name" th:text="${menuItem.status.displayName}"> </span>
-        </a>
+        <li th:if="${#lists.isEmpty(menuItem.children)}" class="menu-item">
+          <a class="menu-link relative inline-block"
+             th:href="${menuItem.status.href}">
+            <span class="byIcon-home"></span>
+            <span class="menu-name" th:text="${menuItem.status.displayName}"> </span>
+          </a>
+        </li>
 
-        <div th:unless="${#lists.isEmpty(menuItem.children)}" class="menu-children menu-link relative cursor-pointer">
-          <span class="byIcon-podcast"></span>
-          <span class="menu-name" th:text="${menuItem.status.displayName}"></span>
-          <span class="byIcon-chevron-down"></span>
+        <li th:unless="${#lists.isEmpty(menuItem.children)}" class="menu-item relative">
+          <div class="menu-link relative cursor-pointer">
+            <span class="byIcon-podcast"></span>
+            <span class="menu-name" th:text="${menuItem.status.displayName}"></span>
+            <span class="byIcon-chevron-down"></span>
+          </div>
 
-          <ul class="menu-children">
-            <li></li>
+          <ul class="menu-dropdown none absolute right-0 padding-0 w-max-content">
+            <li class="menu-dropdown--item">
+              <a href="" class="menu-dropdown--link w-100 inline-block">
+                <span class="byIcon-home"></span>
+                <span class="menu-dropdown-name">分类</span>
+              </a>
+            </li>
+            <li class="menu-dropdown--item">
+              <a href="" class="menu-dropdown--link w-100 inline-block"> <span class="byIcon-home"></span>
+                <span class="menu-dropdown-name">分类</span></a>
+            </li>
+            <li class="menu-dropdown--item">
+              <a href="" class="menu-dropdown--link w-100 inline-block">
+                <span class="byIcon-home"></span>
+                <span class="menu-dropdown-name">归档</span>
+              </a>
+            </li>
           </ul>
-        </div>
+        </li>
 
-
-      </li>
+      </th:block>
     </ul>
 
   </nav>

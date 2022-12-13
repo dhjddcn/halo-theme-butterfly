@@ -44,7 +44,7 @@
 <div id="Butterfly" th:class="${page}">
   <th:block th:replace="~{modules/header:: header(${page})}"></th:block>
 
-  <main class="main flex flex-justify-content-between m-0-auto">
+  <main class="main flex flex-justify-content-between margin-0-auto">
     <article class="content flex-1 " th:insert="${content}"></article>
 
     <th:block th:replace="~{modules/public:: aside}"></th:block>
