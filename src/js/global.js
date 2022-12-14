@@ -64,6 +64,7 @@ class Global {
     this.Butterfly = $('#Butterfly');
     this.Header = this.Butterfly.find('.header');
     this.init();
+    this.nav();
     this.scroll();
     this.adsorption();
   }
@@ -74,6 +75,11 @@ class Global {
     const locDataTheme = localStorage.getItem('Butterfly-data-theme');
 
     if (locDataTheme) this.html.attr('data-theme', locDataTheme);
+
+  }
+
+  // 导航栏
+  nav() {
 
   }
 

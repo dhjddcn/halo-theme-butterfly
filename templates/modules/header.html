@@ -9,35 +9,27 @@
         <li th:if="${#lists.isEmpty(menuItem.children)}" class="menu-item">
           <a class="menu-link relative inline-block"
              th:href="${menuItem.status.href}">
-            <span class="byIcon-home"></span>
+            <!--  图标后台还未支持           <span class="byIcon-home"></span>-->
             <span class="menu-name" th:text="${menuItem.status.displayName}"> </span>
           </a>
         </li>
 
         <li th:unless="${#lists.isEmpty(menuItem.children)}" class="menu-item relative">
           <div class="menu-link relative cursor-pointer">
-            <span class="byIcon-podcast"></span>
+            <!--     图标后台还未支持        <span class="byIcon-podcast"></span>-->
             <span class="menu-name" th:text="${menuItem.status.displayName}"></span>
             <span class="byIcon-chevron-down"></span>
           </div>
 
           <ul class="menu-dropdown none absolute right-0 padding-0 w-max-content">
-            <li class="menu-dropdown--item">
-              <a href="" class="menu-dropdown--link w-100 inline-block">
-                <span class="byIcon-home"></span>
-                <span class="menu-dropdown-name">分类</span>
+
+            <li th:each="dropdown : ${menuItem.children}" class="menu-dropdown--item">
+              <a th:href="@{${dropdown.status.href}}" class="menu-dropdown--link w-100 inline-block">
+                <!--    图标后台还未支持          <span class="byIcon-home"></span>-->
+                <span th:text="${dropdown.status.displayName}" class="menu-dropdown-name"></span>
               </a>
             </li>
-            <li class="menu-dropdown--item">
-              <a href="" class="menu-dropdown--link w-100 inline-block"> <span class="byIcon-home"></span>
-                <span class="menu-dropdown-name">分类</span></a>
-            </li>
-            <li class="menu-dropdown--item">
-              <a href="" class="menu-dropdown--link w-100 inline-block">
-                <span class="byIcon-home"></span>
-                <span class="menu-dropdown-name">归档</span>
-              </a>
-            </li>
+
           </ul>
         </li>
 
