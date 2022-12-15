@@ -26,7 +26,21 @@ spec:
     - group: style
       label: 主题设置
       formSchema:
-        - $formkit: color
+        - $formkit: select
+          name: theme_type
+          label: 主题模式
+          value: '#49b1f5'
+          placeholder: 请填写主题颜色
+          help: '设置博客的主题模式（用户/自动/浅色/暗黑），默认为用户模式，仅在用户模式下页面才有主题切换按钮，自动模式下根据时间自动切换'
+          options:
+            - value: user
+              label: 用户模式
+            - value: light
+              label: 浅色模式
+            - value: dark
+              label: 暗黑模式
+
+        - $formkit: text
           name: theme_color
           label: 主题颜色
           value: '#49b1f5'
@@ -36,18 +50,7 @@ spec:
         - $formkit: text
           name: content_max_width
           label: 内容区最大宽度
-          value: 1350
+          value: 1250
           placeholder: 请填写内容区最大宽度
-          help: 内容区域最大宽度，像素或百分比，默认 1350px
+          help: 内容区域最大宽度，像素或百分比，默认 1250px
           validation: required|number
-
-    - group: nav
-      label: 导航设置
-      formSchema:
-        - $formkit: text
-          name: nav_default_font_color
-          label: 浅色导航默认背景颜色
-          value: '#eee'
-          placeholder: 请填写导航默认背景
-          help: '导航默认背景 默认值 #eee' 
-

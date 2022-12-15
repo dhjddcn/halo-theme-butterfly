@@ -1,0 +1,54 @@
+/**
+ * @Description: 
+ * @author: 小红
+ * @date: 2022/11/25
+ * @fileName: style 
+ */
+
+
+body {
+  font-size: var(--size);
+  color: var(--color);
+  line-height: 2;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  position: relative;
+  scroll-behavior: smooth;
+  font-family: "Butterfly Font", "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, "sans-serif";
+
+  &::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -10;
+    pointer-events: none;
+    background: var(--body-background);
+  }
+}
+
+::-webkit-scrollbar {
+  height: 6px;
+  width: 6px
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-color)
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+::-moz-selection {
+  color: #fff;
+  background-color: var(--scrollbar-color)
+}
+
+::selection {
+  color: #fff;
+  background-color: #00c4b6;
+}
+
+
