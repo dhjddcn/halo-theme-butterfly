@@ -1,7 +1,20 @@
 <!--样式-->
 <style th:inline="css" type="text/css" th:fragment="globalCss">
-  
+  html {
+    --theme: /*[(${theme.config.style.theme_color})]*/ #49b1f5;
+    --main-max-width: /*[(${theme.config.style.content_max_width + 'px'})]*/ 1200px;
+  }
+
+
 </style>
+
+
+
+<!--侧边栏-->
+<aside xmlns:th="https://www.thymeleaf.org" class="aside w-25" th:fragment="aside">
+  侧边栏
+</aside>
+
 
 
 <!--左右吸附小部件-->
@@ -19,9 +32,3 @@
     </svg>
   </button>
 </section>
-
-
-<!--侧边栏-->
-<aside xmlns:th="https://www.thymeleaf.org" class="aside w-25" th:fragment="aside">
-  侧边栏
-</aside>

@@ -7,11 +7,18 @@
 
 html {
   --font-color: #4c4948;
-  --font-size: 14px;
+  --font-size: 15px;
+
+  --btn-color: #fff;
+  --btn-bg-color: var(--theme);
+  --btn-hover-color: #ff7242;
 
 
   &[data-theme=dark] {
-  
+
+    --btn-color: rgba(255,255,255,0.7);
+    --btn-bg-color: #1f1f1f;
+    --btn-hover-color: #787878;
 
   }
 }

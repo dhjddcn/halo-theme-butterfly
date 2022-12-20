@@ -11,4 +11,23 @@
   padding: 2rem 15px;
   flex: 1;
   height: 2000px;
+
+  
+  &.aside-left {
+    flex-direction: row;
+  }
+
+  &.aside-right {
+    flex-direction: row-reverse;
+  }
+
+  &:is(.aside-left) .aside {
+    margin-left: 18px;
+  }
+
+  &:is(.aside-right) .aside {
+    margin-right: 18px;
+  }
+
+
 }
