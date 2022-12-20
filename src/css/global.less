@@ -4,8 +4,18 @@
  * @date: 2022/11/25
  * @fileName: global
  */
-@import "src/base/normalize.less";
-@import "src/base/theme.less";
-@import "src/base/style.less";
-@import "src/dev/class.less";
-@import "src/dev/header.less";
+
+// 基础样式
+@import "src/modules/base/normalize.less";
+@import "src/modules/base/theme.less";
+@import "src/modules/base/style.less";
+
+// 扩展样式
+@import "src/modules/dev/class.less";
+
+// 模块样式 
+// 头部
+@import "src/modules/dev/header.less";
+
+//左右小部件
+@import "src/modules/dev/adsorption.less";

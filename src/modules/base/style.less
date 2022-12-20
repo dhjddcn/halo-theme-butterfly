@@ -1,0 +1,135 @@
+/**
+ * @Description: 
+ * @author: 小红
+ * @date: 2022/11/25
+ * @fileName: style 
+ */
+
+
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  outline: 0;
+  -webkit-tap-highlight-color: transparent
+}
+
+input[type=text] {
+  -webkit-appearance: none;
+  border-radius: 0;
+  font-weight: 500
+}
+
+iframe {
+  display: block;
+  border: 0;
+  margin: 0 auto
+}
+
+textarea {
+  font-size: 14px;
+  resize: none;
+  -webkit-appearance: none
+}
+
+li, ol, ul {
+  list-style: none
+}
+
+a {
+  text-decoration: none;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  color: var(--color);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 500
+}
+
+img {
+  border: 0;
+  vertical-align: middle;
+  max-width: 100%
+}
+
+img:not([src]), img[src=""] {
+  border: 0;
+  opacity: 0
+}
+
+img[data-lazy-src]:not(.loaded,.error) {
+  -webkit-filter: blur(10px) brightness(1);
+  filter: blur(10px) brightness(1)
+}
+
+svg {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+}
+
+button {
+  cursor: pointer;
+  -webkit-appearance: none;
+  outline: 0;
+  border: 0;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0
+}
+
+body {
+  font-size: var(--font-size);
+  color: var(--font-color);
+  line-height: 2;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  position: relative;
+  scroll-behavior: smooth;
+  font-family: "Butterfly Font", "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, "sans-serif";
+
+  //&::after {
+  //  content: "";
+  //  position: fixed;
+  //  top: 0;
+  //  left: 0;
+  //  right: 0;
+  //  bottom: 0;
+  //  z-index: -10;
+  //  pointer-events: none;
+  //  background: var(--body-background);
+  //}
+}
+
+::-webkit-scrollbar {
+  height: 6px;
+  width: 6px
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-color)
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+::-moz-selection {
+  color: #fff;
+  background-color: var(--scrollbar-color)
+}
+
+::selection {
+  color: #fff;
+  background-color: #00c4b6;
+}
+
+
