@@ -5,7 +5,65 @@
  * @fileName: aside
  */
 
-.aside{
-  
-  
+.aside {
+  > section {
+    padding: 1rem 1.2rem;
+  }
+
+  &-user {
+    > .avatar {
+      width: 110px;
+      height: 110px;
+      border-radius: 70px;
+      transition: filter 375ms ease-in .2s, transform .3s;
+
+      &:hover {
+        filter: brightness(1.2);
+        transform: rotate(360deg);
+      }
+    }
+
+    > .name {
+      font-size: 1.50rem;
+    }
+
+    > .data {
+      display: table;
+      margin: 14px 0 4px;
+      table-layout: fixed;
+
+      .item {
+        display: table-cell;
+      }
+
+      .headline {
+        font-size: 1rem;
+      }
+
+      .num {
+        font-size: 1.4rem;
+        color: var(--text-num-color);
+      }
+
+    }
+
+    > .button {
+      background-color: var(--btn-bg-color);
+      color: var(--btn-color);
+      line-height: 2.4;
+      border-radius: 15px;
+    }
+
+    > .links {
+      margin: 15px 0 -6px;
+
+      svg {
+        display: inline-block;
+        width: 25px;
+        height: 25px;
+      }
+    }
+  }
+
+
 }

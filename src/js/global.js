@@ -76,6 +76,15 @@ class Global {
 
     if (locDataTheme) this.html.attr('data-theme', locDataTheme);
 
+
+    // 图片加载
+    window.lazyLoadInstance = new LazyLoad({
+      elements_selector: 'img',
+      threshold: 0,
+      data_src: 'lazy-src'
+    })
+
+
   }
 
   // 导航栏

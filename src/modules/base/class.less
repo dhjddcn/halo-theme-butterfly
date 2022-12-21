@@ -91,6 +91,10 @@
     &-around {
       justify-content: space-around;
     }
+
+    &-evenly {
+      justify-content: space-evenly;
+    }
   }
 
   &-align-items {
@@ -158,6 +162,7 @@
   &-max-content {
     width: max-content;
   }
+
   &-min-content {
     width: min-content;
   }
@@ -275,20 +280,48 @@
   }
 }
 
-.font-size {
-  &-12 {
-    font-size: 12px;
+.font {
+  &-size {
+    &-12 {
+      font-size: 12px;
+    }
+
+    &-14 {
+      font-size: 14px;
+    }
+
+    &-16 {
+      font-size: 16px;
+    }
+
+    &-18 {
+      font-size: 18px;
+    }
   }
 
-  &-14 {
-    font-size: 14px;
+  &-weight {
+    &-normal {
+      font-weight: normal;
+    }
+
+    &-bold {
+      font-weight: bold;
+    }
+
+    &-500 {
+      font-weight: 500;
+    }
   }
 
-  &-16 {
-    font-size: 16px;
+}
+
+
+.overflow {
+  &-hidden {
+    overflow: hidden;
   }
 
-  &-18 {
-    font-size: 18px;
+  &-auto {
+    overflow: auto;
   }
 }

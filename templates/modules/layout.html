@@ -26,13 +26,14 @@
 <body>
 <div id="Butterfly" th:class="${page}">
   <th:block th:insert="~{modules/header:: header(${page})}"></th:block>
-  <main class="main flex flex-justify-content-between margin-0-auto aside-left">
+  <main class="main flex flex-justify-content-between margin-0-auto aside-right">
     <article class="content flex-1 " th:insert="${content}"></article>
     <th:block th:replace="~{modules/public:: aside}"></th:block>
   </main>
   <th:block th:replace="~{modules/public:: adsorption}"></th:block>
 </div>
 <script type="text/javascript" th:src="@{/assets/plugins/jquery/jquery.min.js}"></script>
+<script type="text/javascript" th:src="@{/assets/plugins/lazyLoad/lazyLoad.min.js}"></script>
 <script type="text/javascript" th:src="@{/assets/js/global.min.js}"></script>
 <th:block th:insert="${script}"/>
 </body>

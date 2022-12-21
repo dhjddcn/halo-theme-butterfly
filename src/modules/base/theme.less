@@ -9,17 +9,33 @@ html {
   --font-color: #4c4948;
   --font-size: 15px;
 
+  --selection-bg-color: #00c4b6;
+
+  --scrollbar-color: var(--theme);
+
+
   --btn-color: #fff;
   --btn-bg-color: var(--theme);
   --btn-hover-color: #ff7242;
 
+  --card-bg-color: rgba(255, 255, 255, 1);
+  
+  --text-num-color: #1f2d3d;
 
-  &[data-theme=dark] {
-
-    --btn-color: rgba(255,255,255,0.7);
-    --btn-bg-color: #1f1f1f;
-    --btn-hover-color: #787878;
-
-  }
 }
 
+html[data-theme=dark] {
+  --font-color: rgba(255, 255, 255, 0.7);
+  --selection-bg-color: #00c4b6;
+
+  --scrollbar-color: #1f1f1f;
+
+  --btn-color: rgba(255, 255, 255, 0.7);
+  --btn-bg-color: #1f1f1f;
+  --btn-hover-color: #787878;
+
+  --card-bg-color: #121212;
+  
+  --text-num-color: rgba(255, 255, 255, 0.9);
+
+}
