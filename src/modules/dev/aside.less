@@ -5,9 +5,24 @@
  * @fileName: aside
  */
 
+
+@keyframes aside-notice-svg-animation {
+  0%, to {
+    transform: scale(1)
+  }
+
+  50% {
+    transform: scale(1.2)
+  }
+}
+
 .aside {
   > section {
     padding: 1rem 1.2rem;
+
+    &:not(:first-child) {
+      margin-top: 1rem;
+    }
   }
 
   &-user {
@@ -65,5 +80,18 @@
     }
   }
 
+  &-title {
+    padding-bottom: 0.3rem;
+    font-size: 1.05rem;
+  }
 
+  &-notice {
+    .aside-title svg {
+      animation: aside-notice-svg-animation .8s linear infinite;
+    }
+
+    > .content {
+    }
+  }
+  
 }
