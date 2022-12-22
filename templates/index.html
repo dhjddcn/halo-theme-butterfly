@@ -14,7 +14,7 @@
 </th:block>
 
 <th:block th:fragment="content">
-  <th:block th:replace="~{modules/public:: posts}"></th:block>
+  <th:block th:replace="~{modules/public:: posts(${posts.items})}"></th:block>
 </th:block>
 
 <th:block th:fragment="script">

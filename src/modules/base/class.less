@@ -173,6 +173,10 @@
     height: auto;
   }
 
+  &-100 {
+    height: 100%;
+  }
+
   &-100vh {
     height: 100vh;
   }
@@ -253,6 +257,21 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+  }
+
+  &-clamp {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+  }
+
+  &-cmp2 {
+    -webkit-line-clamp: 2;
+  }
+
+  &-cmp3 {
+    -webkit-line-clamp: 3;
   }
 }
 

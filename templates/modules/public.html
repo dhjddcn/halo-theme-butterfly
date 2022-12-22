@@ -148,8 +148,45 @@
 
 
 <!--文章列表-->
-<ul xmlns:th="https://www.thymeleaf.org" th:fragment="posts" class="posts list">
-  <li class="posts-item card relative flex overflow-hidden ">1231</li>
+<ul xmlns:th="https://www.thymeleaf.org" th:fragment="posts(ps)" class="posts list">
+  <li class="p-item card relative flex flex-align-items-center flex-justify-content-center overflow-hidden"
+      th:each="post : ${ps}">
+    <a class="cover overflow-hidden relative"
+       th:href="${post.status.permalink}"
+       th:title="${post.spec.title}">
+      <img class="w-100 h-100"
+           src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs="
+           th:data-lazy-src="${post.spec.cover}"
+           onerror="this.onerror=null,this.src='http://121.40.218.210:8090/themes/butterfly/source/img/404.png'"
+           th:alt="${post.spec.title}">
+    </a>
+
+    <div class="info flex-1 flex-align-items-center">
+      <a class="info-title text-clamp text-cmp2"
+         th:href="${post.status.permalink}"
+         th:title="${post.spec.title}"
+         th:text="${post.spec.title}"></a>
+
+      <div class="info-wrap">
+        <span class="wp publishTime">
+          <i class="byIcon-calendar"></i>
+          <time th:text="'发布于 '+${#dates.format(post.spec.publishTime, 'yyyy-MM-dd HH:mm')}"></time>
+        </span>
+        |
+        <span class="wp category">
+          <i class="byIcon-inbox"></i>
+          <a 
+             th:each="cy : ${post.categories}"
+             th:href="${cy.status.permalink}"
+             th:text="${cy.spec.displayName}"></a>
+        </span>
+        
+
+      </div>
+
+    </div>
+
+  </li>
 </ul>
 
 
