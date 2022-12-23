@@ -167,22 +167,28 @@
          th:title="${post.spec.title}"
          th:text="${post.spec.title}"></a>
 
-      <div class="info-wrap">
+      <div class="info-wrap text-overflow">
         <span class="wp publishTime">
           <i class="byIcon-calendar"></i>
           <time th:text="'发布于 '+${#dates.format(post.spec.publishTime, 'yyyy-MM-dd HH:mm')}"></time>
         </span>
-        |
+
         <span class="wp category">
-          <i class="byIcon-inbox"></i>
-          <a 
-             th:each="cy : ${post.categories}"
-             th:href="${cy.status.permalink}"
-             th:text="${cy.spec.displayName}"></a>
+          <span class="fk">|</span>
+          <i class="byIcon-tasks"></i>
+          <th:block th:each="cy : ${post.categories}">
+            <a
+              class="cy-link"
+              th:href="${cy.status.permalink}"
+              th:text="${cy.spec.displayName}"></a>
+             <span class="point">•</span>
+            </th:block>
         </span>
-        
+
 
       </div>
+
+      <div class="text text-clamp text-cmp2" th:text="${post.spec.excerpt.raw}"></div>
 
     </div>
 

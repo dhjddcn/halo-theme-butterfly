@@ -17,9 +17,9 @@
   <meta property="og:locale" content="zh_CN">
   <meta property="og:type" content="website">
   <th:block th:replace="~{modules/public:: globalCss}"></th:block>
-  <link rel="stylesheet" th:href="@{/assets/font/HarmonyOS_Regular.min.css}">
-  <link rel="stylesheet" th:href="@{/assets/plugins/iconfont/iconfont.css}">
+  <link rel="stylesheet" media="all" onload="this.media='all'" th:href="@{/assets/font/HarmonyOS_Regular.min.css}">
   <link rel="stylesheet" th:href="@{/assets/css/global.min.css}">
+  <link rel="stylesheet" th:href="@{/assets/plugins/iconfont/iconfont.css}">
   <th:block th:replace="${head}"></th:block>
 </head>
 <body>

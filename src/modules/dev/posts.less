@@ -57,18 +57,46 @@
         font-size: 1.72rem;
         line-height: 1.4;
         transition: color .2s;
-        
+
         &:hover {
           color: var(--theme);
         }
       }
-      
-      &-wrap{
+
+      &-wrap {
         margin: 6px 0;
         font-size: 90%;
+
+        .wp {
+          &.category {
+            i {
+              vertical-align: -0.12rem;
+            }
+
+            .cy-link {
+              &:hover {
+                color: var(--theme);
+              }
+
+            }
+
+            .point:last-child {
+              display: none;
+            }
+          }
+        }
+
+
+        .fk {
+          margin: 0 0.2rem 0 0.1rem;
+        }
       }
     }
 
+    
+    .text{
+      
+    }
 
   }
 
