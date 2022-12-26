@@ -12,14 +12,14 @@
 
   //列表
   &.list .p-item {
-    height: 18rem;
+    height: 17rem;
 
     &:not(:first-child) {
       margin-top: 20px;
     }
 
     .cover {
-      width: 45%;
+      width: 43%;
       height: 100%;
 
       img {
@@ -93,9 +93,9 @@
       }
     }
 
-    
-    .text{
-      
+
+    .text {
+
     }
 
   }
@@ -104,5 +104,33 @@
   //平铺
   &.tile {
 
+  }
+}
+
+
+.pagination {
+  margin-top: 20px;
+
+  .page, .prev, .next {
+    border-radius: 8px;
+    box-shadow: var(--card-box-shadow);
+    background-color: var(--card-bg-color);
+    margin: 0 6px;
+    width: 2.2rem;
+    height: 2.2rem;
+    line-height: 2.2rem;
+    display: inline-block;
+    transition: color .2s, background-color .2s;
+    color: #99a9bf;
+
+    &:hover {
+      background-color: var(--btn-hover-color);
+      color: #fff;
+    }
+  }
+  
+  .current{
+    background-color: var(--theme);
+    color: #fff;
   }
 }

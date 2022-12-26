@@ -1,19 +1,19 @@
 <!--样式-->
-<style th:inline="css" type="text/css" th:fragment="globalCss">
+<style th:inline="css" type="text/css" th:fragment="styles">
   html {
     --theme: /*[(${theme.config.style.theme_color})]*/ #49b1f5;
     --main-max-width: /*[(${theme.config.style.content_max_width + 'px'})]*/ 1200px;
     --card-border-radius: 24px;
     --card-box-shadow: 0 3px 8px 6px rgba(7, 17, 27, 0.05);
   }
-  
+
 
   body {
     background: linear-gradient(90deg, rgba(247, 149, 51, .1) 0, rgba(243, 112, 85, .1) 15%, rgba(239, 78, 123, .1) 30%, rgba(161, 102, 171, .1) 44%, rgba(80, 115, 184, .1) 58%, rgba(16, 152, 173, .1) 72%, rgba(7, 179, 155, .1) 86%, rgba(109, 186, 130, .1) 100%);
   }
 
   html[data-theme=dark] body {
-    background-color: #0d0d0d;
+    background-color: rgba(0, 0, 0, .3);
   }
 
 
@@ -60,7 +60,7 @@
     <a class="button block text-center" href="javascript:">主题地址</a>
 
     <div class="links flex flex-justify-content-evenly">
-      <a href="">
+      <a href="" class="qq">
         <svg class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" width="200"
              height="200">
           <path
@@ -96,7 +96,7 @@
         </svg>
       </a>
 
-      <a href="">
+      <a href="" class="github">
         <svg t="1647012313015" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
              width="200" height="200">
           <path
@@ -105,7 +105,7 @@
         </svg>
       </a>
 
-      <a href="">
+      <a href="" class="zhihu">
         <svg class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" width="200"
              height="200">
           <path
@@ -115,7 +115,7 @@
         </svg>
       </a>
 
-      <a href="">
+      <a href="" class="email">
         <svg class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" width="200"
              height="200">
           <path
@@ -158,6 +158,7 @@
       <img class="w-100 h-100"
            src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs="
            th:data-lazy-src="${post.spec.cover}"
+           th:data-l="${post.spec.cover}"
            onerror="this.onerror=null,this.src='http://121.40.218.210:8090/themes/butterfly/source/img/404.png'"
            th:alt="${post.spec.title}">
     </a>
@@ -177,6 +178,7 @@
         <span class="wp category">
           <span class="fk">|</span>
           <i class="byIcon-tasks"></i>
+          <span class="cys">
           <th:block th:each="cy : ${post.categories}">
             <a
               class="cy-link"
@@ -184,6 +186,7 @@
               th:text="${cy.spec.displayName}"></a>
              <span class="point">•</span>
             </th:block>
+            </span>
         </span>
 
 
@@ -195,6 +198,32 @@
 
   </li>
 </ul>
+
+<!--分页-->
+<div xmlns:th="https://www.thymeleaf.org" th:fragment="pagination(ps)" class="pagination text-center">
+  <a th:if="${ps.hasPrevious()}" th:href="${ps.prevUrl}" title="下一页" class="prev">
+    <svg class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1215" width="200"
+         height="200">
+      <path
+        d="M616.896 939.52C629.472 952.544 646.752 959.904 664.832 960 705.632 958.304 737.408 924 735.968 883.2 736.064 862.08 727.712 841.824 712.8 826.88L400.096 512 712.8 197.12C727.712 182.176 736.064 161.92 735.968 140.8 737.408 100 705.632 65.696 664.832 64 646.752 64.096 629.472 71.456 616.896 84.48L247.04 455.68C216.32 486.944 216.32 537.056 247.04 568.32L616.896 939.52Z"
+      ></path>
+    </svg>
+  </a>
+
+  <a
+    th:each="index : ${#numbers.sequence(1,ps.totalPages)}"
+    th:class="${ps.page == index ?  'page current': 'page'}"
+    th:href="@{'/page/' + ${index}}" th:text="${index}"></a>
+
+  <a th:if="${ps.hasNext()}" th:href="${ps.nextUrl}" title="下一页" class="next">
+    <svg class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1354" width="200"
+         height="200">
+      <path
+        d="M407.104 939.52C394.528 952.544 377.248 959.904 359.168 960 318.368 958.304 286.592 924 288.032 883.2 287.936 862.08 296.288 841.824 311.2 826.88L623.904 512 311.2 197.12C296.288 182.176 287.936 161.92 288.032 140.8 286.592 100 318.368 65.696 359.168 64 377.248 64.096 394.528 71.456 407.104 84.48L776.96 455.68C807.68 486.944 807.68 537.056 776.96 568.32L407.104 939.52Z"
+      ></path>
+    </svg>
+  </a>
+</div>
 
 
 <!--左右吸附小部件-->
