@@ -15,8 +15,6 @@
   html[data-theme=dark] body {
     background-color: rgba(0, 0, 0, .3);
   }
-
-
 </style>
 
 
@@ -42,18 +40,18 @@
 
     <div class="desc">代码改变生活🎈</div>
 
-    <div class="data w-100">
-      <a class="item" title="文章" href="http://121.40.218.210:8090/archives">
+    <div class="data w-100" th:with="stats = ${siteStatsFinder.getStats()}">
+      <a class="item" title="文章" href="/archives">
         <div class="headline">文章</div>
-        <div class="num text-overflow">26</div>
+        <div class="num text-overflow" th:text="${stats.post}"></div>
       </a>
-      <a class="item" href="http://121.40.218.210:8090/categories" title="分类">
+      <a class="item" href="/categories" title="分类">
         <div class="headline">分类</div>
-        <div class="num text-overflow">6</div>
+        <div class="num text-overflow" th:text="${stats.category}"></div>
       </a>
       <a class="item" title="评论" href="javascript:">
         <div class="headline">评论</div>
-        <div class="num text-overflow">56</div>
+        <div class="num text-overflow" th:text="${stats.comment}"></div>
       </a>
     </div>
 

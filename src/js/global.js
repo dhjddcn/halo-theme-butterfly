@@ -24,15 +24,15 @@ class Utils {
   }
 
   static throttle(func, wait, options) {
-    let timeout, context, args
+    let timeOut, context, args
     let previous = 0
     if (!options) options = {}
 
     const later = function () {
       previous = options['leading'] === false ? 0 : new Date().getTime()
-      timeout = null
+      timeOut = null
       func.apply(context, args)
-      if (!timeout) context = args = null
+      context = args = null
     }
 
     return function () {
@@ -42,15 +42,15 @@ class Utils {
       context = this
       args = arguments
       if (remaining <= 0 || remaining > wait) {
-        if (timeout) {
-          clearTimeout(timeout)
-          timeout = null
+        if (timeOut) {
+          clearTimeout(timeOut)
+          timeOut = null
         }
         previous = now
         func.apply(context, args)
-        if (!timeout) context = args = null
-      } else if (!timeout && options['leading'] !== false) {
-        timeout = setTimeout(later, remaining)
+        if (!timeOut) context = args = null
+      } else if (!timeOut && options['leading'] !== false) {
+        timeOut = setTimeout(later, remaining)
       }
     }
 
