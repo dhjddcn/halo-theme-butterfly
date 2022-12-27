@@ -29,16 +29,17 @@
 
 <!--侧边栏-->
 <aside xmlns:th="https://www.thymeleaf.org" th:fragment="aside" class="aside w-25">
-  <section class="aside-user card text-center">
+  <section class="aside-user card text-center"
+           th:with="contributor = ${contributorFinder.getContributor(theme.config.base.metadata_name)}">
     <img class="avatar block margin-0-auto overflow-hidden cursor-pointer"
          src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs="
-         data-lazy-src="https://dhjdd.cn/file/avatar_1631169702096.png"
+         th:data-lazy-src="${contributor.avatar}"
          onerror="this.onerror=null,this.src='http://121.40.218.210:8090/themes/butterfly/source/img/404.png'"
-         th:alt="${site.title}">
+         th:alt="${contributor.displayName}">
 
-    <div class="name font-weight-500">小红</div>
+    <div class="name font-weight-500" th:text="${contributor.displayName}"></div>
 
-    <div class="desc">代码改变生活🎈</div>
+    <div class="desc" th:text="${contributor.bio}"></div>
 
     <div class="data w-100" th:with="stats = ${siteStatsFinder.getStats()}">
       <a class="item" title="文章" href="/archives">
@@ -143,6 +144,46 @@
 
     <div class="content">好博客，一定要 分享出去 呀！</div>
   </section>
+
+  <section class="aside-category card">
+    <h1 class="aside-title">
+      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="470" height="448" viewBox="0 0 470 448">
+        <g>
+        </g>
+        <path
+          d="M469.75 238c0 6-3.75 12-7.75 16.5l-84 99c-14.5 17-44 30.5-66 30.5h-272c-9 0-21.75-2.75-21.75-14 0-6 3.75-12 7.75-16.5l84-99c14.5-17 44-30.5 66-30.5h272c9 0 21.75 2.75 21.75 14zM384 152v40h-208c-31.25 0-70 17.75-90.25 41.75l-85.5 100.5c0-2-0.25-4.25-0.25-6.25v-240c0-30.75 25.25-56 56-56h80c30.75 0 56 25.25 56 56v8h136c30.75 0 56 25.25 56 56z"></path>
+      </svg>
+      <span class="name">分类</span>
+    </h1>
+
+    <div class="content" th:with="categories = ${categoryFinder.list(1,5)}">
+      <a th:each="category : ${categories}"
+         th:href="@{${category.status.permalink}}"
+         th:title="${category.spec.displayName}"
+         class="link flex relative flex-direction-row"
+      >
+        <span class="name text-overflow flex-1" th:text="${category.spec.displayName}"></span>
+        <span class="num text-overflow" th:text="${category.status.visiblePostCount}"></span>
+      </a>
+    </div>
+
+  </section>
+
+
+  <section class="aside-tags card">
+    <h1 class="aside-title">
+      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="475" height="448" viewBox="0 0 475 448">
+        <g>
+        </g>
+        <path
+          d="M112 112c0-17.75-14.25-32-32-32s-32 14.25-32 32 14.25 32 32 32 32-14.25 32-32zM378.75 256c0 8.5-3.5 16.75-9.25 22.5l-122.75 123c-6 5.75-14.25 9.25-22.75 9.25s-16.75-3.5-22.5-9.25l-178.75-179c-12.75-12.5-22.75-36.75-22.75-54.5v-104c0-17.5 14.5-32 32-32h104c17.75 0 42 10 54.75 22.75l178.75 178.5c5.75 6 9.25 14.25 9.25 22.75zM474.75 256c0 8.5-3.5 16.75-9.25 22.5l-122.75 123c-6 5.75-14.25 9.25-22.75 9.25-13 0-19.5-6-28-14.75l117.5-117.5c5.75-5.75 9.25-14 9.25-22.5s-3.5-16.75-9.25-22.75l-178.75-178.5c-12.75-12.75-37-22.75-54.75-22.75h56c17.75 0 42 10 54.75 22.75l178.75 178.5c5.75 6 9.25 14.25 9.25 22.75z"></path>
+      </svg>
+      <span class="name">标签</span>
+    </h1>
+
+    <div class="content"></div>
+  </section>
+
 </aside>
 
 
@@ -200,7 +241,7 @@
 <!--分页-->
 <div xmlns:th="https://www.thymeleaf.org" th:fragment="pagination(ps)" class="pagination text-center">
   <a th:if="${ps.hasPrevious()}" th:href="${ps.prevUrl}" title="下一页" class="prev">
-    <svg class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1215" width="200"
+    <svg class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" width="200"
          height="200">
       <path
         d="M616.896 939.52C629.472 952.544 646.752 959.904 664.832 960 705.632 958.304 737.408 924 735.968 883.2 736.064 862.08 727.712 841.824 712.8 826.88L400.096 512 712.8 197.12C727.712 182.176 736.064 161.92 735.968 140.8 737.408 100 705.632 65.696 664.832 64 646.752 64.096 629.472 71.456 616.896 84.48L247.04 455.68C216.32 486.944 216.32 537.056 247.04 568.32L616.896 939.52Z"
@@ -214,7 +255,7 @@
     th:href="@{'/page/' + ${index}}" th:text="${index}"></a>
 
   <a th:if="${ps.hasNext()}" th:href="${ps.nextUrl}" title="下一页" class="next">
-    <svg class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1354" width="200"
+    <svg class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" width="200"
          height="200">
       <path
         d="M407.104 939.52C394.528 952.544 377.248 959.904 359.168 960 318.368 958.304 286.592 924 288.032 883.2 287.936 862.08 296.288 841.824 311.2 826.88L623.904 512 311.2 197.12C296.288 182.176 287.936 161.92 288.032 140.8 286.592 100 318.368 65.696 359.168 64 377.248 64.096 394.528 71.456 407.104 84.48L776.96 455.68C807.68 486.944 807.68 537.056 776.96 568.32L407.104 939.52Z"

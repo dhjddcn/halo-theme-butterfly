@@ -68,7 +68,7 @@
       line-height: 2.4;
       border-radius: 15px;
       transition: color .2s, background-color .2s;
-      
+
       &:hover {
         background-color: var(--btn-hover-color);
       }
@@ -98,5 +98,38 @@
     > .content {
     }
   }
-  
+
+
+  &-category {
+
+    > .content > .link {
+      padding: 3px 10px 3px 25px;
+      color: var(--font-color);
+
+      
+      &:before {
+        position: absolute;
+        top: 0.6rem;
+        left: 2px;
+        width: 0.43rem;
+        height: 0.43rem;
+        border: 0.215rem solid var(--theme);
+        border-radius: 0.43rem;
+        background: 0 0;
+        content: '';
+        cursor: pointer;
+      }
+      
+      &:hover {
+        color: var(--theme);
+      }
+
+      &:not(:first-child) {
+        margin-top: 5px;
+      }
+    }
+
+  }
+
+
 }

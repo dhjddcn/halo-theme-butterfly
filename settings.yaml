@@ -8,6 +8,13 @@ spec:
       label: 基本设置
       formSchema:
         - $formkit: text
+          name: metadata_name
+          label: 作者的唯一标识 metadata.name
+          placeholder: 请填写 作者的唯一标识 metadata.name
+          value: admin
+          help: 后台用户管理中的用户名，不可乱填否则个人资料显示异常（示例：admin）
+          validation: required
+        - $formkit: text
           name: icp
           label: ICP 备案号
           placeholder: 请填写 ICP 备案号信息
