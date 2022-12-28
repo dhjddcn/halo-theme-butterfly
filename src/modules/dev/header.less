@@ -44,18 +44,61 @@
   min-height: 60px;
 
   .nav {
+    user-select: none;
+    height: 60px;
+    padding: 0 36px;
+    animation: nav-down 1s;
+    font-size: 1.1rem;
+    transition: top 0.5s, background 0.5s, box-shadow 0.5s;
+    top: 0;
 
+    .site-title {
+      text-shadow: 0.1rem 0.1rem 0.2rem rgb(0 0 0 / 15%);
+      font-weight: 700;
+      color: var(--nav-font-color);
+      transition: color 0.5s;
+      
+      &:hover {
+        color: var(--nav-font-hover-color);
+      }
+    }
+
+    &.style {
+      position: fixed;
+      top: -60px;
+      background-color: var(--nav-scroll-bg-color);
+      box-shadow: var(--nav-scroll-shadow);
+      transition: none;
+
+      .site-title {
+        color: var(--nav-scroll-font-color);
+        text-shadow: none;
+        
+        &:hover {
+          color: var(--nav-scroll-font-hover-color);
+        }
+      }
+    }
+
+    &.visible {
+      transition: top 0.5s;
+      top: 0;
+    }
+
+    &.hidden {
+      transition: top 0.5s;
+      top: -60px;
+    }
   }
-
 
   .above {
     height: 30rem;
     background-image: url("https://dhjdd.cn/file/screenshot_1641478512166.jpg");
-    //background-attachment: fixed;
     background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;
     animation: above-down 1.2s;
+    transition: background 0.5s;
 
     &::before {
       position: absolute;

@@ -74,7 +74,7 @@
       }
     }
 
-    > .links {
+    > .icons {
       margin: 15px 0 -6px;
 
       svg {
@@ -99,36 +99,44 @@
     }
   }
 
-
   &-category {
-
     > .content > .link {
-      padding: 3px 10px 3px 25px;
-      color: var(--font-color);
+      padding: 3px 10px 3px 22px;
 
-      
       &:before {
         position: absolute;
         top: 0.6rem;
-        left: 2px;
+        left: 0;
         width: 0.43rem;
         height: 0.43rem;
-        border: 0.215rem solid var(--theme);
+        border: 0.215rem solid var(--btn-bg-color);
         border-radius: 0.43rem;
         background: 0 0;
         content: '';
         cursor: pointer;
+        transition: border .2s;
       }
       
       &:hover {
-        color: var(--theme);
+        
+        &:before {
+          border-color: var(--btn-hover-color);
+        }
       }
-
+      
       &:not(:first-child) {
         margin-top: 5px;
       }
     }
 
+  }
+  
+  &-tags{
+    > .content {
+      .link{
+        padding: 0 .5rem;
+      }
+    }
   }
 
 

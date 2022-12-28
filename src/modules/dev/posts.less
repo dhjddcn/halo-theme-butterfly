@@ -6,12 +6,9 @@
  */
 
 .posts {
-  .p-item {
-  }
-
-
+  
   //列表
-  &.list .p-item {
+  &.list > .item {
     height: 17rem;
 
     &:not(:first-child) {
@@ -54,17 +51,17 @@
 
       &-title {
         color: var(--text-obs-color);
-        font-size: 1.72rem;
+        font-size: 1.6rem;
         line-height: 1.4;
         transition: color .2s;
 
         &:hover {
-          color: var(--theme);
+          color: var(--link-hover-color);
         }
       }
 
       &-wrap {
-        margin: 6px 0;
+        margin: 6px 0 0;
         font-size: 90%;
 
         .wp {
@@ -73,11 +70,10 @@
               vertical-align: -0.12rem;
             }
 
-            .cy-link {
+            .lk {
               &:hover {
-                color: var(--theme);
+                color: var(--link-hover-color);
               }
-
             }
 
             .point:last-child {
@@ -95,7 +91,7 @@
 
 
     .text {
-
+      line-height: 1.8;
     }
 
   }
@@ -128,8 +124,8 @@
       color: #fff;
     }
   }
-  
-  .current{
+
+  .current {
     background-color: var(--theme);
     color: #fff;
   }

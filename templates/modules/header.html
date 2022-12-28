@@ -1,0 +1,41 @@
+<!--头部-->
+<header xmlns:th="https://www.thymeleaf.org" th:fragment="header(page)" class="header relative w-100">
+  <nav class="nav flex flex-wrap flex-align-items-center  top-0 absolute z-80 w-100">
+    <a  th:text="${site.title}" class="site-title flex-1" href="/"></a>
+
+  </nav>
+
+  <th:block th:replace="~{modules/header:: ${page}}"></th:block>
+</header>
+
+
+<!--默认公共首屏-->
+<section xmlns:th="https://www.thymeleaf.org" th:fragment="above" class="above relative">
+  123
+</section>
+
+<!--首页首屏-->
+<section xmlns:th="https://www.thymeleaf.org" th:fragment="index" class="above relative">
+  <div class="above-info">
+    <h1 class="above-title text-center margin-0-auto" th:text="${site.title}"></h1>
+
+    <div class="above-subtitle text-center margin-0-auto">
+      <span class="above-subtitle--text">国仇未报壮士老，匣中宝剑夜有声。</span>
+    </div>
+  </div>
+  <div class="above-down absolute text-center bottom-0 w-100 cursor-pointer">
+    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="448" height="448" viewBox="0 0 448 448">
+      <g>
+      </g>
+      <path
+        d="M420.75 202l-185.5 185.25c-6.25 6.25-16.25 6.25-22.5 0l-185.5-185.25c-6.25-6.25-6.25-16.5 0-22.75l41.5-41.25c6.25-6.25 16.25-6.25 22.5 0l132.75 132.75 132.75-132.75c6.25-6.25 16.25-6.25 22.5 0l41.5 41.25c6.25 6.25 6.25 16.5 0 22.75z"></path>
+    </svg>
+  </div>
+</section>
+
+
+<!--文章首屏-->
+<section xmlns:th="https://www.thymeleaf.org" th:fragment="post" class="above relative">
+  3455
+</section>
+

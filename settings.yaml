@@ -46,13 +46,19 @@ spec:
               label: 浅色模式
             - value: dark
               label: 暗黑模式
-
         - $formkit: text
-          name: theme_color
-          label: 主题颜色
+          name: theme_color_light
+          label: 主题颜色（浅白）
           value: '#49b1f5'
-          placeholder: 请填写主题颜色
+          placeholder: 请填写主题 浅白 颜色
           help: '主题颜色运用到大部分模块色调，默认 #49b1f5'
+          validation: required
+        - $formkit: text
+          name: theme_color_dark
+          label: 主题颜色（暗黑）
+          value: '#ff7242'
+          placeholder: 请填写主题 暗黑 颜色
+          help: '主题颜色运用到大部分模块色调，默认 #ff7242'
           validation: required
         - $formkit: text
           name: content_max_width
