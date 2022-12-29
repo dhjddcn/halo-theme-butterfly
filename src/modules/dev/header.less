@@ -49,7 +49,7 @@
     padding: 0 36px;
     animation: nav-down 1s;
     font-size: 1.1rem;
-    transition: top 0.5s, background 0.5s, box-shadow 0.5s;
+    transition: top 0.5s, background 0.5s, box-shadow 0.5s,padding 0.5s;
     top: 0;
 
     .site-title {
@@ -63,6 +63,100 @@
       }
     }
 
+    .menu {
+      &-item {
+        display: inline-block;
+        padding-left: 20px;
+
+        &:is(.relative)::after {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 100%;
+          height: 25px;
+          content: '';
+          cursor: pointer;
+        }
+
+        &:hover {
+          .menu-dropdown {
+            display: block;
+          }
+
+          .menu-link::after {
+            width: 100%;
+          }
+
+          .byIcon-chevron-down {
+            transform: rotate(180deg);
+          }
+
+        }
+      }
+
+      &-link {
+        text-shadow: 1px 1px 2px rgb(0 0 0 / 30%);
+        font-size: 0.9rem;
+        color: var(--nav-font-color);
+        height: 60px;
+        line-height: 60px;
+        transition: color 0.2s;
+
+
+        &::after {
+          position: absolute;
+          bottom: 16px;
+          left: 0;
+          z-index: -1;
+          width: 0;
+          height: 3px;
+          background-color: var(--theme);
+          content: '';
+          transition: width 0.3s ease-in-out;
+          border-radius: 6px 6px 0 0;
+        }
+
+        .byIcon-chevron-down {
+          font-size: 14px;
+          transition: transform 0.3s;
+        }
+      }
+
+      &-dropdown {
+        //margin-top: 8px;
+        border-radius: 5px;
+        box-shadow: 0 5px 20px -4px rgb(0 0 0 / 50%);
+        background-color: var(--nav-menu-dropdown-bg-color);
+        animation: active-menu-dropdown .3s .1s ease both;
+
+        &--item {
+          &:first-child {
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+          }
+
+          &:last-child {
+            border-bottom-right-radius: 5px;
+            border-bottom-left-radius: 5px;
+          }
+
+          transition: background-color 0.3s;
+
+          &:hover {
+            background-color: var(--theme);
+          }
+        }
+
+        &--link {
+          padding: 8px 16px;
+          color: var(--color);
+          font-size: .9rem;
+        }
+
+      }
+
+    }
+
     &.style {
       position: fixed;
       top: -60px;
@@ -70,7 +164,7 @@
       box-shadow: var(--nav-scroll-shadow);
       transition: none;
 
-      .site-title {
+      .site-title ,.menu-link{
         color: var(--nav-scroll-font-color);
         text-shadow: none;
         

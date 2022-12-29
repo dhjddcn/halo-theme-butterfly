@@ -42,7 +42,7 @@ gulp.task(
   "watch",
   function (  ) {
     // noinspection JSCheckFunctionSignatures
-    gulp.watch(['./src/css/*.less','./src/modules/dev/*.less','./src/modules/base/*.less'],gulp.series('css'));
+    gulp.watch(['./src/css/*.less','./src/modules/**/*.less'],gulp.series('css'));
     // noinspection JSCheckFunctionSignatures
     gulp.watch('./src/js/*.js',gulp.series('js'));
   }

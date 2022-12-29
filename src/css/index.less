@@ -39,7 +39,7 @@
 .index {
   .above {
     height: 100vh;
-    background-attachment: fixed;
+    //background-attachment: fixed;
 
     &-info {
       position: absolute;
@@ -57,20 +57,21 @@
     }
 
     &-subtitle {
+      font-size: 1.3rem;
       animation: above-title-scale 2s;
     }
 
     &-subtitle--text {
-      font-size: 1.3rem;
       text-shadow: 2px 2px 4px rgb(0 0 0 / 15%);
       line-height: 1.5;
       color: var(--above-subtitle-font-color);
     }
 
     &-down {
-      padding-bottom: 10px;
+      padding-bottom: 25px;
       svg {
         position: relative;
+        top: 0;
         width: 1.5rem;
         height: 1.5rem;
         animation: above-down-effect 1.5s infinite;
@@ -83,4 +84,7 @@
   }
 
   @import "src/modules/dev/posts.less";
+  @import "src/modules/media/above/index.less";
 }
+
+

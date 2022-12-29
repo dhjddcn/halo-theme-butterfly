@@ -5,8 +5,7 @@
   <title th:text="${title}"></title>
   <meta charset="UTF-8"/>
   <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-  <meta name="viewport"
-        content="width=device-width, user-scalable=no, initial-scale=1.0, shrink-to-fit=no, viewport-fit=cover">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, shrink-to-fit=no, viewport-fit=cover">
   <meta name="author" th:content="${site.title}">
   <meta name="site" th:content="${site.url}">
   <meta property="og:keywords" th:content="${site.seo.keywords}">
@@ -18,9 +17,10 @@
   <meta property="og:type" content="website">
   <link rel="canonical" th:href="${site.url}">
   <th:block th:replace="~{modules/public:: styles}"></th:block>
-  <link rel="stylesheet" th:href="@{/assets/font/HarmonyOS_Regular.min.css}">
+  <link rel="stylesheet" th:href="@{/assets/font/zn.min.css}">
   <link rel="stylesheet" th:href="@{/assets/plugins/iconfont/iconfont.css}">
   <link rel="stylesheet" th:href="@{/assets/css/global.min.css}">
+  <link rel="stylesheet" th:href="@{/assets/css/responsive.min.css}">
   <th:block th:replace="${head}"></th:block>
 </head>
 <body>

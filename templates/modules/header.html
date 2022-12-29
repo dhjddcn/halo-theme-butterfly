@@ -1,8 +1,51 @@
 <!--头部-->
 <header xmlns:th="https://www.thymeleaf.org" th:fragment="header(page)" class="header relative w-100">
   <nav class="nav flex flex-wrap flex-align-items-center  top-0 absolute z-80 w-100">
-    <a  th:text="${site.title}" class="site-title flex-1" href="/"></a>
+    <a th:text="${site.title}" class="site-title flex-1" href="/"></a>
 
+    <ul class="menu inline">
+      <li class="menu-item search" th:if="${pluginFinder.available('PluginSearchWidget')}">
+        <a class="menu-link relative inline-block" href="javascript:SearchWidget.open();">
+          <span class="byIcon-search"></span>
+          <span class="menu-name">搜索</span>
+        </a>
+      </li>
+      <li class="menu-item toggle none">
+        <span class="menu-link relative inline-block">
+          <span class="byIcon-bars"></span>
+        </span>
+      </li>
+
+      <th:block th:each="menuItem : ${menuFinder.getPrimary().menuItems}">
+        <li th:if="${#lists.isEmpty(menuItem.children)}" class="menu-item menu-pc">
+          <a class="menu-link relative inline-block"
+             th:href="${menuItem.status.href}">
+            <!--  图标后台还未支持           <span class="byIcon-home"></span>-->
+            <span class="menu-name" th:text="${menuItem.status.displayName}"> </span>
+          </a>
+        </li>
+
+        <li th:unless="${#lists.isEmpty(menuItem.children)}" class="menu-item menu-pc relative">
+          <div class="menu-link relative cursor-pointer">
+            <!--     图标后台还未支持        <span class="byIcon-podcast"></span>-->
+            <span class="menu-name" th:text="${menuItem.status.displayName}"></span>
+            <span class="byIcon-chevron-down inline-block"></span>
+          </div>
+
+          <ul class="menu-dropdown none absolute right-0 padding-0 w-max-content">
+
+            <li th:each="dropdown : ${menuItem.children}" class="menu-dropdown--item">
+              <a th:href="@{${dropdown.status.href}}" class="menu-dropdown--link w-100 inline-block">
+                <!--    图标后台还未支持          <span class="byIcon-home"></span>-->
+                <span th:text="${dropdown.status.displayName}" class="menu-dropdown-name"></span>
+              </a>
+            </li>
+          </ul>
+
+        </li>
+
+      </th:block>
+    </ul>
   </nav>
 
   <th:block th:replace="~{modules/header:: ${page}}"></th:block>
@@ -23,8 +66,8 @@
       <span class="above-subtitle--text">国仇未报壮士老，匣中宝剑夜有声。</span>
     </div>
   </div>
-  <div class="above-down absolute text-center bottom-0 w-100 cursor-pointer">
-    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="448" height="448" viewBox="0 0 448 448">
+  <div class="above-down absolute text-center bottom-0  left-0 right-0 cursor-pointer">
+    <svg version="1.1" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 448 448">
       <g>
       </g>
       <path

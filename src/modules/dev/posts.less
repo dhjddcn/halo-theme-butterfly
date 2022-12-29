@@ -6,7 +6,7 @@
  */
 
 .posts {
-  
+
   //列表
   &.list > .item {
     height: 17rem;
@@ -19,6 +19,21 @@
       width: 43%;
       height: 100%;
 
+      &.pt-top::before {
+        content: '置顶';
+        position: absolute;
+        left: 0;
+        background: linear-gradient(135deg,#fd7a64 10%,#fb2d2d 100%);
+        color: #fff;
+        top: 20px;
+        font-size: .5rem;
+        z-index: 99;
+        padding: 0 7px;
+        line-height: 2;
+        border-radius: 0 50px 50px 0;
+      }
+
+      
       img {
         transition: filter 375ms ease-in .2s, transform .6s;
         object-fit: cover;
@@ -54,7 +69,7 @@
         font-size: 1.6rem;
         line-height: 1.4;
         transition: color .2s;
-
+        
         &:hover {
           color: var(--link-hover-color);
         }
@@ -62,9 +77,23 @@
 
       &-wrap {
         margin: 6px 0 0;
-        font-size: 90%;
+        font-size: 95%;
+
+        svg {
+          width: .9rem;
+          height: .9rem;
+          color: transparent;
+
+          path {
+            stroke: var(--theme);
+          }
+        }
 
         .wp {
+          &.publishTime svg {
+            vertical-align: -0.15rem;
+          }
+
           &.category {
             i {
               vertical-align: -0.12rem;

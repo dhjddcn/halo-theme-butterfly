@@ -174,7 +174,7 @@
 <ul xmlns:th="https://www.thymeleaf.org" th:fragment="posts(ps)" class="posts list">
   <li class="item card relative flex flex-align-items-center flex-justify-content-center overflow-hidden"
       th:each="post : ${ps}">
-    <a class="cover overflow-hidden relative"
+    <a th:class="'cover overflow-hidden relative'+${post.spec.pinned ? ' pt-top' : ''}"
        th:href="${post.status.permalink}"
        th:title="${post.spec.title}">
       <img class="w-100 h-100"
