@@ -19,7 +19,9 @@
       <th:block th:each="menuItem : ${menuFinder.getPrimary().menuItems}">
         <li th:if="${#lists.isEmpty(menuItem.children)}" class="menu-item menu-pc">
           <a class="menu-link relative inline-block"
-             th:href="${menuItem.status.href}" data-pjax>
+             th:href="${menuItem.status.href}"
+             th:target="${menuItem.spec.target}"
+             data-pjax>
             <!--  图标后台还未支持           <span class="byIcon-home"></span>-->
             <span class="menu-name" th:text="${menuItem.status.displayName}"> </span>
           </a>

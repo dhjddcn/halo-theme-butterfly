@@ -1,4 +1,4 @@
-apiVersion: 2.0
+apiVersion: v1alpha1
 kind: Setting
 metadata:
   name: theme-default-setting
