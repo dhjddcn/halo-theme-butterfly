@@ -116,25 +116,29 @@
         cursor: pointer;
         transition: border .2s;
       }
-      
+
       &:hover {
-        
+        color: var(--link-hover-color);
+
         &:before {
           border-color: var(--btn-hover-color);
         }
       }
-      
+
       &:not(:first-child) {
         margin-top: 5px;
       }
     }
-
   }
-  
-  &-tags{
+
+  &-tags {
     > .content {
-      .link{
+      .link {
         padding: 0 .5rem;
+
+        &:hover {
+          color: var(--link-hover-color);
+        }
       }
     }
   }

@@ -19,7 +19,7 @@
       <th:block th:each="menuItem : ${menuFinder.getPrimary().menuItems}">
         <li th:if="${#lists.isEmpty(menuItem.children)}" class="menu-item menu-pc">
           <a class="menu-link relative inline-block"
-             th:href="${menuItem.status.href}">
+             th:href="${menuItem.status.href}" data-pjax>
             <!--  图标后台还未支持           <span class="byIcon-home"></span>-->
             <span class="menu-name" th:text="${menuItem.status.displayName}"> </span>
           </a>
@@ -53,12 +53,12 @@
 
 
 <!--默认公共首屏-->
-<section xmlns:th="https://www.thymeleaf.org" th:fragment="above" class="above relative">
+<section xmlns:th="https://www.thymeleaf.org" th:fragment="above" class="above relative w-100">
   123
 </section>
 
 <!--首页首屏-->
-<section xmlns:th="https://www.thymeleaf.org" th:fragment="index" class="above relative">
+<section xmlns:th="https://www.thymeleaf.org" th:fragment="index" class="above relative w-100">
   <div class="above-info">
     <h1 class="above-title text-center margin-0-auto" th:text="${site.title}"></h1>
 
@@ -67,7 +67,7 @@
     </div>
   </div>
   <div class="above-down absolute text-center bottom-0  left-0 right-0 cursor-pointer">
-    <svg version="1.1" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 448 448">
+    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 448">
       <g>
       </g>
       <path

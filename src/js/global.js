@@ -64,6 +64,7 @@ class Global {
     this.Butterfly = $('#Butterfly');
     this.Header = this.Butterfly.find('.header');
     this.init();
+    this.pjax();
     this.nav();
     this.scroll();
     this.adsorption();
@@ -85,6 +86,10 @@ class Global {
     })
 
 
+  }
+
+  pjax() {
+    // $(document).pjax('[data-pjax] a, a[data-pjax]', '.pjax-content')
   }
 
   // 导航栏
