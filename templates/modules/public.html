@@ -20,11 +20,14 @@
 
 <!--底部-->
 <footer xmlns:th="https://www.thymeleaf.org" th:fragment="footer" class="footer relative text-center">
-  <div class="copyright" th:text="'© 2020 - '+${#dates.format(#dates.createNow(), 'yyyy')}+' By '+ ${site.title}"> ©2020 - 2023 By 小红</div>
+  <div class="copyright" th:text="'© 2020 - '+${#dates.format(#dates.createNow(), 'yyyy')}+' By '+ ${site.title}"> ©2020
+    - 2023 By 小红
+  </div>
   <div class="icp">　备案号：蜀ICP备20013557号</div>
   <div class="powered">
     Powered by&nbsp;<a class="halo" href="https://halo.run/" target="_blank">Halo</a>&nbsp;|&nbsp;🌈
-    Theme by&nbsp;<a class="theme" title="当前主题：Butterfly" href="https://github.com/dhjddcn/halo-theme-butterfly" target="_blank">小红</a>
+    Theme by&nbsp;<a class="theme" title="当前主题：Butterfly" href="https://github.com/dhjddcn/halo-theme-butterfly"
+                     target="_blank">小红</a>
   </div>
 </footer>
 
