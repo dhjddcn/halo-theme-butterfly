@@ -4,6 +4,7 @@
     <a th:text="${site.title}" class="site-title flex-1" href="/"></a>
 
     <ul class="menu inline">
+      <!--搜索-->
       <li class="menu-item search" th:if="${pluginFinder.available('PluginSearchWidget')}">
         <a class="menu-link relative inline-block" href="javascript:SearchWidget.open();">
           <i class="fas fa-search fa-fw"></i>
@@ -15,30 +16,28 @@
           <i class="fas fa-bars fa-fw"></i>
         </span>
       </li>
+      <!--toggle-->
 
       <th:block th:each="menuItem : ${menuFinder.getPrimary().menuItems}">
         <li th:if="${#lists.isEmpty(menuItem.children)}" class="menu-item menu-pc">
-          <a class="menu-link relative inline-block"
-             th:href="${menuItem.status.href}"
-             th:target="${menuItem.spec.target}"
-             data-pjax>
-            <i th:class="${#annotations.getOrDefault(menuItem, 'icon', '')}"></i>
+          <a class="menu-link relative inline-block" th:href="${menuItem.status.href}" th:target="${menuItem.spec.target}" data-pjax>
+            <i th:if="${!#strings.isEmpty(#annotations.getOrDefault(menuItem, 'icon', ''))}" th:class="${#annotations.getOrDefault(menuItem, 'icon', '')}"></i>
             <span class="menu-name" th:text="${menuItem.status.displayName}"> </span>
           </a>
         </li>
 
         <li th:unless="${#lists.isEmpty(menuItem.children)}" class="menu-item menu-pc relative">
           <div class="menu-link relative">
-            <i th:class="${#annotations.getOrDefault(menuItem, 'icon', '')}"></i>
+            <i th:if="${!#strings.isEmpty(#annotations.getOrDefault(menuItem, 'icon', ''))}" th:class="${#annotations.getOrDefault(menuItem, 'icon', '')}"></i>
             <span class="menu-name" th:text="${menuItem.status.displayName}"></span>
-            <i class="fas fa-chevron-down inline-block"></i>
+            <i class="fas fa-chevron-down"></i>
           </div>
 
+          <!--menu-dropdown  -->
           <ul class="menu-dropdown none absolute right-0 padding-0 w-max-content">
-
             <li th:each="dropdown : ${menuItem.children}" class="menu-dropdown--item">
               <a th:href="@{${dropdown.status.href}}" class="menu-dropdown--link w-100 inline-block">
-                <i th:class="${#annotations.getOrDefault(dropdown, 'icon', '')}"></i>
+                <i th:if="${!#strings.isEmpty(#annotations.getOrDefault(dropdown, 'icon', ''))}" th:class="${#annotations.getOrDefault(dropdown, 'icon', '')}"></i>
                 <span th:text="${dropdown.status.displayName}" class="menu-dropdown-name"></span>
               </a>
             </li>

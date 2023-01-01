@@ -102,6 +102,9 @@
   &-category {
     > .content > .link {
       padding: 3px 10px 3px 22px;
+      > span{
+        transition:  color .3s;
+      }
 
       &:before {
         position: absolute;
@@ -114,7 +117,7 @@
         background: 0 0;
         content: '';
         cursor: pointer;
-        transition: border .2s;
+        transition: border-color .3s;
       }
 
       &:hover {

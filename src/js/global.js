@@ -59,7 +59,7 @@ class Utils {
 
 class Global {
   constructor() {
-    console.log('global');
+    // console.log('global');
     this.html = $('html');
     this.Butterfly = $('#Butterfly');
     this.Header = this.Butterfly.find('.header');

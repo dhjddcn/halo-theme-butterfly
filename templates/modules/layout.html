@@ -30,6 +30,7 @@
     <article class="content pjax-content flex-1" th:insert="${content}"></article>
     <th:block th:replace="~{modules/main:: aside}"></th:block>
   </main>
+  <th:block th:replace="~{modules/public:: footer}"></th:block>
   <th:block th:replace="~{modules/public:: adsorption}"></th:block>
 </div>
 <script type="text/javascript" th:src="@{/assets/plugins/jquery/jquery.min.js}"></script>

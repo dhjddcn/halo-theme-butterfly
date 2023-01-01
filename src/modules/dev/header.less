@@ -91,7 +91,9 @@
             width: 100%;
           }
 
-          .iconfont-chevron-down {
+          
+          
+          .fa-chevron-down {
             transform: rotate(180deg);
           }
 
@@ -121,7 +123,7 @@
           border-radius: 6px 6px 0 0;
         }
 
-        .iconfont-chevron-down {
+        .fa-chevron-down {
           font-size: 14px;
           transition: transform 0.3s;
         }
@@ -180,17 +182,17 @@
     }
 
     &.visible {
-      //transition: top 0.5s;
-      //top: 0;
-      transition: transform 0.5s;
-      transform: translateY(60px)
+      transition: top 0.4s;
+      top: 0;
+      //transition: transform 0.3s;
+      //transform: translateY(60px)
     }
 
     &.hidden {
-      //transition: top 0.5s;
-      //top: -60px;
-      transition: transform 0.5s;
-      transform: translateY(-60px)
+      transition: top 0.4s;
+      top: -60px;
+      //transition: transform 0.3s;
+      //transform: translateY(-60px)
     }
   }
 
