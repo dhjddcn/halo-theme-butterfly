@@ -17,11 +17,11 @@
   <meta property="og:type" content="website">
   <link rel="canonical" th:href="${site.url}">
   <th:block th:replace="~{modules/public:: styles}"></th:block>
-  <link rel="stylesheet" th:href="@{/assets/font/zn.min.css}">
-  <link rel="stylesheet" th:href="@{/assets/plugins/iconfont/iconfont.css}">
+  <th:block th:replace="${head}"></th:block>
+  <link rel="stylesheet" th:href="@{/assets/font/zn.min.css}"  media="all" onload="this.media='all'">
+  <link rel="stylesheet" th:href="@{/assets/plugins/fontawesome/fontawesome.min.css}"  media="all" onload="this.media='all'">
   <link rel="stylesheet" th:href="@{/assets/css/global.min.css}">
   <link rel="stylesheet" th:href="@{/assets/css/responsive.min.css}">
-  <th:block th:replace="${head}"></th:block>
 </head>
 <body>
 <div id="Butterfly" th:class="${page}">
@@ -33,9 +33,8 @@
   <th:block th:replace="~{modules/public:: adsorption}"></th:block>
 </div>
 <script type="text/javascript" th:src="@{/assets/plugins/jquery/jquery.min.js}"></script>
-<script src="https://cdn.bootcdn.net/ajax/libs/jquery.pjax/2.0.1/jquery.pjax.min.js"></script>
 <script type="text/javascript" th:src="@{/assets/plugins/lazyLoad/lazyLoad.min.js}"></script>
-<script type="text/javascript" th:src="@{/assets/js/global.min.js}"></script>
 <th:block th:insert="${script}"/>
+<script type="text/javascript" th:src="@{/assets/js/global.min.js}"></script>
 </body>
 </html>

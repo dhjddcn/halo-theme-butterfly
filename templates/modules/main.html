@@ -2,7 +2,7 @@
 <aside xmlns:th="https://www.thymeleaf.org" th:fragment="aside" class="aside w-25">
   <section class="aside-user card text-center"
            th:with="contributor = ${contributorFinder.getContributor(theme.config.base.metadata_name)}">
-    <img class="avatar block margin-0-auto overflow-hidden cursor-pointer"
+    <img class="avatar block margin-0-auto overflow-hidden"
          src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs="
          th:data-lazy-src="${contributor.avatar}"
          onerror="this.onerror=null,this.src='http://121.40.218.210:8090/themes/butterfly/source/img/404.png'"
@@ -193,13 +193,13 @@
 
       <div class="info-wrap text-overflow">
         <span class="wp publishTime">
-          <i class="byIcon-calendar"></i>
+          <i class="iconfont-calendar"></i>
           <time th:text="'发布于 '+${#dates.format(post.spec.publishTime, 'yyyy-MM-dd HH:mm')}"></time>
         </span>
 
         <span class="wp category">
           <span class="fk">|</span>
-          <i class="byIcon-tasks"></i>
+          <i class="iconfont-tasks"></i>
           <span class="cys">
           <th:block th:each="cy : ${post.categories}">
             <a

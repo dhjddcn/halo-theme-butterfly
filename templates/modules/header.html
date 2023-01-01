@@ -6,13 +6,13 @@
     <ul class="menu inline">
       <li class="menu-item search" th:if="${pluginFinder.available('PluginSearchWidget')}">
         <a class="menu-link relative inline-block" href="javascript:SearchWidget.open();">
-          <span class="byIcon-search"></span>
+          <i class="fas fa-search fa-fw"></i>
           <span class="menu-name">搜索</span>
         </a>
       </li>
       <li class="menu-item toggle">
         <span class="menu-link relative inline-block">
-          <span class="byIcon-bars"></span>
+          <i class="fas fa-bars fa-fw"></i>
         </span>
       </li>
 
@@ -22,23 +22,23 @@
              th:href="${menuItem.status.href}"
              th:target="${menuItem.spec.target}"
              data-pjax>
-            <!--  图标后台还未支持           <span class="byIcon-home"></span>-->
+            <i th:class="${#annotations.getOrDefault(menuItem, 'icon', '')}"></i>
             <span class="menu-name" th:text="${menuItem.status.displayName}"> </span>
           </a>
         </li>
 
         <li th:unless="${#lists.isEmpty(menuItem.children)}" class="menu-item menu-pc relative">
-          <div class="menu-link relative cursor-pointer">
-            <!--     图标后台还未支持        <span class="byIcon-podcast"></span>-->
+          <div class="menu-link relative">
+            <i th:class="${#annotations.getOrDefault(menuItem, 'icon', '')}"></i>
             <span class="menu-name" th:text="${menuItem.status.displayName}"></span>
-            <span class="byIcon-chevron-down inline-block"></span>
+            <i class="fas fa-chevron-down inline-block"></i>
           </div>
 
           <ul class="menu-dropdown none absolute right-0 padding-0 w-max-content">
 
             <li th:each="dropdown : ${menuItem.children}" class="menu-dropdown--item">
               <a th:href="@{${dropdown.status.href}}" class="menu-dropdown--link w-100 inline-block">
-                <!--    图标后台还未支持          <span class="byIcon-home"></span>-->
+                <i th:class="${#annotations.getOrDefault(dropdown, 'icon', '')}"></i>
                 <span th:text="${dropdown.status.displayName}" class="menu-dropdown-name"></span>
               </a>
             </li>
@@ -68,13 +68,8 @@
       <span class="above-subtitle--text">国仇未报壮士老，匣中宝剑夜有声。</span>
     </div>
   </div>
-  <div class="above-down absolute text-center bottom-0  left-0 right-0 cursor-pointer">
-    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 448">
-      <g>
-      </g>
-      <path
-        d="M420.75 202l-185.5 185.25c-6.25 6.25-16.25 6.25-22.5 0l-185.5-185.25c-6.25-6.25-6.25-16.5 0-22.75l41.5-41.25c6.25-6.25 16.25-6.25 22.5 0l132.75 132.75 132.75-132.75c6.25-6.25 16.25-6.25 22.5 0l41.5 41.25c6.25 6.25 6.25 16.5 0 22.75z"></path>
-    </svg>
+  <div class="above-down absolute text-center bottom-0 left-0 right-0">
+    <i class="fas fa-angle-down"></i>
   </div>
 </section>
 
