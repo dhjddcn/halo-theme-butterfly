@@ -8,10 +8,25 @@
 
 class Index {
   constructor() {
+    this.typewriter();
+  }
+
+  // 打字机效果
+  typewriter() {
+    const dom = $('.above-subtitle--text');
+    if (!dom.length) return;
+    const text = dom.attr('data-typewriter');
+    const textArr = text.replaceAll('\n', '').split('|+|');
+    new Typed('.above-subtitle--text', {
+      strings: textArr,
+      startDelay: 300,
+      typeSpeed: 200,
+      loop: true,
+      backSpeed: 50,
+    })
 
   }
 
- 
 }
 
 

@@ -11,16 +11,28 @@
 >
 <th:block th:fragment="head">
   <link rel="stylesheet" th:href="@{/assets/css/index.min.css}">
+  <style 
+    th:inline="css" 
+    th:with="
+    above_background= ${is_body_background_http ? '' : 'url(' + theme.config.index.above_background + ')'}
+    ">
+    
+    html {
+      --above-background: /*[(${above_background})]*/ transparent;
+    }
+
+  </style>
 </th:block>
 
 <th:block th:fragment="content">
   <th:block th:replace="~{modules/main:: posts(${posts.items})}"></th:block>
-  <th:block >
+  <th:block>
     <th:block th:replace="~{modules/main:: pagination(${posts})}"></th:block>
   </th:block>
 </th:block>
 
 <th:block th:fragment="script">
+  <script type="text/javascript" th:src="@{/assets/plugins/typed/typed.min.js}"></script>
   <script type="text/javascript" th:src="@{/assets/js/index.min.js}"></script>
 </th:block>
 </html>

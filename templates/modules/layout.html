@@ -1,7 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light" xmlns:th="https://www.thymeleaf.org"
-      th:fragment="layout (page,title,head,content,script)">
-<head>
+<html lang="en" data-theme="light" xmlns:th="https://www.thymeleaf.org" th:fragment="layout (page,title,head,content,script)">
+<head th:with="is_body_background_http = ${#strings.containsIgnoreCase(theme.config.style.body_background,'http')}">
   <title th:text="${title}"></title>
   <meta charset="UTF-8"/>
   <meta http-equiv="X-UA-Compatible" content="IE=edge"/>

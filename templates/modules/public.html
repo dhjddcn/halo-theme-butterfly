@@ -1,12 +1,18 @@
 <!--样式-->
-<th:block   xmlns:th="https://www.thymeleaf.org" th:fragment="styles">
-  <style th:inline="css" type="text/css">
+<th:block xmlns:th="https://www.thymeleaf.org" th:fragment="styles">
+  <style
+    type="text/css"
+    th:inline="css"
+    th:with="
+    body_background= ${is_body_background_http ? 'url('+theme.config.style.body_background+') no-repeat fixed center / cover;' : theme.config.style.body_background}
+    ">
     html {
       --theme: /*[(${theme.config.style.theme_color_light})]*/ #49b1f5;
-      --main-max-width: /*[(${theme.config.style.content_max_width + 'px'})]*/ 1200px;
-      --card-border-radius: 24px;
-      --card-box-shadow: 0 3px 8px 6px rgba(7, 17, 27, 0.05);
-      --body-bg-color: linear-gradient(90deg, rgba(247, 149, 51, .1) 0, rgba(243, 112, 85, .1) 15%, rgba(239, 78, 123, .1) 30%, rgba(161, 102, 171, .1) 44%, rgba(80, 115, 184, .1) 58%, rgba(16, 152, 173, .1) 72%, rgba(7, 179, 155, .1) 86%, rgba(109, 186, 130, .1) 100%);
+      --body-bg-color: /*[(${body_background})]*/ transparent;
+      --main-max-width: /*[(${theme.config.style.content_max_width})]*/ 1200px;
+      --card-border-radius: /*[(${theme.config.card.radius})]*/ 24px;
+      --card-bg-color: /*[(${theme.config.card.bg_color})]*/ transparent;
+      --card-box-shadow: /*[(${theme.config.card.shadow})]*/ transparent;
       --cursor-default: url("[(${#theme.assets('/plugins/cursor/simple/default.cur')})]"), auto;
       --cursor-pointer: url("[(${#theme.assets('/plugins/cursor/simple/pointer.cur')})]"), auto;
     }
