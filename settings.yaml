@@ -27,7 +27,7 @@ spec:
         - $formkit: text
           name: site_birthday
           label: 建站时间
-          placeholder: 示例 2022-01-01
+          placeholder: 示例 2022-01-01 00:00
           help: 自定义博客的起始时间/安装时间，作为计算博客运行时间的参照值，请严格按照示例格式填写，否则将导致报错
 
     - group: style

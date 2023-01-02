@@ -23,7 +23,7 @@
         content: '置顶';
         position: absolute;
         left: 0;
-        background: linear-gradient(135deg,#fd7a64 10%,#fb2d2d 100%);
+        background: linear-gradient(135deg, #fd7a64 10%, #fb2d2d 100%);
         color: #fff;
         top: 20px;
         font-size: .5rem;
@@ -33,7 +33,7 @@
         border-radius: 0 50px 50px 0;
       }
 
-      
+
       img {
         transition: filter 375ms ease-in .2s, transform .6s;
         object-fit: cover;
@@ -69,7 +69,7 @@
         font-size: 1.6rem;
         line-height: 1.4;
         transition: color .2s;
-        
+
         &:hover {
           color: var(--link-hover-color);
         }
@@ -79,26 +79,12 @@
         margin: 6px 0 0;
         font-size: 95%;
 
-        svg {
-          width: .9rem;
-          height: .9rem;
-          color: transparent;
-
-          path {
-            stroke: var(--theme);
-          }
-        }
-
         .wp {
-          &.publishTime svg {
-            vertical-align: -0.15rem;
+          &.publishTime i {
+            vertical-align: 0.1rem;
           }
 
           &.category {
-            i {
-              vertical-align: -0.12rem;
-            }
-
             .lk {
               &:hover {
                 color: var(--link-hover-color);
@@ -125,7 +111,6 @@
 
   }
 
-
   //平铺
   &.tile {
 
@@ -143,8 +128,6 @@
     margin: 0 6px;
     width: 2.2rem;
     height: 2.2rem;
-    line-height: 2.2rem;
-    display: inline-block;
     transition: color .2s, background-color .2s;
     color: #99a9bf;
 

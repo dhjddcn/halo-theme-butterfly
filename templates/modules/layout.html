@@ -30,11 +30,14 @@
     <article class="content pjax-content flex-1" th:insert="${content}"></article>
     <th:block th:replace="~{modules/main:: aside}"></th:block>
   </main>
-  <th:block th:replace="~{modules/public:: footer}"></th:block>
+  <th:block th:replace="~{modules/header:: sidebar}"></th:block>
   <th:block th:replace="~{modules/public:: adsorption}"></th:block>
+  <th:block th:replace="~{modules/public:: footer}"></th:block>
 </div>
 <script type="text/javascript" th:src="@{/assets/plugins/jquery/jquery.min.js}"></script>
 <script type="text/javascript" th:src="@{/assets/plugins/lazyLoad/lazyLoad.min.js}"></script>
+<script type="text/javascript" th:src="@{/assets/plugins/universe/universe.min.js}"></script>
+<script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <th:block th:insert="${script}"/>
 <script type="text/javascript" th:src="@{/assets/js/global.min.js}"></script>
 </body>

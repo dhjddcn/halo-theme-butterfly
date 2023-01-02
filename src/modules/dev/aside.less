@@ -5,17 +5,6 @@
  * @fileName: aside
  */
 
-
-@keyframes aside-notice-svg-animation {
-  0%, to {
-    transform: scale(1)
-  }
-
-  50% {
-    transform: scale(1.2)
-  }
-}
-
 .aside {
   > section {
     padding: 1rem 1.2rem;
@@ -87,12 +76,12 @@
 
   &-title {
     padding-bottom: 0.3rem;
-    font-size: 1.05rem;
+    font-size: 1rem;
   }
 
   &-notice {
-    .aside-title svg {
-      animation: aside-notice-svg-animation .8s linear infinite;
+    .aside-title i {
+      color: #ff0000;
     }
 
     > .content {
@@ -102,8 +91,9 @@
   &-category {
     > .content > .link {
       padding: 3px 10px 3px 22px;
-      > span{
-        transition:  color .3s;
+
+      > span {
+        transition: color .3s;
       }
 
       &:before {
@@ -146,5 +136,14 @@
     }
   }
 
-
+  &-webInfo {
+    .content {
+      p.item {
+        padding: 8px 10px 0;
+        .name{
+          padding-right: 20px;
+        }
+      }
+    }
+  }
 }

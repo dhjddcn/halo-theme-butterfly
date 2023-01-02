@@ -20,15 +20,18 @@
 
       <th:block th:each="menuItem : ${menuFinder.getPrimary().menuItems}">
         <li th:if="${#lists.isEmpty(menuItem.children)}" class="menu-item menu-pc">
-          <a class="menu-link relative inline-block" th:href="${menuItem.status.href}" th:target="${menuItem.spec.target}" data-pjax>
-            <i th:if="${!#strings.isEmpty(#annotations.getOrDefault(menuItem, 'icon', ''))}" th:class="${#annotations.getOrDefault(menuItem, 'icon', '')}"></i>
+          <a class="menu-link relative inline-block" th:href="${menuItem.status.href}"
+             th:target="${menuItem.spec.target}" data-pjax>
+            <i th:if="${!#strings.isEmpty(#annotations.getOrDefault(menuItem, 'icon', ''))}"
+               th:class="${#annotations.getOrDefault(menuItem, 'icon', '')}"></i>
             <span class="menu-name" th:text="${menuItem.status.displayName}"> </span>
           </a>
         </li>
 
         <li th:unless="${#lists.isEmpty(menuItem.children)}" class="menu-item menu-pc relative">
           <div class="menu-link relative">
-            <i th:if="${!#strings.isEmpty(#annotations.getOrDefault(menuItem, 'icon', ''))}" th:class="${#annotations.getOrDefault(menuItem, 'icon', '')}"></i>
+            <i th:if="${!#strings.isEmpty(#annotations.getOrDefault(menuItem, 'icon', ''))}"
+               th:class="${#annotations.getOrDefault(menuItem, 'icon', '')}"></i>
             <span class="menu-name" th:text="${menuItem.status.displayName}"></span>
             <i class="fas fa-chevron-down"></i>
           </div>
@@ -37,7 +40,8 @@
           <ul class="menu-dropdown none absolute right-0 padding-0 w-max-content">
             <li th:each="dropdown : ${menuItem.children}" class="menu-dropdown--item">
               <a th:href="@{${dropdown.status.href}}" class="menu-dropdown--link w-100 inline-block">
-                <i th:if="${!#strings.isEmpty(#annotations.getOrDefault(dropdown, 'icon', ''))}" th:class="${#annotations.getOrDefault(dropdown, 'icon', '')}"></i>
+                <i th:if="${!#strings.isEmpty(#annotations.getOrDefault(dropdown, 'icon', ''))}"
+                   th:class="${#annotations.getOrDefault(dropdown, 'icon', '')}"></i>
                 <span th:text="${dropdown.status.displayName}" class="menu-dropdown-name"></span>
               </a>
             </li>
@@ -52,11 +56,17 @@
   <th:block th:replace="~{modules/header:: ${page}}"></th:block>
 </header>
 
+<!--移动端 侧边栏-->
+<div xmlns:th="https://www.thymeleaf.org" th:fragment="sidebar" class="sidebar">
+  <div class="sidebar-content fixed top-0 right-0 h-100">
+  </div>
+</div>
 
 <!--默认公共首屏-->
 <section xmlns:th="https://www.thymeleaf.org" th:fragment="above" class="above relative w-100">
   123
 </section>
+
 
 <!--首页首屏-->
 <section xmlns:th="https://www.thymeleaf.org" th:fragment="index" class="above relative w-100">

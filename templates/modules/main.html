@@ -1,5 +1,6 @@
 <!--侧边栏-->
-<aside xmlns:th="https://www.thymeleaf.org" th:fragment="aside" class="aside w-25">
+<aside xmlns:th="https://www.thymeleaf.org" th:fragment="aside" class="aside w-25"
+       th:with="stats = ${siteStatsFinder.getStats()}">
   <section class="aside-user card text-center"
            th:with="contributor = ${contributorFinder.getContributor(theme.config.base.metadata_name)}">
     <img class="avatar block margin-0-auto overflow-hidden"
@@ -12,7 +13,7 @@
 
     <div class="desc" th:text="${contributor.bio}"></div>
 
-    <div class="data w-100" th:with="stats = ${siteStatsFinder.getStats()}">
+    <div class="data w-100">
       <a class="item" title="文章" href="/archives">
         <div class="headline">文章</div>
         <div class="num text-overflow" th:text="${stats.post}"></div>
@@ -104,12 +105,7 @@
 
   <section class="aside-notice card">
     <h1 class="aside-title">
-      <svg xmlns="http://www.w3.org/2000/svg" width="448" height="448" viewBox="0 0 448 448">
-        <g></g>
-        <path
-          fill="#ff0000"
-          d="M416 160c17.75 0 32 14.25 32 32s-14.25 32-32 32v96c0 17.5-14.5 32-32 32-44.5-37-116.25-87.75-203-95-29.75 10-40 44.75-20.5 64.75-17.5 28.75 5 49 31.5 69.75-15.5 30.5-80 31-103 9.75-14.5-44.5-36-89-18.5-145.25h-30.5c-22 0-40-18-40-40v-48c0-22 18-40 40-40h120c96 0 176-56 224-96 17.5 0 32 14.5 32 32v96zM384 311v-238.5c-65.25 50-128.5 78.75-192 85.75v67.5c63.5 7 126.75 35.25 192 85.25z"></path>
-      </svg>
+      <i class="fas fa-bullhorn fa-shake"></i>
       <span class="name">公告</span>
     </h1>
 
@@ -118,12 +114,7 @@
 
   <section class="aside-category card">
     <h1 class="aside-title">
-      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="470" height="448" viewBox="0 0 470 448">
-        <g>
-        </g>
-        <path
-          d="M469.75 238c0 6-3.75 12-7.75 16.5l-84 99c-14.5 17-44 30.5-66 30.5h-272c-9 0-21.75-2.75-21.75-14 0-6 3.75-12 7.75-16.5l84-99c14.5-17 44-30.5 66-30.5h272c9 0 21.75 2.75 21.75 14zM384 152v40h-208c-31.25 0-70 17.75-90.25 41.75l-85.5 100.5c0-2-0.25-4.25-0.25-6.25v-240c0-30.75 25.25-56 56-56h80c30.75 0 56 25.25 56 56v8h136c30.75 0 56 25.25 56 56z"></path>
-      </svg>
+      <i class="fas fa-folder-open"></i>
       <span class="name">分类</span>
     </h1>
 
@@ -140,15 +131,9 @@
 
   </section>
 
-
   <section class="aside-tags card">
     <h1 class="aside-title">
-      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="475" height="448" viewBox="0 0 475 448">
-        <g>
-        </g>
-        <path
-          d="M112 112c0-17.75-14.25-32-32-32s-32 14.25-32 32 14.25 32 32 32 32-14.25 32-32zM378.75 256c0 8.5-3.5 16.75-9.25 22.5l-122.75 123c-6 5.75-14.25 9.25-22.75 9.25s-16.75-3.5-22.5-9.25l-178.75-179c-12.75-12.5-22.75-36.75-22.75-54.5v-104c0-17.5 14.5-32 32-32h104c17.75 0 42 10 54.75 22.75l178.75 178.5c5.75 6 9.25 14.25 9.25 22.75zM474.75 256c0 8.5-3.5 16.75-9.25 22.5l-122.75 123c-6 5.75-14.25 9.25-22.75 9.25-13 0-19.5-6-28-14.75l117.5-117.5c5.75-5.75 9.25-14 9.25-22.5s-3.5-16.75-9.25-22.75l-178.75-178.5c-12.75-12.75-37-22.75-54.75-22.75h56c17.75 0 42 10 54.75 22.75l178.75 178.5c5.75 6 9.25 14.25 9.25 22.75z"></path>
-      </svg>
+      <i class="fas fa-tags"></i>
       <span class="name">标签</span>
     </h1>
 
@@ -165,6 +150,36 @@
         （<span class="num" th:text="${tag.status.visiblePostCount}"></span>）
       </a>
     </div>
+  </section>
+
+  <section class="aside-webInfo card">
+    <h1 class="aside-title">
+      <i class="fas fa-chart-line"></i>
+      <span class="name">网站资讯</span>
+    </h1>
+
+    <div class="content">
+      <p class="item flex flex-align-items-center">
+        <span class="name flex-1">文章数目：</span>
+        <span class="text" th:text="${stats.post} +' 章'"></span>
+      </p>
+
+      <p class="item flex flex-align-items-center">
+        <span class="name flex-1">运行时间：</span>
+        <span class="text" th:data-runDay="${stats.post}">900 天</span>
+      </p>
+
+      <p class="item flex flex-align-items-center">
+        <span class="name flex-1">本站访客：</span>
+        <span class="text" id="busuanzi_value_site_uv">加载中...</span>&nbsp;人
+      </p>
+
+      <p class="item flex flex-align-items-center">
+        <span class="name flex-1">总访问量：</span>
+        <span class="text" id="busuanzi_value_site_pv">加载中...</span>&nbsp;人
+      </p>
+    </div>
+
   </section>
 
 </aside>
@@ -193,13 +208,13 @@
 
       <div class="info-wrap text-overflow">
         <span class="wp publishTime">
-          <i class="iconfont-calendar"></i>
+          <i class="far fa-calendar-alt fa-bolt-auto"></i>
           <time th:text="'发布于 '+${#dates.format(post.spec.publishTime, 'yyyy-MM-dd HH:mm')}"></time>
         </span>
 
         <span class="wp category">
           <span class="fk">|</span>
-          <i class="iconfont-tasks"></i>
+          <i class="fas fa-inbox"></i>
           <span class="cys">
           <th:block th:each="cy : ${post.categories}">
             <a
@@ -210,40 +225,28 @@
             </th:block>
             </span>
         </span>
-
-
       </div>
 
       <div class="text text-clamp text-cmp2" th:text="${post.spec.excerpt.raw}"></div>
-
     </div>
-
   </li>
 </ul>
 
 <!--分页-->
 <div xmlns:th="https://www.thymeleaf.org" th:fragment="pagination(ps)" class="pagination text-center">
-  <a th:if="${ps.hasPrevious()}" th:href="${ps.prevUrl}" title="下一页" class="prev">
-    <svg class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" width="200"
-         height="200">
-      <path
-        d="M616.896 939.52C629.472 952.544 646.752 959.904 664.832 960 705.632 958.304 737.408 924 735.968 883.2 736.064 862.08 727.712 841.824 712.8 826.88L400.096 512 712.8 197.12C727.712 182.176 736.064 161.92 735.968 140.8 737.408 100 705.632 65.696 664.832 64 646.752 64.096 629.472 71.456 616.896 84.48L247.04 455.68C216.32 486.944 216.32 537.056 247.04 568.32L616.896 939.52Z"
-      ></path>
-    </svg>
+  <a th:if="${ps.hasPrevious()}" th:href="${ps.prevUrl}" title="下一页"
+     class="prev inline-flex flex-justify-content-center flex-align-items-center">
+    <i class="fas fa-chevron-left fa-fw"></i>
   </a>
 
   <a
     th:each="index : ${#numbers.sequence(1,ps.totalPages)}"
-    th:class="${ps.page == index ?  'page current': 'page'}"
+    th:class="${ps.page == index ?  'page current': 'page'}+' inline-flex flex-justify-content-center flex-align-items-center'"
     th:href="@{'/page/' + ${index}}" th:text="${index}"></a>
 
-  <a th:if="${ps.hasNext()}" th:href="${ps.nextUrl}" title="下一页" class="next">
-    <svg class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" width="200"
-         height="200">
-      <path
-        d="M407.104 939.52C394.528 952.544 377.248 959.904 359.168 960 318.368 958.304 286.592 924 288.032 883.2 287.936 862.08 296.288 841.824 311.2 826.88L623.904 512 311.2 197.12C296.288 182.176 287.936 161.92 288.032 140.8 286.592 100 318.368 65.696 359.168 64 377.248 64.096 394.528 71.456 407.104 84.48L776.96 455.68C807.68 486.944 807.68 537.056 776.96 568.32L407.104 939.52Z"
-      ></path>
-    </svg>
+  <a th:if="${ps.hasNext()}" th:href="${ps.nextUrl}" title="下一页"
+     class="next inline-flex flex-justify-content-center flex-align-items-center">
+    <i class="fas fa-chevron-right fa-fw"></i>
   </a>
 </div>
 

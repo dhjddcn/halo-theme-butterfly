@@ -61,6 +61,7 @@ class Global {
   constructor() {
     // console.log('global');
     this.html = $('html');
+    this.body = $('body');
     this.Butterfly = $('#Butterfly');
     this.Header = this.Butterfly.find('.header');
     this.init();
@@ -85,7 +86,10 @@ class Global {
       data_src: 'lazy-src'
     })
 
+  }
 
+  // 夜间模式星空背景
+  starrySky(tp) {
   }
 
   pjax() {
@@ -155,9 +159,11 @@ class Global {
       if (locDataTheme === 'light') {
         this.html.attr('data-theme', 'dark');
         localStorage.setItem('Butterfly-data-theme', 'dark');
+        this.starrySky('open'); // 开启星空背景
       } else {
         this.html.attr('data-theme', 'light');
         localStorage.setItem('Butterfly-data-theme', 'light');
+        this.starrySky('close') // 关闭星空背景
       }
 
     });
