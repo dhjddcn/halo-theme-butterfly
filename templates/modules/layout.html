@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light" xmlns:th="https://www.thymeleaf.org" th:fragment="layout (page,title,head,content,script)">
+<html lang="en" data-theme="light" xmlns:th="https://www.thymeleaf.org"
+      th:fragment="layout (page,title,head,content,script)">
 <head th:with="is_body_background_http = ${#strings.containsIgnoreCase(theme.config.style.body_background,'http')}">
   <title th:text="${title}"></title>
   <meta charset="UTF-8"/>
   <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, shrink-to-fit=no, viewport-fit=cover">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, shrink-to-fit=no, viewport-fit=cover">
   <meta name="author" th:content="${site.title}">
   <meta name="site" th:content="${site.url}">
   <meta property="og:keywords" th:content="${site.seo.keywords}">
@@ -17,21 +19,24 @@
   <link rel="canonical" th:href="${site.url}">
   <th:block th:insert="~{modules/public:: styles}"></th:block>
   <th:block th:insert="${head}"></th:block>
-  <link rel="stylesheet" th:href="@{/assets/font/zn.min.css}"  media="all" onload="this.media='all'">
-  <link rel="stylesheet" th:href="@{/assets/plugins/fontawesome/fontawesome.min.css}"  media="all" onload="this.media='all'">
+  <link rel="stylesheet" th:href="@{/assets/font/zn.min.css}" media="all" onload="this.media='all'">
+  <link rel="stylesheet" th:href="@{/assets/plugins/fontawesome/fontawesome.min.css}" media="all"
+        onload="this.media='all'">
   <link rel="stylesheet" th:href="@{/assets/css/global.min.css}">
   <link rel="stylesheet" th:href="@{/assets/css/responsive.min.css}">
 </head>
 <body>
 <div id="Butterfly" th:class="${page}">
   <th:block th:insert="~{modules/header:: header(${page})}"></th:block>
-  <main class="main flex flex-justify-content-between margin-0-auto aside-right">
+  <main th:class="'main flex flex-justify-content-between margin-0-auto '+${theme.config.aside.position}">
     <article class="content pjax-content flex-1" th:insert="${content}"></article>
-    <th:block th:replace="~{modules/main:: aside}"></th:block>
+    <th:block th:if="${theme.config.aside.enable}">
+      <th:block  th:insert="~{modules/main:: aside}"></th:block>
+    </th:block>
   </main>
-  <th:block th:replace="~{modules/header:: sidebar}"></th:block>
-  <th:block th:replace="~{modules/public:: adsorption}"></th:block>
-  <th:block th:replace="~{modules/public:: footer}"></th:block>
+  <th:block th:insert="~{modules/header:: sidebar}"></th:block>
+  <th:block th:insert="~{modules/public:: adsorption}"></th:block>
+  <th:block th:insert="~{modules/public:: footer}"></th:block>
 </div>
 <script type="text/javascript" th:src="@{/assets/plugins/jquery/jquery.min.js}"></script>
 <script type="text/javascript" th:src="@{/assets/plugins/lazyLoad/lazyLoad.min.js}"></script>

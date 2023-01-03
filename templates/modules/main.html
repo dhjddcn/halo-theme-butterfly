@@ -1,8 +1,6 @@
 <!--侧边栏-->
-<aside xmlns:th="https://www.thymeleaf.org" th:fragment="aside" class="aside w-25"
-       th:with="stats = ${siteStatsFinder.getStats()}">
-  <section class="aside-user card text-center"
-           th:with="contributor = ${contributorFinder.getContributor(theme.config.base.metadata_name)}">
+<aside xmlns:th="https://www.thymeleaf.org" th:fragment="aside" class="aside w-25" th:with="stats = ${siteStatsFinder.getStats()}">
+  <section class="aside-user card text-center" th:with="contributor = ${contributorFinder.getContributor(theme.config.base.metadata_name)}">
     <img class="avatar block margin-0-auto overflow-hidden"
          th:src="${theme.config.loading.preload}"
          th:attr="onerror='this.src='+${'`'+theme.config.loading.err+'`'}"
@@ -28,7 +26,7 @@
       </a>
     </div>
 
-    <a class="button block text-center" href="javascript:">主题地址</a>
+    <a th:with="bt=${#strings.arraySplit(theme.config.aside.button,'&+&')}" th:utext="${bt[0]}" class="button block text-center"  target="+_blank" th:href="${bt[1]}"></a>
 
     <div class="icons flex flex-justify-content-evenly">
       <a href="" class="qq">
@@ -186,7 +184,7 @@
 
 
 <!--文章列表-->
-<ul xmlns:th="https://www.thymeleaf.org" th:fragment="posts(ps)" class="posts  tile">
+<ul xmlns:th="https://www.thymeleaf.org" th:fragment="posts(ps,layout)" th:class="'posts '+${layout}">
   <li class="item card relative flex flex-align-items-center flex-justify-content-center overflow-hidden"
       th:each="post : ${ps}">
     <a th:class="'cover overflow-hidden relative'+${post.spec.pinned ? ' pt-top' : ''}"

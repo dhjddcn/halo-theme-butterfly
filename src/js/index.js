@@ -17,7 +17,7 @@ class Index {
     const dom = $('.above-subtitle--text');
     if (!dom.length) return;
     const text = dom.attr('data-typewriter');
-    const textArr = text.replaceAll('\n', '').split('|+|');
+    const textArr = text.replaceAll('\n', '').split('&+&');
     new Typed('.above-subtitle--text', {
       strings: textArr,
       startDelay: 300,

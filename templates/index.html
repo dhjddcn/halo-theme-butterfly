@@ -25,10 +25,8 @@
 </th:block>
 
 <th:block th:fragment="content">
-  <th:block th:replace="~{modules/main:: posts(${posts.items})}"></th:block>
-  <th:block>
-    <th:block th:replace="~{modules/main:: pagination(${posts})}"></th:block>
-  </th:block>
+  <th:block th:replace="~{modules/main:: posts(${posts.items},${theme.config.index.post_layout})}"></th:block>
+  <th:block th:replace="~{modules/main:: pagination(${posts})}"></th:block>
 </th:block>
 
 <th:block th:fragment="script">

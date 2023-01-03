@@ -32,8 +32,8 @@
         }
       }
     }
-    
-    .info{
+
+    .info {
       &-title {
         color: var(--text-obs-color);
         transition: color .2s;
@@ -66,7 +66,7 @@
           margin: 0 0.2rem 0 0.1rem;
         }
       }
-      
+
     }
 
 
@@ -144,9 +144,15 @@
           -webkit-line-clamp: 1;
           line-height: 1.2;
         }
-        
+
         &-wrap {
           font-size: 80%;
+
+          .category .cys {
+            .lk:not(:first-child), .point:not(:first-child) {
+              display: none;
+            }
+          }
         }
       }
 
