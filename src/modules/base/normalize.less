@@ -59,9 +59,12 @@ img:not([src]), img[src=""] {
   opacity: 0
 }
 
-img[data-lazy-src]:not(.loaded,.error) {
-  -webkit-filter: blur(10px) brightness(1);
-  filter: blur(10px) brightness(1)
+//img[data-lazy-src]:not(.loaded,.error) {
+//  filter: blur(50px) brightness(1)
+//}
+
+img[data-lazy-src]:is(.error){
+  filter: blur(88px) brightness(1)
 }
 
 svg {

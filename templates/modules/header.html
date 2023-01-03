@@ -53,7 +53,7 @@
     </ul>
   </nav>
 
-  <th:block th:replace="~{modules/header:: ${page}}"></th:block>
+  <th:block th:insert="~{modules/header:: ${page}}"></th:block>
 </header>
 
 <!--移动端 侧边栏-->
@@ -62,14 +62,14 @@
   </div>
 </div>
 
-<!--默认公共首屏-->
+<!--默认公共、自定义首屏-->
 <section xmlns:th="https://www.thymeleaf.org" th:fragment="above" class="above relative w-100">
   123
 </section>
 
 
 <!--首页首屏-->
-<section xmlns:th="https://www.thymeleaf.org" th:fragment="index" class="above relative w-100">
+<section th:if="${theme.config.index.enable_above}" xmlns:th="https://www.thymeleaf.org" th:fragment="index" class="above relative w-100">
   <div class="above-info">
     <h1 class="above-title text-center margin-0-auto" th:text="${site.title}"></h1>
 

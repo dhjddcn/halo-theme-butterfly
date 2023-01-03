@@ -16,9 +16,18 @@
 }
 
 @media (max-width: 1200px) {
+  .posts {
+    &.tile {
+      .item {
+        width: 47%;
+        margin: 0 3% 20px 0;
+      }
+    }
+  }
 }
 
 @media (max-width: 1130px) {
+
 }
 
 @media (max-width: 1000px) {
@@ -28,47 +37,63 @@
   .main {
     flex-direction: column;
   }
-  
-  .aside{
+
+  .aside {
     width: 100%;
     margin: 20px 0 0;
   }
 }
 
 @media (max-width: 768px) {
-  .posts.list {
-     .item {
-      height: auto;
-      flex-direction: column;
-    }
-    
+  .posts {
+    &.list {
+      .item {
+        height: auto;
+        flex-direction: column;
+      }
 
-    .cover {
-      width: 100%;
-      height: 200px;
+
+      .cover {
+        width: 100%;
+        height: 200px;
+      }
+
+      .info {
+        padding: 20px 20px 30px;
+        width: 100%;
+
+        &-title {
+          font-size: 1.3rem;
+        }
+
+        &-wrap {
+          font-size: 88%;
+        }
+      }
     }
 
-    .info {
-      padding: 20px 20px 30px;
-      width: 100%;
-      
-      &-title {
-        font-size: 1.3rem;
+    &.tile {
+      .item {
+        width: 100%;
+        margin-bottom: 20px;
       }
     }
   }
 
+
 }
 
 @media (max-width: 650px) {
-  .posts.list {
-    
-    .text{
-      -webkit-line-clamp: 1;
+  .posts {
+    &.list {
+
+      .text {
+        -webkit-line-clamp: 1;
+      }
     }
-    
   }
 }
+
 
 @media (max-width: 500px) {
 }

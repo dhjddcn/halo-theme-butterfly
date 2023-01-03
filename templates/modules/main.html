@@ -4,9 +4,9 @@
   <section class="aside-user card text-center"
            th:with="contributor = ${contributorFinder.getContributor(theme.config.base.metadata_name)}">
     <img class="avatar block margin-0-auto overflow-hidden"
-         src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs="
+         th:src="${theme.config.loading.preload}"
+         th:attr="onerror='this.src='+${'`'+theme.config.loading.err+'`'}"
          th:data-lazy-src="${contributor.avatar}"
-         onerror="this.onerror=null,this.src='http://121.40.218.210:8090/themes/butterfly/source/img/404.png'"
          th:alt="${contributor.displayName}">
 
     <div class="name font-weight-500" th:text="${contributor.displayName}"></div>
@@ -186,45 +186,56 @@
 
 
 <!--文章列表-->
-<ul xmlns:th="https://www.thymeleaf.org" th:fragment="posts(ps)" class="posts list">
+<ul xmlns:th="https://www.thymeleaf.org" th:fragment="posts(ps)" class="posts  tile">
   <li class="item card relative flex flex-align-items-center flex-justify-content-center overflow-hidden"
       th:each="post : ${ps}">
     <a th:class="'cover overflow-hidden relative'+${post.spec.pinned ? ' pt-top' : ''}"
        th:href="${post.status.permalink}"
-       th:title="${post.spec.title}">
+    >
       <img class="w-100 h-100"
-           src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs="
+           th:src="${theme.config.loading.preload}"
+           th:attr="onerror='this.src='+${'`'+theme.config.loading.err+'`'}"
            th:data-lazy-src="${post.spec.cover}"
-           th:data-l="${post.spec.cover}"
-           onerror="this.onerror=null,this.src='http://121.40.218.210:8090/themes/butterfly/source/img/404.png'"
            th:alt="${post.spec.title}">
     </a>
 
     <div class="info flex-1 flex-align-items-center">
-      <a class="info-title text-clamp text-cmp2"
-         th:href="${post.status.permalink}"
-         th:title="${post.spec.title}"
-         th:text="${post.spec.title}"></a>
+      <a class="info-title text-clamp text-cmp2" th:href="${post.status.permalink}" th:text="${post.spec.title}"></a>
 
-      <div class="info-wrap text-overflow">
-        <span class="wp publishTime">
-          <i class="far fa-calendar-alt fa-bolt-auto"></i>
-          <time th:text="'发布于 '+${#dates.format(post.spec.publishTime, 'yyyy-MM-dd HH:mm')}"></time>
-        </span>
-
-        <span class="wp category">
-          <span class="fk">|</span>
-          <i class="fas fa-inbox"></i>
-          <span class="cys">
-          <th:block th:each="cy : ${post.categories}">
-            <a
-              class="lk"
-              th:href="${cy.status.permalink}"
-              th:text="${cy.spec.displayName}"></a>
-             <span class="point">•</span>
-            </th:block>
+      <div class="info-wrap text-overflow ">
+        <div class="text-overflow">
+          <span class="wp publishTime">
+            <i class="far fa-calendar-alt fa-bolt-auto"></i>
+            <time th:text="'发布于 '+${#dates.format(post.spec.publishTime, 'yyyy-MM-dd HH:mm')}"></time>
+          </span>
+          <span class="wp category">
+            <span class="fk">|</span>
+            <i class="fas fa-inbox"></i>
+            <span class="cys">
+              <th:block th:each="cy : ${post.categories}">
+                <a class="lk" th:href="${cy.status.permalink}" th:text="${cy.spec.displayName}"></a>
+               <span class="point">•</span>
+              </th:block>
             </span>
-        </span>
+          </span>
+        </div>
+
+        <div class="text-overflow">
+          <span class="wp comment">
+              <i class="fa-solid fa-comments"></i>
+              <span th:text="'评论 '+${post.stats.comment}"></span>
+          </span>
+          <span class="wp upvote">
+              <span class="fk">|</span>
+              <i class="fa-solid fa-thumbs-up"></i>
+              <span th:text="'点赞 '+${post.stats.upvote}"></span>
+          </span>
+          <span class="wp visit">
+              <span class="fk">|</span>
+              <i class="fa-solid fa-eye"></i>
+              <span th:text="'预览 '+${post.stats.visit}"></span>
+          </span>
+        </div>
       </div>
 
       <div class="text text-clamp text-cmp2" th:text="${post.spec.excerpt.raw}"></div>

@@ -9,6 +9,7 @@
 class Index {
   constructor() {
     this.typewriter();
+    this.aboveDown();
   }
 
   // 打字机效果
@@ -24,12 +25,19 @@ class Index {
       loop: true,
       backSpeed: 50,
     })
-
   }
 
+  // 向下箭头滚动
+  aboveDown() {
+    const down = $(".above-down > i");
+    if (!down.length) return;
+    down.on('click', () => {
+      $( "body,html" ).animate( { scrollTop: $( "main" ).offset().top }, 500 );
+    });
+  }
 }
 
 
 !(() => {
-  document.addEventListener("DOMContentLoaded", () => window.pageClass = new Index())
+  document.addEventListener("DOMContentLoaded", () => window.IndexClass = new Index())
 })();

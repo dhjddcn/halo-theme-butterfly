@@ -65,7 +65,7 @@ spec:
           label: 内容区最大宽度
           value: 1250
           placeholder: 请填写内容区最大宽度
-          help: 内容区域最大宽度，像素或百分比，默认 1250px
+          help: 内容区域最大宽度，像素或百分比，默认 1250px（注：文字布局为列表建议：1250px 平铺：1400px）
           validation: required
         - $formkit: attachment
           name: body_background
@@ -74,7 +74,44 @@ spec:
           value: 'linear-gradient(90deg, rgba(247, 149, 51, .1) 0, rgba(243, 112, 85, .1) 15%, rgba(239, 78, 123, .1) 30%, rgba(161, 102, 171, .1) 44%, rgba(80, 115, 184, .1) 58%, rgba(16, 152, 173, .1) 72%, rgba(7, 179, 155, .1) 86%, rgba(109, 186, 130, .1) 100%)'
           help: 如果全局背景图设置为图片链接，第一屏背景图将不生效 (注：颜色值或图片链接) 默认：linear-gradient(90deg, rgba(247, 149, 51, .1) 0, rgba(243, 112, 85, .1) 15%, rgba(239, 78, 123, .1) 30%, rgba(161, 102, 171, .1) 44%, rgba(80, 115, 184, .1) 58%, rgba(16, 152, 173, .1) 72%, rgba(7, 179, 155, .1) 86%, rgba(109, 186, 130, .1) 100%)
           validation: required
-
+          
+    - group: loading
+      label: 加载设置
+      formSchema:
+        - $formkit: attachment
+          name: preload
+          label: 预加载图片
+          placeholder: 请填写 预加载图片
+          value: 'data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs='
+          help: 预加载图片，默认 data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=
+          validation: required
+        - $formkit: attachment
+          name: err
+          label: 加载失败图片
+          placeholder: 请填写 加载失败图片
+          value: 'data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs='
+          help: 加载失败图片，默认 data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=
+          validation: required
+        - $formkit: attachment
+          name: filter
+          label: 预加载图片 css滤镜
+          placeholder: 请填写 滤镜
+          value: 'blur(50px) brightness(1)'
+          help: 滤镜，默认 blur(50px) brightness(1)
+          validation: required
+        
+    - group: nav
+      label: 导航设置
+      formSchema:
+        - $formkit: text
+          name: font_color_light
+          label: 导航字体颜色
+          placeholder: 请填写 导航字体颜色
+          value: '#eee'
+          help: '导航字体颜色，默认 #eee'
+          validation: required
+        
+      
     - group: card
       label: 卡片设置
       formSchema:
@@ -90,7 +127,7 @@ spec:
           label: 卡片背景色
           placeholder: 请填写 卡片背景色
           value: 'rgba(255, 255, 255, 0.6)'
-          help: 卡片背景色，颜色值，默认 rgba(255, 255, 255, 0.6)
+          help: 卡片背景色，颜色值，默认 rgba(255, 255, 255, 0.6)，透明值可选范围（0.1~1）1为不透明
           validation: required
         - $formkit: text
           name: shadow
@@ -105,6 +142,16 @@ spec:
     - group: index
       label: 首页设置
       formSchema:
+        - $formkit: radio
+          name: enable_above
+          label: 启用第一屏
+          value: true
+          options:
+            - label: 启用
+              value: true
+            - label: 禁用
+              value: false
+          help: 启用首页第一屏
         - $formkit: attachment
           name: above_background
           label: 第一屏背景图
@@ -117,9 +164,18 @@ spec:
           name: typewriter
           label: 打字机文案
           placeholder: 请填写 打字机文案
-          value: '欢迎来到我的博客'
+          value: '欢迎来到我的博客 |+| 请填写打字机文案'
           help: 首页第一屏打字机文案 (注：多个文案用 |+| 隔开)
           validation: required
-
+        - $formkit: radio
+          name: post_layout
+          label: 文字布局方式
+          help: 文章布局方式 提供（列表、平铺）两种，仅首页生效
+          value: list
+          options:
+            - label: 列表
+              value: list
+            - label: 平铺
+              value: tile
         
       

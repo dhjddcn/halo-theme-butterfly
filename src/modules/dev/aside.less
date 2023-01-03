@@ -52,14 +52,17 @@
     }
 
     > .button {
-      background-color: var(--btn-bg-color);
+      //background-color: var(--btn-bg-color);
+      background-color: var(--theme);
       color: var(--btn-color);
       line-height: 2.4;
       border-radius: 15px;
-      transition: color .2s, background-color .2s;
+      //transition: color .2s, background-color .2s;
+      transition: box-shadow 0.25s ease 0s;
 
       &:hover {
-        background-color: var(--btn-hover-color);
+        //background-color: var(--btn-hover-color);
+        box-shadow: 0 0.1rem 0.8rem var(--theme);
       }
     }
 
@@ -102,19 +105,20 @@
         left: 0;
         width: 0.43rem;
         height: 0.43rem;
-        border: 0.215rem solid var(--btn-bg-color);
+        border: 0.215rem solid var(--theme);
         border-radius: 0.43rem;
         background: 0 0;
         content: '';
         cursor: pointer;
-        transition: border-color .3s;
+        transition: border-color .3s,box-shadow 0.25s ease 0s;
       }
 
       &:hover {
         color: var(--link-hover-color);
 
         &:before {
-          border-color: var(--btn-hover-color);
+          //border-color: var(--btn-hover-color);
+          box-shadow: 0 0.1rem 0.8rem var(--theme);
         }
       }
 

@@ -10,18 +10,18 @@
   )}">
 >
 <th:block th:fragment="head">
-  <link rel="stylesheet" th:href="@{/assets/css/index.min.css}">
-  <style 
-    th:inline="css" 
+  <style
+    th:inline="css"
     th:with="
     above_background= ${is_body_background_http ? '' : 'url(' + theme.config.index.above_background + ')'}
     ">
-    
+
     html {
       --above-background: /*[(${above_background})]*/ transparent;
     }
 
   </style>
+  <link rel="stylesheet" th:href="@{/assets/css/index.min.css}">
 </th:block>
 
 <th:block th:fragment="content">

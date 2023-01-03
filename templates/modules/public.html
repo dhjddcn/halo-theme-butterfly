@@ -21,6 +21,11 @@
       --theme: /*[(${theme.config.style.theme_color_dark})]*/ #ff7242;
       --body-bg-color: #221f1f;
     }
+
+    img[data-lazy-src]:not(.loaded,.error) {
+      filter: /*[(${theme.config.loading.filter})]*/ none;
+    }
+
   </style>
 </th:block>
 
@@ -32,23 +37,17 @@
   <div class="icp">　备案号：蜀ICP备20013557号</div>
   <div class="powered">
     Powered by&nbsp;<a class="halo" href="https://halo.run/" target="_blank">Halo</a>&nbsp;|&nbsp;🌈
-    Theme by&nbsp;<a class="theme" title="当前主题：Butterfly" href="https://github.com/dhjddcn/halo-theme-butterfly"
-                     target="_blank">小红</a>
+    Theme by&nbsp;<a class="theme" title="当前主题：Butterfly" href="https://github.com/dhjddcn/halo-theme-butterfly" target="_blank">小红</a>
   </div>
 </footer>
 
 <!--左右吸附小部件-->
 <section xmlns:th="https://www.thymeleaf.org" th:fragment="adsorption" class="adsorption z-100 fixed transition-all-5s">
   <button class="switch-model block text-center" type="button" title="浅色和深色模式转换">
-    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
-      <path
-        d="M16 0c-8.837 0-16 7.163-16 16s7.163 16 16 16 16-7.163 16-16-7.163-16-16-16zM4 16c0-6.627 5.373-12 12-12v24c-6.627 0-12-5.373-12-12z"></path>
-    </svg>
+    <i class="fas fa-adjust"></i>
   </button>
 
   <button class="back-top block text-center" type="button" title="回到顶部">
-    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
-      <path d="M16 1l-15 15h9v16h12v-16h9z"></path>
-    </svg>
+    <i class="fa-sharp fa-solid fa-up"></i>
   </button>
 </section>

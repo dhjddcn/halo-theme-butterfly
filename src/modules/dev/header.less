@@ -91,8 +91,7 @@
             width: 100%;
           }
 
-          
-          
+
           .fa-chevron-down {
             transform: rotate(180deg);
           }
@@ -202,15 +201,15 @@
     background-size: cover;
     background-repeat: no-repeat;
     animation: above-down 1.2s;
-    transition: background 0.5s;
+    transition: background 0.5s,transform 0.5s;
     background-image: var(--above-background);
 
-    &::before {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, .3);
-      content: '';
-    }
+    //&::before {
+    //  position: absolute;
+    //  width: 100%;
+    //  height: 100%;
+    //  background-color: rgba(0, 0, 0, .3);
+    //  content: '';
+    //}
   }
 }

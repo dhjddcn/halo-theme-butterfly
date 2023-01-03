@@ -179,5 +179,5 @@ class Global {
 
 
 !(() => {
-  document.addEventListener("DOMContentLoaded", () => window.globalclass = new Global())
+  document.addEventListener("DOMContentLoaded", () => window.GlobalClass = new Global())
 })();
