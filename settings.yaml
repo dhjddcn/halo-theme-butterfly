@@ -215,7 +215,7 @@ spec:
       label: 社交设置
       formSchema:
         - $formkit: repeater
-          name: no
+          name: no_data
           label: 社交账号
           value: []
           children:
