@@ -160,7 +160,6 @@ class Global {
 
     const runDay = new Date();
 
-
     if (runDay.toString() === 'Invalid Date') {
       dom.html('<span style="color:#fd0000">建站时间配置错误</span>');
       return;
