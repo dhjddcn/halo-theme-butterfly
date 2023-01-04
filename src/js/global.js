@@ -68,6 +68,7 @@ class Global {
     this.pjax();
     this.nav();
     this.scroll();
+    this.runDay();
     this.adsorption();
   }
 
@@ -145,6 +146,27 @@ class Global {
     }
 
     window.addEventListener('scroll', Utils.throttle(fn, 150));
+  }
+
+  // 初始化运行时间
+  runDay() {
+    const dom = this.Butterfly.find('.run-day');
+
+    if (!dom) return;
+
+    const runDay = new Date(dom.attr('data-runDay'));
+
+
+    if (runDay.toString() === 'Invalid Date') {
+      dom.html('<span style="color:red">建站时间配置错误</span>');
+      return;
+    }
+
+    const date = new Date().getTime() - runDay.getTime();
+
+    const day = parseInt((date / (1000 * 24 * 60 * 60)).toString());
+    
+    dom.html(day + ' 天');
   }
 
   //左右吸附小部件
