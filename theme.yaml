@@ -11,7 +11,7 @@ spec:
   logo: https://halo.run/logo
   website: https://dhjdd.cn
   repo: https://github.com/dhjddcn/halo-theme-butterfly.git
-  settingName: theme-default-setting
-  configMapName: theme-default-configMap
+  settingName: theme-butterfly-setting
+  configMapName: theme-butterfly-configMap
   version: 2.0.0
   require: 2.0.0
