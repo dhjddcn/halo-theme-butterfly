@@ -247,9 +247,9 @@ spec:
             - label: 平铺
               value: tile
 
-    - group: post
-      label: 文章设置
-      formSchema: 
+    # - group: post
+    #   label: 文章设置
+    #   formSchema: 
         
 
     - group: socials
