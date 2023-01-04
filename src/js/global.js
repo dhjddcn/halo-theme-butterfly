@@ -154,7 +154,11 @@ class Global {
 
     if (!dom) return;
 
-    const runDay = new Date(dom.attr('data-runDay'));
+    const dataRunDay = dom.attr('data-runDay');
+
+    if (!dataRunDay) return;
+
+    const runDay = new Date();
 
 
     if (runDay.toString() === 'Invalid Date') {
@@ -165,7 +169,7 @@ class Global {
     const date = new Date().getTime() - runDay.getTime();
 
     const day = parseInt((date / (1000 * 24 * 60 * 60)).toString());
-    
+
     dom.html(day + ' 天');
   }
 

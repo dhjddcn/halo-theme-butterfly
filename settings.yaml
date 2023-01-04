@@ -111,7 +111,6 @@ spec:
           help: '导航字体颜色，默认 #eee'
           validation: required
 
-
     - group: card
       label: 卡片设置
       formSchema:
@@ -136,7 +135,6 @@ spec:
           value: 0 3px 8px 6px rgba(7,17,27,0.05)
           help: 卡片阴影，颜色值，默认 0 3px 8px 6px rgba(7,17,27,0.05)
           validation: required
-
 
     - group: aside
       label: 侧边栏设置
@@ -206,7 +204,6 @@ spec:
               value: true
             - label: 禁用
               value: false
-
 
     - group: index
       label: 首页设置
