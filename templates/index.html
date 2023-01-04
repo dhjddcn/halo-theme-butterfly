@@ -6,20 +6,15 @@
   title = ${site.title},
   head = ~{::head},
   content = ~{::content},
-  script = ~{::script}
+  beforeScript = ~{::beforeScript},
+  afterScript = ~{::afterScript}
   )}">
 >
 <th:block th:fragment="head">
-  <style
-    th:inline="css"
-    th:with="
-    above_background= ${is_body_background_http ? '' : 'url(' + theme.config.index.above_background + ')'}
-    ">
-
+  <style th:inline="css" th:with="above_background= ${is_body_background_http ? '' : 'url(' + theme.config.index.above_background + ')'}">
     html {
       --above-background: /*[(${above_background})]*/ transparent;
     }
-
   </style>
   <link rel="stylesheet" th:href="@{/assets/css/index.min.css}">
 </th:block>
@@ -29,8 +24,11 @@
   <th:block th:replace="~{modules/main:: pagination(${posts})}"></th:block>
 </th:block>
 
-<th:block th:fragment="script">
+<th:block th:fragment="beforeScript">
   <script type="text/javascript" th:src="@{/assets/plugins/typed/typed.min.js}"></script>
+</th:block>
+
+<th:block th:fragment="afterScript">
   <script type="text/javascript" th:src="@{/assets/js/index.min.js}"></script>
 </th:block>
 </html>

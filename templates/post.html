@@ -1,14 +1,37 @@
 <!DOCTYPE html>
 <html
   xmlns:th="https://www.thymeleaf.org"
-  th:replace="~{modules/layout :: params (
-  page = 'post'
+  th:replace="~{modules/layout :: layout (
+  page = 'post',
+  title = ${post.spec.title},
+  head = ~{::head},
+  content = ~{::content},
+  beforeScript = ~{::beforeScript},
+  afterScript = ~{::afterScript}
   )}">
 >
-<link th:fragment="links" rel="stylesheet" th:href="@{/assets/css/index.min.css}">
+<th:block th:fragment="head">
+  <style th:inline="css" th:with="above_background= ${is_body_background_http ? '' : 'url(' + post.spec.cover + ')'}">
+    html {
+      --above-background: /*[(${above_background})]*/ transparent;
+    }
 
-<th:block th:fragment="main">
-  1212
+  </style>
+  <link rel="stylesheet" th:href="@{/assets/css/post.min.css}">
 </th:block>
 
+<th:block th:fragment="content">
+  <div class="card">
+    <div th:utext="${post.content.content}" class="render-html"></div>
+
+
+  </div>
+</th:block>
+
+<th:block th:fragment="beforeScript">
+</th:block>
+
+<th:block th:fragment="afterScript">
+  <script type="text/javascript" th:src="@{/assets/js/post.min.js}"></script>
+</th:block>
 </html>

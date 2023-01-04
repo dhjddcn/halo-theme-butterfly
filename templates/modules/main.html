@@ -26,10 +26,10 @@
       </a>
     </div>
 
-    <a th:with="bt=${#strings.arraySplit(theme.config.aside.button,'&+&')}" th:utext="${bt[0]}" class="button block text-center"  target="+_blank" th:href="${bt[1]}"></a>
+    <a th:with="bt=${#strings.arraySplit(theme.config.aside.button,'&+&')}" th:utext="${bt[0]}" class="button block text-center"  target="_blank" th:href="${bt[1]}"></a>
 
     <div class="icons flex flex-justify-content-center">
-      <a class="" th:each="n :${theme.config.socials.no_data}" th:utext="${n.icon}" th:href="${n.url}" ></a>
+      <a class="" th:each="n :${theme.config.socials.no_data}" th:utext="${n.icon}" target="_blank" th:href="${n.url}"></a>
     </div>
   </section>
 
@@ -38,11 +38,11 @@
       <i class="fas fa-bullhorn fa-shake"></i>
       <span class="name">公告</span>
     </h1>
-
-    <div class="content">好博客，一定要 分享出去 呀！</div>
+    
+    <div class="content" th:utext="${theme.config.aside.notice}"></div>
   </section>
 
-  <section class="aside-category card">
+  <section th:if="${theme.config.aside.enable_category}" class="aside-category card">
     <h1 class="aside-title">
       <i class="fas fa-folder-open"></i>
       <span class="name">分类</span>
@@ -61,7 +61,7 @@
 
   </section>
 
-  <section class="aside-tags card">
+  <section th:if="${theme.config.aside.enable_tags}" class="aside-tags card">
     <h1 class="aside-title">
       <i class="fas fa-tags"></i>
       <span class="name">标签</span>
@@ -82,7 +82,7 @@
     </div>
   </section>
 
-  <section class="aside-webInfo card">
+  <section th:if="${theme.config.aside.enable_webInfo}" class="aside-webInfo card">
     <h1 class="aside-title">
       <i class="fas fa-chart-line"></i>
       <span class="name">网站资讯</span>

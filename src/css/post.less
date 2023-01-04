@@ -1,0 +1,141 @@
+/**
+ * @Author: 小红
+ * @Date: 2023/1/4
+ * @fileName: post
+ * @Description: 文章
+ */
+.post {
+  .above {
+    &::before {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      content: '';
+    }
+  }
+
+
+  &-info {
+    padding: 0 8%;
+    bottom: 8rem;
+    transition: bottom 0.3s, padding 0.3s;
+  }
+
+  &-title {
+    margin-bottom: 8px;
+    color: var(--post-title-font-color);
+    font-size: 2.2rem;
+    line-height: 1.5;
+  }
+
+  &-meta {
+    color: var(--post-meta-font-color);
+    font-size: 95%;
+
+
+    i {
+      margin-right: 2px;
+    }
+
+    .fk {
+      margin: 0 5px;
+    }
+
+    .cys {
+      .point:last-child {
+        display: none;
+      }
+    }
+  }
+
+  .render-html {
+    padding: 35px;
+    align-self: flex-start;
+    word-break: break-word;
+
+
+    h1, h2, h3, h4, h5, h6 {
+      &::before {
+        display: inline-block;
+        font-weight: 600;
+        font-family: 'Font Awesome 6 Pro', serif;
+        text-rendering: auto;
+        position: absolute;
+        color: #f47466;
+        content: '\f890';
+        transition: color 0.2s ease-out;
+        left: 0;
+      }
+    }
+
+    h1 {
+      font-size: 1.6em;
+      padding-left: 28px;
+      margin: 30px 0 20px;
+
+      &::before {
+        top: -2.5px;
+      }
+
+    }
+
+    h2 {
+      font-size: 1.5em;
+      padding-left: 26px;
+      margin: 25px 0 18px;
+
+      &::before {
+        top: -2px;
+      }
+    }
+
+    h3 {
+      font-size: 1.4em;
+      padding-left: 24px;
+      margin: 20px 0 16px;
+
+      &::before {
+        top: -1px;
+      }
+    }
+
+    h4 {
+      font-size: 1.3em;
+      padding-left: 22px;
+      margin: 0 0 16px;
+      
+
+      &::before {
+        top: -4px;
+      }
+    }
+
+    h5 {
+      font-size: 1.2em;
+      padding-left: 20px;
+      margin: 0 0 16px;
+      
+
+      &::before {
+        top: -4px;
+        
+      }
+    }
+
+    h6 {
+      font-size: 1.1em;
+      padding-left: 20px;
+      margin: 0 0 18px;
+      
+
+      &::before {
+        top: -2.5px;
+        
+      }
+    }
+  }
+
+
+  @import 'src/modules/media/above/post.less';
+}
