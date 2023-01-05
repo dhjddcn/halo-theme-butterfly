@@ -6,6 +6,13 @@
  */
 
 .post {
+
+  &-content {
+    padding: 35px;
+    align-self: flex-start;
+    word-break: break-word;
+  }
+
   .above {
     &::before {
       position: absolute;
@@ -15,7 +22,6 @@
       content: '';
     }
   }
-
 
   &-info {
     padding: 0 8%;
@@ -50,6 +56,34 @@
     }
   }
 
+  .copyRight {
+    margin: 40px 0 10px;
+    padding: 10px 16px;
+    border: 1px solid var(--cp-color);
+    transition: box-shadow 0.3s ease-in-out;
+    border-radius: 4px;
+    
+    .fa-copyright{
+      font-size: 1.5em;
+      color: var(--theme);
+      right: 10px;
+      top: 10px;
+    }
+
+    .author {
+
+    }
+    
+    .link{
+      transition: color 0.3s ;
+      &:hover{
+        color: var(--theme);
+      }
+    }
+
+  }
+
+
   @import 'src/modules/media/above/post.less';
 }
 
@@ -58,23 +92,19 @@ html {
   --code-font-color: #ed2929;
   --blockquote-bg-color: rgba(73, 177, 245, 0.1);
   --blockquote-font-color: #6a737d;
-  
-  --table-th-color: #d3d3d3;
-
+  --table-t-color: #e3e3e3;
+  --cp-color: #eee;
 }
 
 html[data-theme=dark] {
   --code-bg-color: #2c2c2c;
   --blockquote-bg-color: #2c2c2c;
   --blockquote-font-color: rgba(255, 255, 255, 0.7);
-  --table-th-color: rgba(255,255,255,0.7);
+  --table-t-color: rgba(255, 255, 255, 0.7);
+  --cp-color: rgba(255, 255, 255, 0.7);
 }
 
 .render-html {
-  padding: 35px;
-  align-self: flex-start;
-  word-break: break-word;
-
 
   h1, h2, h3, h4, h5, h6 {
     display: flex;
@@ -222,7 +252,7 @@ html[data-theme=dark] {
     background-color: var(--code-bg-color);
     color: var(--code-font-color);
     display: inline-block;
-    margin: 2px 5px;
+    margin: 2px 4px;
     padding: 0 8px;
     white-space: normal;
     text-indent: 0;
@@ -255,22 +285,24 @@ html[data-theme=dark] {
     border-collapse: collapse;
     empty-cells: show;
     border-radius: 4px;
+
     tr > th {
-      background-color: rgba(153,169,191,.1);
+      background-color: rgba(153, 169, 191, .1);
       padding: 6px 12px;
-      border: 1px solid var(--table-th-color);
+      border: 1px solid var(--table-t-color);
       vertical-align: middle;
       text-align: left;
     }
 
     tr > td {
       padding: 6px 12px;
-      border: 1px solid var(--table-th-color);
+      border: 1px solid var(--table-t-color);
       vertical-align: middle;
       text-align: left;
     }
 
   }
+
 
 }
 

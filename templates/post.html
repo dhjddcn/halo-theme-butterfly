@@ -24,9 +24,34 @@
 </th:block>
 
 <th:block th:fragment="content">
-  <div class="card">
+  <section class="card post-content">
     <div th:utext="${post.content.content}" class="render-html"></div>
-  </div>
+
+    <div class="copyRight relative">
+      <i class="fa-solid fa-copyright absolute"></i>
+      
+      <div class="author">
+        <span class="name">文章作者：</span>
+        <span class="text">小红</span>
+      </div>
+
+      <div class="url">
+        <span class="name">本文链接：</span>
+        <span class="text">
+          <a class="link" href="/" target="_blank">https://bbchin.com/archives/style-guideline</a>
+        </span>
+      </div>
+
+      <div class="declaration">
+        <span class="name">版权声明：</span>
+        <span class="text">本站所有文章除特别声明外，均採用 <a
+          href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a
+          href="https://butterfly.js.org" target="_blank">小红</a>！</span>
+      </div>
+
+
+    </div>
+  </section>
 </th:block>
 
 <th:block th:fragment="script">
