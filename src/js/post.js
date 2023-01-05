@@ -23,9 +23,9 @@ class Post {
       $this.attr('height', '');
       $this.wrap(
         $(
-          `<span class="block" data-fancybox="butterfly" href="${ $this.attr(
+          `<a class="block" data-fancybox="butterfly" href="${ $this.attr(
             "src"
-          ) }"></span>`
+          ) }"></a>`
         )
       );
     });

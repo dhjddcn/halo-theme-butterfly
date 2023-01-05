@@ -56,15 +56,18 @@
 html {
   --code-bg-color: rgba(27, 31, 35, .05);
   --code-font-color: #ed2929;
-  --blockquote-bg-color: rgba(73,177,245,0.1);
+  --blockquote-bg-color: rgba(73, 177, 245, 0.1);
   --blockquote-font-color: #6a737d;
+  
+  --table-th-color: #d3d3d3;
 
 }
 
 html[data-theme=dark] {
   --code-bg-color: #2c2c2c;
   --blockquote-bg-color: #2c2c2c;
-  --blockquote-font-color: rgba(255,255,255,0.7);
+  --blockquote-font-color: rgba(255, 255, 255, 0.7);
+  --table-th-color: rgba(255,255,255,0.7);
 }
 
 .render-html {
@@ -76,6 +79,7 @@ html[data-theme=dark] {
   h1, h2, h3, h4, h5, h6 {
     display: flex;
     align-items: center;
+
     &::before {
       display: inline-block;
       font-weight: 600;
@@ -133,7 +137,7 @@ html[data-theme=dark] {
   ul li {
     list-style: circle;
 
-    &::marker{
+    &::marker {
       color: var(--theme);
       font-weight: 600;
       font-size: 20px;
@@ -227,25 +231,47 @@ html[data-theme=dark] {
     border-radius: 4px;
   }
 
-  blockquote{
-    margin: 0 0 20px;
+  blockquote {
+    margin: 10px 0 20px;
     padding: 12px 15px;
     border-left: 3px solid var(--theme);
     background-color: var(--blockquote-bg-color);
     color: var(--blockquote-font-color);
   }
 
-  img{
+  img {
     display: block;
     margin: 0 auto 20px;
-    max-width:100%;
+    max-width: 100%;
     transition: filter 375ms ease-in 0.2s;
     cursor: zoom-in;
     border-radius: 5px;
   }
 
+  table {
+    display: table;
+    width: 100%;
+    border-spacing: 0;
+    border-collapse: collapse;
+    empty-cells: show;
+    border-radius: 4px;
+    tr > th {
+      background-color: rgba(153,169,191,.1);
+      padding: 6px 12px;
+      border: 1px solid var(--table-th-color);
+      vertical-align: middle;
+      text-align: left;
+    }
+
+    tr > td {
+      padding: 6px 12px;
+      border: 1px solid var(--table-th-color);
+      vertical-align: middle;
+      text-align: left;
+    }
+
+  }
 
 }
-
 
 @import "src/modules/media/post.less";
