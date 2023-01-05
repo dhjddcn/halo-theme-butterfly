@@ -5,7 +5,6 @@
  * @fileName: index
  */
 
-
 class Index {
   constructor() {
     this.typewriter();

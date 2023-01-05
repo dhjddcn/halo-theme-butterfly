@@ -6,8 +6,7 @@
   title = ${site.title},
   head = ~{::head},
   content = ~{::content},
-  beforeScript = ~{::beforeScript},
-  afterScript = ~{::afterScript}
+  script = ~{::script}
   )}">
 >
 <th:block th:fragment="head">
@@ -24,11 +23,9 @@
   <th:block th:replace="~{modules/main:: pagination(${posts})}"></th:block>
 </th:block>
 
-<th:block th:fragment="beforeScript">
+<th:block th:fragment="script">
   <script type="text/javascript" th:src="@{/assets/plugins/typed/typed.min.js}"></script>
-</th:block>
-
-<th:block th:fragment="afterScript">
   <script type="text/javascript" th:src="@{/assets/js/index.min.js}"></script>
 </th:block>
+
 </html>

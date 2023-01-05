@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light" xmlns:th="https://www.thymeleaf.org"
-      th:fragment="layout (page,title,head,content,beforeScript,afterScript)">
+      th:fragment="layout (page,title,head,content,script)">
 <head th:with="is_body_background_http = ${#strings.containsIgnoreCase(theme.config.style.body_background,'http')}">
   <title th:text="${title}"></title>
   <meta charset="UTF-8"/>
   <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-  <meta name="viewport"
-        content="width=device-width, user-scalable=no, initial-scale=1.0, shrink-to-fit=no, viewport-fit=cover">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, shrink-to-fit=no, viewport-fit=cover">
   <meta name="author" th:content="${site.title}">
   <meta name="site" th:content="${site.url}">
   <meta property="og:keywords" th:content="${site.seo.keywords}">
@@ -41,8 +40,7 @@
 <script type="text/javascript" th:src="@{/assets/plugins/lazyLoad/lazyLoad.min.js}"></script>
 <script type="text/javascript" th:src="@{/assets/plugins/universe/universe.min.js}"></script>
 <script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-<th:block th:insert="${beforeScript}"/>
 <script type="text/javascript" th:src="@{/assets/js/global.min.js}"></script>
-<th:block th:insert="${afterScript}"/>
+<th:block th:insert="${script}"/>
 </body>
 </html>

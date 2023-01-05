@@ -4,6 +4,7 @@
  * @fileName: post
  * @Description: 文章
  */
+
 .post {
   .above {
     &::before {
@@ -49,93 +50,202 @@
     }
   }
 
-  .render-html {
-    padding: 35px;
-    align-self: flex-start;
-    word-break: break-word;
+  @import 'src/modules/media/above/post.less';
+}
+
+html {
+  --code-bg-color: rgba(27, 31, 35, .05);
+  --code-font-color: #ed2929;
+  --blockquote-bg-color: rgba(73,177,245,0.1);
+  --blockquote-font-color: #6a737d;
+
+}
+
+html[data-theme=dark] {
+  --code-bg-color: #2c2c2c;
+  --blockquote-bg-color: #2c2c2c;
+  --blockquote-font-color: rgba(255,255,255,0.7);
+}
+
+.render-html {
+  padding: 35px;
+  align-self: flex-start;
+  word-break: break-word;
 
 
-    h1, h2, h3, h4, h5, h6 {
-      &::before {
-        display: inline-block;
-        font-weight: 600;
-        font-family: 'Font Awesome 6 Pro', serif;
-        text-rendering: auto;
-        position: absolute;
-        color: #f47466;
-        content: '\f890';
-        transition: color 0.2s ease-out;
-        left: 0;
-      }
-    }
-
-    h1 {
-      font-size: 1.6em;
-      padding-left: 28px;
-      margin: 30px 0 20px;
-
-      &::before {
-        top: -2.5px;
-      }
-
-    }
-
-    h2 {
-      font-size: 1.5em;
-      padding-left: 26px;
-      margin: 25px 0 18px;
-
-      &::before {
-        top: -2px;
-      }
-    }
-
-    h3 {
-      font-size: 1.4em;
-      padding-left: 24px;
-      margin: 20px 0 16px;
-
-      &::before {
-        top: -1px;
-      }
-    }
-
-    h4 {
-      font-size: 1.3em;
-      padding-left: 22px;
-      margin: 0 0 16px;
-      
-
-      &::before {
-        top: -4px;
-      }
-    }
-
-    h5 {
-      font-size: 1.2em;
-      padding-left: 20px;
-      margin: 0 0 16px;
-      
-
-      &::before {
-        top: -4px;
-        
-      }
-    }
-
-    h6 {
-      font-size: 1.1em;
-      padding-left: 20px;
-      margin: 0 0 18px;
-      
-
-      &::before {
-        top: -2.5px;
-        
-      }
+  h1, h2, h3, h4, h5, h6 {
+    display: flex;
+    align-items: center;
+    &::before {
+      display: inline-block;
+      font-weight: 600;
+      font-family: 'Font Awesome 6 Pro', serif;
+      text-rendering: auto;
+      color: #f47466;
+      content: '\f0c1';
+      transition: color 0.2s ease-out;
+      margin-right: 10px;
     }
   }
 
+  h1 {
+    font-size: 1.6em;
+    margin: 30px 0 20px;
+  }
 
-  @import 'src/modules/media/above/post.less';
+  h2 {
+    font-size: 1.5em;
+    margin: 25px 0 18px;
+
+  }
+
+  h3 {
+    font-size: 1.4em;
+    margin: 20px 0 16px;
+
+  }
+
+  h4 {
+    font-size: 1.3em;
+    margin: 0 0 16px;
+
+  }
+
+  h5 {
+    font-size: 1.2em;
+    margin: 0 0 16px;
+  }
+
+  h6 {
+    font-size: 1.1em;
+    margin: 0 0 18px;
+  }
+
+  ul, ol {
+    margin-bottom: 18px;
+    padding-left: 36px;
+  }
+
+  ul li, ol li {
+    line-height: 35px;
+  }
+
+  ul li {
+    list-style: circle;
+
+    &::marker{
+      color: var(--theme);
+      font-weight: 600;
+      font-size: 20px;
+    }
+  }
+
+  ol li {
+    list-style: decimal;
+  }
+
+  ul[data-type*=taskList] {
+    li {
+      margin-left: -16px;
+      list-style: none;
+    }
+
+    > label, input, div, p {
+      display: inline-block;
+    }
+
+    label {
+      position: relative;
+      margin-right: 8px;
+      top: 2.6px;
+      display: inline-block;
+      user-select: none;
+
+      input {
+        position: absolute;
+        opacity: 0;
+        cursor: var(--cursor-pointer);
+        height: 0;
+        width: 0;
+
+        &:checked ~ span {
+          background-color: limegreen;
+          border-radius: 5px;
+          transition: 0.15s;
+        }
+
+        &:checked ~ span:after {
+          display: block;
+        }
+      }
+
+      span {
+        display: inline-block;
+        position: relative;
+        top: 0;
+        left: 0;
+        height: 16px;
+        width: 16px;
+        background-color: #ccc;
+        border-radius: 5px;
+        transition: 0.15s;
+        cursor: var(--cursor-pointer);
+
+        &:after {
+          content: "";
+          position: absolute;
+          display: none;
+          left: 6px;
+          top: 3px;
+          width: 3px;
+          height: 6px;
+          border: solid white;
+          border-width: 0 0.15em 0.15em 0;
+          transform: rotate(45deg);
+        }
+
+
+      }
+    }
+
+
+  }
+
+  code:not([class]) {
+    user-select: all;
+    font-size: var(--font-size);
+    font-family: "Butterfly Font", "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, "sans-serif";
+    background-color: var(--code-bg-color);
+    color: var(--code-font-color);
+    display: inline-block;
+    margin: 2px 5px;
+    padding: 0 8px;
+    white-space: normal;
+    text-indent: 0;
+    vertical-align: baseline;
+    word-break: break-word;
+    border-radius: 4px;
+  }
+
+  blockquote{
+    margin: 0 0 20px;
+    padding: 12px 15px;
+    border-left: 3px solid var(--theme);
+    background-color: var(--blockquote-bg-color);
+    color: var(--blockquote-font-color);
+  }
+
+  img{
+    display: block;
+    margin: 0 auto 20px;
+    max-width:100%;
+    transition: filter 375ms ease-in 0.2s;
+    cursor: zoom-in;
+    border-radius: 5px;
+  }
+
+
 }
+
+
+@import "src/modules/media/post.less";
