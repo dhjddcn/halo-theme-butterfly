@@ -141,6 +141,10 @@
   position: fixed;
 }
 
+.sticky {
+  position: sticky;
+}
+
 
 .w {
   &-100 {
@@ -329,7 +333,8 @@
 
     &-400 {
       font-weight: 400;
-    }   
+    }
+
     &-500 {
       font-weight: 500;
     }
@@ -347,3 +352,18 @@
     overflow: auto;
   }
 }
+
+.cursor {
+  &-pointer {
+    cursor: var(--cursor-pointer);
+  }
+
+  &-default {
+    cursor: var(--cursor-default);
+  }
+
+  &-text {
+    cursor: text;
+  }
+}
+

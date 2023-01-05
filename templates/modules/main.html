@@ -1,6 +1,8 @@
 <!--侧边栏-->
-<aside xmlns:th="https://www.thymeleaf.org" th:fragment="aside" class="aside w-25" th:with="stats = ${siteStatsFinder.getStats()}">
-  <section class="aside-user card text-center" th:with="contributor = ${contributorFinder.getContributor(theme.config.base.metadata_name)}">
+<aside xmlns:th="https://www.thymeleaf.org" th:fragment="aside" th:if="${theme.config.aside.enable}" class="aside w-25"
+       th:with="stats = ${siteStatsFinder.getStats()}">
+  <section class="aside-user card text-center"
+           th:with="contributor = ${contributorFinder.getContributor(theme.config.base.metadata_name)}">
     <img class="avatar block margin-0-auto overflow-hidden"
          th:src="${theme.config.loading.preload}"
          th:attr="onerror='this.src='+${'`'+theme.config.loading.err+'`'}"
@@ -26,10 +28,12 @@
       </a>
     </div>
 
-    <a th:with="bt=${#strings.arraySplit(theme.config.aside.button,'&+&')}" th:utext="${bt[0]}" class="button block text-center"  target="_blank" th:href="${bt[1]}"></a>
+    <a th:with="bt=${#strings.arraySplit(theme.config.aside.button,'&+&')}" th:utext="${bt[0]}"
+       class="button block text-center" target="_blank" th:href="${bt[1]}"></a>
 
     <div class="icons flex flex-justify-content-center">
-      <a class="" th:each="n :${theme.config.socials.no_data}" th:utext="${n.icon}" target="_blank" th:href="${n.url}"></a>
+      <a class="" th:each="n :${theme.config.socials.no_data}" th:utext="${n.icon}" target="_blank"
+         th:href="${n.url}"></a>
     </div>
   </section>
 
@@ -38,7 +42,7 @@
       <i class="fas fa-bullhorn fa-shake"></i>
       <span class="name">公告</span>
     </h1>
-    
+
     <div class="content" th:utext="${theme.config.aside.notice}"></div>
   </section>
 
@@ -113,6 +117,18 @@
   </section>
 
 </aside>
+
+<!-- 文章侧边栏 toc-->
+<div xmlns:th="https://www.thymeleaf.org" class="aside w-25" th:fragment="asidePost">
+  <section class="card sticky toc-bot">
+    <h1 class="aside-title">
+      <i class="fas fa-stream"></i>
+      <span class="name">目录</span>
+    </h1>
+
+    <div class="content">1212</div>
+  </section>
+</div>
 
 
 <!--文章列表-->

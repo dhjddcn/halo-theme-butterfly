@@ -8,7 +8,17 @@
 class Post {
   constructor() {
     console.log('post');
+    this.permalinkDecode();
     this.fancyBoxImg();
+  }
+
+  // dCodeURI
+  permalinkDecode() {
+    const dom = $('.copyRight .permalink');
+    
+    if (!dom.length) return;
+
+    dom.html(decodeURIComponent(dom.html()));
   }
 
   // 放大镜图片
@@ -23,14 +33,12 @@ class Post {
       $this.attr('height', '');
       $this.wrap(
         $(
-          `<a class="block" data-fancybox="butterfly" href="${ $this.attr(
+          `<a class="block" data-fancybox="butterfly" href="${$this.attr(
             "src"
-          ) }"></a>`
+          )}"></a>`
         )
       );
     });
-
-   
   }
 
 

@@ -57,7 +57,6 @@ class Utils {
   }
 
   static constructor() {
-    const infoIcon = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAADlUlEQVRYR82XS4hbdRjFz7l3ZsARamzryCQ31lft5A64qErFhYKK9bFwxmJRu/CxKbjzAXYmdyS0yYwu1J3oqt2otNQ+wEKxogiC+GgX0t44vlDnTqJW7LRoK53ce+SmTUw6j/wTRmq295zz/e6Xf/75PuIif9hOfTenHvWU76fC2wBeQahfYkjguMCyLH7Wu6L/wOHNnDXNNQJYs+2Xa7pYeV7UJoKXLR6uExDfka3X/JH0d61AFgUYmChfbYXhVgCbSFitwhqfCwghvC1YY0Uv+dNC3gUB3G3BnaTeBZlop/AcrTQjcYM/5nw4X868AO54sBkRXm/3rRcClRDBwtP+qPPmhZo5AG4huAvC+0tVvFYwhpC4vjiW+qARognAfal0FcLwq9YHrbMvRdBJ2PaN/pbkz7WEZoBCsJPARtN4AZ9SuA5En7FH2Ol7ziNzADKF6bUWdNg4CJjws84odsl2v51+mcBzpt6KrFsmveSXsb7eATc/tYfkcCcha/Klm7sYfWHqlbTX99IP1QGcV6cuWXYaMyR7jEOAV/zVqRewkaFbCMYJjJh7dQazTsLP8Wy1A5nx0pClaK9pQMPJ/h3E9wTWte/lkO+l9lcB3HxQIDFqGiLhDVC/1vXCOpL3mvpjnYCCn3W8KsBgPtgB4nGjAGnmmJe+vFHrbi0P0g6PGvnPiwTs8LPOk7UOHCJxt1GAcJrsvvZo9sp6B24YLw10Kyoa+f8FOORnnXvOdaAwdRDgetOA+EL527501Q9blp+MPR0BSAd9L33fuQ4Ugu0EnjAFiHWViAOTY6nJzgGw3fecpzo6hEsC0HgIM/nSsMVoj3EHhPdU6XnUz/X9We1ArrSyqzv8mKBrmhHRGi6OJvdVO5DMlXoTXeEJo4tonl9BtahEtxDEl9myVhCSzp7qRSJ4Nn2m8SreR/LBVmYAfx2bTSWQY6VJu0v24DfTp0D0tsqQtN/30kOxrg7Qzn0uyAdwvKmQsJLkYKvi8fMIvKmYTR1pAjh/Ie0GscEkpFONgN1+1nm45m+aBzL50ioiPEJyeacFFvNJ+kOw1zYOqXNGsky+dDsRffRfjGSAdYfvJT9phPz/DaU1uos6ltcg6osJ8RgBu51zUVtMItt+8euR/h8X8hqtZu7E1PUM+YzJahb/UVF8a0lWswupq8tpV/kBC+GtIvuqyykQUfytupyCn7PSfyAetUy7ZdQB07BOdP8AHHSWMKZhltwAAAAASUVORK5CYII=';
 
   }
 
@@ -115,7 +114,9 @@ class Global {
   scroll() {
     const nav = this.Header.find('.nav');
     const adsorption = this.Butterfly.children('.adsorption');
+    const asidePost = this.body.find('.post .aside .toc-bot');
     let scrollNum = 0;
+
 
     const fn = () => {
       let scrollTop = document.documentElement.scrollTop;
@@ -123,20 +124,24 @@ class Global {
       if (scrollTop > 56) {
 
         if (scrollNum <= scrollTop) {
-          // console.log('向下')
+          // console.log('向上')
           if (nav.hasClass('visible')) {
             nav.addClass('hidden');
             nav.removeClass('visible');
           }
 
+          if (asidePost) asidePost.attr('style', '');
+
           if (!adsorption.hasClass('active')) adsorption.addClass('active');
 
         } else {
-          // console.log('向上')
+          // console.log('向下')
           if (!nav.hasClass('visible')) {
             nav.addClass('visible');
             nav.removeClass('hidden');
           }
+
+          if (asidePost) asidePost.css('top', '70px');
 
         }
 
