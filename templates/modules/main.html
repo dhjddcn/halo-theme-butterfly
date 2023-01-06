@@ -1,5 +1,5 @@
 <!--侧边栏-->
-<aside xmlns:th="https://www.thymeleaf.org" th:fragment="aside" th:if="${theme.config.aside.enable}" class="aside w-25"
+<aside xmlns:th="https://www.thymeleaf.org" th:fragment="asidePublic" th:if="${theme.config.aside.enable}" class="aside w-25"
        th:with="stats = ${siteStatsFinder.getStats()}">
   <section class="aside-user card text-center"
            th:with="contributor = ${contributorFinder.getContributor(theme.config.base.metadata_name)}">
@@ -119,7 +119,7 @@
 </aside>
 
 <!-- 文章侧边栏 toc-->
-<div xmlns:th="https://www.thymeleaf.org" class="aside w-25" th:fragment="asidePost">
+<aside xmlns:th="https://www.thymeleaf.org" class="aside w-25" th:fragment="asidePost">
   <section class="card sticky toc-bot">
     <h1 class="aside-title">
       <i class="fas fa-stream"></i>
@@ -128,8 +128,7 @@
 
     <div class="content">1212</div>
   </section>
-</div>
-
+</aside>
 
 <!--文章列表-->
 <ul xmlns:th="https://www.thymeleaf.org" th:fragment="posts(ps,layout)" th:class="'posts '+${layout}">

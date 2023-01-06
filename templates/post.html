@@ -24,83 +24,85 @@
 </th:block>
 
 <th:block th:fragment="content">
-  <section class="card post-content">
-    <div th:utext="${post.content.content}" class="render-html"></div>
+  <article class="content card flex-1">
+        <div th:utext="${post.content.content}" class="render-html"></div>
 
-    <div class="copyRight relative">
-      <i class="fa-solid fa-copyright absolute"></i>
+        <div class="copyRight relative">
+          <i class="fa-solid fa-copyright absolute"></i>
 
-      <div class="author">
-        <span class="name">文章作者：</span>
-        <span class="text">小红</span>
-      </div>
+          <div class="author">
+            <span class="name">文章作者：</span>
+            <span class="text">小红</span>
+          </div>
 
-      <div class="url">
-        <span class="name">本文链接：</span>
-        <span class="text">
-          <a class="permalink" href="/" th:href="${post.status.permalink}" target="_blank"
-             th:text="${post.status.permalink}"></a>
-        </span>
-      </div>
+          <div class="url">
+            <span class="name">本文链接：</span>
+            <span class="text">
+              <a class="permalink" href="/" th:href="${post.status.permalink}" target="_blank"
+                 th:text="${post.status.permalink}"></a>
+            </span>
+          </div>
 
-      <div class="declaration">
-        <span class="name">版权声明：</span>
-        <span class="text">本站所有文章除特别声明外，均採用 <a
-          class="link"
-          href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
-          target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 
-          <a class="link" href="/" target="_blank">小红</a>！</span>
-      </div>
-
-
-    </div>
-
-    <div class="abstract">
-      <div class="categories">
-        <a th:each=" cts : ${post.categories}"
-           class="link inline-block text-center"
-           th:href="${cts.status.permalink}"
-        >
-          <i class="fa-regular fa-folders"></i>
-          <span th:text="${cts.spec.displayName}" class="name"></span>
-        </a>
-      </div>
-      <div class="tags">
-        <a th:each=" tag : ${post.tags}"
-           class="link inline-block text-center"
-           th:href="${tag.status.permalink}"
-           th:style="'--spec-color: ' + ${tag.spec.color}"
-        >
-          <i class="fa-regular fa-tags"></i>
-          <span th:text="${tag.spec.displayName}" class="name"></span>
-        </a>
-      </div>
-    </div>
-
-    <div class="support">
-      <div class="title text-center">喜欢就支持一下吧</div>
-
-      <div class="content flex flex-justify-content-center">
-        <a
-          class="item cursor-pointer inline-flex flex-direction-column flex-justify-content-center  flex-align-items-center"
-          href="">
-          <i class="fa-light fa-thumbs-up"></i>
-          <span>点赞 10</span>
-        </a>
-
-        <span
-          class="item cursor-pointer inline-flex flex-direction-column flex-justify-content-center  flex-align-items-center"
-          href="">
-          <i class="fa-light fa-arrow-up-right-from-square"></i>
-          <span>分享</span>
-        </span>
+          <div class="declaration">
+            <span class="name">版权声明：</span>
+            <span class="text">本站所有文章除特别声明外，均採用 <a
+              class="link"
+              href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
+              target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 
+              <a class="link" href="/" target="_blank">小红</a>！</span>
+          </div>
 
 
-      </div>
+        </div>
 
-    </div>
+        <div class="abstract">
+          <div class="categories">
+            <a th:each=" cts : ${post.categories}"
+               class="link inline-block text-center"
+               th:href="${cts.status.permalink}"
+            >
+              <i class="fa-regular fa-folders"></i>
+              <span th:text="${cts.spec.displayName}" class="name"></span>
+            </a>
+          </div>
+          <div class="tags">
+            <a th:each=" tag : ${post.tags}"
+               class="link inline-block text-center"
+               th:href="${tag.status.permalink}"
+               th:style="'--spec-color: ' + ${tag.spec.color}"
+            >
+              <i class="fa-regular fa-tags"></i>
+              <span th:text="${tag.spec.displayName}" class="name"></span>
+            </a>
+          </div>
+        </div>
 
-  </section>
+        <div class="support">
+          <div class="title text-center">喜欢就支持一下吧</div>
+
+          <div class="content flex flex-justify-content-center">
+            <a
+              class="item cursor-pointer inline-flex flex-direction-column flex-justify-content-center  flex-align-items-center"
+              href="">
+              <i class="fa-light fa-thumbs-up"></i>
+              <span>点赞 10</span>
+            </a>
+
+            <span
+              class="item cursor-pointer inline-flex flex-direction-column flex-justify-content-center  flex-align-items-center"
+              href="">
+              <i class="fa-light fa-arrow-up-right-from-square"></i>
+              <span>分享</span>
+            </span>
+
+
+          </div>
+
+        </div>
+  </article>
+
+  <th:block  th:insert="~{modules/main:: asidePost}"></th:block>
+
 </th:block>
 
 <th:block th:fragment="script">

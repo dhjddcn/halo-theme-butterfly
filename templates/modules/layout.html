@@ -28,10 +28,8 @@
 <body>
 <div id="Butterfly" th:class="${page}">
   <th:block th:insert="~{modules/header:: header(${page})}"></th:block>
-  <main th:class="'main flex flex-justify-content-between margin-0-auto '+${theme.config.aside.position}">
-    <article class="content pjax-content flex-1" th:insert="${content}"></article>
-    
-    <th:block th:insert="~{modules/main:: ${page == 'post' ? 'asidePost': 'aside'}}"></th:block>
+  <main th:class="'main flex  margin-0-auto '+${theme.config.aside.position}">
+    <th:block th:insert="${content}"></th:block>
   </main>
   <th:block th:insert="~{modules/header:: sidebar}"></th:block>
   <th:block th:insert="~{modules/public:: adsorption}"></th:block>
