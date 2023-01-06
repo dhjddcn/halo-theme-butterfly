@@ -6,17 +6,22 @@
  */
 
 // 基础样式
-@import "src/modules/base/normalize.less";
-@import "src/modules/base/theme.less";
-@import "src/modules/base/style.less";
-@import "src/modules/base/class.less";
+@import "src/base/normalize.less";
+@import "src/base/theme.less";
+@import "src/base/style.less";
+@import "src/base/class.less";
 
+// 基础模块
+@import "src/modules/header/base.less";
+@import "src/modules/main/base.less";
+@import "src/modules/card/base.less";
+@import "src/modules/aside/base.less";
+@import "src/modules/sidebar/base.less";
+@import "src/modules/adsorption/base.less";
 
-// 模块样式 
-@import "src/modules/dev/header.less";
-@import "src/modules/dev/main.less";
-@import "src/modules/dev/card.less";
-@import "src/modules/dev/aside.less";
-@import "src/modules/dev/sidebar.less";
-@import "src/modules/dev/footer.less";
-@import "src/modules/dev/adsorption.less";
+// 适配
+#Butterfly{
+  @import "src/modules/header/media.less";
+  @import "src/modules/main/media.less";
+  @import "src/modules/aside/media.less";
+}

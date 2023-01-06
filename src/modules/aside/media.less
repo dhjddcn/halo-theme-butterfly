@@ -1,8 +1,8 @@
 /**
- * @Author: 小红
- * @Date: 2023/1/4
- * @fileName: post
- * @Description: 文章顶部
+ * @Description:
+ * @author: 小红
+ * @date: 2023/1/6
+ * @fileName: 侧边栏适配样式
  */
 
 
@@ -16,47 +16,39 @@
 }
 
 @media (max-width: 1200px) {
+  .posts {
+    &.tile {
+      .item {
+        width: 47%;
+        margin: 0 3% 20px 0;
+      }
+    }
+  }
 }
 
 @media (max-width: 1130px) {
+
 }
 
 @media (max-width: 1000px) {
 }
 
 @media (max-width: 992px) {
-}
 
-@media (max-width: 900px) {
-  &-info {
-    bottom: 30px;
-    text-align: left;
+  .aside {
+    width: 100%;
+    margin: 20px 0 0;
   }
 }
 
 @media (max-width: 768px) {
-  &-info {
-    bottom: 22px;
-    padding: 0 22px;
-  }
 
-  &-title {
-    font-size: 1.8rem;
-  }
-
-  &-meta {
-    font-size: 90%;
-
-    .line {
-      //display: inline-block;
-    }
-
-    
-  }
 }
 
 @media (max-width: 650px) {
+ 
 }
+
 
 @media (max-width: 500px) {
 }

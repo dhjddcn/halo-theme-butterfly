@@ -1,8 +1,8 @@
 /**
- * @Author: 小红
- * @Date: 2023/1/5
- * @fileName: post
- * @Description: 文章
+ * @date: 2023/1/7
+ * @author: 小红
+ * @fileName: media
+ * @Description: 文章适配
  */
 
 
@@ -33,14 +33,39 @@
   }
 }
 
+@media (max-width: 900px) {
+  .post-info {
+    bottom: 30px;
+    text-align: left;
+  }
+}
+
 @media (max-width: 768px) {
-  .post-content {
-    padding: 25px;
+  .post {
+    &-info {
+      bottom: 22px;
+      padding: 0 22px;
+    }
+
+    &-title {
+      font-size: 1.8rem;
+    }
+
+    &-meta {
+      font-size: 90%;
+
+      .line {
+      }
+    }
+
+    &-content {
+      padding: 25px;
+    }
   }
 }
 
 @media (max-width: 770px) {
- .post .copyRight {
+  .post .copyRight {
     font-size: .8rem;
     padding: 5px 8px;
   }

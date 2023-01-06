@@ -1,0 +1,31 @@
+/**
+ * @date: 2023/1/7
+ * @author: 小红
+ * @fileName: base
+ * @Description: 页码
+ */
+
+.pagination {
+  margin-top: 20px;
+
+  .page, .prev, .next {
+    border-radius: 8px;
+    box-shadow: var(--card-box-shadow);
+    background-color: var(--card-bg-color);
+    margin: 0 6px;
+    width: 2.2rem;
+    height: 2.2rem;
+    transition: color .2s, box-shadow 0.25s ease 0s;
+    color: #99a9bf;
+
+    &:hover {
+      //background-color: var(--btn-hover-color);
+      box-shadow: 0 0.1rem 0.8rem var(--theme);
+    }
+  }
+
+  .current {
+    background-color: var(--theme);
+    color: #fff;
+  }
+}

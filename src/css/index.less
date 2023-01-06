@@ -5,90 +5,17 @@
  * @fileName: index
  */
 
-@keyframes above-title-scale {
-  0% {
-    opacity: 0;
-    transform: scale(.7)
-  }
-
-  100% {
-    opacity: 1;
-    filter: none;
-    transform: scale(1)
-  }
-}
-
-@keyframes above-down-effect {
-  0% {
-    top: 0;
-    opacity: .4
-  }
-
-  50% {
-    top: -16px;
-    opacity: 1;
-    filter: none
-  }
-
-  100% {
-    top: 0;
-    opacity: .4
-  }
-}
 
 .index {
-  .header {
-    .above {
-      height: 100vh;
-      //background-attachment: fixed;
-      
-      &-info {
-        position: absolute;
-        top: 43%;
-        padding: 0 0.5rem;
-        width: 100%;
-      }
+  @import 'src/page/index/base.less';
+  @import 'src/page/index/media.less';
 
-      &-title {
-        font-size: 2.5rem;
-        text-shadow: 2px 2px 4px rgb(0 0 0 / 15%);
-        line-height: 1.5;
-        color: var(--above-title-font-color);
-        animation: above-title-scale 1s;
-        transition: font-size 0.3s;
-      }
-
-      &-subtitle {
-        font-size: 1.3rem;
-        animation: above-title-scale 2s;
-        transition: font-size 0.3s;
-      }
-
-      &-subtitle--text {
-        text-shadow: 2px 2px 4px rgb(0 0 0 / 15%);
-        line-height: 1.5;
-        color: var(--above-subtitle-font-color);
-      }
-
-      &-down {
-        font-size: 1.8rem;
-        padding-bottom: 10px;
-
-        i {
-          position: relative;
-          animation: above-down-effect 1.5s infinite;
-          color: var(--above-subtitle-font-color);
-          cursor: var(--cursor-pointer);
-        }
-      }
-    }
-  }
-
-  .main {
-  }
-
-  @import "src/modules/dev/posts.less";
-  @import "src/modules/media/above/index.less";
+  // 模块
+  @import "src/modules/postList/base.less";
+  @import "src/modules/pagination/base.less";
 }
-
-
+//适配
+#Butterfly{
+  @import "src/modules/postList/media.less";
+  @import "src/modules/pagination/media.less";
+}
