@@ -8,7 +8,6 @@
 .main > .content {
   padding: 35px;
   //align-self: flex-start;
-  word-break: break-word;
 }
 
 .above {
@@ -126,6 +125,8 @@
 }
 
 .support {
+  margin-bottom: 20px;
+
   .title {
     padding: 15px;
   }
@@ -149,11 +150,14 @@
   }
 }
 
+
 .render-html {
+  word-break: break-word;
+  overflow-wrap: break-word;
 
   h1, h2, h3, h4, h5, h6 {
     display: flex;
-    align-items: center;
+    transition: font-size 0.3s;
 
     &::before {
       display: inline-block;
@@ -186,18 +190,18 @@
 
   h4 {
     font-size: 1.3em;
-    margin: 0 0 16px;
+    margin: 15px 0 14px;
 
   }
 
   h5 {
     font-size: 1.2em;
-    margin: 0 0 16px;
+    margin: 10px 0 12px;
   }
 
   h6 {
     font-size: 1.1em;
-    margin: 0 0 18px;
+    margin: 5px 0 10px;
   }
 
   ul, ol {
@@ -289,6 +293,7 @@
 
 
   }
+
 
   code:not([class]) {
     user-select: all;

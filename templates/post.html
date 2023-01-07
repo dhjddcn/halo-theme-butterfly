@@ -24,8 +24,8 @@
 </th:block>
 
 <th:block th:fragment="content">
-  <article class="content card flex-1">
-        <div th:utext="${post.content.content}" class="render-html"></div>
+  <section class="content card flex-1">
+        <article th:utext="${post.content.content}" class="render-html"></article>
 
         <div class="copyRight relative">
           <i class="fa-solid fa-copyright absolute"></i>
@@ -56,7 +56,7 @@
         </div>
 
         <div class="abstract">
-          <div class="categories">
+          <span class="categories">
             <a th:each=" cts : ${post.categories}"
                class="link inline-block text-center"
                th:href="${cts.status.permalink}"
@@ -64,8 +64,8 @@
               <i class="fa-regular fa-folders"></i>
               <span th:text="${cts.spec.displayName}" class="name"></span>
             </a>
-          </div>
-          <div class="tags">
+          </span>
+          <span class="tags">
             <a th:each=" tag : ${post.tags}"
                class="link inline-block text-center"
                th:href="${tag.status.permalink}"
@@ -74,7 +74,7 @@
               <i class="fa-regular fa-tags"></i>
               <span th:text="${tag.spec.displayName}" class="name"></span>
             </a>
-          </div>
+          </span>
         </div>
 
         <div class="support">
@@ -99,7 +99,11 @@
           </div>
 
         </div>
-  </article>
+
+    <div id="post-comment" th:if="${pluginFinder.available('PluginCommentWidget')}">
+      <halo:comment group="content.halo.run" kind="Post" th:attr="name=${post.metadata.name}"/>
+    </div>
+  </section>
 
   <th:block  th:insert="~{modules/main:: asidePost}"></th:block>
 </th:block>

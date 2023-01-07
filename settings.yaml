@@ -62,10 +62,10 @@ spec:
           validation: required
         - $formkit: text
           name: content_max_width
-          label: 内容区最大宽度
+          label: 全局内容区最大宽度
           value: 1350px
           placeholder: 请填写内容区最大宽度
-          help: 内容区域最大宽度，像素或百分比，默认 1350px（注：文字布局为列表建议：1350px 平铺：1400px）
+          help: 内容区域最大宽度，像素或百分比，默认 1350px（注：文字布局为列表建议：1350px 平铺：1400px），post 文章页面 可以单独设置
           validation: required
         - $formkit: attachment
           name: body_background
