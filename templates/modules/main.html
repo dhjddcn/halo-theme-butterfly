@@ -31,7 +31,7 @@
     <a th:with="bt=${#strings.arraySplit(theme.config.aside.button,'&+&')}" th:utext="${bt[0]}"
        class="button block text-center" target="_blank" th:href="${bt[1]}"></a>
 
-    <div class="icons flex flex-justify-content-center">
+    <div class="icons flex flex-justify-content-center flex-wrap-wrap">
       <a class="" th:each="n :${theme.config.socials.no_data}" th:utext="${n.icon}" target="_blank"
          th:href="${n.url}"></a>
     </div>
