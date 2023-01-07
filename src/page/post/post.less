@@ -155,6 +155,17 @@
   word-break: break-word;
   overflow-wrap: break-word;
 
+  a {
+    color: var(--theme);
+    display: inline-block;
+    text-decoration: underline;
+    transition: transform .3s;
+
+    &:hover {
+      transform: translateX(5px);
+    }
+  }
+
   h1, h2, h3, h4, h5, h6 {
     display: flex;
     transition: font-size 0.3s;
@@ -320,8 +331,7 @@
   }
 
   img {
-    display: block;
-    margin: 0 auto 20px;
+    margin-bottom: 20px;
     max-width: 100%;
     transition: filter 375ms ease-in 0.2s;
     cursor: zoom-in;

@@ -33,7 +33,7 @@ class Post {
       $this.attr('height', '');
       $this.wrap(
         $(
-          `<a class="block" data-fancybox="butterfly" href="${$this.attr(
+          `<a class="block text-center w-100" data-fancybox="post" href="${$this.attr(
             "src"
           )}"></a>`
         )
