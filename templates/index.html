@@ -20,12 +20,12 @@
 </th:block>
 
 <th:block th:fragment="content">
-  <section class="content flex-1">
+  <section class="content">
     <th:block th:replace="~{modules/main:: posts(${posts.items},${theme.config.index.post_layout})}"></th:block>
     <th:block th:replace="~{modules/main:: pagination(${posts})}"></th:block>
   </section>
 
-  <th:block  th:replace="~{modules/main:: asidePublic}"></th:block>
+  <th:block th:replace="~{modules/main:: asidePublic}"></th:block>
 </th:block>
 
 <th:block th:fragment="script">

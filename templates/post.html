@@ -24,12 +24,12 @@
 </th:block>
 
 <th:block th:fragment="content">
-  <section class="content card flex-1">
+  <section class="content card ">
     <!--todo publishTime 此时间需要改为更新时间-->
     <div class="post-outDate relative none"
          th:data-outDate="${theme.config.post.out_date}"
-         th:data-publishTime="${#dates.format(post.spec.publishTime,'yyyy-MM-dd')}"
-    ></div>
+         th:data-publishTime="${#dates.format(post.spec.publishTime,'yyyy-MM-dd')}">
+    </div>
 
 
     <article th:utext="${post.content.content}" class="render-html"></article>
@@ -101,28 +101,36 @@
           <i class="fa-light fa-arrow-up-right-from-square"></i>
           <span>分享</span>
           <ul class="share-dropdown absolute z-50">
-            <li class="dropdown-item ">
+            <li class="dropdown-item">
+              <a
+                th:href="'https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url='+${post.status.permalink}+'&title='+${post.spec.title}+'&pics='+${post.spec.cover}+'&summary='+${post.spec.excerpt.raw}">
               <span class="icon inline-flex flex-justify-content-center flex-align-items-center">
                 <i class="fa-regular fa-atom-simple"></i>
               </span>
-              <span class="name">QQ空间</span>
+                <span class="name">QQ空间</span>
+              </a>
             </li>
 
             <li class="dropdown-item">
+              <a
+                th:href="'https://connect.qq.com/widget/shareqq/index.html?url='+${post.status.permalink}+'&title='+${post.spec.title}+'&pics='+${post.spec.cover}+'&desc='+${post.spec.excerpt.raw}">
               <span class="icon inline-flex flex-justify-content-center flex-align-items-center">
                  <i class="fa-brands fa-qq"></i>
               </span>
-              <span class="name">QQ好友</span>
+                <span class="name">QQ好友</span>
+              </a>
             </li>
 
+            <!--/*-->
             <li class="dropdown-item">
               <span class="icon inline-flex flex-justify-content-center flex-align-items-center">
                  <i class="fa-regular fa-image"></i>
               </span>
               <span class="name">海报分享</span>
             </li>
+            <!--*/-->
 
-            <li class="dropdown-item">
+            <li class="dropdown-item copy-permalink">
               <span class="icon inline-flex flex-justify-content-center flex-align-items-center">
                <i class="fa-regular fa-link"></i>
               </span>
@@ -131,13 +139,23 @@
           </ul>
         </div>
 
-        <span
-          class="reward item cursor-pointer inline-flex flex-direction-column flex-justify-content-center  flex-align-items-center"
-        >
-           <i class="fa-light fa-sack-dollar"></i>
-              <span>打赏</span>
-        </span>
+        <div
+          class="reward relative item cursor-pointer inline-flex flex-direction-column flex-justify-content-center  flex-align-items-center">
+          <i class="fa-light fa-sack-dollar"></i>
+          <span>打赏</span>
 
+          <div class="reward-dropdown absolute z-50 flex">
+            <section class="wx text-center">
+              <img src="http://localhost:8090/upload/1673193607450.png" alt="微信">
+              <span class="inline-block">微信</span>
+            </section>
+            <section class="alipay text-center">
+              <img src="http://localhost:8090/upload/1673193607450.png" alt="支付宝">
+              <span class="inline-block">支付宝</span>
+            </section>
+          </div>
+
+        </div>
 
       </div>
 
@@ -153,6 +171,8 @@
 
 <th:block th:fragment="script">
   <script type="text/javascript" th:src="@{/assets/plugins/fancybox/fancybox.min.js}"></script>
+  <script type="text/javascript" th:src="@{/assets/plugins/clipboard/clipboard.min.js}"></script>
+  <script type="text/javascript" th:src="@{/assets/plugins/tocbot/tocbot.min.js}"></script>
   <script type="text/javascript" th:src="@{/assets/js/post.min.js}"></script>
 </th:block>
 

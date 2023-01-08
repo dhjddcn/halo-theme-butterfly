@@ -20,15 +20,14 @@
   <th:block th:insert="~{modules/public:: styles}"></th:block>
   <link rel="stylesheet" th:href="@{/assets/font/zn.min.css}" media="all" onload="this.media='all'">
   <link rel="stylesheet" th:href="@{/assets/css/global.min.css}">
-  <link rel="stylesheet" th:href="@{/assets/plugins/fontawesome/fontawesome.min.css}" media="all"
-        onload="this.media='all'">
-  <link rel="stylesheet" th:href="@{/assets/css/responsive.min.css}">
+  <link rel="stylesheet" th:href="@{/assets/plugins/fontawesome/fontawesome.min.css}" media="all" onload="this.media='all'">
   <th:block th:insert="${head}"></th:block>
+  <link rel="stylesheet" th:href="@{/assets/plugins/Qmsg/Qmsg.min.css}">
 </head>
 <body>
 <div id="Butterfly" th:class="${page}">
   <th:block th:insert="~{modules/header:: header(${page})}"></th:block>
-  <main th:class="'main flex  margin-0-auto '+${theme.config.aside.position}">
+  <main th:class="'main flex margin-0-auto '+${theme.config.aside.position}">
     <th:block th:insert="${content}"></th:block>
   </main>
   <th:block th:insert="~{modules/header:: sidebar}"></th:block>
@@ -38,6 +37,7 @@
 <script type="text/javascript" th:src="@{/assets/plugins/jquery/jquery.min.js}"></script>
 <script type="text/javascript" th:src="@{/assets/plugins/lazyLoad/lazyLoad.min.js}"></script>
 <script type="text/javascript" th:src="@{/assets/plugins/universe/universe.min.js}"></script>
+<script type="text/javascript" th:src="@{/assets/plugins/Qmsg/Qmsg.min.js}"></script>
 <script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <script type="text/javascript" th:src="@{/assets/js/global.min.js}"></script>
 <th:block th:insert="${script}"/>

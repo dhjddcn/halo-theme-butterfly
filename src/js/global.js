@@ -7,6 +7,10 @@
 
 
 class Utils {
+
+  static constructor() {
+  }
+
   static debounce(func, wait, immediate) {
     let timeout
     return function () {
@@ -56,7 +60,8 @@ class Utils {
 
   }
 
-  static constructor() {
+  // 创建dom
+  static createDom() {
 
   }
 
@@ -118,16 +123,15 @@ class Global {
     let scrollNum = 0;
 
 
-    const fn = () => {
-      let scrollTop = document.documentElement.scrollTop;
+    const fn = (e) => {
+      let scrollTop = window.scrollY || document.documentElement.scrollTop
 
       if (scrollTop > 56) {
-
         if (scrollNum <= scrollTop) {
-          // console.log('向上')
+          // console.log('向下', scrollTop)
+
           if (nav.hasClass('visible')) {
-            nav.addClass('hidden');
-            nav.removeClass('visible');
+            nav.addClass('hidden').removeClass('visible');
           }
 
           if (asidePost) asidePost.attr('style', '');
@@ -135,10 +139,10 @@ class Global {
           if (!adsorption.hasClass('active')) adsorption.addClass('active');
 
         } else {
-          // console.log('向下')
+          // console.log('向上', scrollTop)
+
           if (!nav.hasClass('visible')) {
-            nav.addClass('visible');
-            nav.removeClass('hidden');
+            nav.addClass('visible').removeClass('hidden');
           }
 
           if (asidePost) asidePost.css('top', '70px');
@@ -150,11 +154,8 @@ class Global {
       } else {
         if (scrollTop === 0) {
           nav.removeClass('style visible hidden');
-
           if (adsorption.hasClass('active')) adsorption.removeClass('active');
-
         }
-
       }
       scrollNum = scrollTop
     }
