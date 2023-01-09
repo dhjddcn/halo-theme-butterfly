@@ -17,22 +17,25 @@
     html {
       --above-background: /*[(${above_background})]*/ transparent;
     }
-
   </style>
   <link rel="stylesheet" th:href="@{/assets/plugins/fancybox/fancybox.min.css}">
+  <th:block th:if="${theme.config.code.enable}">
+    <link rel="stylesheet" th:href="@{/assets/plugins/prism/prism.min.css}">
+    <link rel="stylesheet" th:href="@{'/assets/plugins/prism/themes/prism-'+${theme.config.code.theme}+'.css'}">
+    <script type="text/javascript" th:src="@{/assets/plugins/prism/prism.min.js}"></script>
+  </th:block>
   <link rel="stylesheet" th:href="@{/assets/css/post.min.css}">
 </th:block>
 
 <th:block th:fragment="content">
-  <section class="content card ">
-    <!--todo publishTime 此时间需要改为更新时间-->
+  <section class="content card animated fadeIn " style="animation-duration:1.3s">
+    <!--/* todo  publishTime 此时间需要改为更新时间--><!--*/-->
     <div class="post-outDate relative none"
          th:data-outDate="${theme.config.post.out_date}"
          th:data-publishTime="${#dates.format(post.spec.publishTime,'yyyy-MM-dd')}">
     </div>
 
-
-    <article th:utext="${post.content.content}" class="render-html"></article>
+    <article th:utext="${post.content.content}" class="render-html animated fadeIn"></article>
 
     <div class="copyRight relative">
       <i class="fa-solid fa-copyright absolute"></i>
@@ -63,7 +66,7 @@
     </div>
 
     <div class="abstract">
-          <span class="categories">
+      <span class="categories">
             <a th:each=" cts : ${post.categories}"
                class="link inline-block text-center"
                th:href="${cts.status.permalink}"
@@ -88,6 +91,7 @@
       <div class="title text-center">喜欢就支持一下吧</div>
 
       <div class="content flex flex-justify-content-center">
+        <!--/* todo 待开发--> <!--*/-->
         <a
           class="praise item cursor-pointer inline-flex flex-direction-column flex-justify-content-center  flex-align-items-center"
           href="">
@@ -96,8 +100,7 @@
         </a>
 
         <div
-          class="share relative item cursor-pointer inline-flex flex-direction-column flex-justify-content-center  flex-align-items-center"
-        >
+          class="share relative item cursor-pointer inline-flex flex-direction-column flex-justify-content-center  flex-align-items-center">
           <i class="fa-light fa-arrow-up-right-from-square"></i>
           <span>分享</span>
           <ul class="share-dropdown absolute z-50">
@@ -121,7 +124,7 @@
               </a>
             </li>
 
-            <!--/*-->
+            <!--/* todo 待开发-->
             <li class="dropdown-item">
               <span class="icon inline-flex flex-justify-content-center flex-align-items-center">
                  <i class="fa-regular fa-image"></i>
@@ -140,32 +143,26 @@
         </div>
 
         <div
+          th:if="${theme.config.post.enable_reward}"
           class="reward relative item cursor-pointer inline-flex flex-direction-column flex-justify-content-center  flex-align-items-center">
           <i class="fa-light fa-sack-dollar"></i>
           <span>打赏</span>
 
           <div class="reward-dropdown absolute z-50 flex">
-            <section class="wx text-center">
-              <img src="http://localhost:8090/upload/1673193607450.png" alt="微信">
-              <span class="inline-block">微信</span>
-            </section>
-            <section class="alipay text-center">
-              <img src="http://localhost:8090/upload/1673193607450.png" alt="支付宝">
-              <span class="inline-block">支付宝</span>
+            <section class="text-center" th:each="r :${theme.config.post.reward}">
+              <img th:src="${r.url}" th:alt="${r.name}" alt="">
+              <span class="inline-block" th:text="${r.name}"></span>
             </section>
           </div>
-
         </div>
-
       </div>
-
     </div>
 
-    <div id="post-comment" th:if="${pluginFinder.available('PluginCommentWidget')}">
-      <halo:comment group="content.halo.run" kind="Post" th:attr="name=${post.metadata.name}"/>
+    <div class="post-comment" th:if="${pluginFinder.available('PluginCommentWidget')}">
+      <halo:comment colorScheme="window.dataTheme" group="content.halo.run" kind="Post"
+                    th:attr="name=${post.metadata.name}"/>
     </div>
   </section>
-
   <th:block th:insert="~{modules/main:: asidePost}"></th:block>
 </th:block>
 

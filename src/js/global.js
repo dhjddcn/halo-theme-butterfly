@@ -4,71 +4,76 @@
  * @date: 2022/12/6
  * @fileName: global
  */
-
-
-class Utils {
-
-  static constructor() {
-  }
-
-  static debounce(func, wait, immediate) {
-    let timeout
-    return function () {
-      const context = this
-      const args = arguments
-      const later = function () {
-        timeout = null
-        if (!immediate) func.apply(context, args)
-      }
-      const callNow = immediate && !timeout
-      clearTimeout(timeout)
-      timeout = setTimeout(later, wait)
-      if (callNow) func.apply(context, args)
-    }
-  }
-
-  static throttle(func, wait, options) {
-    let timeOut, context, args
-    let previous = 0
-    if (!options) options = {}
-
-    const later = function () {
-      previous = options['leading'] === false ? 0 : new Date().getTime()
-      timeOut = null
-      func.apply(context, args)
-      context = args = null
-    }
-
-    return function () {
-      const now = new Date().getTime()
-      if (!previous && options['leading'] === false) previous = now
-      const remaining = wait - (now - previous)
-      context = this
-      args = arguments
-      if (remaining <= 0 || remaining > wait) {
-        if (timeOut) {
-          clearTimeout(timeOut)
-          timeOut = null
-        }
-        previous = now
-        func.apply(context, args)
-        if (!timeOut) context = args = null
-      } else if (!timeOut && options['leading'] !== false) {
-        timeOut = setTimeout(later, remaining)
-      }
-    }
-
-  }
-
-  // 创建dom
-  static createDom() {
-
-  }
-
-  static msg(msg, type = 'success') {
-
-  }
-}
+// window.bfyUtils = class Utils {
+//   static constructor() {
+//   }
+//
+//   static debounce(func, wait, immediate) {
+//     let timeout
+//     return function () {
+//       const context = this
+//       const args = arguments
+//       const later = function () {
+//         timeout = null
+//         if (!immediate) func.apply(context, args)
+//       }
+//       const callNow = immediate && !timeout
+//       clearTimeout(timeout)
+//       timeout = setTimeout(later, wait)
+//       if (callNow) func.apply(context, args)
+//     }
+//   }
+//
+//   static throttle(func, wait, options) {
+//     let timeOut, context, args
+//     let previous = 0
+//     if (!options) options = {}
+//
+//     const later = function () {
+//       previous = options['leading'] === false ? 0 : new Date().getTime()
+//       timeOut = null
+//       func.apply(context, args)
+//       context = args = null
+//     }
+//
+//     return function () {
+//       const now = new Date().getTime()
+//       if (!previous && options['leading'] === false) previous = now
+//       const remaining = wait - (now - previous)
+//       context = this
+//       args = arguments
+//       if (remaining <= 0 || remaining > wait) {
+//         if (timeOut) {
+//           clearTimeout(timeOut)
+//           timeOut = null
+//         }
+//         previous = now
+//         func.apply(context, args)
+//         if (!timeOut) context = args = null
+//       } else if (!timeOut && options['leading'] !== false) {
+//         timeOut = setTimeout(later, remaining)
+//       }
+//     }
+//
+//   }
+//
+//   // 代码块
+//   // <i className="fa-solid fa-sort-down"></i>
+//   static initCode(dom) {
+//     const codes = $(dom);
+//     console.log(11);
+//   }
+//
+//   // 创建dom
+//   static createDom() {
+//
+//   }
+//
+//   static msg(msg, type = 'success') {
+//
+//   }
+// }
+import {throttle} from '../../dev/js/Utils.js'
 
 class Global {
   constructor() {
@@ -82,16 +87,18 @@ class Global {
     this.nav();
     this.scroll();
     this.runDay();
-    this.adsorption();
+    this.adsorption()
   }
 
   //初始化一些配置
   init() {
-    //主题模式
-    const locDataTheme = localStorage.getItem('Butterfly-data-theme');
-
-    if (locDataTheme) this.html.attr('data-theme', locDataTheme);
-
+    // //主题模式
+    // const locDataTheme = localStorage.getItem('Butterfly-data-theme');
+    //
+    // if (locDataTheme) {
+    //   this.html.attr('data-theme', locDataTheme);
+    //   window.dataTheme = locDataTheme;
+    // }
 
     // 图片加载
     window.lazyLoadInstance = new LazyLoad({
@@ -100,6 +107,12 @@ class Global {
       data_src: 'lazy-src'
     })
 
+  }
+
+
+  // 获取主题模式
+  get getTheme() {
+    return this.html.attr('data-theme');
   }
 
   // 夜间模式星空背景
@@ -121,7 +134,6 @@ class Global {
     const adsorption = this.Butterfly.children('.adsorption');
     const asidePost = this.body.find('.post .aside .toc-bot');
     let scrollNum = 0;
-
 
     const fn = (e) => {
       let scrollTop = window.scrollY || document.documentElement.scrollTop
@@ -160,7 +172,7 @@ class Global {
       scrollNum = scrollTop
     }
 
-    window.addEventListener('scroll', Utils.throttle(fn, 150));
+    window.addEventListener('scroll', throttle(fn, 150));
   }
 
   // 初始化运行时间
@@ -199,10 +211,12 @@ class Global {
       if (locDataTheme === 'light') {
         this.html.attr('data-theme', 'dark');
         localStorage.setItem('Butterfly-data-theme', 'dark');
+        window.dataTheme = 'dark';
         this.starrySky('open'); // 开启星空背景
       } else {
         this.html.attr('data-theme', 'light');
         localStorage.setItem('Butterfly-data-theme', 'light');
+        window.dataTheme = 'light';
         this.starrySky('close') // 关闭星空背景
       }
 
@@ -217,7 +231,7 @@ class Global {
   }
 }
 
-
 !(() => {
   document.addEventListener("DOMContentLoaded", () => window.GlobalClass = new Global())
 })();
+

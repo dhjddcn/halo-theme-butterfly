@@ -1,0 +1,364 @@
+/**
+ * @date: 2023/1/9
+ * @author: 小红
+ * @fileName: renderHtml
+ * @Description: 渲染html
+ */
+
+.render-html {
+  word-break: break-word;
+  overflow-wrap: break-word;
+
+  a {
+    position: relative;
+    color: var(--theme);
+    display: inline-block;
+    font-weight: normal;
+    line-height: 1.5;
+
+    &:after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: var(--theme);
+      transition: width .35s;
+    }
+
+    &:hover {
+      &:after {
+        width: 100%;
+      }
+    }
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    transition: font-size 0.3s;
+
+    &::before {
+      font-family: "Font Awesome 6 Pro", serif;
+      font-weight: 900;
+      -webkit-font-smoothing: antialiased;
+      display: var(--fa-display, inline-block);
+      font-style: normal;
+      font-variant: normal;
+      line-height: 1;
+      text-rendering: auto;
+      margin-right: 5px;
+      color: var(--theme);
+    }
+  }
+
+  h1 {
+    font-size: 1.6em;
+    margin: 28px 0 20px;
+
+    &::before {
+      content: "\f313";
+    }
+
+  }
+
+  h2 {
+    font-size: 1.5em;
+    margin: 25px 0 18px;
+
+    &::before {
+      content: "\f314";
+    }
+  }
+
+  h3 {
+    font-size: 1.4em;
+    margin: 20px 0 16px;
+
+    &::before {
+      content: "\f315";
+    }
+  }
+
+  h4 {
+    font-size: 1.3em;
+    margin: 15px 0 14px;
+
+    &::before {
+      content: "\f86a";
+    }
+  }
+
+  h5 {
+    font-size: 1.2em;
+    margin: 12px 0 12px;
+
+    &::before {
+      content: "\e412";
+    }
+  }
+
+  h6 {
+    font-size: 1.1em;
+    margin: 8px 0 10px;
+
+    &::before {
+      content: "\e413";
+    }
+  }
+
+  ul, ol {
+    margin-bottom: 18px;
+    padding-left: 36px;
+  }
+
+  ul li, ol li {
+    line-height: 38px;
+  }
+
+  ul > li {
+    list-style: circle;
+
+    &::marker {
+      color: var(--theme);
+      font-weight: 600;
+      font-size: 1.5em;
+    }
+  }
+
+  ol > li {
+    list-style: decimal;
+  }
+
+  ul[data-type*=taskList] {
+    li {
+      margin-left: -16px;
+      list-style: none;
+    }
+
+    > label, input, div, p {
+      display: inline-block;
+    }
+
+    label {
+      position: relative;
+      margin-right: 8px;
+      top: 2.6px;
+      display: inline-block;
+      user-select: none;
+
+      input {
+        position: absolute;
+        opacity: 0;
+        cursor: var(--cursor-pointer);
+        height: 0;
+        width: 0;
+
+        &:checked ~ span {
+          background-color: limegreen;
+          border-radius: 5px;
+          transition: 0.15s;
+        }
+
+        &:checked ~ span:after {
+          display: block;
+        }
+      }
+
+      span {
+        display: inline-block;
+        position: relative;
+        top: 0;
+        left: 0;
+        height: 16px;
+        width: 16px;
+        background-color: #ccc;
+        border-radius: 5px;
+        transition: 0.15s;
+        cursor: var(--cursor-pointer);
+
+        &:after {
+          content: "";
+          position: absolute;
+          display: none;
+          left: 6px;
+          top: 3px;
+          width: 3px;
+          height: 6px;
+          border: solid white;
+          border-width: 0 0.15em 0.15em 0;
+          transform: rotate(45deg);
+        }
+
+
+      }
+    }
+
+
+  }
+
+
+  code:not([class]) {
+    user-select: all;
+    font-size: var(--font-size);
+    font-family: "Butterfly Font", "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, "sans-serif";
+    background-color: var(--code-bg-color);
+    color: var(--code-font-color);
+    display: inline-block;
+    margin: 2px 4px;
+    padding: 0 8px;
+    white-space: normal;
+    text-indent: 0;
+    vertical-align: baseline;
+    word-break: break-word;
+    border-radius: 4px;
+    line-height: 1.8;
+  }
+
+  blockquote {
+    margin: 10px 0;
+    padding: 12px 15px;
+    border-left: 3px solid var(--theme);
+    background-color: var(--blockquote-bg-color);
+    color: var(--blockquote-font-color);
+    border-radius: 5px;
+  }
+
+  img {
+    margin-bottom: 20px;
+    max-width: 100%;
+    transition: filter 375ms ease-in 0.2s;
+    cursor: zoom-in;
+    border-radius: 5px;
+  }
+
+  table {
+    display: table;
+    width: 100%;
+    border-spacing: 0;
+    border-collapse: collapse;
+    empty-cells: show;
+    border-radius: 4px;
+    margin: 5px 0;
+
+    tr > th {
+      background-color: rgba(153, 169, 191, .1);
+      padding: 6px 12px;
+      border: 1px solid var(--table-t-color);
+      vertical-align: middle;
+      text-align: left;
+    }
+
+    tr > td {
+      padding: 6px 12px;
+      border: 1px solid var(--table-t-color);
+      vertical-align: middle;
+      text-align: left;
+    }
+
+  }
+
+  .code-toolbar {
+    margin: 10px 0;
+    overflow: hidden;
+    box-shadow: 0 5px 10px 0 var(--code-bar-shadow);
+    border-radius: 5px;
+
+    &:before {
+      content: "";
+      position: absolute;
+      top: 9px;
+      left: 12px;
+      z-index: 1;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background-color: #fc625d;
+      box-shadow: 20px 0 #fdbc40, 40px 0 #35cd4b;
+    }
+
+    .toolbar {
+      pointer-events: none;
+      //display: none;
+      opacity: 1;
+      left: 0;
+      right: 0;
+      top: 0;
+      z-index: unset;
+      height: 30px;
+      line-height: 30px;
+      text-align: center;
+      border-bottom: 1px solid #525252;
+
+      &-item:first-child {
+        span {
+          background-color: transparent;
+          box-shadow: none;
+        }
+      }
+
+      .custom-item {
+        user-select: none;
+        font-size: 1rem;
+        right: 12px;
+        color: #999;
+        pointer-events: all;
+
+        > i {
+          margin-left: 15px;
+
+          &:hover {
+            filter: brightness(1.2);
+          }
+
+          &.code-copy {
+            font-size: .9rem;
+          }
+        }
+      }
+    }
+
+    pre[class*=language-] {
+      position: relative;
+      margin: 0;
+      padding: 30px 0 0;
+      overflow: hidden;
+      white-space: pre;
+      text-shadow: none;
+      border-radius: 5px;
+
+      .line-numbers-rows {
+        border-right: none;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        padding-top: 12px;
+      }
+
+      code[class*=language-] {
+        display: block;
+        margin-bottom: 0;
+        overflow-x: auto;
+        padding: 15px 25px 15px 25px;
+        border-radius: 0 0 8px 8px;
+        text-shadow: none;
+
+        &::-webkit-scrollbar {
+          width: 5px;
+          height: 5px;
+        }
+
+        .token.string, .style .token.string, .token.entity, .token.operator, .token.url {
+          background-color: transparent;
+        }
+      }
+
+      &.line-numbers {
+        code[class*=language-] {
+          padding: 12px 20px 12px 50px;
+        }
+      }
+    }
+
+  }
+}
+

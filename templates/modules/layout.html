@@ -20,17 +20,28 @@
   <th:block th:insert="~{modules/public:: styles}"></th:block>
   <link rel="stylesheet" th:href="@{/assets/font/zn.min.css}" media="all" onload="this.media='all'">
   <link rel="stylesheet" th:href="@{/assets/css/global.min.css}">
+  <link rel="stylesheet" th:href="@{/assets/plugins/animate/animate.min.css}">
   <link rel="stylesheet" th:href="@{/assets/plugins/fontawesome/fontawesome.min.css}" media="all" onload="this.media='all'">
   <th:block th:insert="${head}"></th:block>
   <link rel="stylesheet" th:href="@{/assets/plugins/Qmsg/Qmsg.min.css}">
+  <script id="base-script">
+    const locDataTheme = localStorage.getItem('Butterfly-data-theme');
+
+    if (locDataTheme) {
+      document.querySelector('html').setAttribute('data-theme', locDataTheme);
+      window.dataTheme = locDataTheme;
+    }
+
+    document.getElementById('base-script').remove();
+  </script>
 </head>
 <body>
 <div id="Butterfly" th:class="${page}">
   <th:block th:insert="~{modules/header:: header(${page})}"></th:block>
-  <main th:class="'main flex margin-0-auto '+${theme.config.aside.position}">
+  <main th:class="'main flex margin-0-auto animated fadeIn '+${theme.config.aside.position}">
     <th:block th:insert="${content}"></th:block>
   </main>
-  <th:block th:insert="~{modules/header:: sidebar}"></th:block>
+  <!--  <th:block th:insert="~{modules/header:: sidebar}"></th:block>-->
   <th:block th:insert="~{modules/public:: adsorption}"></th:block>
   <th:block th:insert="~{modules/public:: footer}"></th:block>
 </div>

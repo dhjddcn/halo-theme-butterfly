@@ -4,14 +4,17 @@
  * @fileName: post
  * @Description: 文章 代码块
  */
+import {initCode} from '../../dev/js/Utils.js'
+
 
 class Post {
   constructor() {
+    initCode('.render-html pre');
     this.outDate();
     this.initToc();
-    this.copyRightPermalinkDecode();
     this.fancyBoxImg();
     this.copyPermalink();
+    this.copyRightPermalinkDecode();
   }
 
   // 文章过期
@@ -69,6 +72,7 @@ class Post {
     if (!dom.length) return;
 
     dom.html(decodeURIComponent(dom.html()));
+
   }
 
   // 放大镜图片
@@ -95,21 +99,20 @@ class Post {
 
     dom.on('click', function (e) {
       const clipboard = new ClipboardJS(this, {text: () => location.href});
-      
-      clipboard.on('success',() => {
+
+      clipboard.on('success', () => {
         Qmsg.success("文章链接已复制");
         clipboard.destroy();
       });
-      
-      clipboard.on('error',() =>{
+
+      clipboard.on('error', () => {
         clipboard.destroy()
       })
-      
+
       clipboard.onClick(e);
     })
 
   }
-
 }
 
 

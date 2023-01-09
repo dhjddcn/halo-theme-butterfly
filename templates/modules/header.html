@@ -57,10 +57,10 @@
 </header>
 
 <!--移动端 侧边栏-->
-<div xmlns:th="https://www.thymeleaf.org" th:fragment="sidebar" class="sidebar">
-  <div class="sidebar-content fixed top-0 right-0 h-100">
-  </div>
-</div>
+<!--<div xmlns:th="https://www.thymeleaf.org" th:fragment="sidebar" class="sidebar">-->
+<!--  <div class="sidebar-content fixed top-0 right-0 h-100">-->
+<!--  </div>-->
+<!--</div>-->
 
 
 <!--默认公共、自定义首屏-->
@@ -70,7 +70,7 @@
 
 
 <!--首页首屏-->
-<section  xmlns:th="https://www.thymeleaf.org" th:fragment="index" th:if="${theme.config.index.enable_above}"
+<section xmlns:th="https://www.thymeleaf.org" th:fragment="index" th:if="${theme.config.index.enable_above}"
          class="above relative w-100">
   <div class="above-info">
     <h1 class="above-title text-center margin-0-auto" th:text="${site.title}"></h1>
@@ -93,8 +93,16 @@
       <div class="line">
         <span class="wp publishTime">
             <i class="fa-solid fa-calendar-days"></i>
-            <time th:text="'发布于 '+${#dates.format(post.spec.publishTime, 'yyyy-MM-dd HH:mm')}"></time>
+            <time th:text="'发布于 '+${#dates.format(post.spec.publishTime, 'yyyy-MM-dd')}"></time>
         </span>
+
+        <!--/* todo  需要添加更新时间-->
+        <span class="wp publishTime">
+            <span class="fk">|</span>
+            <i class="fas fa-history fa-fw"></i>
+            <time th:text="'更新于 '+${#dates.format(post.spec.publishTime, 'yyyy-MM-dd')}"></time>
+        </span>
+        <!--*/-->
 
         <span class="wp category">
             <span class="fk">|</span>
@@ -127,7 +135,7 @@
           <i class="far fa-eye fa-fw"></i>
           <span th:text="'阅读量 '+${post.stats.visit}"></span>
         </span>
-        
+
       </div>
     </div>
   </div>

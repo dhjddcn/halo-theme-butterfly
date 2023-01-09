@@ -35,16 +35,21 @@
     "type": "git"
   },
   "devDependencies": {
-    "@babel/preset-env": "^7.16.11",
+    "@babel/core": "^7.15.5",
+    "@babel/plugin-transform-runtime": "^7.15.0",
+    "@babel/preset-env": "^7.15.6",
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^8.0.0",
     "gulp-babel": "^8.0.0",
     "gulp-concat": "^2.6.1",
     "gulp-csso": "^4.0.1",
+    "gulp-gzip": "^1.4.2",
     "gulp-less": "^5.0.0",
     "gulp-notify": "^4.0.0",
     "gulp-rename": "^2.0.0",
     "gulp-uglify": "^3.0.2",
-    "@babel/core": "^7.17.5"
+    "webpack": "^5.68.0",
+    "webpack-stream": "^7.0.0",
+    "babel-loader": "^8.2.3"
   }
 }

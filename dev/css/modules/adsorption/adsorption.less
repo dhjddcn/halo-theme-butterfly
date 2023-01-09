@@ -1,0 +1,37 @@
+/**
+ * @Description: 侧边小部件基础样式
+ * @author: 小红
+ * @date: 2023/1/6
+ * @fileName: base
+ */
+
+.adsorption {
+  right: -48px;
+  bottom: 40px;
+  opacity: 0;
+
+  &.active {
+    opacity: 1;
+    transform: translateX(-58px);
+
+  }
+
+  > button {
+    margin-bottom: 12px;
+    width: 35px;
+    height: 35px;
+    //background-color: var(--btn-bg-color);
+    background-color: var(--theme);
+    color: var(--btn-color);
+    border-radius: 10px;
+    font-size: 16px;
+    line-height: 35px;
+    //transition: background-color 0.3s;
+    transition: box-shadow 0.25s ease 0s;
+
+    &:hover, &:focus {
+      //background-color: var(--btn-hover-color);
+      box-shadow: 0 0.1rem 0.8rem var(--theme);
+    }
+  }
+}
