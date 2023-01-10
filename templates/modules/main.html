@@ -1,13 +1,16 @@
 <!--侧边栏-->
-<aside xmlns:th="https://www.thymeleaf.org" th:fragment="asidePublic" th:if="${theme.config.aside.enable}" class="aside w-25"
+<aside xmlns:th="https://www.thymeleaf.org"
+       th:fragment="asidePublic"
+       th:if="${theme.config.aside.enable}"
+       class="aside w-25"
        th:with="stats = ${siteStatsFinder.getStats()}">
-  <section class="aside-user card text-center"
+  <section class="aside-item aside-user card text-center"
            th:with="contributor = ${contributorFinder.getContributor(theme.config.base.metadata_name)}">
     <img class="avatar block margin-0-auto overflow-hidden"
          th:src="${theme.config.loading.preload}"
          th:attr="onerror='this.src='+${'`'+theme.config.loading.err+'`'}"
          th:data-lazy-src="${contributor.avatar}"
-         th:alt="${contributor.displayName}">
+         th:alt="${contributor.displayName}" alt="">
 
     <div class="name font-weight-500" th:text="${contributor.displayName}"></div>
 
@@ -29,7 +32,7 @@
     </div>
 
     <a th:with="bt=${#strings.arraySplit(theme.config.aside.button,'&+&')}" th:utext="${bt[0]}"
-       class="button block text-center" target="_blank" th:href="${bt[1]}"></a>
+       class="button btn-effect block text-center" target="_blank" th:href="${bt[1]}"></a>
 
     <div class="icons flex flex-justify-content-center flex-wrap-wrap">
       <a class="" th:each="n :${theme.config.socials.no_data}" th:utext="${n.icon}" target="_blank"
@@ -37,7 +40,7 @@
     </div>
   </section>
 
-  <section class="aside-notice card">
+  <section class="aside-item aside-notice card">
     <h1 class="aside-title">
       <i class="fas fa-bullhorn fa-shake"></i>
       <span class="name">公告</span>
@@ -46,7 +49,7 @@
     <div class="content" th:utext="${theme.config.aside.notice}"></div>
   </section>
 
-  <section th:if="${theme.config.aside.enable_category}" class="aside-category card">
+  <section th:if="${theme.config.aside.enable_category}" class="aside-item aside-category card">
     <h1 class="aside-title">
       <i class="fas fa-folder-open"></i>
       <span class="name">分类</span>
@@ -65,7 +68,7 @@
 
   </section>
 
-  <section th:if="${theme.config.aside.enable_tags}" class="aside-tags card">
+  <section th:if="${theme.config.aside.enable_tags}" class="aside-item aside-tags card">
     <h1 class="aside-title">
       <i class="fas fa-tags"></i>
       <span class="name">标签</span>
@@ -86,7 +89,7 @@
     </div>
   </section>
 
-  <section th:if="${theme.config.aside.enable_webInfo}" class="aside-webInfo card">
+  <section th:if="${theme.config.aside.enable_webInfo}" class="aside-item aside-web-info card">
     <h1 class="aside-title">
       <i class="fas fa-chart-line"></i>
       <span class="name">网站资讯</span>
@@ -115,20 +118,34 @@
     </div>
 
   </section>
-
 </aside>
 
-<!-- 文章侧边栏 toc-->
-<aside xmlns:th="https://www.thymeleaf.org" class="aside w-25" th:fragment="asidePost">
-  <section class="card sticky toc-bot">
-    <h1 class="aside-title">
-      <i class="fas fa-stream"></i>
-      <span class="name">目录</span>
-    </h1>
 
-    <div class="toc"></div>
-  </section>
-</aside>
+<!--侧边栏-最新文章模块-->
+<section xmlns:th="https://www.thymeleaf.org" th:fragment="asidePostNews" class="aside-news-post aside-item card">
+  <h1 class="aside-title">
+    <i class="fas fa-history"></i>
+    <span class="name">最新文章</span>
+  </h1>
+  <ul class="content">
+    <li class="item flex flex-align-items-center" th:each="ps : ${postFinder.list(1,6)}">
+      <a th:href="@{${ps.status.permalink}}" class="cover overflow-hidden">
+        <img class="block w-100 h-100"
+             th:src="${theme.config.loading.preload}"
+             th:attr="onerror='this.src='+${'`'+theme.config.loading.err+'`'}"
+             th:data-lazy-src="${ps.spec.cover}"
+             th:alt="${ps.spec.title}" alt="">
+      </a>
+      <div class="desc flex-1">
+        <a th:href="@{${ps.status.permalink}}" th:text="${ps.spec.title}" class="title text-link text-clamp"></a>
+        <time class="block"
+              th:attr="datetime=${post.spec.publishTime}"
+              th:text="${#dates.format(post.spec.publishTime,'yyyy-MM-dd HH:mm')}">
+        </time>
+      </div>
+    </li>
+  </ul>
+</section>
 
 <!--文章列表-->
 <ul xmlns:th="https://www.thymeleaf.org" th:fragment="posts(ps,layout)" th:class="'posts '+${layout}">

@@ -2,9 +2,9 @@
  * @Description: 全局
  * @author: 小红
  * @date: 2022/12/6
- * @fileName: global
+ * @fileName: globals
  */
-import {throttle} from '../../dev/js/Utils.js'
+import {throttle, getPrismThemeLink} from './Utils.js'
 
 class Global {
   constructor() {
@@ -41,11 +41,6 @@ class Global {
   }
 
 
-  // 获取主题模式
-  get getTheme() {
-    return this.html.attr('data-theme');
-  }
-
   // 夜间模式星空背景
   starrySky(tp) {
   }
@@ -63,7 +58,7 @@ class Global {
   scroll() {
     const nav = this.Header.find('.nav');
     const adsorption = this.Butterfly.children('.adsorption');
-    const asidePost = this.body.find('.post .aside .toc-bot');
+    const postSticky = this.body.find('.post .aside .post-sticky');
     let scrollNum = 0;
 
     const fn = (e) => {
@@ -77,7 +72,7 @@ class Global {
             nav.addClass('hidden').removeClass('visible');
           }
 
-          if (asidePost) asidePost.attr('style', '');
+          if (postSticky) postSticky.css('top', '');
 
           if (!adsorption.hasClass('active')) adsorption.addClass('active');
 
@@ -88,7 +83,7 @@ class Global {
             nav.addClass('visible').removeClass('hidden');
           }
 
-          if (asidePost) asidePost.css('top', '70px');
+          if (postSticky) postSticky.css('top', '70px');
 
         }
 
@@ -140,29 +135,40 @@ class Global {
       const locDataTheme = localStorage.getItem('Butterfly-data-theme');
 
       if (locDataTheme === 'light') {
+        getPrismThemeLink('dark');
+
         this.html.attr('data-theme', 'dark');
+
         localStorage.setItem('Butterfly-data-theme', 'dark');
+
         window.dataTheme = 'dark';
+
         this.starrySky('open'); // 开启星空背景
       } else {
+        getPrismThemeLink('light');
+
         this.html.attr('data-theme', 'light');
+
         localStorage.setItem('Butterfly-data-theme', 'light');
+
         window.dataTheme = 'light';
+
         this.starrySky('close') // 关闭星空背景
       }
 
     });
+
 
     // 返回顶部
     adsorption.find('.back-top').on('click', () => {
       this.html.animate({scrollTop: 0}, 300);
     });
 
-
   }
+
+
 }
 
 !(() => {
   document.addEventListener("DOMContentLoaded", () => window.GlobalClass = new Global())
 })();
-

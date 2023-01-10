@@ -8,7 +8,6 @@ const gzip = require("gulp-gzip");
 const webpack = require("webpack-stream");
 const path = require("path");
 const fs = require("fs");
-const NodePolyfillPlugin = require('node-polyfill-webpack-plugin')
 
 const resolve = (name) => path.resolve(__dirname, name);
 
@@ -31,7 +30,7 @@ gulp.task("css", function () {
 
 gulp.task("js", function () {
   const getEntryData = () => {
-    const ignoreFiles = ['u'];
+    const ignoreFiles = ['Utils.js'];
     try {
       let files = fs.readdirSync("./src/js", "utf-8");
       files = files.filter((file) => {
@@ -90,9 +89,9 @@ gulp.task(
   "watch",
   function () {
     // noinspection JSCheckFunctionSignatures
-    gulp.watch(['./src/**/**/**/*.less','./dev/**/**/**/*.less'], gulp.series('css'));
+    gulp.watch(['./src/**/**/**/*.less'], gulp.series('css'));
     // noinspection JSCheckFunctionSignatures
-    gulp.watch(['./src/js/*.js','./dev/js/*.js'], gulp.series('js'));
+    gulp.watch(['./src/js/*.js'], gulp.series('js'));
   }
 );
 gulp.task(

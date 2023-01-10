@@ -123,6 +123,23 @@ export function initCode(dom) {
 }
 
 /**
+ * 动态加载代码块css
+ * @param tp
+ */
+export function getPrismThemeLink(tp) {
+  if (!ThemeConfig.code.enable) return; // 是否启用默认代码高亮
+  const p = document.getElementById('prism-theme');
+  if (p) p.remove();
+  const link = document.createElement('link');
+  link.type = 'text/css';
+  link.rel = 'stylesheet';
+  link.id = 'prism-theme'
+  link.href = `${ThemeBasePath}/plugins/prism/themes/prism-${ThemeConfig.code['theme_' + tp]}.css`;
+  // console.log(link.href, tp);
+  document.getElementsByTagName("head")[0].append(link);
+}
+
+/**
  * 目录
  * @param tocSelector
  * @param contentSelector

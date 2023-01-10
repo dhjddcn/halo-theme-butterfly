@@ -22,9 +22,27 @@
   <link rel="stylesheet" th:href="@{/assets/plugins/fancybox/fancybox.min.css}">
   <th:block th:if="${theme.config.code.enable}">
     <link rel="stylesheet" th:href="@{/assets/plugins/prism/prism.min.css}">
-    <link rel="stylesheet" th:href="@{'/assets/plugins/prism/themes/prism-'+${theme.config.code.theme}+'.css'}">
+    <!--    <link rel="stylesheet"-->
+    <!--          id="code-theme"-->
+    <!--          th:href="@{'/assets/plugins/prism/themes/prism-'+${theme.config.code.theme_light}+'.css'}">-->
     <script type="text/javascript" th:src="@{/assets/plugins/prism/prism.min.js}"></script>
   </th:block>
+  <script id="pos-script" th:inline="javascript">
+    // const getPrismThemeLink = (tp) => {
+    //   if (!ThemeConfig.code.enable) return; // 是否启用默认代码高亮
+    //   const p = document.getElementById('prism-theme');
+    //   if (p) p.remove();
+    //   const link = document.createElement('link');
+    //   link.type = 'text/css';
+    //   link.rel = 'stylesheet';
+    //   link.id = 'prism-theme'
+    //   link.href = `${ThemeBasePath}/plugins/prism/themes/prism-${ThemeConfig.code['theme_' + tp]}.css`;
+    //   console.log(link.href, tp);
+    //   document.getElementsByTagName("head")[0].append(link);
+    // }
+    // GlobalClass.getPrismThemeLink(dataTheme);
+  </script>
+
   <link rel="stylesheet" th:href="@{/assets/css/post.min.css}">
 </th:block>
 
@@ -44,7 +62,7 @@
 
       <div class="author">
         <span class="name">文章作者：</span>
-        <span class="text">小红</span>
+        <span class="text" th:text="${site.title}"></span>
       </div>
 
       <div class="url">
@@ -170,21 +188,17 @@
     </div>
   </section>
   <aside class="aside w-25">
-    <section class="card sticky post-tocbot">
-      <h1 class="aside-title">
-        <i class="fas fa-stream"></i>
-        <span class="name">目录</span>
-      </h1>
-      <div class="toc"></div>
-    </section>
+    <div class="sticky post-sticky">
+      <section class="aside-item card post-tocbot">
+        <h1 class="aside-title">
+          <i class="fas fa-stream"></i>
+          <span class="name">目录</span>
+        </h1>
+        <div class="toc"></div>
+      </section>
 
-    <section class="card post-news">
-      <h1 class="aside-title">
-        <i class="fas fa-history"></i>
-        <span class="name">最新文章</span>
-      </h1>
-      
-    </section>
+      <th:block th:insert="~{modules/main:: asidePostNews}"></th:block>
+    </div>
   </aside>
 </th:block>
 

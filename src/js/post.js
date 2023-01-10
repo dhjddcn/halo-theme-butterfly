@@ -4,13 +4,15 @@
  * @fileName: post
  * @Description: 文章 代码块
  */
-import {initCode, initToc} from '../../dev/js/Utils.js'
+import {initCode, initToc, getPrismThemeLink} from './Utils.js'
 
 
 class Post {
   constructor() {
+    getPrismThemeLink(dataTheme);
+
     initCode('.render-html pre');
-    
+
     initToc('.post-tocbot > .toc', '.render-html');
 
     if (ThemeConfig.post['out_date'] > 0) this.outDate();
@@ -23,6 +25,10 @@ class Post {
 
     this.showTocbot();
   }
+
+  // 
+  // console.log(GlobalClass.getLink);
+
 
   // 文章过期
   outDate() {
@@ -103,7 +109,7 @@ class Post {
 
     dom.on('click', function () {
 
-      const postTocbot = $('.aside > .post-tocbot');
+      const postTocbot = $('.aside  .post-tocbot');
 
       if (postTocbot.attr('style')) {
 
@@ -125,7 +131,6 @@ class Post {
 
   }
 }
-
 
 !(() => {
   document.addEventListener("DOMContentLoaded", () => window.PostClass = new Post())

@@ -23,20 +23,18 @@
   <link rel="stylesheet" th:href="@{/assets/plugins/animate/animate.min.css}">
   <link rel="stylesheet" th:href="@{/assets/plugins/fontawesome/fontawesome.min.css}" media="all"
         onload="this.media='all'">
-  <th:block th:insert="${head}"></th:block>
   <link rel="stylesheet" th:href="@{/assets/plugins/Qmsg/Qmsg.min.css}">
   <script id="base-script" th:inline="javascript">
     const locDataTheme = localStorage.getItem('Butterfly-data-theme');
-
     if (locDataTheme) {
       document.querySelector('html').setAttribute('data-theme', locDataTheme);
       window.dataTheme = locDataTheme;
     }
-
     window.ThemeConfig =  /*[[${theme.config}]]*/ {};
-
+    window.ThemeBasePath = '[(${#theme.assets("")})]';
     document.getElementById('base-script').remove();
   </script>
+  <th:block th:insert="${head}"></th:block>
 </head>
 <body>
 <div id="Butterfly" th:class="${page}">
