@@ -20,8 +20,6 @@
     }
   </style>
   <link rel="stylesheet" th:href="@{/assets/plugins/fancybox/fancybox.min.css}">
-
-
   <th:block th:if="${theme.config.code.enable}">
     <link rel="stylesheet" th:href="@{/assets/plugins/prism/prism.min.css}">
     <link rel="stylesheet" th:href="@{'/assets/plugins/prism/themes/prism-'+${theme.config.code.theme}+'.css'}">
@@ -177,8 +175,15 @@
         <i class="fas fa-stream"></i>
         <span class="name">目录</span>
       </h1>
-
       <div class="toc"></div>
+    </section>
+
+    <section class="card post-news">
+      <h1 class="aside-title">
+        <i class="fas fa-history"></i>
+        <span class="name">最新文章</span>
+      </h1>
+      
     </section>
   </aside>
 </th:block>

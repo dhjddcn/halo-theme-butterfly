@@ -150,6 +150,12 @@ export function initToc(tocSelector, contentSelector) {
       // window.tocPhase = null
     }
   });
+
+  const toc = $(tocSelector);
+
+  if (!toc.html()) {
+    toc.html('暂无目录~');
+  }
 }
 
 // 创建dom

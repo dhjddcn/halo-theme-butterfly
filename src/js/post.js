@@ -5,12 +5,12 @@
  * @Description: 文章 代码块
  */
 import {initCode, initToc} from '../../dev/js/Utils.js'
-import {re} from "@babel/core/lib/vendor/import-meta-resolve";
 
 
 class Post {
   constructor() {
     initCode('.render-html pre');
+    
     initToc('.post-tocbot > .toc', '.render-html');
 
     if (ThemeConfig.post['out_date'] > 0) this.outDate();
@@ -46,7 +46,6 @@ class Post {
     }
   }
 
-  // 文章目录
 
   // dCodeURI
   copyRightPermalinkDecode() {
@@ -99,29 +98,30 @@ class Post {
   // 移动端显示目录
   showTocbot() {
     const dom = $('.adsorption > .show-tocbot');
-    
 
     if (!dom.length) return;
 
     dom.on('click', function () {
 
-      // const postTocbot = $('.aside > .post-tocbot');
-      //
-      // if (postTocbot.attr('style')) {
-      //
-      //   postTocbot.attr('style', '');
-      //   console.log('移除');
-      //   return;
-      //  
-      // }
-      //
-      // postTocbot.css({
-      //   'display': 'block',
-      //   'animation': '0.3s ease 0s 1 normal none running toc-open'
-      // });
-    });
+      const postTocbot = $('.aside > .post-tocbot');
 
-    console.log(dom);
+      if (postTocbot.attr('style')) {
+
+        postTocbot.css({'animation': 'toc-close .2s'});
+
+        setTimeout(() => {
+          postTocbot.attr('style', '');
+        }, 100);
+
+        return;
+
+      }
+
+      postTocbot.css({
+        'display': 'block',
+        'animation': 'toc-open .3s'
+      });
+    });
 
   }
 }

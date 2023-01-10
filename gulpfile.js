@@ -8,6 +8,8 @@ const gzip = require("gulp-gzip");
 const webpack = require("webpack-stream");
 const path = require("path");
 const fs = require("fs");
+const NodePolyfillPlugin = require('node-polyfill-webpack-plugin')
+
 const resolve = (name) => path.resolve(__dirname, name);
 
 gulp.task("css", function () {
@@ -26,9 +28,10 @@ gulp.task("css", function () {
     .pipe(gulp.dest('./templates/assets/css'))
 })
 
+
 gulp.task("js", function () {
   const getEntryData = () => {
-    const ignoreFiles = [];
+    const ignoreFiles = ['u'];
     try {
       let files = fs.readdirSync("./src/js", "utf-8");
       files = files.filter((file) => {
@@ -61,15 +64,17 @@ gulp.task("js", function () {
           exclude: resolve("node_modules"),
           options: {
             presets: ["@babel/preset-env"],
-            plugins: ["@babel/plugin-transform-runtime"],
+            plugins: ["@babel/plugin-transform-runtime",],
           },
         },
       ],
     },
+    
     stats: "errors-only",
     output: {
       filename: "[name].min.js",
     },
+
   })
     .pipe(uglify())
     .pipe(gulp.dest('./templates/assets/js'))
