@@ -53,40 +53,55 @@ export function throttle(func, wait, options) {
   }
 }
 
-// 代码块
-// <i className="fa-solid fa-sort-down"></i>
+
+/**
+ * 代码块 功能
+ * @param dom
+ */
 export function initCode(dom) {
+  if (!ThemeConfig.code.enable) return;
+
   const codes = $(dom);
 
   if (!codes.length) return;
 
   codes.each(function () {
-    const t = $(this);
+    const pre = $(this);
 
-    const toolbar = t.next('.toolbar');
-
-    const enable_expander = true;
-
-    const enable_copy = true;
+    const toolbar = pre.next('.toolbar');
 
     if (toolbar) {
       toolbar.append(`<div class="custom-item absolute top-0"></div>`);
 
       const customItem = toolbar.find('.custom-item');
 
-      if (enable_expander) {
+
+      //标题
+      if (ThemeConfig.code['enable_title']) {
+        toolbar.addClass('c-title')
+      }
+
+      // 分割线
+      if (ThemeConfig.code['enable_hr']) {
+        toolbar.addClass('c-hr')
+      }
+
+      // 代码块展开
+      if (ThemeConfig.code['enable_expander']) {
         customItem.append('<i class="fa-sharp fa-solid fa-caret-down code-expander cursor-pointer"></i>');
 
         customItem.find('.code-expander').on('click', function () {
-          t.children('code').toggle(100);
+          pre.children('code').toggle(30);
+          toolbar.toggleClass('c-expander');
         })
       }
 
-      if (enable_copy) {
+      // 代码块复制
+      if (ThemeConfig.code['enable_copy']) {
         customItem.append('<i class="fa-solid fa-book-copy code-copy cursor-pointer"></i>');
 
         customItem.find('.code-copy').on('click', function (e) {
-          const text = t.children("code[class*='language-']").text();
+          const text = pre.children("code[class*='language-']").text();
 
           const clipboard = new ClipboardJS(this, {text: () => text});
 
@@ -103,22 +118,38 @@ export function initCode(dom) {
         })
       }
 
-      // toolbar.find('.custom-item').on('delegate', '.code-expander', function () {
-      //   console.log(1111);
-      // })
-
-      // if (enable_expander) {
-      //   t.find('.toolbar .code-expander').on('click', () => {
-      //     console.log(1111);
-      //   })
-      //
-      // }
-
-
     }
-
-
   })
+}
+
+/**
+ * 目录
+ * @param tocSelector
+ * @param contentSelector
+ */
+export function initToc(tocSelector, contentSelector) {
+  window.tocbot.init({
+    tocSelector,
+    contentSelector,
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    includeTitleTags: true,
+    scrollSmoothDuration: 280,
+    throttleTimeout: 30,
+    headingsOffset: 80, // 目录中高亮的偏移值，和scrollSmoothOffset有关联
+    scrollSmoothOffset: -80, // 屏幕滚动的偏移值（这里和导航条固定也有关联）
+    fixedSidebarOffset: "auto",
+    disableTocScrollSync: false,
+    onClick: function (e) {
+      e.preventDefault();
+
+    },
+    scrollEndCallback: function (e) {
+      // console.log(e);
+      // window.tocPhase = null
+    }
+  });
 }
 
 // 创建dom

@@ -30,12 +30,12 @@
 </th:block>
 
 <!--弹出栏-->
-<div xmlns:th="https://www.thymeleaf.org" th:fragment="sidebar"  class="sidebar">
-  <div class=""> </div>
+<div xmlns:th="https://www.thymeleaf.org" th:fragment="sidebar" class="sidebar">
+  <div class=""></div>
 </div>
 
 <!--底部-->
-<footer xmlns:th="https://www.thymeleaf.org" th:fragment="footer" class="footer relative text-center">
+<footer xmlns:th="https://www.thymeleaf.org" th:fragment="footer" class="footer relative z-f1 text-center">
   <div class="copyright" th:text="'© 2020 - '+${#dates.format(#dates.createNow(), 'yyyy')}+' By '+ ${site.title}"> ©2020
     - 2023 By 小红
   </div>
@@ -49,6 +49,10 @@
 
 <!--左右吸附小部件-->
 <section xmlns:th="https://www.thymeleaf.org" th:fragment="adsorption" class="adsorption z-100 fixed transition-all-5s">
+  <button class="show-tocbot text-center none" type="button" title="浅色和深色模式转换">
+    <i class="fas fa-list-ul"></i>
+  </button>
+
   <button class="switch-model block text-center" type="button" title="浅色和深色模式转换">
     <i class="fas fa-adjust"></i>
   </button>

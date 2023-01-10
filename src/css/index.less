@@ -7,15 +7,14 @@
 
 
 .index {
-  @import 'dev/css/page/index/index.less';
-  @import 'dev/css/page/index/media.less';
+  @import 'dev/less/page/index/base.less';
+  @import 'dev/less/page/index/media.less';
 
   // 模块
-  @import "dev/css/modules/postList/postList.less";
-  @import "dev/css/modules/pagination/pagination.less";
+  @import "dev/less/modules/postList/postList.less";
+  @import "dev/less/modules/pagination/pagination.less";
 }
+
 //适配
-#Butterfly{
-  @import "dev/css/modules/postList/media.less";
-  @import "dev/css/modules/pagination/media.less";
-}
+@import "dev/less/modules/postList/media.less";
+@import "dev/less/modules/pagination/media.less";

@@ -1,0 +1,20 @@
+/**
+ * @Author: 小红
+ * @Date: 2023/1/6
+ * @createTime: 2023/1/6
+ * @Description: 卡片基本样式 
+ */
+
+.card {
+  border-radius: var(--card-border-radius);
+  background-color: var(--card-bg-color);
+  box-shadow: var(--card-box-shadow);
+  transition: transform .25s, box-shadow .25s, width .25s, height .25s;
+
+  &:hover {
+    //transform: translateY(-5px);
+    //box-shadow: 0 2rem 1rem -1rem #93baff4d;
+    box-shadow: 0 3px 8px 6px rgba(7, 17, 27, 0.09);
+  }
+
+}

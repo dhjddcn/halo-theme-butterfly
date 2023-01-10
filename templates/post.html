@@ -6,12 +6,13 @@
   title = ${post.spec.title},
   head = ~{::head},
   content = ~{::content},
-  script = ~{::script}
+  js = ~{::js}
   )}">
 >
 <th:block th:fragment="head">
   <style
     th:inline="css"
+    type="text/css"
     th:with="above_background= ${is_body_background_http ? '' : 'url(' + post.spec.cover + ')'}
   ">
     html {
@@ -19,6 +20,8 @@
     }
   </style>
   <link rel="stylesheet" th:href="@{/assets/plugins/fancybox/fancybox.min.css}">
+
+
   <th:block th:if="${theme.config.code.enable}">
     <link rel="stylesheet" th:href="@{/assets/plugins/prism/prism.min.css}">
     <link rel="stylesheet" th:href="@{'/assets/plugins/prism/themes/prism-'+${theme.config.code.theme}+'.css'}">
@@ -28,16 +31,17 @@
 </th:block>
 
 <th:block th:fragment="content">
-  <section class="content card animated fadeIn " style="animation-duration:1.3s">
+  <section class="container card">
     <!--/* todo  publishTime 此时间需要改为更新时间--><!--*/-->
     <div class="post-outDate relative none"
          th:data-outDate="${theme.config.post.out_date}"
          th:data-publishTime="${#dates.format(post.spec.publishTime,'yyyy-MM-dd')}">
     </div>
 
-    <article th:utext="${post.content.content}" class="render-html animated fadeIn"></article>
+    <article th:utext="${post.content.content}"
+             th:class="'render-html animated fadeIn single_code_select '+${ theme.config.code.enable_line ? 'line-numbers' : ''}"></article>
 
-    <div class="copyRight relative">
+    <div class="post-copyRight relative">
       <i class="fa-solid fa-copyright absolute"></i>
 
       <div class="author">
@@ -65,7 +69,7 @@
 
     </div>
 
-    <div class="abstract">
+    <div class="post-abstract">
       <span class="categories">
             <a th:each=" cts : ${post.categories}"
                class="link inline-block text-center"
@@ -87,7 +91,7 @@
           </span>
     </div>
 
-    <div class="support">
+    <div class="post-support">
       <div class="title text-center">喜欢就支持一下吧</div>
 
       <div class="content flex flex-justify-content-center">
@@ -150,7 +154,11 @@
 
           <div class="reward-dropdown absolute z-50 flex">
             <section class="text-center" th:each="r :${theme.config.post.reward}">
-              <img th:src="${r.url}" th:alt="${r.name}" alt="">
+              <img
+                th:src="${theme.config.loading.preload}"
+                th:attr="onerror='this.src='+${'`'+theme.config.loading.err+'`'}"
+                th:data-lazy-src="${r.url}"
+                th:alt="${r.name}" alt="">
               <span class="inline-block" th:text="${r.name}"></span>
             </section>
           </div>
@@ -163,10 +171,19 @@
                     th:attr="name=${post.metadata.name}"/>
     </div>
   </section>
-  <th:block th:insert="~{modules/main:: asidePost}"></th:block>
+  <aside class="aside w-25">
+    <section class="card sticky post-tocbot">
+      <h1 class="aside-title">
+        <i class="fas fa-stream"></i>
+        <span class="name">目录</span>
+      </h1>
+
+      <div class="toc"></div>
+    </section>
+  </aside>
 </th:block>
 
-<th:block th:fragment="script">
+<th:block th:fragment="js">
   <script type="text/javascript" th:src="@{/assets/plugins/fancybox/fancybox.min.js}"></script>
   <script type="text/javascript" th:src="@{/assets/plugins/clipboard/clipboard.min.js}"></script>
   <script type="text/javascript" th:src="@{/assets/plugins/tocbot/tocbot.min.js}"></script>

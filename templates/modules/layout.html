@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light" xmlns:th="https://www.thymeleaf.org"
-      th:fragment="layout (page,title,head,content,script)">
+      th:fragment="layout (page,title,head,content,js)">
 <head th:with="is_body_background_http = ${#strings.containsIgnoreCase(theme.config.style.body_background,'http')}">
   <title th:text="${title}"></title>
   <meta charset="UTF-8"/>
@@ -21,16 +21,19 @@
   <link rel="stylesheet" th:href="@{/assets/font/zn.min.css}" media="all" onload="this.media='all'">
   <link rel="stylesheet" th:href="@{/assets/css/global.min.css}">
   <link rel="stylesheet" th:href="@{/assets/plugins/animate/animate.min.css}">
-  <link rel="stylesheet" th:href="@{/assets/plugins/fontawesome/fontawesome.min.css}" media="all" onload="this.media='all'">
+  <link rel="stylesheet" th:href="@{/assets/plugins/fontawesome/fontawesome.min.css}" media="all"
+        onload="this.media='all'">
   <th:block th:insert="${head}"></th:block>
   <link rel="stylesheet" th:href="@{/assets/plugins/Qmsg/Qmsg.min.css}">
-  <script id="base-script">
+  <script id="base-script" th:inline="javascript">
     const locDataTheme = localStorage.getItem('Butterfly-data-theme');
 
     if (locDataTheme) {
       document.querySelector('html').setAttribute('data-theme', locDataTheme);
       window.dataTheme = locDataTheme;
     }
+
+    window.ThemeConfig =  /*[[${theme.config}]]*/ {};
 
     document.getElementById('base-script').remove();
   </script>
@@ -51,6 +54,6 @@
 <script type="text/javascript" th:src="@{/assets/plugins/Qmsg/Qmsg.min.js}"></script>
 <script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <script type="text/javascript" th:src="@{/assets/js/global.min.js}"></script>
-<th:block th:insert="${script}"/>
+<th:block th:insert="${js}"/>
 </body>
 </html>

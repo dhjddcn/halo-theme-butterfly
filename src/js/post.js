@@ -4,17 +4,24 @@
  * @fileName: post
  * @Description: 文章 代码块
  */
-import {initCode} from '../../dev/js/Utils.js'
+import {initCode, initToc} from '../../dev/js/Utils.js'
+import {re} from "@babel/core/lib/vendor/import-meta-resolve";
 
 
 class Post {
   constructor() {
     initCode('.render-html pre');
-    this.outDate();
-    this.initToc();
+    initToc('.post-tocbot > .toc', '.render-html');
+
+    if (ThemeConfig.post['out_date'] > 0) this.outDate();
+
     this.fancyBoxImg();
+
     this.copyPermalink();
+
     this.copyRightPermalinkDecode();
+
+    this.showTocbot();
   }
 
   // 文章过期
@@ -40,34 +47,10 @@ class Post {
   }
 
   // 文章目录
-  initToc() {
-    window.tocbot.init({
-      tocSelector: '.toc-bot > .toc',
-      contentSelector: '.render-html',
-      headingSelector: 'h1, h2, h3, h4, h5, h6',
-      hasInnerContainers: true,
-      scrollSmooth: true,
-      includeTitleTags: true,
-      scrollSmoothDuration: 280,
-      throttleTimeout: 30,
-      headingsOffset: 80, // 目录中高亮的偏移值，和scrollSmoothOffset有关联
-      scrollSmoothOffset: -80, // 屏幕滚动的偏移值（这里和导航条固定也有关联）
-      fixedSidebarOffset: "auto",
-      disableTocScrollSync: false,
-      onClick: function (e) {
-        e.preventDefault();
-
-      },
-      scrollEndCallback: function (e) {
-        // console.log(e);
-        // window.tocPhase = null
-      }
-    });
-  }
 
   // dCodeURI
   copyRightPermalinkDecode() {
-    const dom = $('.copyRight .permalink');
+    const dom = $('.post-copyRight .permalink');
 
     if (!dom.length) return;
 
@@ -93,7 +76,7 @@ class Post {
   }
 
   copyPermalink() {
-    const dom = $('.share .copy-permalink');
+    const dom = $('.post-support .share .copy-permalink');
 
     if (!dom.length) return;
 
@@ -111,6 +94,34 @@ class Post {
 
       clipboard.onClick(e);
     })
+  }
+
+  // 移动端显示目录
+  showTocbot() {
+    const dom = $('.adsorption > .show-tocbot');
+    
+
+    if (!dom.length) return;
+
+    dom.on('click', function () {
+
+      // const postTocbot = $('.aside > .post-tocbot');
+      //
+      // if (postTocbot.attr('style')) {
+      //
+      //   postTocbot.attr('style', '');
+      //   console.log('移除');
+      //   return;
+      //  
+      // }
+      //
+      // postTocbot.css({
+      //   'display': 'block',
+      //   'animation': '0.3s ease 0s 1 normal none running toc-open'
+      // });
+    });
+
+    console.log(dom);
 
   }
 }

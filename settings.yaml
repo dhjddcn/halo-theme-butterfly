@@ -65,7 +65,7 @@ spec:
           label: 全局内容区最大宽度
           value: 1350px
           placeholder: 请填写内容区最大宽度
-          help: 内容区域最大宽度，像素或百分比，默认 1350px（注：文字布局为列表建议：1350px 平铺：1400px）
+          help: 内容区域最大宽度，像素或百分比，默认 1350px（注：文字布局为列表建议：1350px 平铺：1400px，配合halo 设置-文章设置-文章列表显示条数，效果更好）
           validation: required
         - $formkit: attachment
           name: body_background
@@ -262,7 +262,7 @@ spec:
           label: 文章过期
           placeholder: 请填写 文章过期时间
           value: 30
-          help: 文章过期-卡片提醒，默认30天
+          help: 文章过期-卡片提醒，默认30天 如果填写0不展示
           validation: required|number
         - $formkit: radio
           name: enable_reward
@@ -302,6 +302,56 @@ spec:
           name: enable
           label: 启用代码块
           help: 如果安装代码块插件，可关闭此功能
+          value: true
+          options:
+            - label: 启用
+              value: true
+            - label: 禁用
+              value: false
+        - $formkit: radio
+          name: enable_title
+          label: 启用代码标题
+          help: 启用代码块的标题，默认显示语言类型，也可自定义标题
+          value: true
+          options:
+            - label: 启用
+              value: true
+            - label: 禁用
+              value: false
+        - $formkit: radio
+          name: enable_hr
+          label: 启用代码标题分割线
+          help: 启用代码标题和内容之间的分割线，不展示时会更加简洁
+          value: true
+          options:
+            - label: 启用
+              value: true
+            - label: 禁用
+              value: false
+        - $formkit: radio
+          name: enable_line
+          label: 启用代码行号
+          help: 启用代码块行号功能
+          value: true
+          options:
+            - label: 启用
+              value: true
+            - label: 禁用
+              value: false
+        - $formkit: radio
+          name: enable_copy
+          label: 启用代码复制
+          help: 启用代码块复制按钮
+          value: true
+          options:
+            - label: 启用
+              value: true
+            - label: 禁用
+              value: false
+        - $formkit: radio
+          name: enable_expander
+          label: 启用代码折叠
+          help: 启用代码折叠功能
           value: true
           options:
             - label: 启用
@@ -385,7 +435,7 @@ spec:
               label: "xonokai"
             - value: "z-touch"
               label: "z-touch"
-            
+
 
     - group: socials
       label: 社交

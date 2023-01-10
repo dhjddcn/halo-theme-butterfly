@@ -1,0 +1,159 @@
+/**
+ * @Description:
+ * @author: 小红
+ * @date: 2023/1/6
+ * @fileName: 侧边栏基本样式
+ */
+
+.aside {
+  align-self: flex-start;
+  > section {
+    padding: 1rem 1.2rem;
+
+    &:not(:first-child) {
+      margin-top: 1rem;
+    }
+  }
+
+  &-user {
+    > .avatar {
+      width: 110px;
+      height: 110px;
+      border-radius: 70px;
+      transition: filter 375ms ease-in .2s, transform .3s;
+
+      &:hover {
+        filter: brightness(1.2);
+        transform: rotate(360deg);
+      }
+    }
+
+    > .name {
+      font-size: 1.50rem;
+    }
+
+    > .data {
+      display: table;
+      margin: 14px 0 4px;
+      table-layout: fixed;
+
+      .item {
+        display: table-cell;
+      }
+
+      .headline {
+        font-size: 1rem;
+      }
+
+      .num {
+        font-size: 1.4rem;
+        color: var(--text-obs-color);
+      }
+
+    }
+
+    > .button {
+      //background-color: var(--btn-bg-color);
+      background-color: var(--theme);
+      color: var(--btn-color);
+      line-height: 2.4;
+      border-radius: 15px;
+      //transition: color .2s, background-color .2s;
+      transition: box-shadow 0.25s ease 0s;
+
+      &:hover {
+        //background-color: var(--btn-hover-color);
+        box-shadow: 0 0.1rem 0.8rem var(--theme);
+      }
+    }
+
+    > .icons {
+      margin: 15px 0 -6px;
+
+
+      a {
+        margin: 0 0.6rem;
+      }
+
+      i {
+        font-size: 1.28rem;
+      }
+    }
+  }
+
+  &-title {
+    padding-bottom: 0.3rem;
+    font-size: 1rem;
+    margin: 0;
+  }
+
+  &-notice {
+    .aside-title i {
+      color: #ff0000;
+    }
+
+    > .content {
+    }
+  }
+
+  &-category {
+    > .content > .link {
+      padding: 3px 10px 3px 22px;
+
+      > span {
+        transition: color .3s;
+      }
+
+      &:before {
+        position: absolute;
+        top: 0.6rem;
+        left: 0;
+        width: 0.43rem;
+        height: 0.43rem;
+        border: 0.215rem solid var(--theme);
+        border-radius: 0.43rem;
+        background: 0 0;
+        content: '';
+        cursor: pointer;
+        transition: border-color .3s, box-shadow 0.25s ease 0s;
+      }
+
+      &:hover {
+        color: var(--link-hover-color);
+
+        &:before {
+          //border-color: var(--btn-hover-color);
+          box-shadow: 0 0.1rem 0.8rem var(--theme);
+        }
+      }
+
+      &:not(:first-child) {
+        margin-top: 5px;
+      }
+    }
+  }
+
+  &-tags {
+    > .content {
+      .link {
+        padding: 0 .5rem;
+
+        &:hover {
+          color: var(--link-hover-color);
+        }
+      }
+    }
+  }
+
+  &-webInfo {
+    .content {
+      p.item {
+        padding: 8px 10px 0;
+
+        .name {
+          padding-right: 20px;
+        }
+      }
+    }
+  }
+}

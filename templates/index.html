@@ -6,7 +6,7 @@
   title = ${site.title},
   head = ~{::head},
   content = ~{::content},
-  script = ~{::script}
+  js = ~{::js}
   )}">
 >
 <th:block th:fragment="head">
@@ -20,7 +20,7 @@
 </th:block>
 
 <th:block th:fragment="content">
-  <section class="content">
+  <section class="container">
     <th:block th:replace="~{modules/main:: posts(${posts.items},${theme.config.index.post_layout})}"></th:block>
     <th:block th:replace="~{modules/main:: pagination(${posts})}"></th:block>
   </section>
@@ -28,7 +28,7 @@
   <th:block th:replace="~{modules/main:: asidePublic}"></th:block>
 </th:block>
 
-<th:block th:fragment="script">
+<th:block th:fragment="js">
   <script type="text/javascript" th:src="@{/assets/plugins/typed/typed.min.js}"></script>
   <script type="text/javascript" th:src="@{/assets/js/index.min.js}"></script>
 </th:block>
