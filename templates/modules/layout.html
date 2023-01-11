@@ -18,20 +18,19 @@
   <meta property="og:type" content="website">
   <link rel="canonical" th:href="${site.url}">
   <th:block th:insert="~{modules/public:: styles}"></th:block>
-  <link rel="stylesheet" th:href="@{/assets/font/zn.min.css}" media="all" onload="this.media='all'">
-  <link rel="stylesheet" th:href="@{/assets/css/global.min.css}">
-  <link rel="stylesheet" th:href="@{/assets/plugins/animate/animate.min.css}">
-  <link rel="stylesheet" th:href="@{/assets/plugins/fontawesome/fontawesome.min.css}" media="all"
-        onload="this.media='all'">
+  <link rel="preload stylesheet" as="style" th:href="@{'/assets/font/'+${theme.config.style.font_family}+'.min.css'}">
+  <link rel="preload stylesheet" as="style" th:href="@{/assets/css/global.min.css}">
+  <link rel="preload stylesheet" as="style" th:href="@{/assets/plugins/animate/animate.min.css}">
+  <link rel="preload stylesheet" as="style" th:href="@{/assets/plugins/fontawesome/fontawesome.min.css}">
   <link rel="stylesheet" th:href="@{/assets/plugins/Qmsg/Qmsg.min.css}">
   <script id="base-script" th:inline="javascript">
+    window.ThemeConfig =  /*[[${theme.config}]]*/ {};
+    window.ThemeBasePath = '[(${#theme.assets("")})]';
     const locDataTheme = localStorage.getItem('Butterfly-data-theme');
     if (locDataTheme) {
       document.querySelector('html').setAttribute('data-theme', locDataTheme);
       window.dataTheme = locDataTheme;
     }
-    window.ThemeConfig =  /*[[${theme.config}]]*/ {};
-    window.ThemeBasePath = '[(${#theme.assets("")})]';
     document.getElementById('base-script').remove();
   </script>
   <th:block th:insert="${head}"></th:block>

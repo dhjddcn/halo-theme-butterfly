@@ -4,12 +4,12 @@
  * @fileName: post
  * @Description: 文章 代码块
  */
-import {initCode, initToc, getPrismThemeLink} from './Utils.js'
+import {initCode, initToc, switchCodeTheme} from './Utils.js'
 
 
 class Post {
   constructor() {
-    getPrismThemeLink(dataTheme);
+    switchCodeTheme(dataTheme);
 
     initCode('.render-html pre');
 

@@ -74,6 +74,15 @@ spec:
           value: 'linear-gradient(90deg, rgba(247, 149, 51, .1) 0, rgba(243, 112, 85, .1) 15%, rgba(239, 78, 123, .1) 30%, rgba(161, 102, 171, .1) 44%, rgba(80, 115, 184, .1) 58%, rgba(16, 152, 173, .1) 72%, rgba(7, 179, 155, .1) 86%, rgba(109, 186, 130, .1) 100%)'
           help: 如果全局背景图设置为图片链接，第一屏背景图将不生效 (注：颜色值或图片链接) 默认：linear-gradient(90deg, rgba(247, 149, 51, .1) 0, rgba(243, 112, 85, .1) 15%, rgba(239, 78, 123, .1) 30%, rgba(161, 102, 171, .1) 44%, rgba(80, 115, 184, .1) 58%, rgba(16, 152, 173, .1) 72%, rgba(7, 179, 155, .1) 86%, rgba(109, 186, 130, .1) 100%)
           validation: required
+        - $formkit: select
+          name: font_family
+          label: 代码块主题（浅色）随着系统主题变化
+          value: default_font
+          options:
+            - value: "default_font"
+              label: "主题默认字体"
+            - value: "HarmonyOS_Regular"
+              label: "HarmonyOS_Regular"
 
     - group: loading
       label: 加载

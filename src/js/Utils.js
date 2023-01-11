@@ -4,7 +4,6 @@
  * @fileName: Utils
  * @Description: 工具
  */
-
 export function debounce(func, wait, immediate) {
   let timeout
   return function () {
@@ -91,7 +90,7 @@ export function initCode(dom) {
         customItem.append('<i class="fa-sharp fa-solid fa-caret-down code-expander cursor-pointer"></i>');
 
         customItem.find('.code-expander').on('click', function () {
-          pre.children('code').toggle(30);
+          pre.children('code').toggle();
           toolbar.toggleClass('c-expander');
         })
       }
@@ -123,22 +122,28 @@ export function initCode(dom) {
 }
 
 /**
- * 动态加载代码块css
+ * 切换代码块主题
  * @param tp
  */
-export function getPrismThemeLink(tp) {
-  if (!ThemeConfig.code.enable) return; // 是否启用默认代码高亮
-  const p = document.getElementById('prism-theme');
-  if (p) p.remove();
-  const link = document.createElement('link');
-  link.type = 'text/css';
-  link.rel = 'stylesheet';
-  link.id = 'prism-theme'
-  link.href = `${ThemeBasePath}/plugins/prism/themes/prism-${ThemeConfig.code['theme_' + tp]}.css`;
-  // console.log(link.href, tp);
-  document.getElementsByTagName("head")[0].append(link);
+export function switchCodeTheme(tp) {
+  const light = document.querySelector('link[data-code-theme=light]');
+
+  const dark = document.querySelector('link[data-code-theme=dark]');
+
+  if (!dark && !light) return;
+
+  if (tp === 'light') {
+    dark.disabled = true;
+    light.disabled = false;
+    return;
+  }
+
+  light.disabled = true;
+  dark.disabled = false;
 }
 
+
+//
 /**
  * 目录
  * @param tocSelector

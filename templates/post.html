@@ -19,30 +19,19 @@
       --above-background: /*[(${above_background})]*/ transparent;
     }
   </style>
-  <link rel="stylesheet" th:href="@{/assets/plugins/fancybox/fancybox.min.css}">
+  <link rel="preload stylesheet" as="style" th:href="@{/assets/plugins/fancybox/fancybox.min.css}">
   <th:block th:if="${theme.config.code.enable}">
-    <link rel="stylesheet" th:href="@{/assets/plugins/prism/prism.min.css}">
-    <!--    <link rel="stylesheet"-->
-    <!--          id="code-theme"-->
-    <!--          th:href="@{'/assets/plugins/prism/themes/prism-'+${theme.config.code.theme_light}+'.css'}">-->
+    <link rel="preload stylesheet preload" as="style" th:href="@{/assets/plugins/prism/prism.min.css}">
+    <link rel="stylesheet"
+          data-code-theme="light"
+          disabled
+          th:href="@{'/assets/plugins/prism/themes/prism-'+${theme.config.code.theme_light}+'.css'}">
+    <link rel="stylesheet"
+          data-code-theme="dark"
+          disabled
+          th:href="@{'/assets/plugins/prism/themes/prism-'+${theme.config.code.theme_dark}+'.css'}">
     <script type="text/javascript" th:src="@{/assets/plugins/prism/prism.min.js}"></script>
   </th:block>
-  <script id="pos-script" th:inline="javascript">
-    // const getPrismThemeLink = (tp) => {
-    //   if (!ThemeConfig.code.enable) return; // 是否启用默认代码高亮
-    //   const p = document.getElementById('prism-theme');
-    //   if (p) p.remove();
-    //   const link = document.createElement('link');
-    //   link.type = 'text/css';
-    //   link.rel = 'stylesheet';
-    //   link.id = 'prism-theme'
-    //   link.href = `${ThemeBasePath}/plugins/prism/themes/prism-${ThemeConfig.code['theme_' + tp]}.css`;
-    //   console.log(link.href, tp);
-    //   document.getElementsByTagName("head")[0].append(link);
-    // }
-    // GlobalClass.getPrismThemeLink(dataTheme);
-  </script>
-
   <link rel="stylesheet" th:href="@{/assets/css/post.min.css}">
 </th:block>
 
@@ -111,14 +100,15 @@
       <div class="title text-center">喜欢就支持一下吧</div>
 
       <div class="content flex flex-justify-content-center">
-        <!--/* todo 待开发--> <!--*/-->
+        <!--/* todo 待开发-->
         <a
           class="praise item cursor-pointer inline-flex flex-direction-column flex-justify-content-center  flex-align-items-center"
           href="">
           <i class="fa-light fa-thumbs-up"></i>
           <span th:text="'点赞 '+${post.stats.upvote}"></span>
         </a>
-
+        <!--*/-->
+        
         <div
           class="share relative item cursor-pointer inline-flex flex-direction-column flex-justify-content-center  flex-align-items-center">
           <i class="fa-light fa-arrow-up-right-from-square"></i>
