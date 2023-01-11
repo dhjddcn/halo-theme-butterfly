@@ -5,30 +5,22 @@
  * @fileName: theme
  */
 
+// 基础变量
 html {
-  --font-color: #4c4948;
   --font-size: 14px;
 
+  //全局文字颜色
+  --font-color: #4c4948;
+
+  //选择文本
   --selection-bg-color: #00c4b6;
 
+  //滚动条
   --scrollbar-color: var(--theme);
 
-  //导航栏
-  --nav-font-color: #eee;
-  --nav-font-hover-color: #fff;
-  --nav-scroll-font-color: var(--font-color);
-  --nav-scroll-font-hover-color: var(--theme);
-  --nav-scroll-bg-color: rgba(255, 255, 255, .8);
-  --nav-scroll-shadow:  0 5px 6px -5px rgb(133 133 133 / 60%);
-  --nav-menu-dropdown-bg-color: #fff;
-
-  
   //按钮
   --btn-color: #fff;
   --btn-bg-color: var(--theme);
-
-  //卡片背景
-  //--card-bg-color: rgba(255, 255, 255, 0.6);
 
   //文本强调
   --text-obs-color: #1f2d3d;
@@ -36,47 +28,76 @@ html {
   //a-hover标签
   --link-hover-color: var(--theme);
 
+  &[data-theme=dark] {
+
+    --font-color: rgba(255, 255, 255, 0.7);
+
+    --selection-bg-color: #00c4b6;
+
+    --scrollbar-color: #1f1f1f;
+
+    --btn-color: rgba(255, 255, 255, 0.7);
+    --btn-bg-color: var(--theme);
+
+    --text-obs-color: rgba(255, 255, 255, 0.9);
+
+    --link-hover-color: var(--theme);
+
+    //卡片背景
+    --card-bg-color: rgb(40 47 62 / 90%);
+  }
+}
+
+//头部变量
+html {
+  //导航栏
+  --nav-font-color: #eee;
+  --nav-font-hover-color: #fff;
+  --nav-scroll-font-color: var(--font-color);
+  --nav-scroll-font-hover-color: var(--theme);
+  --nav-scroll-bg-color: rgba(255, 255, 255, .8);
+  --nav-scroll-shadow: 0 5px 6px -5px rgb(133 133 133 / 60%);
+  --nav-menu-dropdown-bg-color: #fff;
+
+  &[data-theme=dark] {
+    --nav-font-color: var(--font-color);
+    --nav-font-hover-color: rgba(255, 255, 255, 0.9);
+    --nav-scroll-font-color: var(--font-color);
+    --nav-scroll-font-hover-color: var(--theme);
+    --nav-scroll-bg-color: rgba(18, 18, 18, .8);
+    --nav-scroll-shadow: 0 5px 6px -5px rgb(133 133 133 / 0%);
+    --nav-menu-dropdown-bg-color: #121212;
+  }
+
+}
+
+
+//主要内容变量
+html {
   //首屏
   --above-title-font-color: #fff;
   --above-subtitle-font-color: #eee;
-  
+
   //移动端侧边栏
   --sidebar-bg: #f6f8fa;
-  
+
 
   // h1- h6
   --text-h-color: #1f2d3d;
 
-  
+  //侧边栏
+  --aside-news-border-color: #c6c6c6;
+
 }
 
 html[data-theme=dark] {
-  --font-color: rgba(255, 255, 255, 0.7);
-  --selection-bg-color: #00c4b6;
 
-  --scrollbar-color: #1f1f1f;
-
-  --nav-font-color: var(--font-color);
-  --nav-font-hover-color: rgba(255,255,255,0.9);
-  --nav-scroll-font-color: var(--font-color);
-  --nav-scroll-font-hover-color: var(--theme);
-  --nav-scroll-bg-color: rgba(18, 18, 18, .8);
-  --nav-scroll-shadow: 0 5px 6px -5px rgb(133 133 133 / 0%);
-  --nav-menu-dropdown-bg-color:  #121212;
-
-  --btn-color: rgba(255, 255, 255, 0.7);
-  --btn-bg-color: var(--theme);
-
-  --card-bg-color: rgb(40 47 62 / 90%);
-
-  --text-obs-color: rgba(255, 255, 255, 0.9);
-
-  --link-hover-color: var(--theme);
-
-  --above-title-font-color: rgba(255,255,255,0.9);
-  --above-subtitle-font-color: rgba(255,255,255,0.7);
+  --above-title-font-color: rgba(255, 255, 255, 0.9);
+  --above-subtitle-font-color: rgba(255, 255, 255, 0.7);
 
   --sidebar-bg: #121212;
-  
-  --text-h-color: rgba(255,255,255,0.9);
+
+  --text-h-color: rgba(255, 255, 255, 0.9);
+
+  --aside-news-border-color: rgba(255, 255, 255, .1);
 }
