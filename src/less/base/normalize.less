@@ -49,13 +49,13 @@ h1, h2, h3, h4, h5, h6 {
   position: relative;
   margin: 20px 0 14px;
   font-weight: 700;
-  color: var(--text-h-color);
 }
 
 img {
   border: 0;
   vertical-align: middle;
-  max-width: 100%
+  max-width: 100%;
+  transition: filter 375ms ease-in .2s, transform .6s;
 }
 
 img:not([src]), img[src=""] {
@@ -63,13 +63,10 @@ img:not([src]), img[src=""] {
   opacity: 0
 }
 
-//img[data-lazy-src]:not(.loaded,.error) {
-//  filter: blur(50px) brightness(1)
+//
+//img.loading, img.error {
+//  filter: blur(175px) brightness(1)
 //}
-
-img[data-lazy-src]:is(.error){
-  filter: blur(88px) brightness(1)
-}
 
 //svg {
 //  display: inline-block;
@@ -94,6 +91,6 @@ table {
   border-spacing: 0
 }
 
-i{
+i {
   cursor: inherit;
 }

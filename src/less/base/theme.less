@@ -7,7 +7,6 @@
 
 // 基础变量
 html {
-  --font-size: 14px;
 
   //全局文字颜色
   --font-color: #4c4948;
@@ -29,7 +28,6 @@ html {
   --link-hover-color: var(--theme);
 
   &[data-theme=dark] {
-
     --font-color: rgba(255, 255, 255, 0.7);
 
     --selection-bg-color: #00c4b6;
@@ -48,6 +46,7 @@ html {
   }
 }
 
+
 //头部变量
 html {
   //导航栏
@@ -59,7 +58,15 @@ html {
   --nav-scroll-shadow: 0 5px 6px -5px rgb(133 133 133 / 60%);
   --nav-menu-dropdown-bg-color: #fff;
 
+  //首屏 1 2
+  --above-one-color: #fff;
+  --above-two-color: #eee;
+
   &[data-theme=dark] {
+
+    --above-one-color: rgba(255, 255, 255, 0.9);
+    --above-two-color: rgba(255, 255, 255, 0.7);
+
     --nav-font-color: var(--font-color);
     --nav-font-hover-color: rgba(255, 255, 255, 0.9);
     --nav-scroll-font-color: var(--font-color);
@@ -74,30 +81,19 @@ html {
 
 //主要内容变量
 html {
-  //首屏
-  --above-title-font-color: #fff;
-  --above-subtitle-font-color: #eee;
-
   //移动端侧边栏
   --sidebar-bg: #f6f8fa;
 
 
-  // h1- h6
-  --text-h-color: #1f2d3d;
-
   //侧边栏
   --aside-news-border-color: #c6c6c6;
 
+  &[data-theme=dark] {
+    --sidebar-bg: #121212;
+
+
+    --aside-news-border-color: rgba(255, 255, 255, .1);
+  }
+
 }
 
-html[data-theme=dark] {
-
-  --above-title-font-color: rgba(255, 255, 255, 0.9);
-  --above-subtitle-font-color: rgba(255, 255, 255, 0.7);
-
-  --sidebar-bg: #121212;
-
-  --text-h-color: rgba(255, 255, 255, 0.9);
-
-  --aside-news-border-color: rgba(255, 255, 255, .1);
-}

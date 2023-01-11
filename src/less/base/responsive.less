@@ -1,9 +1,10 @@
 /**
- * @Description: 头部适配
+ * @date: 2023/1/11
  * @author: 小红
- * @date: 2022/12/29
- * @fileName: base
+ * @fileName: responsive
+ * @Description: 响应式
  */
+
 #Butterfly {
   @media (max-width: 1760px) {
   }
@@ -21,6 +22,18 @@
   }
 
   @media (max-width: 1000px) {
+    .main {
+      flex-direction: column;
+
+      > .container {
+        width: 100%;
+      }
+
+      .aside {
+        width: 100%;
+        margin: 20px 0 0;
+      }
+    }
   }
 
   @media (max-width: 992px) {
@@ -52,6 +65,14 @@
         }
       }
     }
+
+    .main {
+      padding: 1.2rem 0.5rem;
+
+      > .container {
+        padding: 1.5rem .8rem;
+      }
+    }
   }
 
   @media (max-width: 650px) {
@@ -64,3 +85,5 @@
 
   }
 }
+ 
+ 

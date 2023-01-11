@@ -1,0 +1,152 @@
+/**
+ * @Description: 首页
+ * @author: 小红
+ * @date: 2022/11/25
+ * @fileName: index
+ */
+
+@keyframes above-title-scale {
+  0% {
+    opacity: 0;
+    transform: scale(.7)
+  }
+
+  100% {
+    opacity: 1;
+    filter: none;
+    transform: scale(1)
+  }
+}
+
+@keyframes above-down-effect {
+  0% {
+    top: 0;
+    opacity: .4
+  }
+
+  50% {
+    top: -16px;
+    opacity: 1;
+    filter: none
+  }
+
+  100% {
+    top: 0;
+    opacity: .4
+  }
+}
+
+.index {
+
+  .main > .container {
+    padding: 0;
+  }
+
+  .header {
+    .above {
+      height: 100vh;
+      //background-attachment: fixed;
+
+      &-info {
+        position: absolute;
+        top: 43%;
+        padding: 0 0.5rem;
+        width: 100%;
+      }
+
+      &-title {
+        font-size: 2.5rem;
+        text-shadow: 2px 2px 4px rgb(0 0 0 / 15%);
+        line-height: 1.5;
+        color: var(--above-one-color);
+        animation: above-title-scale 1s;
+        transition: font-size 0.3s;
+      }
+
+      &-subtitle {
+        font-size: 1.3rem;
+        animation: above-title-scale 2s;
+        transition: font-size 0.3s;
+      }
+
+      &-subtitle--text {
+        text-shadow: 2px 2px 4px rgb(0 0 0 / 15%);
+        line-height: 1.5;
+        color: var(--above-two-color);
+      }
+
+      &-down {
+        font-size: 1.8rem;
+        padding-bottom: 10px;
+
+        i {
+          position: relative;
+          animation: above-down-effect 1.5s infinite;
+          color: var(--above-two-color);
+          cursor: var(--cursor-pointer);
+        }
+      }
+    }
+  }
+
+  //适配
+  &#Butterfly {
+    @media (max-width: 1760px) {
+    }
+
+    @media (max-width: 1400px) {
+    }
+
+    @media (max-width: 1100px) {
+    }
+
+    @media (max-width: 1200px) {
+    }
+
+    @media (max-width: 1130px) {
+    }
+
+    @media (max-width: 1000px) {
+    }
+
+    @media (max-width: 992px) {
+    }
+
+    @media (max-width: 768px) {
+      .header {
+        .above {
+          &-title {
+            font-size: 1.9rem;
+          }
+
+          &-subtitle {
+            font-size: 1rem;
+          }
+
+        }
+
+      }
+
+      .main {
+        > .container {
+          padding: 0;
+        }
+      }
+    }
+
+    @media (max-width: 650px) {
+    }
+
+    @media (max-width: 500px) {
+    }
+
+    @media (max-width: 375px) {
+
+    }
+  }
+}
+
+//模块
+@import "src/less/modules/postList.less";
+
+

@@ -12,7 +12,7 @@ const fs = require("fs");
 const resolve = (name) => path.resolve(__dirname, name);
 
 gulp.task("css", function () {
-  return gulp.src('./src/css/*.less')
+  return gulp.src('./src/less/page/*.less')
     .pipe(less())
     .pipe(autoPrefix({
       overrideBrowserslist: [

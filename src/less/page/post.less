@@ -1,10 +1,29 @@
 /**
- * @date: 2023/1/7
+ * @date: 2023/1/11
  * @author: 小红
- * @fileName: base
+ * @fileName: post
  * @Description: 文章
  */
+html {
+  --post-dropdown-bg-color: #fff;
+  --post-icon-bg-color: rgba(50, 50, 50, .06);
 
+  --post-toc-border-color: #cacaca;
+
+  --post-cpt-bg-color: #f0f0f0cc;
+  --post-cpt-border-color: #ebe5f83b;
+
+  &[data-theme="dark"] {
+    --post-dropdown-bg-color: #000;
+    --post-icon-bg-color: rgb(57 58 59);
+
+    --post-toc-border-color: rgba(255, 255, 255, 0.2);
+
+    --post-cpt-bg-color: rgb(33 35 37 / 90%);
+    --post-cpt-border-color: rgb(33 35 37 / 90%);
+  }
+
+}
 
 @keyframes toc-open {
   0% {
@@ -24,12 +43,9 @@
   }
 }
 
+
 .post {
   .main {
-    > .container {
-      padding: 35px;
-    }
-
     > .aside {
       align-self: auto;
     }
@@ -53,13 +69,13 @@
 
   &-title {
     margin-bottom: 8px;
-    color: var(--post-title-color);
+    color: var(--above-one-color);
     font-size: 2.2rem;
     line-height: 1.5;
   }
 
   &-meta {
-    color: var(--post-meta-color);
+    color: var(--above-two-color);
     font-size: 95%;
 
     i {
@@ -103,11 +119,11 @@
     }
   }
 
-  &-sticky{
+  &-sticky {
     top: 20px;
     transition: top 0.3s;
   }
-  
+
   &-tocbot {
 
     .toc {
@@ -337,6 +353,121 @@
       }
     }
   }
+
+
+  &#Butterfly {
+    @media (max-width: 1760px) {
+    }
+
+    @media (max-width: 1345px) {
+
+    }
+
+    @media (max-width: 1400px) {
+    }
+
+    @media (max-width: 1100px) {
+    }
+
+    @media (max-width: 1200px) {
+
+    }
+
+    @media (max-width: 1130px) {
+
+    }
+
+    @media (max-width: 1000px) {
+      .aside .post-tocbot {
+        display: none;
+        top: auto;
+        position: fixed;
+        bottom: 50px;
+        z-index: 200;
+        max-width: 380px;
+        max-height: calc(100% - 60px);
+        width: calc(100% - 80px);
+        transition: transform 0.3s ease-in-out;
+        transform-origin: right bottom;
+        right: 55px;
+        background-color: #ffffff;
+      }
+
+
+      .adsorption > .show-tocbot {
+        display: block;
+      }
+
+    }
+
+    @media (max-width: 992px) {
+
+    }
+
+    @media (max-width: 900px) {
+      .post-info {
+        bottom: 30px;
+        text-align: left;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .post {
+        &-info {
+          bottom: 22px;
+          padding: 0 22px;
+        }
+
+        &-title {
+          font-size: 1.8rem;
+        }
+
+        &-meta {
+          font-size: 90%;
+
+          .line {
+          }
+        }
+
+        &-outDate {
+          font-size: .8rem;
+        }
+
+
+        &-support > .content {
+          flex-direction: column;
+          align-items: center;
+        }
+      }
+
+
+
+    }
+
+    @media (max-width: 770px) {
+      .post {
+        &-copyRight {
+          font-size: .8rem;
+          padding: 5px 8px;
+        }
+      }
+    }
+
+    @media (max-width: 650px) {
+      .post {
+        &-title {
+          font-size: 1.5rem;
+        }
+      }
+    }
+
+    @media (max-width: 500px) {
+    }
+
+    @media (max-width: 375px) {
+
+    }
+  }
 }
 
-
+@import "src/less/modules/renderHtml.less";

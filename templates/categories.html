@@ -18,6 +18,11 @@
     }
   </style>
   <link rel="stylesheet" th:href="@{/assets/css/categories.min.css}">
+
+  <script id="categories-script" th:inline="javascript">
+    window.CategoriesData =  /*[[${categories}]]*/ {};
+    document.getElementById('categories-script').remove();
+  </script>
 </th:block>
 
 <section
@@ -28,14 +33,22 @@
 </section>
 
 <th:block th:fragment="content">
-  <section class="container">
-111
+  <section class="container card">
+    <div class="categories-chart" style="height:400px"></div>
+
+    <ul class="categories-list flex flex-direction-row flex-wrap-wrap flex-justify-content-center">
+      <li class="categories-list-item relative" th:each="category : ${categories}">
+        <a th:href="@{${category.status.permalink}}" th:text="${category.spec.displayName}" th:title="${category.spec.displayName}" ></a>
+      </li>
+    </ul>
+
   </section>
 
   <th:block th:replace="~{modules/public:: aside}"></th:block>
 </th:block>
 
 <th:block th:fragment="js">
+  <script type="text/javascript" th:src="@{/assets/plugins/echarts/echarts.min.js}"></script>
   <script type="text/javascript" th:src="@{/assets/js/categories.min.js}"></script>
 </th:block>
 </html>

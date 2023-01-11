@@ -2,8 +2,9 @@
  * @date: 2023/1/7
  * @author: 小红
  * @fileName: base
- * @Description: 文章列表
+ * @Description: 文章列表模块
  */
+
 
 .posts {
   .item {
@@ -23,7 +24,6 @@
       }
 
       img {
-        transition: transform .5s;
         object-fit: cover;
 
         &[data-ll-status="loaded"]:hover {
@@ -159,6 +159,99 @@
         display: none;
       }
     }
+
+  }
+}
+
+
+//适配
+&#Butterfly {
+  @media (max-width: 1760px) {
+  }
+
+  @media (max-width: 1400px) {
+  }
+
+  @media (max-width: 1100px) {
+  }
+
+  @media (max-width: 1200px) {
+    .posts {
+      &.tile {
+        .item {
+          width: 47%;
+          margin: 0 3% 20px 0;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 1130px) {
+
+  }
+
+  @media (max-width: 1000px) {
+  }
+
+  @media (max-width: 992px) {
+
+
+  }
+
+  @media (max-width: 768px) {
+    .posts {
+      &.list {
+        .item {
+          height: auto;
+          flex-direction: column;
+        }
+
+
+        .cover {
+          width: 100%;
+          height: 200px;
+        }
+
+        .info {
+          padding: 20px 20px 30px;
+          width: 100%;
+
+          &-title {
+            font-size: 1.3rem;
+          }
+
+          &-wrap {
+            font-size: 88%;
+          }
+        }
+      }
+
+      &.tile {
+        .item {
+          width: 100%;
+          margin-bottom: 20px;
+        }
+      }
+    }
+
+  }
+
+  @media (max-width: 650px) {
+    .posts {
+      &.list {
+
+        .text {
+          -webkit-line-clamp: 1;
+        }
+      }
+    }
+  }
+
+
+  @media (max-width: 500px) {
+  }
+
+  @media (max-width: 375px) {
 
   }
 }

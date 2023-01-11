@@ -31,16 +31,13 @@
       --cursor-default: url("[(${#theme.assets('/plugins/cursor/simple/default.cur')})]"), auto;
       --cursor-pointer: url("[(${#theme.assets('/plugins/cursor/simple/pointer.cur')})]"), auto;
     }
-
     html[data-theme=dark] {
       --theme: /*[(${theme.config.style.theme_color_dark})]*/ #ff7242;
       --body-bg: #221f1f;
     }
-
     img[data-lazy-src]:not(.loaded,.error) {
       filter: /*[(${theme.config.loading.filter})]*/ none;
     }
-
   </style>
   <link rel="canonical" th:href="${site.url}">
   <link rel="preload stylesheet" as="style" th:href="@{'/assets/font/'+${theme.config.style.font_family}+'.min.css'}">
@@ -121,7 +118,7 @@
   </header>
 
   <!--/* 主要部分--><!--*/-->
-  <main th:insert="${content}" th:class="'main flex margin-0-auto animated fadeIn '+${theme.config.aside.position}"></main>
+  <main th:insert="${content}" th:class="'main flex margin-0-auto animated InUp '+${theme.config.aside.position}"></main>
 
   <!--/* footer--><!--*/-->
   <footer class="footer  text-center">
