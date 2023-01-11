@@ -38,11 +38,11 @@
 
 <th:block th:fragment="content">
   <section class="container">
-    <th:block th:replace="~{modules/main:: posts(${posts.items},${theme.config.index.post_layout})}"></th:block>
-    <th:block th:replace="~{modules/main:: pagination(${posts})}"></th:block>
+    <th:block th:replace="~{modules/public:: posts(${posts.items},${theme.config.index.post_layout})}"></th:block>
+    <th:block th:replace="~{modules/public:: pagination(${posts})}"></th:block>
   </section>
 
-  <th:block th:replace="~{modules/main:: asidePublic}"></th:block>
+  <th:block th:replace="~{modules/public:: aside}"></th:block>
 </th:block>
 
 <th:block th:fragment="js">

@@ -258,7 +258,7 @@ spec:
       formSchema:
         - $formkit: radio
           name: enable_above
-          label: 启用第一屏
+          label: 启用第一屏 （由于设计原因文章页面 此功能还未实现）
           help: 启用首页第一屏
           value: true
           options:
