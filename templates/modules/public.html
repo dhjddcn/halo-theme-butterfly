@@ -1,63 +1,6 @@
-<!--样式-->
-<th:block xmlns:th="https://www.thymeleaf.org" th:fragment="styles">
-  <style
-    type="text/css"
-    th:inline="css"
-    th:with="
-    body_background= ${is_body_background_http ? 'url('+theme.config.style.body_background+') no-repeat fixed center / cover;' : theme.config.style.body_background}
-    ">
-    html {
-      --theme: /*[(${theme.config.style.theme_color_light})]*/ #49b1f5;
-      --body-bg-color: /*[(${body_background})]*/ transparent;
-      --main-max-width: /*[(${theme.config.style.content_max_width})]*/ 1200px;
-      --card-border-radius: /*[(${theme.config.card.radius})]*/ 24px;
-      --card-bg-color: /*[(${theme.config.card.bg_color})]*/ transparent;
-      --card-box-shadow: /*[(${theme.config.card.shadow})]*/ transparent;
-      --cursor-default: url("[(${#theme.assets('/plugins/cursor/simple/default.cur')})]"), auto;
-      --cursor-pointer: url("[(${#theme.assets('/plugins/cursor/simple/pointer.cur')})]"), auto;
-    }
-
-    html[data-theme=dark] {
-      --theme: /*[(${theme.config.style.theme_color_dark})]*/ #ff7242;
-      --body-bg-color: #221f1f;
-    }
-
-    img[data-lazy-src]:not(.loaded,.error) {
-      filter: /*[(${theme.config.loading.filter})]*/ none;
-    }
-
-  </style>
-</th:block>
 
 <!--弹出栏-->
 <div xmlns:th="https://www.thymeleaf.org" th:fragment="sidebar" class="sidebar">
   <div class=""></div>
 </div>
 
-<!--底部-->
-<footer xmlns:th="https://www.thymeleaf.org" th:fragment="footer" class="footer  text-center">
-  <div class="copyright" th:text="'© 2020 - '+${#dates.format(#dates.createNow(), 'yyyy')}+' By '+ ${site.title}"> ©2020
-    - 2023 By 小红
-  </div>
-  <div class="icp">　备案号：蜀ICP备20013557号</div>
-  <div class="powered">
-    Powered by&nbsp;<a class="halo" href="https://halo.run/" target="_blank">Halo</a>&nbsp;|&nbsp;🌈
-    Theme by&nbsp;<a class="theme" title="当前主题：Butterfly" href="https://github.com/dhjddcn/halo-theme-butterfly"
-                     target="_blank">小红</a>
-  </div>
-</footer>
-
-<!--左右吸附小部件-->
-<section xmlns:th="https://www.thymeleaf.org" th:fragment="adsorption" class="adsorption z-100 fixed transition-all-5s">
-  <button class="show-tocbot btn-effect text-center none" type="button" title="浅色和深色模式转换">
-    <i class="fas fa-list-ul"></i>
-  </button>
-
-  <button class="switch-model btn-effect block text-center" type="button" title="浅色和深色模式转换">
-    <i class="fas fa-adjust"></i>
-  </button>
-
-  <button class="back-top btn-effect text-center" type="button" title="回到顶部">
-    <i class="fa-sharp fa-solid fa-up"></i>
-  </button>
-</section>

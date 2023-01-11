@@ -5,6 +5,7 @@
   page = 'post',
   title = ${post.spec.title},
   head = ~{::head},
+  above = ~{::above},
   content = ~{::content},
   js = ~{::js}
   )}">
@@ -13,7 +14,7 @@
   <style
     th:inline="css"
     type="text/css"
-    th:with="above_background= ${is_body_background_http ? '' : 'url(' + post.spec.cover + ')'}
+    th:with="above_background= ${is_body_bg_http ? '' : 'url(' + post.spec.cover + ')'}
   ">
     html {
       --above-background: /*[(${above_background})]*/ transparent;
@@ -34,6 +35,61 @@
   </th:block>
   <link rel="stylesheet" th:href="@{/assets/css/post.min.css}">
 </th:block>
+
+<section xmlns:th="https://www.thymeleaf.org" th:fragment="above" class="above relative w-100">
+  <div class="post-info absolute w-100 text-center">
+    <h1 class="post-title font-weight-400 text-clamp text-cmp3" th:text="${post.spec.title}"></h1>
+    <div class="post-meta">
+      <div class="line">
+        <span class="wp publishTime">
+            <i class="fa-solid fa-calendar-days"></i>
+            <time th:text="'发布于 '+${#dates.format(post.spec.publishTime, 'yyyy-MM-dd')}"></time>
+        </span>
+
+        <!--/* todo  需要添加更新时间-->
+        <span class="wp publishTime">
+            <span class="fk">|</span>
+            <i class="fas fa-history fa-fw"></i>
+            <time th:text="'更新于 '+${#dates.format(post.spec.publishTime, 'yyyy-MM-dd')}"></time>
+        </span>
+        <!--*/-->
+
+        <span class="wp category">
+            <span class="fk">|</span>
+            <i class="fas fa-inbox"></i>
+            <span class="cys">
+              <th:block th:each="cy : ${post.categories}">
+                <a class="lk" th:href="${cy.status.permalink}" th:text="${cy.spec.displayName}"></a>
+               <span class="point">•</span>
+              </th:block>
+            </span>
+          </span>
+
+      </div>
+      <div class="line" th:with="leg = ${#strings.length(#strings.trim(post.content.content))}">
+        <span class="wordCount">
+          <i class="fa-solid fa-list-ol"></i>
+          <span th:text="'字数总计 '+${leg}"></span>
+        </span>
+
+        <span class="fk">|</span>
+
+        <span class="clock">
+           <i class="fa-regular fa-clock"></i>
+          <span th:text="'阅读时长 '+${leg/400}+'分钟'"></span>
+        </span>
+
+        <span class="fk">|</span>
+
+        <span class="visit">
+          <i class="far fa-eye fa-fw"></i>
+          <span th:text="'阅读量 '+${post.stats.visit}"></span>
+        </span>
+
+      </div>
+    </div>
+  </div>
+</section>
 
 <th:block th:fragment="content">
   <section class="container card">
@@ -108,7 +164,7 @@
           <span th:text="'点赞 '+${post.stats.upvote}"></span>
         </a>
         <!--*/-->
-        
+
         <div
           class="share relative item cursor-pointer inline-flex flex-direction-column flex-justify-content-center  flex-align-items-center">
           <i class="fa-light fa-arrow-up-right-from-square"></i>

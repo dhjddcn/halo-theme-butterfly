@@ -134,8 +134,8 @@ spec:
           name: bg_color
           label: 卡片背景色
           placeholder: 请填写 卡片背景色
-          value: rgba(255, 255, 255, 0.6)
-          help: 卡片背景色，颜色值，默认 rgba(255, 255, 255, 0.6)，透明值可选范围（0.1~1）1为不透明
+          value: rgba(255, 255, 255, 1)
+          help: 卡片背景色，颜色值，默认 rgba(255, 255, 255, 1)，透明值可选范围（0.1~1）1为不透明
           validation: required
         - $formkit: text
           name: shadow

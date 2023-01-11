@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light" xmlns:th="https://www.thymeleaf.org"
-      th:fragment="layout (page,title,head,content,js)">
-<head th:with="is_body_background_http = ${#strings.containsIgnoreCase(theme.config.style.body_background,'http')}">
+      th:fragment="layout (page,title,head,above,content,js)">
+<head th:with="is_body_bg_http = ${#strings.containsIgnoreCase(theme.config.style.body_background,'http')}">
   <title th:text="${title}"></title>
   <meta charset="UTF-8"/>
   <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -16,8 +16,33 @@
   <meta property="og:title" th:content="${site.title}">
   <meta property="og:locale" content="zh_CN">
   <meta property="og:type" content="website">
+  <style
+    th:inline="css"
+    type="text/css"
+    th:with="body_bg= ${is_body_bg_http ? 'url('+theme.config.style.body_background+') no-repeat fixed center / cover;' : theme.config.style.body_background}"
+  >
+    html {
+      --theme: /*[(${theme.config.style.theme_color_light})]*/ #49b1f5;
+      --body-bg: /*[(${body_bg})]*/ transparent;
+      --main-max-width: /*[(${theme.config.style.content_max_width})]*/ 1200px;
+      --card-border-radius: /*[(${theme.config.card.radius})]*/ 24px;
+      --card-bg-color: /*[(${theme.config.card.bg_color})]*/ transparent;
+      --card-box-shadow: /*[(${theme.config.card.shadow})]*/ transparent;
+      --cursor-default: url("[(${#theme.assets('/plugins/cursor/simple/default.cur')})]"), auto;
+      --cursor-pointer: url("[(${#theme.assets('/plugins/cursor/simple/pointer.cur')})]"), auto;
+    }
+
+    html[data-theme=dark] {
+      --theme: /*[(${theme.config.style.theme_color_dark})]*/ #ff7242;
+      --body-bg-color: #221f1f;
+    }
+
+    img[data-lazy-src]:not(.loaded,.error) {
+      filter: /*[(${theme.config.loading.filter})]*/ none;
+    }
+
+  </style>
   <link rel="canonical" th:href="${site.url}">
-  <th:block th:insert="~{modules/public:: styles}"></th:block>
   <link rel="preload stylesheet" as="style" th:href="@{'/assets/font/'+${theme.config.style.font_family}+'.min.css'}">
   <link rel="preload stylesheet" as="style" th:href="@{/assets/css/global.min.css}">
   <link rel="preload stylesheet" as="style" th:href="@{/assets/plugins/animate/animate.min.css}">
@@ -37,19 +62,100 @@
 </head>
 <body>
 <div id="Butterfly" th:class="${page}">
-  <th:block th:insert="~{modules/header:: header(${page})}"></th:block>
-  <main th:class="'main flex margin-0-auto animated fadeIn '+${theme.config.aside.position}">
-    <th:block th:insert="${content}"></th:block>
-  </main>
-  <!--  <th:block th:insert="~{modules/header:: sidebar}"></th:block>-->
-  <th:block th:insert="~{modules/public:: adsorption}"></th:block>
-  <th:block th:insert="~{modules/public:: footer}"></th:block>
+  <!--/* 头部--><!--*/-->
+  <header xmlns:th="https://www.thymeleaf.org" class="header relative w-100">
+    <nav class="nav flex flex-wrap flex-align-items-center  top-0 absolute z-80 w-100">
+      <a th:text="${site.title}" class="site-title flex-1" href="/"></a>
+
+      <ul class="menu inline">
+        <!--搜索-->
+        <li class="menu-item search" th:if="${pluginFinder.available('PluginSearchWidget')}">
+          <a class="menu-link relative inline-block" href="javascript:SearchWidget.open();">
+            <i class="fas fa-search fa-fw"></i>
+            <span class="menu-name">搜索</span>
+          </a>
+        </li>
+        <li class="menu-item toggle">
+        <span class="menu-link relative inline-block">
+          <i class="fas fa-bars fa-fw"></i>
+        </span>
+        </li>
+        <!--toggle-->
+
+        <th:block th:each="menuItem : ${menuFinder.getPrimary().menuItems}">
+          <li th:if="${#lists.isEmpty(menuItem.children)}" class="menu-item menu-pc">
+            <a class="menu-link relative inline-block" th:href="${menuItem.status.href}"
+               th:target="${menuItem.spec.target}" data-pjax>
+              <i th:if="${!#strings.isEmpty(#annotations.getOrDefault(menuItem, 'icon', ''))}"
+                 th:class="${#annotations.getOrDefault(menuItem, 'icon', '')}"></i>
+              <span class="menu-name" th:text="${menuItem.status.displayName}"> </span>
+            </a>
+          </li>
+
+          <li th:unless="${#lists.isEmpty(menuItem.children)}" class="menu-item menu-pc relative">
+            <div class="menu-link relative">
+              <i th:if="${!#strings.isEmpty(#annotations.getOrDefault(menuItem, 'icon', ''))}"
+                 th:class="${#annotations.getOrDefault(menuItem, 'icon', '')}"></i>
+              <span class="menu-name" th:text="${menuItem.status.displayName}"></span>
+              <i class="fas fa-chevron-down"></i>
+            </div>
+
+            <!--menu-dropdown  -->
+            <ul class="menu-dropdown none absolute right-0 padding-0 w-max-content">
+              <li th:each="dropdown : ${menuItem.children}" class="menu-dropdown--item">
+                <a th:href="@{${dropdown.status.href}}" class="menu-dropdown--link w-100 inline-block">
+                  <i th:if="${!#strings.isEmpty(#annotations.getOrDefault(dropdown, 'icon', ''))}"
+                     th:class="${#annotations.getOrDefault(dropdown, 'icon', '')}"></i>
+                  <span th:text="${dropdown.status.displayName}" class="menu-dropdown-name"></span>
+                </a>
+              </li>
+            </ul>
+
+          </li>
+
+        </th:block>
+      </ul>
+    </nav>
+
+    <th:block th:insert="${above}"></th:block>
+  </header>
+
+  <!--/* 主要部分--><!--*/-->
+  <main th:insert="${content}"
+        th:class="'main flex margin-0-auto animated fadeIn '+${theme.config.aside.position}"></main>
+
+  <!--/* footer--><!--*/-->
+  <footer class="footer  text-center">
+    <div class="copyright"
+         th:text="'© 2020 - '+${#dates.format(#dates.createNow(), 'yyyy')}+' By '+ ${site.title}"></div>
+    <div class="icp" th:if="${not #strings.isEmpty(theme.config.base.icp)}"
+         th:text="'备案号：'+${theme.config.base.icp}"></div>
+    <div class="powered">Powered by&nbsp;<a class="halo" href="https://halo.run/" target="_blank">Halo</a>&nbsp;|&nbsp;🌈
+      Theme by&nbsp;<a class="theme" title="当前主题：Butterfly" href="https://github.com/dhjddcn/halo-theme-butterfly"
+                       target="_blank">小红</a></div>
+  </footer>
+
+  <!--/* 左右小部件--><!--*/-->
+  <div class="adsorption z-100 fixed transition-all-5s">
+    <button class="show-tocbot btn-effect text-center none" type="button" title="浅色和深色模式转换">
+      <i class="fas fa-list-ul"></i>
+    </button>
+
+    <button class="switch-model btn-effect block text-center" type="button" title="浅色和深色模式转换">
+      <i class="fas fa-adjust"></i>
+    </button>
+
+    <button class="back-top btn-effect text-center" type="button" title="回到顶部">
+      <i class="fa-sharp fa-solid fa-up"></i>
+    </button>
+  </div>
+
 </div>
 <script type="text/javascript" th:src="@{/assets/plugins/jquery/jquery.min.js}"></script>
 <script type="text/javascript" th:src="@{/assets/plugins/lazyLoad/lazyLoad.min.js}"></script>
 <script type="text/javascript" th:src="@{/assets/plugins/universe/universe.min.js}"></script>
 <script type="text/javascript" th:src="@{/assets/plugins/Qmsg/Qmsg.min.js}"></script>
-<script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!--<script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>-->
 <script type="text/javascript" th:src="@{/assets/js/global.min.js}"></script>
 <th:block th:insert="${js}"/>
 </body>

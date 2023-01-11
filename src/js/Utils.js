@@ -74,7 +74,6 @@ export function initCode(dom) {
 
       const customItem = toolbar.find('.custom-item');
 
-
       //标题
       if (ThemeConfig.code['enable_title']) {
         toolbar.addClass('c-title')
@@ -85,19 +84,9 @@ export function initCode(dom) {
         toolbar.addClass('c-hr')
       }
 
-      // 代码块展开
-      if (ThemeConfig.code['enable_expander']) {
-        customItem.append('<i class="fa-sharp fa-solid fa-caret-down code-expander cursor-pointer"></i>');
-
-        customItem.find('.code-expander').on('click', function () {
-          pre.children('code').toggle();
-          toolbar.toggleClass('c-expander');
-        })
-      }
-
       // 代码块复制
       if (ThemeConfig.code['enable_copy']) {
-        customItem.append('<i class="fa-solid fa-book-copy code-copy cursor-pointer"></i>');
+        customItem.append('<i class="fas fa-paste copy-button code-copy cursor-pointer"></i>');
 
         customItem.find('.code-copy').on('click', function (e) {
           const text = pre.children("code[class*='language-']").text();
@@ -114,6 +103,16 @@ export function initCode(dom) {
           })
 
           clipboard.onClick(e);
+        })
+      }
+
+      // 代码块展开
+      if (ThemeConfig.code['enable_expander']) {
+        customItem.append('<i class="fa-sharp fa-solid fa-caret-down code-expander cursor-pointer"></i>');
+
+        customItem.find('.code-expander').on('click', function () {
+          pre.children('code').toggle();
+          toolbar.toggleClass('c-expander');
         })
       }
 
