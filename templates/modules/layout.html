@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html lang="en" data-theme="light" xmlns:th="https://www.thymeleaf.org"
+<!DOCTYPE html><!--class="active-mask"-->
+<html lang="en"  data-theme="light" xmlns:th="https://www.thymeleaf.org"
       th:fragment="layout (page,title,head,above,content,js)">
 <head th:with="is_body_bg_http = ${#strings.containsIgnoreCase(theme.config.style.body_background,'http')}">
   <title th:text="${title}"></title>
@@ -59,14 +59,10 @@
     }
   </script>
   <th:block th:insert="${head}"></th:block>
-
-<!--  <script src="https://unpkg.com/vconsole@latest/dist/vconsole.min.js"></script>-->
-  <script>
-    // window.vConsole = new window.VConsole();
-  </script>
 </head>
 <body>
-<div id="Butterfly" th:class="${page}" >
+<div id="Butterfly" th:class="${page}"
+     th:with="stats = ${siteStatsFinder.getStats()},contributor = ${contributorFinder.getContributor(theme.config.base.metadata_name)}">
   <!--/* 头部--><!--*/-->
   <header xmlns:th="https://www.thymeleaf.org" class="header relative w-100">
     <nav class="nav flex flex-wrap flex-align-items-center  top-0 absolute z-80 w-100">
@@ -122,18 +118,74 @@
       </ul>
     </nav>
 
+    <!--/* 移动端侧边栏--><!--*/-->
+    <div class="sidebar fixed top-0 none">
+      <div class="sidebar-avatar text-center overflow-hidden">
+        <img class="w-100 h-100"
+             th:src="${theme.config.loading.preload}"
+             th:attr="onerror='this.src='+${'`'+theme.config.loading.err+'`'}"
+             th:data-lazy-src="${contributor.avatar}"
+             th:alt="${contributor.displayName}" alt="">
+      </div>
+      <div class="sidebar-data w-100 text-center">
+        <a class="item" title="文章" href="/archives">
+          <div class="headline">文章</div>
+          <div class="num text-overflow" th:text="${stats.post}"></div>
+        </a>
+        <a class="item" href="/categories" title="分类">
+          <div class="headline">分类</div>
+          <div class="num text-overflow" th:text="${stats.category}"></div>
+        </a>
+        <a class="item" title="评论" href="javascript:">
+          <div class="headline">评论</div>
+          <div class="num text-overflow" th:text="${stats.comment}"></div>
+        </a>
+      </div>
+      <hr>
+      <ul class="sidebar-menus">
+        <th:block th:each="menuItem : ${menuFinder.getPrimary().menuItems}">
+          <li th:if="${#lists.isEmpty(menuItem.children)}" class="menu-item">
+            <a class="menu-link relative block" th:href="${menuItem.status.href}"
+               th:target="${menuItem.spec.target}" data-pjax>
+              <i th:if="${!#strings.isEmpty(#annotations.getOrDefault(menuItem, 'icon', ''))}"
+                 th:class="${#annotations.getOrDefault(menuItem, 'icon', '')}"></i>
+              <span class="menu-name" th:text="${menuItem.status.displayName}"> </span>
+            </a>
+          </li>
+
+          <li th:unless="${#lists.isEmpty(menuItem.children)}" class="menu-item relative">
+            <div class="menu-link relative">
+              <i th:if="${!#strings.isEmpty(#annotations.getOrDefault(menuItem, 'icon', ''))}"
+                 th:class="${#annotations.getOrDefault(menuItem, 'icon', '')}"></i>
+              <span class="menu-name" th:text="${menuItem.status.displayName}"></span>
+              <i class="fas fa-chevron-down absolute"></i>
+            </div>
+            <ul class="menu-child none">
+              <li th:each="dropdown : ${menuItem.children}" class="menu-child--item">
+                <a th:href="@{${dropdown.status.href}}" class="menu-child--link w-100 block">
+                  <i th:if="${!#strings.isEmpty(#annotations.getOrDefault(dropdown, 'icon', ''))}"
+                     th:class="${#annotations.getOrDefault(dropdown, 'icon', '')}"></i>
+                  <span th:text="${dropdown.status.displayName}" class="menu-child-name"></span>
+                </a>
+              </li>
+            </ul>
+
+          </li>
+
+        </th:block>
+      </ul>
+    </div>
+
     <th:block th:insert="${above}"></th:block>
   </header>
 
   <!--/* 主要部分--><!--*/-->
-  <main
-    th:insert="${content}"
-    th:with="class = ${theme.config.aside.enable ? (theme.config.aside.position) : 'off-aside' }"
-    th:class="'main flex margin-0-auto animated InUp '+ ${class}"
+  <main th:insert="${content}"
+        th:with="class = ${theme.config.aside.enable ? (theme.config.aside.position) : 'off-aside' }"
+        th:class="'main flex margin-0-auto animated InUp '+ ${class}"
   >
 
   </main>
-
   <!--/* footer--><!--*/-->
   <footer class="footer  text-center">
     <div class="copyright"
@@ -144,9 +196,8 @@
       Theme by&nbsp;<a class="theme" title="当前主题：Butterfly" href="https://github.com/dhjddcn/halo-theme-butterfly"
                        target="_blank">小红</a></div>
   </footer>
-
   <!--/* 左右小部件--><!--*/-->
-  <div class="adsorption z-100 fixed transition-all-5s">
+  <div class="adsorption z-80 fixed">
     <button class="show-tocbot btn-effect text-center none" type="button" title="目录">
       <i class="fas fa-list-ul"></i>
     </button>
@@ -160,6 +211,8 @@
     </button>
   </div>
 
+  <!--/* 全局遮罩层--><!--*/-->
+  <div class="global-mask fixed w-100 z-100 h-100 left-0 top-0 none"></div>
 </div>
 <script type="text/javascript" th:src="@{/assets/plugins/jquery/jquery.min.js}"></script>
 <script type="text/javascript" th:src="@{/assets/plugins/lazyLoad/lazyLoad.min.js}"></script>

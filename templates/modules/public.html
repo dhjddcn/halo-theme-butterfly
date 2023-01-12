@@ -9,9 +9,8 @@
        th:fragment="aside"
        th:if="${theme.config.aside.enable}"
        class="aside w-25"
-       th:with="stats = ${siteStatsFinder.getStats()}">
-  <section class="aside-item aside-user card text-center"
-           th:with="contributor = ${contributorFinder.getContributor(theme.config.base.metadata_name)}">
+>
+  <section class="aside-item aside-user card text-center">
     <img class="avatar block margin-0-auto overflow-hidden"
          th:src="${theme.config.loading.preload}"
          th:attr="onerror='this.src='+${'`'+theme.config.loading.err+'`'}"
@@ -236,7 +235,8 @@
 
 
 <!--暂无数据~-->
-<div xmlns:th="https://www.thymeleaf.org" th:fragment="emptyData(text,showCard)" th:class="'empty flex flex-direction-column flex-justify-content-center flex-align-items-center '+${showCard ? 'card' : ''}">
+<div xmlns:th="https://www.thymeleaf.org" th:fragment="emptyData(text,showCard)"
+     th:class="'empty flex flex-direction-column flex-justify-content-center flex-align-items-center '+${showCard ? 'card' : ''}">
   <svg class="empty-icon" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="120"
        height="120">
     <path

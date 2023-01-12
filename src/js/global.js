@@ -15,6 +15,7 @@ class Global {
     this.init();
     this.pjax();
     this.nav();
+    this.sidebar();
     this.scroll();
     this.runDay();
     this.adsorption()
@@ -51,6 +52,21 @@ class Global {
   // 导航栏
   nav() {
 
+  }
+
+  sidebar() {
+    const menus = this.body.find('.sidebar-menus .menu-item');
+
+    if (!menus.length) return;
+
+    menus.each(function () {
+      const t = $(this);
+      if (t.hasClass('relative')) {
+        $(this).on('click', function () {
+          $(this).toggleClass('active').children('.menu-child').stop().toggle("fast");
+        })
+      }
+    })
   }
 
   // 滚动
