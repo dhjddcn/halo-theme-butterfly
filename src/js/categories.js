@@ -4,6 +4,7 @@
  * @fileName: categories
  * @Description: 分类
  */
+import {dataFlat, drawEcharts} from './Utils'
 
 class Categories {
   constructor() {
@@ -12,15 +13,23 @@ class Categories {
   }
 
   drawChart() {
-    const dom = document.querySelector('.categories-chart')
+    window.drawEchartsDom = document.querySelector('.categories .categories-chart')
 
-    if (!dom) return;
+    if (!drawEchartsDom) return;
 
-    const sort = CategoriesData.sort((a, b) => a['postCount'] - b['postCount'])
+    const flat = dataFlat(CategoriesData, 'children');
 
-    const chart = window.echarts.init(dom, dataTheme);
+    const sort = flat.sort((a, b) => a['postCount'] - b['postCount'])
 
-    const option = {
+    const data = sort.map((m) => {
+      return {
+        value: m['postCount'],
+        name: m['spec']['displayName'],
+        link: m['status']['permalink']
+      }
+    })
+
+    window.drawEchartsOption = {
       backgroundColor: "",
       title: {
         text: "文章分类统计图📇",
@@ -29,9 +38,16 @@ class Categories {
       tooltip: {
         formatter: "{a} <br/>{b} : {c} ({d}%)"
       },
+      grid: {
+        containLabel: true,
+        bottom: "0%",
+        left: "5%",
+        right: "5%",
+      },
       legend: {
         icon: "circle",
-        top: "bottom"
+        y: "95%",
+        bottom: "center",
       },
       series: [{
         name: "分类统计",
@@ -45,32 +61,11 @@ class Categories {
         label: {
           formatter: "{b} : {c} ({d}%)"
         },
-        data: [{
-          name: "演示",
-          value: 2
-        }, {
-          name: "算法",
-          value: 24
-        }, {
-          name: "Java基础",
-          value: 1
-        }, {
-          name: "计算机基础",
-          value: 1
-        }, {
-          name: "数据库",
-          value: 1
-        }, {
-          name: "魔改教程",
-          value: 12
-        }]
+        data,
       }]
     };
 
-    chart.setOption(option);
-
-    window.addEventListener("resize", (() => chart.resize()));
-
+    drawEcharts(dataTheme);
   }
 
 

@@ -91,8 +91,8 @@ spec:
           name: preload
           label: 预加载图片
           placeholder: 请填写 预加载图片
-          value: 'data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs='
-          help: 预加载图片，默认 data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=
+          value: 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'
+          help: 预加载图片，默认 data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7
           validation: required
         - $formkit: attachment
           name: err
@@ -174,7 +174,7 @@ spec:
           label: 侧边栏按钮
           placeholder: 请填写 侧边栏按钮内容
           value: 关注我&+&/
-          help: 侧边栏按钮内容 (注：文案&+&链接 用&+&分割)
+          help: 侧边栏按钮内容, 支持 html 代码片段 (注：文案&+&链接 用&+&分割)
           validation: required
         - $formkit: textarea
           rows: 5
@@ -244,7 +244,7 @@ spec:
           validation: required
         - $formkit: radio
           name: post_layout
-          label: 文字布局方式
+          label: 文章布局方式
           help: 文章布局方式 提供（列表、平铺）两种，仅首页生效
           value: list
           options:
@@ -303,6 +303,131 @@ spec:
               label: 二维码链接
               value: ""
               validation: required|string
+
+    - group: archives
+      label: 归档
+      formSchema:
+        - $formkit: radio
+          name: enable_above
+          label: 启用第一屏
+          help: 启用首页第一屏
+          value: true
+          options:
+            - label: 启用
+              value: true
+            - label: 禁用
+              value: false
+        - $formkit: attachment
+          name: above_background
+          label: 第一屏背景图
+          placeholder: 请填写 第一屏背景图
+          value: 'https://dhjdd.cn/file/screenshot_1641478512166.jpg'
+          help: 如果全局背景图设置为图片链接，则此处背景图将不生效
+          validation: required
+        - $formkit: text
+          name: custom_title
+          label: 自定义标题
+          placeholder: 请填写 自定义标题
+          value: 归档
+          help: 请填写 自定义标题
+          validation: required
+
+    - group: categories
+      label: 分类
+      formSchema:
+        - $formkit: radio
+          name: enable_above
+          label: 启用第一屏
+          help: 启用首页第一屏
+          value: true
+          options:
+            - label: 启用
+              value: true
+            - label: 禁用
+              value: false
+        - $formkit: attachment
+          name: above_background
+          label: 第一屏背景图
+          placeholder: 请填写 第一屏背景图
+          value: 'https://dhjdd.cn/file/screenshot_1641478512166.jpg'
+          help: 如果全局背景图设置为图片链接，则此处背景图将不生效
+          validation: required
+        - $formkit: text
+          name: custom_title
+          label: 自定义标题
+          placeholder: 请填写 自定义标题
+          value: '分类'
+          help: 请填写 自定义标题
+          validation: required
+        - $formkit: radio
+          name: post_layout
+          label: 分类详情 文章布局方式
+          help: 分类详情 文章布局方式 提供（列表、平铺）两种，仅文章详情生效
+          value: list
+          options:
+            - label: 列表
+              value: list
+            - label: 平铺
+              value: tile
+
+    - group: tags
+      label: 标签
+      formSchema:
+        - $formkit: radio
+          name: enable_above
+          label: 启用第一屏
+          help: 启用首页第一屏
+          value: true
+          options:
+            - label: 启用
+              value: true
+            - label: 禁用
+              value: false
+        - $formkit: attachment
+          name: above_background
+          label: 第一屏背景图
+          placeholder: 请填写 第一屏背景图
+          value: 'https://dhjdd.cn/file/screenshot_1641478512166.jpg'
+          help: 如果全局背景图设置为图片链接，则此处背景图将不生效
+          validation: required
+        - $formkit: text
+          name: custom_title
+          label: 自定义标题
+          placeholder: 请填写 自定义标题
+          value: 标签
+          help: 请填写 自定义标题
+          validation: required
+        - $formkit: radio
+          name: post_layout
+          label: 标签详情 文章布局方式
+          help: 标签详情 文章布局方式 提供（列表、平铺）两种，仅文章详情生效
+          value: list
+          options:
+            - label: 列表
+              value: list
+            - label: 平铺
+              value: tile
+
+    - group: single
+      label: 独立页
+      formSchema:
+        - $formkit: radio
+          name: enable_above
+          label: 启用第一屏
+          help: 启用首页第一屏
+          value: true
+          options:
+            - label: 启用
+              value: true
+            - label: 禁用
+              value: false
+        - $formkit: attachment
+          name: above_background
+          label: 第一屏背景图
+          placeholder: 请填写 第一屏背景图
+          value: 'https://dhjdd.cn/file/screenshot_1641478512166.jpg'
+          help: 如果全局背景图设置为图片链接，则此处背景图将不生效
+          validation: required
 
     - group: code
       label: 代码块
@@ -521,7 +646,6 @@ spec:
               label: "xonokai"
             - value: "z-touch"
               label: "z-touch"
-
 
     - group: socials
       label: 社交

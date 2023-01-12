@@ -142,7 +142,6 @@ export function switchCodeTheme(tp) {
 }
 
 
-//
 /**
  * 目录
  * @param tocSelector
@@ -177,6 +176,56 @@ export function initToc(tocSelector, contentSelector) {
   if (!toc.html()) {
     toc.html('暂无目录~');
   }
+}
+
+
+/**
+ * 数据平铺
+ * @param data
+ * @param key
+ */
+export function dataFlat(data, key) {
+  return data.reduce(function deep(con, item) {
+    if (item[key] && item[key].length) item[key].reduce(deep, con);
+    con.push(item);
+    return con;
+  }, []);
+}
+
+/**
+ *
+ * @param theme
+ * @param tp 0 初始化  1 重新绘制
+ */
+export function drawEcharts(theme, tp = 0) {
+
+  if (!window?.drawEchartsDom) return;
+
+  let chart = window.echarts.init(window.drawEchartsDom, theme);
+
+  if (tp === 1) {
+    chart.dispose();
+    chart = window.echarts.init(window.drawEchartsDom, theme);
+  }
+  chart.setOption(window.drawEchartsOption);
+
+  window.addEventListener("resize", (() => chart.resize()));
+}
+
+export function fancyBoxImg(selector) {
+  const dom = $(selector);
+
+  if (!dom.length) return;
+
+  dom.each(function () {
+    const $this = $(this);
+
+    $this.attr('width', '');
+
+    $this.attr('height', '');
+
+    $this.wrap($(`<span class="block text-center w-100" data-fancybox="post" href="${$this.attr("src")}" ></span>`));
+  });
 }
 
 // 创建dom

@@ -4,7 +4,7 @@
  * @fileName: post
  * @Description: 文章 代码块
  */
-import {initCode, initToc, switchCodeTheme} from './Utils.js'
+import {fancyBoxImg, initCode, initToc, switchCodeTheme} from './Utils.js'
 
 
 class Post {
@@ -17,7 +17,7 @@ class Post {
 
     if (ThemeConfig.post['out_date'] > 0) this.outDate();
 
-    this.fancyBoxImg();
+    fancyBoxImg('.render-html img');
 
     this.copyPermalink();
 
@@ -64,22 +64,7 @@ class Post {
   }
 
   // 放大镜图片
-  fancyBoxImg() {
-    const dom = $('.render-html img');
-
-    if (!dom.length) return;
-
-    dom.each(function () {
-      const $this = $(this);
-
-      $this.attr('width', '');
-
-      $this.attr('height', '');
-
-      $this.wrap($(`<span class="block text-center w-100" data-fancybox="post" href="${$this.attr("src")}" ></span>`));
-    });
-  }
-
+  
   copyPermalink() {
     const dom = $('.post-support .share .copy-permalink');
 

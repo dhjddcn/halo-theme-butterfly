@@ -31,10 +31,12 @@
       --cursor-default: url("[(${#theme.assets('/plugins/cursor/simple/default.cur')})]"), auto;
       --cursor-pointer: url("[(${#theme.assets('/plugins/cursor/simple/pointer.cur')})]"), auto;
     }
+
     html[data-theme=dark] {
       --theme: /*[(${theme.config.style.theme_color_dark})]*/ #ff7242;
       --body-bg: #221f1f;
     }
+
     img[data-lazy-src]:not(.loaded,.error) {
       filter: /*[(${theme.config.loading.filter})]*/ none;
     }
@@ -52,13 +54,19 @@
     if (locDataTheme) {
       document.querySelector('html').setAttribute('data-theme', locDataTheme);
       window.dataTheme = locDataTheme;
+    } else {
+      window.dataTheme = document.querySelector('html').getAttribute('data-theme');
     }
-    document.getElementById('base-script').remove();
   </script>
   <th:block th:insert="${head}"></th:block>
+
+<!--  <script src="https://unpkg.com/vconsole@latest/dist/vconsole.min.js"></script>-->
+  <script>
+    // window.vConsole = new window.VConsole();
+  </script>
 </head>
 <body>
-<div id="Butterfly" th:class="${page}">
+<div id="Butterfly" th:class="${page}" >
   <!--/* 头部--><!--*/-->
   <header xmlns:th="https://www.thymeleaf.org" class="header relative w-100">
     <nav class="nav flex flex-wrap flex-align-items-center  top-0 absolute z-80 w-100">
@@ -118,7 +126,13 @@
   </header>
 
   <!--/* 主要部分--><!--*/-->
-  <main th:insert="${content}" th:class="'main flex margin-0-auto animated InUp '+${theme.config.aside.position}"></main>
+  <main
+    th:insert="${content}"
+    th:with="class = ${theme.config.aside.enable ? (theme.config.aside.position) : 'off-aside' }"
+    th:class="'main flex margin-0-auto animated InUp '+ ${class}"
+  >
+
+  </main>
 
   <!--/* footer--><!--*/-->
   <footer class="footer  text-center">
@@ -133,15 +147,15 @@
 
   <!--/* 左右小部件--><!--*/-->
   <div class="adsorption z-100 fixed transition-all-5s">
-    <button class="show-tocbot btn-effect text-center none" type="button" title="浅色和深色模式转换">
+    <button class="show-tocbot btn-effect text-center none" type="button" title="目录">
       <i class="fas fa-list-ul"></i>
     </button>
 
-    <button class="switch-model btn-effect block text-center" type="button" title="浅色和深色模式转换">
+    <button class="switch-model block btn-effect text-center" type="button" title="浅色和深色模式转换">
       <i class="fas fa-adjust"></i>
     </button>
 
-    <button class="back-top btn-effect text-center" type="button" title="回到顶部">
+    <button class="back-top  block btn-effect text-center" type="button" title="回到顶部">
       <i class="fa-sharp fa-solid fa-up"></i>
     </button>
   </div>

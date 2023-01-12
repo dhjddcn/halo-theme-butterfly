@@ -1,1 +1,43 @@
-<div>1212132da nbid 12ddddddddddddd3</div>
+<!DOCTYPE html>
+<html
+  xmlns:th="https://www.thymeleaf.org"
+  th:replace="~{modules/layout :: layout (
+  page = 'category',
+  title = ${theme.config.categories.custom_title +' - '+category.spec.displayName},
+  head = ~{::head},
+  above = ~{::above},
+  content = ~{::content},
+  js = ~{::js}
+  )}">
+>
+<th:block th:fragment="head">
+  <style th:inline="css"
+         th:with="above_background= ${is_body_bg_http ? '' : 'url(' + theme.config.categories.above_background + ')'}">
+    html {
+      --above-background: /*[(${above_background})]*/ transparent;
+    }
+  </style>
+  <link rel="stylesheet" th:href="@{/assets/css/category.min.css}">
+</th:block>
+
+<section
+  th:fragment="above"
+  th:if="${theme.config.categories.enable_above}"
+  class="above relative w-100">
+  <h1 class="absolute above-public-title font-weight-400 margin-0 left-0 right-0 text-center"
+      th:text="${theme.config.categories.custom_title +' - '+category.spec.displayName}"></h1>
+</section>
+
+<th:block th:fragment="content">
+  <section class="container">
+    <th:block th:replace="~{modules/public:: posts(${posts.items},${theme.config.categories.post_layout})}"></th:block>
+    <th:block th:replace="~{modules/public:: pagination(${posts},${'categories/'+category.spec.slug})}"></th:block>
+  </section>
+
+  <th:block th:replace="~{modules/public:: aside}"></th:block>
+</th:block>
+
+<th:block th:fragment="js">
+  <script type="text/javascript" th:src="@{/assets/js/category.min.js}"></script>
+</th:block>
+</html>

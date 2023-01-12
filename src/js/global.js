@@ -4,7 +4,7 @@
  * @date: 2022/12/6
  * @fileName: globals
  */
-import {throttle, switchCodeTheme} from './Utils.js'
+import {throttle, switchCodeTheme, drawEcharts} from './Utils.js'
 
 class Global {
   constructor() {
@@ -134,8 +134,9 @@ class Global {
       const locDataTheme = localStorage.getItem('Butterfly-data-theme');
 
       if (locDataTheme === 'light') {
-        // getPrismThemeLink('dark');
         switchCodeTheme('dark');
+
+        drawEcharts('dark', 1)
 
         this.html.attr('data-theme', 'dark');
 
@@ -145,9 +146,9 @@ class Global {
 
         this.starrySky('open'); // 开启星空背景
       } else {
-        // getPrismThemeLink('light');
         switchCodeTheme('light');
-        
+
+        drawEcharts('light', 1);
 
         this.html.attr('data-theme', 'light');
 

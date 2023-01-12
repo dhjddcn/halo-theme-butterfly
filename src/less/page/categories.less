@@ -5,20 +5,6 @@
  * @Description: 分类
  */
 
-
-@keyframes draw-chart {
-  0% {
-    opacity: 0
-  }
-
-  100% {
-    opacity: 1;
-    -ms-filter: none;
-    filter: none
-  }
-}
-
-
 .categories {
   &-list {
     margin: 60px 0 25px;
@@ -45,8 +31,14 @@
     }
   }
 
-  &-chart canvas {
-    animation: draw-chart 4s;
+  &-chart {
+    height: 500px;
+
+
+    canvas {
+      width: 100%;
+      animation: draw-chart 4s;
+    }
   }
 
 }
