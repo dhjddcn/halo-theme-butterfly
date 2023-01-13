@@ -13,8 +13,9 @@ class Global {
     this.Butterfly = $('#Butterfly');
     this.Header = this.Butterfly.find('.header');
     this.init();
-    this.pjax();
     this.nav();
+    this.toggle();
+    this.mask();
     this.sidebar();
     this.scroll();
     this.runDay();
@@ -33,9 +34,7 @@ class Global {
 
     // 图片加载
     window.lazyLoadInstance = new LazyLoad({
-      elements_selector: 'img',
-      threshold: 0,
-      data_src: 'lazy-src'
+      elements_selector: 'img', threshold: 0, data_src: 'lazy-src'
     })
 
   }
@@ -45,14 +44,54 @@ class Global {
   starrySky(tp) {
   }
 
-  pjax() {
-    // $(document).pjax('[data-pjax] a, a[data-pjax]', '.pjax-content')
-  }
 
   // 导航栏
   nav() {
 
   }
+
+  toggle() {
+    const toggle = this.Header.find('.menu-item.toggle');
+
+    // 1 开  0关
+
+    toggle.on('click', () => {
+      this.html.addClass('active-mask');
+      this.switchSidebar(1);
+    })
+  }
+
+  /**
+   * 1 开  0关
+   * @param tp
+   */
+  switchSidebar(tp) {
+    const sidebar = this.Header.find('.sidebar');
+
+    if (tp === 1) {
+      sidebar.css({
+        "transform": "translate3d(-100%, 0, 0)"
+      })
+
+    } else {
+
+      sidebar.css({
+        "transform": "translate3d(0, 0, 0)"
+      })
+    }
+  }
+
+  mask() {
+    const mask = this.Butterfly.find('.global-mask');
+
+    mask.on('click', () => {
+      this.html.removeClass('active-mask');
+      this.switchSidebar(0);
+    })
+
+
+  }
+
 
   sidebar() {
     const menus = this.body.find('.sidebar-menus .menu-item');

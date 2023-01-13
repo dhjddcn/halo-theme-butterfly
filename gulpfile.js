@@ -8,8 +8,21 @@ const gzip = require("gulp-gzip");
 const webpack = require("webpack-stream");
 const path = require("path");
 const fs = require("fs");
+const clean = require("gulp-clean");
 
 const resolve = (name) => path.resolve(__dirname, name);
+
+gulp.task("clean", () => {
+  return gulp.src(['./templates/assets/css', './templates/assets/js'], {
+    read: false,
+    allowEmpty: true,
+  }).pipe(
+    clean({
+      force: true,
+    })
+  );
+});
+
 
 gulp.task("css", function () {
   return gulp.src('./src/less/page/*.less')
@@ -68,7 +81,7 @@ gulp.task("js", function () {
         },
       ],
     },
-    
+
     stats: "errors-only",
     output: {
       filename: "[name].min.js",

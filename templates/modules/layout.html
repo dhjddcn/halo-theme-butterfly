@@ -1,5 +1,5 @@
-<!DOCTYPE html><!--class="active-mask"-->
-<html lang="en"  data-theme="light" xmlns:th="https://www.thymeleaf.org"
+<!DOCTYPE html>
+<html lang="en"   data-theme="light" xmlns:th="https://www.thymeleaf.org"
       th:fragment="layout (page,title,head,above,content,js)">
 <head th:with="is_body_bg_http = ${#strings.containsIgnoreCase(theme.config.style.body_background,'http')}">
   <title th:text="${title}"></title>
@@ -119,7 +119,7 @@
     </nav>
 
     <!--/* 移动端侧边栏--><!--*/-->
-    <div class="sidebar fixed top-0 none">
+    <div class="sidebar fixed top-0">
       <div class="sidebar-avatar text-center overflow-hidden">
         <img class="w-100 h-100"
              th:src="${theme.config.loading.preload}"
