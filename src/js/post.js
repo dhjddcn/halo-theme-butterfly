@@ -32,7 +32,7 @@ class Post {
 
   // 文章过期
   outDate() {
-    const dom = GlobalClass.Butterfly.find('.post-outDate');
+    const dom = $('.post-outDate');
 
     if (!dom.length) return;
 
@@ -64,7 +64,6 @@ class Post {
   }
 
   // 放大镜图片
-  
   copyPermalink() {
     const dom = $('.post-support .share .copy-permalink');
 
@@ -88,7 +87,7 @@ class Post {
 
   // 移动端显示目录
   showTocbot() {
-    const dom = $('.adsorption > .show-tocbot');
+    const dom = $('.adsorption  .show-tocbot');
 
     if (!dom.length) return;
 
@@ -97,7 +96,6 @@ class Post {
       const postTocbot = $('.aside  .post-tocbot');
 
       if (postTocbot.attr('style')) {
-
         postTocbot.css({'animation': 'toc-close .2s'});
 
         setTimeout(() => {
@@ -108,6 +106,8 @@ class Post {
 
       }
 
+      $('.main').css({'animation': 'none'});
+      
       postTocbot.css({
         'display': 'block',
         'animation': 'toc-open .3s'

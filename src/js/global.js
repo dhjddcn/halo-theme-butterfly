@@ -8,14 +8,7 @@ import {throttle, switchCodeTheme, drawEcharts} from './Utils.js'
 
 class Global {
   constructor() {
-    this.html = $('html');
-    this.body = $('body');
-    this.Butterfly = $('#Butterfly');
-    this.Header = this.Butterfly.find('.header');
     this.init();
-    this.nav();
-    this.toggle();
-    this.mask();
     this.sidebar();
     this.scroll();
     this.runDay();
@@ -24,77 +17,45 @@ class Global {
 
   //初始化一些配置
   init() {
-    // //主题模式
-    // const locDataTheme = localStorage.getItem('Butterfly-data-theme');
-    //
-    // if (locDataTheme) {
-    //   this.html.attr('data-theme', locDataTheme);
-    //   window.dataTheme = locDataTheme;
-    // }
+    const html = $('html');
 
-    // 图片加载
-    window.lazyLoadInstance = new LazyLoad({
-      elements_selector: 'img', threshold: 0, data_src: 'lazy-src'
-    })
-
-  }
-
-
-  // 夜间模式星空背景
-  starrySky(tp) {
-  }
-
-
-  // 导航栏
-  nav() {
-
-  }
-
-  toggle() {
-    const toggle = this.Header.find('.menu-item.toggle');
-
-    // 1 开  0关
-
-    toggle.on('click', () => {
-      this.html.addClass('active-mask');
+    // 移动端侧边栏开关
+    $('.menu-item.toggle').on('click', () => {
+      html.addClass('active-mask');
       this.switchSidebar(1);
     })
-  }
 
-  /**
-   * 1 开  0关
-   * @param tp
-   */
-  switchSidebar(tp) {
-    const sidebar = this.Header.find('.sidebar');
 
-    if (tp === 1) {
-      sidebar.css({
-        "transform": "translate3d(-100%, 0, 0)"
-      })
+    // 图片加载
+    window.lazyLoadInstance = new LazyLoad({elements_selector: 'img', threshold: 0, data_src: 'lazy-src'})
 
-    } else {
 
-      sidebar.css({
-        "transform": "translate3d(0, 0, 0)"
-      })
-    }
-  }
-
-  mask() {
-    const mask = this.Butterfly.find('.global-mask');
-
-    mask.on('click', () => {
-      this.html.removeClass('active-mask');
+    // 遮罩层
+    $('.global-mask').on('click', () => {
+      html.removeClass('active-mask');
       this.switchSidebar(0);
     })
 
+  }
+
+  /**
+   * 1 开  0关 移动端侧边栏开关
+   * @param tp
+   */
+  switchSidebar(tp) {
+    const sidebar = $('.sidebar');
+
+    if (tp === 1) {
+      sidebar.css({"transform": "translate3d(-100%, 0, 0)"})
+    } else {
+      sidebar.css({"transform": "translate3d(0, 0, 0)"})
+    }
 
   }
 
 
   sidebar() {
-    const menus = this.body.find('.sidebar-menus .menu-item');
+    const menus = $('.sidebar-menus .menu-item');
 
     if (!menus.length) return;
 
@@ -110,9 +71,9 @@ class Global {
 
   // 滚动
   scroll() {
-    const nav = this.Header.find('.nav');
-    const adsorption = this.Butterfly.children('.adsorption');
-    const postSticky = this.body.find('.post .aside .post-sticky');
+    const nav = $('.header .nav');
+    const adsorption = $('.adsorption');
+    const postSticky = $('.post .aside .post-sticky');
     let scrollNum = 0;
 
     const fn = (e) => {
@@ -126,7 +87,7 @@ class Global {
             nav.addClass('hidden').removeClass('visible');
           }
 
-          if (postSticky) postSticky.css('top', '');
+          // if (postSticky) postSticky.css('top', '');
 
           if (!adsorption.hasClass('active')) adsorption.addClass('active');
 
@@ -137,7 +98,7 @@ class Global {
             nav.addClass('visible').removeClass('hidden');
           }
 
-          if (postSticky) postSticky.css('top', '70px');
+          // if (postSticky) postSticky.css('top', '70px');
 
         }
 
@@ -157,11 +118,11 @@ class Global {
 
   // 初始化运行时间
   runDay() {
-    const dom = this.Butterfly.find('.run-day');
+    const dom = $('.aside-web-info .run-day');
 
     if (!dom) return;
 
-    const dataRunDay = dom.attr('data-runDay');
+    const dataRunDay = dom.attr('data-runday');
 
     if (!dataRunDay) return;
 
@@ -172,7 +133,7 @@ class Global {
       return;
     }
 
-    const date = new Date().getTime() - runDay.getTime();
+    const date = runDay.getTime() - new Date(dataRunDay).getTime();
 
     const day = parseInt((date / (1000 * 24 * 60 * 60)).toString());
 
@@ -181,45 +142,39 @@ class Global {
 
   //左右吸附小部件
   adsorption() {
-    const adsorption = this.Butterfly.find('.adsorption');
-
     // 夜间模式切换
-    adsorption.find('.switch-model').on('click', () => {
-
+    $('.adsorption .switch-model').on('click', () => {
       const locDataTheme = localStorage.getItem('Butterfly-data-theme');
 
       if (locDataTheme === 'light') {
         switchCodeTheme('dark');
 
-        drawEcharts('dark', 1)
+        drawEcharts('dark', 1);
 
-        this.html.attr('data-theme', 'dark');
+        $('html').attr('data-theme', 'dark');
 
         localStorage.setItem('Butterfly-data-theme', 'dark');
 
         window.dataTheme = 'dark';
 
-        this.starrySky('open'); // 开启星空背景
       } else {
         switchCodeTheme('light');
 
         drawEcharts('light', 1);
 
-        this.html.attr('data-theme', 'light');
+        $('html').attr('data-theme', 'light');
 
         localStorage.setItem('Butterfly-data-theme', 'light');
 
         window.dataTheme = 'light';
-
-        this.starrySky('close') // 关闭星空背景
       }
 
     });
 
 
     // 返回顶部
-    adsorption.find('.back-top').on('click', () => {
-      this.html.animate({scrollTop: 0}, 300);
+    $('.adsorption .back-top').on('click', () => {
+      $('html').animate({scrollTop: 0}, 300);
     });
 
   }

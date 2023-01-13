@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"   data-theme="light" xmlns:th="https://www.thymeleaf.org"
+<html lang="en" data-theme="light" xmlns:th="https://www.thymeleaf.org"
       th:fragment="layout (page,title,head,above,content,js)">
 <head th:with="is_body_bg_http = ${#strings.containsIgnoreCase(theme.config.style.body_background,'http')}">
   <title th:text="${title}"></title>
@@ -45,7 +45,7 @@
   <link rel="preload stylesheet" as="style" th:href="@{'/assets/font/'+${theme.config.style.font_family}+'.min.css'}">
   <link rel="preload stylesheet" as="style" th:href="@{/assets/css/global.min.css}">
   <link rel="preload stylesheet" as="style" th:href="@{/assets/plugins/animate/animate.min.css}">
-  <link rel="preload stylesheet" as="style" th:href="@{/assets/plugins/fontawesome/fontawesome.min.css}">
+  <link rel="stylesheet" th:href="@{/assets/plugins/fontawesome/fontawesome.min.css}">
   <link rel="stylesheet" th:href="@{/assets/plugins/Qmsg/Qmsg.min.css}">
   <script id="base-script" th:inline="javascript">
     window.ThemeConfig =  /*[[${theme.config}]]*/ {};
