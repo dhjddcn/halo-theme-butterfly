@@ -99,11 +99,11 @@ gulp.task("js", function () {
 
 gulp.task("zip", done => {
   gulp.src([
-    './templates',
+    './templates/**/*.*',
     './settings.yaml',
     './settings-custom.yaml',
     './theme.yaml',
-  ])
+  ], {base: '.'})
     .pipe(zip('theme-butterfly-dist.zip'))
     .pipe(gulp.dest('./'));
   done();
