@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light" xmlns:th="https://www.thymeleaf.org"
-      th:fragment="layout (page,title,head,above,content,js)"
-      th:with="is_body_bg_http = ${#strings.containsIgnoreCase(theme.config.style.body_background,'http')}">
-<head>
+      th:fragment="layout (page,title,head,above,content,js)">
+<head th:with="is_body_bg_http = ${#strings.containsIgnoreCase(theme.config.style.body_background,'http')}">
   <title th:text="${title}"></title>
   <meta charset="UTF-8"/>
   <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -43,9 +42,9 @@
     }
   </style>
   <link rel="canonical" th:href="${site.url}">
-  <link rel="stylesheet preload" as="style" th:href="@{'/assets/font/'+${theme.config.style.font_family}+'.min.css'}" media="all" onload="this.media='all'">
-  <link rel="stylesheet" th:href="@{/assets/css/global.min.css}">
-  <link rel="stylesheet" th:href="@{/assets/plugins/fontawesome/fontawesome.min.css}"  media="all" onload="this.media='all'" >
+  <link rel="stylesheet preload" as="style" th:href="@{'/assets/font/'+${theme.config.style.font_family}+'.min.css'}">
+  <link rel="stylesheet preload" as="style" th:href="@{/assets/css/global.min.css}">
+  <link rel="stylesheet" th:href="@{/assets/plugins/fontawesome/fontawesome.min.css}">
   <link rel="stylesheet" th:href="@{/assets/plugins/animate/animate.min.css}">
   <link rel="stylesheet" th:href="@{/assets/plugins/Qmsg/Qmsg.min.css}">
   <script id="base-script" th:inline="javascript">
