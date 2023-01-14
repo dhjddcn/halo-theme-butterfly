@@ -33,39 +33,39 @@ spec:
     - group: style
       label: 主题
       formSchema:
-        - $formkit: select
-          name: theme_type
-          label: 主题模式
-          value: '#49b1f5'
-          placeholder: 请填写主题颜色
-          help: '设置博客的主题模式（用户/自动/浅色/暗黑），默认为用户模式，仅在用户模式下页面才有主题切换按钮，自动模式下根据时间自动切换'
-          options:
-            - value: user
-              label: 用户模式
-            - value: light
-              label: 浅色模式
-            - value: dark
-              label: 暗黑模式
+        #        - $formkit: select
+        #          name: theme_type
+        #          label: 主题模式
+        #          value: '#49b1f5'
+        #          placeholder: 请填写主题颜色
+        #          help: '设置博客的主题模式（用户/自动/浅色/暗黑），默认为用户模式，仅在用户模式下页面才有主题切换按钮，自动模式下根据时间自动切换'
+        #          options:
+        #            - value: user
+        #              label: 用户模式
+        #            - value: light
+        #              label: 浅色模式
+        #            - value: dark
+        #              label: 暗黑模式
         - $formkit: text
           name: theme_color_light
-          label: 主题颜色（浅白）
+          label: 主题颜色（浅色）
           value: '#49b1f5'
-          placeholder: 请填写主题 浅白 颜色
+          placeholder: 请填写主题 浅色 颜色
           help: '主题颜色运用到大部分模块色调，默认 #49b1f5'
           validation: required
         - $formkit: text
           name: theme_color_dark
-          label: 主题颜色（暗黑）
+          label: 主题颜色（深色）
           value: '#ff7242'
-          placeholder: 请填写主题 暗黑 颜色
+          placeholder: 请填写主题 深色 颜色
           help: '主题颜色运用到大部分模块色调，默认 #ff7242'
           validation: required
         - $formkit: text
           name: content_max_width
           label: 全局内容区最大宽度
-          value: 1350px
+          value: 1500px
           placeholder: 请填写内容区最大宽度
-          help: 内容区域最大宽度，像素或百分比，默认 1350px（注：文字布局为列表建议：1350px 平铺：1400px，配合halo 设置-文章设置-文章列表显示条数，效果更好）
+          help: 内容区域最大宽度，像素或百分比，默认 1500px（注：配合halo 设置-文章设置-文章列表显示条数，效果更好）
           validation: required
         - $formkit: attachment
           name: body_background
@@ -87,19 +87,28 @@ spec:
     - group: loading
       label: 加载
       formSchema:
+        - $formkit: radio
+          name: enable_random_img
+          label: 启用随机图片
+          help: 是否启用随机图API（必须先配置 API），开启后将使用随机图填充没有设置封面的，未开启时使用主题内置的封面图
+          value: true
+          options:
+            - label: 启用
+              value: true
+            - label: 禁用
+              value: false
+        - $formkit: text
+          name: random_img
+          label: 随机图片链接
+          placeholder: 请正确填写 随机图片链接
+          value: 'https://api.likepoems.com/img/aliyun/pc'
+          help: 自定义随机图API，用于填充没有设置封面的 ，免费 API 不会一直可用，请知悉
         - $formkit: attachment
           name: preload
           label: 预加载图片
           placeholder: 请填写 预加载图片
-          value: 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'
-          help: 预加载图片，默认 data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7
-          validation: required
-        - $formkit: attachment
-          name: err
-          label: 加载失败图片
-          placeholder: 请填写 加载失败图片
           value: 'data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs='
-          help: 加载失败图片，默认 data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=
+          help: 预加载图片，默认 data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=
           validation: required
         - $formkit: attachment
           name: filter
@@ -108,17 +117,25 @@ spec:
           value: blur(50px) brightness(1)
           help: 滤镜，默认 blur(50px) brightness(1)
           validation: required
-
-    - group: nav
-      label: 导航
-      formSchema:
-        - $formkit: text
-          name: font_color_light
-          label: 导航字体颜色
-          placeholder: 请填写 导航字体颜色
-          value: '#eee'
-          help: '导航字体颜色，默认 #eee'
+        - $formkit: attachment
+          name: err
+          label: 加载失败图片
+          placeholder: 请填写 加载失败图片
+          value: 'data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs='
+          help: 加载失败图片，默认 data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=
           validation: required
+
+#
+#    - group: nav
+#      label: 导航
+#      formSchema:
+#        - $formkit: text
+#          name: font_color_light
+#          label: 导航字体颜色
+#          placeholder: 请填写 导航字体颜色
+#          value: '#eee'
+#          help: '导航字体颜色，默认 #eee'
+#          validation: required
 
     - group: card
       label: 卡片

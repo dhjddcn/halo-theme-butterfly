@@ -1,8 +1,3 @@
-<!--默认公共、自定义首屏-->
-<section xmlns:th="https://www.thymeleaf.org" th:fragment="above" class="above relative w-100">
-  123
-</section>
-
 
 <!--侧边栏-->
 <aside xmlns:th="https://www.thymeleaf.org"
@@ -137,7 +132,7 @@
         <img class="block w-100 h-100"
              th:src="${theme.config.loading.preload}"
              th:attr="onerror='this.src='+${'`'+theme.config.loading.err+'`'}"
-             th:data-lazy-src="${ps.spec.cover}+' '"
+             th:data-lazy-src="${#strings.isEmpty(ps.spec.cover) ? random_img : ps.spec.cover+' '  }"
              th:alt="${ps.spec.title}" alt="">
       </a>
       <div class="desc flex-1">
@@ -161,7 +156,7 @@
       <img class="w-100 h-100"
            th:src="${theme.config.loading.preload}"
            th:attr="onerror='this.src='+${'`'+theme.config.loading.err+'`'}"
-           th:data-lazy-src="${post.spec.cover}+' '"
+           th:data-lazy-src="${#strings.isEmpty(post.spec.cover) ? random_img : post.spec.cover+' '}"
            th:alt="${post.spec.title}" alt="">
     </a>
 
@@ -222,7 +217,7 @@
   <a
     th:each="index : ${#numbers.sequence(1,ps.totalPages)}"
     th:class="${ps.page == index ?  'page current': 'page'}+' inline-flex flex-justify-content-center flex-align-items-center'"
-    th:href="@{${'/'+path+'/page/'}  + ${index}}" th:text="${index}"></a>
+    th:href="@{${path+'/page/'}  + ${index}}" th:text="${index}"></a>
 
   <a th:if="${ps.hasNext()}"
      th:href="${ps.nextUrl}"

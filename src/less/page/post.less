@@ -13,6 +13,7 @@ html {
   --post-cpt-bg-color: #f0f0f0cc;
   --post-cpt-border-color: #ebe5f83b;
 
+
   &[data-theme="dark"] {
     --post-dropdown-bg-color: #000;
     --post-icon-bg-color: rgb(57 58 59);
@@ -21,6 +22,7 @@ html {
 
     --post-cpt-bg-color: rgb(33 35 37 / 90%);
     --post-cpt-border-color: rgb(33 35 37 / 90%);
+
   }
 
 }
@@ -59,6 +61,9 @@ html {
       background-color: rgba(0, 0, 0, 0.5);
       content: '';
     }
+    
+    
+    
   }
 
   &-info {
@@ -123,11 +128,15 @@ html {
   &-sticky {
     top: 20px;
     transition: top 0.3s;
+
   }
 
   &-tocbot {
+    background-color: var(--card-bg-color);
+
     .toc {
-      overflow-y: auto
+      overflow-y: auto;
+      max-height: 500px;
     }
 
     .toc > .toc-list {
@@ -141,7 +150,7 @@ html {
 
     .toc-list {
       margin: 0;
-      padding-left: 20px
+      padding-left: 28px
     }
 
     a.toc-link {
@@ -380,7 +389,6 @@ html {
     @media (max-width: 1000px) {
 
 
-
       .aside .post-tocbot {
         display: none;
         //top: auto;
@@ -393,7 +401,7 @@ html {
         transition: transform 0.3s ease-in-out;
         transform-origin: right bottom;
         right: 55px;
-        background-color: #ffffff;
+        //background-color: #ffffff;
       }
 
 

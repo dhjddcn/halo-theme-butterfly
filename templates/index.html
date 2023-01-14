@@ -11,12 +11,6 @@
   )}">
 >
 <th:block th:fragment="head">
-  <style th:inline="css"
-         th:with="above_background= ${is_body_bg_http ? '' : 'url(' + theme.config.index.above_background + ')'}">
-    html {
-      --above-background: /*[(${above_background})]*/ transparent;
-    }
-  </style>
   <link rel="stylesheet" th:href="@{/assets/css/index.min.css}">
 </th:block>
 
@@ -24,6 +18,10 @@
   th:fragment="above"
   th:if="${theme.config.index.enable_above}"
   class="above relative w-100">
+  <img th:if="${!is_body_bg_http}" class="above-background-img absolute left-0 top-0 w-100 h-100 object-fit-cover"
+       th:src="${theme.config.index.above_background}"
+       alt="above">
+
   <div class="above-info">
     <h1 class="above-title text-center margin-0-auto" th:text="${site.title}"></h1>
 
@@ -40,7 +38,7 @@
   <section class="container" th:with="noData = ${not #lists.isEmpty(posts.items)}">
     <th:block th:if="${noData}">
       <th:block th:replace="~{modules/public:: posts(${posts.items},${theme.config.index.post_layout})}"></th:block>
-      <th:block th:replace="~{modules/public:: pagination(${posts},'index')}"></th:block>
+      <th:block th:replace="~{modules/public:: pagination(${posts},'/index')}"></th:block>
     </th:block>
 
     <th:block th:unless="${noData}" th:insert="~{modules/public:: emptyData('暂无文章~',true)}"></th:block>

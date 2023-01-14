@@ -53,7 +53,6 @@ class Global {
 
   }
 
-
   sidebar() {
     const menus = $('.sidebar-menus .menu-item');
 

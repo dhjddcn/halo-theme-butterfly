@@ -31,7 +31,7 @@
 <th:block th:fragment="content">
   <section class="container">
     <th:block th:replace="~{modules/public:: posts(${posts.items},${theme.config.categories.post_layout})}"></th:block>
-    <th:block th:replace="~{modules/public:: pagination(${posts},${'categories/'+category.spec.slug})}"></th:block>
+    <th:block th:replace="~{modules/public:: pagination(${posts},${category.status.permalink})}"></th:block>
   </section>
 
   <th:block th:replace="~{modules/public:: aside}"></th:block>

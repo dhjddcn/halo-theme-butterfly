@@ -107,7 +107,7 @@ class Post {
       }
 
       $('.main').css({'animation': 'none'});
-      
+
       postTocbot.css({
         'display': 'block',
         'animation': 'toc-open .3s'

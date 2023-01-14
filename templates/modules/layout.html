@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light" xmlns:th="https://www.thymeleaf.org"
-      th:fragment="layout (page,title,head,above,content,js)">
-<head th:with="is_body_bg_http = ${#strings.containsIgnoreCase(theme.config.style.body_background,'http')}">
+      th:fragment="layout (page,title,head,above,content,js)"
+      th:with="is_body_bg_http = ${#strings.containsIgnoreCase(theme.config.style.body_background,'http')}">
+<head>
   <title th:text="${title}"></title>
   <meta charset="UTF-8"/>
   <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -42,14 +43,13 @@
     }
   </style>
   <link rel="canonical" th:href="${site.url}">
-  <link rel="preload stylesheet" as="style" th:href="@{'/assets/font/'+${theme.config.style.font_family}+'.min.css'}">
-  <link rel="preload stylesheet" as="style" th:href="@{/assets/css/global.min.css}">
-  <link rel="preload stylesheet" as="style" th:href="@{/assets/plugins/animate/animate.min.css}">
-  <link rel="stylesheet" th:href="@{/assets/plugins/fontawesome/fontawesome.min.css}">
+  <link rel="preload stylesheet" as="style" th:href="@{'/assets/font/'+${theme.config.style.font_family}+'.min.css'}" media="all" onload="this.media='all'">
+  <link rel="stylesheet" th:href="@{/assets/css/global.min.css}">
+  <link rel="stylesheet" th:href="@{/assets/plugins/fontawesome/fontawesome.min.css}"  media="all" onload="this.media='all'" >
+  <link rel="stylesheet" th:href="@{/assets/plugins/animate/animate.min.css}">
   <link rel="stylesheet" th:href="@{/assets/plugins/Qmsg/Qmsg.min.css}">
   <script id="base-script" th:inline="javascript">
     window.ThemeConfig =  /*[[${theme.config}]]*/ {};
-    window.ThemeBasePath = '[(${#theme.assets("")})]';
     const locDataTheme = localStorage.getItem('Butterfly-data-theme');
     if (locDataTheme) {
       document.querySelector('html').setAttribute('data-theme', locDataTheme);
@@ -62,14 +62,16 @@
 </head>
 <body>
 <div id="Butterfly" th:class="${page}"
-     th:with="stats = ${siteStatsFinder.getStats()},contributor = ${contributorFinder.getContributor(theme.config.base.metadata_name)}">
+     th:with="stats = ${siteStatsFinder.getStats()},contributor = ${contributorFinder.getContributor(theme.config.base.metadata_name)},
+    random_img = ${theme.config.loading.enable_random_img ? theme.config.loading.random_img : 'null'}
+">
   <!--/* 头部--><!--*/-->
-  <header xmlns:th="https://www.thymeleaf.org" class="header relative w-100">
+  <header class="header relative w-100">
     <nav class="nav flex flex-wrap flex-align-items-center  top-0 absolute z-80 w-100">
       <a th:text="${site.title}" class="site-title flex-1" href="/"></a>
 
       <ul class="menu inline">
-        <!--搜索-->
+        <!--/* 搜索 需要配合官方搜索插件使用 --><!--*/-->
         <li class="menu-item search" th:if="${pluginFinder.available('PluginSearchWidget')}">
           <a class="menu-link relative inline-block" href="javascript:SearchWidget.open();">
             <i class="fas fa-search fa-fw"></i>
@@ -81,7 +83,7 @@
           <i class="fas fa-bars fa-fw"></i>
         </span>
         </li>
-        <!--toggle-->
+        <!--/* toggle--><!--*/-->
 
         <th:block th:each="menuItem : ${menuFinder.getPrimary().menuItems}">
           <li th:if="${#lists.isEmpty(menuItem.children)}" class="menu-item menu-pc">

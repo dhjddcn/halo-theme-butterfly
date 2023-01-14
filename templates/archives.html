@@ -70,7 +70,7 @@
           </th:block>
         </th:block>
       </ul>
-      <th:block th:replace="~{modules/public:: pagination(${archives},'archives')}"></th:block>
+      <th:block th:replace="~{modules/public:: pagination(${archives},'/archives')}"></th:block>
     </th:block>
 
     <th:block th:unless="${noData}" th:insert="~{modules/public:: emptyData('暂无归档~',false)}"></th:block>
