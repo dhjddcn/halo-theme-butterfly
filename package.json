@@ -4,7 +4,8 @@
   "description": "一个Halo博客主题，Butterfly ",
   "scripts": {
     "dev": "gulp watch",
-    "build": "pnpm run clean && gulp",
+    "zip": "gulp zip",
+    "build": "pnpm run clean && gulp && pnpm run zip",
     "clean": "gulp clean",
     "build-js": "gulp js",
     "build-css": "gulp css"
@@ -51,6 +52,8 @@
     "gulp-less": "^5.0.0",
     "gulp-rename": "^2.0.0",
     "gulp-uglify": "^3.0.2",
+    "gulp-zip": "^5.1.0",
+    "jszip": "^3.10.1",
     "webpack": "^5.68.0",
     "webpack-stream": "^7.0.0"
   }

@@ -9,11 +9,12 @@ const webpack = require("webpack-stream");
 const path = require("path");
 const fs = require("fs");
 const clean = require("gulp-clean");
+const zip = require('gulp-zip');
 
 const resolve = (name) => path.resolve(__dirname, name);
 
 gulp.task("clean", () => {
-  return gulp.src(['./templates/assets/css', './templates/assets/js'], {
+  return gulp.src(['./templates/assets/css', './templates/assets/js', './theme-butterfly-dist.zip'], {
     read: false,
     allowEmpty: true,
   }).pipe(
@@ -22,7 +23,6 @@ gulp.task("clean", () => {
     })
   );
 });
-
 
 gulp.task("css", function () {
   return gulp.src('./src/less/page/*.less')
@@ -39,7 +39,6 @@ gulp.task("css", function () {
     }))
     .pipe(gulp.dest('./templates/assets/css'))
 })
-
 
 gulp.task("js", function () {
   const getEntryData = () => {
@@ -97,6 +96,19 @@ gulp.task("js", function () {
     )
     .pipe(gulp.dest('./templates/assets/js'));
 })
+
+gulp.task("zip", done => {
+  gulp.src([
+    './templates',
+    './settings.yaml',
+    './settings-custom.yaml',
+    './theme.yaml',
+  ])
+    .pipe(zip('theme-butterfly-dist.zip'))
+    .pipe(gulp.dest('./'));
+  done();
+  console.log("打包完成,生产文件在根目录下的theme-butterfly-dist.zip");
+});
 
 gulp.task(
   "watch",
