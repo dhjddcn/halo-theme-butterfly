@@ -107,7 +107,7 @@ gulp.task("zip", done => {
     .pipe(zip('theme-butterfly-dist.zip'))
     .pipe(gulp.dest('./'));
   done();
-  console.log("打包完成,生产文件在根目录下的theme-butterfly-dist.zip");
+  console.log('\x1B[32m打包完成,生产文件在根目录下的 theme-butterfly-dist.zip\x1B[0m')
 });
 
 gulp.task(
