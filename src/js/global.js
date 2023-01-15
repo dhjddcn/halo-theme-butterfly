@@ -12,7 +12,6 @@ class Global {
     this.sidebar();
     this.scroll();
     this.runDay();
-    this.adsorption()
   }
 
   //初始化一些配置
@@ -25,9 +24,43 @@ class Global {
       this.switchSidebar(1);
     })
 
-
     // 图片加载
     window.lazyLoadInstance = new LazyLoad({elements_selector: 'img', threshold: 0, data_src: 'lazy-src'})
+
+    // 夜间模式切换
+    $('.adsorption .switch-model').on('click', () => {
+      const locDataTheme = localStorage.getItem('Butterfly-data-theme') || 'light';
+
+      if (locDataTheme === 'light') {
+        switchCodeTheme('dark');
+
+        drawEcharts('dark', 1);
+
+        $('html').attr('data-theme', 'dark');
+
+        localStorage.setItem('Butterfly-data-theme', 'dark');
+
+        window.dataTheme = 'dark';
+
+      } else {
+        switchCodeTheme('light');
+
+        drawEcharts('light', 1);
+
+        $('html').attr('data-theme', 'light');
+
+        localStorage.setItem('Butterfly-data-theme', 'light');
+
+        window.dataTheme = 'light';
+      }
+
+    });
+
+
+    // 返回顶部
+    $('.adsorption .back-top').on('click', () => {
+      $('html').animate({scrollTop: 0}, 300);
+    });
 
 
     // 遮罩层
@@ -86,7 +119,7 @@ class Global {
             nav.addClass('hidden').removeClass('visible');
           }
 
-          // if (postSticky) postSticky.css('top', '');
+          if (postSticky) postSticky.css('top', '');
 
           if (!adsorption.hasClass('active')) adsorption.addClass('active');
 
@@ -97,7 +130,7 @@ class Global {
             nav.addClass('visible').removeClass('hidden');
           }
 
-          // if (postSticky) postSticky.css('top', '70px');
+          if (postSticky) postSticky.css('top', '70px');
 
         }
 
@@ -138,46 +171,6 @@ class Global {
 
     dom.html(day + ' 天');
   }
-
-  //左右吸附小部件
-  adsorption() {
-    // 夜间模式切换
-    $('.adsorption .switch-model').on('click', () => {
-      const locDataTheme = localStorage.getItem('Butterfly-data-theme') || 'light';
-
-      if (locDataTheme === 'light') {
-        switchCodeTheme('dark');
-
-        drawEcharts('dark', 1);
-
-        $('html').attr('data-theme', 'dark');
-
-        localStorage.setItem('Butterfly-data-theme', 'dark');
-
-        window.dataTheme = 'dark';
-
-      } else {
-        switchCodeTheme('light');
-
-        drawEcharts('light', 1);
-
-        $('html').attr('data-theme', 'light');
-
-        localStorage.setItem('Butterfly-data-theme', 'light');
-
-        window.dataTheme = 'light';
-      }
-
-    });
-
-
-    // 返回顶部
-    $('.adsorption .back-top').on('click', () => {
-      $('html').animate({scrollTop: 0}, 300);
-    });
-
-  }
-
 
 }
 

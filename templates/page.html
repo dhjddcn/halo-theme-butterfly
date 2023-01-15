@@ -17,20 +17,20 @@
       --above-background: /*[(${above_background})]*/ transparent;
     }
   </style>
-  <link rel="preload stylesheet" as="style" th:href="@{/assets/plugins/fancybox/fancybox.min.css}">
+  <link rel="preload stylesheet" as="style" th:href="${assets_link+'/plugins/fancybox/fancybox.min.css'}">
   <th:block th:if="${theme.config.code.enable}">
-    <link rel="preload stylesheet" as="style" th:href="@{/assets/plugins/prism/prism.min.css}">
+    <link rel="preload stylesheet" as="style" th:href="${assets_link+'/plugins/prism/prism.min.css'}">
     <link rel="alternate stylesheet" onload="this.rel='stylesheet'"
           data-code-theme="light"
           disabled
-          th:href="@{'/assets/plugins/prism/themes/prism-'+${theme.config.code.theme_light}+'.css'}">
+          th:href="${assets_link+ '/plugins/prism/themes/prism-'+theme.config.code.theme_light+'.css'}">
     <link rel="alternate stylesheet" onload="this.rel='stylesheet'"
           data-code-theme="dark"
           disabled
-          th:href="@{'/assets/plugins/prism/themes/prism-'+${theme.config.code.theme_dark}+'.css'}">
-    <script type="text/javascript" th:src="@{/assets/plugins/prism/prism.min.js}"></script>
+          th:href="${assets_link+'/plugins/prism/themes/prism-'+theme.config.code.theme_dark+'.css'}">
+    <script type="text/javascript" th:src="${assets_link+'/plugins/prism/prism.min.js'}"></script>
   </th:block>
-  <link rel="stylesheet" th:href="@{/assets/css/single.min.css}">
+  <link rel="stylesheet" th:href="${assets_link+'/css/single.min.css'}">
 </th:block>
 
 <section
@@ -52,6 +52,6 @@
 </th:block>
 
 <th:block th:fragment="js">
-  <script type="text/javascript" th:src="@{/assets/js/single.min.js}"></script>
+  <script type="text/javascript" th:src="${assets_link+'/js/single.min.js'}"></script>
 </th:block>
 </html>

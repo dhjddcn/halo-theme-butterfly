@@ -1,6 +1,6 @@
 {
   "name": "halo-theme-butterfly",
-  "version": "2.0.0",
+  "version": "1.0.0",
   "description": "一个Halo博客主题，Butterfly ",
   "scripts": {
     "dev": "gulp watch",
@@ -8,7 +8,9 @@
     "build": "pnpm run clean && gulp && pnpm run zip",
     "clean": "gulp clean",
     "build-js": "gulp js",
-    "build-css": "gulp css"
+    "build-css": "gulp css",
+    "set-npmjs": "npm config set registry https://registry.npmjs.org",
+    "set-taobao": "npm config set registry https://registry.npm.taobao.org"
   },
   "keywords": [
     "halo",

@@ -12,14 +12,13 @@
 >
 <th:block th:fragment="head"
           th:with="above_background= ${is_body_bg_http ? '' : 'url(' + theme.config.index.above_background + ')'}">
-
   <style th:inline="css"
   >
     html {
       --above-background: /*[(${above_background})]*/ transparent;
     }
   </style>
-  <link rel="stylesheet" th:href="@{/assets/css/index.min.css}">
+  <link rel="stylesheet" th:href="${assets_link+'/css/index.min.css'}">
 </th:block>
 
 <section
@@ -52,7 +51,7 @@
 </th:block>
 
 <th:block th:fragment="js">
-  <script type="text/javascript" th:src="@{/assets/plugins/typed/typed.min.js}"></script>
-  <script type="text/javascript" th:src="@{/assets/js/index.min.js}"></script>
+  <script type="text/javascript" th:src="${assets_link +'/plugins/typed/typed.min.js'}"></script>
+  <script type="text/javascript" th:src="${assets_link +'/js/index.min.js'}"></script>
 </th:block>
 </html>

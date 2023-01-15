@@ -20,20 +20,20 @@
       --above-background: /*[(${above_background})]*/ transparent;
     }
   </style>
-  <link rel="preload stylesheet" as="style" th:href="@{/assets/plugins/fancybox/fancybox.min.css}">
+  <link rel="preload stylesheet" as="style" th:href="${assets_link+'/plugins/fancybox/fancybox.min.css'}">
   <th:block th:if="${theme.config.code.enable}">
-    <link rel="preload stylesheet" as="style" th:href="@{/assets/plugins/prism/prism.min.css}">
+    <link rel="preload stylesheet" as="style" th:href="${assets_link+'/plugins/prism/prism.min.css'}">
     <link rel="alternate stylesheet" onload="this.rel='stylesheet'"
           data-code-theme="light"
           disabled
-          th:href="@{'/assets/plugins/prism/themes/prism-'+${theme.config.code.theme_light}+'.css'}">
+          th:href="${assets_link+ '/plugins/prism/themes/prism-'+theme.config.code.theme_light+'.css'}">
     <link rel="alternate stylesheet" onload="this.rel='stylesheet'"
           data-code-theme="dark"
           disabled
-          th:href="@{'/assets/plugins/prism/themes/prism-'+${theme.config.code.theme_dark}+'.css'}">
-    <script type="text/javascript" th:src="@{/assets/plugins/prism/prism.min.js}"></script>
+          th:href="${assets_link+'/plugins/prism/themes/prism-'+theme.config.code.theme_dark+'.css'}">
+    <script type="text/javascript" th:src="${assets_link+'/plugins/prism/prism.min.js'}"></script>
   </th:block>
-  <link rel="stylesheet" th:href="@{/assets/css/post.min.css}">
+  <link rel="stylesheet" th:href="${assets_link+'/css/post.min.css'}">
 </th:block>
 
 <section th:fragment="above" class="above relative w-100">
@@ -249,10 +249,10 @@
 </th:block>
 
 <th:block th:fragment="js">
-  <script type="text/javascript" th:src="@{/assets/plugins/fancybox/fancybox.min.js}"></script>
-  <script type="text/javascript" th:src="@{/assets/plugins/clipboard/clipboard.min.js}"></script>
-  <script type="text/javascript" th:src="@{/assets/plugins/tocbot/tocbot.min.js}"></script>
-  <script type="text/javascript" th:src="@{/assets/js/post.min.js}"></script>
+  <script type="text/javascript" th:src="${assets_link+'/plugins/fancybox/fancybox.min.js'}"></script>
+  <script type="text/javascript" th:src="${assets_link+'/plugins/clipboard/clipboard.min.js'}"></script>
+  <script type="text/javascript" th:src="${assets_link+'/plugins/tocbot/tocbot.min.js'}"></script>
+  <script type="text/javascript" th:src="${assets_link+'/js/post.min.js'}"></script>
 </th:block>
 
 </html>

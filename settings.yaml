@@ -124,18 +124,18 @@ spec:
           value: 'data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs='
           help: 加载失败图片，默认 data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=
           validation: required
-
-#
-#    - group: nav
-#      label: 导航
-#      formSchema:
-#        - $formkit: text
-#          name: font_color_light
-#          label: 导航字体颜色
-#          placeholder: 请填写 导航字体颜色
-#          value: '#eee'
-#          help: '导航字体颜色，默认 #eee'
-#          validation: required
+    
+    #
+    #    - group: nav
+    #      label: 导航
+    #      formSchema:
+    #        - $formkit: text
+    #          name: font_color_light
+    #          label: 导航字体颜色
+    #          placeholder: 请填写 导航字体颜色
+    #          value: '#eee'
+    #          help: '导航字体颜色，默认 #eee'
+    #          validation: required
 
     - group: card
       label: 卡片
@@ -664,6 +664,7 @@ spec:
             - value: "z-touch"
               label: "z-touch"
 
+      
     - group: socials
       label: 社交
       formSchema:
@@ -695,4 +696,25 @@ spec:
               name: url
               label: 地址
               value: ""
+
+    - group: other
+      label: 其他
+      formSchema:
+        - $formkit: radio
+          name: enable_cdn_link
+          label: 启用外链加载资源文件
+          help: 必须选配置外链地址才能生效，否则无效
+          value: true
+          options:
+            - label: 启用
+              value: true
+            - label: 禁用
+              value: false
+        - $formkit: text
+          name: cdn_link
+          label: cdn地址，外链地址
+          placeholder: 请填写 第一屏背景图
+          value: 'https://fastly.jsdelivr.net/npm/halo-theme-butterfly@latest/templates/assets'
+          help: 请保持和主题assets目录下的文件一致，否则会出现404
+          validation: required
               

@@ -17,7 +17,7 @@
       --above-background: /*[(${above_background})]*/ transparent;
     }
   </style>
-  <link rel="stylesheet" th:href="@{/assets/css/tags.min.css}">
+  <link rel="stylesheet" th:href="${assets_link+'/css/tags.min.css'}">
 </th:block>
 
 <section
@@ -50,7 +50,7 @@
 </th:block>
 
 <th:block th:fragment="js">
-  <script type="text/javascript" th:src="@{/assets/plugins/echarts/echarts.min.js}"></script>
-  <script type="text/javascript" th:src="@{/assets/js/tags.min.js}"></script>
+  <script type="text/javascript" th:src="${assets_link+'/plugins/echarts/echarts.min.js'}"></script>
+  <script type="text/javascript" th:src="${assets_link+'/js/tags.min.js'}"></script>
 </th:block>
 </html>
