@@ -143,7 +143,7 @@ class Global {
   adsorption() {
     // 夜间模式切换
     $('.adsorption .switch-model').on('click', () => {
-      const locDataTheme = localStorage.getItem('Butterfly-data-theme');
+      const locDataTheme = localStorage.getItem('Butterfly-data-theme') || 'light';
 
       if (locDataTheme === 'light') {
         switchCodeTheme('dark');

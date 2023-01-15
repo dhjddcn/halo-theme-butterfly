@@ -16,6 +16,18 @@
   <meta property="og:title" th:content="${site.title}">
   <meta property="og:locale" content="zh_CN">
   <meta property="og:type" content="website">
+  <!--  <script type="text/javascript" th:src="@{/assets/plugins/loading/color_rotate.js}"></script>-->
+  <script id="base-script" th:inline="javascript">
+    window.ThemeConfig =  /*[[${theme.config}]]*/ {};
+    const locDataTheme = localStorage.getItem('Butterfly-data-theme');
+    if (locDataTheme) {
+      document.querySelector('html').setAttribute('data-theme', locDataTheme);
+      window.dataTheme = locDataTheme;
+    } else {
+      window.dataTheme = document.querySelector('html').getAttribute('data-theme');
+    }
+  </script>
+
   <style
     th:inline="css"
     type="text/css"
@@ -47,16 +59,6 @@
   <link rel="stylesheet" th:href="@{/assets/plugins/fontawesome/fontawesome.min.css}">
   <link rel="stylesheet" th:href="@{/assets/plugins/animate/animate.min.css}">
   <link rel="stylesheet" th:href="@{/assets/plugins/Qmsg/Qmsg.min.css}">
-  <script id="base-script" th:inline="javascript">
-    window.ThemeConfig =  /*[[${theme.config}]]*/ {};
-    const locDataTheme = localStorage.getItem('Butterfly-data-theme');
-    if (locDataTheme) {
-      document.querySelector('html').setAttribute('data-theme', locDataTheme);
-      window.dataTheme = locDataTheme;
-    } else {
-      window.dataTheme = document.querySelector('html').getAttribute('data-theme');
-    }
-  </script>
   <th:block th:insert="${head}"></th:block>
 </head>
 <body>
