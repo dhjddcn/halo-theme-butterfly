@@ -9,6 +9,7 @@ class Index {
   constructor() {
     this.typewriter();
     this.aboveDown();
+    this.pagination();
   }
 
   // 打字机效果
@@ -31,8 +32,12 @@ class Index {
     const down = $(".above-down > i");
     if (!down.length) return;
     down.on('click', () => {
-      $( "body,html" ).animate( { scrollTop: $( "main" ).offset().top }, 500 );
+      $("body,html").animate({scrollTop: $("main").offset().top}, 500);
     });
+  }
+
+  // 分页
+  pagination() {
   }
 }
 

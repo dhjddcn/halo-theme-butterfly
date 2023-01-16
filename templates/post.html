@@ -94,7 +94,7 @@
 <th:block th:fragment="content">
   <section class="container card animated fadeIn">
     <!--/* todo  publishTime 此时间需要改为更新时间--><!--*/-->
-    <div class="post-outDate relative none"
+    <div class="post-outDate relative none animated flipInX delay-1s"
          th:data-outDate="${theme.config.post.out_date}"
          th:data-publishTime="${#dates.format(post.spec.publishTime,'yyyy-MM-dd')}">
     </div>
