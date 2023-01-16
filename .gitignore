@@ -23,13 +23,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-build
 
 .gradle
-gradlew/*
-src
-.editorconfig
-.babelrc
-build.gradle
-gradlew.bat
-settings.gradle
+build

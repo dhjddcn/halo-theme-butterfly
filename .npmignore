@@ -1,0 +1,14 @@
+.gradle/*
+.idea/*
+gradle/*
+node_modules/*
+src/*
+.editorconfig
+.gitignore
+.babelrc
+build.gradle
+gradlew
+gradlew.bat
+gulpfile.js
+settings.gradle
+theme-butterfly-dist.zip
