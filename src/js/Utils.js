@@ -108,7 +108,7 @@ export function initCode(dom) {
 
       // 代码块展开
       if (ThemeConfig.code['enable_expander']) {
-        customItem.append('<i class="fa-sharp fa-solid fa-caret-down code-expander cursor-pointer"></i>');
+        customItem.append('<i class="fa-solid fa-sort-down code-expander cursor-pointer"></i>');
 
         customItem.find('.code-expander').on('click', function () {
           pre.children('code').toggle();
