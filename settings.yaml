@@ -712,9 +712,9 @@ spec:
               value: false
         - $formkit: text
           name: cdn_link
-          label: cdn地址，外链地址
+          label: cdn地址，外链地址 
           placeholder: 请填写 第一屏背景图
-          value: 'https://jsd.onmicrosoft.cn/npm/halo-theme-butterfly@latest/templates/assets'
-          help: 请保持和主题assets目录下的文件一致，否则会出现404
+          value: 'https://fastly.jsdelivr.net/npm/halo-theme-butterfly@latest/templates/assets'
+          help: 请保持和主题assets目录下的文件一致，否则会出现404 ,免费cdn地址：https://fastly.jsdelivr.net/npm/halo-theme-butterfly@latest/templates/assets  或者 https://jsd.onmicrosoft.cn/npm/halo-theme-butterfly@latest/templates/assets
           validation: required
               
