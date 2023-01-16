@@ -248,7 +248,7 @@ spec:
           name: above_background
           label: 第一屏背景图
           placeholder: 请填写 第一屏背景图
-          value: 'https://dhjdd.cn/file/screenshot_1641478512166.jpg'
+          value: 'https://jsd.onmicrosoft.cn/npm/halo-theme-butterfly@latest/above.png'
           help: 如果全局背景图设置为图片链接，则此处背景图将不生效
           validation: required
         - $formkit: textarea
@@ -338,7 +338,7 @@ spec:
           name: above_background
           label: 第一屏背景图
           placeholder: 请填写 第一屏背景图
-          value: 'https://dhjdd.cn/file/screenshot_1641478512166.jpg'
+          value: 'https://jsd.onmicrosoft.cn/npm/halo-theme-butterfly@latest/above.png'
           help: 如果全局背景图设置为图片链接，则此处背景图将不生效
           validation: required
         - $formkit: text
@@ -366,7 +366,7 @@ spec:
           name: above_background
           label: 第一屏背景图
           placeholder: 请填写 第一屏背景图
-          value: 'https://dhjdd.cn/file/screenshot_1641478512166.jpg'
+          value: 'https://jsd.onmicrosoft.cn/npm/halo-theme-butterfly@latest/above.png'
           help: 如果全局背景图设置为图片链接，则此处背景图将不生效
           validation: required
         - $formkit: text
@@ -404,7 +404,7 @@ spec:
           name: above_background
           label: 第一屏背景图
           placeholder: 请填写 第一屏背景图
-          value: 'https://dhjdd.cn/file/screenshot_1641478512166.jpg'
+          value: 'https://jsd.onmicrosoft.cn/npm/halo-theme-butterfly@latest/above.png'
           help: 如果全局背景图设置为图片链接，则此处背景图将不生效
           validation: required
         - $formkit: text
@@ -442,7 +442,7 @@ spec:
           name: above_background
           label: 第一屏背景图
           placeholder: 请填写 第一屏背景图
-          value: 'https://dhjdd.cn/file/screenshot_1641478512166.jpg'
+          value: 'https://jsd.onmicrosoft.cn/npm/halo-theme-butterfly@latest/above.png'
           help: 如果全局背景图设置为图片链接，则此处背景图将不生效
           validation: required
 
