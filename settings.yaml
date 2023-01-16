@@ -704,7 +704,7 @@ spec:
           name: enable_cdn_link
           label: 启用外链加载资源文件
           help: 必须选配置外链地址才能生效，否则无效
-          value: true
+          value: false
           options:
             - label: 启用
               value: true
