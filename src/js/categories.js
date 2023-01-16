@@ -8,26 +8,27 @@ import {dataFlat, drawEcharts} from './Utils'
 
 class Categories {
   constructor() {
-
     this.drawChart();
   }
 
   drawChart() {
-    window.drawEchartsDom = document.querySelector('.categories .categories-chart')
+    window.drawEchartsDom = document.querySelector('.categories .categories-chart');
 
     if (!drawEchartsDom) return;
 
-    const flat = dataFlat(CategoriesData, 'children');
+    const categoriesList = $('.categories-list li');
 
-    const sort = flat.sort((a, b) => a['postCount'] - b['postCount'])
+    let data = [];
 
-    const data = sort.map((m) => {
-      return {
-        value: m['postCount'],
-        name: m['spec']['displayName'],
-        link: m['status']['permalink']
-      }
+    categoriesList.each(function (index, item) {
+      const t = $(this);
+      const displayName = t.attr('data-displayName');
+      const postCount = parseFloat(t.attr('data-postCount') || 0);
+      data.push({value: postCount, name: displayName});
     })
+
+
+    data = data.sort((a, b) => a['postCount'] - b['postCount'])
 
     window.drawEchartsOption = {
       backgroundColor: "",

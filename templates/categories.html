@@ -18,9 +18,6 @@
     }
   </style>
   <link rel="stylesheet" th:href="${assets_link+'/css/categories.min.css'}">
-  <script id="categories-script" th:inline="javascript">
-    window.CategoriesData =  /*[[${categories}]]*/ {};
-  </script>
 </th:block>
 
 <section
@@ -48,8 +45,16 @@
   <section class="container card" th:with="noData = ${not #lists.isEmpty(categories)}">
     <th:block th:if="${noData}">
       <div class="categories-chart w-100"></div>
-      <ul class="categories-list flex flex-direction-row flex-wrap-wrap flex-justify-content-center">
-        <li th:replace="~{categories:: single(cs=${categories})}"></li>
+      <ul class="categories-list flex flex-direction-row flex-wrap-wrap flex-justify-content-start">
+<!--        <li th:replace="~{categories:: single(cs=${categories})}"></li>-->
+        <li class="categories-list-item relative" th:each="category : ${categories}"
+            th:data-postCount="${category.postCount}"
+            th:data-displayName="${category.spec.displayName}"
+        >
+          <a th:href="@{${category.status.permalink}}"
+             th:text="${category.spec.displayName}"
+             th:title="${category.spec.displayName}"></a>
+        </li>
       </ul>
     </th:block>
 
