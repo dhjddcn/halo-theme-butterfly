@@ -131,7 +131,7 @@
         <img class="block w-100 h-100"
              th:src="${theme.config.loading.preload}"
              th:attr="onerror='this.src='+${'`'+theme.config.loading.err+'`'}"
-             th:data-lazy-src="${#strings.isEmpty(ps.spec.cover) ? random_img : ps.spec.cover+' '  }"
+             th:data-lazy-src="${#strings.isEmpty(ps.spec.cover) ? (random_img + '?index=' + psStat.index) : ps.spec.cover+' '  }"
              th:alt="${ps.spec.title}" alt="">
       </a>
       <div class="desc flex-1">
@@ -155,8 +155,8 @@
       <img class="w-100 h-100"
            th:src="${theme.config.loading.preload}"
            th:attr="onerror='this.src='+${'`'+theme.config.loading.err+'`'}"
-           th:data-lazy-src="${#strings.isEmpty(post.spec.cover) ? random_img : post.spec.cover+' '}"
-           th:alt="${post.spec.title}" alt="">
+           th:data-lazy-src="${#strings.isEmpty(post.spec.cover) ? (random_img + '?index=' + postStat.index)  : post.spec.cover+' '}"
+           th:alt="${post.spec.title}" alt="" src="">
     </a>
 
     <div class="info flex-1 flex-align-items-center">
