@@ -213,7 +213,11 @@
     <i class="fas fa-chevron-left fa-fw"></i>
   </a>
   
-  
+<!--  <script th:inline="javascript">-->
+<!--    console.log(/*[[${theme.config}]]*/)-->
+<!--    -->
+<!--  </script>-->
+<!--  -->
     <a
       th:each="index : ${#numbers.sequence(1,total)}"
       th:class="${ps.page == index ?  'page current': 'page'}+' inline-flex flex-justify-content-center flex-align-items-center'"
