@@ -80,14 +80,25 @@ body {
 
 .InUp {
   @keyframes InUp {
+    //0% {
+    //  opacity: 0;
+    //  transform: translate3d(0, 120px, 0)
+    //}
+    //
+    //to {
+    //  opacity: 1;
+    //  transform: translate3d(0, 0, 0)
+    //}
+
     0% {
-      opacity: 0;
-      transform: translate3d(0, 120px, 0)
+      margin-top: 50px;
+      opacity: 0
     }
 
-    to {
+    100% {
+      margin-top: 0;
       opacity: 1;
-      transform: translate3d(0, 0, 0)
+      filter: none
     }
   }
 
@@ -283,7 +294,8 @@ body {
   }
 
   .above {
-    height: 25rem;
+    //height: 25rem;
+    height: 400px;
     background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;

@@ -58,10 +58,10 @@
   </style>
   <link rel="canonical" th:href="${site.url}">
   <link rel="stylesheet preload" as="style" th:href="${assets_link+'/css/global.min.css'}">
+  <th:block th:insert="${head}"></th:block>
   <link rel="stylesheet" th:href="${assets_link+'/plugins/fontawesome/fontawesome.min.css'}">
   <link rel="stylesheet" th:href="${assets_link+'/plugins/animate/animate.min.css'}">
   <link rel="stylesheet" th:href="${assets_link+'/plugins/Qmsg/Qmsg.min.css'}">
-  <th:block th:insert="${head}"></th:block>
 </head>
 <body>
 <div id="Butterfly" th:class="${page}"
