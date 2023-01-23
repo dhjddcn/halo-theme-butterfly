@@ -17,8 +17,7 @@
   <meta property="og:title" th:content="${site.title}">
   <meta property="og:locale" content="zh_CN">
   <meta property="og:type" content="website">
-  <link rel="stylesheet preload prefetch" as="style"
-        th:href="${assets_link+'/font/'+theme.config.style.font_family+'.min.css'}">
+  <link rel="apple-touch-icon" sizes="180x180" th:href="${site.logo}">
   <script id="base-script" th:inline="javascript">
     window.ThemeConfig =  /*[[${theme.config}]]*/ {};
     const locDataTheme = localStorage.getItem('Butterfly-data-theme');
@@ -57,9 +56,10 @@
     }
   </style>
   <link rel="canonical" th:href="${site.url}">
-  <link rel="stylesheet preload" as="style" th:href="${assets_link+'/css/global.min.css'}">
+  <link rel="preload stylesheet" as="style" th:href="${assets_link+'/font/'+theme.config.style.font_family+'.min.css'}">
+  <link rel="preload stylesheet" as="style" th:href="${assets_link+'/css/global.min.css'}">
   <th:block th:insert="${head}"></th:block>
-  <link rel="stylesheet" th:href="${assets_link+'/plugins/fontawesome/fontawesome.min.css'}">
+  <link rel="preload stylesheet" as="style" th:href="${assets_link+'/plugins/fontawesome/fontawesome.min.css'}">
   <link rel="stylesheet" th:href="${assets_link+'/plugins/animate/animate.min.css'}">
   <link rel="stylesheet" th:href="${assets_link+'/plugins/Qmsg/Qmsg.min.css'}">
 </head>
