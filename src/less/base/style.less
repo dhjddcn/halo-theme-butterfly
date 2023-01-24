@@ -148,7 +148,8 @@ body {
     animation: nav-down 1s;
     font-size: 1.1rem;
     //top: 0;
-    transition: top .5s, box-shadow .5s, padding .5s, background .5s, transform .1s;
+    transform: translateY(0);
+    transition: top .5s, box-shadow .5s, padding .5s, background .5s, transform .5s;
 
     .site-title {
       text-shadow: 0.1rem 0.1rem 0.2rem rgb(0 0 0 / 15%);
@@ -279,17 +280,17 @@ body {
     }
 
     &.visible {
-      transition: top 0.4s;
-      top: 0;
-      //transition: transform 0.3s;
-      //transform: translateY(60px)
+      //transition: top 0.4s;
+      //top: 0;
+      transition: transform .5s;
+      transform: translateY(60px);
     }
 
     &.hidden {
-      transition: top 0.4s;
-      top: -60px;
-      //transition: transform 0.3s;
-      //transform: translateY(-60px)
+      //transition: top 0.4s;
+      //top: -60px;
+      transition: transform .5s;
+      transform: translateY(-60px)
     }
   }
 

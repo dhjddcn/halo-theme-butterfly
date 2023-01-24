@@ -21,13 +21,13 @@ class Tags {
     const source = [];
 
     items.each(function (index, dom) {
-      const postCount = Number(dom.getAttribute('data-postCount') || 0);
+      let postCount = Number(dom.getAttribute('data-postCount') || 0);
 
       const ratio = postCount / leg;
 
-      const minFontSize = 1.2;
+      const minFontSize = 1.5;
 
-      const maxFontSize = 2.1;
+      const maxFontSize = 2.5;
 
       const size = parseFloat((minFontSize + ((maxFontSize - minFontSize) * ratio)).toFixed(2));
 
@@ -35,7 +35,7 @@ class Tags {
 
       dom.style.fontSize = size + 'em';
 
-      dom.style.color = dom.getAttribute('data-color') || color;
+      dom.style.color =  color;
 
       source.push([
         dom.innerText,
@@ -45,7 +45,8 @@ class Tags {
 
     const se = source.sort((a, b) => b[1] - a[1]);
 
-    this.drawChart(se.length >= 10 ? se.slice(0, 10) : se)
+    this.drawChart(se.length >= 10 ? se.slice(0, 10) : se);
+    
   }
 
   drawChart(source) {

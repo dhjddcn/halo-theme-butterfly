@@ -204,9 +204,7 @@
 </ul>
 
 <!--分页-->
-<div xmlns:th="https://www.thymeleaf.org" th:fragment="pagination(ps,path)" class="pagination text-center"
-     th:with="iii=0"
->
+<div xmlns:th="https://www.thymeleaf.org" th:fragment="pagination(ps,path)" class="pagination text-center">
   <a th:if="${ps.hasPrevious()}"
      th:href="${ps.prevUrl}"
      rel="prev"
