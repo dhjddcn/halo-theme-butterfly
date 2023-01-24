@@ -13,7 +13,7 @@
 <th:block th:fragment="head">
   <style th:inline="css"
          th:with="above_background= ${is_body_bg_http ? '' : 'url(' + theme.config.archives.above_background + ')'}">
-    html {
+    .above {
       --above-background: /*[(${above_background})]*/ transparent;
     }
   </style>

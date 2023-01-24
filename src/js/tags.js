@@ -4,7 +4,7 @@
  * @fileName: tags
  * @Description: 标签
  */
-import {dataFlat, drawEcharts} from './Utils'
+import {drawEcharts} from './Utils'
 
 class Tags {
   constructor() {

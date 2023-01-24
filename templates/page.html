@@ -13,7 +13,7 @@
 <th:block th:fragment="head">
   <style th:inline="css"
          th:with="above_background= ${is_body_bg_http ? '' : 'url(' + (#strings.isEmpty(singlePage.spec.cover )  ? theme.config.index.above_background : singlePage.spec.cover )+ ')'}">
-    html {
+    .above {
       --above-background: /*[(${above_background})]*/ transparent;
     }
   </style>

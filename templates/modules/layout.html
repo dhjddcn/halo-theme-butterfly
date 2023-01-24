@@ -18,6 +18,7 @@
   <meta property="og:locale" content="zh_CN">
   <meta property="og:type" content="website">
   <link rel="apple-touch-icon" sizes="180x180" th:href="${site.logo}">
+  <link rel="canonical" th:href="${site.url}">
   <script id="base-script" th:inline="javascript">
     window.ThemeConfig =  /*[[${theme.config}]]*/ {};
     const locDataTheme = localStorage.getItem('Butterfly-data-theme');
@@ -29,7 +30,6 @@
     }
     document.getElementById('base-script').remove();
   </script>
-
   <style
     th:inline="css"
     type="text/css"
@@ -55,7 +55,6 @@
       filter: /*[(${theme.config.loading.filter})]*/ none;
     }
   </style>
-  <link rel="canonical" th:href="${site.url}">
   <link rel="preload stylesheet" as="style" th:href="${assets_link+'/font/'+theme.config.style.font_family+'.min.css'}">
   <link rel="preload stylesheet" as="style" th:href="${assets_link+'/css/global.min.css'}">
   <th:block th:insert="${head}"></th:block>

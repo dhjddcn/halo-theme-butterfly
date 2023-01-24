@@ -141,13 +141,6 @@ export function switchCodeTheme(tp) {
   dark.disabled = false;
 }
 
-
-// 加载css
-export function loadLink() {
-
-}
-
-
 /**
  * 目录
  * @param tocSelector
@@ -184,7 +177,6 @@ export function initToc(tocSelector, contentSelector) {
   }
 }
 
-
 /**
  * 数据平铺
  * @param data
@@ -218,6 +210,10 @@ export function drawEcharts(theme, tp = 0) {
   window.addEventListener("resize", (() => chart.resize()));
 }
 
+/**
+ * 放大图片
+ * @param selector
+ */
 export function fancyBoxImg(selector) {
   const dom = $(selector);
 
@@ -234,11 +230,18 @@ export function fancyBoxImg(selector) {
   });
 }
 
-// 创建dom
-export function createDom() {
-
+/**
+ * 分页
+ */
+export function createPagination () {
+  // const pagination = $('.pagination');
+  //
+  // if (!pagination.length) return;
+  //
+  // const page = parseInt(pagination.attr('data-page') || 0);
+  // const total = parseInt(pagination.attr('data-total') || 0);
+  // const totalPage = parseInt(pagination.attr('data-totalPages') || 0);
+  //
+  // console.log(page, total, totalPage);
 }
 
-export function msg(msg, type = 'success') {
-
-}

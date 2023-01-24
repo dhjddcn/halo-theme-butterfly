@@ -204,7 +204,9 @@
 </ul>
 
 <!--分页-->
-<div xmlns:th="https://www.thymeleaf.org" th:fragment="pagination(ps,path)" class="pagination text-center" th:with="total=${ps.totalPages >= 5 ? 5  : ps.totalPages}">
+<div xmlns:th="https://www.thymeleaf.org" th:fragment="pagination(ps,path)" class="pagination text-center"
+     th:with="iii=0"
+>
   <a th:if="${ps.hasPrevious()}"
      th:href="${ps.prevUrl}"
      rel="prev"
@@ -212,16 +214,22 @@
      class="prev inline-flex flex-justify-content-center flex-align-items-center">
     <i class="fas fa-chevron-left fa-fw"></i>
   </a>
-  
-<!--  <script th:inline="javascript">-->
-<!--    console.log(/*[[${theme.config}]]*/)-->
-<!--    -->
-<!--  </script>-->
-<!--  -->
+
+<!--  <th:block th:if="${ps.page <= 5}">-->
     <a
-      th:each="index : ${#numbers.sequence(1,total)}"
+      th:each="index : ${#numbers.sequence(1,5)}"
       th:class="${ps.page == index ?  'page current': 'page'}+' inline-flex flex-justify-content-center flex-align-items-center'"
       th:href="@{${path+'/page/'}  + ${index}}" th:text="${index}"></a>
+<!--  </th:block>-->
+
+  
+<!--  <th:block th:if="${ps.page > 5 && ps.page < 11 }">-->
+<!--    <a-->
+<!--      th:each="index : ${#numbers.sequence(6,10)}"-->
+<!--      th:class="${ps.page == index ?  'page current': 'page'}+' inline-flex flex-justify-content-center flex-align-items-center'"-->
+<!--      th:href="@{${path+'/page/'}  + ${index}}" th:text="${index}"></a>-->
+<!--  </th:block>-->
+
 
   <a th:if="${ps.hasNext()}"
      th:href="${ps.nextUrl}"
@@ -231,6 +239,9 @@
     <i class="fas fa-chevron-right fa-fw"></i>
   </a>
 </div>
+
+
+
 
 
 <!--暂无数据~-->

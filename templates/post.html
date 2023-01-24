@@ -16,7 +16,7 @@
     type="text/css"
     th:with="above_background= ${is_body_bg_http ? '' : 'url(' + post.spec.cover + ')'}
   ">
-    html {
+    .above {
       --above-background: /*[(${above_background})]*/ transparent;
     }
   </style>

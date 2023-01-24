@@ -12,11 +12,11 @@
 >
 <th:block th:fragment="head"
           th:with="above_background= ${is_body_bg_http ? '' : 'url(' + theme.config.index.above_background + ')'}">
-  <style 
+  <style
     th:inline="css"
     type="text/css"
   >
-    html {
+    .above {
       --above-background: /*[(${above_background})]*/ transparent;
     }
   </style>

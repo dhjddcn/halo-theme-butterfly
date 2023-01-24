@@ -4,7 +4,7 @@
  * @fileName: categories
  * @Description: 分类
  */
-import {dataFlat, drawEcharts} from './Utils'
+import {drawEcharts} from './Utils'
 
 class Categories {
   constructor() {

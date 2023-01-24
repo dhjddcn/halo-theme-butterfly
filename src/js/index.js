@@ -4,9 +4,11 @@
  * @date: 2022/11/23
  * @fileName: index
  */
+import {createPagination} from "./Utils";
 
 class Index {
   constructor() {
+    createPagination();
     this.typewriter();
     this.aboveDown();
     this.pagination();
