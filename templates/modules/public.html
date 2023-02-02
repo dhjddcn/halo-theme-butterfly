@@ -212,22 +212,18 @@
      class="prev inline-flex flex-justify-content-center flex-align-items-center">
     <i class="fas fa-chevron-left fa-fw"></i>
   </a>
-
-<!--  <th:block th:if="${ps.page <= 5}">-->
-    <a
-      th:each="index : ${#numbers.sequence(1,5)}"
-      th:class="${ps.page == index ?  'page current': 'page'}+' inline-flex flex-justify-content-center flex-align-items-center'"
-      th:href="@{${path+'/page/'}  + ${index}}" th:text="${index}"></a>
-<!--  </th:block>-->
-
   
-<!--  <th:block th:if="${ps.page > 5 && ps.page < 11 }">-->
-<!--    <a-->
-<!--      th:each="index : ${#numbers.sequence(6,10)}"-->
-<!--      th:class="${ps.page == index ?  'page current': 'page'}+' inline-flex flex-justify-content-center flex-align-items-center'"-->
-<!--      th:href="@{${path+'/page/'}  + ${index}}" th:text="${index}"></a>-->
-<!--  </th:block>-->
+  <script th:inline="javascript">
+    /*<![CDATA[*/
+    var page = /*[[${ps}]]*/ 1;
+    console.log(page);
 
+  </script>
+
+  <a
+    th:each="index : ${#numbers.sequence(ps.page,ps.totalPages < ps.page ? ps.totalPages : ps.page+3)}"
+    th:class="${ps.page == index ?  'page current': 'page'}+' inline-flex flex-justify-content-center flex-align-items-center'"
+    th:href="@{${path+'/page/'}  + ${index}}" th:text="${index}"></a>
 
   <a th:if="${ps.hasNext()}"
      th:href="${ps.nextUrl}"
@@ -237,9 +233,6 @@
     <i class="fas fa-chevron-right fa-fw"></i>
   </a>
 </div>
-
-
-
 
 
 <!--暂无数据~-->
