@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html
+  xmlns:th="https://www.thymeleaf.org"
+  th:replace="~{modules/layout :: layout (
+  page = 'index',
+  title = ${site.title},
+  head = ~{::head},
+  above = ~{::above},
+  content = ~{::content},
+  js = ~{::js}
+  )}">
+>
+<th:block th:fragment="head"
+          th:with="above_background= ${is_body_bg_http ? '' : 'url(' + theme.config.index.above_background + ')'}">
+  <style
+    th:inline="css"
+    type="text/css"
+  >
+    .above {
+      --above-background: /*[(${above_background})]*/ transparent;
+    }
+  </style>
+  <link rel="stylesheet" th:href="${assets_link+'/css/index.min.css'}">
+</th:block>
+
+<section
+  th:fragment="above"
+  th:if="${theme.config.index.enable_above}"
+  class="above w-100">
+  <div class="above-info">
+    <h1 class="above-title text-center margin-0-auto" th:text="${site.title}"></h1>
+
+    <div class="above-subtitle text-center margin-0-auto">
+      <span class="above-subtitle--text" th:data-typewriter="${theme.config.index.typewriter}"></span>
+    </div>
+  </div>
+  <div class="above-down absolute text-center bottom-0 left-0 right-0">
+    <i class="fas fa-angle-down"></i>
+  </div>
+</section>
+
+<th:block th:fragment="content">
+  <section class="container" th:with="noData = ${not #lists.isEmpty(posts.items)}">
+    <th:block th:if="${noData}">
+      <th:block th:replace="~{modules/public:: posts(${posts.items},${theme.config.index.post_layout})}"></th:block>
+      <th:block th:replace="~{modules/public:: pagination(${posts},'/index')}"></th:block>
+    </th:block>
+
+    <th:block th:unless="${noData}" th:insert="~{modules/public:: emptyData('暂无文章~',true)}"></th:block>
+  </section>
+
+  <th:block th:replace="~{modules/public:: aside}"></th:block>
+</th:block>
+
+<th:block th:fragment="js">
+  <script type="text/javascript" th:src="${assets_link +'/plugins/typed/typed.min.js'}"></script>
+  <script type="text/javascript" th:src="${assets_link +'/js/index.min.js'}"></script>
+</th:block>
+</html>

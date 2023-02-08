@@ -1,7 +1,0 @@
-/*! 首页修饰 */
-.by_index .by_header {
-  height: 100vh;
-}
-.by_index .by_header:before {
-  background-color: rgba(0, 0, 0, 0.2);
-}

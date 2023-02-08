@@ -1,0 +1,14 @@
+plugins {
+  id 'java'
+}
+
+group 'run.halo'
+version '1.0'
+
+repositories {
+  mavenCentral()
+}
+
+dependencies {
+  implementation('org.thymeleaf:thymeleaf:3.0.12.RELEASE')
+}

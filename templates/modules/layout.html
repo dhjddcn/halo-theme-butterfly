@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" xmlns:th="https://www.thymeleaf.org"
+      th:fragment="layout (page,title,head,above,content,js)"
+      th:with="assets_link=${theme.config.other.enable_cdn_link ? theme.config.other.cdn_link : #theme.assets('/')} ">
+<head th:with="is_body_bg_http = ${#strings.containsIgnoreCase(theme.config.style.body_background,'http')}">
+  <title th:text="${title}"></title>
+  <meta charset="UTF-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, shrink-to-fit=no, viewport-fit=cover">
+  <meta name="author" th:content="${site.title}">
+  <meta name="site" th:content="${site.url}">
+  <meta property="og:keywords" th:content="${site.seo.keywords}">
+  <meta property="og:description" th:content="${site.seo.description}">
+  <meta property="og:site_name" th:content="${site.title}">
+  <meta property="og:url" th:content="${site.url}">
+  <meta property="og:title" th:content="${site.title}">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:type" content="website">
+  <link rel="apple-touch-icon" sizes="180x180" th:href="${site.logo}">
+  <link rel="canonical" th:href="${site.url}">
+  <script id="base-script" th:inline="javascript">
+    window.ThemeConfig =  /*[[${theme.config}]]*/ {};
+    const locDataTheme = localStorage.getItem('Butterfly-data-theme');
+    if (locDataTheme) {
+      document.querySelector('html').setAttribute('data-theme', locDataTheme);
+      window.dataTheme = locDataTheme;
+    } else {
+      window.dataTheme = document.querySelector('html').getAttribute('data-theme');
+    }
+    document.getElementById('base-script').remove();
+  </script>
+  <style
+    th:inline="css"
+    type="text/css"
+    th:with="body_bg= ${is_body_bg_http ? 'url('+theme.config.style.body_background+') no-repeat fixed center / cover;' : theme.config.style.body_background}"
+  >
+    html {
+      --theme: /*[(${theme.config.style.theme_color_light})]*/ #49b1f5;
+      --body-bg: /*[(${body_bg})]*/ transparent;
+      --main-max-width: /*[(${theme.config.style.content_max_width})]*/ 1200px;
+      --card-border-radius: /*[(${theme.config.card.radius})]*/ 24px;
+      --card-bg-color: /*[(${theme.config.card.bg_color})]*/ transparent;
+      --card-box-shadow: /*[(${theme.config.card.shadow})]*/ transparent;
+      --cursor-default: url("[(${assets_link+'/plugins/cursor/simple/default.cur'})]"), auto;
+      --cursor-pointer: url("[(${assets_link+'/plugins/cursor/simple/pointer.cur'})]"), auto;
+    }
+
+    html[data-theme=dark] {
+      --theme: /*[(${theme.config.style.theme_color_dark})]*/ #ff7242;
+      --body-bg: #221f1f;
+    }
+
+    img[data-lazy-src]:not(.loaded,.error) {
+      filter: /*[(${theme.config.loading.filter})]*/ none;
+    }
+  </style>
+  <link rel="preload stylesheet" as="style" th:href="${assets_link+'/font/'+theme.config.style.font_family+'.min.css'}">
+  <link rel="preload stylesheet" as="style" th:href="${assets_link+'/css/global.min.css'}">
+  <th:block th:insert="${head}"></th:block>
+  <link rel="preload stylesheet" as="style" th:href="${assets_link+'/plugins/fontawesome/fontawesome.min.css'}">
+  <link rel="stylesheet" th:href="${assets_link+'/plugins/animate/animate.min.css'}">
+  <link rel="stylesheet" th:href="${assets_link+'/plugins/Qmsg/Qmsg.min.css'}">
+</head>
+<body>
+<div id="Butterfly" th:class="${page}"
+     th:with="stats = ${siteStatsFinder.getStats()},contributor = ${contributorFinder.getContributor(theme.config.base.metadata_name)},
+     random_img = ${theme.config.loading.enable_random_img ? theme.config.loading.random_img : 'null'}
+">
+  <!--/* 头部--><!--*/-->
+  <header class="header relative w-100">
+    <nav class="nav flex flex-wrap flex-align-items-center  top-0 absolute z-80 w-100">
+      <a th:text="${site.title}" class="site-title flex-1" href="/"></a>
+
+      <ul class="menu inline">
+        <!--/* 搜索 需要配合官方搜索插件使用 --><!--*/-->
+        <li class="menu-item search" th:if="${pluginFinder.available('PluginSearchWidget')}">
+          <a class="menu-link relative inline-block" href="javascript:SearchWidget.open();">
+            <i class="fas fa-search fa-fw"></i>
+            <span class="menu-name">搜索</span>
+          </a>
+        </li>
+        <li class="menu-item toggle">
+        <span class="menu-link relative inline-block">
+          <i class="fas fa-bars fa-fw"></i>
+        </span>
+        </li>
+        <!--/* toggle--><!--*/-->
+
+        <th:block th:each="menuItem : ${menuFinder.getPrimary().menuItems}">
+          <li th:if="${#lists.isEmpty(menuItem.children)}" class="menu-item menu-pc">
+            <a class="menu-link relative inline-block" th:href="${menuItem.status.href}"
+               th:target="${menuItem.spec.target}" data-pjax>
+              <i th:if="${!#strings.isEmpty(#annotations.getOrDefault(menuItem, 'icon', ''))}"
+                 th:class="${#annotations.getOrDefault(menuItem, 'icon', '')}"></i>
+              <span class="menu-name" th:text="${menuItem.status.displayName}"> </span>
+            </a>
+          </li>
+
+          <li th:unless="${#lists.isEmpty(menuItem.children)}" class="menu-item menu-pc relative">
+            <div class="menu-link relative">
+              <i th:if="${!#strings.isEmpty(#annotations.getOrDefault(menuItem, 'icon', ''))}"
+                 th:class="${#annotations.getOrDefault(menuItem, 'icon', '')}"></i>
+              <span class="menu-name" th:text="${menuItem.status.displayName}"></span>
+              <i class="fas fa-chevron-down"></i>
+            </div>
+
+            <!--menu-dropdown  -->
+            <ul class="menu-dropdown none absolute right-0 padding-0 w-max-content">
+              <li th:each="dropdown : ${menuItem.children}" class="menu-dropdown--item">
+                <a th:href="@{${dropdown.status.href}}" class="menu-dropdown--link w-100 inline-block">
+                  <i th:if="${!#strings.isEmpty(#annotations.getOrDefault(dropdown, 'icon', ''))}"
+                     th:class="${#annotations.getOrDefault(dropdown, 'icon', '')}"></i>
+                  <span th:text="${dropdown.status.displayName}" class="menu-dropdown-name"></span>
+                </a>
+              </li>
+            </ul>
+
+          </li>
+
+        </th:block>
+      </ul>
+    </nav>
+
+    <!--/* 移动端侧边栏--><!--*/-->
+    <div class="sidebar fixed top-0">
+      <div class="sidebar-avatar text-center overflow-hidden">
+        <img class="w-100 h-100"
+             th:src="${theme.config.loading.preload}"
+             th:attr="onerror='this.src='+${'`'+theme.config.loading.err+'`'}"
+             th:data-lazy-src="${contributor.avatar}"
+             th:alt="${contributor.displayName}" alt="">
+      </div>
+      <div class="sidebar-data w-100 text-center">
+        <a class="item" title="文章" href="/archives">
+          <div class="headline">文章</div>
+          <div class="num text-overflow" th:text="${stats.post}"></div>
+        </a>
+        <a class="item" href="/categories" title="分类">
+          <div class="headline">分类</div>
+          <div class="num text-overflow" th:text="${stats.category}"></div>
+        </a>
+        <a class="item" title="评论" href="javascript:">
+          <div class="headline">评论</div>
+          <div class="num text-overflow" th:text="${stats.comment}"></div>
+        </a>
+      </div>
+      <hr>
+      <ul class="sidebar-menus">
+        <th:block th:each="menuItem : ${menuFinder.getPrimary().menuItems}">
+          <li th:if="${#lists.isEmpty(menuItem.children)}" class="menu-item">
+            <a class="menu-link relative block" th:href="${menuItem.status.href}"
+               th:target="${menuItem.spec.target}" data-pjax>
+              <i th:if="${!#strings.isEmpty(#annotations.getOrDefault(menuItem, 'icon', ''))}"
+                 th:class="${#annotations.getOrDefault(menuItem, 'icon', '')}"></i>
+              <span class="menu-name" th:text="${menuItem.status.displayName}"> </span>
+            </a>
+          </li>
+
+          <li th:unless="${#lists.isEmpty(menuItem.children)}" class="menu-item relative">
+            <div class="menu-link relative">
+              <i th:if="${!#strings.isEmpty(#annotations.getOrDefault(menuItem, 'icon', ''))}"
+                 th:class="${#annotations.getOrDefault(menuItem, 'icon', '')}"></i>
+              <span class="menu-name" th:text="${menuItem.status.displayName}"></span>
+              <i class="fas fa-chevron-down absolute"></i>
+            </div>
+            <ul class="menu-child none">
+              <li th:each="dropdown : ${menuItem.children}" class="menu-child--item">
+                <a th:href="@{${dropdown.status.href}}" class="menu-child--link w-100 block">
+                  <i th:if="${!#strings.isEmpty(#annotations.getOrDefault(dropdown, 'icon', ''))}"
+                     th:class="${#annotations.getOrDefault(dropdown, 'icon', '')}"></i>
+                  <span th:text="${dropdown.status.displayName}" class="menu-child-name"></span>
+                </a>
+              </li>
+            </ul>
+
+          </li>
+
+        </th:block>
+      </ul>
+    </div>
+
+    <th:block th:insert="${above}"></th:block>
+  </header>
+
+  <!--/* 主要部分--><!--*/-->
+  <main th:insert="${content}"
+        th:with="class = ${theme.config.aside.enable ? (theme.config.aside.position) : 'off-aside' }"
+        th:class="'main flex margin-0-auto animated InUp '+ ${class}"
+  >
+
+  </main>
+  <!--/* footer--><!--*/-->
+  <footer class="footer  text-center">
+    <div class="copyright"
+         th:text="'© 2020 - '+${#dates.format(#dates.createNow(), 'yyyy')}+' By '+ ${site.title}"></div>
+    <div class="icp" th:if="${not #strings.isEmpty(theme.config.base.icp)}"
+         th:text="'备案号：'+${theme.config.base.icp}"></div>
+    <div class="powered">Powered by&nbsp;<a class="halo" href="https://halo.run/" target="_blank">Halo</a>&nbsp;|&nbsp;🌈
+      Theme by&nbsp;<a class="theme" title="当前主题：Butterfly" href="https://github.com/dhjddcn/halo-theme-butterfly"
+                       target="_blank">小红</a></div>
+  </footer>
+  <!--/* 左右小部件--><!--*/-->
+  <div class="adsorption z-80 fixed">
+    <button class="show-tocbot btn-effect text-center none" type="button" title="目录">
+      <i class="fas fa-list-ul"></i>
+    </button>
+
+    <button class="switch-model block btn-effect text-center" type="button" title="浅色和深色模式转换">
+      <i class="fas fa-adjust"></i>
+    </button>
+
+    <button class="back-top  block btn-effect text-center" type="button" title="回到顶部">
+      <i class="fa-solid fa-up"></i>
+    </button>
+  </div>
+
+  <!--/* 全局遮罩层--><!--*/-->
+  <div class="global-mask fixed w-100 z-100 h-100 left-0 top-0 none"></div>
+</div>
+<script type="text/javascript" th:src="${assets_link+'/plugins/jquery/jquery.min.js'}"></script>
+<script type="text/javascript" th:src="${assets_link+'/plugins/lazyLoad/lazyLoad.min.js'}"></script>
+<script type="text/javascript" th:src="${assets_link+'/plugins/universe/universe.min.js'}"></script>
+<script type="text/javascript" th:src="${assets_link+'/plugins/Qmsg/Qmsg.min.js'}"></script>
+<script type="text/javascript" th:src="${assets_link+'/js/global.min.js'}"></script>
+<th:block th:insert="${js}"/>
+<script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+</body>
+</html>

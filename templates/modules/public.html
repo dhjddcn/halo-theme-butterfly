@@ -1,0 +1,247 @@
+<!--侧边栏-->
+<aside xmlns:th="https://www.thymeleaf.org"
+       th:fragment="aside"
+       th:if="${theme.config.aside.enable}"
+       class="aside w-25"
+>
+  <section class="aside-item aside-user card text-center">
+    <img class="avatar block margin-0-auto overflow-hidden"
+         th:src="${theme.config.loading.preload}"
+         th:attr="onerror='this.src='+${'`'+theme.config.loading.err+'`'}"
+         th:data-lazy-src="${contributor.avatar}"
+         th:alt="${contributor.displayName}" alt="">
+
+    <div class="name font-weight-500" th:text="${contributor.displayName}"></div>
+
+    <div class="desc" th:text="${contributor.bio}"></div>
+
+    <div class="data w-100">
+      <a class="item" title="文章" href="/archives">
+        <div class="headline">文章</div>
+        <div class="num text-overflow" th:text="${stats.post}"></div>
+      </a>
+      <a class="item" href="/categories" title="分类">
+        <div class="headline">分类</div>
+        <div class="num text-overflow" th:text="${stats.category}"></div>
+      </a>
+      <a class="item" title="评论" href="javascript:">
+        <div class="headline">评论</div>
+        <div class="num text-overflow" th:text="${stats.comment}"></div>
+      </a>
+    </div>
+
+    <a th:with="bt=${#strings.arraySplit(theme.config.aside.button,'&+&')}" th:utext="${bt[0]}"
+       class="button btn-effect block text-center" target="_blank" th:href="${bt[1]}"></a>
+
+    <div class="icons flex flex-justify-content-center flex-wrap-wrap">
+      <a class="" th:each="n :${theme.config.socials.no_data}" th:utext="${n.icon}" target="_blank"
+         th:href="${n.url}"></a>
+    </div>
+  </section>
+
+  <section class="aside-item aside-notice card">
+    <h1 class="aside-title">
+      <i class="fas fa-bullhorn fa-shake"></i>
+      <span class="name">公告</span>
+    </h1>
+
+    <div class="content" th:utext="${theme.config.aside.notice}"></div>
+  </section>
+
+  <section th:if="${theme.config.aside.enable_category}" class="aside-item aside-category card">
+    <h1 class="aside-title">
+      <i class="fas fa-folder-open"></i>
+      <span class="name">分类</span>
+    </h1>
+
+    <div class="content" th:with="categories = ${categoryFinder.list(1,5)}">
+      <a th:each="category : ${categories}"
+         th:href="@{${category.status.permalink}}"
+         th:title="${category.spec.displayName}"
+         class="link flex relative flex-direction-row"
+      >
+        <span class="name text-overflow flex-1" th:text="${category.spec.displayName}"></span>
+        <span class="num text-overflow" th:text="${category.status.visiblePostCount}"></span>
+      </a>
+    </div>
+
+  </section>
+
+  <section th:if="${theme.config.aside.enable_tags}" class="aside-item aside-tags card">
+    <h1 class="aside-title">
+      <i class="fas fa-tags"></i>
+      <span class="name">标签</span>
+    </h1>
+
+    <div class="content" th:with="tags = ${tagFinder.listAll()}">
+      <a
+        th:if="${tag.status.visiblePostCount > 0}"
+        class="link inline-block relative"
+        th:each="tag : ${tags}"
+        th:href="@{${tag.status.permalink}}"
+        th:title="${tag.spec.displayName}"
+      >
+
+        <span class="name" th:text="${tag.spec.displayName}"></span>
+        （<span class="num" th:text="${tag.status.visiblePostCount}"></span>）
+      </a>
+    </div>
+  </section>
+
+  <section th:if="${theme.config.aside.enable_webInfo}" class="aside-item aside-web-info card">
+    <h1 class="aside-title">
+      <i class="fas fa-chart-line"></i>
+      <span class="name">网站资讯</span>
+    </h1>
+
+    <div class="content">
+      <p class="item flex flex-align-items-center">
+        <span class="name flex-1">文章数目：</span>
+        <span class="text" th:text="${stats.post} +' 章'"></span>
+      </p>
+
+      <p class="item flex flex-align-items-center">
+        <span class="name flex-1">运行时间：</span>
+        <span class="text run-day" th:data-runDay="${theme.config.base.site_birthday}">未配置建站时间</span>
+      </p>
+
+      <p class="item flex flex-align-items-center">
+        <span class="name flex-1">本站访客：</span>
+        <span class="text" id="busuanzi_value_site_uv">加载中...</span>&nbsp;人
+      </p>
+
+      <p class="item flex flex-align-items-center">
+        <span class="name flex-1">总访问量：</span>
+        <span class="text" id="busuanzi_value_site_pv">加载中...</span>&nbsp;人
+      </p>
+    </div>
+
+  </section>
+</aside>
+
+<!--侧边栏-最新文章模块-->
+<section xmlns:th="https://www.thymeleaf.org" th:fragment="newsPost" class="aside-news-post aside-item card">
+  <h1 class="aside-title">
+    <i class="fas fa-history"></i>
+    <span class="name">最新文章</span>
+  </h1>
+  <ul class="content">
+    <li class="item flex flex-align-items-center" th:each="ps : ${postFinder.list(1,6)}">
+      <a th:href="@{${ps.status.permalink}}" class="cover overflow-hidden">
+        <img class="block w-100 h-100"
+             th:src="${theme.config.loading.preload}"
+             th:attr="onerror='this.src='+${'`'+theme.config.loading.err+'`'}"
+             th:data-lazy-src="${#strings.isEmpty(ps.spec.cover) ? (random_img + '?index=' + psStat.index) : ps.spec.cover+' '  }"
+             th:alt="${ps.spec.title}" alt="">
+      </a>
+      <div class="desc flex-1">
+        <a th:href="@{${ps.status.permalink}}" th:text="${ps.spec.title}" class="title text-link text-clamp"></a>
+        <time class="block"
+              th:attr="datetime=${post.spec.publishTime}"
+              th:text="${#dates.format(post.spec.publishTime,'yyyy-MM-dd HH:mm')}">
+        </time>
+      </div>
+    </li>
+  </ul>
+</section>
+
+<!--文章列表-->
+<ul xmlns:th="https://www.thymeleaf.org" th:fragment="posts(ps,layout)" th:class="'posts '+${layout}">
+  <li class="item card relative flex flex-align-items-center flex-justify-content-center overflow-hidden"
+      th:each="post : ${ps}">
+    <a th:class="'cover overflow-hidden relative'+${post.spec.pinned ? ' pt-top' : ''}"
+       th:href="${post.status.permalink}"
+    >
+      <img class="w-100 h-100"
+           th:src="${theme.config.loading.preload}"
+           th:attr="onerror='this.src='+${'`'+theme.config.loading.err+'`'}"
+           th:data-lazy-src="${#strings.isEmpty(post.spec.cover) ? (random_img + '?index=' + postStat.index)  : post.spec.cover+' '}"
+           th:alt="${post.spec.title}" alt="" src="">
+    </a>
+
+    <div class="info flex-1 flex-align-items-center">
+      <a class="info-title text-clamp text-cmp2" th:href="${post.status.permalink}" th:text="${post.spec.title}"></a>
+
+      <div class="info-wrap text-overflow ">
+        <div class="text-overflow">
+          <span class="wp publishTime">
+            <i class="far fa-calendar-alt fa-bolt-auto"></i>
+            <time th:text="'发布于 '+${#dates.format(post.spec.publishTime, 'yyyy-MM-dd HH:mm')}"></time>
+          </span>
+          <span class="wp category">
+            <span class="fk">|</span>
+            <i class="fas fa-inbox"></i>
+            <span class="cys">
+              <th:block th:each="cy : ${post.categories}">
+                <a class="lk" th:href="${cy.status.permalink}" th:text="${cy.spec.displayName}"></a>
+               <span class="point">•</span>
+              </th:block>
+            </span>
+          </span>
+        </div>
+
+        <div class="text-overflow">
+          <span class="wp comment">
+              <i class="fa-solid fa-comments"></i>
+              <span th:text="'评论 '+${post.stats.comment}"></span>
+          </span>
+          <span class="wp upvote">
+              <span class="fk">|</span>
+              <i class="fa-solid fa-thumbs-up"></i>
+              <span th:text="'点赞 '+${post.stats.upvote}"></span>
+          </span>
+          <span class="wp visit">
+              <span class="fk">|</span>
+              <i class="fa-solid fa-eye"></i>
+              <span th:text="'预览 '+${post.stats.visit}"></span>
+          </span>
+        </div>
+      </div>
+
+      <div class="text text-clamp text-cmp2" th:text="${post.spec.excerpt.raw}"></div>
+    </div>
+  </li>
+</ul>
+
+<!--分页-->
+<div xmlns:th="https://www.thymeleaf.org" th:fragment="pagination(ps,path)" class="pagination text-center">
+  <a th:if="${ps.hasPrevious()}"
+     th:href="${ps.prevUrl}"
+     rel="prev"
+     title="下一页"
+     class="prev inline-flex flex-justify-content-center flex-align-items-center">
+    <i class="fas fa-chevron-left fa-fw"></i>
+  </a>
+  
+<!--  <script th:inline="javascript">-->
+<!--    /*<![CDATA[*/-->
+<!--    var page = /*[[${ps}]]*/ 1;-->
+<!--    console.log(page);-->
+
+<!--  </script>-->
+
+  <a
+    th:each="index : ${#numbers.sequence(ps.page,ps.page+2)}"
+    th:class="${ps.page == index ?  'page current': 'page'}+' inline-flex flex-justify-content-center flex-align-items-center'"
+    th:href="@{${path+'/page/'}  + ${index}}" th:text="${index}"></a>
+
+  <a th:if="${ps.hasNext()}"
+     th:href="${ps.nextUrl}"
+     rel="next"
+     title="下一页"
+     class="next inline-flex flex-justify-content-center flex-align-items-center">
+    <i class="fas fa-chevron-right fa-fw"></i>
+  </a>
+</div>
+
+
+<!--暂无数据~-->
+<div xmlns:th="https://www.thymeleaf.org" th:fragment="emptyData(text,showCard)"
+     th:class="'empty flex flex-direction-column flex-justify-content-center flex-align-items-center '+${showCard ? 'card' : ''}">
+  <svg class="empty-icon" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="120"
+       height="120">
+    <path
+      d="M483.322 136.98l-2.08-116.502A19.278 19.278 0 0 1 499.266 0h2.512c12.439.104 22.574 10.063 22.574 22.43l4.048 114.446a22.702 22.702 0 0 1-22.606 22.43c-10.136-1.952-22.479-10.079-22.479-22.326h.016zm165.034 16.943c-8.751 8.695-23.27 5.847-32.045 0a22.638 22.638 0 0 1 0-31.702L700.8 44.156a23.006 23.006 0 0 1 31.933 0c8.76 8.703 8.76 23.118 0 28.958l-84.377 80.793zm-287.215 0l-84.369-80.921c-8.767-5.824-8.767-20.135 0-28.95a23.006 23.006 0 0 1 31.917 0l84.497 78.058a22.606 22.606 0 0 1 0 31.7c-8.775 5.944-23.278 8.8-32.045.113zm488.686 679.445v9.84l-8.871 3.663-306.238 125.43-5.76 2.64V645l9.904 17.15 60.283 105.063a15.206 15.206 0 0 0 13.03 7.327 14.879 14.879 0 0 0 7.952-2.055L850.17 658.047V833.36h-.328l-.016.008zm-671.486 13.503l-9.44-3.655V654.824l.448.456 236.396 117.086a23.86 23.86 0 0 0 7.96 2.047 17.15 17.15 0 0 0 14.158-7.759l59.715-104.615 9.92-17.158V977.46l-13.152-5.28-306.005-125.317zm-21.998-415.308l4.72-8.8 323.411 162.85 4.84 2.616-2.76 4.696-77.57 138.932-2.655 4.24-4.72-2.056L77.15 572.663l5.888-10.4 73.298-130.708h.008zM484.93 304.646l12.56-4.12V552.41h-6.336l-1.608-1.024-295.063-147.868 9.92-3.663 280.527-95.208zm328.716 95.784l14.175 4.695-291.487 146.708-7.375 3.663V303.054l5.303 1.6 279.392 95.792v-.016zM935.82 562.256l7.367 13.503-320.293 159.306-4.847 2.056-2.52-4.12-77.113-139.508-2.528-4.688 4.704-2.64L858.722 426.98l2.192 3.664 74.922 131.62h-.016zm49.1 12.463L884.863 397.334v-1.016a16.047 16.047 0 0 0-6.775-7.327l-359.05-133.797-1.04-.56-1.031-.464a14.967 14.967 0 0 0-7.968-2.176 13.71 13.71 0 0 0-7.84 2.176l-1.023.464-1.144.56-357.881 134.253a25.649 25.649 0 0 0-9.455 8.815l-100.04 178.52a19.414 19.414 0 0 0 8.88 24.958l81.249 40.053 8.43 4.231v207.15a18.91 18.91 0 0 0 10.48 17.151l358.45 151.42c2.99 1.487 6.223 2.159 9.438 2.159 3.248 0 6.48-.672 9.455-2.16l356.498-151.987h1.04a18.022 18.022 0 0 0 11.99-17.158V644.417l7.84-4.128 78.593-40.157 3.232-1.503 3.008-2.048a15.807 15.807 0 0 0 4.72-21.87v.008z"></path>
+  </svg>
+  <span th:text="${text}"></span>
+</div>

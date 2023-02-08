@@ -1,27 +1,63 @@
 {
   "name": "halo-theme-butterfly",
-  "version": "1.0.0",
-  "description": "Butterfly 主题",
-  "author": "小红",
-  "main": "webpack.config.js",
+  "version": "1.0.8",
+  "description": "一个Halo博客主题，Butterfly ",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "gulp watch",
+    "zip": "gulp zip",
+    "build": "pnpm run clean && gulp && pnpm run zip",
+    "clean": "gulp clean",
+    "build-js": "gulp js",
+    "build-css": "gulp css",
+    "set-npmjs": "npm config set registry https://registry.npmjs.org",
+    "set-taobao": "npm config set registry https://registry.npm.taobao.org",
+    "publish": "npm publish"
   },
+  "keywords": [
+    "halo",
+    "halo-theme",
+    "halo-theme-butterfly"
+  ],
+  "homepage": "https://github.com/dhjddcn/halo-theme-butterfly#readme",
+  "bugs": {
+    "url": "https://github.com/dhjddcn/halo-theme-butterfly/issues"
+  },
+  "author": {
+    "name": "小红",
+    "url": "https://github.com/dhjddcn",
+    "email": "dhjddcn@qq.com"
+  },
+  "maintainers": [
+    {
+      "name": "小红",
+      "url": "https://github.com/dhjddcn",
+      "email": "dhjddcn@qq.com"
+    }
+  ],
+  "license": "GPL-3.0",
   "repository": {
-    "type": "git",
-    "url": "https://e.coding.net/xhgood/XHBLOG/halo-theme-butterfly.git"
+    "url": "https://github.com/dhjddcn/halo-theme-butterfly",
+    "type": "git"
   },
-  "license": "ISC",
   "devDependencies": {
-    "@babel/preset-env": "^7.16.11",
+    "@babel/core": "^7.15.5",
+    "@babel/plugin-transform-runtime": "^7.15.0",
+    "@babel/preset-env": "^7.15.6",
+    "@babel/runtime": "^7.20.7",
+    "babel-eslint": "^10.1.0",
+    "babel-loader": "^8.2.3",
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^8.0.0",
     "gulp-babel": "^8.0.0",
-    "gulp-concat": "^2.6.1",
+    "gulp-clean": "^0.4.0",
     "gulp-csso": "^4.0.1",
+    "gulp-gzip": "^1.4.2",
     "gulp-less": "^5.0.0",
-    "gulp-notify": "^4.0.0",
     "gulp-rename": "^2.0.0",
-    "gulp-uglify": "^3.0.2"
+    "gulp-uglify": "^3.0.2",
+    "gulp-zip": "^5.1.0",
+    "jszip": "^3.10.1",
+    "webpack": "^5.68.0",
+    "webpack-stream": "^7.0.0"
   }
 }

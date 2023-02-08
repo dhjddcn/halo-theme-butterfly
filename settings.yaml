@@ -1,776 +1,720 @@
-# 配置详情请参考：https://docs.halo.run/zh/developer-guide/theme/config-files
-genernal:
-  label: 基本设置
-  items:
-    icp:
-      name: icp
-      label: ICP 备案号
-      type: text
-      default: ""
-      placeholder: "请填写 ICP 备案号信息"
-      description: "ICP 备案信息将展示在页脚中，不填不展示（示例：蜀ICP备xx号）"
-    police:
-      name: police
-      label: 公网安备号
-      type: text
-      default: ""
-      placeholder: "请填写公网安备号信息"
-      description: "公网安备信息将展示在页脚中，不填不展示，一栏中单独关闭（示例：蜀公网安备xx号）"
-    site_notice:
-      name: site_notice
-      label: 网站公告
-      type: textarea
-      placeholder: 请输入公告信息
-      description: "网站公告信息，将展示在页面右侧，尽量简洁明了（不填不展示该模块，也可单独开关）"
+apiVersion: v1alpha1
+kind: Setting
+metadata:
+  name: theme-butterfly-setting
+spec:
+  forms:
+    - group: base
+      label: 基本
+      formSchema:
+        - $formkit: text
+          name: metadata_name
+          label: 作者的唯一标识 metadata.name
+          placeholder: 请填写 作者的唯一标识 metadata.name
+          value: admin
+          help: 后台用户管理中的用户名，不可乱填否则个人资料显示异常（示例：admin）
+          validation: required
+        - $formkit: text
+          name: icp
+          label: ICP 备案号
+          placeholder: 请填写 ICP 备案号信息
+          help: ICP 备案信息将展示在页脚中，不填不展示（示例：蜀ICP备xx号）
+        - $formkit: text
+          name: police
+          label: 公网安备号
+          placeholder: 请填写公网安备号信息
+          help: 公网安备信息将展示在页脚中，不填不展示（示例：蜀公网安备xx号）
+        - $formkit: text
+          name: site_birthday
+          label: 建站时间
+          placeholder: 示例 2022-01-01 00:00
+          help: 自定义博客的起始时间/安装时间，作为计算博客运行时间的参照值，请严格按照示例格式填写，否则将导致报错
 
+    - group: style
+      label: 主题
+      formSchema:
+        #        - $formkit: select
+        #          name: theme_type
+        #          label: 主题模式
+        #          value: '#49b1f5'
+        #          placeholder: 请填写主题颜色
+        #          help: '设置博客的主题模式（用户/自动/浅色/暗黑），默认为用户模式，仅在用户模式下页面才有主题切换按钮，自动模式下根据时间自动切换'
+        #          options:
+        #            - value: user
+        #              label: 用户模式
+        #            - value: light
+        #              label: 浅色模式
+        #            - value: dark
+        #              label: 暗黑模式
+        - $formkit: text
+          name: theme_color_light
+          label: 主题颜色（浅色）
+          value: '#49b1f5'
+          placeholder: 请填写主题 浅色 颜色
+          help: '主题颜色运用到大部分模块色调，默认 #49b1f5'
+          validation: required
+        - $formkit: text
+          name: theme_color_dark
+          label: 主题颜色（深色）
+          value: '#ff7242'
+          placeholder: 请填写主题 深色 颜色
+          help: '主题颜色运用到大部分模块色调，默认 #ff7242'
+          validation: required
+        - $formkit: text
+          name: content_max_width
+          label: 全局内容区最大宽度
+          value: 1500px
+          placeholder: 请填写内容区最大宽度
+          help: 内容区域最大宽度，像素或百分比，默认 1500px（注：配合halo 设置-文章设置-文章列表显示条数，效果更好）
+          validation: required
+        - $formkit: attachment
+          name: body_background
+          label: 全局背景
+          placeholder: 请填写 全局背景
+          value: 'linear-gradient(90deg, rgba(247, 149, 51, .1) 0, rgba(243, 112, 85, .1) 15%, rgba(239, 78, 123, .1) 30%, rgba(161, 102, 171, .1) 44%, rgba(80, 115, 184, .1) 58%, rgba(16, 152, 173, .1) 72%, rgba(7, 179, 155, .1) 86%, rgba(109, 186, 130, .1) 100%)'
+          help: 如果全局背景图设置为图片链接，第一屏背景图将不生效 (注：颜色值或图片链接) 默认：linear-gradient(90deg, rgba(247, 149, 51, .1) 0, rgba(243, 112, 85, .1) 15%, rgba(239, 78, 123, .1) 30%, rgba(161, 102, 171, .1) 44%, rgba(80, 115, 184, .1) 58%, rgba(16, 152, 173, .1) 72%, rgba(7, 179, 155, .1) 86%, rgba(109, 186, 130, .1) 100%)
+          validation: required
+        - $formkit: select
+          name: font_family
+          label: 代码块主题（浅色）随着系统主题变化
+          value: default_font
+          options:
+            - value: "default_font"
+              label: "主题默认字体"
+            - value: "HarmonyOS_Regular"
+              label: "HarmonyOS_Regular"
 
-# 主题设置
-theme:
-  label: 主题设置
-  items:
-    content_max_width:
-      name: content_max_width
-      label: 内容区最大宽度
-      type: text
-      default: "1200px"
-      placeholder: "请输入"
-      description: "限制内容区域的宽度，像素或百分比，默认1200px"
-    web_font:
-      name: web_font
-      label: 网站字体
-      type: select
-      default: "Butterfly Aqqxs"
-      description: "配置网站的字体，暂时提供 2 种供选择，也可以在 “自定义” 一栏中自定义字体来源，如果两边同时配置，优先使用自定义配置中的字体（请注意：中文字体并不能保证所有文字展示正确，请慎用！！！）"
-      options:
-        - value: "by_aqqxs.woff2"
-          label: "Butterfly Aqqxs"
-        - value: "by_slate.woff2"
-          label: "Butterfly Slate"
-    enable_top_background_img:
-      name: enable_top_background_img
-      label: 启用全局顶部背景图
-      type: switch
-      data-type: bool
-      default: true
-      description: "关闭所有页面都没用顶部图（优先级高于元数据）"
-      options:
-        - value: true
-          label: 是
-        - value: false
-          label: 否
-    body_background:
-      name: body_background
-      label: body背景图可选（url/颜色值）
-      type: attachment
-      default: "linear-gradient(90deg,rgba(247,149,51,.1) 0,rgba(243,112,85,.1) 15%,rgba(239,78,123,.1) 30%,rgba(161,102,171,.1) 44%,rgba(80,115,184,.1) 58%,rgba(16,152,173,.1) 72%,rgba(7,179,155,.1) 86%,rgba(109,186,130,.1) 100%)"
-      placeholder: "body背景图"
-      description: "设置全局背景图，建议关闭头部顶部背景图，导航栏字体浅色~"
-
-
-navbar:
-  label: 导航栏
-  items:
-    nav_font_color:
-      name: nav_font_color
-      label: 导航栏字体颜色
-      type: radio
-      data-type: text
-      default: nav_font_color_light
-      description: "背景浅色的时候建议设置深色，背景深色建议设置浅色。可自己搭配"
-      options:
-        - value: nav_font_color_light
-          label: 浅色
-        - value: nav_font_color_dark
-          label: 深色
-
-aside:
-  label: 侧边栏
-  items:
-    enable_aside:
-      name: enable_aside
-      label: 启用全局侧边栏
-      type: switch
-      data-type: bool
-      default: true
-      description: "是否启用侧边栏（全局），关闭后所有页面都没有侧边栏（优先级高于页面元数据）"
-      options:
-        - value: true
-          label: 是
-        - value: false
-          label: 否
-    aside_position:
-      name: aside_position
-      label: 侧边栏位置
-      type: radio
-      data-type: text
-      default: right
-      description: "侧边栏展示位置，左边或右边"
-      options:
-        - value: left
-          label: 左侧
-        - value: right
-          label: 右侧
-    site_btn:
-      name: site_btn
-      label: 信息按钮
-      type: textarea
-      placeholder: 请输入
-      default: "关注我||/"
-      description: "侧边栏按钮信息请按照格式填写否则报错  跳转文字|跳转url"
-    enable_newest_post:
-      name: enable_newest_post
-      label: 展示最新文章
-      type: switch
-      data-type: bool
-      default: true
-      description: "在右侧展示最新文章"
-      options:
-        - value: true
-          label: 开启
-        - value: false
-          label: 关闭
-    newest_page_size:
-      name: newest_page_size
-      label: 最新文章条数
-      default: 5
-      description: "右侧最新文章展示条数，填写数字即可，默认展示最新的5篇文章（需开启最新文章）"
-    #    show_newreply:
-    #      name: show_newreply
-    #      label: 展示最新评论
-    #      type: switch
-    #      data-type: bool
-    #      default: true
-    #      description: "在右侧展示最新的评论"
-    #      options:
-    #        - value: true
-    #          label: 开启
-    #        - value: false
-    #          label: 关闭
-    #    newreply_page_size:
-    #      name: newreply_page_size
-    #      label: 最新评论条数
-    #      type: text
-    #      data-type: long
-    #      default: 5
-    #      description: "右侧最新评论展示条数，填写数字即可，默认展示最新的5条评论（需开启最新评论）"
-    enable_notice:
-      name: enable_notice
-      label: 展示网站公告
-      type: switch
-      data-type: bool
-      default: true
-      description: "在右侧展示公告信息模块，必须配置公告内容才生效（请在 '基本设置' 栏中配置）"
-      options:
-        - value: true
-          label: 开启
-        - value: false
-          label: 关闭
-    enable_categories:
-      name: enable_categories
-      label: 侧边栏展示分类
-      type: switch
-      data-type: bool
-      default: true
-      description: "在右侧展示分类"
-      options:
-        - value: true
-          label: 开启
-        - value: false
-          label: 关闭
-    enable_tags:
-      name: enable_tags
-      label: 侧边栏展示标签
-      type: switch
-      data-type: bool
-      default: true
-      description: "在右侧展示标签"
-      options:
-        - value: true
-          label: 开启
-        - value: false
-          label: 关闭
-
-
-index:
-  label: 首页
-  items:
-    enable_top_index_background_img:
-      name: enable_top_index_background_img
-      label: 开启顶部背景图
-      type: switch
-      data-type: bool
-      default: true
-      placeholder: "开启顶部背景图"
-      options:
-        - value: true
-          label: 是
-        - value: false
-          label: 否
-    top_index_background_img:
-      name: top_index_background_img
-      label: 顶部背景图
-      type: attachment
-      default: "https://gitee.com/dhjdd/Timo/raw/master/1642841118869.png"
-      placeholder: "顶部背景图"
-    top_index_height:
-      name: top_index_height
-      label: 顶部背景图高度
-      type: text
-      default: "100vh"
-      placeholder: "顶部背景图高度"
-    enable_home_aside:
-      name: enable_home_aside
-      label: 是否展示侧边栏
-      type: switch
-      data-type: bool
-      default: true
-      description: "是否展示侧边栏"
-      options:
-        - value: true
-          label: 是
-        - value: false
-          label: 否
-    enable_random_img_api:
-      name: enable_random_img_api
-      label: 启用随机图
-      type: switch
-      data-type: bool
-      default: true
-      description: "是否启用随机图API（必须先配置 API），开启后将使用随机图填充没有设置封面的 “文章|分类|标签”，未开启时使用主题内置的封面图"
-      options:
-        - value: true
-          label: 是
-        - value: false
-          label: 否
-    random_img_api:
-      name: random_img_api
-      label: 随机图 API
-      type: text
-      default: "https://api.ixiaowai.cn/gqapi/gqapi.php"
-      description: "自定义随机图API，用于填充没有设置封面的 “文章|分类|标签”，为空则使用默认随机图 API，免费 API 不会一直可用，请知悉"
-    post_thumbnail:
-      name: post_thumbnail
-      label: 文章默认缩略图
-      width: 100%
-      type: attachment
-      default: "https://picsum.photos/id/1081/210/140"
-      description: "文章无配图时生效，可使用占位图服务（210*140）"
-
-
-
-archives:
-  label: 归档
-  items:
-    archives_title:
-      name: archives_title
-      label: 归档页标题
-      default: "文章归档"
-      placeholder: "请输入"
-      description: "修改归档标题"
-    enable_top_archives_background_img:
-      name: enable_top_archives_background_img
-      label: 开启顶部背景图
-      type: switch
-      data-type: bool
-      default: true
-      placeholder: "开启顶部背景图"
-      options:
-        - value: true
-          label: 是
-        - value: false
-          label: 否
-    top_archives_background_img:
-      name: top_archives_background_img
-      label: 顶部背景图
-      type: attachment
-      default: "https://gitee.com/dhjdd/Timo/raw/master/1642841299688.png"
-      placeholder: "顶部背景图"
-    enable_archives_aside:
-      name: enable_archives_aside
-      label: 是否展示侧边栏
-      type: switch
-      data-type: bool
-      default: true
-      description: "是否展示侧边栏"
-      options:
-        - value: true
-          label: 是
-        - value: false
-          label: 否
-
-categories:
-  label: 分类
-  items:
-    categories_title:
-      name: categories_title
-      label: 分类页标题
-      default: "全部分类"
-      placeholder: "请输入"
-      description: "修改分类页顶部的标题"
-    enable_top_categories_background_img:
-      name: enable_top_categories_background_img
-      label: 开启顶部背景图
-      type: switch
-      data-type: bool
-      default: true
-      placeholder: "开启顶部背景图"
-      options:
-        - value: true
-          label: 是
-        - value: false
-          label: 否
-    top_categories_background_img:
-      name: top_categories_background_img
-      label: 顶部背景图
-      type: attachment
-      default: "https://gitee.com/dhjdd/Timo/raw/master/1642841299688.png"
-      placeholder: "顶部背景图"
-    enable_categories_aside:
-      name: enable_categories_aside
-      label: 是否展示侧边栏
-      type: switch
-      data-type: bool
-      default: true
-      description: "是否展示侧边栏"
-      options:
-        - value: true
-          label: 是
-        - value: false
-          label: 否
-
-tags:
-  label: 标签
-  items:
-    tags_title:
-      name: tags_title
-      label: 标签页标题
-      default: "全部标签"
-      placeholder: "请输入"
-      description: "修改标签页顶部的标题"
-    enable_top_tags_background_img:
-      name: enable_top_tags_background_img
-      label: 开启顶部背景图
-      type: switch
-      data-type: bool
-      default: true
-      placeholder: "开启顶部背景图"
-      options:
-        - value: true
-          label: 是
-        - value: false
-          label: 否
-    top_tags_background_img:
-      name: top_tags_background_img
-      label: 顶部背景图（标签）
-      type: attachment
-      default: "https://gitee.com/dhjdd/Timo/raw/master/1642841299688.png"
-      placeholder: "顶部背景图（标签）"
-    enable_tags_aside:
-      name: enable_tags_aside
-      label: 是否展示侧边栏
-      type: switch
-      data-type: bool
-      default: true
-      description: "是否展示侧边栏"
-      options:
-        - value: true
-          label: 是
-        - value: false
-          label: 否
-
-links:
-  label: 友链
-  items:
-    links_title:
-      name: links_title
-      label: 友链页标题
-      default: "友情链接"
-      placeholder: "请输入"
-      description: "修改友链页顶部展示的标题"
-    enable_top_links_background_img:
-      name: enable_top_links_background_img
-      label: 开启顶部背景图
-      type: switch
-      data-type: bool
-      default: true
-      placeholder: "开启顶部背景图"
-      options:
-        - value: true
-          label: 是
-        - value: false
-          label: 否
-    top_links_background_img:
-      name: top_links_background_img
-      label: 顶部背景图（友链）
-      type: attachment
-      default: "https://gitee.com/dhjdd/Timo/raw/master/1642841299688.png"
-      placeholder: "顶部背景图（友链）"
-    enable_links_aside:
-      name: enable_links_aside
-      label: 是否展示侧边栏
-      type: switch
-      data-type: bool
-      default: true
-      description: "是否展示侧边栏"
-      options:
-        - value: true
-          label: 是
-        - value: false
-          label: 否
-
-journals:
-  label: 日志
-  items:
-    journals_title:
-      name: journals_title
-      label: 日志页标题
-      default: "我的动态"
-      placeholder: "请输入"
-      description: "修改日志页顶部展示的标题"
-    enable_top_journals_background_img:
-      name: enable_top_journals_background_img
-      label: 开启顶部背景图
-      type: switch
-      data-type: bool
-      default: true
-      placeholder: "开启顶部背景图"
-      options:
-        - value: true
-          label: 是
-        - value: false
-          label: 否
-    top_journals_background_img:
-      name: top_journals_background_img
-      label: 顶部背景图
-      type: attachment
-      default: "https://gitee.com/dhjdd/Timo/raw/master/1642841299688.png"
-      placeholder: "顶部背景图"
-    enable_journals_aside:
-      name: enable_journals_aside
-      label: 是否展示侧边栏
-      type: switch
-      data-type: bool
-      default: true
-      description: "是否展示侧边栏"
-      options:
-        - value: true
-          label: 是
-        - value: false
-          label: 否
-
-sheet:
-  label: 自定义
-  items:
-    enable_top_sheet_background_img:
-      name: enable_top_sheet_background_img
-      label: 开启顶部背景图
-      type: switch
-      data-type: bool
-      default: true
-      placeholder: "开启顶部背景图"
-      options:
-        - value: true
-          label: 是
-        - value: false
-          label: 否
-    top_sheet_background_img:
-      name: top_sheet_background_img
-      label: 顶部背景图
-      type: attachment
-      default: "https://gitee.com/dhjdd/Timo/raw/master/1642841299688.png"
-      placeholder: "顶部背景图"
-
-code_block:
-  label: 代码块
-  items:
-    #    enable_code_copy:
-    #      name: enable_code_copy
-    #      label: 代码复制
-    #      type: switch
-    #      data-type: bool
-    #      default: true
-    #      description: 开启代码块复制按钮
-    #      options:
-    #        - value: true
-    #          label: 开启
-    #        - value: false
-    #          label: 关闭
-    #    enable_code_expander:
-    #      name: enable_code_expander
-    #      label: 代码折叠
-    #      type: switch
-    #      data-type: bool
-    #      default: false
-    #      description: "开启代码块折叠功能"
-    #      options:
-    #        - value: true
-    #          label: 开启
-    #        - value: false
-    #          label: 关闭
-    #    fold_long_code:
-    #      name: fold_long_code
-    #      label: 自动折叠长代码块
-    #      type: switch
-    #      data-type: bool
-    #      default: false
-    #      description: "自动折叠 <文章页> 中内容很长的代码块，提高阅读效率，此操作会出现布局偏移，可能带来一些滚动相关问题，如无必要不建议开启（必须先开启“代码折叠”选项，否则无效）"
-    #      options:
-    #        - value: true
-    #          label: 开启
-    #        - value: false
-    #          label: 关闭
-    #    long_code_height:
-    #      name: long_code_height
-    #      label: 自动折叠的高度
-    #      type: text
-    #      data-type: long
-    #      default: 800
-    #      placeholder: "请输入数字"
-    #      description: "触发长代码块自动折叠的高度（单位px），只填数字即可（默认800），填 0 将折叠所有代码块"
-    code_theme:
-      name: code_theme
-      label: 代码主题
-      type: select
-      data-type: string
-      default: "one-dark"
-      description: "设置代码块主题，可通过后台元数据为每篇文章设置单独的代码主题，主题来自 prism-themes，见https://github.com/PrismJS/prism-themes"
-      options:
-        - value: "one-dark"
-          label: "one-dark"
-        - value: "one-light"
-          label: "one-light"
-        - value: "a11y-dark"
-          label: "a11y-dark"
-        - value: "atom-dark"
-          label: "atom-dark"
-        - value: "base16-ateliersulphurpool.light"
-          label: "base16-ateliersulphurpool.light"
-        - value: "cb"
-          label: "cb"
-        - value: "coldark-cold"
-          label: "coldark-cold"
-        - value: "coldark-dark"
-          label: "coldark-dark"
-        - value: "coy-without-shadows"
-          label: "coy-without-shadows"
-        - value: "darcula"
-          label: "darcula"
-        - value: "dracula"
-          label: "dracula"
-        - value: "duotone-dark"
-          label: "duotone-dark"
-        - value: "duotone-earth"
-          label: "duotone-earth"
-        - value: "duotone-forest"
-          label: "duotone-forest"
-        - value: "duotone-light"
-          label: "duotone-light"
-        - value: "duotone-sea"
-          label: "duotone-sea"
-        - value: "duotone-space"
-          label: "duotone-space"
-        - value: "ghcolors"
-          label: "ghcolors"
-        - value: "gruvbox-dark"
-          label: "gruvbox-dark"
-        - value: "gruvbox-light"
-          label: "gruvbox-light"
-        - value: "holi-theme"
-          label: "holi-theme"
-        - value: "hopscotch"
-          label: "hopscotch"
-        - value: "lucario"
-          label: "lucario"
-        - value: "material-dark"
-          label: "material-dark"
-        - value: "material-light"
-          label: "material-light"
-        - value: "material-oceanic"
-          label: "material-oceanic"
-        - value: "night-owl"
-          label: "night-owl"
-        - value: "nord"
-          label: "nord"
-        - value: "pojoaque"
-          label: "pojoaque"
-        - value: "shades-of-purple"
-          label: "shades-of-purple"
-        - value: "solarized-dark-atom"
-          label: "solarized-dark-atom"
-        - value: "synthwave84"
-          label: "synthwave84"
-        - value: "vs"
-          label: "vs"
-        - value: "vsc-dark-plus"
-          label: "vsc-dark-plus"
-        - value: "xonokai"
-          label: "xonokai"
-        - value: "z-touch"
-          label: "z-touch"
-
-post:
-  label: 文章
-  items:
-    enable_post_aside:
-      name: enable_post_aside
-      label: 是否展示侧边栏
-      type: switch
-      data-type: bool
-      default: true
-      description: "是否展示侧边栏"
-      options:
-        - value: true
-          label: 是
-        - value: false
-          label: 否
-    enable_top_post_background_img:
-      name: enable_top_post_background_img
-      label: 开启顶部背景图
-      type: switch
-      data-type: bool
-      default: true
-      placeholder: "开启顶部背景图"
-      options:
-        - value: true
-          label: 是
-        - value: false
-          label: 否
-    #    enable_aside_expander:
-    #      name: enable_aside_expander
-    #      label: 展示侧边栏切换按钮
-    #      type: switch
-    #      data-type: bool
-    #      default: true
-    #      description: "文章页顶部显示用于切换侧边栏显示/隐藏状态的按钮（仅在展示侧边栏情况下生效）"
-    #      options:
-    #        - value: true
-    #          label: 是
-    #        - value: false
-    #          label: 否
-    enable_donate:
-      name: enable_donate
-      label: 开启打赏
-      type: switch
-      data-type: bool
-      default: false
-      options:
-        - value: true
-          label: 开启
-        - value: false
-          label: 关闭
-    qrcode_zfb:
-      name: qrcode_zfb
-      label: "支付宝二维码"
-      type: attachment
-      default: ""
-      placeholder: "打赏用的支付宝收款二维码链接，不填不显示"
-    qrcode_wx:
-      name: qrcode_wx
-      label: "微信二维码"
-      type: attachment
-      default: ""
-      placeholder: "打赏用的微信收款二维码链接，不填不显示"
-
-social:
-  label: 社交
-  items:
-    email:
-      name: email
-      label: 邮箱
-      type: text
-      default: ""
-      placeholder: "邮箱地址"
-    github:
-      name: github
-      label: Github
-      type: text
-      default: ""
-      placeholder: "github主页地址"
-    zhihu:
-      name: zhihu
-      label: 知乎
-      type: text
-      default: ""
-      placeholder: "知乎主页地址"
+    - group: loading
+      label: 加载
+      formSchema:
+        - $formkit: radio
+          name: enable_random_img
+          label: 启用随机图片
+          help: 是否启用随机图API（必须先配置 API），开启后将使用随机图填充没有设置封面的，未开启时使用主题内置的封面图
+          value: true
+          options:
+            - label: 启用
+              value: true
+            - label: 禁用
+              value: false
+        - $formkit: text
+          name: random_img
+          label: 随机图片链接
+          placeholder: 请正确填写 随机图片链接
+          value: 'https://api.likepoems.com/img/aliyun/pc'
+          help: 自定义随机图API，用于填充没有设置封面的 ，免费 API 不会一直可用，请知悉
+        - $formkit: attachment
+          name: preload
+          label: 预加载图片
+          placeholder: 请填写 预加载图片
+          value: 'data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs='
+          help: 预加载图片，默认 data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=
+          validation: required
+        - $formkit: attachment
+          name: filter
+          label: 预加载图片 css滤镜
+          placeholder: 请填写 滤镜
+          value: blur(50px) brightness(1)
+          help: 滤镜，默认 blur(50px) brightness(1)
+          validation: required
+        - $formkit: attachment
+          name: err
+          label: 加载失败图片
+          placeholder: 请填写 加载失败图片
+          value: 'data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs='
+          help: 加载失败图片，默认 data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=
+          validation: required
+    
     #
-    #others:
-    #  label: 其它
-    #  items:
-    #    enable_clean_mode:
-    #      name: enable_clean_mode
-    #      label: 绿色模式
-    #      type: switch
-    #      data-type: bool
-    #      default: false
-    #      description: "启用后，全局评论、留言、特效和广告位将会屏蔽（通常在网站备案期间开启）"
-    #      options:
-    #        - value: true
-    #          label: 开启
-    #        - value: false
-    #          label: 关闭
-    #    check_baidu_collect:
-    #      name: check_baidu_collect
-    #      label: 检查百度收录情况
-    #      type: switch
-    #      data-type: bool
-    #      default: false
-    #      description: "启用后，文章页打开时会自动检测百度收录情况，并显示状态文字（目前相关api为小红自己搭建的服务，不能保证稳定性）"
-    #      options:
-    #        - value: true
-    #          label: 开启
-    #        - value: false
-    #          label: 关闭
-    #    baidu_token:
-    #      name: baidu_token
-    #      label: 百度推送Token
-    #      default: ""
-    #      placeholder: "请填入token"
-    #      description: "文章页未收录时会自动将当前链接推送给百度加快收录，Token在百度收录平台注册账号获取（必须启用“检查百度收录”并填入token才生效），https://ziyuan.baidu.com/linksubmit"
-    #    enable_cdn:
-    #      name: enable_cdn
-    #      label: 使用CDN加载静态资源
-    #      type: switch
-    #      data-type: bool
-    #      default: true
-    #      description: "开启后将使用jsDelivr提供的CDN服务加载静态资源，开发环境下强制从本地加载（注意：如果你在后台修改了模板中的样式等文件，需要关掉这里才会读取最新的文件）"
-    #      options:
-    #        - value: true
-    #          label: 开启
-    #        - value: false
-    #          label: 关闭
-    #    enable_console_theme:
-    #      name: enable_console_theme
-    #      label: 控制台输出主题信息
-    #      type: switch
-    #      data-type: bool
-    #      default: false
-    #      description: "是否在控制台输出主题相关信息"
-    #      options:
-    #        - value: true
-    #          label: 开启
-    #        - value: false
-    #          label: 关闭
-    #    show_loaded_time:
-    #      name: show_loaded_time
-    #      label: 控制台输出页面加载耗时
-    #      type: switch
-    #      data-type: bool
-    #      default: false
-    #      description: "是否在控制台输出当前页面加载耗时"
-    #      options:
-    #        - value: true
-    #          label: 开启
-    #        - value: false
-    #          label: 关闭
-#    rip_mode:
-#      name: rip_mode
-#      label: RIP模式(灰色模式)
-#      type: switch
-#      data-type: bool
-#      default: false
-#      description: "向生命致敬，愿精神长存 <愿此功能永不被启用>"
-#      options:
-#        - value: true
-#          label: 开启
-#        - value: false
-#          label: 关闭
+    #    - group: nav
+    #      label: 导航
+    #      formSchema:
+    #        - $formkit: text
+    #          name: font_color_light
+    #          label: 导航字体颜色
+    #          placeholder: 请填写 导航字体颜色
+    #          value: '#eee'
+    #          help: '导航字体颜色，默认 #eee'
+    #          validation: required
+
+    - group: card
+      label: 卡片
+      formSchema:
+        - $formkit: text
+          name: radius
+          label: 卡片圆角
+          placeholder: 请填写 卡片圆角
+          value: 24px
+          help: 卡片圆角，像素或百分比，默认 24px
+          validation: required
+        - $formkit: text
+          name: bg_color
+          label: 卡片背景色
+          placeholder: 请填写 卡片背景色
+          value: rgba(255, 255, 255, 1)
+          help: 卡片背景色，颜色值，默认 rgba(255, 255, 255, 1)，透明值可选范围（0.1~1）1为不透明
+          validation: required
+        - $formkit: text
+          name: shadow
+          label: 卡片阴影
+          placeholder: 请填写 卡片阴影
+          value: 0 3px 8px 6px rgba(7,17,27,0.05)
+          help: 卡片阴影，颜色值，默认 0 3px 8px 6px rgba(7,17,27,0.05)
+          validation: required
+
+    - group: aside
+      label: 侧边栏
+      formSchema:
+        - $formkit: radio
+          name: enable
+          label: 启用侧边栏
+          help: 是否启用侧边栏（全局），关闭后所有页面都没有侧边栏（优先级高于页面元数据）
+          value: true
+          options:
+            - label: 启用
+              value: true
+            - label: 禁用
+              value: false
+        - $formkit: radio
+          name: position
+          label: 侧边栏位置
+          help: 侧边栏展示位置，左边或右边
+          value: aside-right
+          options:
+            - label: 左边
+              value: aside-left
+            - label: 右边
+              value: aside-right
+        - $formkit: textarea
+          rows: 5
+          name: button
+          label: 侧边栏按钮
+          placeholder: 请填写 侧边栏按钮内容
+          value: 关注我&+&/
+          help: 侧边栏按钮内容, 支持 html 代码片段 (注：文案&+&链接 用&+&分割)
+          validation: required
+        - $formkit: textarea
+          rows: 5
+          name: notice
+          label: 侧边栏公告
+          placeholder: 请填写 侧边栏公告内容
+          value: 好博客，一定要 分享出去 呀~
+          help: 侧边栏公告内容, 支持 html 代码片段
+        - $formkit: radio
+          name: enable_category
+          label: 启用侧边栏分类
+          help: 是否启用侧边栏分类
+          value: true
+          options:
+            - label: 启用
+              value: true
+            - label: 禁用
+              value: false
+        - $formkit: radio
+          name: enable_tags
+          label: 启用侧边栏标签
+          help: 是否启用侧边栏标签
+          value: true
+          options:
+            - label: 启用
+              value: true
+            - label: 禁用
+              value: false
+        - $formkit: radio
+          name: enable_webInfo
+          label: 启用侧边栏网站资讯
+          help: 是否启用侧边栏网站资讯
+          value: true
+          options:
+            - label: 启用
+              value: true
+            - label: 禁用
+              value: false
+
+    - group: index
+      label: 首页
+      formSchema:
+        - $formkit: radio
+          name: enable_above
+          label: 启用第一屏
+          help: 启用首页第一屏
+          value: true
+          options:
+            - label: 启用
+              value: true
+            - label: 禁用
+              value: false
+        - $formkit: attachment
+          name: above_background
+          label: 第一屏背景图
+          placeholder: 请填写 第一屏背景图
+          value: 'https://jsd.onmicrosoft.cn/npm/halo-theme-butterfly@latest/above.png'
+          help: 如果全局背景图设置为图片链接，则此处背景图将不生效
+          validation: required
+        - $formkit: textarea
+          rows: 5
+          name: typewriter
+          label: 打字机文案
+          placeholder: 请填写 打字机文案
+          value: 欢迎来到我的博客 &+& 请填写打字机文案
+          help: 首页第一屏打字机文案 (注：多个文案用 &+& 隔开)
+          validation: required
+        - $formkit: radio
+          name: post_layout
+          label: 文章布局方式
+          help: 文章布局方式 提供（列表、平铺）两种，仅首页生效
+          value: list
+          options:
+            - label: 列表
+              value: list
+            - label: 平铺
+              value: tile
+
+    - group: post
+      label: 文章
+      formSchema:
+        - $formkit: radio
+          name: enable_above
+          label: 启用第一屏 （由于设计原因文章页面 此功能还未实现）
+          help: 启用首页第一屏
+          value: true
+          options:
+            - label: 启用
+              value: true
+            - label: 禁用
+              value: false
+        - $formkit: text
+          name: out_date
+          label: 文章过期
+          placeholder: 请填写 文章过期时间
+          value: 30
+          help: 文章过期-卡片提醒，默认30天 如果填写0不展示
+          validation: required|number
+        - $formkit: radio
+          name: enable_reward
+          label: 启用打赏
+          help: 启用文章打赏，请正确填写名称和二维码图片链接
+          value: true
+          options:
+            - label: 启用
+              value: true
+            - label: 禁用
+              value: false
+        - $formkit: repeater
+          name: reward
+          label: 文章打赏
+          help: 文章打赏 - 请填写打赏方式和打赏二维码
+          value:
+            - name: 微信
+              url:
+            - name: 支付宝
+              url:
+          children:
+            - $formkit: text
+              name: name
+              label: 名称
+              value: ""
+              validation: required|string
+            - $formkit: attachment
+              name: url
+              label: 二维码链接
+              value: ""
+              validation: required|string
+
+    - group: archives
+      label: 归档
+      formSchema:
+        - $formkit: radio
+          name: enable_above
+          label: 启用第一屏
+          help: 启用首页第一屏
+          value: true
+          options:
+            - label: 启用
+              value: true
+            - label: 禁用
+              value: false
+        - $formkit: attachment
+          name: above_background
+          label: 第一屏背景图
+          placeholder: 请填写 第一屏背景图
+          value: 'https://jsd.onmicrosoft.cn/npm/halo-theme-butterfly@latest/above.png'
+          help: 如果全局背景图设置为图片链接，则此处背景图将不生效
+          validation: required
+        - $formkit: text
+          name: custom_title
+          label: 自定义标题
+          placeholder: 请填写 自定义标题
+          value: 归档
+          help: 请填写 自定义标题
+          validation: required
+
+    - group: categories
+      label: 分类
+      formSchema:
+        - $formkit: radio
+          name: enable_above
+          label: 启用第一屏
+          help: 启用首页第一屏
+          value: true
+          options:
+            - label: 启用
+              value: true
+            - label: 禁用
+              value: false
+        - $formkit: attachment
+          name: above_background
+          label: 第一屏背景图
+          placeholder: 请填写 第一屏背景图
+          value: 'https://jsd.onmicrosoft.cn/npm/halo-theme-butterfly@latest/above.png'
+          help: 如果全局背景图设置为图片链接，则此处背景图将不生效
+          validation: required
+        - $formkit: text
+          name: custom_title
+          label: 自定义标题
+          placeholder: 请填写 自定义标题
+          value: '分类'
+          help: 请填写 自定义标题
+          validation: required
+        - $formkit: radio
+          name: post_layout
+          label: 分类详情 文章布局方式
+          help: 分类详情 文章布局方式 提供（列表、平铺）两种，仅文章详情生效
+          value: list
+          options:
+            - label: 列表
+              value: list
+            - label: 平铺
+              value: tile
+
+    - group: tags
+      label: 标签
+      formSchema:
+        - $formkit: radio
+          name: enable_above
+          label: 启用第一屏
+          help: 启用首页第一屏
+          value: true
+          options:
+            - label: 启用
+              value: true
+            - label: 禁用
+              value: false
+        - $formkit: attachment
+          name: above_background
+          label: 第一屏背景图
+          placeholder: 请填写 第一屏背景图
+          value: 'https://jsd.onmicrosoft.cn/npm/halo-theme-butterfly@latest/above.png'
+          help: 如果全局背景图设置为图片链接，则此处背景图将不生效
+          validation: required
+        - $formkit: text
+          name: custom_title
+          label: 自定义标题
+          placeholder: 请填写 自定义标题
+          value: 标签
+          help: 请填写 自定义标题
+          validation: required
+        - $formkit: radio
+          name: post_layout
+          label: 标签详情 文章布局方式
+          help: 标签详情 文章布局方式 提供（列表、平铺）两种，仅文章详情生效
+          value: list
+          options:
+            - label: 列表
+              value: list
+            - label: 平铺
+              value: tile
+
+    - group: single
+      label: 独立页
+      formSchema:
+        - $formkit: radio
+          name: enable_above
+          label: 启用第一屏
+          help: 启用首页第一屏
+          value: true
+          options:
+            - label: 启用
+              value: true
+            - label: 禁用
+              value: false
+        - $formkit: attachment
+          name: above_background
+          label: 第一屏背景图
+          placeholder: 请填写 第一屏背景图
+          value: 'https://jsd.onmicrosoft.cn/npm/halo-theme-butterfly@latest/above.png'
+          help: 如果全局背景图设置为图片链接，则此处背景图将不生效
+          validation: required
+
+    - group: code
+      label: 代码块
+      formSchema:
+        - $formkit: radio
+          name: enable
+          label: 启用代码块
+          help: 如果安装代码块插件，可关闭此功能
+          value: true
+          options:
+            - label: 启用
+              value: true
+            - label: 禁用
+              value: false
+        - $formkit: radio
+          name: enable_title
+          label: 启用代码标题
+          help: 启用代码块的标题，默认显示语言类型，也可自定义标题
+          value: true
+          options:
+            - label: 启用
+              value: true
+            - label: 禁用
+              value: false
+        - $formkit: radio
+          name: enable_hr
+          label: 启用代码标题分割线
+          help: 启用代码标题和内容之间的分割线，不展示时会更加简洁
+          value: true
+          options:
+            - label: 启用
+              value: true
+            - label: 禁用
+              value: false
+        - $formkit: radio
+          name: enable_line
+          label: 启用代码行号
+          help: 启用代码块行号功能
+          value: true
+          options:
+            - label: 启用
+              value: true
+            - label: 禁用
+              value: false
+        - $formkit: radio
+          name: enable_copy
+          label: 启用代码复制
+          help: 启用代码块复制按钮
+          value: true
+          options:
+            - label: 启用
+              value: true
+            - label: 禁用
+              value: false
+        - $formkit: radio
+          name: enable_expander
+          label: 启用代码折叠
+          help: 启用代码折叠功能
+          value: true
+          options:
+            - label: 启用
+              value: true
+            - label: 禁用
+              value: false
+        - $formkit: select
+          name: theme_light
+          label: 代码块主题（浅色）随着系统主题变化
+          value: one-light
+          options:
+            - value: "one-dark"
+              label: "one-dark"
+            - value: "one-light"
+              label: "one-light"
+            - value: "a11y-dark"
+              label: "a11y-dark"
+            - value: "atom-dark"
+              label: "atom-dark"
+            - value: "base16-ateliersulphurpool.light"
+              label: "base16-ateliersulphurpool.light"
+            - value: "cb"
+              label: "cb"
+            - value: "coldark-cold"
+              label: "coldark-cold"
+            - value: "coldark-dark"
+              label: "coldark-dark"
+            - value: "coy-without-shadows"
+              label: "coy-without-shadows"
+            - value: "darcula"
+              label: "darcula"
+            - value: "dracula"
+              label: "dracula"
+            - value: "duotone-dark"
+              label: "duotone-dark"
+            - value: "duotone-earth"
+              label: "duotone-earth"
+            - value: "duotone-forest"
+              label: "duotone-forest"
+            - value: "duotone-light"
+              label: "duotone-light"
+            - value: "duotone-sea"
+              label: "duotone-sea"
+            - value: "duotone-space"
+              label: "duotone-space"
+            - value: "ghcolors"
+              label: "ghcolors"
+            - value: "gruvbox-dark"
+              label: "gruvbox-dark"
+            - value: "gruvbox-light"
+              label: "gruvbox-light"
+            - value: "holi-theme"
+              label: "holi-theme"
+            - value: "hopscotch"
+              label: "hopscotch"
+            - value: "lucario"
+              label: "lucario"
+            - value: "material-dark"
+              label: "material-dark"
+            - value: "material-light"
+              label: "material-light"
+            - value: "material-oceanic"
+              label: "material-oceanic"
+            - value: "night-owl"
+              label: "night-owl"
+            - value: "nord"
+              label: "nord"
+            - value: "pojoaque"
+              label: "pojoaque"
+            - value: "shades-of-purple"
+              label: "shades-of-purple"
+            - value: "solarized-dark-atom"
+              label: "solarized-dark-atom"
+            - value: "synthwave84"
+              label: "synthwave84"
+            - value: "vs"
+              label: "vs"
+            - value: "vsc-dark-plus"
+              label: "vsc-dark-plus"
+            - value: "xonokai"
+              label: "xonokai"
+            - value: "z-touch"
+              label: "z-touch"
+        - $formkit: select
+          name: theme_dark
+          label: 代码块主题（深色）随着系统主题变化
+          value: one-dark
+          options:
+            - value: "one-dark"
+              label: "one-dark"
+            - value: "one-light"
+              label: "one-light"
+            - value: "a11y-dark"
+              label: "a11y-dark"
+            - value: "atom-dark"
+              label: "atom-dark"
+            - value: "base16-ateliersulphurpool.light"
+              label: "base16-ateliersulphurpool.light"
+            - value: "cb"
+              label: "cb"
+            - value: "coldark-cold"
+              label: "coldark-cold"
+            - value: "coldark-dark"
+              label: "coldark-dark"
+            - value: "coy-without-shadows"
+              label: "coy-without-shadows"
+            - value: "darcula"
+              label: "darcula"
+            - value: "dracula"
+              label: "dracula"
+            - value: "duotone-dark"
+              label: "duotone-dark"
+            - value: "duotone-earth"
+              label: "duotone-earth"
+            - value: "duotone-forest"
+              label: "duotone-forest"
+            - value: "duotone-light"
+              label: "duotone-light"
+            - value: "duotone-sea"
+              label: "duotone-sea"
+            - value: "duotone-space"
+              label: "duotone-space"
+            - value: "ghcolors"
+              label: "ghcolors"
+            - value: "gruvbox-dark"
+              label: "gruvbox-dark"
+            - value: "gruvbox-light"
+              label: "gruvbox-light"
+            - value: "holi-theme"
+              label: "holi-theme"
+            - value: "hopscotch"
+              label: "hopscotch"
+            - value: "lucario"
+              label: "lucario"
+            - value: "material-dark"
+              label: "material-dark"
+            - value: "material-light"
+              label: "material-light"
+            - value: "material-oceanic"
+              label: "material-oceanic"
+            - value: "night-owl"
+              label: "night-owl"
+            - value: "nord"
+              label: "nord"
+            - value: "pojoaque"
+              label: "pojoaque"
+            - value: "shades-of-purple"
+              label: "shades-of-purple"
+            - value: "solarized-dark-atom"
+              label: "solarized-dark-atom"
+            - value: "synthwave84"
+              label: "synthwave84"
+            - value: "vs"
+              label: "vs"
+            - value: "vsc-dark-plus"
+              label: "vsc-dark-plus"
+            - value: "xonokai"
+              label: "xonokai"
+            - value: "z-touch"
+              label: "z-touch"
+
+      
+    - group: socials
+      label: 社交
+      formSchema:
+        - $formkit: repeater
+          name: no_data
+          label: 社交账号
+          help: 特殊跳转，请注意url中的参数值 如：QQ 只需要修改 uin= 后面的值即可，其他直接填写url即可，此处可直接填写html片段，svg图标代码片段
+          value:
+            - name: QQ
+              icon: <i class="fa-brands fa-qq"></i>
+              url: tencent://AddContact/?fromId=50&amp;fromSubId=1&amp;subcmd=all&amp;uin=QQ号码
+            - name: Github
+              icon: <i class="fa-brands fa-github"></i>
+              url:
+            - name: Email
+              icon: <i class="fa-solid fa-envelope"></i>
+              url: mailto:邮箱地址
+          children:
+            - $formkit: text
+              name: name
+              label: 名称
+              value: ""
+            - $formkit: text
+              name: icon
+              label: 图标
+              value: ""
+            - $formkit: textarea
+              rows: 4
+              name: url
+              label: 地址
+              value: ""
+
+    - group: other
+      label: 其他
+      formSchema:
+        - $formkit: radio
+          name: enable_cdn_link
+          label: 启用外链加载资源文件
+          help: 必须选配置外链地址才能生效，否则无效
+          value: false
+          options:
+            - label: 启用
+              value: true
+            - label: 禁用
+              value: false
+        - $formkit: text
+          name: cdn_link
+          label: cdn地址，外链地址 
+          placeholder: 请填写 第一屏背景图
+          value: 'https://fastly.jsdelivr.net/npm/halo-theme-butterfly@latest/templates/assets'
+          help: 请保持和主题assets目录下的文件一致，否则会出现404 ,免费cdn地址：https://fastly.jsdelivr.net/npm/halo-theme-butterfly@latest/templates/assets  或者 https://jsd.onmicrosoft.cn/npm/halo-theme-butterfly@latest/templates/assets
+          validation: required
+              

@@ -1,0 +1,12 @@
+spec:
+  targetRef:
+    group: ""
+    kind: MenuItem
+  formSchema:
+    - $formkit: "text"
+      name: "icon"
+      label: "图标"
+apiVersion: v1alpha1
+kind: AnnotationSetting
+metadata:
+  generateName: annotation-

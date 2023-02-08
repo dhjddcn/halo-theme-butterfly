@@ -1,0 +1,125 @@
+/**
+ * @Description: 
+ * @author: 小红
+ * @date: 2022/12/7
+ * @fileName: normalize
+ */
+
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  outline: 0;
+  -webkit-tap-highlight-color: transparent;
+  cursor: inherit;
+}
+
+input[type=text] {
+  -webkit-appearance: none;
+  border-radius: 0;
+  font-weight: 500
+}
+
+iframe {
+  display: block;
+  border: 0;
+  margin: 0 auto
+}
+
+textarea {
+  font-size: 14px;
+  resize: none;
+  -webkit-appearance: none
+}
+
+li, ol, ul {
+  list-style: none
+}
+
+a {
+  text-decoration: none;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  color: inherit;
+  cursor: var(--cursor-pointer);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  position: relative;
+  margin: 20px 0 14px;
+  font-weight: 700;
+}
+
+hr {
+  position: relative;
+  margin: 35px auto;
+  border: 2px dashed var(--hr-border);
+  width: calc(100% - 4px);
+  height: 0;
+  overflow: visible;
+
+  &:before {
+    font-family: "Font Awesome 6 Pro", serif;
+    font-weight: 900;
+    -webkit-font-smoothing: antialiased;
+    display: var(--fa-display, inline-block);
+    font-style: normal;
+    font-variant: normal;
+    line-height: 1;
+    text-rendering: auto;
+
+    position: absolute;
+    top: -10px;
+    left: 5%;
+    z-index: 1;
+    color: var(--theme);
+    content: "\f2dc";
+    font-size: 20px;
+    transition: 1s ease-in-out;
+  }
+}
+
+img {
+  border: 0;
+  vertical-align: middle;
+  max-width: 100%;
+  transition: filter 375ms ease-in .2s, transform .6s;
+}
+
+img:not([src]), img[src=""] {
+  border: 0;
+  opacity: 0
+}
+
+//
+//img.loading, img.error {
+//  filter: blur(175px) brightness(1)
+//}
+
+//svg {
+//  display: inline-block;
+//  width: 1em;
+//  height: 1em;
+//  vertical-align: -0.15em;
+//  fill: currentColor;
+//  overflow: hidden;
+//}
+
+
+button {
+  -webkit-appearance: none;
+  outline: 0;
+  border: 0;
+  touch-action: manipulation;
+  cursor: var(--cursor-pointer);
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0
+}
+
+i {
+  cursor: inherit;
+}
