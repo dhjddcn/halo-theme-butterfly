@@ -1,7 +1,7 @@
 <p align="center">Butterfly 主题 Halo 2.0</p>
 
 > `Butterfly` 是Hexo社区[hexo-theme-Butterfly](https://github.com/jerryc127) 此次移植Halo由原版的 pug模板引擎 调整为
-> thymeleaf， 保持灵活性的同时最大限度的移植了原版功能，希望大家喜欢 ❤️ <br>
+> thymeleaf， 希望大家喜欢 ❤️ <br>
 > 🌸 同时也要在此感谢原作者 [Jerry](https://github.com/jerryc127)
 > 欢迎大家加入 [halo-theme-Butterfly 交流群：916571927](https://jq.qq.com/?_wv=1027&k=LfbGKBVG)
 
