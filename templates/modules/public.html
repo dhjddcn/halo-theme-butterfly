@@ -213,12 +213,12 @@
     <i class="fas fa-chevron-left fa-fw"></i>
   </a>
   
-  <script th:inline="javascript">
-    /*<![CDATA[*/
-    var page = /*[[${ps}]]*/ 1;
-    console.log(page);
+<!--  <script th:inline="javascript">-->
+<!--    /*<![CDATA[*/-->
+<!--    var page = /*[[${ps}]]*/ 1;-->
+<!--    console.log(page);-->
 
-  </script>
+<!--  </script>-->
 
   <a
     th:each="index : ${#numbers.sequence(ps.page,ps.page+2)}"
