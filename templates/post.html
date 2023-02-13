@@ -107,7 +107,7 @@
 
       <div class="author">
         <span class="name">文章作者：</span>
-        <span class="text" th:text="${site.title}"></span>
+        <span class="text" th:text="${contributorFinder.getContributor(theme.config.base.metadata_name).displayName}"></span>
       </div>
 
       <div class="url">
