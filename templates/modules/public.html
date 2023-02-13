@@ -137,8 +137,8 @@
       <div class="desc flex-1">
         <a th:href="@{${ps.status.permalink}}" th:text="${ps.spec.title}" class="title text-link text-clamp"></a>
         <time class="block"
-              th:attr="datetime=${post.spec.publishTime}"
-              th:text="${#dates.format(post.spec.publishTime,'yyyy-MM-dd HH:mm')}">
+              th:attr="datetime=${ps.spec.publishTime}"
+              th:text="${#dates.format(ps.spec.publishTime,'yyyy-MM-dd HH:mm')}">
         </time>
       </div>
     </li>
