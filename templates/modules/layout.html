@@ -196,6 +196,8 @@
          th:text="'© 2020 - '+${#dates.format(#dates.createNow(), 'yyyy')}+' By '+ ${site.title}"></div>
     <div class="icp" th:if="${not #strings.isEmpty(theme.config.base.icp)}"
          th:text="'备案号：'+${theme.config.base.icp}"></div>
+    <div class="police" th:if="${not #strings.isEmpty(theme.config.base.police)}"
+         th:text="${theme.config.base.police}"></div>
     <div class="powered">Powered by&nbsp;<a class="halo" href="https://halo.run/" target="_blank">Halo</a>&nbsp;|&nbsp;🌈
       Theme by&nbsp;<a class="theme" title="当前主题：Butterfly" href="https://github.com/dhjddcn/halo-theme-butterfly"
                        target="_blank">小红</a></div>
