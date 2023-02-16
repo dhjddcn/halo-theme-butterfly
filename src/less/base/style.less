@@ -149,7 +149,7 @@ body {
     font-size: 1.1rem;
     //top: 0;
     transform: translateY(0);
-    transition: top .5s, box-shadow .5s, padding .5s, background .5s, transform .5s;
+    transition: padding .5s, background .5s, transform .5s;
 
     .site-title {
       text-shadow: 0.1rem 0.1rem 0.2rem rgb(0 0 0 / 15%);
@@ -264,7 +264,9 @@ body {
 
     &.style {
       position: fixed;
-      top: -60px;
+      //top: -60px;
+      transform: translateY(-60px);
+
       background-color: var(--nav-scroll-bg-color);
       box-shadow: var(--nav-scroll-shadow);
       transition: none;
@@ -283,7 +285,7 @@ body {
       //transition: top 0.4s;
       //top: 0;
       transition: transform .5s;
-      transform: translateY(60px);
+      transform: translateY(0);
     }
 
     &.hidden {
