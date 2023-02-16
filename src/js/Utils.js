@@ -233,10 +233,14 @@ export function fancyBoxImg(selector) {
 /**
  * 分页
  */
-export function createPagination () {
-  // const pagination = $('.pagination');
-  //
-  // if (!pagination.length) return;
+export function createPagination() {
+  const pagination = $('.pagination');
+
+  console.log(paginationData);
+
+  if (!pagination.length) return;
+
+  console.log(pagination);
   //
   // const page = parseInt(pagination.attr('data-page') || 0);
   // const total = parseInt(pagination.attr('data-total') || 0);
