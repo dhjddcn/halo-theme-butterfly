@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "gulp watch",
     "zip": "gulp zip",
-    "build": "pnpm run clean && gulp && pnpm run zip",
+    "build-zip": "npm run clean && gulp && npm run zip",
+    "build": "npm run clean && gulp",
     "clean": "gulp clean",
     "build-js": "gulp js",
     "build-css": "gulp css",
