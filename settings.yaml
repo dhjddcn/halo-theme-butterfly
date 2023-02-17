@@ -23,7 +23,7 @@ spec:
           name: police
           label: 公网安备号
           placeholder: 请填写公网安备号信息
-          help: 公网安备信息将展示在页脚中，不填不展示（示例：蜀公网安备xx号）
+          help: 公网安备信息将展示在页脚中，不填不展示（示例：京公xxxxxxxxx号）
         - $formkit: text
           name: site_birthday
           label: 建站时间

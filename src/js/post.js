@@ -73,7 +73,7 @@ class Post {
       const clipboard = new ClipboardJS(this, {text: () => location.href});
 
       clipboard.on('success', () => {
-        Qmsg.success("文章链接已复制");
+        Qmsg.success("已复制");
         clipboard.destroy();
       });
 

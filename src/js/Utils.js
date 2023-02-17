@@ -94,7 +94,7 @@ export function initCode(dom) {
           const clipboard = new ClipboardJS(this, {text: () => text});
 
           clipboard.on('success', () => {
-            Qmsg.success("文章链接已复制");
+            Qmsg.success("已复制");
             clipboard.destroy();
           });
 
@@ -236,11 +236,11 @@ export function fancyBoxImg(selector) {
 export function createPagination() {
   const pagination = $('.pagination');
 
-  console.log(paginationData);
+  // console.log(paginationData);
 
   if (!pagination.length) return;
 
-  console.log(pagination);
+  // console.log(pagination);
   //
   // const page = parseInt(pagination.attr('data-page') || 0);
   // const total = parseInt(pagination.attr('data-total') || 0);
