@@ -238,6 +238,7 @@ export function createPagination() {
 
   // console.log(paginationData);
 
+  return;
   if (!pagination.length) return;
 
   // console.log(pagination);
@@ -247,5 +248,55 @@ export function createPagination() {
   // const totalPage = parseInt(pagination.attr('data-totalPages') || 0);
   //
   // console.log(page, total, totalPage);
+
+  // 是否有上一页
+  if (paginationData?.['hasPrevious']) {
+    const prev = $(`<a 
+         href="${paginationData?.['prevUrl']}"
+         rel="prev"
+         title="上一页"
+         class="prev inline-flex flex-justify-content-center flex-align-items-center">
+        <i class="fas fa-chevron-left fa-fw"></i>
+        </a>`);
+    pagination.append(prev);
+  }
+
+
+  let start = ((Math.ceil(paginationData?.['page'] / 5) * 5) - 5) +1;
+  let end = Math.ceil(paginationData?.['page'] / 5) * 5
+
+  console.log(start,end);
+  // 页码
+  const p = []
+
+  for (let i = Number(start); i < end; i++) {
+    p.push(i)
+  }
+  p.push(end);
+
+  for (let i = 0; i < p.length; i++) {
+    const page = $(
+      `
+      <a
+      class="${paginationData?.['page'] === p[i] ? 'page current' : 'page'} inline-flex flex-justify-content-center flex-align-items-center"
+      href="${pagePath + '/page/' + p[i]}" >${p[i]}</a>
+        `
+    )
+    pagination.append(page);
+  }
+
+  // 是否有下一页
+  if (paginationData?.['hasNext']) {
+    const next = $(`<a 
+         href="${paginationData?.['nextUrl']}"
+         rel="next"
+         title="下一页"
+         class="next inline-flex flex-justify-content-center flex-align-items-center">
+        <i class="fas fa-chevron-right fa-fw"></i>
+        </a>`);
+    pagination.append(next);
+  }
+
+
 }
 
