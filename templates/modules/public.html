@@ -204,8 +204,10 @@
 </ul>
 
 <!--分页-->
-<div xmlns:th="https://www.thymeleaf.org" th:fragment="pagination(ps,path)" class="pagination text-center"
+<div xmlns:th="https://www.thymeleaf.org"
+     th:fragment="pagination(ps,path)" class="pagination text-center"
      th:with="p=${T(java.lang.Math).ceil(T(java.lang.Double).parseDouble(ps.page) / 5.0) },start = ${(p * 5) - 5  +1 },end=${p * 5}">
+
   <a th:if="${ps.hasPrevious()}"
      th:href="${ps.prevUrl}"
      rel="prev"
@@ -213,15 +215,15 @@
      class="prev inline-flex flex-justify-content-center flex-align-items-center">
     <i class="fas fa-chevron-left fa-fw"></i>
   </a>
-  
-  <th:block  th:if="${ps.totalPages > 5}">
+
+  <th:block th:if="${ps.totalPages > 5}">
     <a
       th:each="index : ${#numbers.sequence(start,end)}"
       th:class="${ps.page == index ?  'page current': 'page'}+' inline-flex flex-justify-content-center flex-align-items-center'"
       th:href="@{${path+'/page/'}  + ${index}}" th:text="${index}"></a>
   </th:block>
 
-  <th:block  th:unless="${ps.totalPages > 5}">
+  <th:block th:unless="${ps.totalPages > 5}">
     <a
       th:each="index : ${#numbers.sequence(start,ps.totalPages)}"
       th:class="${ps.page == index ?  'page current': 'page'}+' inline-flex flex-justify-content-center flex-align-items-center'"
