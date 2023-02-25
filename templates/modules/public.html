@@ -227,8 +227,6 @@
       th:class="${ps.page == index ?  'page current': 'page'}+' inline-flex flex-justify-content-center flex-align-items-center'"
       th:href="@{${path+'/page/'}  + ${index}}" th:text="${index}"></a>
   </th:block>
-  
-
 
   <a th:if="${ps.hasNext()}"
      th:href="${ps.nextUrl}"
