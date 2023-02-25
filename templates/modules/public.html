@@ -213,11 +213,31 @@
      class="prev inline-flex flex-justify-content-center flex-align-items-center">
     <i class="fas fa-chevron-left fa-fw"></i>
   </a>
+  
+<!--  <span th:text="${start}"></span>-->
+<!--  <span th:text="${end}"></span>-->
 
-  <a
-    th:each="index : ${#numbers.sequence(start,end)}"
-    th:class="${ps.page == index ?  'page current': 'page'}+' inline-flex flex-justify-content-center flex-align-items-center'"
-    th:href="@{${path+'/page/'}  + ${index}}" th:text="${index}"></a>
+<!--  <script th:inline="javascript">-->
+<!--    window.paginationData = /*[[${ps}]]*/ {};-->
+<!--    window.pagePath = /*[[${path}]]*/ {};-->
+<!--    console.log(paginationData);-->
+<!--  </script>-->
+
+  <th:block  th:if="${ps.totalPages > 5}">
+    <a
+      th:each="index : ${#numbers.sequence(start,end)}"
+      th:class="${ps.page == index ?  'page current': 'page'}+' inline-flex flex-justify-content-center flex-align-items-center'"
+      th:href="@{${path+'/page/'}  + ${index}}" th:text="${index}"></a>
+  </th:block>
+
+  <th:block  th:unless="${ps.totalPages > 5}">
+    <a
+      th:each="index : ${#numbers.sequence(start,ps.totalPages)}"
+      th:class="${ps.page == index ?  'page current': 'page'}+' inline-flex flex-justify-content-center flex-align-items-center'"
+      th:href="@{${path+'/page/'}  + ${index}}" th:text="${index}"></a>
+  </th:block>
+  
+
 
   <a th:if="${ps.hasNext()}"
      th:href="${ps.nextUrl}"
