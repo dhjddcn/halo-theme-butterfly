@@ -214,15 +214,6 @@
     <i class="fas fa-chevron-left fa-fw"></i>
   </a>
   
-<!--  <span th:text="${start}"></span>-->
-<!--  <span th:text="${end}"></span>-->
-
-<!--  <script th:inline="javascript">-->
-<!--    window.paginationData = /*[[${ps}]]*/ {};-->
-<!--    window.pagePath = /*[[${path}]]*/ {};-->
-<!--    console.log(paginationData);-->
-<!--  </script>-->
-
   <th:block  th:if="${ps.totalPages > 5}">
     <a
       th:each="index : ${#numbers.sequence(start,end)}"
