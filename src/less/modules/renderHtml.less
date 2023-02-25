@@ -37,6 +37,14 @@ html {
   word-break: break-word;
   overflow-wrap: break-word;
 
+  &.enable_h_title {
+    h1, h2, h3, h4, h5, h6 {
+      &::before {
+        display: none;
+      }
+    }
+  }
+
   p {
     line-height: 2.3;
     min-height: 30px;

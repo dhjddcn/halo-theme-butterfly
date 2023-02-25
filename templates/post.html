@@ -100,7 +100,7 @@
     </div>
 
     <article th:utext="${post.content.content}"
-             th:class="'render-html animated fadeIn single_code_select '+${ theme.config.code.enable_line ? 'line-numbers' : ''}"></article>
+             th:class="'render-html animated fadeIn single_code_select' + ${ theme.config.code.enable_line ? ' line-numbers' : ''} + ${ !theme.config.post.enable_h_title ? ' enable_h_title' : ''} "></article>
 
     <div class="post-copyRight relative">
       <i class="fa-solid fa-copyright absolute"></i>

@@ -33,19 +33,19 @@ spec:
     - group: style
       label: 主题
       formSchema:
-#      - $formkit: select
-#        name: theme_type
-#        label: 主题模式
-#        value: '#49b1f5'
-#        placeholder: 请填写主题颜色
-#        help: '设置博客的主题模式（用户/自动/浅色/暗黑），默认为用户模式，仅在用户模式下页面才有主题切换按钮，自动模式下根据时间自动切换'
-#        options:
-#          - value: user
-#            label: 用户模式
-#          - value: light
-#            label: 浅色模式
-#          - value: dark
-#            label: 暗黑模式
+        #      - $formkit: select
+        #        name: theme_type
+        #        label: 主题模式
+        #        value: '#49b1f5'
+        #        placeholder: 请填写主题颜色
+        #        help: '设置博客的主题模式（用户/自动/浅色/暗黑），默认为用户模式，仅在用户模式下页面才有主题切换按钮，自动模式下根据时间自动切换'
+        #        options:
+        #          - value: user
+        #            label: 用户模式
+        #          - value: light
+        #            label: 浅色模式
+        #          - value: dark
+        #            label: 暗黑模式
         - $formkit: text
           name: theme_color_light
           label: 主题颜色（浅色）
@@ -290,6 +290,16 @@ spec:
           value: 30
           help: 文章过期-卡片提醒，默认30天 如果填写0不展示
           validation: required|number
+        - $formkit: radio
+          name: enable_h_title
+          label: 启用文章标题图标
+          help: 启用文章标题图标 （h1 ~ h6）前面的图标
+          value: true
+          options:
+            - label: 启用
+              value: true
+            - label: 禁用
+              value: false
         - $formkit: radio
           name: enable_reward
           label: 启用打赏
@@ -653,7 +663,6 @@ spec:
               label: "xonokai"
             - value: "z-touch"
               label: "z-touch"
-
 
     - group: socials
       label: 社交
