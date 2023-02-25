@@ -107,7 +107,8 @@
 
       <div class="author">
         <span class="name">文章作者：</span>
-        <span class="text" th:text="${contributorFinder.getContributor(theme.config.base.metadata_name).displayName}"></span>
+        <span class="text"
+              th:text="${contributorFinder.getContributor(theme.config.base.metadata_name).displayName}"></span>
       </div>
 
       <div class="url">
@@ -209,19 +210,27 @@
         </div>
 
         <div
-          th:if="${theme.config.post.enable_reward}"
+          th:if="${theme.config.post.enable_reward && (not #strings.isEmpty(theme.config.post.wxPay) || not #strings.isEmpty(theme.config.post.alipay))}"
           class="reward relative item cursor-pointer inline-flex flex-direction-column flex-justify-content-center  flex-align-items-center">
           <i class="fa-light fa-sack-dollar"></i>
           <span>打赏</span>
 
           <div class="reward-dropdown absolute z-50 flex">
-            <section class="text-center" th:each="r :${theme.config.post.reward}">
+            <section class="text-center" th:if="${not #strings.isEmpty(theme.config.post.wxPay)}">
               <img
                 th:src="${theme.config.loading.preload}"
                 th:attr="onerror='this.src='+${'`'+theme.config.loading.err+'`'}"
-                th:data-lazy-src="${r.url}"
-                th:alt="${r.name}" alt="">
-              <span class="inline-block" th:text="${r.name}"></span>
+                th:data-lazy-src="${theme.config.post.wxPay}"
+                alt="微信" src="">
+              <span class="inline-block">微信</span>
+            </section>
+            <section class="text-center" th:if="${not #strings.isEmpty(theme.config.post.alipay)}">
+              <img
+                th:src="${theme.config.loading.preload}"
+                th:attr="onerror='this.src='+${'`'+theme.config.loading.err+'`'}"
+                th:data-lazy-src="${theme.config.post.alipay}"
+                alt="支付宝" src="">
+              <span class="inline-block">支付宝</span>
             </section>
           </div>
         </div>

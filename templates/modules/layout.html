@@ -191,7 +191,7 @@
 
   </main>
   <!--/* footer--><!--*/-->
-  <footer class="footer  text-center">
+  <footer class="footer text-center">
     <div class="copyright"
          th:text="'© 2020 - '+${#dates.format(#dates.createNow(), 'yyyy')}+' By '+ ${site.title}"></div>
     <div class="icp" th:if="${not #strings.isEmpty(theme.config.base.icp)}">

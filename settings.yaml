@@ -300,26 +300,16 @@ spec:
               value: true
             - label: 禁用
               value: false
-        - $formkit: repeater
-          name: reward
-          label: 文章打赏
-          help: 文章打赏 - 请填写打赏方式和打赏二维码
-          value:
-            - name: 微信
-              url:
-            - name: 支付宝
-              url:
-          children:
-            - $formkit: text
-              name: name
-              label: 名称
-              value: ""
-              validation: required|string
-            - $formkit: attachment
-              name: url
-              label: 二维码链接
-              value: ""
-              validation: required|string
+        - $formkit: text
+          name: wxPay
+          label: 微信
+          placeholder: 请填写微信二维码链接
+          help: 微信二维码链接
+        - $formkit: text
+          name: alipay
+          label: 支付宝
+          placeholder: 请填写支付宝二维码链接
+          help: 支付宝二维码链接
 
     - group: archives
       label: 归档
@@ -664,7 +654,7 @@ spec:
             - value: "z-touch"
               label: "z-touch"
 
-      
+
     - group: socials
       label: 社交
       formSchema:
@@ -712,7 +702,7 @@ spec:
               value: false
         - $formkit: text
           name: cdn_link
-          label: cdn地址，外链地址 
+          label: cdn地址，外链地址
           placeholder: 请填写 第一屏背景图
           value: 'https://fastly.jsdelivr.net/npm/halo-theme-butterfly@latest/templates/assets'
           help: 请保持和主题assets目录下的文件一致，否则会出现404 ,免费cdn地址：https://fastly.jsdelivr.net/npm/halo-theme-butterfly@latest/templates/assets  或者 https://jsd.onmicrosoft.cn/npm/halo-theme-butterfly@latest/templates/assets
