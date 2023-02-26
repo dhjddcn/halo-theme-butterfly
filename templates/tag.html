@@ -29,9 +29,13 @@
 </section>
 
 <th:block th:fragment="content">
-  <section class="container">
-    <th:block th:replace="~{modules/public:: posts(${posts.items},${theme.config.tags.post_layout})}"></th:block>
-    <th:block th:replace="~{modules/public:: pagination(${posts},${tag.status.permalink})}"></th:block>
+  <section class="container" th:with="noData = ${not #lists.isEmpty(posts.items)}">
+    <th:block th:if="${noData}">
+      <th:block th:replace="~{modules/public:: posts(${posts.items},${theme.config.tags.post_layout})}"></th:block>
+      <th:block th:replace="~{modules/public:: pagination(${posts},${tag.status.permalink})}"></th:block>
+    </th:block>
+
+    <th:block th:unless="${noData}" th:insert="~{modules/public:: emptyData('暂无文章~',true)}"></th:block>
   </section>
 
   <th:block th:replace="~{modules/public:: aside}"></th:block>
