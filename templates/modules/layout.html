@@ -21,6 +21,7 @@
   <link rel="canonical" th:href="${site.url}">
   <script id="base-script" th:inline="javascript">
     window.ThemeConfig =  /*[[${theme.config}]]*/ {};
+    window.ThemeConfig.version = /*[[${theme.spec.version}]]*/ {};
     const locDataTheme = localStorage.getItem('Butterfly-data-theme');
     if (locDataTheme) {
       document.querySelector('html').setAttribute('data-theme', locDataTheme);
