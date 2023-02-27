@@ -60,7 +60,6 @@ class Post {
     if (!dom.length) return;
 
     dom.html(decodeURIComponent(dom.html()));
-
   }
 
   // 放大镜图片

@@ -39,6 +39,7 @@
     </div>
   </section>
 
+  <!--公告-->
   <section class="aside-item aside-notice card">
     <h1 class="aside-title">
       <i class="fas fa-bullhorn fa-shake"></i>
@@ -48,46 +49,59 @@
     <div class="content" th:utext="${theme.config.aside.notice}"></div>
   </section>
 
+
+  <!--分类-->
   <section th:if="${theme.config.aside.enable_category}" class="aside-item aside-category card">
     <h1 class="aside-title">
       <i class="fas fa-folder-open"></i>
       <span class="name">分类</span>
     </h1>
 
-    <div class="content" th:with="categories = ${categoryFinder.list(1,5)}">
-      <a th:each="category : ${categories}"
-         th:href="@{${category.status.permalink}}"
-         th:title="${category.spec.displayName}"
-         class="link flex relative flex-direction-row"
-      >
-        <span class="name text-overflow flex-1" th:text="${category.spec.displayName}"></span>
-        <span class="num text-overflow" th:text="${category.status.visiblePostCount}"></span>
-      </a>
+    <div class="content" th:with="categories = ${categoryFinder.list(1,5)},noData = ${not #lists.isEmpty(categories)}">
+      <th:block th:if="${noData}">
+        <a th:each="category : ${categories}"
+           th:href="@{${category.status.permalink}}"
+           th:title="${category.spec.displayName}"
+           class="link flex relative flex-direction-row"
+        >
+          <span class="name text-overflow flex-1" th:text="${category.spec.displayName}"></span>
+          <span class="num text-overflow" th:text="${category.status.visiblePostCount}"></span>
+        </a>
+      </th:block>
+
+      <th:block th:unless="${noData}" th:insert="~{modules/public:: emptyData('暂无分类~',false)}"></th:block>
     </div>
 
   </section>
 
+
+  <!--标签-->
   <section th:if="${theme.config.aside.enable_tags}" class="aside-item aside-tags card">
     <h1 class="aside-title">
       <i class="fas fa-tags"></i>
       <span class="name">标签</span>
     </h1>
 
-    <div class="content" th:with="tags = ${tagFinder.listAll()}">
-      <a
-        th:if="${tag.status.visiblePostCount > 0}"
-        class="link inline-block relative"
-        th:each="tag : ${tags}"
-        th:href="@{${tag.status.permalink}}"
-        th:title="${tag.spec.displayName}"
-      >
+    <div class="content" th:with="tags = ${tagFinder.list(1,20)},noData = ${not #lists.isEmpty(tags)}">
+      <th:block th:if="${noData}">
+        <a
+          th:if="${tag.status.visiblePostCount > 0}"
+          class="link inline-block relative"
+          th:each="tag : ${tags}"
+          th:href="@{${tag.status.permalink}}"
+          th:title="${tag.spec.displayName}"
+        >
 
-        <span class="name" th:text="${tag.spec.displayName}"></span>
-        （<span class="num" th:text="${tag.status.visiblePostCount}"></span>）
-      </a>
+          <span class="name" th:text="${tag.spec.displayName}"></span>
+          （<span class="num" th:text="${tag.status.visiblePostCount}"></span>）
+        </a>
+      </th:block>
+      <th:block th:unless="${noData}" th:insert="~{modules/public:: emptyData('暂无分类~',false)}"></th:block>
     </div>
   </section>
 
+
+  <!--网站信息-->
   <section th:if="${theme.config.aside.enable_webInfo}" class="aside-item aside-web-info card">
     <h1 class="aside-title">
       <i class="fas fa-chart-line"></i>
