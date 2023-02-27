@@ -5,7 +5,7 @@
  * @fileName: style 
  */
 body {
-  font-family: "Butterfly Font", "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, "sans-serif";
+  font-family: "Butterfly Font", system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   font-size: 14px;
   color: var(--font-color);
   line-height: 2;
@@ -40,7 +40,6 @@ body {
   color: #fff;
   background-color: var(--selection-bg-color);
 }
-
 
 @keyframes opacity-01 {
   0% {
@@ -559,6 +558,7 @@ body {
     margin: 0;
   }
 
+  //广告
   &-notice {
     .aside-title i {
       color: #ff0000;
@@ -568,6 +568,7 @@ body {
     }
   }
 
+  //标签
   &-category {
     > .content > .link {
       padding: 3px 10px 3px 22px;
@@ -605,6 +606,7 @@ body {
     }
   }
 
+  //侧边栏标签
   &-tags {
     > .content {
       max-height: 200px;
@@ -619,7 +621,13 @@ body {
       }
     }
   }
+  
+  //侧边栏广告
+  &-advert{
+    
+  }
 
+  //侧边栏网站信息
   &-web-info {
     .content {
       p.item {
@@ -704,7 +712,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    
+
     img {
       transition: none;
       margin-right: 5px;
@@ -713,7 +721,7 @@ body {
 
   }
 
-  a:hover{
+  a:hover {
     color: var(--theme);
   }
 }

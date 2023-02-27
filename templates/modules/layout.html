@@ -56,7 +56,9 @@
       filter: /*[(${theme.config.loading.filter})]*/ none;
     }
   </style>
-  <link rel="preload" as="style"  onload="this.rel='stylesheet'" th:href="${assets_link+'/font/'+theme.config.style.font_family+'.min.css'}">
+  <th:block th:if="${theme.config.style.font_family != 'no'}">
+    <link rel="preload" as="style"  onload="this.rel='stylesheet'" th:href="${assets_link+'/font/'+theme.config.style.font_family+'.min.css'}">
+  </th:block>
   <link rel="preload" as="style"  onload="this.rel='stylesheet'" th:href="${assets_link+'/css/global.min.css'}">
   <link rel="preload" as="style"  onload="this.rel='stylesheet'" th:href="${assets_link+'/plugins/fontawesome/fontawesome.min.css'}">
   <th:block th:insert="${head}"></th:block>

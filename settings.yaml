@@ -76,11 +76,13 @@ spec:
           validation: required
         - $formkit: select
           name: font_family
-          label: 代码块主题（浅色）随着系统主题变化
-          value: default_font
+          label: 主题字体
+          value: no
           options:
-            - value: "default_font"
-              label: "主题默认字体"
+            - value: "no"
+              label: "游览器默认字体"      
+            - value: "Circular_Body"
+              label: "Circular_Body"
             - value: "HarmonyOS_Regular"
               label: "HarmonyOS_Regular"
 
@@ -215,6 +217,16 @@ spec:
           label: 启用侧边栏标签
           help: 是否启用侧边栏标签
           value: true
+          options:
+            - label: 启用
+              value: true
+            - label: 禁用
+              value: false
+        - $formkit: radio
+          name: enable_custom
+          label: 启用侧边栏自定义模块
+          help: 是否启用自定义模块
+          value: false
           options:
             - label: 启用
               value: true
@@ -675,6 +687,7 @@ spec:
             - name: QQ
               icon: <i class="fa-brands fa-qq"></i>
               url: tencent://AddContact/?fromId=50&amp;fromSubId=1&amp;subcmd=all&amp;uin=QQ号码
+              delete: true
             - name: Github
               icon: <i class="fa-brands fa-github"></i>
               url:
