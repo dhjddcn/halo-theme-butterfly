@@ -9,11 +9,13 @@ import {fancyBoxImg, initCode, switchCodeTheme} from "./Utils";
 
 class Single {
   constructor() {
-    switchCodeTheme(dataTheme);
-    initCode('.render-html pre');
-    fancyBoxImg('.render-html img');
+    $('.render-html').css({'visibility': 'visible'});
     
+    switchCodeTheme(dataTheme);
 
+    initCode('.render-html pre');
+
+    fancyBoxImg('.render-html img');
   }
 
 }
