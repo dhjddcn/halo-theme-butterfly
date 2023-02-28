@@ -229,3 +229,4 @@ export function fancyBoxImg(selector) {
     $this.wrap($(`<span class="block text-center w-100" data-fancybox="post" href="${$this.attr("src")}" ></span>`));
   });
 }
+

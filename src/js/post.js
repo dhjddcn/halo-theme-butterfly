@@ -9,6 +9,8 @@ import {fancyBoxImg, initCode, initToc, switchCodeTheme} from './Utils.js'
 
 class Post {
   constructor() {
+    $('.render-html').css({'visibility': 'visible'});
+
     switchCodeTheme(dataTheme);
 
     initCode('.render-html pre');
@@ -62,7 +64,7 @@ class Post {
     dom.html(decodeURIComponent(dom.html()));
   }
 
-  // 放大镜图片
+  // 复制链接
   copyPermalink() {
     const dom = $('.post-support .share .copy-permalink');
 

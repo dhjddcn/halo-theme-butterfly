@@ -13,7 +13,6 @@
 <th:block th:fragment="head">
   <style
     th:inline="css"
-    type="text/css"
     th:with="above_background= ${is_body_bg_http ? '' : 'url(' + post.spec.cover + ')'}
   ">
     .above {
@@ -21,11 +20,12 @@
     }
   </style>
   <th:block th:if="${theme.config.code.enable}">
-    <link rel="preload" as="style"  onload="this.rel='stylesheet'" th:href="${assets_link+'/plugins/prism/prism.min.css'}">
-    <link rel="preload" as="style"  onload="this.rel='stylesheet'"
+    <link rel="preload" as="style" onload="this.rel='stylesheet'"
+          th:href="${assets_link+'/plugins/prism/prism.min.css'}">
+    <link rel="preload" as="style" onload="this.rel='stylesheet'"
           data-code-theme="light"
           th:href="${assets_link+ '/plugins/prism/themes/prism-'+theme.config.code.theme_light+'.css'}">
-    <link rel="preload" as="style"  onload="this.rel='stylesheet'"
+    <link rel="preload" as="style" onload="this.rel='stylesheet'"
           data-code-theme="dark"
           th:href="${assets_link+'/plugins/prism/themes/prism-'+theme.config.code.theme_dark+'.css'}">
     <script type="text/javascript" th:src="${assets_link+'/plugins/prism/prism.min.js'}"></script>
