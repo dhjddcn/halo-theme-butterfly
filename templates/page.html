@@ -45,7 +45,7 @@
   <section class="container card">
 
     <article th:utext="${singlePage.content.content}"
-             th:class="'render-html animated fadeIn single_code_select '+${ theme.config.code.enable_line ? 'line-numbers' : ''}"></article>
+             th:class="'render-html animated fadeIn single_code_select '+${ theme.config.code.enable_line ? 'line-numbers' : ''} + ${ !theme.config.single.enable_h_title ? ' enable_h_title' : ''}"></article>
   </section>
 
   <th:block th:replace="~{modules/public:: aside}"></th:block>

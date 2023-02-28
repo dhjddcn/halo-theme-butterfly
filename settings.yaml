@@ -457,6 +457,16 @@ spec:
           value: 'https://fastly.jsdelivr.net/npm/halo-theme-butterfly@latest/above.png'
           help: 如果全局背景图设置为图片链接，则此处背景图将不生效
           validation: required
+        - $formkit: radio
+          name: enable_h_title
+          label: 启用文章标题图标
+          help: 启用文章标题图标 （h1 ~ h6）前面的图标
+          value: true
+          options:
+            - label: 启用
+              value: true
+            - label: 禁用
+              value: false
 
     - group: code
       label: 代码块
