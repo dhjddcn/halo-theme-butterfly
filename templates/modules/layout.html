@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light" xmlns:th="https://www.thymeleaf.org"
       th:fragment="layout (page,title,head,above,content,js)"
-      th:with="assets_link=${theme.config.other.enable_cdn_link ? theme.config.other.cdn_link : #theme.assets('/')} ">
+      th:with="assets_link=${theme.config.other.enable_cdn_link ? theme.config.other.cdn_link : #theme.assets('/')},random_img = ${theme.config.loading.enable_random_img ? theme.config.loading.random_img : 'null'} ">
 <head th:with="is_body_bg_http = ${#strings.containsIgnoreCase(theme.config.style.body_background,'http')}">
   <title th:text="${title}"></title>
   <meta charset="UTF-8"/>
@@ -67,8 +67,7 @@
 </head>
 <body>
 <div id="Butterfly" th:class="${page}"
-     th:with="stats = ${siteStatsFinder.getStats()},contributor = ${contributorFinder.getContributor(theme.config.base.metadata_name)},
-     random_img = ${theme.config.loading.enable_random_img ? theme.config.loading.random_img : 'null'}
+     th:with="stats = ${siteStatsFinder.getStats()},contributor = ${contributorFinder.getContributor(theme.config.base.metadata_name)}
 ">
   <!--/* 头部--><!--*/-->
   <header class="header relative w-100">

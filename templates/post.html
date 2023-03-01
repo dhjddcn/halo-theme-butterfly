@@ -13,7 +13,7 @@
 <th:block th:fragment="head">
   <style
     th:inline="css"
-    th:with="above_background= ${is_body_bg_http ? '' : 'url(' + post.spec.cover + ')'}
+    th:with="above_background= ${is_body_bg_http ? '' : 'url(' + (#strings.isEmpty(post.spec.cover) ? random_img + '?date=' + #dates.createNow().getTime() : post.spec.cover) + ')'}
   ">
     .above {
       --above-background: /*[(${above_background})]*/ transparent;
