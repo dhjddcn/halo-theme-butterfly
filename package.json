@@ -12,7 +12,7 @@
     "build-css": "gulp css",
     "set-npmjs": "npm config set registry https://registry.npmjs.org",
     "set-taobao": "npm config set registry https://registry.npm.taobao.org",
-    "publish": "npm publish",
+    "publish": "npm publish --access public",
     "patch": "npm version patch"
   },
   "keywords": [
