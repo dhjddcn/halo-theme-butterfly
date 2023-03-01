@@ -1,17 +1,10 @@
 name: package-publish
 on:
-  release:
-    types: [created]
-  pull_request:
-    branches:
-      - next
-    paths:
-      - templates/assets/*
   push:
     branches:
-      - next
+    - next
     paths:
-      - templates/assets/*
+    - templates/assets/*
 
 jobs:
   build:
