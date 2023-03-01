@@ -696,7 +696,7 @@ spec:
           value:
             - name: QQ
               icon: <i class="fa-brands fa-qq"></i>
-              url: tencent://AddContact/?fromId=50&amp;fromSubId=1&amp;subcmd=all&amp;uin=QQ号码
+              url: https://api.sumt.cn/api/qq.talk.php?qq=自己的QQ号&format=card
               delete: true
             - name: Github
               icon: <i class="fa-brands fa-github"></i>
