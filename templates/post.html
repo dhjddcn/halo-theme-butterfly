@@ -96,7 +96,7 @@
          th:data-outDate="${theme.config.post.out_date}"
          th:data-publishTime="${#dates.format(post.spec.publishTime,'yyyy-MM-dd')}">
     </div>
-
+    
     <article th:utext="${post.content.content}"
              th:class="'render-html animated fadeIn single_code_select' + ${ theme.config.code.enable_line ? ' line-numbers' : ''} + ${ !theme.config.post.enable_h_title ? ' enable_h_title' : ''} "></article>
 
@@ -106,7 +106,7 @@
       <div class="author">
         <span class="name">文章作者：</span>
         <span class="text"
-              th:text="${contributorFinder.getContributor(theme.config.base.metadata_name).displayName}"></span>
+              th:text="${post.owner.displayName}"></span>
       </div>
 
       <div class="url">
