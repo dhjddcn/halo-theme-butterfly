@@ -81,8 +81,8 @@ spec:
           options:
             - value: "no"
               label: "游览器默认字体"
-            - value: "Circular_Body"
-              label: "Circular_Body"
+            - value: "CircularBody"
+              label: "CircularBody"
             - value: "HarmonyOS_Regular"
               label: "HarmonyOS_Regular"
 
