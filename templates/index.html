@@ -10,12 +10,8 @@
   js = ~{::js}
   )}">
 >
-<th:block th:fragment="head"
-          th:with="above_background= ${is_body_bg_http ? '' : 'url(' + theme.config.index.above_background + ')'}">
-  <style
-    th:inline="css"
-    type="text/css"
-  >
+<th:block th:fragment="head" th:with="above_background= ${is_body_bg_http ? '' : 'url(' + theme.config.index.above_background + ')'}">
+  <style th:inline="css">
     .above {
       --above-background: /*[(${above_background})]*/ transparent;
     }
