@@ -14,16 +14,17 @@
 
 ### 🌈 安装
 
-主题仓库地址 `https://github.com/dhjddcn/halo-theme-butterfly.git`
-
-&emsp;&emsp;在 [Release](https://github.com/dhjddcn/halo-theme-butterfly/releases) 页面下载最新版本 `zip`
-后，通过 `Halo Console` 安装上传即可。
+- 主题仓库地址 `https://github.com/dhjddcn/halo-theme-butterfly.git`
+- 在 [Release](https://github.com/dhjddcn/halo-theme-butterfly/releases) 页面下载最新版本 `zip`
+  后，通过 `Halo Console` 安装上传即可。
 
 ![效果图](https://fastly.jsdelivr.net/npm/halo-theme-butterfly@latest/docs/user.png)
 ![效果图](https://fastly.jsdelivr.net/npm/halo-theme-butterfly@latest/docs/metadata.png)
-### ⚠️ 注意
-- 安装主题后，需要在 `Halo Console - 主题 - 基本 - metadata.name` 中进行配置，否则主题无法正常使用。此处配置的名称可以在 `Halo Console - 用户 - 用户详情 - 用户名` 中获取。
 
+### ⚠️ 注意
+
+- 安装主题后，需要在 `Halo Console - 主题 - 基本 - metadata.name`
+  中进行配置，否则主题无法正常使用。此处配置的名称可以在 `Halo Console - 用户 - 用户详情 - 用户名` 中获取。
 
 ### ⭐️ 主题功能
 
