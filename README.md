@@ -1,20 +1,23 @@
 <p align="center">Butterfly 主题 Halo 2.0</p>
 
-- `Butterfly` 是Hexo社区[hexo-theme-Butterfly](https://github.com/jerryc127) 此次移植`pug`模板引擎调整为 `thymeleaf`， 希望大家喜欢 ❤️ 
-- 同时也要在此感谢原作者 [Jerry](https://github.com/jerryc127) 欢迎大家加入 [halo-theme-Butterfly 交流群：916571927](https://jq.qq.com/?_wv=1027&k=LfbGKBVG)
+- `Butterfly` 是Hexo社区[hexo-theme-Butterfly](https://github.com/jerryc127) 此次移植`pug`模板引擎调整为 `thymeleaf`，
+  希望大家喜欢 ❤️
+- 同时也要在此感谢原作者 [Jerry](https://github.com/jerryc127)
+  欢迎大家加入 [halo-theme-Butterfly 交流群：916571927](https://jq.qq.com/?_wv=1027&k=LfbGKBVG)
 
 #### 👀 [预览主题](https://dhjdd.cn)
 
 [comment]: <> (📗 [使用文档]&#40;&#41;)
 
 **效果图** 👇
-![效果图](https://gitee.com/dhjdd/Timo/raw/master/1677746656816.png)
+![效果图](https://fastly.jsdelivr.net/npm/halo-theme-butterfly@latest/renderings.png)
 
 ### 🌈 安装
 
 主题仓库地址 `https://github.com/dhjddcn/halo-theme-butterfly.git`
 
-&emsp;&emsp;在 [Release](https://github.com/dhjddcn/halo-theme-butterfly/releases) 页面下载最新版本 `zip` 后，通过 `Halo Console` 安装上传即可。
+&emsp;&emsp;在 [Release](https://github.com/dhjddcn/halo-theme-butterfly/releases) 页面下载最新版本 `zip`
+后，通过 `Halo Console` 安装上传即可。
 
 ### ⭐️ 主题功能
 
@@ -33,7 +36,9 @@
 - [x] 主题模式（深色/浅色）
 
 ### 📃 TODO
+
 > 目前仍有部分功能不完善，暂时没时间做，后面继续迭代。
+
 - 页面元数据控制
   百度收录查询 + 主动推送
 - 全站 Pjax
@@ -43,7 +48,7 @@
 - 自定义标签
 - 数学公式
 - 局部优化
-<br>
+  <br>
 
 #### 如何自定义导航条菜单图标？
 
