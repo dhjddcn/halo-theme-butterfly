@@ -31,7 +31,7 @@ gulp.task("css", function () {
       overrideBrowserslist: [
         "> 2%", "last 2 versions", "not ie 6-9"
       ],
-      cascade: true
+      cascade: true,
     }))
     .pipe(minifyCSS())
     .pipe(rename({

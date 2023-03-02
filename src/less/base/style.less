@@ -5,7 +5,7 @@
  * @fileName: style 
  */
 body {
-  font-family: "Butterfly Font", system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-family: "Butterfly Font","Microsoft YaHei", "微软雅黑", Arial, "sans-serif";
   font-size: 14px;
   color: var(--font-color);
   line-height: 2;
@@ -79,64 +79,82 @@ body {
 
 .InUp {
   @keyframes InUp {
-    //0% {
-    //  opacity: 0;
-    //  transform: translate3d(0, 120px, 0)
-    //}
-    //
-    //to {
-    //  opacity: 1;
-    //  transform: translate3d(0, 0, 0)
-    //}
-
     0% {
-      margin-top: 50px;
-      opacity: 0
+      opacity: 0;
+      transform: translate3d(0, 100px, 0);
     }
 
-    100% {
-      margin-top: 0;
+    to {
       opacity: 1;
-      filter: none
+      transform: translate3d(0, 0, 0)
     }
   }
-
   animation: InUp .35s;
 }
 
 //头部
 .header {
   @keyframes above-down {
+    //0% {
+    //  opacity: 0;
+    //  transform: translateY(-50px);
+    //}
+    //100% {
+    //  opacity: 1;
+    //  transform: translateY(0);
+    //}
     0% {
       opacity: 0;
-      transform: translateY(-50px);
+      transform: translate3d(0, -50px, 0);
     }
-    100% {
+
+    to {
       opacity: 1;
-      transform: translateY(0);
+      transform: translate3d(0, 0, 0)
     }
   }
 
   @keyframes nav-down {
+    //0% {
+    //  //transform: translateY(-50px);
+    //  transition: translate3d(0, -50px, 0);
+    //}
+    //100% {
+    //  //transform: translateY(0);
+    //  transition: translate3d(0, 0, 0);
+    //}
+
     0% {
-      transform: translateY(-50px);
+      transform: translate3d(0, -50px, 0);
     }
-    100% {
-      transform: translateY(0);
+
+    to {
+      transform: translate3d(0, 0, 0)
     }
   }
 
   @keyframes active-menu-dropdown {
+    //0% {
+    //  opacity: 0;
+    //  transform: translateY(10px)
+    //}
+    //
+    //100% {
+    //  opacity: 1;
+    //  filter: none;
+    //  transform: translateY(0)
+    //}
+
     0% {
       opacity: 0;
-      transform: translateY(10px)
+      transform: translate3d(0, 10px, 0);
     }
 
-    100% {
+    to {
       opacity: 1;
-      filter: none;
-      transform: translateY(0)
+      transform: translate3d(0, 0, 0)
     }
+
   }
   min-height: 60px;
 
@@ -144,10 +162,11 @@ body {
     user-select: none;
     height: 60px;
     padding: 0 36px;
-    animation: nav-down 1s;
+    animation: nav-down 1.2s;
     font-size: 1.1rem;
     //top: 0;
-    transform: translateY(0);
+    //transform: translateY(0);
+    transform: translate3d(0, 0, 0);
     transition: padding .5s, background .5s, transform .5s;
 
     .site-title {
@@ -264,7 +283,8 @@ body {
     &.style {
       position: fixed;
       //top: -60px;
-      transform: translateY(-60px);
+      //transform: translateY(-60px);
+      transform: translate3d(0, -60px, 0);
 
       background-color: var(--nav-scroll-bg-color);
       box-shadow: var(--nav-scroll-shadow);
@@ -284,14 +304,17 @@ body {
       //transition: top 0.4s;
       //top: 0;
       transition: transform .5s;
-      transform: translateY(0);
+      //transform: translateY(0);
+      transform: translate3d(0, 0, 0);
     }
 
     &.hidden {
       //transition: top 0.4s;
       //top: -60px;
       transition: transform .5s;
-      transform: translateY(-60px)
+      //transform: translateY(-60px)
+      transform: translate3d(0, -60px, 0);
+
     }
   }
 
@@ -621,10 +644,10 @@ body {
       }
     }
   }
-  
+
   //侧边栏广告
-  &-advert{
-    
+  &-advert {
+
   }
 
   //侧边栏网站信息

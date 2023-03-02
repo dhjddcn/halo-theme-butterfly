@@ -3,6 +3,7 @@
 gradle/*
 node_modules/*
 src/*
+.github/*
 .editorconfig
 .gitignore
 .babelrc
