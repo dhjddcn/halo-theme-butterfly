@@ -57,10 +57,12 @@
     }
   </style>
   <th:block th:if="${theme.config.style.font_family != 'no'}">
-    <link rel="preload" as="style"  onload="this.rel='stylesheet'" th:href="${assets_link+'/font/'+theme.config.style.font_family+'.min.css'}">
+    <link rel="preload" as="style" onload="this.rel='stylesheet'"
+          th:href="${assets_link+'/font/'+theme.config.style.font_family+'.min.css'}">
   </th:block>
-  <link rel="preload" as="style"  onload="this.rel='stylesheet'" th:href="${assets_link+'/css/global.min.css'}">
-  <link rel="preload" as="style"  onload="this.rel='stylesheet'" th:href="${assets_link+'/plugins/fontawesome/fontawesome.min.css'}">
+  <link rel="preload" as="style" onload="this.rel='stylesheet'" th:href="${assets_link+'/css/global.min.css'}">
+  <link rel="preload" as="style" onload="this.rel='stylesheet'"
+        th:href="${assets_link+'/plugins/fontawesome/fontawesome.min.css'}">
   <th:block th:insert="${head}"></th:block>
   <link rel="stylesheet" th:href="${assets_link+'/plugins/animate/animate.min.css'}">
   <link rel="stylesheet" th:href="${assets_link+'/plugins/Qmsg/Qmsg.min.css'}">
@@ -210,7 +212,7 @@
         target="_blank"
         th:text="'公安备案：'+${theme.config.base.police}"></a>
     </div>
-    <halo:footer />
+    <halo:footer/>
     <div class="powered">Powered by&nbsp;<a class="halo" href="https://halo.run/" target="_blank">Halo</a>&nbsp;|&nbsp;🌈
       Theme by&nbsp;<a class="theme" title="当前主题：Butterfly" href="https://github.com/dhjddcn/halo-theme-butterfly"
                        target="_blank">小红</a></div>
@@ -238,7 +240,7 @@
 <script type="text/javascript" th:src="${assets_link+'/plugins/universe/universe.min.js'}"></script>
 <script type="text/javascript" th:src="${assets_link+'/plugins/Qmsg/Qmsg.min.js'}"></script>
 <script type="text/javascript" th:src="${assets_link+'/js/global.min.js'}"></script>
+<script type="text/javascript" th:src="${assets_link+'/plugins/busuanzi/busuanzi.pure.mini.js'}"></script>
 <th:block th:insert="${js}"/>
-<script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 </body>
 </html>
