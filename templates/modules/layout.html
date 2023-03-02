@@ -188,7 +188,7 @@
   <!--/* 主要部分--><!--*/-->
   <main th:insert="${content}"
         th:with="class = ${theme.config.aside.enable ? (theme.config.aside.position) : 'off-aside' }"
-        th:class="'main flex InUp margin-0-auto '+ ${class}"
+        th:class="'main flex margin-0-auto '+ ${class}"
   >
   </main>
   <!--/* footer--><!--*/-->
@@ -210,6 +210,7 @@
         target="_blank"
         th:text="'公安备案：'+${theme.config.base.police}"></a>
     </div>
+    <halo:footer />
     <div class="powered">Powered by&nbsp;<a class="halo" href="https://halo.run/" target="_blank">Halo</a>&nbsp;|&nbsp;🌈
       Theme by&nbsp;<a class="theme" title="当前主题：Butterfly" href="https://github.com/dhjddcn/halo-theme-butterfly"
                        target="_blank">小红</a></div>
