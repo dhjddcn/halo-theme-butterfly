@@ -21,7 +21,7 @@
 ![效果图](https://fastly.jsdelivr.net/npm/halo-theme-butterfly@latest/docs/user.png)
 ![效果图](https://fastly.jsdelivr.net/npm/halo-theme-butterfly@latest/docs/metadata.png)
 
-### 免费可用的 npm cdn
+### 🌍 免费可用的 npm cdn
 
 - https://unpkg.com/halo-theme-butterfly/templates/assets
 - https://cdn.jsdelivr.net/npm/halo-theme-butterfly/templates/assets
