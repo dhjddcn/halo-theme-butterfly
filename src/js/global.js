@@ -145,7 +145,7 @@ class Global {
       scrollNum = scrollTop
     }
 
-    window.addEventListener('scroll', throttle(fn, 150));
+    window.addEventListener('scroll', throttle(fn, 200));
   }
 
   // 初始化运行时间
