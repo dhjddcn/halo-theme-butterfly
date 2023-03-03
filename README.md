@@ -18,7 +18,7 @@
 ![效果图](https://cdn.jsdelivr.net/npm/halo-theme-butterfly/docs/user.png)
 ![效果图](https://cdn.jsdelivr.net/npm/halo-theme-butterfly/docs/metadata.png)
 
-## 🌍 免费可用的 npm cdn
+## 🌐 免费可用的 npm cdn
 
 - https://unpkg.com/halo-theme-butterfly/templates/assets
 - https://cdn.jsdelivr.net/npm/halo-theme-butterfly/templates/assets
@@ -59,10 +59,17 @@
 - 自定义标签
 - 数学公式
 - 局部优化
+- 移动端侧边栏优化
   <br>
 
-### 如何自定义导航条菜单图标？
+## 💡 如何自定义导航条菜单图标？
 
 > 主题本次移植使用的是 `fontawesome` 字体图标，你可以在 [fontawesome](https://fontawesome.com/search)
 > 上找到你想要的图标，然后复制图标的 `class` 名称，如下所示：<br/>
 > 如我站点首页图标为 `fa-home fa-solid fa-bolt-auto` ，则在 `菜单-图标` 填入 `fa-home fa-solid fa-bolt-auto` 即可<br>
+
+## 🛡️ 许可证
+
+[![license](https://img.shields.io/github/license/halo-dev/halo.svg?style=flat-square)](https://github.com/halo-dev/halo/blob/master/LICENSE)
+
+Halo 使用 GPL-v3.0 协议开源，请遵守开源协议。
