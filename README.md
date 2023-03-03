@@ -64,5 +64,5 @@
 ### 如何自定义导航条菜单图标？
 
 > 主题本次移植使用的是 `fontawesome` 字体图标，你可以在 [fontawesome](https://fontawesome.com/search)
-> 上找到你想要的图标，然后复制图标的 `class` 名称，如下所示：
+> 上找到你想要的图标，然后复制图标的 `class` 名称，如下所示：<br/>
 > 如我站点首页图标为 `fa-home fa-solid fa-bolt-auto` ，则在 `菜单-图标` 填入 `fa-home fa-solid fa-bolt-auto` 即可<br>
