@@ -21,6 +21,13 @@
 ![效果图](https://fastly.jsdelivr.net/npm/halo-theme-butterfly@latest/docs/user.png)
 ![效果图](https://fastly.jsdelivr.net/npm/halo-theme-butterfly@latest/docs/metadata.png)
 
+### 免费可用的 npm cdn
+
+- https://unpkg.com/halo-theme-butterfly/templates/assets
+- https://cdn.jsdelivr.net/npm/halo-theme-butterfly/templates/assets
+- https://jsd.onmicrosoft.cn/npm/halo-theme-butterfly/templates/assets
+- https://fastly.jsdelivr.net/npm/halo-theme-butterfly@latest/templates/assets
+
 ### ⚠️ 注意
 
 - 安装主题后，需要在 `Halo Console - 主题 - 基本 - metadata.name`
