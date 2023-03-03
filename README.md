@@ -10,7 +10,7 @@
 [comment]: <> (📗 [使用文档]&#40;&#41;)
 
 **效果图** 👇
-![效果图](https://fastly.jsdelivr.net/npm/halo-theme-butterfly@latest/docs/renderings.png)
+![效果图](https://cdn.jsdelivr.net/npm/halo-theme-butterfly/docs/renderings.png)
 
 ### 🌈 安装
 
@@ -18,8 +18,8 @@
 - 在 [Release](https://github.com/dhjddcn/halo-theme-butterfly/releases) 页面下载最新版本 `zip`
   后，通过 `Halo Console` 安装上传即可。
 
-![效果图](https://fastly.jsdelivr.net/npm/halo-theme-butterfly@latest/docs/user.png)
-![效果图](https://fastly.jsdelivr.net/npm/halo-theme-butterfly@latest/docs/metadata.png)
+![效果图](https://cdn.jsdelivr.net/npm/halo-theme-butterfly/docs/user.png)
+![效果图](https://cdn.jsdelivr.net/npm/halo-theme-butterfly/docs/metadata.png)
 
 ### 🌍 免费可用的 npm cdn
 
