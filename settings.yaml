@@ -263,6 +263,22 @@ spec:
           value: 'https://fastly.jsdelivr.net/npm/halo-theme-butterfly@latest/above.png'
           help: 如果全局背景图设置为图片链接，则此处背景图将不生效
           validation: required
+        - $formkit: radio
+          name: enable_random_text
+          label: 启用随机打字机文案
+          help: 是否启用随文案API（必须先配置 API），开启后将使用随机显示打字机文案，未开启时使用自定义的打字机文案
+          value: true
+          options:
+            - label: 启用
+              value: true
+            - label: 禁用
+              value: false
+        - $formkit: text
+          name: random_text
+          label: 随机文案链接
+          placeholder: 请正确填写 随机文案链接
+          value: 'https://v1.hitokoto.cn/?encode=text'
+          help: 自定义随机文案API(推荐使用一言,返回格式设置为TEXT格式)，免费 API 不会一直可用，请知悉
         - $formkit: textarea
           rows: 5
           name: typewriter

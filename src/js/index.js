@@ -12,19 +12,27 @@ class Index {
     this.pagination();
   }
 
-  // 打字机效果
-  typewriter() {
+  // 打字机文案内容获取
+  typewriter(){
     const dom = $('.above-subtitle--text');
     if (!dom.length) return;
     const text = dom.attr('data-typewriter');
-    const textArr = text.replaceAll('\n', '').split('&+&');
-    new Typed('.above-subtitle--text', {
-      strings: textArr,
-      startDelay: 300,
-      typeSpeed: 200,
-      loop: true,
-      backSpeed: 50,
-    })
+    if (text.includes("http")){
+      $.ajax({
+        type: 'GET',
+        url: text,
+        dataType: 'text',
+        success (data) {
+          typewriterImp(data);
+        },
+        error (jqXHR, textStatus, errorThrown) {
+          // 错误信息处理
+          console.error(textStatus, errorThrown)
+        }
+      })
+    } else {
+      typewriterImp(text);
+    }
   }
 
   // 向下箭头滚动
@@ -41,6 +49,19 @@ class Index {
   }
 }
 
+// 打字机效果实现
+function typewriterImp(text) {
+  const textArr = text.replaceAll('\n', '').split('&+&');
+  let isLoopFlg = false;
+  if (textArr.length > 1) isLoopFlg = true;
+  new Typed('.above-subtitle--text', {
+    strings: textArr,
+    startDelay: 300,
+    typeSpeed: 200,
+    loop: isLoopFlg,
+    backSpeed: 50,
+  })
+}
 
 !(() => {
   document.addEventListener("DOMContentLoaded", () => window.IndexClass = new Index())

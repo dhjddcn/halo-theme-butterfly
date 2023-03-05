@@ -27,7 +27,7 @@
     <h1 class="above-title text-center margin-0-auto" th:text="${site.title}"></h1>
 
     <div class="above-subtitle text-center margin-0-auto">
-      <span class="above-subtitle--text" th:data-typewriter="${theme.config.index.typewriter}"></span>
+      <span class="above-subtitle--text" th:data-typewriter="${theme.config.index.enable_random_text ? theme.config.index.random_text : theme.config.index.typewriter}"></span>
     </div>
   </div>
   <div class="above-down absolute text-center bottom-0 left-0 right-0">
