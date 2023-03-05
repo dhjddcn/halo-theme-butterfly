@@ -1,7 +1,8 @@
 <p align="center">Butterfly 主题 Halo 2.0</p>
 
->`Butterfly` 是Hexo社区[hexo-theme-Butterfly](https://github.com/jerryc127) 此次移植`pug`模板引擎调整为 `thymeleaf`，
-希望大家喜欢 ❤️ ！同时也要在此感谢原作者 [Jerry](https://github.com/jerryc127) 欢迎大家加入 [halo-theme-Butterfly 交流群：916571927](https://jq.qq.com/?_wv=1027&k=LfbGKBVG)
+> `Butterfly` 是Hexo社区[hexo-theme-Butterfly](https://github.com/jerryc127) 此次移植`pug`模板引擎调整为 `thymeleaf`，
+> 希望大家喜欢 ❤️ ！同时也要在此感谢原作者 [Jerry](https://github.com/jerryc127)
+> 欢迎大家加入 [halo-theme-Butterfly 交流群：916571927](https://jq.qq.com/?_wv=1027&k=LfbGKBVG)
 
 ## 👀 [预览主题](https://dhjdd.cn)
 
@@ -15,6 +16,11 @@
 - 在 [Release](https://github.com/dhjddcn/halo-theme-butterfly/releases) 页面下载最新版本 `zip`
   后，通过 `Halo Console` 安装上传即可。
 
+## ⚠️ 注意
+
+安装主题后，需要在 `Halo Console - 主题 - 基本 - metadata.name`
+中进行配置，否则主题无法正常使用。此处配置的名称可以在 `Halo Console - 用户 - 用户详情 - 用户名` 中获取。
+
 ![效果图](https://cdn.jsdelivr.net/npm/halo-theme-butterfly/docs/user.png)
 ![效果图](https://cdn.jsdelivr.net/npm/halo-theme-butterfly/docs/metadata.png)
 
@@ -24,11 +30,6 @@
 - https://cdn.jsdelivr.net/npm/halo-theme-butterfly/templates/assets
 - https://jsd.onmicrosoft.cn/npm/halo-theme-butterfly/templates/assets
 - https://fastly.jsdelivr.net/npm/halo-theme-butterfly@latest/templates/assets
-
-## ⚠️ 注意
-
-安装主题后，需要在 `Halo Console - 主题 - 基本 - metadata.name`
-中进行配置，否则主题无法正常使用。此处配置的名称可以在 `Halo Console - 用户 - 用户详情 - 用户名` 中获取。
 
 ## ⭐️ 主题功能
 
