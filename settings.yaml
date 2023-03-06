@@ -63,9 +63,9 @@ spec:
         - $formkit: text
           name: content_max_width
           label: 全局内容区最大宽度
-          value: 1500px
+          value: 1250px
           placeholder: 请填写内容区最大宽度
-          help: 内容区域最大宽度，像素或百分比，默认 1500px（注：配合halo 设置-文章设置-文章列表显示条数，效果更好）
+          help: 内容区域最大宽度，像素或百分比，默认 1250px（注：配合halo 设置-文章设置-文章列表显示条数，效果更好）
           validation: required
         - $formkit: attachment
           name: body_background
