@@ -9,8 +9,6 @@ import {fancyBoxImg, initCode, initToc, switchCodeTheme} from './Utils.js'
 
 class Post {
   constructor() {
-    $('.render-html').css({'visibility': 'visible'});
-
     switchCodeTheme(dataTheme);
 
     initCode('.render-html pre');
@@ -27,10 +25,6 @@ class Post {
 
     this.showTocbot();
   }
-
-  // 
-  // console.log(GlobalClass.getLink);
-
 
   // 文章过期
   outDate() {
@@ -104,7 +98,6 @@ class Post {
         }, 100);
 
         return;
-
       }
 
       $('.main').css({'animation': 'none'});
