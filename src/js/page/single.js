@@ -4,18 +4,23 @@
  * @fileName: single
  * @Description: 独立页面
  */
-import {fancyBoxImg, initCode, switchCodeTheme} from "../modules/utils";
+import {useFancyBoxImg} from "../modules/utils";
+import {useCodeBlock, useRenderHtml, useSwitchCodeTheme} from "../modules/renderHtml";
 
 
 class Single {
   constructor() {
-    $('.render-html').css({'visibility': 'visible'});
+    // 使用渲染 md -> html
+    // useRenderHtml();
+
+    // 代码块
+    useCodeBlock();
+
+    // 代码主题
+    useSwitchCodeTheme();
     
-    switchCodeTheme(dataTheme);
-
-    initCode('.render-html pre');
-
-    fancyBoxImg('.render-html img');
+    // 图片放大
+    useFancyBoxImg();
   }
 
 }

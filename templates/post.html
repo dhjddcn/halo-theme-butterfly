@@ -32,6 +32,14 @@
   </th:block>
   <link rel="stylesheet" as="style" th:href="${assets_link+'/plugins/fancybox/fancybox.min.css'}">
   <link rel="stylesheet" as="style" th:href="${assets_link+'/css/post.min.css'}">
+
+  <script id="post-script" th:inline="javascript">
+    window.PageConfig = {
+      code:/*[[${theme.config.code}]]*/ {},
+      post:/*[[${theme.config.post}]]*/ {},
+    };
+    document.getElementById('post-script').remove();
+  </script>
 </th:block>
 
 <section th:fragment="above" class="above relative w-100">
@@ -96,7 +104,7 @@
          th:data-outDate="${theme.config.post.out_date}"
          th:data-publishTime="${#dates.format(post.spec.publishTime,'yyyy-MM-dd')}">
     </div>
-    
+
     <article th:utext="${post.content.content}"
              th:class="'render-html animated fadeIn single_code_select' + ${ theme.config.code.enable_line ? ' line-numbers' : ''} + ${ !theme.config.post.enable_h_title ? ' enable_h_title' : ''} "></article>
 

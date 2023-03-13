@@ -4,7 +4,7 @@
  * @date: 2022/12/6
  * @fileName: globals
  */
-import {throttle, switchCodeTheme, drawEcharts} from '../modules/utils.js'
+import {throttle, drawEcharts} from '../modules/utils.js'
 import {createEvent} from '../modules/event.js'
 
 class Global {
@@ -38,7 +38,6 @@ class Global {
       window.eventCore.emit('changeTheme', mode);
       
       if (locDataTheme === 'light') {
-        // switchCodeTheme('dark');
 
         drawEcharts('dark', 1);
 
@@ -48,7 +47,6 @@ class Global {
 
         window.dataTheme = 'dark';
       } else {
-        // switchCodeTheme('light');
 
         drawEcharts('light', 1);
 

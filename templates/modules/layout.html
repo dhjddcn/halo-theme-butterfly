@@ -20,8 +20,7 @@
   <link rel="apple-touch-icon" sizes="180x180" th:href="${site.logo}">
   <link rel="canonical" th:href="${site.url}">
   <script id="base-script" th:inline="javascript">
-    window.ThemeConfig =  /*[[${theme.config}]]*/ {};
-    window.ThemeConfig.version = /*[[${theme.spec.version}]]*/ {};
+    window.ThemeVersion = /*[[${theme.spec.version}]]*/ {};
     const locDataTheme = localStorage.getItem('Butterfly-data-theme');
     if (locDataTheme) {
       document.querySelector('html').setAttribute('data-theme', locDataTheme);
@@ -240,7 +239,7 @@
 <script type="text/javascript" th:src="${assets_link+'/plugins/universe/universe.min.js'}"></script>
 <script type="text/javascript" th:src="${assets_link+'/plugins/Qmsg/Qmsg.min.js'}"></script>
 <script type="text/javascript" th:src="${assets_link+'/js/global.min.js'}"></script>
-<script type="text/javascript" th:src="${assets_link+'/plugins/busuanzi/busuanzi.pure.mini.js'}"></script>
 <th:block th:insert="${js}"/>
+<script type="text/javascript" th:src="${assets_link+'/plugins/busuanzi/busuanzi.pure.mini.js'}"></script>
 </body>
 </html>

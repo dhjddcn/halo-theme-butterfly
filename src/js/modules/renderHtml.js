@@ -4,7 +4,6 @@
  * @fileName: renderHtml
  * @Description: 择渲染页面 md -> html
  */
-const renderClass = $('.render-html');
 
 
 // 使用 renderHtml模块
@@ -17,16 +16,16 @@ export const useRenderHtml = () => {
 
 /**
  * 代码块 功能
- * @param className
+ * @param selector
  */
-export const useCodeBlock = (className) => {
-  let dom = renderClass;
-
-  if (className) dom = $(className);
+export const useCodeBlock = (selector = '.render-html') => {
+  let dom = $(selector);
 
   const pres = dom.find('pre');
 
   if (!pres.length) return;
+
+  const codeConfig = PageConfig.code['realNode'];
 
   pres.each(function () {
     const pre = $(this);
@@ -39,17 +38,17 @@ export const useCodeBlock = (className) => {
       const customItem = toolbar.find('.custom-item');
 
       //标题
-      if (ThemeConfig.code['enable_title']) {
+      if (codeConfig['enable_title']) {
         toolbar.addClass('c-title')
       }
 
       // 分割线
-      if (ThemeConfig.code['enable_hr']) {
+      if (codeConfig['enable_hr']) {
         toolbar.addClass('c-hr')
       }
 
       // 代码块复制
-      if (ThemeConfig.code['enable_copy']) {
+      if (codeConfig['enable_copy']) {
         customItem.append('<i class="fas fa-paste copy-button code-copy cursor-pointer"></i>');
 
         customItem.find('.code-copy').on('click', function (e) {
@@ -71,7 +70,7 @@ export const useCodeBlock = (className) => {
       }
 
       // 代码块展开
-      if (ThemeConfig.code['enable_expander']) {
+      if (codeConfig['enable_expander']) {
         customItem.append('<i class="fa-sharp fa-solid fa-caret-down code-expander cursor-pointer"></i>');
 
         customItem.find('.code-expander').on('click', function () {
@@ -83,7 +82,6 @@ export const useCodeBlock = (className) => {
     }
 
   })
-
 }
 
 
@@ -108,7 +106,6 @@ export const useToc = (contentSelector = '.render-html', tocSelector = '.post-to
     disableTocScrollSync: false,
     onClick: function (e) {
       e.preventDefault();
-
     },
     scrollEndCallback: function (e) {
       // console.log(e);

@@ -4,8 +4,8 @@
  * @fileName: post
  * @Description: 文章 代码块
  */
-import {fancyBoxImg, initCode, initToc, switchCodeTheme} from '../modules/utils.js'
-import {useCodeBlock, useRenderHtml} from "../modules/renderHtml";
+import {useFancyBoxImg} from '../modules/utils.js'
+import {useRenderHtml} from "../modules/renderHtml";
 
 
 class Post {
@@ -13,9 +13,11 @@ class Post {
     // 使用渲染 md -> html
     useRenderHtml();
 
-    if (ThemeConfig.post['out_date'] > 0) this.outDate();
+    // 图片放大
+    useFancyBoxImg();
 
-    fancyBoxImg('.render-html img');
+    if (PageConfig.post['realNode']['out_date'] > 0) this.outDate();
+
 
     this.copyPermalink();
 

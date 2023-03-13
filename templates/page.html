@@ -31,6 +31,12 @@
     <script type="text/javascript" th:src="${assets_link+'/plugins/prism/prism.min.js'}"></script>
   </th:block>
   <link rel="stylesheet" th:href="${assets_link+'/css/single.min.css'}">
+  <script id="single-script" th:inline="javascript">
+    window.PageConfig = {
+      code:/*[[${theme.config.code}]]*/ {},
+    };
+    document.getElementById('single-script').remove();
+  </script>
 </th:block>
 
 <section
