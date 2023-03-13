@@ -42,19 +42,12 @@ gulp.task("css", function () {
 
 gulp.task("js", function () {
   const getEntryData = () => {
-    const ignoreFiles = ['Utils.js'];
     try {
-      let files = fs.readdirSync("./src/js", "utf-8");
-      files = files.filter((file) => {
-        return ignoreFiles.length
-          ? /\.js$/.test(file) && !ignoreFiles.includes(file)
-          : /\.js$/.test(file);
-      });
-
+      let files = fs.readdirSync("./src/js/page", "utf-8");
       const result = {};
       files.forEach((file) => {
         const fileName = file.replace(/.js$/, "");
-        result[fileName] = resolve(`./src/js/${file}`);
+        result[fileName] = resolve(`./src/js/page/${file}`);
       });
 
       return result;
@@ -116,7 +109,7 @@ gulp.task(
     // noinspection JSCheckFunctionSignatures
     gulp.watch(['./src/**/**/**/*.less'], gulp.series('css'));
     // noinspection JSCheckFunctionSignatures
-    gulp.watch(['./src/js/*.js'], gulp.series('js'));
+    gulp.watch(['./src/js/**/**/**/*.js'], gulp.series('js'));
   }
 );
 gulp.task(

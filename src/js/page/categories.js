@@ -4,7 +4,7 @@
  * @fileName: categories
  * @Description: 分类
  */
-import {drawEcharts} from './Utils'
+import {drawEcharts} from '../modules/utils'
 
 class Categories {
   constructor() {

@@ -74,3 +74,8 @@
 [![license](https://img.shields.io/github/license/halo-dev/halo.svg?style=flat-square)](https://github.com/halo-dev/halo/blob/master/LICENSE)
 
 Halo 使用 GPL-v3.0 协议开源，请遵守开源协议。
+
+## 🍹 赞助
+
+如果你觉得这个主题不错，你可以帮作者买一杯果汁表示鼓励 🍹。
+![赞助](https://cdn.jsdelivr.net/npm/halo-theme-butterfly/docs/sponsor.png)

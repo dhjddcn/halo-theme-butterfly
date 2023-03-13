@@ -4,7 +4,8 @@
  * @date: 2022/12/6
  * @fileName: globals
  */
-import {throttle, switchCodeTheme, drawEcharts} from './Utils.js'
+import {throttle, switchCodeTheme, drawEcharts} from '../modules/utils.js'
+import {createEvent} from '../modules/event.js'
 
 class Global {
   constructor() {
@@ -12,6 +13,7 @@ class Global {
     this.sidebar();
     this.scroll();
     this.runDay();
+    createEvent();
   }
 
   //初始化一些配置
@@ -30,9 +32,13 @@ class Global {
     // 夜间模式切换
     $('.adsorption .switch-model').on('click', () => {
       const locDataTheme = localStorage.getItem('Butterfly-data-theme') || 'light';
+      
+      const mode = locDataTheme === 'light' ? 'dark' : 'light';
 
+      window.eventCore.emit('changeTheme', mode);
+      
       if (locDataTheme === 'light') {
-        switchCodeTheme('dark');
+        // switchCodeTheme('dark');
 
         drawEcharts('dark', 1);
 
@@ -41,9 +47,8 @@ class Global {
         localStorage.setItem('Butterfly-data-theme', 'dark');
 
         window.dataTheme = 'dark';
-
       } else {
-        switchCodeTheme('light');
+        // switchCodeTheme('light');
 
         drawEcharts('light', 1);
 
@@ -52,6 +57,7 @@ class Global {
         localStorage.setItem('Butterfly-data-theme', 'light');
 
         window.dataTheme = 'light';
+        
       }
 
     });
@@ -171,7 +177,6 @@ class Global {
 
     dom.html(day + ' 天');
   }
-
 }
 
 !(() => {

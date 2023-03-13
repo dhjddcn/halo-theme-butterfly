@@ -10,7 +10,7 @@ document.onreadystatechange = function () {
 
   if (document.readyState === "complete") {
     console.log('内容完全加载完毕');
-    document.querySelector('#Butterfly').classList.remove('none');
+    // document.querySelector('#Butterfly').classList.remove('none');
     document.querySelector('.loader').remove();
     document.body.style.background = '';
   } else {

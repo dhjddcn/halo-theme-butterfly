@@ -4,16 +4,14 @@
  * @fileName: post
  * @Description: 文章 代码块
  */
-import {fancyBoxImg, initCode, initToc, switchCodeTheme} from './Utils.js'
+import {fancyBoxImg, initCode, initToc, switchCodeTheme} from '../modules/utils.js'
+import {useCodeBlock, useRenderHtml} from "../modules/renderHtml";
 
 
 class Post {
   constructor() {
-    switchCodeTheme(dataTheme);
-
-    initCode('.render-html pre');
-
-    initToc('.post-tocbot > .toc', '.render-html');
+    // 使用渲染 md -> html
+    useRenderHtml();
 
     if (ThemeConfig.post['out_date'] > 0) this.outDate();
 

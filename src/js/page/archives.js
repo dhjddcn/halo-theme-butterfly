@@ -4,7 +4,7 @@
  * @fileName: archives
  * @Description: 分类归档
  */
-import {drawEcharts} from "./Utils";
+import {drawEcharts} from "../modules/utils";
 
 
 class Archives {

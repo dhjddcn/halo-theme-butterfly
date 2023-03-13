@@ -214,7 +214,7 @@ export function drawEcharts(theme, tp = 0) {
  * 放大图片
  * @param selector
  */
-export function fancyBoxImg(selector) {
+export const fancyBoxImg = (selector) => {
   const dom = $(selector);
 
   if (!dom.length) return;
@@ -226,7 +226,7 @@ export function fancyBoxImg(selector) {
 
     $this.attr('height', '');
 
-    $this.wrap($(`<span class="block text-center w-100" data-fancybox="post" href="${$this.attr("src")}" ></span>`));
+    $this.wrap($(`<span class="block text-center w-100" data-fancybox="fancyBoxImg" href="${$this.attr("src")}" ></span>`));
   });
 }
 

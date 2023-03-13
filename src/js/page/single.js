@@ -4,7 +4,7 @@
  * @fileName: single
  * @Description: 独立页面
  */
-import {fancyBoxImg, initCode, switchCodeTheme} from "./Utils";
+import {fancyBoxImg, initCode, switchCodeTheme} from "../modules/utils";
 
 
 class Single {
