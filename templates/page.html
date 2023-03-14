@@ -30,7 +30,7 @@
           th:href="${assets_link+'/plugins/prism/themes/prism-'+theme.config.code.theme_dark+'.css'}">
     <script type="text/javascript" th:src="${assets_link+'/plugins/prism/prism.min.js'}"></script>
   </th:block>
-  <link rel="stylesheet" th:href="${assets_link+'/css/single.min.css'}">
+  <link rel="stylesheet" th:href="${assets_link+'/css/single.min.css' + theme_version}">
   <script id="single-script" th:inline="javascript">
     window.PageConfig = {
       code:/*[[${theme.config.code}]]*/ {},
@@ -58,6 +58,6 @@
 </th:block>
 
 <th:block th:fragment="js">
-  <script type="text/javascript" th:src="${assets_link+'/js/single.min.js'}"></script>
+  <script type="text/javascript" th:src="${assets_link+'/js/single.min.js' + theme_version}"></script>
 </th:block>
 </html>

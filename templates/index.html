@@ -16,7 +16,7 @@
       --above-background: /*[(${above_background})]*/ transparent;
     }
   </style>
-  <link rel="stylesheet" th:href="${assets_link+'/css/index.min.css'}">
+  <link rel="stylesheet" th:href="${assets_link+'/css/index.min.css'+theme_version}">
 </th:block>
 
 <section
@@ -50,6 +50,6 @@
 
 <th:block th:fragment="js">
   <script type="text/javascript" th:src="${assets_link +'/plugins/typed/typed.min.js'}"></script>
-  <script type="text/javascript" th:src="${assets_link +'/js/index.min.js'}"></script>
+  <script type="text/javascript" th:src="${assets_link +'/js/index.min.js'+theme_version}"></script>
 </th:block>
 </html>

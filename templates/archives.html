@@ -17,7 +17,7 @@
       --above-background: /*[(${above_background})]*/ transparent;
     }
   </style>
-  <link rel="stylesheet" th:href="${assets_link+'/css/archives.min.css'}">
+  <link rel="stylesheet" th:href="${assets_link+'/css/archives.min.css' + theme_version}">
 
   <script id="archives-script" th:inline="javascript">
     window.ArchivesData = /*[[${postFinder.archives(1,archives.total).items}]]*/ {};
@@ -81,6 +81,6 @@
 
 <th:block th:fragment="js">
   <script type="text/javascript" th:src="${assets_link+'/plugins/echarts/echarts.min.js'}"></script>
-  <script type="text/javascript" th:src="${assets_link+'/js/archives.min.js'}"></script>
+  <script type="text/javascript" th:src="${assets_link+'/js/archives.min.js' + theme_version}"></script>
 </th:block>
 </html>

@@ -31,13 +31,14 @@
     <script type="text/javascript" th:src="${assets_link+'/plugins/prism/prism.min.js'}"></script>
   </th:block>
   <link rel="stylesheet" as="style" th:href="${assets_link+'/plugins/fancybox/fancybox.min.css'}">
-  <link rel="stylesheet" as="style" th:href="${assets_link+'/css/post.min.css'}">
+  <link rel="stylesheet" as="style" th:href="${assets_link+'/css/post.min.css' + theme_version}">
 
   <script id="post-script" th:inline="javascript">
     window.PageConfig = {
       code:/*[[${theme.config.code}]]*/ {},
       post:/*[[${theme.config.post}]]*/ {},
     };
+    console.log(/*[[${post}]]*/)
     document.getElementById('post-script').remove();
   </script>
 </th:block>
@@ -267,7 +268,7 @@
   <script type="text/javascript" th:src="${assets_link+'/plugins/fancybox/fancybox.min.js'}"></script>
   <script type="text/javascript" th:src="${assets_link+'/plugins/clipboard/clipboard.min.js'}"></script>
   <script type="text/javascript" th:src="${assets_link+'/plugins/tocbot/tocbot.min.js'}"></script>
-  <script type="text/javascript" th:src="${assets_link+'/js/post.min.js'}"></script>
+  <script type="text/javascript" th:src="${assets_link+'/js/post.min.js' + theme_version}"></script>
 </th:block>
 
 </html>
