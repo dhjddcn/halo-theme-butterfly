@@ -7,7 +7,7 @@
 html {
   --rl-code-bg-color: rgba(27, 31, 35, .05);
   --rl-code-color: #ed2929;
-  --rl-code-bar-shadow: rgb(144 164 174 / 40%);
+  --rl-code-bar-shadow: rgb(236 236 226 / 60%);
 
   --rl-blockquote-bg-color: rgba(73, 177, 245, 0.1);
   --rl-blockquote-font-color: #6a737d;
@@ -19,7 +19,7 @@ html {
 
   &[data-theme=dark] {
     --rl-code-bg-color: #2c2c2c;
-    --rl-code-bar-shadow: #191919;
+    --rl-code-bar-shadow: rgba(39, 39, 39, 1);
 
     --rl-blockquote-bg-color: #2c2c2c;
     --rl-blockquote-font-color: rgba(255, 255, 255, 0.7);
@@ -46,9 +46,8 @@ html {
   }
 
   p {
-    //line-height: 2.3;
-    //min-height: 30px;
-    margin: 0 0 16px;
+    min-height: 30px;
+    //margin: 0 0 16px;
   }
 
   a {
@@ -56,7 +55,7 @@ html {
     color: var(--theme);
     display: inline-block;
     font-weight: normal;
-    line-height: 1.5;
+    //line-height: 1.5;
 
     &:after {
       content: "";
@@ -79,6 +78,7 @@ html {
   h1, h2, h3, h4, h5, h6 {
     transition: font-size 0.3s;
     color: var(--rl-h-color);
+    margin: 18px 0 12px;
 
 
     &::before {
@@ -96,8 +96,8 @@ html {
   }
 
   h1 {
-    font-size: 1.6em;
-    margin: 28px 0 20px;
+    font-size: 1.5em;
+    //margin: 28px 0 20px;
 
     &::before {
       content: "\f313";
@@ -106,8 +106,8 @@ html {
   }
 
   h2 {
-    font-size: 1.5em;
-    margin: 25px 0 18px;
+    font-size: 1.4em;
+    //margin: 25px 0 18px;
 
     &::before {
       content: "\f314";
@@ -115,8 +115,8 @@ html {
   }
 
   h3 {
-    font-size: 1.4em;
-    margin: 20px 0 16px;
+    font-size: 1.3em;
+    //margin: 20px 0 16px;
 
     &::before {
       content: "\f315";
@@ -124,8 +124,8 @@ html {
   }
 
   h4 {
-    font-size: 1.3em;
-    margin: 15px 0 14px;
+    font-size: 1.2em;
+    //margin: 15px 0 14px;
 
     &::before {
       content: "\f86a";
@@ -133,8 +133,8 @@ html {
   }
 
   h5 {
-    font-size: 1.2em;
-    margin: 12px 0 12px;
+    font-size: 1.1em;
+    //margin: 12px 0 12px;
 
     &::before {
       content: "\e412";
@@ -142,8 +142,8 @@ html {
   }
 
   h6 {
-    font-size: 1.1em;
-    margin: 8px 0 10px;
+    font-size: 1em;
+    //margin: 8px 0 10px;
 
     &::before {
       content: "\e413";
@@ -258,7 +258,7 @@ html {
   }
 
   blockquote {
-    margin: 10px 0;
+    margin: 0 0 20px;
     padding: 12px 15px;
     border-left: 3px solid var(--theme);
     background-color: var(--rl-blockquote-bg-color);
@@ -303,7 +303,7 @@ html {
   .code-toolbar {
     margin: 10px 0;
     overflow: hidden;
-    box-shadow: 0 5px 10px 0 var(--rl-code-bar-shadow);
+    box-shadow: 0 0 6px 1px var(--rl-code-bar-shadow);
     border-radius: 5px;
 
     &:before {
