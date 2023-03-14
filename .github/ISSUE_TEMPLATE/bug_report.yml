@@ -19,6 +19,12 @@ body:
       required: true
     attributes:
       label: "Halo 版本"
+  - type: input
+    id: theme-version
+    validations:
+      required: true
+    attributes:
+      label: "主题 版本"
   - type: dropdown
     id: platform
     validations:
