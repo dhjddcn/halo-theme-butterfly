@@ -7,7 +7,7 @@
 html {
   --rl-code-bg-color: rgba(27, 31, 35, .05);
   --rl-code-color: #ed2929;
-  --rl-code-bar-shadow: rgb(236 236 226 / 60%);
+  --rl-code-bar-shadow: 0 5px 10px 0 rgba(144, 164, 174, .4);
 
   --rl-blockquote-bg-color: rgba(73, 177, 245, 0.1);
   --rl-blockquote-font-color: #6a737d;
@@ -19,7 +19,7 @@ html {
 
   &[data-theme=dark] {
     --rl-code-bg-color: #2c2c2c;
-    --rl-code-bar-shadow: rgba(39, 39, 39, 1);
+    --rl-code-bar-shadow: 0 0 6px 2px rgba(39, 39, 39, 1);
 
     --rl-blockquote-bg-color: #2c2c2c;
     --rl-blockquote-font-color: rgba(255, 255, 255, 0.7);
@@ -301,9 +301,9 @@ html {
   }
 
   .code-toolbar {
-    margin: 10px 0;
+    margin: 12px 0;
     overflow: hidden;
-    box-shadow: 0 0 6px 1px var(--rl-code-bar-shadow);
+    box-shadow: var(--rl-code-bar-shadow);
     border-radius: 5px;
 
     &:before {

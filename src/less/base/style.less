@@ -5,7 +5,7 @@
  * @fileName: style 
  */
 body {
-  font-family: "Butterfly Font","Microsoft YaHei", "微软雅黑", Arial, "sans-serif";
+  font-family: "Butterfly Font", "Microsoft YaHei", "微软雅黑", Arial, "sans-serif";
   font-size: 14px;
   color: var(--font-color);
   line-height: 2;
@@ -125,11 +125,13 @@ body {
     //}
 
     0% {
+      opacity: 0;
       transform: translate3d(0, -50px, 0);
     }
 
     to {
-      transform: translate3d(0, 0, 0)
+      transform: translate3d(0, 0, 0);
+      opacity: 1;
     }
   }
 
