@@ -29,7 +29,10 @@ gulp.task("css", function () {
     .pipe(less())
     .pipe(autoPrefix({
       overrideBrowserslist: [
-        "> 2%", "last 2 versions", "not ie 6-9"
+        "> 5%",
+        "last 2 versions",
+        "last 3 Safari versions",
+        "Firefox >= 20",
       ],
       cascade: true,
     }))

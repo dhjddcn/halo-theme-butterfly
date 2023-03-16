@@ -10,6 +10,7 @@
 export const useRenderHtml = () => {
   useCodeBlock(); // 代码块功能
   useToc(); // 目录
+  useHandleTable(); // 表格功能
   useSwitchCodeTheme(); // 切换代码主题
 }
 
@@ -140,4 +141,20 @@ export const useSwitchCodeTheme = (mode = window.dataTheme) => {
   }
 
   window.eventCore.on('changeTheme', (mode) => useSwitchCodeTheme(mode));
+}
+
+
+/**
+ * 处理表格功能
+ */
+export const useHandleTable = (selector = '.render-html table') => {
+  const tables = $(selector);
+
+  if (!tables.length) return;
+
+  tables.each(function () {
+    const table = $(this);
+    table.wrap($(`<div class="render-table overflow-x-scroll"></div>`))
+  });
+
 }

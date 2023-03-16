@@ -158,6 +158,7 @@ body {
     }
 
   }
+
   min-height: 60px;
 
   .nav {
@@ -305,16 +306,16 @@ body {
     &.visible {
       //transition: top 0.4s;
       //top: 0;
-      transition: transform .5s;
       //transform: translateY(0);
+      transition: transform .5s;
       transform: translate3d(0, 0, 0);
     }
 
     &.hidden {
       //transition: top 0.4s;
       //top: -60px;
-      transition: transform .5s;
       //transform: translateY(-60px)
+      transition: transform .5s;
       transform: translate3d(0, -60px, 0);
 
     }
@@ -326,9 +327,11 @@ body {
     background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;
-    animation: above-down .8s;
-    //background-color: #49b1f5;
+    backface-visibility: hidden;
+    animation: above-down 0.8s;
+    background-color: var(--theme);
     background-image: var(--above-background);
+
 
     &-public-title {
       color: var(--above-one-color);
