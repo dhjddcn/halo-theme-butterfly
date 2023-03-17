@@ -97,7 +97,7 @@ gulp.task("zip", done => {
   gulp.src([
     './templates/**/*.*',
     './settings.yaml',
-    './settings-custom.yaml',
+    './annotation-setting.yaml',
     './theme.yaml',
   ], {base: '.'})
     .pipe(zip('theme-butterfly-dist.zip'))
