@@ -13,7 +13,7 @@ spec:
   repo: https://github.com/dhjddcn/halo-theme-butterfly.git
   settingName: theme-butterfly-setting
   configMapName: theme-butterfly-configMap
-  version: 2.0.3
+  version: 2.0.4
   require: 2.0.0
   
   
