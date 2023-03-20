@@ -127,25 +127,27 @@ gulp.task("release", async done => {
     },
   ])
 
-  const ver = await exec(`npm version ${value}`);
+   exec(`npm version ${value}`, (err, stdout, stderr) => {
+     console.log('data : ' + stdout);
+   });
 
 
-  console.log(ver)
-
-  await delay(3000);
-
-  const pack = require('./package.json');
-
-
-  const themeYaml = yaml.load('./theme.yaml');
-
-  themeYaml.spec.version = pack.version
-
-  fs.writeFileSync('./theme.yaml', yaml.dump(themeYaml, './theme.yaml'), 'utf8');
-
-  // exec(`git add .`);
+  // console.log(ver)
   //
-  // exec(`git commit -m "v${pack.version}"`);
+  // await delay(3000);
+  //
+  // const pack = require('./package.json');
+  //
+  //
+  // const themeYaml = yaml.load('./theme.yaml');
+  //
+  // themeYaml.spec.version = pack.version
+  //
+  // fs.writeFileSync('./theme.yaml', yaml.dump(themeYaml, './theme.yaml'), 'utf8');
+  //
+  // // exec(`git add .`);
+  // //
+  // // exec(`git commit -m "v${pack.version}"`);
 
   done();
 });
