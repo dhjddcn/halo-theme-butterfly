@@ -127,38 +127,23 @@ gulp.task("release", async done => {
   ])
 
 
-  await exec(`npm version patch --no-git-tag-version`, (error, stdout, stderr) => {
+  await exec(`npm version ${value} --no-git-tag-version`, (error, stdout, stderr) => {
     if (error) {
       console.error(`执行出错: ${error}`);
       return;
     }
-    const v = stdout.split('v')[1]
+    const version = stdout.replace('v', '').replace('\n', '');
 
-    console.log(v);
+    const themeYaml = yaml.load('./theme.yaml');
+
+    themeYaml.spec.version = version
+
+    fs.writeFileSync('./theme.yaml', yaml.dump(themeYaml, './theme.yaml'), 'utf8');
+
+    // exec(`git add .`);
+    //
+    // exec(`git commit -m "v${pack.version}"`);
   });
-
-
-  // exec(`npm version ${value}`, (err, stdout, stderr) => {
-  //   console.log('data : ' + stdout);
-  // });
-
-
-  // console.log(ver)
-  //
-  // await delay(3000);
-  //
-  // const pack = require('./package.json');
-  //
-  //
-  // const themeYaml = yaml.load('./theme.yaml');
-  //
-  // themeYaml.spec.version = pack.version
-  //
-  // fs.writeFileSync('./theme.yaml', yaml.dump(themeYaml, './theme.yaml'), 'utf8');
-  //
-  // // exec(`git add .`);
-  // //
-  // // exec(`git commit -m "v${pack.version}"`);
 
   done();
 });
