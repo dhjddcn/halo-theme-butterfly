@@ -12,7 +12,6 @@ const clean = require("gulp-clean");
 const zip = require('gulp-zip');
 const exec = require('child_process').exec;
 const yaml = require('yamljs');
-const pack = require('./package.json');
 const inquirer = require('inquirer');
 
 const resolve = (name) => path.resolve(__dirname, name);
@@ -125,6 +124,8 @@ gulp.task("release", async done => {
   ])
 
   await exec(`npm version ${value}`);
+
+  const pack = require('./package.json');
 
   const themeYaml = yaml.load('./theme.yaml');
 
