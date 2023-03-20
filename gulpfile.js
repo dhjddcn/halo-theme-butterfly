@@ -129,9 +129,11 @@ gulp.task("release", async done => {
 
   await exec(`npm version ${value}`);
 
-  await delay(2000);
+  await delay(3000);
 
   const pack = require('./package.json');
+
+  console.log(pack);
 
   const themeYaml = yaml.load('./theme.yaml');
 
