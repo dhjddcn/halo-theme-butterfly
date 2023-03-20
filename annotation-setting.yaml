@@ -26,10 +26,10 @@ spec:
       name: "enable_toc_sequence"
       label: "启用目录序号"
       help: "启用后，目录将会显示序号  // todo 配置定义，功能未实现"
-      value: true
+      value: "true"
       options:
         - label: 启用
-          value: true
+          value: "true"
         - label: 禁用
-          value: false
+          value: "false"
       

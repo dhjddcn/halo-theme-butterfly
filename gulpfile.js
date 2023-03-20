@@ -10,6 +10,9 @@ const path = require("path");
 const fs = require("fs");
 const clean = require("gulp-clean");
 const zip = require('gulp-zip');
+const exec = require('child_process').exec;
+const yaml = require('yamljs');
+const package = require('./package.json');
 
 const resolve = (name) => path.resolve(__dirname, name);
 
@@ -104,6 +107,22 @@ gulp.task("zip", done => {
     .pipe(gulp.dest('./'));
   done();
   console.log('\x1B[32m打包完成,生产文件在根目录下的 theme-butterfly-dist.zip\x1B[0m')
+});
+
+gulp.task("release", done => {
+  // exec("npm run build",(err, stdout, stderr)=>{
+  //   // if (err != null) {
+  //     console.log(stdout);
+  //   // }
+  // })
+
+  const themeYaml = yaml.load('./theme.yaml');
+
+  themeYaml.spec.version = package.version
+  
+  fs.writeFileSync('./theme.yaml', yaml.dump(themeYaml, './theme.yaml'), 'utf8');
+
+  done();
 });
 
 gulp.task(
