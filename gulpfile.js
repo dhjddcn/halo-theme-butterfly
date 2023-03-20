@@ -13,6 +13,7 @@ const zip = require('gulp-zip');
 const exec = require('child_process').exec;
 const yaml = require('yamljs');
 const inquirer = require('inquirer');
+const pack = require("./package.json");
 
 const resolve = (name) => path.resolve(__dirname, name);
 
@@ -137,6 +138,8 @@ gulp.task("release", async done => {
   themeYaml.spec.version = pack.version
 
   fs.writeFileSync('./theme.yaml', yaml.dump(themeYaml, './theme.yaml'), 'utf8');
+
+  exec(`git commit -m "v${pack.version}"`);
 
   done();
 });
