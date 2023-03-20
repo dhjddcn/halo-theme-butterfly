@@ -128,9 +128,8 @@ gulp.task("release", async done => {
 
   await exec(`npm version ${value}`);
 
-  await delay(2000);
-  
-  
+  await delay(1500);
+
   const pack = require('./package.json');
 
   console.log(pack);
