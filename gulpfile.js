@@ -124,7 +124,7 @@ gulp.task("release", async done => {
     },
   ])
 
-  await exec(`npm run ${value}`);
+  await exec(`npm version ${value}`);
 
   const themeYaml = yaml.load('./theme.yaml');
 

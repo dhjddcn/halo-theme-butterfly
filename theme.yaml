@@ -1,19 +1,17 @@
 apiVersion: theme.halo.run/v1alpha1
 kind: Theme
 metadata:
-  name: theme-butterfly
+    name: theme-butterfly
 spec:
-  displayName: Butterfly
-  author:
-    name: 小红
-    website: https://dhjdd.cn
-  description: 一个Halo博客主题，Butterfly 🦋
-  logo: https://halo.run/logo
-  website: https://dhjdd.cn
-  repo: https://github.com/dhjddcn/halo-theme-butterfly.git
-  settingName: theme-butterfly-setting
-  configMapName: theme-butterfly-configMap
-  version: 2.0.4
-  require: 2.0.0
-  
-  
+    displayName: Butterfly
+    author:
+        name: 小红
+        website: 'https://dhjdd.cn'
+    description: '一个Halo博客主题，Butterfly 🦋'
+    logo: 'https://halo.run/logo'
+    website: 'https://dhjdd.cn'
+    repo: 'https://github.com/dhjddcn/halo-theme-butterfly.git'
+    settingName: theme-butterfly-setting
+    configMapName: theme-butterfly-configMap
+    version: 2.0.4
+    require: 2.0.0
