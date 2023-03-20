@@ -127,7 +127,7 @@ gulp.task("release", async done => {
   ])
 
 
-  await exec(`npm version ${value} --no-git-tag-version`, (error, stdout, stderr) => {
+  await exec(`npm version ${value} --no-git-tag-version`, async (error, stdout, stderr) => {
     if (error) {
       console.error(`执行出错: ${error}`);
       return;
@@ -138,11 +138,7 @@ gulp.task("release", async done => {
 
     themeYaml.spec.version = version
 
-    fs.writeFileSync('./theme.yaml', yaml.dump(themeYaml, './theme.yaml'), 'utf8');
-
-    // exec(`git add .`);
-    //
-    // exec(`git commit -m "v${pack.version}"`);
+    await fs.writeFileSync('./theme.yaml', yaml.dump(themeYaml, './theme.yaml'), 'utf8');
   });
 
   done();
