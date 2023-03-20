@@ -129,7 +129,7 @@ gulp.task("release", async done => {
 
   await exec(`npm version ${value}`);
 
-  await delay(1500);
+  await delay(2000);
 
   const pack = require('./package.json');
 
@@ -139,7 +139,7 @@ gulp.task("release", async done => {
 
   fs.writeFileSync('./theme.yaml', yaml.dump(themeYaml, './theme.yaml'), 'utf8');
 
-  exec(`git commit -m "v${pack.version}"`);
+  // exec(`git commit -m "v${pack.version}"`);
 
   done();
 });
