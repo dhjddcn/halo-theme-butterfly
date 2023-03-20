@@ -14,7 +14,8 @@
     "set-taobao": "npm config set registry https://registry.npm.taobao.org",
     "major": "npm version major",
     "minor": "npm version minor",
-    "patch": "npm version patch"
+    "patch": "npm version patch",
+    "release": "gulp release"
   },
   "keywords": [
     "halo",
@@ -59,8 +60,10 @@
     "gulp-rename": "^2.0.0",
     "gulp-uglify": "^3.0.2",
     "gulp-zip": "^5.1.0",
+    "inquirer": "^7.3.3",
     "jszip": "^3.10.1",
     "webpack": "^5.68.0",
-    "webpack-stream": "^7.0.0"
+    "webpack-stream": "^7.0.0",
+    "yamljs": "^0.3.0"
   }
 }

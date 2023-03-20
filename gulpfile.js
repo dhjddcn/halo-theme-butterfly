@@ -12,7 +12,8 @@ const clean = require("gulp-clean");
 const zip = require('gulp-zip');
 const exec = require('child_process').exec;
 const yaml = require('yamljs');
-const package = require('./package.json');
+const pack = require('./package.json');
+const inquirer = require('inquirer');
 
 const resolve = (name) => path.resolve(__dirname, name);
 
@@ -109,17 +110,26 @@ gulp.task("zip", done => {
   console.log('\x1B[32m打包完成,生产文件在根目录下的 theme-butterfly-dist.zip\x1B[0m')
 });
 
-gulp.task("release", done => {
-  // exec("npm run build",(err, stdout, stderr)=>{
-  //   // if (err != null) {
-  //     console.log(stdout);
-  //   // }
-  // })
+gulp.task("release", async done => {
+  const {value} = await inquirer.prompt([
+    {
+      type: "list", // 交互类型 -- 单选（无序）
+      message: "请选择发布版:", // 引导词
+      name: "value", // 自定义的字段名
+      choices: [
+        {name: "小版本", value: "patch"},
+        {name: "中版本", value: "minor"},
+        {name: "大版本", value: "major"},
+      ], // 选项列表
+    },
+  ])
+
+  await exec(`npm run ${value}`);
 
   const themeYaml = yaml.load('./theme.yaml');
 
-  themeYaml.spec.version = package.version
-  
+  themeYaml.spec.version = pack.version
+
   fs.writeFileSync('./theme.yaml', yaml.dump(themeYaml, './theme.yaml'), 'utf8');
 
   done();
