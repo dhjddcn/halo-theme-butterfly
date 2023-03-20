@@ -124,14 +124,17 @@ gulp.task("release", async done => {
   ])
 
   await exec(`npm version ${value}`);
+  
+  const pack =  fs.readFileSync('./package.json', 'utf8')
+  console.log(pack);
 
-  const pack = require('./package.json');
+  // const pack = require('./package.json');
 
-  const themeYaml = yaml.load('./theme.yaml');
-
-  themeYaml.spec.version = pack.version
-
-  fs.writeFileSync('./theme.yaml', yaml.dump(themeYaml, './theme.yaml'), 'utf8');
+  // const themeYaml = yaml.load('./theme.yaml');
+  //
+  // themeYaml.spec.version = pack.version
+  //
+  // fs.writeFileSync('./theme.yaml', yaml.dump(themeYaml, './theme.yaml'), 'utf8');
 
   done();
 });
