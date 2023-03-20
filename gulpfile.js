@@ -13,7 +13,6 @@ const zip = require('gulp-zip');
 const exec = require('child_process').exec;
 const yaml = require('yamljs');
 const inquirer = require('inquirer');
-const pack = require("./package.json");
 
 const resolve = (name) => path.resolve(__dirname, name);
 
@@ -127,9 +126,21 @@ gulp.task("release", async done => {
     },
   ])
 
-   exec(`npm version ${value}`, (err, stdout, stderr) => {
-     console.log('data : ' + stdout);
-   });
+
+  exec(`npm version patch`, (error, stdout, stderr) => {
+    if (error) {
+      console.error(`执行出错: ${error}`);
+      return;
+    }
+    const v = stdout.split('v')[1]
+
+    console.log(v);
+  });
+
+
+  // exec(`npm version ${value}`, (err, stdout, stderr) => {
+  //   console.log('data : ' + stdout);
+  // });
 
 
   // console.log(ver)
