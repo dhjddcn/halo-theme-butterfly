@@ -139,9 +139,9 @@ gulp.task("release", async done => {
 
   fs.writeFileSync('./theme.yaml', yaml.dump(themeYaml, './theme.yaml'), 'utf8');
 
-  exec(`git add .`);
-
-  exec(`git commit -m "v${pack.version}"`);
+  // exec(`git add .`);
+  //
+  // exec(`git commit -m "v${pack.version}"`);
 
   done();
 });
