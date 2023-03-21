@@ -56,11 +56,15 @@
     }
   </style>
   <th:block th:if="${theme.config.style.font_family != 'no'}">
-    <link rel="preload" as="style" onload="this.rel='stylesheet'" th:href="${assets_link+'/font/'+theme.config.style.font_family+'.min.css'}">
+    <link rel="preload" as="style" onload="this.rel='stylesheet'"
+          th:href="${assets_link+'/font/'+theme.config.style.font_family+'.min.css'}">
   </th:block>
-  <link rel="preload" as="style" onload="this.rel='stylesheet'" th:href="${assets_link+'/css/global.min.css' + theme_version}">
-  <link rel="preload" as="style" onload="this.rel='stylesheet'" th:href="${assets_link+'/plugins/fontawesome/fontawesome.min.css'}">
-  <link rel="preload" as="style" onload="this.rel='stylesheet'"  th:href="${assets_link+'/plugins/animate/animate.min.css'}">
+  <link rel="preload" as="style" onload="this.rel='stylesheet'"
+        th:href="${assets_link+'/css/global.min.css' + theme_version}">
+  <link rel="preload" as="style" onload="this.rel='stylesheet'"
+        th:href="${assets_link+'/plugins/fontawesome/fontawesome.min.css'}">
+  <link rel="preload" as="style" onload="this.rel='stylesheet'"
+        th:href="${assets_link+'/plugins/animate/animate.min.css'}">
   <th:block th:insert="${head}"></th:block>
   <link rel="stylesheet" th:href="${assets_link+'/plugins/Qmsg/Qmsg.min.css'}">
 </head>
@@ -68,6 +72,8 @@
 <div id="Butterfly" th:class="${page}"
      th:with="stats = ${siteStatsFinder.getStats()},contributor = ${contributorFinder.getContributor(theme.config.base.metadata_name)}
 ">
+  <div th:text="${config}"></div>
+  
   <!--/* 头部--><!--*/-->
   <header class="header relative w-100">
     <nav class="nav flex flex-wrap flex-align-items-center  top-0 absolute z-80 w-100">
@@ -212,9 +218,10 @@
         th:text="'公安备案：'+${theme.config.base.police}"></a>
     </div>
     <halo:footer/>
-    <div class="powered">Powered by&nbsp;<a class="halo" href="https://halo.run/" target="_blank">Halo</a>&nbsp;|&nbsp;🌈
-      Theme by&nbsp;<a class="theme" title="当前主题：Butterfly" href="https://github.com/dhjddcn/halo-theme-butterfly"
-                       target="_blank">小红</a></div>
+    <div class="powered">Powered by&nbsp;
+      <a class="halo" href="https://halo.run/" target="_blank">Halo</a>&nbsp;|&nbsp;🌈 Theme by&nbsp;
+      <a class="theme" title="当前主题：Butterfly" href="https://github.com/dhjddcn/halo-theme-butterfly" target="_blank">小红</a>
+    </div>
   </footer>
   <!--/* 左右小部件--><!--*/-->
   <div class="adsorption z-80 fixed">

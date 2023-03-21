@@ -8,15 +8,17 @@
   above = ~{::above},
   content = ~{::content},
   js = ~{::js}
-  )}">
+  )}"
 >
-<th:block th:fragment="head" th:with="above_background= ${is_body_bg_http ? '' : 'url(' + theme.config.index.above_background + ')'}">
+
+<th:block th:fragment="head"
+          th:with="above_background= ${is_body_bg_http ? '' : 'url(' + theme.config.index.above_background + ')'}">
   <style th:inline="css">
     .above {
       --above-background: /*[(${above_background})]*/ transparent;
     }
   </style>
-  <link rel="stylesheet" th:href="${assets_link+'/css/index.min.css'+theme_version}">
+  <link rel="stylesheet" th:href="${assets_link+'/css/index.min.css' + theme_version}">
 </th:block>
 
 <section
