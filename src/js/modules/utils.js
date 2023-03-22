@@ -112,9 +112,9 @@ export const useFancyBoxImg = (selector = '.render-html img') => {
   dom.each(function () {
     const $this = $(this);
 
-    $this.attr('width', '');
+    // $this.attr('width', '');
 
-    $this.attr('height', '');
+    // $this.attr('height', '');
 
     $this.wrap($(`<span class="block text-center w-100" data-fancybox="fancyBoxImg" href="${$this.attr("src")}" ></span>`));
   });
