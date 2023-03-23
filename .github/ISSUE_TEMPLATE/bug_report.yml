@@ -49,7 +49,7 @@ body:
       description: "请提供你的站点地址，如果可以的话，这可能会帮助我们更好的定位问题。"
       placeholder: "ex. bbchin.com"
     validations:
-      required: false
+      required: true
   - type: markdown
     id: details
     attributes:
