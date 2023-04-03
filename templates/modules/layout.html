@@ -6,8 +6,7 @@
   <title th:text="${title}"></title>
   <meta charset="UTF-8"/>
   <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-  <meta name="viewport"
-        content="width=device-width, user-scalable=no, initial-scale=1.0, shrink-to-fit=no, viewport-fit=cover">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, shrink-to-fit=no, viewport-fit=cover">
   <meta name="author" th:content="${site.title}">
   <meta name="site" th:content="${site.url}">
   <meta property="og:keywords" th:content="${site.seo.keywords}">
@@ -72,7 +71,6 @@
 <div id="Butterfly" th:class="${page}"
      th:with="stats = ${siteStatsFinder.getStats()},contributor = ${contributorFinder.getContributor(theme.config.base.metadata_name)}
 ">
-  <div th:text="${config}"></div>
   
   <!--/* 头部--><!--*/-->
   <header class="header relative w-100">
@@ -192,8 +190,8 @@
 
   <!--/* 主要部分--><!--*/-->
   <main th:insert="${content}"
-        th:with="class = ${theme.config.aside.enable ? (theme.config.aside.position) : 'off-aside' }"
-        th:class="'main flex animated fadeIn margin-0-auto '+ ${class}"
+        th:with="is_off_aside = ${theme.config.aside.enable ? (theme.config.aside.position) : 'off-aside' }"
+        th:class="'main flex animated fadeIn margin-0-auto '+ ${is_off_aside}"
   >
   </main>
   <!--/* footer--><!--*/-->
@@ -247,6 +245,6 @@
 <script type="text/javascript" th:src="${assets_link+'/plugins/Qmsg/Qmsg.min.js'}"></script>
 <script type="text/javascript" th:src="${assets_link+'/js/global.min.js'+theme_version}"></script>
 <th:block th:insert="${js}"/>
-<script type="text/javascript" th:src="${assets_link+'/plugins/busuanzi/busuanzi.pure.mini.js'}"></script>
+<script type="text/javascript" th:src="${assets_link+'/plugins/busuanzi/busuanzi.pure.min.js'}"></script>
 </body>
 </html>
