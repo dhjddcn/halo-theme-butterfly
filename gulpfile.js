@@ -1,5 +1,5 @@
 const gulp = require('gulp');
-const less = require('gulp-less');
+const sass = require('gulp-sass')(require('sass'));
 const uglify = require("gulp-uglify");
 const minifyCSS = require('gulp-csso');
 const autoPrefix = require('gulp-autoprefixer');
@@ -31,8 +31,8 @@ gulp.task("clean", () => {
 });
 
 gulp.task("css", function () {
-  return gulp.src('./src/less/page/*.less')
-    .pipe(less())
+  return gulp.src('./src/less/page/*.scss')
+    .pipe(sass())
     .pipe(autoPrefix({
       overrideBrowserslist: [
         "> 5%",
@@ -148,7 +148,7 @@ gulp.task(
   "watch",
   function () {
     // noinspection JSCheckFunctionSignatures
-    gulp.watch(['./src/**/**/**/*.less'], gulp.series('css'));
+    gulp.watch(['./src/**/**/**/*.scss'], gulp.series('css'));
     // noinspection JSCheckFunctionSignatures
     gulp.watch(['./src/js/**/**/**/*.js'], gulp.series('js'));
   }

@@ -4,7 +4,7 @@
  * @fileName: tags
  * @Description: 标签
  */
-import {drawEcharts} from '../modules/utils'
+import {drawEcharts} from '../base/utils'
 
 class Tags {
   constructor() {

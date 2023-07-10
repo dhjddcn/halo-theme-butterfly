@@ -4,8 +4,8 @@
  * @fileName: single
  * @Description: 独立页面
  */
-import {useFancyBoxImg} from "../modules/utils";
-import {useCodeBlock, useRenderHtml, useSwitchCodeTheme} from "../modules/renderHtml";
+import {useFancyBoxImg} from "../base/utils";
+import {useCodeBlock, useRenderHtml, useSwitchCodeTheme} from "../base/renderHtml";
 
 
 class Single {

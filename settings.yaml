@@ -23,7 +23,7 @@ spec:
           name: police
           label: 公网安备号
           placeholder: 请填写公网安备号信息
-          help: 公网安备信息将展示在页脚中，不填不展示（示例：京公xxxxxxxxx号）
+          help: 公网安备信息将展示在页脚中，不填不展示（示例：京公xxx号）
         - $formkit: text
           name: site_birthday
           label: 建站时间
@@ -33,19 +33,21 @@ spec:
     - group: style
       label: 主题
       formSchema:
-        #      - $formkit: select
-        #        name: theme_type
-        #        label: 主题模式
-        #        value: '#49b1f5'
-        #        placeholder: 请填写主题颜色
-        #        help: '设置博客的主题模式（用户/自动/浅色/暗黑），默认为用户模式，仅在用户模式下页面才有主题切换按钮，自动模式下根据时间自动切换'
-        #        options:
-        #          - value: user
-        #            label: 用户模式
-        #          - value: light
-        #            label: 浅色模式
-        #          - value: dark
-        #            label: 暗黑模式
+        - $formkit: select
+          name: theme_type
+          label: 主题模式
+          value: '#49b1f5'
+          placeholder: 请填写主题颜色
+          help: '设置博客的主题模式（自动/用户/浅色/深色），默认为用户模式，仅在用户模式下页面才有主题切换按钮，自动模式下根据时间自动切换'
+          options:
+            - value: auto
+              label: 自动模式
+            - value: user
+              label: 用户模式
+            - value: light
+              label: 浅色模式
+            - value: dark
+              label: 深色模式
         - $formkit: text
           name: theme_color_light
           label: 主题颜色（浅色）
@@ -126,18 +128,17 @@ spec:
           value: 'data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs='
           help: 加载失败图片，默认 data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=
           validation: required
-    
-    #
-    #    - group: nav
-    #      label: 导航
-    #      formSchema:
-    #        - $formkit: text
-    #          name: font_color_light
-    #          label: 导航字体颜色
-    #          placeholder: 请填写 导航字体颜色
-    #          value: '#eee'
-    #          help: '导航字体颜色，默认 #eee'
-    #          validation: required
+
+    - group: nav
+      label: 导航
+      formSchema:
+        - $formkit: text
+          name: font_color_light
+          label: 导航字体颜色
+          placeholder: 请填写 导航字体颜色
+          value: '#eee'
+          help: '导航字体颜色，默认 #eee'
+          validation: required
 
     - group: card
       label: 卡片

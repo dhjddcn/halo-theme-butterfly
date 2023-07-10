@@ -4,8 +4,8 @@
  * @fileName: post
  * @Description: 文章 代码块
  */
-import {useFancyBoxImg} from '../modules/utils.js'
-import {useRenderHtml} from "../modules/renderHtml";
+import {useFancyBoxImg} from '../base/utils.js'
+import {useRenderHtml} from "../base/renderHtml";
 
 
 class Post {

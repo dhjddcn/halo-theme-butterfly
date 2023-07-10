@@ -1,57 +1,26 @@
 <!DOCTYPE html>
-<html
-  xmlns:th="https://www.thymeleaf.org"
-  th:replace="~{modules/layout :: layout (
-  page = 'index',
-  title = ${site.title},
-  head = ~{::head},
-  above = ~{::above},
-  content = ~{::content},
-  js = ~{::js}
-  )}"
+<html lang="en" data-theme="light" xmlns:th="https://www.thymeleaf.org"
+      th:with="assets_link=${theme.config.other.enable_cdn_link ? theme.config.other.cdn_link : #theme.assets('/')},random_img = ${theme.config.loading.enable_random_img ? theme.config.loading.random_img : 'null'},theme_version = ${'?v='+ theme.spec.version} "
 >
+<head>
+  <title th:text="${title}"></title>
+  <meta charset="UTF-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, shrink-to-fit=no, viewport-fit=cover">
+  <meta name="author" th:content="${site.title}">
+  <meta name="site" th:content="${site.url}">
+  <meta property="og:keywords" th:content="${site.seo.keywords}">
+  <meta property="og:description" th:content="${site.seo.description}">
+  <meta property="og:site_name" th:content="${site.title}">
+  <meta property="og:url" th:content="${site.url}">
+  <meta property="og:title" th:content="${site.title}">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:type" content="website">
+  <link rel="apple-touch-icon" sizes="180x180" th:href="${site.logo}">
+  <link rel="canonical" th:href="${site.url}">
+</head>
+<body>
 
-<th:block th:fragment="head"
-          th:with="above_background= ${is_body_bg_http ? '' : 'url(' + theme.config.index.above_background + ')'}">
-  <style th:inline="css">
-    .above {
-      --above-background: /*[(${above_background})]*/ transparent;
-    }
-  </style>
-  <link rel="stylesheet" th:href="${assets_link+'/css/index.min.css' + theme_version}">
-</th:block>
-
-<section
-  th:fragment="above"
-  th:if="${theme.config.index.enable_above}"
-  class="above w-100">
-  <div class="above-info">
-    <h1 class="above-title text-center margin-0-auto" th:text="${site.title}"></h1>
-
-    <div class="above-subtitle text-center margin-0-auto">
-      <span class="above-subtitle--text" th:data-typewriter="${theme.config.index.typewriter}"></span>
-    </div>
-  </div>
-  <div class="above-down-icon absolute text-center bottom-0 left-0 right-0">
-    <i class="fas fa-angle-down"></i>
-  </div>
-</section>
-
-<th:block th:fragment="content">
-  <section class="container" th:with="noData = ${not #lists.isEmpty(posts.items)}">
-    <th:block th:if="${noData}">
-      <th:block th:replace="~{modules/public:: posts(${posts.items},${theme.config.index.post_layout})}"></th:block>
-      <th:block th:replace="~{modules/public:: pagination(${posts},'/index')}"></th:block>
-    </th:block>
-
-    <th:block th:unless="${noData}" th:insert="~{modules/public:: emptyData('暂无文章~',true)}"></th:block>
-  </section>
-
-  <th:block th:replace="~{modules/public:: aside}"></th:block>
-</th:block>
-
-<th:block th:fragment="js">
-  <script type="text/javascript" th:src="${assets_link +'/plugins/typed/typed.min.js'}"></script>
-  <script type="text/javascript" th:src="${assets_link +'/js/index.min.js'+theme_version}"></script>
-</th:block>
-</html>
+<script type="text/javascript" th:src="${assets_link+'/js/global.min.js'+theme_version}"></script>
+</body>
