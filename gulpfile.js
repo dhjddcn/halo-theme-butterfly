@@ -31,7 +31,7 @@ gulp.task("clean", () => {
 });
 
 gulp.task("css", function () {
-  return gulp.src('./src/less/page/*.scss')
+  return gulp.src('./src/scss/page/*.scss')
     .pipe(sass())
     .pipe(autoPrefix({
       overrideBrowserslist: [
