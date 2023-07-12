@@ -5,11 +5,5 @@
  * @Description: 全局样式
  */
 
-
-
-//写主流浏览器屏幕适配的媒体查询大小
-$screen-xs: 480px;
-$screen-sm: 768px;
-$screen-md: 992px;
-$screen-lg: 1200px;
-  
+@import "../base/theme.scss";
+@import "../base/base.scss";
