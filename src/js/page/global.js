@@ -10,10 +10,55 @@ import {createEvent} from '../modules/event.js'
 class Global {
   constructor() {
     this.init();
+    this.setThemeWithOS();
     this.sidebar();
     this.scroll();
     this.runDay();
     createEvent();
+  }
+
+  get theme() {
+    return localStorage.getItem('butterfly-theme');
+  }
+
+  get matchOS() {
+    return window.matchMedia('(prefers-color-scheme:dark)')
+  }
+
+  followOS() {
+    const flag = window.matchMedia('(prefers-color-scheme:dark)')
+    if (flag.matches) {
+      window.eventCore.emit('changeTheme', 'dark');
+      
+      drawEcharts('dark', 1);
+
+      $('html').attr('data-theme', 'dark');
+
+      localStorage.setItem('Butterfly-data-theme', 'dark');
+
+      window.dataTheme = 'dark';
+      
+    }else {
+
+      window.eventCore.emit('changeTheme', 'light');
+      
+      drawEcharts('light', 1);
+
+      $('html').attr('data-theme', 'light');
+
+      localStorage.setItem('Butterfly-data-theme', 'light');
+
+      window.dataTheme = 'light';
+    }
+  }
+  
+  setThemeWithOS() {
+    // if (this.theme === 'os') {
+    //   this.followOS()
+      this.matchOS.addEventListener('change',this.followOS)
+    // }else {
+    //   this.matchOS.removeEventListener('change',this.followOS)
+    // }
   }
 
   //初始化一些配置
