@@ -1,41 +1,74 @@
-<!DOCTYPE html>
-<html lang="en" data-theme="light" xmlns:th="https://www.thymeleaf.org"
-      th:fragment="layout (page,title,head,above,content,js)"
->
-<head>
-  <title th:text="${title}"></title>
-  <meta charset="UTF-8"/>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-  <meta name="viewport"
-        content="width=device-width, user-scalable=no, initial-scale=1.0, shrink-to-fit=no, viewport-fit=cover">
-  <meta name="author" th:content="${site.title}">
-  <meta name="site" th:content="${site.url}">
-  <meta property="og:keywords" th:content="${site.seo.keywords}">
-  <meta property="og:description" th:content="${site.seo.description}">
-  <meta property="og:site_name" th:content="${site.title}">
-  <meta property="og:url" th:content="${site.url}">
-  <meta property="og:title" th:content="${site.title}">
-  <meta property="og:locale" content="zh_CN">
-  <meta property="og:type" content="website">
-  <link rel="apple-touch-icon" sizes="180x180" th:href="${site.logo}">
-  <link rel="canonical" th:href="${site.url}">
-  <script id="base-script" th:inline="javascript">
-    window.ThemeVersion = /*[[${theme.spec.version}]]*/ {};
-    const locDataTheme = localStorage.getItem('Butterfly-data-theme');
-    if (locDataTheme) {
-      document.querySelector('html').setAttribute('data-theme', locDataTheme);
-      window.dataTheme = locDataTheme;
-    } else {
-      window.dataTheme = document.querySelector('html').getAttribute('data-theme');
-    }
-    document.getElementById('base-script').remove();
-  </script>
+<th:block
+  xmlns:th="https://www.thymeleaf.org"
+  th:fragment="layout (page,title)"
+  th:with="
+    _version = ${theme.spec.version},
+    _assets= ${theme.config.other.enable_assets_link ? theme.config.other.assets_link : #theme.assets('/')}
+  "
+><!DOCTYPE html>
+  <html lang="en" th:data-theme="${theme.config.style.theme_type}" >
+  <head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <title th:text="${title}"></title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, shrink-to-fit=no, viewport-fit=cover">
+    <meta name="author" th:content="${site.title}">
+    <meta name="site" th:content="${site.url}">
+    <meta property="og:keywords" th:content="${site.seo.keywords}">
+    <meta property="og:description" th:content="${site.seo.description}">
+    <meta property="og:site_name" th:content="${site.title}">
+    <meta property="og:url" th:content="${site.url}">
+    <meta property="og:title" th:content="${site.title}">
+    <meta property="og:locale" content="zh_CN">
+    <meta property="og:type" content="website">
+    <link rel="apple-touch-icon" sizes="180x180" th:href="${site.logo}">
+    <link rel="canonical" th:href="${site.url}">
+    <style th:inline="css" th:with="
+    _body_background_http = ${#strings.containsIgnoreCase(theme.config.style.body_background,'http')}
+    ">
+      :root {
+        --theme: /*[(${theme.config.style.theme_color_light})]*/ #49b1f5;
+        --body-background: /*[(${_body_background_http ? 'url(' + theme.config.style.body_background + ') no-repeat fixed center / 100%' : theme.config.style.body_background })]*/ #ffffff;
+        --cursor-default: url("[(${_assets+'/plugins/cursor/simple/default.cur'})]"), auto;
+        --cursor-pointer: url("[(${_assets+'/plugins/cursor/simple/pointer.cur'})]"), auto;
+      }
 
-  <link  th:if="${theme.config.style.font_family != 'no'}" rel="preload" as="style" onload="this.rel='stylesheet'"  th:href="${assets_link+'/font/'+theme.config.style.font_family+'.min.css'}">
-</head>
-<body>
+      :root[data-theme="dark"] {
+        --theme: /*[(${theme.config.style.theme_color_dark})]*/ #ff7242;
+      }
 
-<script  type="text/javascript" th:src="${assets_link+'/plugins/jquery/jquery.min.js'}"></script>
-<script type="text/javascript" th:src="${assets_link+'/js/global.min.js'+theme_version}"></script>
-</body>
-</html>
+      .header {
+
+      }
+    </style>
+
+    <link rel="preload stylesheet"
+          as="style"
+          th:if="${theme.config.style.font_family != 'null'}"
+          th:href="|${_assets}/font/${theme.config.style.font_family}.min.css|">
+    <link rel="preload stylesheet" as="style" th:href="|${_assets}/plugins/fontawesome/fontawesome.min.css|">
+    <link rel="preload stylesheet" as="style" th:href="|${_assets}/css/${page}.min.css?v=${_version}|">
+    <th:block th:insert="~{::cssPlugin}"></th:block>
+  </head>
+  <body>
+  <div id="Butterfly" th:class="${page}">
+    <header class="header">
+      <nav class="nav"></nav>
+
+      <th:block th:insert="~{::above}"></th:block>
+    </header>
+
+    <main class="main" style="height: 5000px">
+      <section class="container">12</section>
+      <aside>1212</aside>
+    </main>
+
+    <th:block th:insert="~{modules/common :: adsorbSetting}"></th:block>
+  </div>
+  <script type="text/javascript" th:src="|${_assets}/plugins/jquery/jquery.min.js|"></script>
+  <script type="text/javascript" th:src="|${_assets}/js/${page}.min.js?v=${_version}|"></script>
+  <th:block th:insert="~{::jsPlugin}"></th:block>
+  </body>
+  </html>
+</th:block>

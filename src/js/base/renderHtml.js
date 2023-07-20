@@ -1,160 +1,19 @@
-/**
- * @date: 2023/3/13
- * @author: 小红
- * @fileName: renderHtml
- * @Description: 择渲染页面 md -> html
- */
+const str = `<p><joe-dplayer src="/upload/2023/07/%E7%99%BD%E9%86%8B%E7%9A%84%E5%A6%99%E7%94%A8.mp4"></joe-dplyer></p>
+<p>白醋的威力有多强大？最后一个惊掉你下巴。<br />
+一、白醋加可乐喷在玻璃上，玻璃干净又明亮。<br />
+二、白醋加花露水喷在马桶黄渍处，轻松去除黄渍和异味。<br />
+三、白醋加洗洁精，去油能力超级强。<br />
+四、白醋加白酒擦拭冰箱表面，去污效果明显。<br />
+五、白醋加小苏打喷在瓷砖缝隙，污渍通通擦掉。<br />
+六、锅底烧糊怎么办？加入牙膏、小苏打、白醋、雪碧，加入清水搅拌均匀，将锅放入水池浸泡几分钟，然后轻轻刷洗，就可以洗干净了。<br />
+七、家里燃气灶用久了，会有一层厚厚的油污，很难清理。挤上洗洁精，撒上小苏打，最后倒上白醋，静止十分钟，抹布一擦，立马干干净净，焕然一新。<br />
+关注我，学习更多实用妙招。</p>
+`
 
 
-// 使用 renderHtml模块
-export const useRenderHtml = () => {
-  useCodeBlock(); // 代码块功能
-  useToc(); // 目录
-  useHandleTable(); // 表格功能
-  useSwitchCodeTheme(); // 切换代码主题
-}
 
 
-/**
- * 代码块 功能
- * @param selector
- */
-export const useCodeBlock = (selector = '.render-html') => {
-  let dom = $(selector);
-
-  const pres = dom.find('pre');
-
-  if (!pres.length) return;
-
-  const codeConfig = PageConfig.code['realNode'];
-
-  pres.each(function () {
-    const pre = $(this);
-
-    const toolbar = pre.next('.toolbar');
-
-    if (toolbar) {
-      toolbar.append(`<div class="custom-item absolute top-0"></div>`);
-
-      const customItem = toolbar.find('.custom-item');
-
-      //标题
-      if (codeConfig['enable_title']) {
-        toolbar.addClass('c-title')
-      }
-
-      // 分割线
-      if (codeConfig['enable_hr']) {
-        toolbar.addClass('c-hr')
-      }
-
-      // 代码块复制
-      if (codeConfig['enable_copy']) {
-        customItem.append('<i class="fas fa-paste copy-button code-copy cursor-pointer"></i>');
-
-        customItem.find('.code-copy').on('click', function (e) {
-          const text = pre.children("code[class*='language-']").text();
-
-          const clipboard = new ClipboardJS(this, {text: () => text});
-
-          clipboard.on('success', () => {
-            Qmsg.success("已复制");
-            clipboard.destroy();
-          });
-
-          clipboard.on('error', () => {
-            clipboard.destroy()
-          })
-
-          clipboard.onClick(e);
-        })
-      }
-
-      // 代码块展开
-      if (codeConfig['enable_expander']) {
-        customItem.append('<i class="fa-sharp fa-solid fa-caret-down code-expander cursor-pointer"></i>');
-
-        customItem.find('.code-expander').on('click', function () {
-          pre.children('code').toggle();
-          toolbar.toggleClass('c-expander');
-        })
-      }
-
-    }
-
-  })
-}
-
-
-/**
- * 目录 功能
- * @param contentSelector 内容选择器
- * @param tocSelector 目录选择器
- */
-export const useToc = (contentSelector = '.render-html', tocSelector = '.post-tocbot > .toc') => {
-  window.tocbot.init({
-    contentSelector,
-    tocSelector,
-    headingSelector: 'h1, h2, h3, h4, h5, h6',
-    hasInnerContainers: true,
-    scrollSmooth: true,
-    includeTitleTags: true,
-    scrollSmoothDuration: 280,
-    throttleTimeout: 30,
-    headingsOffset: 80, // 目录中高亮的偏移值，和scrollSmoothOffset有关联
-    scrollSmoothOffset: -80, // 屏幕滚动的偏移值（这里和导航条固定也有关联）
-    fixedSidebarOffset: "auto",
-    disableTocScrollSync: false,
-    onClick: function (e) {
-      e.preventDefault();
-    },
-    scrollEndCallback: function (e) {
-      // console.log(e);
-      // window.tocPhase = null
-    }
-  });
-
-  const toc = $(tocSelector);
-
-  if (!toc.html()) {
-    toc.html('暂无目录~');
-  }
-}
-
-
-/**
- * 切换代码主题
- */
-export const useSwitchCodeTheme = (mode = window.dataTheme) => {
-  const light = document.querySelector('link[data-code-theme=light]');
-
-  const dark = document.querySelector('link[data-code-theme=dark]');
-
-  if (!dark && !light) return;
-
-  if (mode === 'light') {
-    dark.disabled = true;
-    light.disabled = false;
-  } else {
-    light.disabled = true;
-    dark.disabled = false;
-  }
-
-  window.eventCore.on('changeTheme', (mode) => useSwitchCodeTheme(mode));
-}
-
-
-/**
- * 处理表格功能
- */
-export const useHandleTable = (selector = '.render-html table') => {
-  const tables = $(selector);
-
-  if (!tables.length) return;
-
-  tables.each(function () {
-    const table = $(this);
-    table.wrap($(`<div class="render-table overflow-x-scroll"></div>`))
-  });
-
-}
+// 使用正则 替换 joe-dplayer 为 video标签
+  const reg = /<joe-dplayer src="(.*)"><\/joe-dplyer>/g
+  const str2 = str.replace(reg, '<video src="$1"></video>')
+console.log(str2)

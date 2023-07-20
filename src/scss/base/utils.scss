@@ -5,46 +5,73 @@
  * @Description: 工具
  */
 
-//主流浏览器屏幕适配的媒体查询大小
-$screen-xs: 480px;
-$screen-sm: 768px;
-$screen-md: 992px;
-$screen-lg: 1200px;
-$screen-xl: 1920px;
 
 //媒体查询 
-@mixin media($size) {
-  @if $size == xs {
-    @media (max-width: $screen-xs) {
-      @content;
-    }
-  } @else if ($size == sm) {
-    @media (max-width: $screen-sm) {
-      @content;
-    }
-  } @else if ($size == md) {
-    @media (max-width: $screen-md) {
-      @content;
-    }
-  } @else if ($size == lg) {
-    @media (max-width: $screen-lg) {
-      @content;
-    }
-  } @else if ($size == xl) {
-    @media (max-width: $screen-xl) {
-      @content;
-    }
+@mixin media-480 {
+  @media (min-width: 480px) {
+    @content;
+  }
+}
+
+@mixin media-768 {
+  @media (min-width: 768px) {
+    @content;
+  }
+}
+
+@mixin media-992 {
+  @media (min-width: 992px) {
+    @content;
+  }
+}
+
+@mixin media-1200 {
+  @media (min-width: 1200px) {
+    @content;
+  }
+}
+
+@mixin media-1920 {
+  @media (min-width: 1920px) {
+    @content;
   }
 }
 
 
+//单行，省略号 
+@mixin ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+//多行，省略号
+@mixin ellipsis-multiline( $row:1) {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: $row; //行数
+  text-overflow: ellipsis;
+}
 
 
+@mixin cursor($type: ('default', 'pointer', 'text', 'move', 'not-allowed')) {
+  @if ($type == 'default') {
+    cursor: var(--cursor-default);
+  } @else if ($type == 'pointer') {
+    cursor: var(--cursor-pointer);
+  } @else {
+    cursor: $type;
+  }
+}
 
 
+@mixin theme($name,$light,$dark) {
+  @at-root html {
+    --#{$name}: #{$light};
 
-
-
-
- 
- 
+    &[data-theme="dark"] {
+      --#{$name}: #{$dark};
+    }
+  }
+}

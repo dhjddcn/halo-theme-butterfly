@@ -1,16 +1,23 @@
 /**
- * @date: 2023/7/12
+ * @date: 2023/7/18
  * @author: 小红
  * @fileName: base
- * @Description: 默认样式
+ * @Description:  基础样式
  */
+@use "../modules/main";
+@use "../modules/header";
+@use "../modules/adsorbSetting";
+@use "utils";
 
+// 变量
+@include utils.theme(font-color, #4c4948, rgba(255, 255, 255, 0.7)); // 全局字体颜色
+@include utils.theme(scrollbar-color, var(--theme), #666); // 滚动条颜色
+@include utils.theme(selection-color, #00c4b6, #00c4b6); // 选中文字颜色
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  cursor: inherit;
 }
 
 img {
@@ -64,3 +71,40 @@ hr {
     transition: 1s ease-in-out;
   }
 }
+
+body {
+  font-family: "Butterfly Font", "Microsoft YaHei", "微软雅黑", Arial, "sans-serif";
+  line-height: 2;
+  overflow-y: overlay;
+  scroll-behavior: smooth;
+  background: var(--body-background);
+  color: var(--font-color);
+  cursor: var(--cursor-default);
+  font-size: 14px;
+}
+
+#Butterfly {
+  position: relative;
+  justify-content: space-between;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+::-webkit-scrollbar {
+  height: 6px;
+  width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-color);
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+::selection {
+  color: #fff;
+  background-color: var(--selection-color);
+}
+

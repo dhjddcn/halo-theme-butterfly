@@ -36,17 +36,17 @@ spec:
         - $formkit: select
           name: theme_type
           label: 主题模式
-          value: '#49b1f5'
+          value: 'user'
           placeholder: 请填写主题颜色
           help: '设置博客的主题模式（自动/用户/浅色/深色），默认为用户模式，仅在用户模式下页面才有主题切换按钮，自动模式下根据时间自动切换'
           options:
-            - value: auto
+            - value: 'auto'
               label: 自动模式
-            - value: user
+            - value: 'user'
               label: 用户模式
-            - value: light
+            - value: 'light'
               label: 浅色模式
-            - value: dark
+            - value: 'dark'
               label: 深色模式
         - $formkit: text
           name: theme_color_light
@@ -65,23 +65,23 @@ spec:
         - $formkit: text
           name: content_max_width
           label: 全局内容区最大宽度
-          value: 1250px
+          value: '1250px'
           placeholder: 请填写内容区最大宽度
           help: 内容区域最大宽度，像素或百分比，默认 1250px（注：配合halo 设置-文章设置-文章列表显示条数，效果更好）
           validation: required
         - $formkit: attachment
           name: body_background
-          label: 全局背景
-          placeholder: 请填写 全局背景
-          value: 'linear-gradient(90deg, rgba(247, 149, 51, .1) 0, rgba(243, 112, 85, .1) 15%, rgba(239, 78, 123, .1) 30%, rgba(161, 102, 171, .1) 44%, rgba(80, 115, 184, .1) 58%, rgba(16, 152, 173, .1) 72%, rgba(7, 179, 155, .1) 86%, rgba(109, 186, 130, .1) 100%)'
-          help: 如果全局背景图设置为图片链接，第一屏背景图将不生效 (注：颜色值或图片链接) 默认：linear-gradient(90deg, rgba(247, 149, 51, .1) 0, rgba(243, 112, 85, .1) 15%, rgba(239, 78, 123, .1) 30%, rgba(161, 102, 171, .1) 44%, rgba(80, 115, 184, .1) 58%, rgba(16, 152, 173, .1) 72%, rgba(7, 179, 155, .1) 86%, rgba(109, 186, 130, .1) 100%)
+          label: 全局背景（浅色）
+          placeholder: 请填写 全局背景（浅色）
+          value: '#ffffff'
+          help: 如果全局背景图设置为图片（全链接），第一屏背景图将不生效 (注：颜色值或图片链接) 默认：#ffffff
           validation: required
         - $formkit: select
           name: font_family
           label: 主题字体
-          value: no
+          value: 'null'
           options:
-            - value: "no"
+            - value: 'null'
               label: "游览器默认字体"
             - value: "CircularBody"
               label: "CircularBody"
@@ -724,8 +724,8 @@ spec:
       label: 其他
       formSchema:
         - $formkit: radio
-          name: enable_cdn_link
-          label: 启用外链加载资源文件
+          name: enable_assets_link
+          label: 启用外链加载静态资源文件
           help: 必须选配置外链地址才能生效，否则无效
           value: false
           options:
@@ -734,9 +734,9 @@ spec:
             - label: 禁用
               value: false
         - $formkit: text
-          name: cdn_link
-          label: cdn地址，外链地址
-          placeholder: 请填写 cdn地址，外链地址
+          name: assets_link
+          label: 外链地址
+          placeholder: 请填写 外链地址或者cdn地址
           value: 'https://cdn.jsdelivr.net/npm/halo-theme-butterfly/templates/assets'
           help: '默认为npmJs的jsdelivr加速地址，如果你有自己的cdn地址（请确保链接下assets文件夹下主题静态资源文件），可以填写，否则请勿修改！ jsdelivr地址：https://cdn.jsdelivr.net/npm/halo-theme-butterfly/templates/assets'
           validation: required

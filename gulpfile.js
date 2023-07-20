@@ -18,7 +18,6 @@ const resolve = (name) => path.resolve(__dirname, name);
 
 const delay = (time) => new Promise((resolve) => setTimeout(resolve, time));
 
-
 gulp.task("clean", () => {
   return gulp.src(['./templates/assets/css', './templates/assets/js', './theme-butterfly-dist.zip'], {
     read: false,

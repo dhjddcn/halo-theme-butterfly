@@ -1,26 +1,23 @@
-<!DOCTYPE html>
-<html lang="en" data-theme="light" xmlns:th="https://www.thymeleaf.org"
-      th:with="assets_link=${theme.config.other.enable_cdn_link ? theme.config.other.cdn_link : #theme.assets('/')},random_img = ${theme.config.loading.enable_random_img ? theme.config.loading.random_img : 'null'},theme_version = ${'?v='+ theme.spec.version} "
+<th:block
+  xmlns:th="https://www.thymeleaf.org"
+  th:replace="~{modules/layout :: layout ( 
+    page = 'index',
+    title = ${site.title}
+  )}"
 >
-<head>
-  <title th:text="${title}"></title>
-  <meta charset="UTF-8"/>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-  <meta name="viewport"
-        content="width=device-width, user-scalable=no, initial-scale=1.0, shrink-to-fit=no, viewport-fit=cover">
-  <meta name="author" th:content="${site.title}">
-  <meta name="site" th:content="${site.url}">
-  <meta property="og:keywords" th:content="${site.seo.keywords}">
-  <meta property="og:description" th:content="${site.seo.description}">
-  <meta property="og:site_name" th:content="${site.title}">
-  <meta property="og:url" th:content="${site.url}">
-  <meta property="og:title" th:content="${site.title}">
-  <meta property="og:locale" content="zh_CN">
-  <meta property="og:type" content="website">
-  <link rel="apple-touch-icon" sizes="180x180" th:href="${site.logo}">
-  <link rel="canonical" th:href="${site.url}">
-</head>
-<body>
+  <!--css插件-->
+  <th:block th:fragment="cssPlugin">
+  </th:block>
 
-<!--<script type="text/javascript" th:src="${assets_link+'/js/global.min.js'+theme_version}"></script>-->
-</body>
+  <!--js插件-->
+  <th:block th:fragment="jsPlugin">
+  </th:block>
+
+  <!--above 第一屏-->
+  <div class="above" th:fragment="above" th:if="${theme.config.index.enable_above}">
+    123465
+    123465
+    123465
+    123465
+  </div>
+</th:block>

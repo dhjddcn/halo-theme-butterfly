@@ -1,0 +1,12 @@
+<!-- 一些通用模版 -->
+
+
+<!-- 吸附小部件-->
+<div xmlns:th="https://www.thymeleaf.org" th:fragment="adsorbSetting" class="adsorb-setting active">
+  <button class="set-theme" type="button" onclick="Page.SetTheme()" title="浅色和深色模式转换" th:if="${theme.config.style.theme_type == 'user'}">
+    <i class="fas fa-adjust"></i>
+  </button>
+  <button class="back-top" type="button" title="回到顶部">
+    <i class="fa-solid fa-up"></i>
+  </button>
+</div>

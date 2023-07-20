@@ -1,0 +1,16 @@
+/**
+ * @date: 2023/7/20
+ * @author: 小红
+ * @fileName: main
+ * @Description: 主要内容
+ */
+
+
+.main {
+  display: flex;
+  width: 1250px;
+  height: 5000px;
+  max-width: var(--main-max-width);
+  padding: 2rem 15px;
+  margin: 0 auto;
+}

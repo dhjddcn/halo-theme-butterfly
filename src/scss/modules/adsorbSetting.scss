@@ -1,0 +1,38 @@
+/**
+ * @date: 2023/7/18
+ * @author: 小红
+ * @fileName: adsorbSetting
+ * @Description: 侧边栏设置设置
+ */
+
+@use "../base/utils";
+
+.adsorb-setting {
+  position: fixed;
+  right: -48px;
+  bottom: 40px;
+  opacity: 0;
+  transition: opacity .5s, transform .5s;
+  z-index: 80;
+
+  &.active {
+    opacity: 1;
+    transform: translateX(-58px);
+  }
+
+  > button {
+    display: block;
+    margin: .5rem 0;
+    width: 35px;
+    height: 35px;
+    line-height: 35px;
+    box-shadow: 0 3px 8px 6px rgba(7,17,27,0.05);
+    background-color: var(--adsorb-bg);
+    border-radius: 10px;
+    color: var(--adsorb-color);
+    @include utils.cursor('pointer');
+  }
+
+  @include utils.theme(adsorb-bg, var(--theme), #1f1f1f);   //小部件背景颜色
+  @include utils.theme(adsorb-color, #fff, rgba(255,255,255,0.7)); //小部件字体颜色
+}

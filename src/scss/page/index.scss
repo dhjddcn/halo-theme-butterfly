@@ -5,5 +5,16 @@
  * @Description: 首页
  */
 
-@import "../../scss/base/utils.scss";
+@use "../base/base";
 
+.index {
+  //@include base.ellipsis();
+  .header {
+    .above {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}
