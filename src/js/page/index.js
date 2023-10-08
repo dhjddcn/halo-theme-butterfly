@@ -4,5 +4,14 @@
  * @fileName: index
  * @Description: 首页
  */
- 
- 
+
+
+class Index {
+  constructor() {
+  }
+  
+  
+  
+}
+
+document.addEventListener("DOMContentLoaded", () => window.IndexClass = new Index())

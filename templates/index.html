@@ -1,1 +1,16 @@
-1212
+<!DOCTYPE html>
+<html
+  xmlns:th="https://www.thymeleaf.org"
+  th:replace="~{modules/layout :: layout (
+  page = 'index',
+  title = ${site.title},
+    script_links = ~{::script_links}
+  )}"
+>
+
+
+<th:block th:fragment="script_links">
+  <script type="text/javascript" th:src="${assets_link + '/js/index.min.js?v=' + theme.spec.version}"></script>
+</th:block>
+
+</html>
