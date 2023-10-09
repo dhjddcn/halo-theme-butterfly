@@ -60,16 +60,16 @@ spec:
             - value: "HarmonyOS_Regular"
               label: "HarmonyOS_Regular"
         - $formkit: text
-          name: theme_content_max_width
+          name: content_max_width
           label: 全局内容区最大宽度
           value: '1250px'
           placeholder: 请填写内容区最大宽度
-          help: 内容区域最大宽度，像素或百分比，默认 1250px（注：配合halo 设置-文章设置-文章列表显示条数，效果更好）
+          help: 内容区域最大宽度，像素或百分比，默认 1250px
           validation: required
         - $formkit: radio
           name: enable_assets_link
           label: 启用资源文件加载地址
-          help: 必须选配置外链地址才能生效，否则无效，不启用为本站地址
+          help: 必须选配置外链地址才能生效，否则无效，不启用默认为本站地址
           value: 'false'
           options:
             - label: 启用
@@ -80,7 +80,7 @@ spec:
         - $formkit: text
           name: assets_link
           label: 资源文件地址
-          placeholder: 请填写 cdn地址，外链地址
+          placeholder: 请填写 资源文件地址
           value: 'https://cdn.jsdelivr.net/npm/halo-theme-butterfly/templates/assets'
           help: '默认为npmJs的jsdelivr加速地址，可自行配置cdn地址（请确保链接下assets文件夹下主题静态资源文件 与 jsdelivr地址中的文件一致），可以填写，否则请勿修改！'
           validation: required

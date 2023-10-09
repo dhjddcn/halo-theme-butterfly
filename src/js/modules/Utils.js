@@ -5,6 +5,3 @@
  * @Description: 工具函数
  */
 
-class Utils {
-
-}

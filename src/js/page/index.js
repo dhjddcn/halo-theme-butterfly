@@ -4,14 +4,14 @@
  * @fileName: index
  * @Description: 首页
  */
+import Base from "../modules/Base";
 
-
-class Index {
+class Index extends Base {
   constructor() {
+    super();
   }
-  
-  
-  
+
+
 }
 
-document.addEventListener("DOMContentLoaded", () => window.IndexClass = new Index())
+document.addEventListener("DOMContentLoaded", () => window.pageClass = new Index())

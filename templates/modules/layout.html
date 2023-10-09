@@ -1,6 +1,7 @@
 <html
   xmlns:th="https://www.thymeleaf.org"
   lang="en"
+  th:data-mode="${theme.config.style.theme_type}"
   data-theme="light"
   th:with="
       assets_link = ${theme.config.other.enable_assets_link == 'true' ? theme.config.other.assets_link : #theme.assets('/')}
@@ -22,16 +23,17 @@
   <meta property="og:type" content="article">
   <meta name="description" th:content="${site.subtitle}"/>
   <meta name="twitter:card" content="summary"/>
-  <meta name="twitter:title" content="${title!}"/>
+  <meta name="twitter:title" th:content="${title}"/>
   <meta name="twitter:description" th:content="${site.subtitle}"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
   <link rel="apple-touch-icon" sizes="180x180" th:href="${site.logo}">
   <link rel="canonical" th:href="${site.url}">
-  <script id="base-script" th:inline="javascript">
-  </script>
+  <th:block th:insert="~{modules/config}"/>
 </head>
 <body>
 <div id="Butterfly" th:class="${page}">
+  
+  <div id="dddd" style="width: 100px;height: 100px;background: red"></div>
 
 </div>
 <script type="text/javascript" th:src="${assets_link + '/plugins/jquery/jquery.min.js'}"></script>
