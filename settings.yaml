@@ -1,5 +1,5 @@
 apiVersion: v1alpha1
-kind: Setting
+kind: BaseSetting
 metadata:
   name: theme-butterfly-setting
 spec:
@@ -34,7 +34,7 @@ spec:
       label: 主题
       formSchema:
         - $formkit: select
-          name: theme_type
+          name: theme_mode
           label: 主题模式
           value: 'user'
           placeholder: 请填写主题颜色

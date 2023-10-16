@@ -1,7 +1,6 @@
 <html
   xmlns:th="https://www.thymeleaf.org"
   lang="en"
-  th:data-mode="${theme.config.style.theme_type}"
   data-theme="light"
   th:with="
       assets_link = ${theme.config.other.enable_assets_link == 'true' ? theme.config.other.assets_link : #theme.assets('/')}
@@ -32,9 +31,7 @@
 </head>
 <body>
 <div id="Butterfly" th:class="${page}">
-  
-  <div id="dddd" style="width: 100px;height: 100px;background: red"></div>
-
+  <div id="dddd" onclick="butterfly.toggleThemeMode()" style="width: 100px;height: 100px;background: red"></div>
 </div>
 <script type="text/javascript" th:src="${assets_link + '/plugins/jquery/jquery.min.js'}"></script>
 <th:block th:insert="${script_links}"/>

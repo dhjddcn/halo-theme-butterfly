@@ -4,9 +4,10 @@
  * @fileName: index
  * @Description: 首页
  */
-import Base from "../modules/Base";
+import Butterfly from "../modules/Butterfly";
 
-class Index extends Base {
+class Index extends Butterfly {
+  
   constructor() {
     super();
   }
@@ -14,4 +15,4 @@ class Index extends Base {
 
 }
 
-document.addEventListener("DOMContentLoaded", () => window.pageClass = new Index())
+document.addEventListener("DOMContentLoaded", () => window.butterfly = new Index())
