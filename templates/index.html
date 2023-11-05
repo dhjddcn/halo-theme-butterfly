@@ -4,12 +4,16 @@
   th:replace="~{modules/layout :: layout (
   page = 'index',
   title = ${site.title},
-    script_links = ~{::script_links}
+  css_links = ~{::css_links},
+  js_links = ~{::js_links}
   )}"
 >
 
-<th:block th:fragment="script_links">
-  <script type="text/javascript" th:src="${assets_link + '/js/index.min.js?v=' + theme.spec.version}"></script>
+<th:block th:fragment="css_links">
+</th:block>
+
+
+<th:block th:fragment="js_links">
 </th:block>
 
 </html>

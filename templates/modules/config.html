@@ -1,5 +1,6 @@
 <th:block xmlns:th="https://www.thymeleaf.org">
-  <script id="base-script" th:inline="javascript">
+  <script id="baseScript" th:inline="javascript">
     window.ThemeConfig =   /*[[${theme.config}]]*/ {};
+    window['baseScript'].remove();
   </script>
 </th:block>

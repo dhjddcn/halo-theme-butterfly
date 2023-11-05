@@ -2,18 +2,18 @@
  * @date: 2023/10/9
  * @author: 小红
  * @fileName: Butterfly
- * @Description:基础类-核心
+ * @Description:核心
  */
-import Events from "./Events";
+
+import Message from "./Message";
 
 export default class Butterfly {
-  useEvent = new Events();
+  msg = new Message();
 
   constructor() {
     this.#initThemeMode();
   }
 
-  // 白天 ro 夜晚
   #isDaytime() {
     const now = new Date();
     const currentHour = now.getHours();
@@ -47,7 +47,11 @@ export default class Butterfly {
   setThemeMode(theme) {
     document.documentElement.dataset.theme = theme;
     localStorage.setItem('Butterfly-data-theme', theme);
-    this.useEvent.emit('themeChange', theme);
+    this.themeChange(theme);
+  }
+
+  // 主题模式切换
+  themeChange(theme) {
   }
 
   // 获取主题模式
@@ -61,4 +65,5 @@ export default class Butterfly {
   toggleThemeMode() {
     this.setThemeMode(this.getThemeMode() === 'light' ? 'dark' : 'light')
   }
+
 }

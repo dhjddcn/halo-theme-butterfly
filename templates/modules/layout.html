@@ -5,7 +5,7 @@
   th:with="
       assets_link = ${theme.config.other.enable_assets_link == 'true' ? theme.config.other.assets_link : #theme.assets('/')}
   "
-  th:fragment="layout (page,title,script_links)"
+  th:fragment="layout (page,title,css_links,js_links)"
 >
 <head>
   <title th:text="${title}"></title>
@@ -28,12 +28,16 @@
   <link rel="apple-touch-icon" sizes="180x180" th:href="${site.logo}">
   <link rel="canonical" th:href="${site.url}">
   <th:block th:insert="~{modules/config}"/>
+  <th:block th:insert="${css_links}"/>
+  <link rel="stylesheet" th:href="${assets_link + '/js/'+ page +'.min.js?v=' + theme.spec.version}">
 </head>
 <body>
 <div id="Butterfly" th:class="${page}">
-  <div id="dddd" onclick="butterfly.toggleThemeMode()" style="width: 100px;height: 100px;background: red"></div>
+  <main class="main"></main>
 </div>
 <script type="text/javascript" th:src="${assets_link + '/plugins/jquery/jquery.min.js'}"></script>
-<th:block th:insert="${script_links}"/>
+
+<th:block th:insert="${js_links}"/>
+<script type="text/javascript" th:src="${assets_link + '/js/' + page +'.min.js?v=' + theme.spec.version}"></script>
 </body>
 </html>

@@ -6,13 +6,9 @@
  */
 import Butterfly from "../modules/Butterfly";
 
-class Index extends Butterfly {
-  
-  constructor() {
-    super();
-  }
 
+class Index extends Butterfly {
 
 }
 
-document.addEventListener("DOMContentLoaded", () => window.butterfly = new Index())
+document.addEventListener("DOMContentLoaded", () => window.butterflyClass = new Index())
