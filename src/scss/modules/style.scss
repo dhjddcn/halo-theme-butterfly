@@ -1,0 +1,24 @@
+/**
+ * @date: 2024/1/16
+ * @author: 小红
+ * @fileName: style
+ * @Description: 基础样式
+ */
+@use "reset";
+
+body {
+  font-family: "Butterfly Font", "Microsoft YaHei", "微软雅黑", Arial, "sans-serif";
+  line-height: 2;
+  font-size: 14px;
+  overflow-y: overlay;
+  scroll-behavior: smooth;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+:fullscreen {
+  background: red;
+}
+
+::placeholder {
+  background: red;
+}

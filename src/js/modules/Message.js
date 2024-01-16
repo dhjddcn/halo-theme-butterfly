@@ -4,12 +4,11 @@
  * @fileName: Message
  * @Description: 消息提示
  */
-import {re} from "@babel/core/lib/vendor/import-meta-resolve";
+
 
 export default class Message {
-
-
   constructor() {
+
   }
 
 }

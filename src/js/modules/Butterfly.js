@@ -6,14 +6,17 @@
  */
 
 import Message from "./Message";
+import Jquery from "jquery";
 
 export default class Butterfly {
+  $ = Jquery;
   msg = new Message();
+  theme = 'light';
 
   constructor() {
     this.#initThemeMode();
   }
-
+  
   #isDaytime() {
     const now = new Date();
     const currentHour = now.getHours();
@@ -28,42 +31,39 @@ export default class Butterfly {
 
   // 初始化主题模式
   #initThemeMode() {
+    const themeMode = ThemeConfig.theme['mode'];
     let theme = localStorage.getItem('Butterfly-data-theme') || 'light';
-    let mode = ThemeConfig.style['theme_mode'];
-    switch (mode) {
-      case 'auto':
-        theme = this.#isDaytime() ? 'light' : 'dark';
-        break;
 
-      case 'user':
-        break;
-
-      default:
-        theme = mode;
+    if (themeMode === 'auto') {
+      theme = this.#isDaytime() ? 'light' : 'dark';
+    } else if (themeMode === 'light' || themeMode === 'dark') {
+      theme = themeMode;
     }
+
+    this.setThemeMode(theme);
   }
 
   // 设置主题模式
   setThemeMode(theme) {
+    this.theme = theme;
     document.documentElement.dataset.theme = theme;
     localStorage.setItem('Butterfly-data-theme', theme);
     this.themeChange(theme);
-  }
-
-  // 主题模式切换
-  themeChange(theme) {
   }
 
   // 获取主题模式
   getThemeMode() {
     const rootTheme = document.documentElement.dataset.theme;
     const locDataTheme = localStorage.getItem('Butterfly-data-theme');
-    return rootTheme || locDataTheme;
+    return this.theme || rootTheme || locDataTheme;
   }
 
   // 切换主题模式
   toggleThemeMode() {
-    this.setThemeMode(this.getThemeMode() === 'light' ? 'dark' : 'light')
+    this.setThemeMode(this.theme === 'light' ? 'dark' : 'light')
   }
 
+  // 主题模式切换回调 可重写
+  themeChange(theme) {
+  }
 }

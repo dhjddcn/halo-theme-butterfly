@@ -1,43 +1,47 @@
-<html
+<th:block
   xmlns:th="https://www.thymeleaf.org"
-  lang="en"
-  data-theme="light"
   th:with="
-      assets_link = ${theme.config.other.enable_assets_link == 'true' ? theme.config.other.assets_link : #theme.assets('/')}
+     assets_link = ${theme.config.theme.enable_assets_link == 'true' ? theme.config.theme.assets_link : #theme.assets('//')}
   "
   th:fragment="layout (page,title,css_links,js_links)"
 >
-<head>
-  <title th:text="${title}"></title>
-  <meta charset="UTF-8"/>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-  <meta name="author" th:content="${site.title}">
-  <meta name="site" th:content="${site.url}">
-  <meta property="og:keywords" th:content="${site.seo.keywords}">
-  <meta property="og:description" th:content="${site.subtitle}">
-  <meta property="og:site_name" th:content="${site.title}">
-  <meta property="og:url" th:content="${site.url}">
-  <meta property="og:title" th:content="${site.title}">
-  <meta property="og:locale" content="zh_CN">
-  <meta property="og:type" content="article">
-  <meta name="description" th:content="${site.subtitle}"/>
-  <meta name="twitter:card" content="summary"/>
-  <meta name="twitter:title" th:content="${title}"/>
-  <meta name="twitter:description" th:content="${site.subtitle}"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-  <link rel="apple-touch-icon" sizes="180x180" th:href="${site.logo}">
-  <link rel="canonical" th:href="${site.url}">
-  <th:block th:insert="~{modules/config}"/>
-  <th:block th:insert="${css_links}"/>
-  <link rel="stylesheet" th:href="${assets_link + '/js/'+ page +'.min.js?v=' + theme.spec.version}">
-</head>
-<body>
-<div id="Butterfly" th:class="${page}">
-  <main class="main"></main>
-</div>
-<script type="text/javascript" th:src="${assets_link + '/plugins/jquery/jquery.min.js'}"></script>
+  <!DOCTYPE html>
+  <html lang="en" data-theme="light">
+  <head>
+    <title th:text="${title}"></title>
+    <meta charset="UTF-8"/>
+    <meta name="twitter:title" th:content="${title}"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="author" th:content="${site.title}">
+    <meta name="site" th:content="${site.url}">
+    <meta property="og:keywords" th:content="${site.seo.keywords}">
+    <meta property="og:description" th:content="${site.subtitle}">
+    <meta property="og:site_name" th:content="${site.title}">
+    <meta property="og:url" th:content="${site.url}">
+    <meta property="og:title" th:content="${site.title}">
+    <meta property="og:locale" content="zh_CN">
+    <meta property="og:type" content="article">
+    <meta name="description" th:content="${site.subtitle}"/>
+    <meta name="twitter:description" th:content="${site.subtitle}"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+    <link rel="apple-touch-icon" sizes="180x180" th:href="${site.logo}">
+    <link rel="canonical" th:href="${site.url}">
+    
+    <th:block th:insert="~{modules/config}"/>
+    <th:block th:insert="${css_links}"/>
+    <link rel="preload stylesheet" as="style" th:href="${assets_link + 'plugins/fontawesome/fontawesome.min.css'}">
+    <link rel="preload stylesheet" as="style" th:href="${assets_link + 'css/' + page + '.min.css?v=' + theme.spec.version}">
+  </head>
+  <body>
+  <div id="Butterfly" th:class="${page}">
+    <main class="main">
+      dw你还好点
+    </main>
+  </div>
+<!--  <script type="text/javascript" th:src="${assets_link + 'plugins/jquery/jquery.min.js'}"></script>-->
 
-<th:block th:insert="${js_links}"/>
-<script type="text/javascript" th:src="${assets_link + '/js/' + page +'.min.js?v=' + theme.spec.version}"></script>
-</body>
-</html>
+  <th:block th:insert="${js_links}"/>
+  <script type="text/javascript" th:src="${assets_link + 'js/' + page + '.min.js?v=' + theme.spec.version}"></script>
+  </body>
+  </html>
+</th:block>
