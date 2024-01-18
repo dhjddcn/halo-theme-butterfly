@@ -6,7 +6,8 @@
  */
 @tailwind base;
 @tailwind utilities;
-@import "variable";
+@import "theme";
+
 body {
   font-family: "Butterfly Font", "Microsoft YaHei", "微软雅黑", Arial, "sans-serif";
   font-size: 14px;
@@ -14,7 +15,7 @@ body {
   overflow-y: overlay;
   scroll-behavior: smooth;
   padding-bottom: env(safe-area-inset-bottom);
-  background-color: var(--body-background-color);
+  background: var(--body-background-color);
   color: var(--body-color);
 }
 

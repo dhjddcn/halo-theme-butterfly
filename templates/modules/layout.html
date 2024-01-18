@@ -31,8 +31,9 @@
     <link rel="preload stylesheet" as="style" th:href="${assets_link + 'css/' + page + '.min.css?v=' + theme.spec.version}">
   </head>
   <body>
-  <div id="Butterfly" th:class="${page}">
+  <div id="Butterfly" th:class="${page + ' relative flex min-h-full'}">
     <main class="main w-full">
+      1
     </main>
     <th:block th:insert="~{modules/side}"/>
   </div>

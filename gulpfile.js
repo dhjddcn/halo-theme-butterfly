@@ -148,7 +148,7 @@ gulp.task(
   "watch",
   function () {
     // noinspection JSCheckFunctionSignatures
-    gulp.watch(['./src/**/**/**/*.scss'], gulp.series('css'));
+    gulp.watch(['./src/**/**/**/*.scss', './templates/**/*.html'], gulp.series('css'));
     // noinspection JSCheckFunctionSignatures
     gulp.watch(['./src/js/**/**/**/*.js'], gulp.series('js'));
   }

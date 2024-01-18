@@ -16,7 +16,7 @@ export default class Butterfly {
   constructor() {
     this.#initThemeMode();
   }
-  
+
   #isDaytime() {
     const now = new Date();
     const currentHour = now.getHours();

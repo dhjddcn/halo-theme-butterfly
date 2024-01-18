@@ -1,0 +1,16 @@
+/**
+ * @date: 2024/1/16
+ * @author: 小红
+ * @fileName: variable
+ * @Description: 主题变量
+ */
+
+//浅色
+html {
+  --body-color: rgb(0, 0, 0);
+}
+
+//暗黑
+html[data-theme=dark] {
+  --body-color: rgba(255, 255, 255, 0.7);
+}
