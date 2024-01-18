@@ -3,9 +3,13 @@ module.exports = {
   content: [
     './templates/**/*.html',
   ],
+  corePlugins: {
+  },
   theme: {
     extend: {},
   },
-  plugins: [],
+  plugins: [
+    
+  ],
 }
 

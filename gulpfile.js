@@ -1,6 +1,8 @@
 const gulp = require('gulp');
+const sass = require('gulp-sass')(require('sass'));
 const uglify = require("gulp-uglify");
 const minifyCSS = require('gulp-csso');
+const autoPrefix = require('gulp-autoprefixer');
 const rename = require('gulp-rename');
 const gzip = require("gulp-gzip");
 const webpack = require("webpack-stream");
@@ -13,6 +15,7 @@ const yaml = require('yamljs');
 const inquirer = require('inquirer');
 const tailwindcss = require('tailwindcss');
 const postcss = require('gulp-postcss')
+
 
 const resolve = (name) => path.resolve(__dirname, name);
 
@@ -29,13 +32,21 @@ gulp.task("clean", () => {
 
 gulp.task("css", function () {
   return gulp.src('./src/scss/page/*.scss')
+    .pipe(sass({}, {}))
     .pipe(postcss([
       tailwindcss,
-    ], {}))
-    .pipe(minifyCSS())
-    .pipe(rename({
-      suffix: '.min'
+    ]))
+    .pipe(autoPrefix({
+      overrideBrowserslist: [
+        "> 5%",
+        "last 2 versions",
+        "last 3 Safari versions",
+        "Firefox >= 20",
+      ],
+      cascade: true,
     }))
+    .pipe(minifyCSS())
+    .pipe(rename({suffix: '.min'}))
     .pipe(gulp.dest('./templates/assets/css'))
 })
 

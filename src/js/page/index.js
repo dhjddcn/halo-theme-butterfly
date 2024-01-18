@@ -13,11 +13,8 @@ class Index extends Butterfly {
 
 
   themeChange(theme) {
-    // console.log(theme);
-    
+    console.log('主题：' + theme);
   }
-
-
 }
 
 document.addEventListener("DOMContentLoaded", () => window.buy = new Index())

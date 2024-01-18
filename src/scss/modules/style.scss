@@ -4,21 +4,18 @@
  * @fileName: style
  * @Description: 基础样式
  */
-@use "reset";
-
+@tailwind base;
+@tailwind utilities;
+@import "variable";
 body {
   font-family: "Butterfly Font", "Microsoft YaHei", "微软雅黑", Arial, "sans-serif";
-  line-height: 2;
   font-size: 14px;
+  line-height: 2;
   overflow-y: overlay;
   scroll-behavior: smooth;
   padding-bottom: env(safe-area-inset-bottom);
+  background-color: var(--body-background-color);
+  color: var(--body-color);
 }
 
-:fullscreen {
-  background: red;
-}
-
-::placeholder {
-  background: red;
-}
+@import "side";

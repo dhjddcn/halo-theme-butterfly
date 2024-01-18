@@ -3,15 +3,15 @@
   th:replace="~{modules/layout :: layout (
   page = 'index',
   title = ${site.title},
-  css_links = ~{::css_links},
-  js_links = ~{::js_links}
+  css_pin = ~{::css_pin},
+  js_pin = ~{::js_pin}
   )}"
 >
 
-<th:block th:fragment="css_links">
+<th:block th:fragment="css_pin">
 </th:block>
 
-<th:block th:fragment="js_links">
+<th:block th:fragment="js_pin">
 </th:block>
 
 </html>
