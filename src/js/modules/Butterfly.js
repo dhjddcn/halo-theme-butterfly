@@ -7,6 +7,7 @@
 
 import Message from "./Message";
 import Jquery from "jquery";
+import {throttle} from "./Utils";
 
 export default class Butterfly {
   $ = Jquery;
@@ -15,6 +16,7 @@ export default class Butterfly {
 
   constructor() {
     this.#initThemeMode();
+    this.#scroll()
   }
 
   #isDaytime() {
@@ -65,5 +67,39 @@ export default class Butterfly {
 
   // 主题模式切换回调 可重写
   themeChange(theme) {
+  }
+
+  //滚动
+  #scroll(e) {
+    const maxNUm = 56;
+    let scrollNum = 0;
+    window.addEventListener('scroll', throttle(() => {
+      let scrollTop = window.scrollY || document.documentElement.scrollTop
+
+      if (scrollTop > maxNUm && scrollNum <= scrollTop) {
+        // console.log('向下2', scrollTop)
+      } else {
+        // console.log('向上2', scrollTop)
+      }
+      
+
+      this.#sideBtn([maxNUm, scrollNum, scrollTop]);
+      scrollNum = scrollTop;
+    }, 200));
+
+  }
+
+  // 头部导航栏
+  #headerNav(e) {
+  }
+
+  // 侧边栏小按钮
+  #sideBtn([maxNUm, scrollNum, scrollTop]) {
+    let sideBtn;
+    if (!sideBtn) sideBtn = this.$('.side-btn');
+
+    if (scrollTop > maxNUm && scrollNum <= scrollTop) sideBtn.addClass('active');
+
+    if (scrollTop < maxNUm && scrollTop <= 2) sideBtn.removeClass('active');
   }
 }

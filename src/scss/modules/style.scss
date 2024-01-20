@@ -16,7 +16,20 @@ body {
   scroll-behavior: smooth;
   padding-bottom: env(safe-area-inset-bottom);
   background: var(--body-background-color);
-  color: var(--body-color);
+  color: var(--body-text-color);
+}
+
+::-webkit-scrollbar {
+  height: 6px;
+  width: 6px
+}
+
+::-webkit-scrollbar-thumb {
+  background: #49b1f5;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent
 }
 
 @import "side";

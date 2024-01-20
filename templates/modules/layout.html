@@ -10,11 +10,13 @@
   <head>
     <title th:text="${title}"></title>
     <meta charset="UTF-8"/>
-    <meta name="twitter:title" th:content="${title}"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="twitter:title" th:content="${title}"/>
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, shrink-to-fit=no, viewport-fit=cover">
     <meta name="author" th:content="${site.title}">
     <meta name="site" th:content="${site.url}">
+    <meta name="description" th:content="${site.subtitle}"/>
+    <meta name="twitter:description" th:content="${site.subtitle}"/>
     <meta property="og:keywords" th:content="${site.seo.keywords}">
     <meta property="og:description" th:content="${site.subtitle}">
     <meta property="og:site_name" th:content="${site.title}">
@@ -22,8 +24,6 @@
     <meta property="og:title" th:content="${site.title}">
     <meta property="og:locale" content="zh_CN">
     <meta property="og:type" content="article">
-    <meta name="description" th:content="${site.subtitle}"/>
-    <meta name="twitter:description" th:content="${site.subtitle}"/>
     <link rel="apple-touch-icon" sizes="180x180" th:href="${site.logo}">
     <link rel="canonical" th:href="${site.url}">
     <th:block th:insert="~{modules/config}"/>
@@ -32,9 +32,9 @@
   </head>
   <body>
   <div id="Butterfly" th:class="${page + ' relative flex min-h-full'}">
-    <main class="main w-full">
-      1
-    </main>
+    <header class="header"></header>
+    <main class="main w-full" style="height: 2000px"></main>
+    <footer class="footer"></footer>
     <th:block th:insert="~{modules/side}"/>
   </div>
   <th:block th:insert="${js_pin}"/>

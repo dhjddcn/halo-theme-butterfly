@@ -5,12 +5,43 @@
  * @Description: 主题变量
  */
 
-//浅色
+$themes: (
+  body:(
+    text-color:(
+      rgb(0, 0, 0),
+      rgba(255, 255, 255, 0.7)
+    ),
+  ),
+  header:(
+  ),
+  footer:(
+  ),
+  btn:(
+    text-color:(
+      rgba(255, 255, 255, 1),
+      rgba(255, 255, 255, 0.7)
+    ),
+    background-color:(
+      var(--theme),
+      var(--theme)
+    ),
+  )
+);
+
 html {
-  --body-color: rgb(0, 0, 0);
+  &[data-theme='light'] {
+    @each $key, $value in $themes {
+      @each $k, $v in $value {
+        --#{$key}-#{$k}: #{nth($v,1)};
+      }
+    }
+  }
+  &[data-theme='dark'] {
+    @each $key, $value in $themes {
+      @each $k, $v in $value {
+        --#{$key}-#{$k}: #{nth($v,2)};
+      }
+    }
+  }
 }
 
-//暗黑
-html[data-theme=dark] {
-  --body-color: rgba(255, 255, 255, 0.7);
-}

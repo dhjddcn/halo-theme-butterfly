@@ -14,6 +14,7 @@ class Index extends Butterfly {
 
   themeChange(theme) {
     console.log('主题：' + theme);
+
   }
 }
 
