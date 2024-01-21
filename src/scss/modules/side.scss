@@ -26,13 +26,13 @@
     }
 
     & > button {
+      display: block;
+      text-align: center;
       margin: .5rem 0;
       width: 35px;
       height: 35px;
       line-height: 35px;
       font-size: .92rem;
-      background-color: #49b1f5;
-      color: #fff;
       border-radius: 10px;
       transition: .3s ease 0s;
     }

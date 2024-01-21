@@ -33,7 +33,7 @@ export default class Butterfly {
 
   // 初始化主题模式
   #initThemeMode() {
-    const themeMode = ThemeConfig.theme['mode'];
+    const themeMode = ThemeConfig.style['mode'];
     let theme = localStorage.getItem('Butterfly-data-theme') || 'light';
 
     if (themeMode === 'auto') {
@@ -73,6 +73,10 @@ export default class Butterfly {
   #scroll(e) {
     const maxNUm = 56;
     let scrollNum = 0;
+
+    // 侧边小按钮组
+    const sideBtn = this.$('.side-btn');
+
     window.addEventListener('scroll', throttle(() => {
       let scrollTop = window.scrollY || document.documentElement.scrollTop
 
@@ -81,25 +85,23 @@ export default class Butterfly {
       } else {
         // console.log('向上2', scrollTop)
       }
-      
 
-      this.#sideBtn([maxNUm, scrollNum, scrollTop]);
+      // 用户模式下调用
+      if (ThemeConfig.theme.mode === 'user') this.#sideBtn(sideBtn, [maxNUm, scrollNum, scrollTop]);
+
       scrollNum = scrollTop;
     }, 200));
-
-  }
-
-  // 头部导航栏
-  #headerNav(e) {
   }
 
   // 侧边栏小按钮
-  #sideBtn([maxNUm, scrollNum, scrollTop]) {
-    let sideBtn;
-    if (!sideBtn) sideBtn = this.$('.side-btn');
+  #sideBtn(dom, [maxNUm, scrollNum, scrollTop]) {
+    if (scrollTop > maxNUm && scrollNum <= scrollTop) dom.addClass('active');
 
-    if (scrollTop > maxNUm && scrollNum <= scrollTop) sideBtn.addClass('active');
+    if (scrollTop < maxNUm && scrollTop <= 2) dom.removeClass('active');
+  }
 
-    if (scrollTop < maxNUm && scrollTop <= 2) sideBtn.removeClass('active');
+
+  // 头部导航栏
+  #headerNav(e) {
   }
 }

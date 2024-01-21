@@ -25,6 +25,14 @@ $themes: (
       var(--theme),
       var(--theme)
     ),
+    hover-background-color:(
+      lighten(#49b1f5,10%),
+      #fff
+    ),
+    //hover-text-color:(
+    //  var(--theme),
+    //  var(--theme)
+    //),
   )
 );
 
@@ -36,6 +44,7 @@ html {
       }
     }
   }
+
   &[data-theme='dark'] {
     @each $key, $value in $themes {
       @each $k, $v in $value {

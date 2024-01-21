@@ -16,7 +16,6 @@ const inquirer = require('inquirer');
 const tailwindcss = require('tailwindcss');
 const postcss = require('gulp-postcss')
 
-
 const resolve = (name) => path.resolve(__dirname, name);
 
 gulp.task("clean", () => {
@@ -32,10 +31,7 @@ gulp.task("clean", () => {
 
 gulp.task("css", function () {
   return gulp.src('./src/scss/page/*.scss')
-    .pipe(sass({}, {}))
-    .pipe(postcss([
-      tailwindcss,
-    ]))
+    .pipe(sass(undefined, true))
     .pipe(autoPrefix({
       overrideBrowserslist: [
         "> 5%",
@@ -45,6 +41,9 @@ gulp.task("css", function () {
       ],
       cascade: true,
     }))
+    .pipe(postcss([
+      tailwindcss,
+    ]))
     .pipe(minifyCSS())
     .pipe(rename({suffix: '.min'}))
     .pipe(gulp.dest('./templates/assets/css'))
