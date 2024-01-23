@@ -15,6 +15,7 @@ const yaml = require('yamljs');
 const inquirer = require('inquirer');
 const tailwindcss = require('tailwindcss');
 const postcss = require('gulp-postcss')
+const cleanCss = require('gulp-clean-css');
 
 const resolve = (name) => path.resolve(__dirname, name);
 
@@ -46,9 +47,9 @@ gulp.task("css", function () {
     ]))
     .pipe(minifyCSS())
     .pipe(rename({suffix: '.min'}))
+    .pipe(cleanCss({level: 2}))
     .pipe(gulp.dest('./templates/assets/css'))
 })
-
 gulp.task("js", function () {
   const getEntryData = () => {
     try {

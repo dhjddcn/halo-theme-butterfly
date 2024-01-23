@@ -1,17 +1,17 @@
 /**
  * @date: 2023/10/9
  * @author: 小红
- * @fileName: Butterfly
+ * @fileName: Core
  * @Description:核心
  */
 
-import Message from "./Message";
+import _message from "./_message";
 import Jquery from "jquery";
-import {throttle} from "./Utils";
+import {throttle} from "./_util";
 
-export default class Butterfly {
+export default class Core {
   $ = Jquery;
-  msg = new Message();
+  msg = new _message();
   theme = 'light';
 
   constructor() {
@@ -34,7 +34,7 @@ export default class Butterfly {
   // 初始化主题模式
   #initThemeMode() {
     const themeMode = ThemeConfig.style['mode'];
-    let theme = localStorage.getItem('Butterfly-data-theme') || 'light';
+    let theme = localStorage.getItem('Core-data-theme') || 'light';
 
     if (themeMode === 'auto') {
       theme = this.#isDaytime() ? 'light' : 'dark';
@@ -49,14 +49,14 @@ export default class Butterfly {
   setThemeMode(theme) {
     this.theme = theme;
     document.documentElement.dataset.theme = theme;
-    localStorage.setItem('Butterfly-data-theme', theme);
+    localStorage.setItem('Core-data-theme', theme);
     this.themeChange(theme);
   }
 
   // 获取主题模式
   getThemeMode() {
     const rootTheme = document.documentElement.dataset.theme;
-    const locDataTheme = localStorage.getItem('Butterfly-data-theme');
+    const locDataTheme = localStorage.getItem('Core-data-theme');
     return this.theme || rootTheme || locDataTheme;
   }
 

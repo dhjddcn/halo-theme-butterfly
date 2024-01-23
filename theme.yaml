@@ -3,11 +3,11 @@ kind: Theme
 metadata:
     name: theme-butterfly
 spec:
-    displayName: Butterfly
+    displayName: Core
     author:
         name: 小红
         website: 'https://dhjdd.cn'
-    description: '一个Halo博客主题，Butterfly 🦋'
+    description: '一个Halo博客主题，Core 🦋'
     logo: 'https://halo.run/logo'
     website: 'https://dhjdd.cn'
     repo: 'https://github.com/dhjddcn/halo-theme-butterfly.git'

@@ -4,6 +4,7 @@
  * @fileName: variable
  * @Description: 侧边样式
  */
+@use "_util";
 
 .side {
 
@@ -11,7 +12,6 @@
   &-bar {
 
   }
-
 
   //侧边小部件 按钮
   &-btn {
@@ -25,15 +25,14 @@
       transform: translateX(-58px)
     }
 
-    & > button {
+    & > .button {
       display: block;
       text-align: center;
       margin: .5rem 0;
       width: 35px;
       height: 35px;
       line-height: 35px;
-      font-size: .92rem;
-      border-radius: 10px;
+      font-size: .9rem;
       transition: .3s ease 0s;
     }
   }

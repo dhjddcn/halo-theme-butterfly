@@ -4,9 +4,9 @@
  * @fileName: index
  * @Description: 首页
  */
-import Butterfly from "../modules/Butterfly";
+import Core from "../modules/Core";
 
-class Index extends Butterfly {
+class Index extends Core {
   constructor() {
     super();
   }

@@ -1,0 +1,24 @@
+/**
+ * @date: 2024/1/16
+ * @author: 小红
+ * @fileName: utilities
+ * @Description: 工具
+ */
+/**
+变量生成
+ */
+@mixin useThemeVar($vars) {
+  html {
+    &[data-theme='light'] {
+      @each $key, $value in $vars {
+        --#{$key}: #{nth($value,1)};
+      }
+    }
+
+    &[data-theme='dark'] {
+      @each $key, $value in $vars {
+        --#{$key}: #{nth($value,2)};
+      }
+    }
+  }
+}
