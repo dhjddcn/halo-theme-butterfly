@@ -16,7 +16,8 @@ export default class Core {
 
   constructor() {
     this.#initThemeMode();
-    this.#scroll()
+    this.#scroll();
+    this.#backTop()
   }
 
   #isDaytime() {
@@ -100,6 +101,12 @@ export default class Core {
     if (scrollTop < maxNUm && scrollTop <= 2) dom.removeClass('active');
   }
 
+  // 回到顶部
+  #backTop() {
+    this.$('.back-top').on('click', () => {
+      this.$('html,body').animate({scrollTop: 0}, 300);
+    })
+  }
 
   // 头部导航栏
   #headerNav(e) {

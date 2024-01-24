@@ -4,8 +4,15 @@
  * @fileName: utilities
  * @Description: 工具
  */
+
+$w-sm: 640px;
+$w-md: 768px;
+$w-lg: 1024px;
+$w-xl: 1280px;
+$w-2xl: 1536px;
+
 /**
-变量生成
+变量
  */
 @mixin useThemeVar($vars) {
   html {
@@ -19,6 +26,15 @@
       @each $key, $value in $vars {
         --#{$key}: #{nth($value,2)};
       }
+    }
+  }
+}
+
+//响应式
+@mixin useResponsive($w) {
+  @at-root  #Butterfly {
+    @media (min-width: $w) {
+      @content;
     }
   }
 }

@@ -4,10 +4,9 @@
  * @fileName: variable
  * @Description: 侧边样式
  */
-@use "_util";
+@use "../core/util";
 
 .side {
-
   //侧边菜单
   &-bar {
 
@@ -19,6 +18,8 @@
     bottom: 40px;
     opacity: 0;
     transition: opacity .5s, transform .5s;
+    position: fixed;
+    z-index: 80;
 
     &.active {
       opacity: 1;

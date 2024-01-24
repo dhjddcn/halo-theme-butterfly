@@ -1,7 +1,6 @@
 const gulp = require('gulp');
 const sass = require('gulp-sass')(require('sass'));
 const uglify = require("gulp-uglify");
-const minifyCSS = require('gulp-csso');
 const autoPrefix = require('gulp-autoprefixer');
 const rename = require('gulp-rename');
 const gzip = require("gulp-gzip");
@@ -44,8 +43,8 @@ gulp.task("css", function () {
     }))
     .pipe(postcss([
       tailwindcss,
+      require('postcss-merge-rules')
     ]))
-    .pipe(minifyCSS())
     .pipe(rename({suffix: '.min'}))
     .pipe(cleanCss({level: 2}))
     .pipe(gulp.dest('./templates/assets/css'))

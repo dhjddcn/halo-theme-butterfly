@@ -26,14 +26,18 @@
     <meta property="og:type" content="article">
     <link rel="apple-touch-icon" sizes="180x180" th:href="${site.logo}">
     <link rel="canonical" th:href="${site.url}">
-    <th:block th:insert="~{modules/config}"/>
+    <th:block th:insert="~{core/config}"/>
     <th:block th:insert="${css_pin}"/>
     <link rel="preload stylesheet" as="style" th:href="${assets_link + 'css/' + page + '.min.css?v=' + theme.spec.version}">
   </head>
   <body>
-  <div id="Butterfly" th:class="${page + ' relative flex min-h-full'}">
-    <header class="header"></header>
-    <main class="main w-full" style="height: 2000px"></main>
+  <div id="Butterfly" th:class="${page}">
+    <header class="header">
+      <th:block th:insert="~{modules/nav}"/>
+      <section class="above" style="height: 100vh"></section>
+    </header>
+    <main class="main" style="height: 10000px">
+    </main>
     <footer class="footer"></footer>
     <th:block th:insert="~{modules/side}"/>
   </div>

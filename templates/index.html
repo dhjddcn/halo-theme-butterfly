@@ -1,17 +1,12 @@
 <html
   xmlns:th="https://www.thymeleaf.org"
-  th:replace="~{modules/layout :: layout (
+  th:replace="~{core/layout :: layout (
   page = 'index',
   title = ${site.title},
   css_pin = ~{::css_pin},
   js_pin = ~{::js_pin}
   )}"
 >
-
-<th:block th:fragment="css_pin">
-</th:block>
-
-<th:block th:fragment="js_pin">
-</th:block>
-
+<th:block th:fragment="css_pin"></th:block>
+<th:block th:fragment="js_pin"></th:block>
 </html>

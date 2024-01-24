@@ -1,0 +1,15 @@
+/**
+ * @date: 2024/1/24
+ * @author: 小红
+ * @fileName: header
+ * @Description: 头部
+ */
+@use "../core/util";
+
+.header {
+  position: relative;
+  width: 100%;
+  min-height: 60px;
+}
+
+@import "nav";

@@ -22,15 +22,23 @@ body {
   color: var(--body-text-color);
 }
 
+#Butterfly {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
 ::-webkit-scrollbar {
   height: 6px;
   width: 6px
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #49b1f5;
+  background: var(--theme);
 }
 
 ::-webkit-scrollbar-track {
   background-color: transparent
 }
+
