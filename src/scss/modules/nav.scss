@@ -8,9 +8,22 @@
 @use "../core/util";
 
 @include util.useThemeVar((
-  nav-font-color:(#eee, var(--body-text-color))
 ));
+
 .nav {
+
+  @keyframes nav-down {
+    0% {
+      opacity: 0;
+      transform: translate3d(0, -50px, 0)
+    }
+
+    to {
+      transform: translate3d(0, 0, 0);
+      opacity: 1
+    }
+  }
+
   position: absolute;
   top: 0;
   width: 100%;
@@ -21,19 +34,47 @@
   user-select: none;
   padding: 0 36px;
   font-size: 1.1rem;
-  z-index: 100;
-  transform: translate3d(0, 0, 0);
-  transition: padding .5s, background .5s, transform .5s;
+  z-index: 90;
+  animation: nav-down 1.2s;
+  transition: .5s;
 
-  .site-title {
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, .15);
-    font-weight: 700;
-    color: var(--nav-font-color);
+  &-title {
+    flex: 1;
     transition: color .5s;
+    color: var(--nav-font-color);
+
+    > a {
+      font-weight: 700;
+      cursor: var(--cursor-pointer);
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, .15);
+    }
   }
 
 
-  box-shadow: 0 5px 6px -5px rgba(133, 133, 133, 0.6);
+  &.style {
+    position: fixed;
+    z-index: 91;
+    top: -60px;
+    background-color: var(--nav-scroll-background-color);
+    box-shadow: var(--nav-scroll-shadow);
+    transition: .2s ease-in-out;
+  }
+
+  //&:is(.style) {
+  //  &-title {
+  //    color: var(--nav-active-font-color);
+  //  }
+  //}
+
+
+  &.active {
+    transition: .5s;
+    transform: translate3d(0, 100%, 0);
+  }
+
+  &-menu {
+
+  }
 }
  
  

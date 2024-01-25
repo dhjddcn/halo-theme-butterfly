@@ -12,7 +12,6 @@ const zip = require('gulp-zip');
 const exec = require('child_process').exec;
 const yaml = require('yamljs');
 const inquirer = require('inquirer');
-const tailwindcss = require('tailwindcss');
 const postcss = require('gulp-postcss')
 const cleanCss = require('gulp-clean-css');
 
@@ -42,11 +41,11 @@ gulp.task("css", function () {
       cascade: true,
     }))
     .pipe(postcss([
-      tailwindcss,
+      require('tailwindcss'),
       require('postcss-merge-rules')
     ]))
     .pipe(rename({suffix: '.min'}))
-    .pipe(cleanCss({level: 2}))
+    .pipe(cleanCss({level: 2, format: true}))
     .pipe(gulp.dest('./templates/assets/css'))
 })
 gulp.task("js", function () {

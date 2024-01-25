@@ -1,4 +1,9 @@
 <!--/* 导航栏 */-->
 <nav class="nav">
-  <a th:text="${site.title}" class="site-title" href="/"></a>
+  <span class="nav-title">
+    <a th:text="${site.title}" href="/"></a>
+  </span>
+  <div class="nav-menu">
+    <div class="search">搜索</div>
+  </div>
 </nav>

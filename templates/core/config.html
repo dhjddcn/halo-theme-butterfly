@@ -10,13 +10,22 @@
   html {
     --theme: #49b1f5;
     --body-background-color: #f1f1f1;
+
+    --nav-font-color: rgba(238, 238, 238, 1);
+    --nav-active-font-color: #4c4948;
+    --nav-scroll-background-color: rgba(255, 255, 255, .8);
+    --nav-scroll-shadow: 0 5px 6px -5px rgba(133, 133, 133, .6);
   }
 
   html[data-theme=dark] {
     --theme: #ff7242;
     --body-background-color: rgb(15, 23, 42);
+
+    --nav-font-color: rgba(255, 255, 255, 0.7);
+    --nav-scroll-background-color: rgba(18, 18, 18, .8);
+    --nav-scroll-shadow: 0 5px 6px -5px rgba(133, 133, 133, 0);
   }
 </style>
-
+<link rel="preload stylesheet" as="style" th:href="${assets_link + 'font/' + 'CircularBody' + '.min.css'}">
 <link rel="preload stylesheet" as="style" th:href="${assets_link + 'plugins/fontawesome/fontawesome.min.css'}">
 <link rel="preload stylesheet" as="style" th:href="${assets_link + 'plugins/cursor/' + 'simple' + '.min.css'}">

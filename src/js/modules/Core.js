@@ -78,20 +78,21 @@ export default class Core {
     // 侧边小按钮组
     const sideBtn = this.$('.side-btn');
 
+    // 导航栏
+    const nav = this.$('.header > .nav');
+    // 默认状态下大于56px时 add style
+    if (window.scrollY > maxNUm) nav.addClass('style');
+
     window.addEventListener('scroll', throttle(() => {
       let scrollTop = window.scrollY || document.documentElement.scrollTop
 
-      if (scrollTop > maxNUm && scrollNum <= scrollTop) {
-        // console.log('向下2', scrollTop)
-      } else {
-        // console.log('向上2', scrollTop)
-      }
+      this.#nav(nav, [maxNUm, scrollNum, scrollTop]);
 
       // 用户模式下调用
       if (ThemeConfig.theme.mode === 'user') this.#sideBtn(sideBtn, [maxNUm, scrollNum, scrollTop]);
 
       scrollNum = scrollTop;
-    }, 200));
+    }, 250));
   }
 
   // 侧边栏小按钮
@@ -101,14 +102,24 @@ export default class Core {
     if (scrollTop < maxNUm && scrollTop <= 2) dom.removeClass('active');
   }
 
+  // 头部导航栏
+  #nav(dom, [maxNUm, scrollNum, scrollTop]) {
+    if (scrollTop > maxNUm) {
+      if (scrollNum <= scrollTop) {
+        dom.removeClass('active')
+      } else {
+        dom.addClass('active')
+      }
+      !dom.hasClass('style') && dom.addClass('style');
+    } else {
+      dom.removeClass('active style');
+    }
+  }
+
   // 回到顶部
   #backTop() {
     this.$('.back-top').on('click', () => {
       this.$('html,body').animate({scrollTop: 0}, 300);
     })
-  }
-
-  // 头部导航栏
-  #headerNav(e) {
   }
 }
