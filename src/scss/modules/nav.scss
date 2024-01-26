@@ -33,19 +33,23 @@
   flex-wrap: nowrap;
   user-select: none;
   padding: 0 36px;
-  font-size: 1.1rem;
-  z-index: 90;
+  font-size: 1.15rem;
   animation: nav-down 1.2s;
+  z-index: 90;
   transition: .5s;
+
+  @include util.useResponsive(util.$w-md) {
+    padding: 0 16px;
+  }
 
   &-title {
     flex: 1;
     transition: color .5s;
     color: var(--nav-font-color);
 
-    > a {
+    .link {
       font-weight: 700;
-      cursor: var(--cursor-pointer);
+      //cursor: var(--cursor-pointer);
       text-shadow: 2px 2px 4px rgba(0, 0, 0, .15);
     }
   }
@@ -57,14 +61,8 @@
     top: -60px;
     background-color: var(--nav-scroll-background-color);
     box-shadow: var(--nav-scroll-shadow);
-    transition: .2s ease-in-out;
+    transition: transform .2s ease-in-out, opacity .2s ease-in-out;
   }
-
-  //&:is(.style) {
-  //  &-title {
-  //    color: var(--nav-active-font-color);
-  //  }
-  //}
 
 
   &.active {
@@ -72,8 +70,73 @@
     transform: translate3d(0, 100%, 0);
   }
 
-  &-menu {
+  &-do {
+    @include util.flex-center;
+    flex-direction: row;
+    color: var(--nav-font-color);
 
+    .link {
+      display: block;
+      position: relative;
+      height: 60px;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, .3);
+      font-size: .85em;
+      line-height: 60px;
+      text-align: center;
+    }
+
+    //操作项
+    .controls {
+      display: flex;
+      //cursor: var(--cursor-pointer);
+      @include util.flex-center;
+
+      .toggle {
+        display: none;
+      }
+
+      @include util.useResponsive(util.$w-md) {
+        .link {
+          padding: 0 2px;
+          font-size: 1em;
+
+          .name {
+            display: none;
+          }
+        }
+
+        .toggle {
+          display: block;
+          margin-left: 7px;
+        }
+      }
+    }
+
+    //菜单
+    .menu {
+      @include util.flex-center;
+
+      @include util.useResponsive(util.$w-md) {
+        display: none;
+      }
+
+      &-item {
+        margin-left: 15px;
+      }
+
+    }
+
+  }
+
+
+  &:is(.style) {
+    .nav-title, .nav-do {
+      color: var(--nav-active-font-color);
+
+      .link {
+        text-shadow: none;
+      }
+    }
   }
 }
  

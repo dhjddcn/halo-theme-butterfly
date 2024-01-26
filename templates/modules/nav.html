@@ -1,9 +1,37 @@
 <!--/* 导航栏 */-->
 <nav class="nav">
-  <span class="nav-title">
-    <a th:text="${site.title}" href="/"></a>
-  </span>
-  <div class="nav-menu">
-    <div class="search">搜索</div>
+  <div class="nav-title">
+    <a class="link" th:text="${site.title}" href="/"></a>
+  </div>
+  <div class="nav-do">
+    <!--/* 搜索 */-->
+    <div class="controls" th:if="${pluginFinder.available('PluginSearchWidget')}">
+      <a class="link" href="javascript:SearchWidget.open()" title="搜索">
+        <i class="icon fas fa-search fa-fw"></i>
+        <span class="name">搜索</span>
+      </a>
+
+      <a class="link toggle" href="#">
+        <i class="fas fa-bars fa-fw"></i>
+      </a>
+    </div>
+    <!--/* 移动侧边栏按钮 */-->
+
+    <!--/* 菜单 */-->
+    <ul class="menu" th:with="menuItems = ${menuFinder.getPrimary().menuItems}">
+      <th:block th:each="menuItem : ${menuItems}">
+        <li th:if="${#lists.isEmpty(menuItem.children)}" class="menu-item">
+          <a
+            class="link"
+            th:href="@{${menuItem.status.href}}"
+            th:target="${menuItem.spec.target?.value}"
+            th:with="icon = ${#annotations.getOrDefault(menuItem, 'icon','')}"
+          >
+            <i th:if="${!#strings.isEmpty(icon)}" th:class="${icon}"></i>
+            <span class="name" th:text="${menuItem.status.displayName}"></span>
+          </a>
+        </li>
+      </th:block>
+    </ul>
   </div>
 </nav>

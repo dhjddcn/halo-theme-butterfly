@@ -32,9 +32,16 @@ $w-2xl: 1536px;
 
 //响应式
 @mixin useResponsive($w) {
-  @at-root  #Butterfly {
-    @media (min-width: $w) {
+  @at-root  #Butterfly & {
+    @media (max-width: $w) {
       @content;
     }
   }
+}
+
+//居中
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

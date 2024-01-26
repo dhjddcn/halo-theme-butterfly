@@ -81,7 +81,7 @@ export default class Core {
     // 导航栏
     const nav = this.$('.header > .nav');
     // 默认状态下大于56px时 add style
-    if (window.scrollY > maxNUm) nav.addClass('style');
+    // if (window.scrollY > maxNUm) nav.addClass('style');
 
     window.addEventListener('scroll', throttle(() => {
       let scrollTop = window.scrollY || document.documentElement.scrollTop
@@ -105,14 +105,14 @@ export default class Core {
   // 头部导航栏
   #nav(dom, [maxNUm, scrollNum, scrollTop]) {
     if (scrollTop > maxNUm) {
+      dom.addClass('style');
       if (scrollNum <= scrollTop) {
         dom.removeClass('active')
       } else {
         dom.addClass('active')
       }
-      !dom.hasClass('style') && dom.addClass('style');
     } else {
-      dom.removeClass('active style');
+      if (scrollTop === 0) dom.removeClass('active style');
     }
   }
 

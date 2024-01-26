@@ -5,3 +5,11 @@
  * @Description: 首页
  */
 @use '../core';
+
+.index {
+  .header {
+    .above {
+      height: 100vh;
+    }
+  }
+}
