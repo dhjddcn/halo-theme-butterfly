@@ -92,7 +92,7 @@ export default class Core {
       if (ThemeConfig.theme.mode === 'user') this.#sideBtn(sideBtn, [maxNUm, scrollNum, scrollTop]);
 
       scrollNum = scrollTop;
-    }, 250));
+    }, 200));
   }
 
   // 侧边栏小按钮

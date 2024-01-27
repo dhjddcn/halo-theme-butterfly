@@ -36,6 +36,7 @@
   font-size: 1.15rem;
   animation: nav-down 1.2s;
   z-index: 90;
+  will-change: opacity, transform;
   transition: .5s;
 
   @include util.useResponsive(util.$w-md) {
@@ -49,21 +50,18 @@
 
     .link {
       font-weight: 700;
-      //cursor: var(--cursor-pointer);
       text-shadow: 2px 2px 4px rgba(0, 0, 0, .15);
     }
   }
-
 
   &.style {
     position: fixed;
     z-index: 91;
     top: -60px;
-    background-color: var(--nav-scroll-background-color);
-    box-shadow: var(--nav-scroll-shadow);
+    background-color: var(--nav-active-background-color);
+    box-shadow: var(--nav-active-shadow);
     transition: transform .2s ease-in-out, opacity .2s ease-in-out;
   }
-
 
   &.active {
     transition: .5s;
@@ -83,15 +81,43 @@
       font-size: .85em;
       line-height: 60px;
       text-align: center;
+
+      &::after {
+        position: absolute;
+        left: 0;
+        right: 0;
+        opacity: 0;
+        bottom: 16px;
+        content: "";
+        height: 3px;
+        transform: scaleX(.25);
+        background: var(--theme);
+        border-radius: 2px 2px 0 0;
+        transition: opacity .5s, transform .5s;
+      }
+
+      &:hover {
+        &::after {
+          opacity: 1;
+          transform: scaleX(1);
+        }
+
+        .fa-chevron-down {
+          transform: rotate(180deg);
+        }
+      }
+
+      i {
+        font-size: 1em;
+      }
+
     }
 
     //操作项
     .controls {
-      display: flex;
-      //cursor: var(--cursor-pointer);
       @include util.flex-center;
 
-      .toggle {
+      .bars {
         display: none;
       }
 
@@ -105,7 +131,7 @@
           }
         }
 
-        .toggle {
+        .bars {
           display: block;
           margin-left: 7px;
         }
@@ -121,11 +147,59 @@
       }
 
       &-item {
-        margin-left: 15px;
+        margin-left: 20px;
+
+        .fa-chevron-down {
+          transition: transform .3s;
+        }
+
+        &:hover .menu-children {
+          visibility: visible;
+          opacity: 1;
+          transform: scaleY(1)
+        }
       }
 
-    }
+      //二级
+      &-children {
+        position: absolute;
+        opacity: 0;
+        visibility: hidden;
+        width: max-content;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, .15);
+        background-color: var(--nav-menu-dropdown-background-color);
+        transform: scaleY(0);
+        transform-origin: top;
+        transition: transform 0.3s ease-out;
 
+        &--item {
+          transition: background-color .3s;
+
+          &:first-child {
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px
+          }
+
+          &:last-child {
+            border-bottom-right-radius: 5px;
+            border-bottom-left-radius: 5px
+          }
+
+          &:hover {
+            background-color: var(--theme);
+          }
+        }
+
+        &--link {
+          display: block;
+          padding: 8px 18px;
+          font-size: .95rem;
+          color: rgba(76, 73, 72, 1);
+          width: 100%;
+        }
+      }
+    }
   }
 
 
@@ -135,6 +209,10 @@
 
       .link {
         text-shadow: none;
+
+        &:hover {
+          color: var(--nav-active-hover-font-color);
+        }
       }
     }
   }

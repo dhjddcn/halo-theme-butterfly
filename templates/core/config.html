@@ -9,14 +9,16 @@
 <style th:inline="css">
   html {
     --theme: #49b1f5;
-    --above-background:url('http://127.0.0.1:8090/upload/c6ac1e46880411ebb6edd017c2d2eca2.jpg');
-    
+    --above-background: url('http://127.0.0.1:8090/upload/index.jpg');
+
     --body-background-color: #f1f1f1;
 
     --nav-font-color: rgba(238, 238, 238, 1);
     --nav-active-font-color: #4c4948;
-    --nav-scroll-background-color: rgba(255, 255, 255, .8);
-    --nav-scroll-shadow: 0 5px 6px -5px rgba(133, 133, 133, .6);
+    --nav-active-hover-font-color: var(--theme);
+    --nav-active-background-color: rgba(255, 255, 255, .8);
+    --nav-active-shadow: 0 5px 6px -5px rgba(133, 133, 133, .6);
+    --nav-menu-dropdown-background-color: rgba(255, 255, 255);
   }
 
   html[data-theme=dark] {
@@ -24,11 +26,13 @@
     --body-background-color: rgb(15, 23, 42);
 
     --nav-font-color: rgba(255, 255, 255, 0.7);
-    --nav-active-font-color: rgba(255,255,255,0.7);
-    --nav-scroll-background-color: rgba(18, 18, 18, .8);
-    --nav-scroll-shadow: 0 5px 6px -5px rgba(133, 133, 133, 0);
+    --nav-active-font-color: rgba(255, 255, 255, 0.7);
+    --nav-active-hover-font-color: var(--theme);
+    --nav-active-background-color: rgba(18, 18, 18, .8);
+    --nav-active-shadow: 0 5px 6px -5px rgba(133, 133, 133, 0);
+    --nav-menu-dropdown-background-color: rgba(18, 18, 18);
   }
 </style>
-<link rel="preload stylesheet" as="style" th:href="${assets_link + 'font/' + 'CircularBody' + '.min.css'}">
+<link rel="preload stylesheet" as="style" th:if="${theme.config.style.font_family != 'null'}" th:href="${assets_link + 'font/' + theme.config.style.font_family + '.min.css'}">
 <link rel="preload stylesheet" as="style" th:href="${assets_link + 'plugins/fontawesome/fontawesome.min.css'}">
 <link rel="preload stylesheet" as="style" th:href="${assets_link + 'plugins/cursor/' + 'simple' + '.min.css'}">

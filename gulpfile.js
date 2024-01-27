@@ -28,9 +28,19 @@ gulp.task("clean", () => {
   );
 });
 
+const minifyCSS = require("gulp-csso");
+const mergeRules = require('postcss-merge-rules');
+const cssnano = require('gulp-cssnano');
+
 gulp.task("css", function () {
   return gulp.src('./src/scss/page/*.scss')
     .pipe(sass(undefined, true))
+    .pipe(postcss([
+      mergeRules()
+    ]))
+    .pipe(cleanCss({level: 2, format: true}))
+    .pipe(cssnano())
+    .pipe(minifyCSS())
     .pipe(autoPrefix({
       overrideBrowserslist: [
         "> 5%",
@@ -40,12 +50,7 @@ gulp.task("css", function () {
       ],
       cascade: true,
     }))
-    .pipe(postcss([
-      require('tailwindcss'),
-      require('postcss-merge-rules')
-    ]))
     .pipe(rename({suffix: '.min'}))
-    .pipe(cleanCss({level: 2, format: true}))
     .pipe(gulp.dest('./templates/assets/css'))
 })
 gulp.task("js", function () {

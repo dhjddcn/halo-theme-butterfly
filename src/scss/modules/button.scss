@@ -62,10 +62,11 @@
   }
 
   .button {
+    @include util.flex-center;
     position: relative;
     border-radius: 10px;
     background-color: var(--theme);
-    transition: all 0.2s ease;
+    transition: 0.2s ease;
     color: var(--button-text-color);
 
     &:active {
