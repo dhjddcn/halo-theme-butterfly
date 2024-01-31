@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html
+  xmlns:th="https://www.thymeleaf.org"
+  th:replace="~{modules/layout :: layout (
+  page = 'single',
+  title = ${singlePage.spec.title},
+  head = ~{::head},
+  above = ~{::above},
+  content = ~{::content},
+  js = ~{::js}
+  )}">
+>
+<th:block th:fragment="head">
+  <style th:inline="css"
+         th:with="above_background= ${is_body_bg_http ? '' : 'url(' + (#strings.isEmpty(singlePage.spec.cover )  ? theme.config.index.above_background : singlePage.spec.cover )+ ')'}">
+    .above {
+      --above-background: /*[(${above_background})]*/ transparent;
+    }
+  </style>
+  <link rel="preload stylesheet" as="style" th:href="${assets_link+'/plugins/fancybox/fancybox.min.css'}">
+  <th:block th:if="${theme.config.code.enable}">
+    <link rel="preload stylesheet" as="style" th:href="${assets_link+'/plugins/prism/prism.min.css'}">
+    <link rel="alternate stylesheet" onload="this.rel='stylesheet'"
+          data-code-theme="light"
+          disabled
+          th:href="${assets_link+ '/plugins/prism/themes/prism-'+theme.config.code.theme_light+'.css'}">
+    <link rel="alternate stylesheet" onload="this.rel='stylesheet'"
+          data-code-theme="dark"
+          disabled
+          th:href="${assets_link+'/plugins/prism/themes/prism-'+theme.config.code.theme_dark+'.css'}">
+    <script type="text/javascript" th:src="${assets_link+'/plugins/prism/prism.min.js'}"></script>
+  </th:block>
+  <link rel="stylesheet" th:href="${assets_link+'/css/single.min.css' + theme_version}">
+  <script id="single-script" th:inline="javascript">
+    window.PageConfig = {
+      code:/*[[${theme.config.code}]]*/ {},
+    };
+    document.getElementById('single-script').remove();
+  </script>
+</th:block>
+
+<section
+  th:fragment="above"
+  th:if="${theme.config.single.enable_above}"
+  class="above relative w-100">
+  <h1 class="absolute above-public-title font-weight-400 margin-0 left-0 right-0 text-center"
+      th:text=" ${singlePage.spec.title}"></h1>
+</section>
+
+<th:block th:fragment="content">
+  <section class="container card">
+
+    <article th:utext="${singlePage.content.content}"
+             th:class="'render-html animated fadeIn single_code_select '+${ theme.config.code.enable_line ? 'line-numbers' : ''} + ${ !theme.config.single.enable_h_title ? ' enable_h_title' : ''}"></article>
+  </section>
+
+  <th:block th:replace="~{modules/public:: aside}"></th:block>
+</th:block>
+
+<th:block th:fragment="js">
+  <script type="text/javascript" th:src="${assets_link+'/js/single.min.js' + theme_version}"></script>
+</th:block>
+</html>

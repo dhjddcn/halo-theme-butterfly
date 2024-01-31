@@ -24,14 +24,60 @@
   }
 
   .above {
+    position: relative;
     width: 100%;
     height: 400px;
     background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;
     backface-visibility: hidden;
-    animation: above-down .8s;
+    //animation: above-down .8s;
+    transition: .5s;
     background-image: var(--above-background);
+
+    &::before {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-color: var(--mark-background-color);
+      content: '';
+    }
+
+    &-info {
+      width: 100%;
+      position: absolute;
+      padding: 0 10px;
+      text-align: center;
+    }
+
+    &-title {
+      @keyframes above-title-scale {
+        0% {
+          opacity: 0;
+          transform: scale(.7)
+        }
+
+        100% {
+          opacity: 1;
+          transform: scale(1)
+        }
+      }
+
+      @include util.useThemeVar((
+        above-title-color: (rgb(255, 255, 255), rgba(255, 255, 255, 0.9)),
+      ));
+
+      @include util.useResponsive(util.$w-md) {
+        font-size: 1.85em;
+      }
+
+      font-size: 2.85em;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, .15);
+      line-height: 1.5;
+      font-weight: 700;
+      color: var(--above-title-color);
+      animation: above-title-scale 1s;
+    }
   }
 }
 

@@ -1,7 +1,7 @@
 /**
  * @date: 2023/10/9
  * @author: 小红
- * @fileName: Core
+ * @fileName: Index
  * @Description:核心
  */
 
@@ -18,6 +18,7 @@ export default class Core {
     this.#initThemeMode();
     this.#scroll();
     this.#backTop()
+    this.#bars();
   }
 
   #isDaytime() {
@@ -35,7 +36,7 @@ export default class Core {
   // 初始化主题模式
   #initThemeMode() {
     const themeMode = ThemeConfig.style['mode'];
-    let theme = localStorage.getItem('Core-data-theme') || 'light';
+    let theme = localStorage.getItem('Index-data-theme') || 'light';
 
     if (themeMode === 'auto') {
       theme = this.#isDaytime() ? 'light' : 'dark';
@@ -50,14 +51,14 @@ export default class Core {
   setThemeMode(theme) {
     this.theme = theme;
     document.documentElement.dataset.theme = theme;
-    localStorage.setItem('Core-data-theme', theme);
+    localStorage.setItem('Index-data-theme', theme);
     this.themeChange(theme);
   }
 
   // 获取主题模式
   getThemeMode() {
     const rootTheme = document.documentElement.dataset.theme;
-    const locDataTheme = localStorage.getItem('Core-data-theme');
+    const locDataTheme = localStorage.getItem('Index-data-theme');
     return this.theme || rootTheme || locDataTheme;
   }
 
@@ -118,8 +119,15 @@ export default class Core {
 
   // 回到顶部
   #backTop() {
-    this.$('.back-top').on('click', () => {
+    this.$('button.back-top').on('click', () => {
       this.$('html,body').animate({scrollTop: 0}, 300);
+    })
+  }
+
+  // 移动端侧边栏呼出图标
+  #bars() {
+    this.$('.nav a.bars').on('click', () => {
+      // this.$('.side').toggleClass('active');
     })
   }
 }

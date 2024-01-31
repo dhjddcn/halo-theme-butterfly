@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html
+  xmlns:th="https://www.thymeleaf.org"
+  th:replace="~{modules/layout :: layout (
+  page = 'tags',
+  title = ${theme.config.tags.custom_title},
+  head = ~{::head},
+  above = ~{::above},
+  content = ~{::content},
+  js = ~{::js}
+  )}">
+>
+<th:block th:fragment="head">
+  <style th:inline="css"
+         th:with="above_background= ${is_body_bg_http ? '' : 'url(' + theme.config.tags.above_background + ')'}">
+    .above {
+      --above-background: /*[(${above_background})]*/ transparent;
+    }
+  </style>
+  <link rel="stylesheet" th:href="${assets_link+'/css/tags.min.css' + theme_version}">
+</th:block>
+
+<section
+  th:fragment="above"
+  th:if="${theme.config.tags.enable_above}"
+  class="above relative w-100">
+  <h1 class="absolute above-public-title font-weight-400 margin-0 left-0 right-0 text-center"
+      th:text="${theme.config.tags.custom_title}"></h1>
+</section>
+
+
+<th:block th:fragment="content">
+  <section class="container card" th:with="noData = ${not #lists.isEmpty(tags)}">
+    <th:block th:if="${noData}">
+      <div class="tags-chart w-100"></div>
+      <div class="tags-list text-center">
+        <a class="tags-list-item inline-block relative"
+           th:each="tag : ${tags}"
+           th:text="${tag.spec.displayName}"
+           th:data-postCount="${tag.postCount}"
+           th:data-color="${tag.spec.color}"
+           th:href="${tag.status.permalink}"></a>
+      </div>
+    </th:block>
+
+    <th:block th:unless="${noData}" th:insert="~{modules/public:: emptyData('暂无标签~',false)}"></th:block>
+  </section>
+
+  <th:block th:replace="~{modules/public:: aside}"></th:block>
+</th:block>
+
+<th:block th:fragment="js">
+  <script type="text/javascript" th:src="${assets_link+'/plugins/echarts/echarts.min.js'}"></script>
+  <script type="text/javascript" th:src="${assets_link+'/js/tags.min.js' + theme_version}"></script>
+</th:block>
+</html>

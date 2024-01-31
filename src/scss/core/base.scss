@@ -9,6 +9,7 @@
 //定义变量
 @include util.useThemeVar((
   body-text-color:(rgb(0, 0, 0), rgba(255, 255, 255, 0.7)),
+  mark-background-color:(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6)),
 ));
 
 body {

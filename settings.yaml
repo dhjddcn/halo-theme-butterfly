@@ -84,3 +84,42 @@ spec:
           value: 'https://cdn.jsdelivr.net/npm/halo-theme-butterfly/templates/assets/'
           help: '默认为npmJs的jsdelivr加速地址（gitHub仓库主页加速列表），可自行配置cdn地址（请确保链接下assets文件夹下主题静态资源文件 与 jsdelivr地址中的文件一致），可以填写，否则请勿修改！'
           validation: required|url
+
+    - group: index
+      label: 首页设置
+      formSchema:
+        - $formkit: radio
+          name: enable_above
+          label: 启用第一屏
+          help: 启用首页第一屏
+          value: 'true'
+          options:
+            - label: 启用
+              value: true
+            - label: 禁用
+              value: false
+        - $formkit: attachment
+          name: above_background
+          label: 第一屏背景图
+          placeholder: 请填写 第一屏背景图
+          value: 'https://fastly.jsdelivr.net/npm/halo-theme-butterfly@latest/above.png'
+          help: 如果全局背景图设置为图片链接，则此处背景图将不生效
+          validation: required
+        - $formkit: textarea
+          rows: 5
+          name: typewriter
+          label: 打字机文案
+          placeholder: 请填写 打字机文案
+          value: '欢迎来到我的博客|&|请填写打字机文案'
+          help: 首页第一屏打字机文案 (注：多个文案用 |&| 隔开)
+          validation: required
+        - $formkit: radio
+          name: post_layout
+          label: 文章布局方式
+          help: 文章布局方式 提供（列表、平铺）两种，仅首页生效
+          value: 'list'
+          options:
+            - label: 列表
+              value: list
+            - label: 平铺
+              value: tile

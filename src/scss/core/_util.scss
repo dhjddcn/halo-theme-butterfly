@@ -15,7 +15,7 @@ $w-2xl: 1536px;
 变量
  */
 @mixin useThemeVar($vars) {
-  html {
+  @at-root  html {
     &[data-theme='light'] {
       @each $key, $value in $vars {
         --#{$key}: #{nth($value,1)};
@@ -31,10 +31,19 @@ $w-2xl: 1536px;
 }
 
 //响应式
-@mixin useResponsive($w) {
-  @at-root  #Butterfly & {
-    @media (max-width: $w) {
-      @content;
+@mixin useResponsive($w,$p:0) {
+
+  @if ($p == 0) {
+    @at-root  #Butterfly & {
+      @media (max-width: $w) {
+        @content;
+      }
+    }
+  } @else {
+    @at-root  #Butterfly#{&} {
+      @media (max-width: $w) {
+        @content;
+      }
     }
   }
 }

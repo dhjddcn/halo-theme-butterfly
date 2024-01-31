@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html
+  xmlns:th="https://www.thymeleaf.org"
+  th:replace="~{modules/layout :: layout (
+  page = 'archives',
+  title =${theme.config.archives.custom_title},
+  head = ~{::head},
+  above = ~{::above},
+  content = ~{::content},
+  js = ~{::js}
+  )}">
+>
+<th:block th:fragment="head">
+  <style th:inline="css"
+         th:with="above_background= ${is_body_bg_http ? '' : 'url(' + theme.config.archives.above_background + ')'}">
+    .above {
+      --above-background: /*[(${above_background})]*/ transparent;
+    }
+  </style>
+  <link rel="stylesheet" th:href="${assets_link+'/css/archives.min.css' + theme_version}">
+
+  <script id="archives-script" th:inline="javascript">
+    window.ArchivesData = /*[[${postFinder.archives(1,archives.total).items}]]*/ {};
+  </script>
+</th:block>
+
+<section
+  th:fragment="above"
+  th:if="${theme.config.archives.enable_above}"
+  class="above relative w-100">
+  <h1 class="absolute above-public-title font-weight-400 margin-0 left-0 right-0 text-center"
+      th:text="${theme.config.archives.custom_title}"></h1>
+</section>
+
+
+<th:block th:fragment="content">
+  <section class="container card" th:with="noData = ${not #lists.isEmpty(archives.items)}">
+    <th:block th:if="${noData}">
+      <div class="archives-chart w-100"></div>
+      <div class="archives-axis-title relative" th:text="'文章总览 -'+${archives.total}"></div>
+      <ul class="archives-axis-list">
+        <th:block th:each="archive : ${archives.items}">
+          <li class="archives-axis-list--item relative flex flex-align-items-center year">
+            <span class="name" th:text="${archive.year}"></span>
+            <!--            <i class="fa-sharp fa-solid fa-rabbit"></i>-->
+          </li>
+          <th:block th:each="months : ${archive.months}">
+
+            <li class="archives-axis-list--item relative flex flex-align-items-center"
+                th:each="post : ${months.posts}">
+
+              <a class="cover overflow-hidden relative"
+                 th:href="${post.status.permalink}"
+              >
+                <img class="w-100 h-100"
+                     th:src="${theme.config.loading.preload}"
+                     th:attr="onerror='this.src='+${'`'+theme.config.loading.err+'`'}"
+                     th:data-lazy-src="${#strings.isEmpty(post.spec.cover) ? (random_img + '?title=' + post.spec.title)  : post.spec.cover+' '}"
+                     th:alt="${post.spec.title}" alt="">
+              </a>
+
+              <div class="info flex-1">
+                <time th:text="'发布于 '+${#dates.format(post.spec.publishTime, 'yyyy-MM-dd HH:mm')}"></time>
+                <a class="title text-clamp text-cmp2" th:href="${post.status.permalink}"
+                   th:text="${post.spec.title}"></a>
+              </div>
+
+            </li>
+
+          </th:block>
+        </th:block>
+      </ul>
+      <th:block th:replace="~{modules/public:: pagination(${archives},'/archives')}"></th:block>
+    </th:block>
+
+    <th:block th:unless="${noData}" th:insert="~{modules/public:: emptyData('暂无归档~',false)}"></th:block>
+  </section>
+
+  <th:block th:replace="~{modules/public:: aside}"></th:block>
+</th:block>
+
+<th:block th:fragment="js">
+  <script type="text/javascript" th:src="${assets_link+'/plugins/echarts/echarts.min.js'}"></script>
+  <script type="text/javascript" th:src="${assets_link+'/js/archives.min.js' + theme_version}"></script>
+</th:block>
+</html>

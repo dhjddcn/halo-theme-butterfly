@@ -1,0 +1,22 @@
+<html
+  xmlns:th="https://www.thymeleaf.org"
+  th:replace="~{core/layout :: layout (
+  page = 'index',
+  title = ${site.title},
+  css_pin = ~{::css_pin},
+  above = ~{::above},
+  js_pin = ~{::js_pin}
+  )}"
+>
+<section class="above" th:fragment="above">
+  <div class="above-info">
+    <h1 class="above-title" th:text="${site.title}"></h1>
+    <div class="above-subtitle">
+      <span class="above-subtitle--text" th:data-typewriter="${theme.config.index.typewriter}"></span>
+    </div>
+  </div>
+</section>
+
+<th:block th:fragment="css_pin"></th:block>
+<th:block th:fragment="js_pin"></th:block>
+</html>

@@ -1,10 +1,5 @@
 const gulp = require('gulp');
-const sass = require('gulp-sass')(require('sass'));
-const uglify = require("gulp-uglify");
-const autoPrefix = require('gulp-autoprefixer');
-const rename = require('gulp-rename');
 const gzip = require("gulp-gzip");
-const webpack = require("webpack-stream");
 const path = require("path");
 const fs = require("fs");
 const clean = require("gulp-clean");
@@ -13,7 +8,6 @@ const exec = require('child_process').exec;
 const yaml = require('yamljs');
 const inquirer = require('inquirer');
 const postcss = require('gulp-postcss')
-const cleanCss = require('gulp-clean-css');
 
 const resolve = (name) => path.resolve(__dirname, name);
 
@@ -27,20 +21,22 @@ gulp.task("clean", () => {
     })
   );
 });
-
+const rename = require('gulp-rename');
 const minifyCSS = require("gulp-csso");
 const mergeRules = require('postcss-merge-rules');
 const cssnano = require('gulp-cssnano');
-
+const cleanCss = require('gulp-clean-css');
+const autoPrefix = require('gulp-autoprefixer');
+const sass = require('gulp-sass')(require('sass'));
 gulp.task("css", function () {
   return gulp.src('./src/scss/page/*.scss')
-    .pipe(sass(undefined, true))
+    .pipe(sass(undefined, undefined))
+    .pipe(minifyCSS())
     .pipe(postcss([
       mergeRules()
     ]))
     .pipe(cleanCss({level: 2, format: true}))
     .pipe(cssnano())
-    .pipe(minifyCSS())
     .pipe(autoPrefix({
       overrideBrowserslist: [
         "> 5%",
@@ -53,6 +49,9 @@ gulp.task("css", function () {
     .pipe(rename({suffix: '.min'}))
     .pipe(gulp.dest('./templates/assets/css'))
 })
+
+const uglify = require("gulp-uglify");
+const webpack = require("webpack-stream");
 gulp.task("js", function () {
   const getEntryData = () => {
     try {
@@ -103,6 +102,27 @@ gulp.task("js", function () {
     .pipe(gulp.dest('./templates/assets/js'));
 })
 
+const htmlMin = require('gulp-htmlmin');
+gulp.task('html', function () {
+  return gulp.src('./src/html/**/*.html')
+    .pipe(htmlMin({
+      removeComments: true,//清除HTML注释
+      collapseWhitespace: true,//压缩HTML
+      collapseBooleanAttributes: true,//省略布尔属性的值 <input checked="true"/> ==> <input />
+      removeEmptyAttributes: true,//删除所有空格作属性值 <input id="" /> ==> <input />
+      removeScriptTypeAttributes: true,//删除<script>的type="text/javascript"
+      removeStyleLinkTypeAttributes: true,//删除<style>和<link>的type="text/css"
+      minifyJS: {
+        ignoreCustomComments: [
+          /^\s*\/\*!\[\[.*?]]\*\/\s*$/, // 匹配 /*[[ ... ]]*/ 形式的注释
+        ]
+      },//压缩页面JS
+      minifyCSS: false,
+      ignoreCustomFragments: [/<th:block[^>]*\/>/]
+    }))
+    .pipe(gulp.dest('./templates'))
+});
+
 gulp.task("zip", done => {
   gulp.src([
     './templates/**/*.*',
@@ -151,9 +171,9 @@ gulp.task(
   "watch",
   function () {
     // noinspection JSCheckFunctionSignatures
-    gulp.watch(['./src/**/**/**/*.scss', './templates/**/*.html'], gulp.series('css'));
-    // noinspection JSCheckFunctionSignatures
+    gulp.watch(['./src/**/**/**/*.scss', './src/html/**/**/**/*.html'], gulp.series('css'));
     gulp.watch(['./src/js/**/**/**/*.js'], gulp.series('js'));
+    gulp.watch(['./src/html/**/**/**/*.html'], gulp.series('html'));
   }
 );
 gulp.task(

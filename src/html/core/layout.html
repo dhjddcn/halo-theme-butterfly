@@ -1,0 +1,48 @@
+<th:block
+  xmlns:th="https://www.thymeleaf.org"
+  th:with="
+     assets_link = ${theme.config.style.enable_assets_link == 'true' ? theme.config.style.assets_link : #theme.assets('//')}
+  "
+  th:fragment="layout (page,title,above,css_pin,js_pin)"
+>
+  <!DOCTYPE html>
+  <html lang="en" data-theme="light">
+  <head>
+    <title th:text="${title}"></title>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="twitter:title" th:content="${title}"/>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, shrink-to-fit=no, viewport-fit=cover">
+    <meta name="author" th:content="${site.title}">
+    <meta name="site" th:content="${site.url}">
+    <meta name="description" th:content="${site.subtitle}"/>
+    <meta name="twitter:description" th:content="${site.subtitle}"/>
+    <meta property="og:keywords" th:content="${site.seo.keywords}">
+    <meta property="og:description" th:content="${site.subtitle}">
+    <meta property="og:site_name" th:content="${site.title}">
+    <meta property="og:url" th:content="${site.url}">
+    <meta property="og:title" th:content="${site.title}">
+    <meta property="og:locale" content="zh_CN">
+    <meta property="og:type" content="article">
+    <link rel="apple-touch-icon" sizes="180x180" th:href="${site.logo}">
+    <link rel="canonical" th:href="${site.url}">
+    <th:block th:insert="~{core/config}"/>
+    <th:block th:insert="${css_pin}"/>
+    <link rel="preload stylesheet" as="style" th:href="${assets_link + 'css/' + page + '.min.css?v=' + theme.spec.version}">
+  </head>
+  <body>
+  <div id="Butterfly" th:class="${page}">
+    <header class="header">
+      <th:block th:insert="~{modules/nav}"/>
+      <th:block th:insert="${above}"></th:block>
+    </header>
+    <main class="main" style="height: 10000px">
+    </main>
+    <footer class="footer"></footer>
+    <th:block th:insert="~{modules/side}"/>
+  </div>
+  <th:block th:insert="${js_pin}"/>
+  <script type="text/javascript" th:src="${assets_link + 'js/' + page + '.min.js?v=' + theme.spec.version}"></script>
+  </body>
+  </html>
+</th:block> 

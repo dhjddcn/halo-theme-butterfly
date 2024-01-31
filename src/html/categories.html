@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html
+  xmlns:th="https://www.thymeleaf.org"
+  th:replace="~{modules/layout :: layout (
+  page = 'categories',
+  title = ${theme.config.categories.custom_title},
+  head = ~{::head},
+  above = ~{::above},
+  content = ~{::content},
+  js = ~{::js}
+  )}">
+>
+<th:block th:fragment="head">
+  <style th:inline="css"
+         th:with="above_background= ${is_body_bg_http ? '' : 'url(' + theme.config.categories.above_background + ')'}">
+    .above {
+      --above-background: /*[(${above_background})]*/ transparent;
+    }
+  </style>
+  <link rel="stylesheet" th:href="${assets_link+'/css/categories.min.css' + theme_version}">
+</th:block>
+
+<section
+  th:fragment="above"
+  th:if="${theme.config.categories.enable_above}"
+  class="above relative w-100">
+  <h1 class="absolute above-public-title font-weight-400 margin-0 left-0 right-0 text-center"
+      th:text="${theme.config.categories.custom_title}"></h1>
+</section>
+
+<th:block th:fragment="next (cs)">
+  <th:block th:fragment="single (cs)" th:each="category : ${cs}">
+    <li class="categories-list-item relative">
+      <a th:href="@{${category.status.permalink}}" th:text="${category.spec.displayName}"
+         th:title="${category.spec.displayName}"></a>
+    </li>
+
+    <th:block th:if="${not #lists.isEmpty(category.children)}">
+      <th:block th:replace="~{categories :: next (cs=${category.children})}"></th:block>
+    </th:block>
+  </th:block>
+</th:block>
+
+<th:block th:fragment="content">
+  <section class="container card" th:with="noData = ${not #lists.isEmpty(categories)}">
+    <th:block th:if="${noData}">
+      <div class="categories-chart w-100"></div>
+      <ul class="categories-list flex flex-direction-row flex-wrap-wrap flex-justify-content-start">
+<!--        <li th:replace="~{categories:: single(cs=${categories})}"></li>-->
+        <li class="categories-list-item relative" th:each="category : ${categories}"
+            th:data-postCount="${category.postCount}"
+            th:data-displayName="${category.spec.displayName}"
+        >
+          <a th:href="@{${category.status.permalink}}"
+             th:text="${category.spec.displayName}"
+             th:title="${category.spec.displayName}"></a>
+        </li>
+      </ul>
+    </th:block>
+
+    <th:block th:unless="${noData}" th:insert="~{modules/public:: emptyData('暂无分类~',false)}"></th:block>
+  </section>
+
+  <th:block th:replace="~{modules/public:: aside}"></th:block>
+</th:block>
+
+<th:block th:fragment="js">
+  <script type="text/javascript" th:src="${assets_link+'/plugins/echarts/echarts.min.js'}"></script>
+  <script type="text/javascript" th:src="${assets_link+'/js/categories.min.js' + theme_version}"></script>
+</th:block>
+</html>
