@@ -32,7 +32,6 @@ $w-2xl: 1536px;
 
 //响应式
 @mixin useResponsive($w,$p:0) {
-
   @if ($p == 0) {
     @at-root  #Butterfly & {
       @media (max-width: $w) {

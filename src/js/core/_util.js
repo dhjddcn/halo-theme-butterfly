@@ -11,7 +11,7 @@
  * @param immediate
  * @returns {(function(): void)|*}
  */
-export function debounce(func, wait, immediate) {
+export function useDebounce(func, wait, immediate) {
   let timeout
   return function () {
     const context = this
@@ -34,7 +34,7 @@ export function debounce(func, wait, immediate) {
  * @param options
  * @returns {(function(): void)|*}
  */
-export function throttle(func, wait, options = {}) {
+export function useThrottle(func, wait, options = {}) {
   let timeOut, context, args
   let previous = 0
 
@@ -65,21 +65,6 @@ export function throttle(func, wait, options = {}) {
   }
 }
 
-
-/**
- * 数据平铺
- * @param data
- * @param key
- */
-export function dataFlat(data, key) {
-  return data.reduce(function deep(con, item) {
-    if (item[key] && item[key].length) item[key].reduce(deep, con);
-    con.push(item);
-    return con;
-  }, []);
-}
-
-
 /**
  * Events
  */
@@ -108,5 +93,15 @@ export class Events {
       return;
     }
     this.#events[eventName] = this.#events[eventName].filter(cb => cb !== callback);
+  }
+}
+
+
+// 禁用滚动
+export function useDisableScroll(bool) {
+  if (bool) {
+    document.body.style.overflow = 'hidden';
+  } else {
+    document.body.removeAttribute('style');
   }
 }

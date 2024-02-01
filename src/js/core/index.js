@@ -7,7 +7,7 @@
 
 import _message from "./_message";
 import Jquery from "jquery";
-import {throttle} from "./_util";
+import {useDisableScroll, useThrottle} from "./_util";
 
 export default class Core {
   $ = Jquery;
@@ -84,7 +84,7 @@ export default class Core {
     // 默认状态下大于56px时 add style
     // if (window.scrollY > maxNUm) nav.addClass('style');
 
-    window.addEventListener('scroll', throttle(() => {
+    window.addEventListener('scroll', useThrottle(() => {
       let scrollTop = window.scrollY || document.documentElement.scrollTop
 
       this.#nav(nav, [maxNUm, scrollNum, scrollTop]);
@@ -124,10 +124,22 @@ export default class Core {
     })
   }
 
+  #mask() {
+    const dom = this.$('#Butterfly >  .mask');
+    dom.fadeIn(400);
+    useDisableScroll(true);
+    
+    dom.on('click', () => {
+      useDisableScroll(false);
+      dom.off('click').fadeOut(400);
+    })
+  }
+
   // 移动端侧边栏呼出图标
   #bars() {
-    this.$('.nav a.bars').on('click', () => {
-      // this.$('.side').toggleClass('active');
+    this.$('.nav a.bars').on('click', (e) => {
+      e.preventDefault();
+      this.#mask();
     })
   }
 }
