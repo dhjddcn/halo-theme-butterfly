@@ -7,6 +7,7 @@
 
 import _message from "./_message";
 import Jquery from "jquery";
+import LazyLoad from './_lazyLoad'
 import {useDisableScroll, useThrottle} from "./_util";
 
 export default class Core {
@@ -17,6 +18,7 @@ export default class Core {
   constructor() {
     this.#initThemeMode();
     this.#scroll();
+    this.#imgLazyLoad();
     this.#backTop()
     this.#bars();
   }
@@ -36,7 +38,7 @@ export default class Core {
   // 初始化主题模式
   #initThemeMode() {
     const themeMode = ThemeConfig.style['mode'];
-    let theme = localStorage.getItem('Index-data-theme') || 'light';
+    let theme = localStorage.getItem('Butterfly-data-theme') || 'light';
 
     if (themeMode === 'auto') {
       theme = this.#isDaytime() ? 'light' : 'dark';
@@ -51,14 +53,14 @@ export default class Core {
   setThemeMode(theme) {
     this.theme = theme;
     document.documentElement.dataset.theme = theme;
-    localStorage.setItem('Index-data-theme', theme);
+    localStorage.setItem('Butterfly-data-theme', theme);
     this.themeChange(theme);
   }
 
   // 获取主题模式
   getThemeMode() {
     const rootTheme = document.documentElement.dataset.theme;
-    const locDataTheme = localStorage.getItem('Index-data-theme');
+    const locDataTheme = localStorage.getItem('Butterfly-data-theme');
     return this.theme || rootTheme || locDataTheme;
   }
 
@@ -119,27 +121,34 @@ export default class Core {
 
   // 回到顶部
   #backTop() {
-    this.$('button.back-top').on('click', () => {
-      this.$('html,body').animate({scrollTop: 0}, 300);
-    })
+    this.$('button.back-top').click(() => this.$('html,body').animate({scrollTop: 0}, 300));
   }
 
-  #mask() {
+  //  遮罩
+  #mask(close) {
     const dom = this.$('#Butterfly >  .mask');
     dom.fadeIn(400);
     useDisableScroll(true);
-    
-    dom.on('click', () => {
+
+    dom.click(() => {
       useDisableScroll(false);
       dom.off('click').fadeOut(400);
+      close();
     })
+
   }
 
   // 移动端侧边栏呼出图标
   #bars() {
-    this.$('.nav a.bars').on('click', (e) => {
+    const sideBar = this.$('.side-bar');
+    this.$('.nav a.bars').click((e) => {
       e.preventDefault();
-      this.#mask();
+      sideBar.addClass('active');
+      this.#mask(() => sideBar.removeClass('active'));
     })
+  }
+
+  #imgLazyLoad() {
+    new LazyLoad({elements_selector: 'img', threshold: 0, data_src: 'lazy-src'})
   }
 }

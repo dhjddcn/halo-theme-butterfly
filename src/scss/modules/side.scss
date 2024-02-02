@@ -7,11 +7,72 @@
 @use "../core/util";
 
 .side {
+  @include util.useThemeVar((
+    sbr-background-color:(#f6f8fa, #121212),
+    sbr-border-color:(#e3e8f7, #3d3d3f),
+    sbr-data-background-color:(#fff, #1b1c20),
+    sbr-data-num-text-color:(#1f2d3d, rgba(255, 255, 255, 0.9)),
+  ));
+
   //侧边菜单
   &-bar {
+    position: fixed;
+    top: 0;
+    right: -300px;
+    z-index: 110;
+    overflow-x: hidden;
+    overflow-y: auto;
+    width: 300px;
+    height: 100%;
+    background-color: var(--sbr-background-color);
+    transition: transform .5s;
+    border-left: 1px solid var(--sbr-border-color);
+    border-radius: 12px 0 0 12px;
 
-    
+    &.active {
+      transform: translate3d(-100%, 0, 0);
+    }
+
+    > .avatar {
+      display: block;
+      height: 100px;
+      width: 100px;
+      border-radius: 50%;
+      border: 5px solid #ffffff;
+      filter: none;
+      transition: filter 375ms ease-in .2s, transform .3s;
+      object-fit: cover;
+      margin: 20px auto;
+    }
+
+    > .site-data {
+      display: table;
+      table-layout: fixed;
+      padding: 5px;
+      background-color: var(--sbr-data-background-color);
+      border: 1px solid var(--sbr-border-color);
+      border-radius: 8px;
+      margin: 0 auto 20px;
+      width: 90%;
+      text-align: center;
+
+      > .item {
+        display: table-cell;
+
+        > .num {
+          display: block;
+          margin-top: -0.32em;
+          font-size: 1.4em;
+          color: var(--sbr-data-num-text-color);
+          @include util.text-overflow;
+        }
+      }
+    }
+
+    > hr {
+    }
   }
+
 
   //侧边小部件 按钮
   &-btn {

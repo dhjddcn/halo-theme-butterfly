@@ -28,9 +28,9 @@
     <link rel="canonical" th:href="${site.url}">
     <th:block th:insert="~{core/config}"/>
     <th:block th:insert="${css_pin}"/>
-    <link rel="preload stylesheet" as="style" th:href="${assets_link + 'css/' + page + '.min.css?v=' + theme.spec.version}">
+    <link rel="preload stylesheet" as="style" th:href="${assets_link + 'css/' + page + '.min.css?v=' + theme.spec.version + #dates.createNow().time}">
   </head>
-  <body>
+  <body th:with="stats = ${siteStatsFinder.getStats()},contributor = ${contributorFinder.getContributor(theme.config.base.metadata_name)}">
   <div id="Butterfly" th:class="${page}">
     <header class="header">
       <th:block th:insert="~{modules/nav}"/>
@@ -43,7 +43,7 @@
     <div class="mask"></div>
   </div>
   <th:block th:insert="${js_pin}"/>
-  <script type="text/javascript" th:src="${assets_link + 'js/' + page + '.min.js?v=' + theme.spec.version}"></script>
+  <script type="text/javascript" th:src="${assets_link + 'js/' + page + '.min.js?v=' + theme.spec.version + #dates.createNow().time}"></script>
   </body>
   </html>
 </th:block> 

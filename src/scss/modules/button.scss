@@ -178,4 +178,37 @@
 
 }
 
-@include button1;
+@mixin button3() {
+  @keyframes slide-in-top {
+    0% {
+      transform: scale(0);
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 1;
+    }
+  }
+
+  .button {
+    @include util.flex-center;
+    position: relative;
+    border-radius: 10px;
+    background-color: var(--theme);
+    color: var(--button-text-color);
+    transition: ease-in-out 0.3s;
+
+    &:active {
+      transform: scale(0.96);
+    }
+
+    &:hover {
+      filter: hue-rotate(130deg);
+      transform: translateX(-5px);
+    }
+
+  }
+}
+
+
+@include button3;

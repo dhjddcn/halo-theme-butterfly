@@ -23,27 +23,18 @@ gulp.task("clean", () => {
 });
 const rename = require('gulp-rename');
 const minifyCSS = require("gulp-csso");
-const mergeRules = require('postcss-merge-rules');
 const cssnano = require('gulp-cssnano');
 const cleanCss = require('gulp-clean-css');
 const autoPrefix = require('gulp-autoprefixer');
 const sass = require('gulp-sass')(require('sass'));
 gulp.task("css", function () {
   return gulp.src('./src/scss/page/*.scss')
-    .pipe(sass(undefined, undefined))
+    .pipe(sass({}, true))
     .pipe(minifyCSS())
-    .pipe(postcss([
-      mergeRules()
-    ]))
+    .pipe(cssnano({preset: 'advanced'}))
     .pipe(cleanCss({level: 2, format: true}))
-    .pipe(cssnano())
     .pipe(autoPrefix({
-      overrideBrowserslist: [
-        "> 5%",
-        "last 2 versions",
-        "last 3 Safari versions",
-        "Firefox >= 20",
-      ],
+      overrideBrowserslist: ["> 5%", "last 2 versions", "last 3 Safari versions", "Firefox >= 20",],
       cascade: true,
     }))
     .pipe(rename({suffix: '.min'}))

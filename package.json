@@ -68,6 +68,7 @@
     "inquirer": "^7.3.3",
     "jquery": "^3.7.1",
     "jszip": "^3.10.1",
+    "lazyload": "2.0.0-rc.2",
     "postcss-merge-rules": "^6.0.3",
     "postcss-nested": "^6.0.1",
     "postcss-sass": "^0.5.0",

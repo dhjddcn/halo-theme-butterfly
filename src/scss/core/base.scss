@@ -6,12 +6,12 @@
  */
 @use "_util";
 
-@include util.useThemeVar((
-  body-text-color:(rgb(0, 0, 0), rgba(255, 255, 255, 0.7)),
-  mask-color:(rgba(255, 255, 255, 0.6), rgba(0, 0, 0, 0.6)),
-));
-
 body {
+  @include util.useThemeVar((
+    body-text-color:(rgb(0, 0, 0), rgba(255, 255, 255, 0.7)),
+    mask-color:(rgba(255, 255, 255, 0.6), rgba(0, 0, 0, 0.6)),
+  ));
+
   font-family: "Butterfly Font", "Microsoft YaHei", "微软雅黑", Arial, "sans-serif";
   font-size: 14px;
   line-height: 2;
@@ -74,6 +74,10 @@ body {
     }
 
   }
+
+  img[data-lazy-src]:not(.loaded,.error) {
+    filter: blur(50px) brightness(1);
+  }
 }
 
 ::-webkit-scrollbar {
@@ -89,3 +93,31 @@ body {
   background-color: transparent
 }
 
+
+hr {
+  position: relative;
+  margin: 30px auto;
+  border: 1px dashed var(--theme);
+  width: calc(100% - 5px);
+  height: 0;
+  overflow: visible;
+
+  &::before {
+    font-family: "Font Awesome 6 Pro", serif;
+    font-weight: 900;
+    -webkit-font-smoothing: antialiased;
+    display: var(--fa-display, inline-block);
+    font-style: normal;
+    font-variant: normal;
+    line-height: 1;
+    text-rendering: auto;
+    position: absolute;
+    top: -10px;
+    left: 5%;
+    z-index: 1;
+    color: var(--theme);
+    content: "\f2dc";
+    font-size: 18px;
+    transition: 1s ease-in-out;
+  }
+}

@@ -1,6 +1,25 @@
 <!--/* 侧边菜单 */-->
 <div class="side-bar">
-
+  <img class="avatar"
+       th:src="${theme.config.loading.preload}"
+       th:attr="onerror='this.src='+${'`'+theme.config.loading.err+'`'}"
+       th:data-lazy-src="${contributor.avatar}"
+       th:alt="${contributor.displayName}">
+  <div class="site-data">
+    <a class="item" title="文章" href="/archives">
+      <h2 class="title">文章</h2>
+      <span class="num" th:text="${stats.post}"></span>
+    </a>
+    <a class="item" href="/categories" title="分类">
+      <h2 class="title">分类</h2>
+      <span class="num" th:text="${stats.category}"></span>
+    </a>
+    <a class="item" title="评论" href="javascript:">
+      <h2 class="title">评论</h2>
+      <span class="num" th:text="${stats.comment}"></span>
+    </a>
+  </div>
+  <hr/>
 </div>
 
 <!--/* 侧边按钮 */-->

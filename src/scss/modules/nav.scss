@@ -35,13 +35,14 @@
   z-index: 90;
   will-change: opacity, transform;
   transition: .5s;
+  @include util.flex-center;
+  justify-content: space-between;
 
   @include util.useResponsive(util.$w-md) {
     padding: 0 16px;
   }
 
   &-title {
-    flex: 1;
     transition: color .5s;
     color: var(--nav-font-color);
 

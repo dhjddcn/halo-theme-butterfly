@@ -29,7 +29,7 @@ spec:
           label: 建站时间
           placeholder: 示例 2022-01-01 00:00
           help: 自定义博客的起始时间/安装时间，作为计算博客运行时间的参照值，请严格按照示例格式填写，否则将导致报错
-
+    #主题设置
     - group: style
       label: 主题设置
       formSchema:
@@ -82,9 +82,9 @@ spec:
           label: 资源文件地址
           placeholder: 请填写 资源文件地址
           value: 'https://cdn.jsdelivr.net/npm/halo-theme-butterfly/templates/assets/'
-          help: '默认为npmJs的jsdelivr加速地址（gitHub仓库主页加速列表），可自行配置cdn地址（请确保链接下assets文件夹下主题静态资源文件 与 jsdelivr地址中的文件一致），可以填写，否则请勿修改！'
+          help: '默认为npmJs的jsdelivr加速地址（gitHub仓库主页加速列表），可自行配置cdn地址（请确保链接下assets文件夹下主题静态资源文件 与 jsdelivr 地址中的文件一致,否则页面无法正常显示）!'
           validation: required|url
-
+    #首页设置
     - group: index
       label: 首页设置
       formSchema:
@@ -95,9 +95,9 @@ spec:
           value: 'true'
           options:
             - label: 启用
-              value: true
+              value: 'true'
             - label: 禁用
-              value: false
+              value: 'false'
         - $formkit: attachment
           name: above_background
           label: 第一屏背景图
@@ -123,3 +123,37 @@ spec:
               value: list
             - label: 平铺
               value: tile
+  #首页设置
+    - group: loading
+      label: 加载设置
+      formSchema:
+        - $formkit: radio
+          name: enable_random_img
+          label: 启用随机图片
+          help: 是否启用随机图API（必须先配置 API），开启后将使用随机图填充没有设置封面的，未开启时使用主题内置的封面图
+          value: 'true'
+          options:
+            - label: 启用
+              value: 'true'
+            - label: 禁用
+              value: 'false'
+        - $formkit: text
+          name: random_img
+          label: 随机图片链接
+          placeholder: 请正确填写 随机图片链接
+          value: 'https://api.likepoems.com/img/pc'
+          help: 自定义随机图API，用于填充没有设置封面的 ，免费 API 不会一直可用，请知悉
+        - $formkit: attachment
+          name: preload
+          label: 预加载图片
+          placeholder: 请填写 预加载图片
+          value: 'data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs='
+          help: 预加载图片，默认 data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=
+          validation: required
+        - $formkit: attachment
+          name: err
+          label: 加载失败图片
+          placeholder: 请填写 加载失败图片
+          value: 'data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs='
+          help: 加载失败图片，默认 data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=
+          validation: required

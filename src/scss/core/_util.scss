@@ -54,3 +54,10 @@ $w-2xl: 1536px;
   align-items: center;
 }
 
+
+// 1行文字省略号
+@mixin text-overflow {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
