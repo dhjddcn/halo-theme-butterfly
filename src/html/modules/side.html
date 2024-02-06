@@ -1,5 +1,5 @@
 <!--/* 侧边菜单 */-->
-<div class="side-bar">
+<div class="side-bar active">
   <img class="avatar"
        th:src="${theme.config.loading.preload}"
        th:attr="onerror='this.src='+${'`'+theme.config.loading.err+'`'}"
@@ -20,6 +20,49 @@
     </a>
   </div>
   <hr/>
+
+  <menu class="bar" th:with="menuItems = ${menuFinder.getPrimary().menuItems}">
+    <th:block th:each="menuItem : ${menuItems}" th:with="isChildren = ${#lists.isEmpty(menuItem.children)} ">
+      <li th:if="${isChildren}" class="bar-item">
+        <a
+          class="link"
+          th:href="@{${menuItem.status.href}}"
+          th:target="${menuItem.spec.target?.value}"
+          th:with="icon = ${#annotations.getOrDefault(menuItem, 'icon','')}"
+        >
+          <i th:if="${!#strings.isEmpty(icon)}" th:class="${icon}"></i>
+          <span class="name" th:text="${menuItem.status.displayName}"></span>
+        </a>
+      </li>
+      <!--/* 二级*/-->
+      <li th:unless="${isChildren}"  class="bar-item">
+        <a
+          class="link"
+          onclick="event.preventDefault()"
+          th:with="icon = ${#annotations.getOrDefault(menuItem, 'icon','')}"
+        >
+          <i th:if="${!#strings.isEmpty(icon)}" th:class="${icon}"></i>
+          <span class="name" th:text="${menuItem.status.displayName}"></span>
+          <i class="fas fa-chevron-down"></i>
+        </a>
+
+        <ul class="bar-children" th:if="${false}">
+          <li th:each="children : ${menuItem.children}" class="menu-children--item">
+            <a
+              class="bar-children--link"
+              th:href="@{${children.status.href}}"
+              th:target="${children.spec.target?.value}"
+              th:with="icon = ${#annotations.getOrDefault(children, 'icon','')}"
+            >
+              <i th:if="${!#strings.isEmpty(icon)}" th:class="${icon}"></i>
+              <span class="name" th:text="${children.status.displayName}"></span>
+            </a>
+          </li>
+        </ul>
+
+      </li>
+    </th:block>
+  </menu>
 </div>
 
 <!--/* 侧边按钮 */-->

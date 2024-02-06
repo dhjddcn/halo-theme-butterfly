@@ -8,10 +8,10 @@
 
 .side {
   @include util.useThemeVar((
-    sbr-background-color:(#f6f8fa, #121212),
-    sbr-border-color:(#e3e8f7, #3d3d3f),
-    sbr-data-background-color:(#fff, #1b1c20),
-    sbr-data-num-text-color:(#1f2d3d, rgba(255, 255, 255, 0.9)),
+    cd-background-color:(#f6f8fa, #121212),
+    cd-border-color:(#e3e8f7, #3d3d3f),
+    cd-data-background-color:(#fff, #1b1c20),
+    cd-data-num-text-color:(#1f2d3d, rgba(255, 255, 255, 0.9)),
   ));
 
   //侧边菜单
@@ -24,10 +24,12 @@
     overflow-y: auto;
     width: 300px;
     height: 100%;
-    background-color: var(--sbr-background-color);
     transition: transform .5s;
-    border-left: 1px solid var(--sbr-border-color);
+    background-color: var(--cd-background-color);
+    border-left: 1px solid var(--cd-border-color);
     border-radius: 12px 0 0 12px;
+
+    $cd-border-radius: 8px;
 
     &.active {
       transform: translate3d(-100%, 0, 0);
@@ -49,10 +51,10 @@
       display: table;
       table-layout: fixed;
       padding: 5px;
-      background-color: var(--sbr-data-background-color);
-      border: 1px solid var(--sbr-border-color);
-      border-radius: 8px;
-      margin: 0 auto 20px;
+      background-color: var(--cd-data-background-color);
+      border: 1px solid var(--cd-border-color);
+      border-radius: $cd-border-radius;
+      margin: 0 auto;
       width: 90%;
       text-align: center;
 
@@ -63,13 +65,38 @@
           display: block;
           margin-top: -0.32em;
           font-size: 1.4em;
-          color: var(--sbr-data-num-text-color);
+          color: var(--cd-data-num-text-color);
           @include util.text-overflow;
         }
       }
     }
 
     > hr {
+    }
+
+    .bar {
+      padding: 0 20px;
+
+      &-item {
+        margin: 10px 0;
+
+
+        > .link {
+          border-radius: $cd-border-radius;
+          background-color: var(--cd-data-background-color);
+          border: 1px solid var(--cd-border-color);
+          display: block;
+          position: relative;
+          padding: 6px 30px 6px 22px;
+          font-size: 1em;
+
+          > i {
+            &:first-child {
+              margin-right: 5px;
+            }
+          }
+        }
+      }
     }
   }
 

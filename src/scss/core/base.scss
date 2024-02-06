@@ -18,10 +18,9 @@ body {
   overflow-y: overlay;
   scroll-behavior: smooth;
   padding-bottom: env(safe-area-inset-bottom);
-  background: var(--body-background-color);
+  background: var(--body-background);
   color: var(--body-text-color);
 }
-
 
 #Butterfly {
   position: relative;

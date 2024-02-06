@@ -17,6 +17,12 @@
   </div>
 </section>
 
-<th:block th:fragment="css_pin"></th:block>
+<th:block th:fragment="css_pin">
+  <style th:inline="css">
+    .above {
+      --above-background: /*[(${'url('+theme.config.index.above_background+')'})]*/ transparent;
+    }
+  </style>
+</th:block>
 <th:block th:fragment="js_pin"></th:block>
 </html>

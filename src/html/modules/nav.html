@@ -18,7 +18,7 @@
     <!--/* 移动侧边栏按钮 */-->
 
     <!--/* 菜单 */-->
-    <ul class="menu" th:with="menuItems = ${menuFinder.getPrimary().menuItems}">
+    <menu class="menu" th:with="menuItems = ${menuFinder.getPrimary().menuItems}">
       <th:block th:each="menuItem : ${menuItems}" th:with="isChildren = ${#lists.isEmpty(menuItem.children)} ">
         <li th:if="${isChildren}" class="menu-item">
           <a
@@ -59,6 +59,6 @@
 
         </li>
       </th:block>
-    </ul>
+    </menu>
   </div>
 </nav>

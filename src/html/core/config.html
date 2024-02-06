@@ -5,14 +5,12 @@
   </script>
 </th:block>
 
-
-<style th:inline="css">
+<style th:inline="css"
+       th:with="body_background = ${#strings.containsIgnoreCase(theme.config.style.body_background,'http') ? 'url('+theme.config.style.body_background+') no-repeat fixed center / cover;' : theme.config.style.body_background }"
+>
   html {
     --theme: #49b1f5;
-    --body-background-color: #ffffff radial-gradient(rgba(12, 12, 12, 0.171) .1em, transparent 0) repeat scroll -5px -5px / 30px 30px;
-
-    --above-background: url('http://192.168.31.157:8090/upload/index.jpg');
-
+    --body-background: /*[(${body_background})]*/ transparent;
     --nav-font-color: rgba(238, 238, 238, 1);
     --nav-active-font-color: #4c4948;
     --nav-active-hover-font-color: var(--theme);
@@ -24,9 +22,7 @@
 
   html[data-theme=dark] {
     --theme: #ff7242;
-
-    --body-background-color: rgb(15, 23, 42);
-
+    --body-background: rgb(15, 23, 42);
     --nav-font-color: rgba(255, 255, 255, 0.7);
     --nav-active-font-color: rgba(255, 255, 255, 0.7);
     --nav-active-hover-font-color: var(--theme);
