@@ -23,6 +23,31 @@ export default class Core {
     this.#bars();
   }
 
+
+  // 设置主题模式
+  setThemeMode(theme) {
+    this.theme = theme;
+    document.documentElement.dataset.theme = theme;
+    localStorage.setItem('Butterfly-data-theme', theme);
+    this.themeChange(theme);
+  }
+
+  // 获取主题模式
+  getThemeMode() {
+    const rootTheme = document.documentElement.dataset.theme;
+    const locDataTheme = localStorage.getItem('Butterfly-data-theme');
+    return this.theme || rootTheme || locDataTheme;
+  }
+
+  // 切换主题模式
+  toggleThemeMode() {
+    this.setThemeMode(this.theme === 'light' ? 'dark' : 'light')
+  }
+
+  // 主题模式切换回调 可重写
+  themeChange(theme) {
+  }
+
   #isDaytime() {
     const now = new Date();
     const currentHour = now.getHours();
@@ -49,29 +74,6 @@ export default class Core {
     this.setThemeMode(theme);
   }
 
-  // 设置主题模式
-  setThemeMode(theme) {
-    this.theme = theme;
-    document.documentElement.dataset.theme = theme;
-    localStorage.setItem('Butterfly-data-theme', theme);
-    this.themeChange(theme);
-  }
-
-  // 获取主题模式
-  getThemeMode() {
-    const rootTheme = document.documentElement.dataset.theme;
-    const locDataTheme = localStorage.getItem('Butterfly-data-theme');
-    return this.theme || rootTheme || locDataTheme;
-  }
-
-  // 切换主题模式
-  toggleThemeMode() {
-    this.setThemeMode(this.theme === 'light' ? 'dark' : 'light')
-  }
-
-  // 主题模式切换回调 可重写
-  themeChange(theme) {
-  }
 
   //滚动
   #scroll(e) {
@@ -105,6 +107,15 @@ export default class Core {
     if (scrollTop < maxNUm && scrollTop <= 2) dom.removeClass('active');
   }
 
+
+  // 侧边栏菜单
+  #sideMenu() {
+    this.$('menu.bar').children('li.child').each((i, el) => {
+      const child = this.$(el);
+      child.on('click', () => child.toggleClass('active'));
+    });
+  }
+
   // 头部导航栏
   #nav(dom, [maxNUm, scrollNum, scrollTop]) {
     if (scrollTop > maxNUm) {
@@ -135,7 +146,6 @@ export default class Core {
       dom.off('click').fadeOut(400);
       close();
     })
-
   }
 
   // 移动端侧边栏呼出图标
@@ -144,11 +154,16 @@ export default class Core {
     this.$('.nav a.bars').click((e) => {
       e.preventDefault();
       sideBar.addClass('active');
+
       this.#mask(() => sideBar.removeClass('active'));
-    })
+    });
+
+    //  注册侧边菜单
+    this.#sideMenu();
   }
 
   #imgLazyLoad() {
     new LazyLoad({elements_selector: 'img', threshold: 0, data_src: 'lazy-src'})
   }
+
 }

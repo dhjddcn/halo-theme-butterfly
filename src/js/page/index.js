@@ -35,10 +35,3 @@ class Index extends Core {
 document.addEventListener("DOMContentLoaded", () => window.buy = new Index())
 
 
-// 获取所有属性名，包括公有和私有方法
-const propertyNames = Object.getOwnPropertyNames(Index);
-
-// 获取所有符号属性，可能包含私有方法
-const symbolProperties = Object.getOwnPropertySymbols(Index);
-
-

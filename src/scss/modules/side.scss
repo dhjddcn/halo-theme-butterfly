@@ -80,21 +80,52 @@
       &-item {
         margin: 10px 0;
 
+        &.active {
+          .bar-children {
+            display: flex;
+          }
+        }
 
         > .link {
           border-radius: $cd-border-radius;
           background-color: var(--cd-data-background-color);
           border: 1px solid var(--cd-border-color);
-          display: block;
-          position: relative;
-          padding: 6px 30px 6px 22px;
-          font-size: 1em;
+          padding: 8px 28px;
+          font-size: 1.2em;
+          display: flex;
+          justify-content: flex-start;
+          align-items: baseline;
+
+          > .name {
+            flex: 1;
+            padding: 0 8px;
+          }
 
           > i {
-            &:first-child {
-              margin-right: 5px;
-            }
           }
+        }
+      }
+
+      &-children {
+        padding: 8px 6px 0;
+        display: none;
+        flex-wrap: wrap;
+        flex-direction: row;
+
+
+        &--item {
+          width: calc(50% - 8px);
+          margin: 4px;
+        }
+
+        &--link {
+          display: block;
+          border-radius: $cd-border-radius;
+          background-color: var(--cd-data-background-color);
+          border: 1px solid var(--cd-border-color);
+          text-align: center;
+          font-size: 1.1em;
+          padding: 3px;
         }
       }
     }
