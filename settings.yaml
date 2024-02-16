@@ -91,6 +91,226 @@ spec:
           value: 'https://cdn.jsdelivr.net/npm/halo-theme-butterfly/templates/assets/'
           help: '默认为npmJs的jsdelivr加速地址（gitHub仓库主页加速列表），可自行配置cdn地址（请确保链接下assets文件夹下主题静态资源文件 与 jsdelivr 地址中的文件一致,否则页面无法正常显示）!'
           validation: required|url
+    #加载设置
+    - group: loading
+      label: 加载设置
+      formSchema:
+        - $formkit: radio
+          name: enable_random_img
+          label: 启用随机图片
+          help: 是否启用随机图API（必须先配置 API），开启后将使用随机图填充没有设置封面的，未开启时使用主题内置的封面图
+          value: 'true'
+          options:
+            - label: 启用
+              value: 'true'
+            - label: 禁用
+              value: 'false'
+        - $formkit: text
+          name: random_img
+          label: 随机图片链接
+          placeholder: 请正确填写 随机图片链接
+          value: 'https://api.likepoems.com/img/pc'
+          help: 自定义随机图API，用于填充没有设置封面的 ，免费 API 不会一直可用，请知悉
+        - $formkit: attachment
+          name: preload
+          label: 预加载图片
+          placeholder: 请填写 预加载图片
+          value: 'data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs='
+          help: 预加载图片，默认 data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=
+          validation: required
+        - $formkit: attachment
+          name: err
+          label: 加载失败图片
+          placeholder: 请填写 加载失败图片
+          value: 'data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs='
+          help: 加载失败图片，默认 data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=
+          validation: required
+    #导航设置
+    - group: nav
+      label: 导航设置
+      formSchema:
+        - $formkit: repeater
+          name: nav_font_color
+          label: 导航栏默认字体颜色
+          help: 支持rgba颜色值和十六进制颜色值
+          addButton: false
+          addLabel: false
+          upControl: false
+          downControl: false
+          removeControl: false
+          insertControl: false
+          value:
+            - light: rgba(238, 238, 238, 1)
+              dark: rgba(255, 255, 255, 0.7)
+          children:
+            - $formkit: text
+              name: light
+              label: 浅色
+              value: ""
+              help: 默认值：rgba(238, 238, 238, 1)
+              validation: required
+            - $formkit: text
+              name: dark
+              label: 暗色
+              value: ""
+              help: 默认值：rgba(255, 255, 255, 0.7)
+              validation: required
+        - $formkit: repeater
+          name: nav_active_font_color
+          label: 导航栏滚动悬浮字体颜色
+          help: 支持rgba颜色值和十六进制颜色值
+          addButton: false
+          addLabel: false
+          upControl: false
+          downControl: false
+          removeControl: false
+          insertControl: false
+          value:
+            - light: rgb(76, 73, 72)
+              dark: rgba(255, 255, 255, 0.7)
+          children:
+            - $formkit: text
+              name: light
+              label: 浅色
+              value: ""
+              help: 默认值：rgb(76, 73, 72)
+              validation: required
+            - $formkit: text
+              name: dark
+              label: 暗色
+              value: ""
+              help: 默认值：rgba(255, 255, 255, 0.7)
+              validation: required
+        - $formkit: repeater
+          name: nav_active_hover_font_color
+          label: 导航栏滚动悬浮鼠标移入字体颜色
+          help: 支持rgba颜色值和十六进制颜色值（默认主题色）
+          addButton: false
+          addLabel: false
+          upControl: false
+          downControl: false
+          removeControl: false
+          insertControl: false
+          value:
+            - light: var(--theme)
+              dark: var(--theme)
+          children:
+            - $formkit: text
+              name: light
+              label: 浅色
+              value: ""
+              help: 默认值：var(--theme)
+              validation: required
+            - $formkit: text
+              name: dark
+              label: 暗色
+              value: ""
+              help: 默认值：var(--theme)
+              validation: required
+        - $formkit: repeater
+          name: nav_active_background_color
+          label: 导航栏滚动悬浮背景颜色
+          help: 支持rgba颜色值和十六进制颜色值
+          addButton: false
+          addLabel: false
+          upControl: false
+          downControl: false
+          removeControl: false
+          insertControl: false
+          value:
+            - light: rgba(255, 255, 255, .8)
+              dark: rgba(18, 18, 18, .8)
+          children:
+            - $formkit: text
+              name: light
+              label: 浅色
+              value: ""
+              help: 默认值：rgba(255, 255, 255, .8)
+              validation: required
+            - $formkit: text
+              name: dark
+              label: 暗色
+              value: ""
+              help: 默认值：rgba(18, 18, 18, .8)
+              validation: required
+        - $formkit: repeater
+          name: nav_active_shadow
+          label: 导航栏滚动悬浮阴影
+          help: 支持rgba颜色值和十六进制颜色值
+          addButton: false
+          addLabel: false
+          upControl: false
+          downControl: false
+          removeControl: false
+          insertControl: false
+          value:
+            - light: 0 5px 6px -5px rgba(133, 133, 133, .6)
+              dark: 0 5px 6px -5px rgba(133, 133, 133, 0)
+          children:
+            - $formkit: text
+              name: light
+              label: 浅色
+              value: ""
+              help: 默认值：0 5px 6px -5px rgba(133, 133, 133, .6)
+              validation: required
+            - $formkit: text
+              name: dark
+              label: 暗色
+              value: ""
+              help: 默认值：0 5px 6px -5px rgba(133, 133, 133, 0)
+              validation: required              
+        - $formkit: repeater
+          name: nav_dropdown_background_color
+          label: 导航栏二级下拉背景颜色
+          help: 支持rgba颜色值和十六进制颜色值
+          addButton: false
+          addLabel: false
+          upControl: false
+          downControl: false
+          removeControl: false
+          insertControl: false
+          value:
+            - light: rgba(255, 255, 255)
+              dark: rgba(18, 18, 18)
+          children:
+            - $formkit: text
+              name: light
+              label: 浅色
+              value: ""
+              help: 默认值：rgba(255, 255, 255)
+              validation: required
+            - $formkit: text
+              name: dark
+              label: 暗色
+              value: ""
+              help: 默认值：rgba(18, 18, 18)
+              validation: required
+        - $formkit: repeater
+          name: nav_dropdown_font_color
+          label: 导航栏二级下拉字体颜色
+          help: 支持rgba颜色值和十六进制颜色值
+          addButton: false
+          addLabel: false
+          upControl: false
+          downControl: false
+          removeControl: false
+          insertControl: false
+          value:
+            - light: rgba(76, 73, 72, 1)
+              dark: rgba(255, 255, 255, 0.7)
+          children:
+            - $formkit: text
+              name: light
+              label: 浅色
+              value: ""
+              help: 默认值：rgba(76, 73, 72, 1)
+              validation: required
+            - $formkit: text
+              name: dark
+              label: 暗色
+              value: ""
+              help: 默认值：rgba(255, 255, 255, 0.7)
+              validation: required              
     #首页设置
     - group: index
       label: 首页设置
@@ -129,38 +349,4 @@ spec:
             - label: 列表
               value: list
             - label: 平铺
-              value: tile
-    #加载设置
-    - group: loading
-      label: 加载设置
-      formSchema:
-        - $formkit: radio
-          name: enable_random_img
-          label: 启用随机图片
-          help: 是否启用随机图API（必须先配置 API），开启后将使用随机图填充没有设置封面的，未开启时使用主题内置的封面图
-          value: 'true'
-          options:
-            - label: 启用
-              value: 'true'
-            - label: 禁用
-              value: 'false'
-        - $formkit: text
-          name: random_img
-          label: 随机图片链接
-          placeholder: 请正确填写 随机图片链接
-          value: 'https://api.likepoems.com/img/pc'
-          help: 自定义随机图API，用于填充没有设置封面的 ，免费 API 不会一直可用，请知悉
-        - $formkit: attachment
-          name: preload
-          label: 预加载图片
-          placeholder: 请填写 预加载图片
-          value: 'data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs='
-          help: 预加载图片，默认 data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=
-          validation: required
-        - $formkit: attachment
-          name: err
-          label: 加载失败图片
-          placeholder: 请填写 加载失败图片
-          value: 'data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs='
-          help: 加载失败图片，默认 data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=
-          validation: required
+              value: tile          

@@ -11,25 +11,25 @@
   html {
     --theme: #49b1f5;
     --body-background: /*[(${body_background})]*/ transparent;
-    --nav-font-color: rgba(238, 238, 238, 1);
-    --nav-active-font-color: #4c4948;
-    --nav-active-hover-font-color: var(--theme);
-    --nav-active-background-color: rgba(255, 255, 255, .8);
-    --nav-active-shadow: 0 5px 6px -5px rgba(133, 133, 133, .6);
-    --nav-dropdown-background-color: rgba(255, 255, 255);
-    --nav-dropdown-link-font-color: rgba(76, 73, 72, 1);
+    --nav-font-color: /*[(${theme.config.nav.nav_font_color[0].light})]*/ transparent;
+    --nav-active-font-color: /*[(${theme.config.nav.nav_active_font_color[0].light})]*/ transparent;
+    --nav-active-hover-font-color: /*[(${theme.config.nav.nav_active_hover_font_color[0].light})]*/ transparent;
+    --nav-active-background-color: /*[(${theme.config.nav.nav_active_background_color[0].light})]*/ transparent;
+    --nav-active-shadow: /*[(${theme.config.nav.nav_active_shadow[0].light})]*/ transparent;
+    --nav-dropdown-background-color: /*[(${theme.config.nav.nav_dropdown_background_color[0].light})]*/ transparent;
+    --nav-dropdown-font-color: /*[(${theme.config.nav.nav_dropdown_font_color[0].light})]*/ transparent;
   }
 
   html[data-theme=dark] {
     --theme: #ff7242;
     --body-background: rgb(15, 23, 42);
-    --nav-font-color: rgba(255, 255, 255, 0.7);
-    --nav-active-font-color: rgba(255, 255, 255, 0.7);
-    --nav-active-hover-font-color: var(--theme);
-    --nav-active-background-color: rgba(18, 18, 18, .8);
-    --nav-active-shadow: 0 5px 6px -5px rgba(133, 133, 133, 0);
-    --nav-dropdown-background-color: rgba(18, 18, 18);
-    --nav-dropdown-link-font-color: rgba(255, 255, 255, 0.7);
+    --nav-font-color: /*[(${theme.config.nav.nav_font_color[0].dark})]*/ transparent;;
+    --nav-active-font-color: /*[(${theme.config.nav.nav_active_font_color[0].dark})]*/ transparent;
+    --nav-active-hover-font-color: /*[(${theme.config.nav.nav_active_hover_font_color[0].dark})]*/ transparent;
+    --nav-active-background-color: /*[(${theme.config.nav.nav_active_background_color[0].dark})]*/ transparent;;
+    --nav-active-shadow: /*[(${theme.config.nav.nav_active_shadow[0].dark})]*/ transparent;
+    --nav-dropdown-background-color: /*[(${theme.config.nav.nav_dropdown_background_color[0].dark})]*/ transparent;
+    --nav-dropdown-font-color: /*[(${theme.config.nav.nav_dropdown_font_color[0].dark})]*/ transparent;
   }
 </style>
 <link rel="preload stylesheet" as="style" th:if="${theme.config.style.font_family != 'null'}" th:href="${assets_link + 'font/' + theme.config.style.font_family + '.min.css'}">
