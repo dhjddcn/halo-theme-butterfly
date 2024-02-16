@@ -7,8 +7,6 @@ const zip = require('gulp-zip');
 const exec = require('child_process').exec;
 const yaml = require('yamljs');
 const inquirer = require('inquirer');
-const postcss = require('gulp-postcss')
-
 const resolve = (name) => path.resolve(__dirname, name);
 
 gulp.task("clean", () => {

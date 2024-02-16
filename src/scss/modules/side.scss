@@ -84,6 +84,10 @@
           .bar-children {
             display: flex;
           }
+
+          .fa-chevron-left {
+            transform: rotate(-90deg);
+          }
         }
 
         > .link {
@@ -102,6 +106,7 @@
           }
 
           > i {
+            transition: .3s ease-in-out;
           }
         }
       }
@@ -111,7 +116,6 @@
         display: none;
         flex-wrap: wrap;
         flex-direction: row;
-
 
         &--item {
           width: calc(50% - 8px);
