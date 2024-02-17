@@ -1,0 +1,35 @@
+/**
+ * @date: 2024/2/16
+ * @author: 小红
+ * @fileName: footer
+ * @Description: footer
+ */
+.footer {
+  text-align: center;
+  padding: 1.5rem 1rem;
+
+  .halo {
+    color: #2f55d4;
+  }
+
+  .theme {
+    color: var(--theme);
+  }
+
+  .police {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      transition: none;
+      margin-right: 5px;
+      top: -2px;
+    }
+
+  }
+
+  a:hover {
+    color: var(--theme);
+  }
+}
