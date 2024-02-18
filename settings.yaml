@@ -258,7 +258,7 @@ spec:
               label: 暗色
               value: ""
               help: 默认值：0 5px 6px -5px rgba(133, 133, 133, 0)
-              validation: required              
+              validation: required
         - $formkit: repeater
           name: nav_dropdown_background_color
           label: 导航栏二级下拉背景颜色
@@ -310,7 +310,104 @@ spec:
               label: 暗色
               value: ""
               help: 默认值：rgba(255, 255, 255, 0.7)
-              validation: required              
+              validation: required
+    #侧边栏设置          
+    - group: aside
+      label: 侧边栏设置
+      formSchema:
+        - $formkit: radio
+          name: enable
+          label: 启用侧边栏
+          help: 是否启用侧边栏（全局），关闭后所有页面都没有侧边栏（优先级高于页面元数据）
+          value: true
+          options:
+            - label: 启用
+              value: 'true'
+            - label: 禁用
+              value: 'false'
+        - $formkit: radio
+          name: position
+          label: 侧边栏位置
+          help: 侧边栏展示位置，左边或右边
+          value: aside-right
+          options:
+            - label: 左边
+              value: aside-left
+            - label: 右边
+              value: aside-right
+        - $formkit: textarea
+          rows: 5
+          name: button
+          label: 侧边栏按钮
+          placeholder: 请填写 侧边栏按钮内容
+          value: 关注我&+&/
+          help: 侧边栏按钮内容, 支持 html 代码片段 (注：文案&+&链接 用&+&分割)
+          validation: required
+        - $formkit: textarea
+          rows: 5
+          name: notice
+          label: 侧边栏公告
+          placeholder: 请填写 侧边栏公告内容
+          value: 好博客，一定要 分享出去 呀~
+          help: 侧边栏公告内容, 支持 html 代码片段
+        - $formkit: radio
+          name: enable_category
+          label: 启用侧边栏分类
+          help: 是否启用侧边栏分类
+          value: true
+          options:
+            - label: 启用
+              value: true
+            - label: 禁用
+              value: false
+        - $formkit: radio
+          name: enable_tags
+          label: 启用侧边栏标签
+          help: 是否启用侧边栏标签
+          value: true
+          options:
+            - label: 启用
+              value: true
+            - label: 禁用
+              value: false
+        - $formkit: radio
+          name: enable_custom
+          label: 启用侧边栏自定义模块
+          help: 是否启用自定义模块
+          value: false
+          options:
+            - label: 启用
+              value: true
+            - label: 禁用
+              value: false
+        - $formkit: radio
+          name: enable_webInfo
+          label: 启用侧边栏网站资讯
+          help: 是否启用侧边栏网站资讯
+          value: true
+          options:
+            - label: 启用
+              value: true
+            - label: 禁用
+              value: false
+    #卡片设置              
+    - group: card
+      label: 卡片
+      formSchema:
+        - $formkit: text
+          name: radius
+          label: 卡片圆角
+          placeholder: 请填写 卡片圆角
+          value: 24px
+          help: 卡片圆角，像素或百分比，默认值： 24px
+          validation: required
+        - $formkit: text
+          name: shadow
+          label: 卡片阴影
+          placeholder: 请填写 卡片阴影
+          value: 0 3px 8px 6px rgba(7,17,27,0.05)
+          help: 卡片阴影，默认值： 0 3px 8px 6px rgba(7,17,27,0.05)
+          validation: required
     #首页设置
     - group: index
       label: 首页设置

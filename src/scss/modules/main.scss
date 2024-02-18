@@ -4,6 +4,80 @@
  * @fileName: main
  * @Description: main
  */
+@use "../core/util";
+
 .main {
-  height: 500px;
+  width: 100%;
+  display: flex;
+  margin: 0 auto;
+  max-width: 1250px;
+  padding: 2rem 15px;
+  flex-direction: row;
+
+
+  .card {
+    background-color: var(--card-background-color);
+    border-radius: var(--card-border-radius);
+    box-shadow: var(--card-box-shadow);
+    transition: transform .25s, width .25s, height .25s;
+
+    &:hover {
+      box-shadow: 0 3px 8px 6px rgba(7, 17, 27, 0.09);
+    }
+  }
+
+
+  > .content {
+    width: 74%;
+    align-self: flex-start;
+    padding: 35px;
+  }
+
+  > .aside {
+    width: 25%;
+    height: 500px;
+    background: blue;
+    align-self: flex-start;
+  }
+
+  &.off-aside > .content {
+    width: 100%;
+  }
+
+  &.aside-left {
+    flex-direction: row-reverse;
+  }
+
+  &.aside-right {
+    flex-direction: row;
+  }
+
+  &:is(.aside-left) .aside {
+    margin-right: 18px;
+  }
+
+  &:is(.aside-right) .aside {
+    margin-left: 18px;
+  }
+
+  @include util.useThemeVar((
+    card-background-color: (rgba(255, 255, 255, 1), rgba(40, 47, 62, 0.9)),
+  ));
+
+  @include util.useResponsive(1000px) {
+    flex-direction: column;
+    > .content {
+      width: 100%;
+    }
+    > .aside {
+      width: 100%;
+      margin: 20px 0 0;
+    }
+  }
+
+  @include util.useResponsive(util.$w-md) {
+    padding: 18px 8px;
+  }
+
+
 }

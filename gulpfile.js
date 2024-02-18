@@ -27,10 +27,14 @@ const autoPrefix = require('gulp-autoprefixer');
 const sass = require('gulp-sass')(require('sass'));
 gulp.task("css", function () {
   return gulp.src('./src/scss/page/*.scss')
-    .pipe(sass({}, true))
-    .pipe(cssnano({preset: 'advanced'}))
-    .pipe(minifyCSS())
+    .pipe(sass(undefined, undefined))
     .pipe(cleanCss({level: 2, format: true}))
+    .pipe(cssnano({
+      discardComments: {
+        removeAll: true // 删除所有注释
+      }
+    }))
+    .pipe(minifyCSS())
     .pipe(autoPrefix({
       overrideBrowserslist: ["> 5%", "last 2 versions", "last 3 Safari versions", "Firefox >= 20",],
       cascade: true,

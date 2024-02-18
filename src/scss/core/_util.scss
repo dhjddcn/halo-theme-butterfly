@@ -30,7 +30,7 @@ $w-2xl: 1536px;
   }
 }
 
-//响应式
+//响应式 $p 表示同级 #butterfly.index
 @mixin useResponsive($w,$p:0) {
   @if ($p == 0) {
     @at-root  #Butterfly & {
@@ -53,7 +53,6 @@ $w-2xl: 1536px;
   justify-content: center;
   align-items: center;
 }
-
 
 // 1行文字省略号
 @mixin text-overflow {

@@ -5,14 +5,14 @@
  * @Description:核心
  */
 
-import _message from "./_message";
+import Message from "./_message";
 import Jquery from "jquery";
 import LazyLoad from './_lazyLoad'
 import {useDisableScroll, useThrottle} from "./_util";
 
 export default class Core {
   $ = Jquery;
-  msg = new _message();
+  msg = new Message();
   theme = 'light';
 
   constructor() {
@@ -137,8 +137,11 @@ export default class Core {
 
   //  遮罩
   #mask(close) {
-    const dom = this.$('#Butterfly >  .mask');
+    let dom = this.$('#Butterfly >  .mask');
+    if (dom.length === 0) dom = this.$('<div class="mask"></div>').appendTo('#Butterfly');
+
     dom.fadeIn(400);
+
     useDisableScroll(true);
 
     dom.click(() => {

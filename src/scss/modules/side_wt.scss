@@ -99,6 +99,7 @@
           display: flex;
           justify-content: flex-start;
           align-items: baseline;
+          @include util.text-overflow;
 
           > .name {
             flex: 1;
@@ -130,6 +131,7 @@
           text-align: center;
           font-size: 1.1em;
           padding: 3px;
+          @include util.text-overflow;
         }
       }
     }
@@ -149,7 +151,7 @@
       opacity: 1;
       transform: translateX(-58px)
     }
-
+    
     & > .button {
       margin: .5rem 0;
       width: 35px;
