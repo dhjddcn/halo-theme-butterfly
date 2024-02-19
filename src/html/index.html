@@ -38,8 +38,7 @@
   <!--/* 內容 */-->
   <th:block th:fragment="main">
     <section class="content">
-      <th:block th:replace="~{modules/posts:: list(${posts.items},${theme.config.index.post_layout})}"></th:block>
-   
+      <th:block th:replace="~{modules/components:: list(${posts.items},${theme.config.index.post_layout})}"/>
     </section>
     <th:block th:replace="~{modules/aside}"/>
   </th:block>

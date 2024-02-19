@@ -11,15 +11,18 @@
   display: flex;
   margin: 0 auto;
   max-width: 1250px;
-  padding: 2rem 15px;
+  padding: 28px 15px;
   flex-direction: row;
 
+  @include util.useThemeVar((
+    card-background-color: (rgba(255, 255, 255, 1), rgba(40, 47, 62, 0.9)),
+  ));
 
   .card {
     background-color: var(--card-background-color);
     border-radius: var(--card-border-radius);
     box-shadow: var(--card-box-shadow);
-    transition: transform .25s, width .25s, height .25s;
+    transition: transform .25s, width .25s, height .25s, box-shadow .25s;
 
     &:hover {
       box-shadow: 0 3px 8px 6px rgba(7, 17, 27, 0.09);
@@ -60,9 +63,6 @@
     margin-left: 18px;
   }
 
-  @include util.useThemeVar((
-    card-background-color: (rgba(255, 255, 255, 1), rgba(40, 47, 62, 0.9)),
-  ));
 
   @include util.useResponsive(1000px) {
     flex-direction: column;
@@ -79,5 +79,8 @@
     padding: 18px 8px;
   }
 
+  @include util.useResponsive($width: 2000px, $size: min) {
+    max-width: 60%;
+  }
 
 }

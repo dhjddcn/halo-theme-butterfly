@@ -14,7 +14,6 @@ export default class Core {
   $ = Jquery;
   msg = new Message();
   theme = 'light';
-
   constructor() {
     this.#initThemeMode();
     this.#scroll();
@@ -22,7 +21,6 @@ export default class Core {
     this.#backTop()
     this.#bars();
   }
-
 
   // 设置主题模式
   setThemeMode(theme) {

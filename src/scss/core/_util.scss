@@ -30,22 +30,26 @@ $w-2xl: 1536px;
   }
 }
 
-//响应式 $p 表示同级 #butterfly.index
-@mixin useResponsive($w,$p:0) {
-  @if ($p == 0) {
+
+//$level 0 表示同级  1表示子级 
+//$size 表示最大最小
+@mixin useResponsive($width,$level:1,$size:max) {
+  $wh: #{$size}-width;
+  @if ($level == 1) {
     @at-root  #Butterfly & {
-      @media (max-width: $w) {
+      @media ($wh: $width) {
         @content;
       }
     }
   } @else {
     @at-root  #Butterfly#{&} {
-      @media (max-width: $w) {
+      @media ($wh: $width) {
         @content;
       }
     }
   }
 }
+
 
 //居中
 @mixin flex-center {
@@ -60,3 +64,18 @@ $w-2xl: 1536px;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+
+@mixin wh100 {
+  width: 100%;
+  height: 100%;
+}
+
+
+@mixin text-clamp($clamp:1) {
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: $clamp;
+  -webkit-box-orient: vertical;
+}
+

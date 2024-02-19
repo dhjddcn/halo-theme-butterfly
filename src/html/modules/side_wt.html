@@ -1,10 +1,7 @@
 <!--/* 侧边菜单 */-->
 <div class="side-bar ">
-  <img class="avatar"
-       th:src="${theme.config.loading.preload}"
-       th:attr="onerror='this.src='+${'`'+theme.config.loading.err+'`'}"
-       th:data-lazy-src="${contributor.avatar}"
-       th:alt="${contributor.displayName}">
+  <img th:replace="~{modules/components:: lazyLoadImg(${contributor.avatar},${contributor.displayName},'avatar')}"/>
+  
   <div class="site-data">
     <a class="item" title="文章" href="/archives">
       <h2 class="title">文章</h2>

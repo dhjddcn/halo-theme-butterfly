@@ -20,24 +20,35 @@ gulp.task("clean", () => {
   );
 });
 const rename = require('gulp-rename');
-const minifyCSS = require("gulp-csso");
+const csso = require("gulp-csso");
 const cssnano = require('gulp-cssnano');
 const cleanCss = require('gulp-clean-css');
 const autoPrefix = require('gulp-autoprefixer');
 const sass = require('gulp-sass')(require('sass'));
 gulp.task("css", function () {
   return gulp.src('./src/scss/page/*.scss')
-    .pipe(sass(undefined, undefined))
-    .pipe(cleanCss({level: 2, format: true}))
-    .pipe(cssnano({
-      discardComments: {
-        removeAll: true // 删除所有注释
+    .pipe(sass({}, {}))
+    .pipe(csso({
+      debug: false,
+      comments: false,
+      restructure: true
+    }))
+    .pipe(cleanCss({
+      compatibility: 'ie8',
+      level: 2,
+      format: {
+        breaks: true,
+        specialComments: false
       }
     }))
-    .pipe(minifyCSS())
+    // .pipe(cssnano({
+    //   discardComments: {
+    //     removeAll: true // 删除所有注释
+    //   }
+    // }))
     .pipe(autoPrefix({
       overrideBrowserslist: ["> 5%", "last 2 versions", "last 3 Safari versions", "Firefox >= 20",],
-      cascade: true,
+      cascade: false,
     }))
     .pipe(rename({suffix: '.min'}))
     .pipe(gulp.dest('./templates/assets/css'))

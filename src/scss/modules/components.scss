@@ -1,0 +1,86 @@
+/**
+ * @date: 2024/2/19
+ * @author: 小红
+ * @fileName: components
+ * @Description:小组件
+ */
+
+@use "../core/util";
+
+
+@mixin essayList() {
+  .essay {
+    &-list {
+
+    }
+
+    &-tile {
+
+    }
+
+    &-item {
+      height: 16rem;
+      overflow: hidden;
+      position: relative;
+      @include util.flex-center;
+
+      &:not(:first-child) {
+        margin-top: 18px;
+      }
+    }
+
+    &-cover {
+      width: 40%;
+      height: 100%;
+      overflow: hidden;
+
+      > .img {
+        @include util.wh100;
+        object-fit: cover;
+
+        &[data-ll-status=loaded]:hover {
+          transform: scale(1.1);
+        }
+      }
+    }
+
+    &-info {
+      width: 60%;
+      padding: 0 40px;
+    }
+
+    &-title {
+      font-size: 1.6rem;
+      line-height: 1.4;
+      @include util.text-clamp(2);
+    }
+
+    &-data {
+      margin: 6px 0;
+      font-size: 90%;
+
+      > .row {
+        @include util.text-overflow;
+      }
+
+      .wp {
+        &:not(:last-child):after {
+          content: "|";
+          margin: 0 4px 0 2px;
+          font-weight: bold;
+        }
+
+        .link:not(:last-child):after {
+          content: "•";
+          font-weight: bold;
+          margin: 0 5px;
+        }
+      }
+    }
+
+    &-excerpt {
+      line-height: 1.8;
+      @include util.text-clamp(2);
+    }
+  }
+}

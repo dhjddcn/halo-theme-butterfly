@@ -19,6 +19,7 @@ a {
   color: inherit;
   text-decoration: inherit;
   overflow-wrap: break-word;
+  transition: .3s;
 }
 
 b, strong {
@@ -149,7 +150,8 @@ audio, canvas, embed, iframe, img, object, svg, video {
 
 img, video {
   max-width: 100%;
-  height: auto
+  height: auto;
+  transition: filter 375ms ease-in .2s, transform .6s;
 }
 
 [hidden] {
