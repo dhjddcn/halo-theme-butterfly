@@ -12,15 +12,15 @@
 <ul
   xmlns:th="https://www.thymeleaf.org"
   th:fragment="list(data,layout)"
-  class="essay-list">
-  <li class="essay-item card" th:each="post : ${data}">
-    <a th:href="${post.status.permalink}" th:title="${post.spec.title}" class="essay-cover">
+  th:class="${'essay '+layout}">
+  <li class="item card" th:each="post : ${data}">
+    <a th:href="${post.status.permalink}" th:title="${post.spec.title}" class="cover">
       <img th:replace="~{modules/components:: lazyLoadImg(${post.spec.cover},${post.spec.title},'img')}"/>
     </a>
 
-    <div class="essay-info">
-      <a class="essay-title" th:href="${post.status.permalink}" th:title="${post.spec.title}" th:text="${post.spec.title}"></a>
-      <div class="essay-data">
+    <div class="info">
+      <a class="title" th:href="${post.status.permalink}" th:title="${post.spec.title}" th:text="${post.spec.title}"></a>
+      <div class="data">
         <div class="row">
           <span class="wp comment">
               <i class="fa-solid fa-comments"></i>
@@ -51,7 +51,7 @@
           </span>
         </div>
       </div>
-      <div class="essay-excerpt" th:text="${post.spec.excerpt.raw}"></div>
+      <div th:if="${layout == 'list'}" class="excerpt" th:text="${post.spec.excerpt.raw}"></div>
     </div>
   </li>
 </ul>

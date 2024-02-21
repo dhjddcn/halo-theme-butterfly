@@ -22,7 +22,7 @@
     background-color: var(--card-background-color);
     border-radius: var(--card-border-radius);
     box-shadow: var(--card-box-shadow);
-    transition: transform .25s, width .25s, height .25s, box-shadow .25s;
+    transition: transform .25s, width .3s, height .3s;
 
     &:hover {
       box-shadow: 0 3px 8px 6px rgba(7, 17, 27, 0.09);
@@ -38,8 +38,6 @@
 
   > .aside {
     width: 25%;
-    height: 500px;
-    background: blue;
     align-self: flex-start;
   }
 

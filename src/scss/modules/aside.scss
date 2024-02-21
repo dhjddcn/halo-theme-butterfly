@@ -7,5 +7,22 @@
 
 
 .aside {
-  
+  > section {
+    text-align: center;
+    padding: 15px 18px;
+
+    &:not(:first-child) {
+      margin-top: 15px;
+    }
+  }
+
+  &-user {
+    > .avatar {
+      width: 110px;
+      height: 110px;
+      border-radius: 70px;
+      transition: filter 375ms ease-in .2s, transform .3s;
+    }
+  }
+
 }

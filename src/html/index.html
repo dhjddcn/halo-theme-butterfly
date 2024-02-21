@@ -40,6 +40,6 @@
     <section class="content">
       <th:block th:replace="~{modules/components:: list(${posts.items},${theme.config.index.post_layout})}"/>
     </section>
-    <th:block th:replace="~{modules/aside}"/>
+    <th:block th:replace="~{modules/aside::aside}"/>
   </th:block>
 </template>

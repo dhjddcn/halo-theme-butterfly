@@ -7,80 +7,122 @@
 
 @use "../core/util";
 
-
 @mixin essayList() {
   .essay {
-    &-list {
-
-    }
-
-    &-tile {
-
-    }
-
-    &-item {
-      height: 16rem;
-      overflow: hidden;
-      position: relative;
+    .item {
       @include util.flex-center;
-
-      &:not(:first-child) {
-        margin-top: 18px;
-      }
-    }
-
-    &-cover {
-      width: 40%;
-      height: 100%;
       overflow: hidden;
 
-      > .img {
-        @include util.wh100;
-        object-fit: cover;
+      > .cover {
+        position: relative;
+        overflow: hidden;
 
-        &[data-ll-status=loaded]:hover {
-          transform: scale(1.1);
+        > .img {
+          @include util.wh100;
+          object-fit: cover;
+
+          &[data-ll-status=loaded]:hover {
+            transform: scale(1.1);
+          }
+        }
+      }
+
+      > .info {
+
+        > .data {
+          margin: 6px 0;
+
+          > .row {
+            @include util.text-overflow;
+          }
+
+          .wp {
+            &:not(:last-child):after {
+              content: "|";
+              margin: 0 4px 0 2px;
+              font-weight: bold;
+            }
+
+            .link:not(:last-child):after {
+              content: "•";
+              font-weight: bold;
+              margin: 0 5px;
+            }
+          }
+        }
+
+      }
+    }
+
+    &.list {
+      > .item {
+        height: 16rem;
+        position: relative;
+
+        &:not(:first-child) {
+          margin-top: 18px;
+        }
+
+        > .cover {
+          width: 40%;
+          height: 100%;
+        }
+
+        > .info {
+          width: 60%;
+          padding: 0 40px;
+
+          > .title {
+            font-size: 1.6rem;
+            line-height: 1.4;
+            @include util.text-clamp(2);
+          }
+
+          > .data {
+            font-size: 90%;
+          }
+
+          > .excerpt {
+            line-height: 1.8;
+            @include util.text-clamp(2);
+          }
         }
       }
     }
 
-    &-info {
-      width: 60%;
-      padding: 0 40px;
-    }
+    &.tile {
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: row;
 
-    &-title {
-      font-size: 1.6rem;
-      line-height: 1.4;
-      @include util.text-clamp(2);
-    }
+      > .item {
+        height: 20rem;
+        flex-direction: column;
+        width: 32.3%;
+        margin: 0 1% 20px 0;
 
-    &-data {
-      margin: 6px 0;
-      font-size: 90%;
-
-      > .row {
-        @include util.text-overflow;
-      }
-
-      .wp {
-        &:not(:last-child):after {
-          content: "|";
-          margin: 0 4px 0 2px;
-          font-weight: bold;
+        > .cover {
+          width: 100%;
+          height: 65%;
         }
 
-        .link:not(:last-child):after {
-          content: "•";
-          font-weight: bold;
-          margin: 0 5px;
+        > .info {
+          width: 100%;
+          padding: 25px 30px 10px;
+          height: 35%;
+
+
+          > .title {
+            font-size: 1.2rem;
+            line-height: 1.2;
+            @include util.text-clamp(1);
+          }
+
+          > .data {
+            font-size: 80%;
+          }
         }
       }
-    }
-
-    &-excerpt {
-      line-height: 1.8;
-      @include util.text-clamp(2);
     }
   }
 }

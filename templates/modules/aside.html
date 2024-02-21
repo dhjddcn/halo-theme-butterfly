@@ -1,1 +1,1 @@
-<aside class="aside" th:if="${theme.config.aside.enable} == 'true'"></aside>
+<section th:fragment="user" class="aside-user card">121</section><section th:fragment="notice" class="aside-notice card">121</section><aside class="aside" th:fragment="aside" th:if="${theme.config.aside.enable} == 'true'"> <th:block th:replace="~{::user}"/> <th:block th:replace="~{::notice}"/> </aside>

@@ -1,3 +1,17 @@
+<!--/* 信息 */-->
+<section th:fragment="user" class="aside-user card">
+  121
+</section>
+
+<!--/* 公告 */-->
+<section th:fragment="notice" class="aside-notice card">
+  121
+</section>
+
+
 <!--/* 侧边栏 */-->
-<aside class="aside" th:if="${theme.config.aside.enable} == 'true'">
+<aside class="aside" th:fragment="aside" th:if="${theme.config.aside.enable} == 'true'">
+  <th:block th:replace="~{::user}"/>
+  <th:block th:replace="~{::notice}"/>
 </aside>
+
