@@ -22,6 +22,57 @@
       height: 110px;
       border-radius: 70px;
       transition: filter 375ms ease-in .2s, transform .3s;
+      margin: 0 auto;
+
+      &:hover {
+        filter: brightness(1.2);
+        transform: rotate(360deg);
+        cursor: var(--cursor-pointer);
+      }
+    }
+
+    > .name {
+      font-size: 1.5rem;
+      margin: 6px 0 -5px 0;
+    }
+
+    > .data {
+      display: table;
+      margin: 14px 0 4px;
+      table-layout: fixed;
+      width: 100%;
+
+      .item {
+        display: table-cell;
+      }
+
+      .headline {
+        font-size: 1rem;
+      }
+
+      .num {
+        font-size: 1.4rem;
+        color: var(--text-obs-color);
+      }
+
+    }
+
+    .button {
+      width: 90%;
+      margin: 0 auto;
+      padding: 2px 10px;
+    }
+
+    .social {
+      display: flex;
+      justify-content: center;
+      line-height: 1;
+      margin: 15px 0 0;
+
+      > .link {
+        font-size: 1.35em;
+        margin: 0 8px;
+      }
     }
   }
 

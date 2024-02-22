@@ -1,6 +1,6 @@
 <!--/* 侧边菜单 */-->
 <div class="side-bar ">
-  <img th:replace="~{modules/components:: lazyLoadImg(${contributor.avatar},${contributor.displayName},'avatar')}"/>
+  <img th:replace="~{modules/components:: lazyLoadImg(${contributor.avatar},${contributor.displayName},'avatar',false)}"/>
   
   <div class="site-data">
     <a class="item" title="文章" href="/archives">

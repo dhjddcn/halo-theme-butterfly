@@ -1,21 +1,21 @@
 <!--/* 图片加载 */-->
 <img
-  th:fragment="lazyLoadImg(src,alt,class)"
+  th:fragment="lazyLoadImg(src,alt,class,random)"
   th:src="${theme.config.loading.preload}"
   th:attr="onerror='this.src='+${'`'+theme.config.loading.err+'`'}"
-  th:data-lazy-src="${(#strings.isEmpty(src) && theme.config.loading.enable_random_img == 'true')  ? (theme.config.loading.random_img + '?i=' + postStat.index)  : src}"
+  th:data-lazy-src="${(#strings.isEmpty(src) && theme.config.loading.enable_random_img == 'true' && random)  ? (theme.config.loading.random_img + '?v=' + postStat.index)  : src}"
   th:alt="${alt}"
   th:class="${class}"
 >
 
-<!--/* 文章列表 */-->
+<!--/* 文章列表  */-->
 <ul
   xmlns:th="https://www.thymeleaf.org"
   th:fragment="list(data,layout)"
   th:class="${'essay '+layout}">
   <li class="item card" th:each="post : ${data}">
-    <a th:href="${post.status.permalink}" th:title="${post.spec.title}" class="cover">
-      <img th:replace="~{modules/components:: lazyLoadImg(${post.spec.cover},${post.spec.title},'img')}"/>
+    <a th:if="${not #strings.isEmpty(post.spec.cover) || theme.config.loading.enable_random_img == 'true' }" th:href="${post.status.permalink}" th:title="${post.spec.title}" th:class="'cover' + ${post.spec.pinned ? ' top' : ''}">
+      <img th:replace="~{::lazyLoadImg(${post.spec.cover},${post.spec.title},'img',true)}"/>
     </a>
 
     <div class="info">

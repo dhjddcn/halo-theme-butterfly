@@ -7,6 +7,7 @@
 
 @use "../core/util";
 
+//文章列表
 @mixin essayList() {
   .essay {
     .item {
@@ -16,6 +17,21 @@
       > .cover {
         position: relative;
         overflow: hidden;
+
+        &.top:before {
+          content: '置顶';
+          position: absolute;
+          left: 0;
+          background: linear-gradient(135deg, #fd7a64 10%, #fb2d2d 100%);
+          color: #fff;
+          top: 20px;
+          font-size: .8em;
+          z-index: 50;
+          padding: 0 7px;
+          line-height: 2;
+          border-radius: 0 50px 50px 0;
+        }
+
 
         > .img {
           @include util.wh100;
@@ -66,6 +82,11 @@
         > .cover {
           width: 40%;
           height: 100%;
+
+          @include util.useResponsive($width: util.$w-md, $level: 0) {
+            width: 100%;
+            height: 200px;
+          }
         }
 
         > .info {
@@ -76,30 +97,50 @@
             font-size: 1.6rem;
             line-height: 1.4;
             @include util.text-clamp(2);
+
+            @include util.useResponsive($width: util.$w-md, $level: 0) {
+              font-size: 1.3rem;
+            }
           }
 
           > .data {
             font-size: 90%;
+            @include util.useResponsive($width: util.$w-md, $level: 0) {
+              font-size: 88%;
+            }
           }
 
           > .excerpt {
             line-height: 1.8;
             @include util.text-clamp(2);
+
+            @include util.useResponsive($width: util.$w-md, $level: 0) {
+              @include util.text-clamp(1);
+            }
           }
+
+          @include util.useResponsive($width: util.$w-md, $level: 0) {
+            padding: 20px 20px 30px;
+            width: 100%;
+          }
+        }
+
+        @include util.useResponsive($width: util.$w-md, $level: 0) {
+          flex-direction: column;
+          height: auto;
         }
       }
     }
 
     &.tile {
-      display: flex;
-      flex-wrap: wrap;
-      flex-direction: row;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr); /* 创建3列 */
+      grid-auto-rows: minmax(100px, auto); /* 自动调整行高 */
+      gap: 20px; /* 网格项之间的间隔 */
 
       > .item {
         height: 20rem;
         flex-direction: column;
-        width: 32.3%;
-        margin: 0 1% 20px 0;
 
         > .cover {
           width: 100%;
@@ -108,7 +149,7 @@
 
         > .info {
           width: 100%;
-          padding: 25px 30px 10px;
+          padding: 20px 30px 15px;
           height: 35%;
 
 
@@ -122,6 +163,15 @@
             font-size: 80%;
           }
         }
+      }
+
+
+      @include util.useResponsive($width: 1200px, $level: 0) {
+        grid-template-columns: repeat(2, 1fr); /* 创建2列 */
+      }
+
+      @include util.useResponsive($width: util.$w-md, $level: 0) {
+        grid-template-columns: repeat(1, 1fr); /* 创建2列 */
       }
     }
   }

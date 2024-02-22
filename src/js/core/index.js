@@ -92,7 +92,7 @@ export default class Core {
       this.#nav(nav, [maxNUm, scrollNum, scrollTop]);
 
       // 用户模式下调用
-      if (ThemeConfig.theme.mode === 'user') this.#sideBtn(sideBtn, [maxNUm, scrollNum, scrollTop]);
+      if (ThemeConfig.style.mode === 'user') this.#sideBtn(sideBtn, [maxNUm, scrollNum, scrollTop]);
 
       scrollNum = scrollTop;
     }, 200));

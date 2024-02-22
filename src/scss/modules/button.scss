@@ -196,14 +196,14 @@
     border-radius: 10px;
     background-color: var(--theme);
     color: var(--button-text-color);
-    transition: ease-in-out 0.3s;
+    transition: filter 0.35s, transform 0.35s;
+
     &:active {
       transform: scale(0.96);
     }
 
     &:hover {
       filter: hue-rotate(130deg);
-      transform: translateX(-5px);
     }
 
   }

@@ -12,7 +12,7 @@ spec:
           label: 作者的唯一标识 metadata.name
           placeholder: 请填写 作者的唯一标识 metadata.name
           value: admin
-          help: 后台用户管理中的用户名，不可乱填否则个人资料显示异常（示例：admin）
+          help: 后台用户管理中的用户名，不可乱填否则侧边栏个人资料显示异常（示例：admin）
           validation: required
         - $formkit: text
           name: icp
@@ -99,7 +99,7 @@ spec:
           name: enable_random_img
           label: 启用随机图片
           help: 是否启用随机图API（必须先配置 API），开启后将使用随机图填充没有设置封面的，未开启时使用主题内置的封面图
-          value: 'true'
+          value: 'false'
           options:
             - label: 启用
               value: 'true'
@@ -319,7 +319,7 @@ spec:
           name: enable
           label: 启用侧边栏
           help: 是否启用侧边栏（全局），关闭后所有页面都没有侧边栏（优先级高于页面元数据）
-          value: true
+          value: 'true'
           options:
             - label: 启用
               value: 'true'
@@ -335,14 +335,44 @@ spec:
               value: aside-left
             - label: 右边
               value: aside-right
-        - $formkit: textarea
+        - $formkit: text
           rows: 5
           name: button
           label: 侧边栏按钮
           placeholder: 请填写 侧边栏按钮内容
-          value: 关注我&+&/
-          help: 侧边栏按钮内容, 支持 html 代码片段 (注：文案&+&链接 用&+&分割)
+          value: 关注我|&|/
+          help: 侧边栏按钮内容, 支持 html 代码片段，内容按 |&| 分割. 举例：(关注我|&|https://dhjdd.cn)
           validation: required
+        - $formkit: repeater
+          name: social
+          addButton: false
+          addLabel: false
+          upControl: false
+          downControl: false
+          removeControl: false
+          insertControl: false
+          label: 默认社交账号
+          value:
+            - QQ: ''
+              Github: ''
+              Email: ''
+          children:
+            - $formkit: text
+              name: QQ
+              label: QQ
+              placeholder: 请填写 QQ 号码
+              value: ""
+            - $formkit: text
+              name: Github
+              label: Github
+              placeholder: 请填写 Github 地址
+              value: ""
+            - $formkit: text
+              rows: 4
+              name: Email
+              label: 邮箱
+              placeholder: 请填写 邮箱 地址
+              value: ""
         - $formkit: textarea
           rows: 5
           name: notice
@@ -435,7 +465,7 @@ spec:
           label: 打字机文案
           placeholder: 请填写 打字机文案
           value: '欢迎来到我的博客|&|请填写打字机文案'
-          help: 首页第一屏打字机文案 (注：多个文案用 |&| 隔开)
+          help: 首页第一屏打字机文案 (注：多个文案用 |&| 分割)
           validation: required
         - $formkit: radio
           name: post_layout
