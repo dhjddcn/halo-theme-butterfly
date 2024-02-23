@@ -6,6 +6,7 @@
  */
 import Core from "../core";
 import Typed from 'typed.js';
+import $ from 'jquery';
 
 class Index extends Core {
   constructor() {
@@ -15,7 +16,7 @@ class Index extends Core {
 
   // 打字机效果
   typewriter() {
-    const dom = this.$('.header .above-subtitle--text');
+    const dom = $('.header .above-subtitle--text');
     if (!dom.length) return;
     const text = dom.attr('data-typewriter').replaceAll('\n', '').split('|&|');
     new Typed('.above-subtitle--text', {

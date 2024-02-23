@@ -1,7 +1,7 @@
 <!--/* 侧边菜单 */-->
 <div class="side-bar ">
   <img th:replace="~{modules/components:: lazyLoadImg(${contributor.avatar},${contributor.displayName},'avatar',false)}"/>
-  
+
   <div class="site-data">
     <a class="item" title="文章" href="/archives">
       <h2 class="title">文章</h2>
@@ -64,11 +64,11 @@
 
 <!--/* 侧边按钮 */-->
 <div class="side-btn">
-  <button class="button switch-model" th:if="${theme.config.style.mode == 'user'}" onclick="buy.toggleThemeMode()" type="button" title="浅色和深色模式转换">
+  <button class="button switch-model" th:if="${theme.config.style.mode == 'user'}" onclick="buy.useTheme.toggleMode()" type="button" title="浅色和深色模式转换">
     <i class="fas fa-adjust"></i>
   </button>
 
-  <button class="button back-top" type="button" title="回到顶部">
+  <button class="button back-top" onclick="buy.backTop()" type="button" title="回到顶部">
     <i class="fa-solid fa-up"></i>
   </button>
 </div>

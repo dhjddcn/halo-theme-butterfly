@@ -4,6 +4,8 @@
  * @fileName: Utils
  * @Description:工具
  */
+import $ from "jquery";
+
 /**
  * 防抖
  * @param func
@@ -97,11 +99,50 @@ export class Events {
 }
 
 
-// 禁用滚动
+/**
+ * 禁用滚动
+ * @param bool
+ */
 export function useDisableScroll(bool) {
   if (bool) {
     document.body.style.overflow = 'hidden';
   } else {
     document.body.removeAttribute('style');
   }
+}
+
+/**
+ * 判断白天还是夜晚
+ * @returns {boolean}
+ */
+export function useIsDaytime() {
+  const now = new Date();
+  const currentHour = now.getHours();
+
+  // 定义白天和夜晚的时间范围（可以根据需要调整）
+  const daytimeStartHour = 6; // 早上6点
+  const daytimeEndHour = 18;  // 晚上6点
+
+  // 判断当前小时是否在白天时间范围内
+  return currentHour >= daytimeStartHour && currentHour < daytimeEndHour;
+}
+
+
+/**
+ * 遮罩层
+ * @param close
+ */
+export function useMask(close) {
+  let dom =  $('#Butterfly >  .mask');
+  if (dom.length === 0) dom = $('<div class="mask"></div>').appendTo('#Butterfly');
+
+  dom.fadeIn(400);
+
+  useDisableScroll(true);
+
+  dom.click(() => {
+    useDisableScroll(false);
+    dom.off('click').fadeOut(400);
+    close();
+  })
 }
