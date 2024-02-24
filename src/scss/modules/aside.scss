@@ -8,15 +8,27 @@
 
 .aside {
   > section {
-    text-align: center;
     padding: 15px 18px;
 
     &:not(:first-child) {
       margin-top: 15px;
     }
+
+    > .title {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 5px;
+
+      > i {
+        margin-right: 2px;
+      }
+    }
   }
 
+
   &-user {
+    text-align: center;
+
     > .avatar {
       width: 110px;
       height: 110px;
@@ -57,8 +69,8 @@
 
     }
 
-    .button {
-      width: 90%;
+    > a > .button {
+      width: 95%;
       margin: 0 auto;
       padding: 2px 10px;
     }
@@ -73,6 +85,18 @@
         font-size: 1.35em;
         margin: 0 8px;
       }
+    }
+  }
+
+  &-notice {
+    > .title > i {
+      color: rgb(246, 8, 8);
+    }
+  }
+
+  &-category {
+    > .title > i {
+      color: #108aec;
     }
   }
 

@@ -24,6 +24,7 @@ const csso = require("gulp-csso");
 const cssnano = require('gulp-cssnano');
 const cleanCss = require('gulp-clean-css');
 const autoPrefix = require('gulp-autoprefixer');
+const postcss = require('gulp-postcss');
 const sass = require('gulp-sass')(require('sass'));
 gulp.task("css", function () {
   return gulp.src('./src/scss/page/*.scss')
@@ -46,6 +47,7 @@ gulp.task("css", function () {
     //     removeAll: true // 删除所有注释
     //   }
     // }))
+    .pipe(postcss([]))
     .pipe(autoPrefix({
       overrideBrowserslist: ["> 5%", "last 2 versions", "last 3 Safari versions", "Firefox >= 20",],
       cascade: false,

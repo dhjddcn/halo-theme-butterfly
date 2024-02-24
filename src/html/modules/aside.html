@@ -33,8 +33,41 @@
 </section>
 
 <!--/* 公告 */-->
-<section th:fragment="notice" class="aside-notice card">
-  121
+<section th:fragment="notice" class="aside-notice title card">
+  <h1 class="title">
+    <i class="fas fa-bullhorn fa-shake"></i>
+    <span class="name">公告</span>
+  </h1>
+
+  <div class="content" th:utext="${theme.config.aside.notice}"></div>
+</section>
+
+<!--/* 分类 */-->
+<section th:fragment="category" th:if="${theme.config.aside.enable_category}" class="aside-category card">
+  <h1 class="title">
+    <i class="fa-duotone fa-layer-group"></i>
+    <span class="name">分类</span>
+  </h1>
+
+  <!--  <div class="content" th:with="categories = ${categoryFinder.list(1,5)},noData = ${not #lists.isEmpty(categories)}">-->
+  <!--    <th:block th:if="${noData}">-->
+  <!--      <a th:each="category : ${categories}"-->
+  <!--         th:href="@{${category.status.permalink}}"-->
+  <!--         th:title="${category.spec.displayName}"-->
+  <!--         class="link flex relative flex-direction-row"-->
+  <!--      >-->
+  <!--        <span class="name text-overflow flex-1" th:text="${category.spec.displayName}"></span>-->
+  <!--        <span class="num text-overflow" th:text="${category.status.visiblePostCount}"></span>-->
+  <!--      </a>-->
+  <!--    </th:block>-->
+
+  <!--    <th:block th:unless="${noData}" th:insert="~{modules/public:: emptyData('暂无分类~',false)}"></th:block>-->
+  <!--  </div>-->
+
+  <div class="content">
+
+
+  </div>
 </section>
 
 
@@ -42,5 +75,6 @@
 <aside class="aside" th:fragment="aside" th:if="${theme.config.aside.enable} == 'true'">
   <th:block th:replace="~{::user}"/>
   <th:block th:replace="~{::notice}"/>
+  <th:block th:replace="~{::category}"/>
 </aside>
 

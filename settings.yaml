@@ -428,8 +428,8 @@ spec:
           name: radius
           label: 卡片圆角
           placeholder: 请填写 卡片圆角
-          value: 24px
-          help: 卡片圆角，像素或百分比，默认值： 24px
+          value: 15px
+          help: 卡片圆角，像素或百分比，默认值： 15px
           validation: required
         - $formkit: text
           name: shadow

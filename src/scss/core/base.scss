@@ -92,6 +92,11 @@ body {
   background-color: transparent
 }
 
+::selection {
+  color: #fff;
+  background-color: #00c4b6;
+}
+
 
 hr {
   position: relative;

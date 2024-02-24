@@ -7,7 +7,7 @@
 import $ from 'jquery';
 import {useThrottle} from "./_util";
 
-export default class naveScroll {
+export default class Scroll {
 
   #sideBtnDom = $('#Butterfly > .side-btn');
   #navDom = $('.header > .nav');
@@ -22,6 +22,7 @@ export default class naveScroll {
     window.addEventListener('scroll', useThrottle(() => {
       let scrollTop = window.scrollY || document.documentElement.scrollTop
 
+      // 激活头部导航栏
       this.#activeNav([maxNUm, scrollNum, scrollTop]);
 
       // 激活侧边按钮
@@ -51,7 +52,7 @@ export default class naveScroll {
 
     if (scrollTop < maxNUm && scrollTop <= 2) this.#sideBtnDom.removeClass('active');
   }
-  
+
 }
  
  

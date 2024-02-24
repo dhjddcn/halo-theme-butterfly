@@ -9,19 +9,20 @@ import Message from "./_message";
 import $ from "jquery";
 import LazyLoad from './_lazyLoad'
 import Theme from './_theme';
-import {useDisableScroll, useThrottle, useIsDaytime, useMask} from "./_util";
-import naveScroll from "./_naveScroll";
+import {useMask} from "./_util";;
+import Scroll from "./_scroll";
 
 
 export default class Core {
   useTheme = new Theme(); //主题
   useMessage = new Message(); //消息
-  useNaveScroll = new naveScroll(); //滚动导航侧边
-  useLazyLoad = new LazyLoad({elements_selector: 'img', threshold: 0, data_src: 'lazy-src'}); //懒加载
+  useScroll = new Scroll(); //滚动导航侧边
+  useLazyLoad = new LazyLoad({elements_selector: 'img', threshold: 0, data_src: 'lazy-src'}); //图片懒加载
 
   constructor() {
     this.#bars();
   }
+
 
   //返回顶部
   backTop() {
@@ -38,9 +39,7 @@ export default class Core {
     });
 
     //  注册侧边菜单
-    $('menu.bar').on('click', 'li.child', (event) => {
-      event.currentTarget.classList.toggle('active');
-    })
+    $('menu.bar').on('click', 'li.child', (event) => event.currentTarget.classList.toggle('active'));
   }
 
 

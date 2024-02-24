@@ -175,4 +175,36 @@
       }
     }
   }
+
+  .pagination {
+    margin-top: 20px;
+    @include util.flex-center;
+
+    > .page, .next, .prev {
+      display: block;
+      border-radius: 8px;
+      box-shadow: var(--card-box-shadow);
+      background-color: var(--card-background-color);
+      margin: 0 6px;
+      width: 35px;
+      height: 35px;
+      text-align: center;
+      line-height: 35px;
+      transition: .3s;
+
+      &:hover {
+        background-color: var(--theme);
+        color: #fff;
+      }
+    }
+
+    > .current {
+      background-color: var(--theme);
+      color: #fff;
+    }
+
+
+  }
 }
+
+
