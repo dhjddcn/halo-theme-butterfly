@@ -5,8 +5,8 @@
  * @Description:核心
  */
 
-import Message from "./_message";
 import $ from "jquery";
+import Message from "./_message";
 import LazyLoad from './_lazyLoad'
 import Theme from './_theme';
 import {useMask} from "./_util";;
@@ -41,6 +41,4 @@ export default class Core {
     //  注册侧边菜单
     $('menu.bar').on('click', 'li.child', (event) => event.currentTarget.classList.toggle('active'));
   }
-
-
 }

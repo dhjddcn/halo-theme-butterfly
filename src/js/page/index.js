@@ -7,8 +7,11 @@
 import Core from "../core";
 import Typed from 'typed.js';
 import $ from 'jquery';
+import Pagination from '../modules/pagination'
 
 class Index extends Core {
+  usePagination = new Pagination();
+
   constructor() {
     super();
     this.typewriter();
