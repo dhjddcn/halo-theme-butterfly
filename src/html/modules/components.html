@@ -61,7 +61,7 @@
 <div xmlns:th="https://www.thymeleaf.org"
      class="pagination"
      th:fragment="pagination(data,path)"
-     th:data-pgn="${#strings.concat(path,'-',data.page,'-',data.size,'-',data.total,'-',data.hasNext,'-',data.hasPrevious,'-',data.totalPages,'-',data.nextUrl,'-',data.prevUrl)}"
+     th:data-pgn="${#strings.concat(path,'-',data.nextUrl,'-',data.prevUrl,'-',data.page,'-',data.size,'-',data.totalPages,'-',data.total,'-',data.hasPrevious(),'-',data.hasNext())}"
 >
 
   <!--  <a th:if="${ps.hasPrevious()}"-->
