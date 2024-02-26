@@ -11,6 +11,7 @@
 >
   <!--/* css */-->
   <th:block th:fragment="css_pin">
+    <link rel="preload" fetchpriority="high" as="image" th:href="${theme.config.index.above_background}">
     <style th:inline="css">
       .above {
         --above-background: /*[(${'url('+theme.config.index.above_background+')'})]*/ transparent;
