@@ -12,7 +12,6 @@ spec:
       label: "图标"
 
 ---
-
 apiVersion: v1alpha1
 kind: AnnotationSetting
 metadata:
