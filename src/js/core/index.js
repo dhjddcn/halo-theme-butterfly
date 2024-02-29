@@ -13,7 +13,7 @@ import {useMask} from "./_util";;
 import Scroll from "./_scroll";
 
 
-export default class Core {
+export default class App {
   useTheme = new Theme(); //主题
   useMessage = new Message(); //消息
   useScroll = new Scroll(); //滚动导航侧边

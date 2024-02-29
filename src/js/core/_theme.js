@@ -7,17 +7,15 @@
 import {useIsDaytime} from "./_util";
 
 export default class Theme {
-  mode = 'light';
-  fn = null
+  #LOCALSTORAGE_KEY = 'Butterfly-data-theme';
+  #CHANGE_FN = null;
 
-  constructor() {
-    this.#init();
-  }
+  mode = 'light';
 
   // 初始化主题模式
-  #init() {
-    const themeMode = ThemeConfig.style['mode'];
-    let theme = localStorage.getItem('Butterfly-data-theme') || 'light';
+  constructor() {
+    const themeMode = App.config.style['mode'];
+    let theme = localStorage.getItem(this.#LOCALSTORAGE_KEY) || 'light';
 
     if (themeMode === 'auto') {
       theme = useIsDaytime() ? 'light' : 'dark';
@@ -32,14 +30,14 @@ export default class Theme {
   setMode(theme) {
     this.mode = theme;
     document.documentElement.dataset.theme = theme;
-    localStorage.setItem('Butterfly-data-theme', theme);
-    this.fn && this.fn(theme);
+    localStorage.setItem(this.#LOCALSTORAGE_KEY, theme);
+    this.#CHANGE_FN && this.#CHANGE_FN(theme);
   }
 
   // 获取主题模式
   getMode() {
     const rootTheme = document.documentElement.dataset.theme;
-    const locDataTheme = localStorage.getItem('Butterfly-data-theme');
+    const locDataTheme = localStorage.getItem(this.#LOCALSTORAGE_KEY);
     return this.mode || rootTheme || locDataTheme;
   }
 
@@ -50,6 +48,6 @@ export default class Theme {
 
   // 主题模式切换回调
   change(fn) {
-    this.fn = fn;
+    this.#CHANGE_FN = fn;
   }
 }

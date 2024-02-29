@@ -1,10 +1,12 @@
-<th:block xmlns:th="https://www.thymeleaf.org">
-  <script id="baseScript" th:inline="javascript">
-    window.ThemeConfig =/*[[${theme.config}]]*/ {};
-    window['baseScript'].remove();
-  </script>
-</th:block>
+<!--/* script */-->
+<script id="baseScript" th:inline="javascript">
+  window.App = {
+    config: /*[[${theme.config}]]*/ {},
+  }
+  window['baseScript'].remove();
+</script>
 
+<!--/* style */-->
 <style th:inline="css"
        th:with="body_background = ${#strings.containsIgnoreCase(theme.config.style.body_background,'http') ? 'url('+theme.config.style.body_background+') no-repeat fixed center / cover;' : theme.config.style.body_background }"
 >

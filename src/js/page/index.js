@@ -7,7 +7,7 @@
 import Core from "../core";
 import Typed from 'typed.js';
 import $ from 'jquery';
-import Pagination from '../modules/pagination'
+import Pagination from '../modules/pagination';
 
 class Index extends Core {
   usePagination = new Pagination();
@@ -30,12 +30,6 @@ class Index extends Core {
       backSpeed: 50,
     })
   }
-
-  themeChange(theme) {
-    console.log('主题：' + theme);
-  }
 }
 
-document.addEventListener("DOMContentLoaded", () => window.buy = new Index())
-
-
+document.addEventListener("DOMContentLoaded", () => window.App.page = new Index())

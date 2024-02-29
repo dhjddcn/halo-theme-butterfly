@@ -8,35 +8,31 @@ import $ from 'jquery';
 import {useThrottle} from "./_util";
 
 export default class Scroll {
-
   #sideBtnDom = $('#Butterfly > .side-btn');
   #navDom = $('.header > .nav');
+  #max_num = 56; // 最大值
+  #scroll_Num = 0; // 当前值
 
+  // 初始化
   constructor() {
-    this.#init();
-  }
-
-  #init() {
-    const maxNUm = 56; // 最大值
-    let scrollNum = 0; // 当前值
     window.addEventListener('scroll', useThrottle(() => {
       let scrollTop = window.scrollY || document.documentElement.scrollTop
 
       // 激活头部导航栏
-      this.#activeNav([maxNUm, scrollNum, scrollTop]);
+      this.#activeNav(scrollTop);
 
       // 激活侧边按钮
-      this.#activeBtn([maxNUm, scrollNum, scrollTop]);
+      this.#activeBtn(scrollTop);
 
-      scrollNum = scrollTop;
+      this.#scroll_Num = scrollTop;
     }, 200));
   }
 
   // 激活头部导航栏
-  #activeNav([maxNUm, scrollNum, scrollTop]) {
-    if (scrollTop > maxNUm) {
+  #activeNav(scrollTop) {
+    if (scrollTop > this.#max_num) {
       this.#navDom.addClass('style');
-      if (scrollNum <= scrollTop) {
+      if (this.#scroll_Num <= scrollTop) {
         this.#navDom.removeClass('active')
       } else {
         this.#navDom.addClass('active')
@@ -47,10 +43,10 @@ export default class Scroll {
   }
 
   // 激活侧边按钮
-  #activeBtn([maxNUm, scrollNum, scrollTop]) {
-    if (scrollTop > maxNUm && scrollNum <= scrollTop) this.#sideBtnDom.addClass('active');
+  #activeBtn(scrollTop) {
+    if (scrollTop > this.#max_num && this.#scroll_Num <= scrollTop) this.#sideBtnDom.addClass('active');
 
-    if (scrollTop < maxNUm && scrollTop <= 2) this.#sideBtnDom.removeClass('active');
+    if (scrollTop < this.#max_num && scrollTop <= 2) this.#sideBtnDom.removeClass('active');
   }
 
 }

@@ -13,10 +13,6 @@ export default class Pagination {
   #pgn = {};
 
   constructor() {
-    this.#init()
-  }
-
-  #init() {
     const [path, nextUrl, prevUrl, page, size, totalPages, total, hasPrevious, hasNext] = this.#dom.data('pgn').split('-');
     this.#pgn = {
       path,
@@ -44,29 +40,30 @@ export default class Pagination {
 
   // 获取页码
   #getPage() {
+    const {totalPages, page, path} = this.#pgn;
     const maxPagesToShow = 5; // 可见的最大页码数
     const halfMaxPagesToShow = Math.floor(maxPagesToShow / 2);
     let startPage, endPage;
 
-    if (this.#pgn.totalPages <= maxPagesToShow) {
+    if (totalPages <= maxPagesToShow) {
       startPage = 1;
-      endPage = this.#pgn.totalPages;
+      endPage = totalPages;
     } else {
-      if (this.#pgn.page <= halfMaxPagesToShow + 1) {
+      if (page <= halfMaxPagesToShow + 1) {
         startPage = 1;
         endPage = maxPagesToShow;
-      } else if (this.#pgn.page >= this.#pgn.totalPages - halfMaxPagesToShow) {
-        startPage = this.#pgn.totalPages - maxPagesToShow + 1;
-        endPage = this.#pgn.totalPages;
+      } else if (page >= totalPages - halfMaxPagesToShow) {
+        startPage = totalPages - maxPagesToShow + 1;
+        endPage = totalPages;
       } else {
-        startPage = this.#pgn.page - halfMaxPagesToShow;
-        endPage = this.#pgn.page + halfMaxPagesToShow;
+        startPage = page - halfMaxPagesToShow;
+        endPage = page + halfMaxPagesToShow;
       }
     }
     let html = '';
 
     for (let i = startPage; i <= endPage; i++) {
-      html += `<a class="page${i == this.#pgn.page ? ' current' : ''}"  href="${this.#pgn.path}/page/${i}">${i}</a>`
+      html += `<a class="page${i == page ? ' current' : ''}"  href="${path}/page/${i}">${i}</a>`
     }
 
     return html
