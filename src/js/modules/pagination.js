@@ -25,6 +25,9 @@ export default class Pagination {
       total: Number(total),
       totalPages: Number(totalPages),
     };
+
+    if (this.#pgn.page > this.#pgn.totalPages) return;
+    
     this.#createPage();
   }
 

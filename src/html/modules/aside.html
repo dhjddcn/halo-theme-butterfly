@@ -49,24 +49,15 @@
     <span class="name">分类</span>
   </h1>
 
-  <!--  <div class="content" th:with="categories = ${categoryFinder.list(1,5)},noData = ${not #lists.isEmpty(categories)}">-->
-  <!--    <th:block th:if="${noData}">-->
-  <!--      <a th:each="category : ${categories}"-->
-  <!--         th:href="@{${category.status.permalink}}"-->
-  <!--         th:title="${category.spec.displayName}"-->
-  <!--         class="link flex relative flex-direction-row"-->
-  <!--      >-->
-  <!--        <span class="name text-overflow flex-1" th:text="${category.spec.displayName}"></span>-->
-  <!--        <span class="num text-overflow" th:text="${category.status.visiblePostCount}"></span>-->
-  <!--      </a>-->
-  <!--    </th:block>-->
-
-  <!--    <th:block th:unless="${noData}" th:insert="~{modules/public:: emptyData('暂无分类~',false)}"></th:block>-->
-  <!--  </div>-->
-
-  <div class="content">
-
-
+  <div class="content" th:with="categories = ${categoryFinder.list(1,5)},noData = ${not #lists.isEmpty(categories)}">
+    <th:block th:if="${noData}">
+      <a class="link" th:each="category : ${categories.items}" th:href="@{${category.status.permalink}}">
+        <span class="name" th:text="${category.spec.displayName}"></span>
+        <span class="num" th:text="${category.status.visiblePostCount}"></span>
+      </a>
+    </th:block>
+    <th:block th:unless="${noData}" th:insert="~{modules/components:: emptyData(false)}"></th:block>
+    </ul>
   </div>
 </section>
 

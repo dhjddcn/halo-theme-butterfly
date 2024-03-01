@@ -129,3 +129,17 @@ a:hover {
   color: var(--link-hover-color);
 }
 
+.empty {
+  @include util.flex-center;
+  flex-direction: column;
+  padding: 20px 5px;
+  color: #888;
+  text-align: center;
+
+  &-svg {
+    width: 90px;
+    height: 90px;
+    margin-bottom: 20px;
+    fill: currentColor
+  }
+}

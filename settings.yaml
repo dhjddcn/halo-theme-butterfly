@@ -383,7 +383,7 @@ spec:
         - $formkit: radio
           name: enable_category
           label: 启用侧边栏分类
-          help: 是否启用侧边栏分类
+          help: 是否启用侧边栏分类（只随机展示 5 个分类，不支持二级分类）
           value: true
           options:
             - label: 启用
