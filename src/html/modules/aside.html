@@ -1,5 +1,5 @@
 <!--/* 信息 */-->
-<section th:fragment="user" class="aside-user card">
+<section xmlns:th="https://www.thymeleaf.org" th:fragment="user" class="aside-user card">
   <img th:replace="~{modules/components:: lazyLoadImg(${contributor.avatar},${contributor.displayName},'avatar',false)}"/>
 
   <h1 class="name" th:text="${contributor.displayName}"></h1>
@@ -9,15 +9,15 @@
   <div class="data w-100">
     <a class="item" title="文章" href="/archives">
       <div class="headline">文章</div>
-      <div class="num text-overflow" th:text="${stats.post}"></div>
+      <div class="num" th:text="${stats.post}"></div>
     </a>
     <a class="item" href="/categories" title="分类">
       <div class="headline">分类</div>
-      <div class="num text-overflow" th:text="${stats.category}"></div>
+      <div class="num" th:text="${stats.category}"></div>
     </a>
     <a class="item" title="评论" href="javascript:">
-      <div class="headline">评论</div>
-      <div class="num text-overflow" th:text="${stats.comment}"></div>
+      <div class="headline">点赞</div>
+      <div class="num" th:text="${stats.upvote}"></div>
     </a>
   </div>
 
@@ -33,9 +33,9 @@
 </section>
 
 <!--/* 公告 */-->
-<section th:fragment="notice" class="aside-notice title card">
+<section xmlns:th="https://www.thymeleaf.org" th:fragment="notice" class="aside-notice title card">
   <h1 class="title">
-    <i class="fas fa-bullhorn fa-shake"></i>
+    <i class="fa-duotone fa-bullhorn fa-shake"></i>
     <span class="name">公告</span>
   </h1>
 
@@ -43,7 +43,7 @@
 </section>
 
 <!--/* 分类 */-->
-<section th:fragment="category" th:if="${theme.config.aside.enable_category}" class="aside-category card">
+<section xmlns:th="https://www.thymeleaf.org" th:fragment="category" th:if="${theme.config.aside.enable_category}" class="aside-category card">
   <h1 class="title">
     <i class="fa-duotone fa-layer-group"></i>
     <span class="name">分类</span>
@@ -61,11 +61,55 @@
   </div>
 </section>
 
+<!--/* 标签 */-->
+<section xmlns:th="https://www.thymeleaf.org" th:fragment="tags" th:if="${theme.config.aside.enable_tags}" class="aside-tags card">
+  <h1 class="title">
+    <i class="fa-duotone fa-tags"></i>
+    <span class="name">标签</span>
+  </h1>
+
+  <div class="content" th:with="tags = ${tagFinder.list(1,25)},noData = ${not #lists.isEmpty(tags)}">
+    <th:block th:if="${noData}">
+      <a class="link" th:each="tag : ${tags.items}" th:href="@{${tag.status.permalink}}">
+        <span class="name" th:text="${tag.spec.displayName}"></span><span class="num" th:text="${'（' + tag.status.visiblePostCount + '）'}"></span>
+      </a>
+    </th:block>
+    <th:block th:unless="${noData}" th:insert="~{modules/components:: emptyData(false)}"></th:block>
+    </ul>
+  </div>
+</section>
+
+<!--/* 网站信息 */-->
+<section xmlns:th="https://www.thymeleaf.org" th:fragment="webInfo" th:if="${theme.config.aside.enable_webInfo}" class="aside-webInfo card">
+  <h1 class="title">
+    <i class="fa-duotone fa-chart-simple"></i>
+    <span class="name">网站资讯</span>
+  </h1>
+
+  <div class="content" th:with="tags = ${tagFinder.list(1,5)},noData = ${not #lists.isEmpty(tags)}">
+    <div class="item">
+      <span>文章数目：</span>
+      <span th:text="${stats.post} + '章'"></span>
+    </div>
+
+    <div class="item" th:if="${not #strings.isEmpty(theme.config.base.site_birthday)}">
+      <span>运行时间：</span>
+      <span class="run-day" th:data-date="${theme.config.base.site_birthday}">... 天</span>
+    </div>
+
+    <div class="item">
+      <span>总访问量：</span>
+      <span th:text="${stats.visit} + '人'"></span>
+    </div>
+  </div>
+</section>
 
 <!--/* 侧边栏 */-->
-<aside class="aside" th:fragment="aside" th:if="${theme.config.aside.enable} == 'true'">
+<aside xmlns:th="https://www.thymeleaf.org" th:fragment="aside" th:if="${theme.config.aside.enable}" class="aside">
   <th:block th:replace="~{::user}"/>
   <th:block th:replace="~{::notice}"/>
   <th:block th:replace="~{::category}"/>
+  <th:block th:replace="~{::tags}"/>
+  <th:block th:replace="~{::webInfo}"/>
 </aside>
 

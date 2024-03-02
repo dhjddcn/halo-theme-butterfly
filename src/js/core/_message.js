@@ -6,7 +6,7 @@
  */
 
 
-export default class _message {
+export default class Message {
   constructor() {
 
   }

@@ -8,6 +8,7 @@ import Core from "../core";
 import Typed from 'typed.js';
 import $ from 'jquery';
 import Pagination from '../modules/pagination';
+import {useRandomColor} from '../core/_util'
 
 class Index extends Core {
   usePagination = new Pagination();

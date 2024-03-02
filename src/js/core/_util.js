@@ -67,7 +67,6 @@ export function useThrottle(func, wait, options = {}) {
   }
 }
 
-
 /**
  * 禁用滚动
  * @param bool
@@ -96,13 +95,12 @@ export function useIsDaytime() {
   return currentHour >= daytimeStartHour && currentHour < daytimeEndHour;
 }
 
-
 /**
  * 遮罩层
  * @param close
  */
 export function useMask(close) {
-  let dom =  $('#Butterfly >  .mask');
+  let dom = $('#Butterfly >  .mask');
   if (dom.length === 0) dom = $('<div class="mask"></div>').appendTo('#Butterfly');
 
   dom.fadeIn(400);
@@ -114,4 +112,12 @@ export function useMask(close) {
     dom.off('click').fadeOut(400);
     close();
   })
+}
+
+/**
+ * 随机获取颜色值
+ * @returns {string}
+ */
+export function useRandomColor() {
+  return '#' + ('00000' + (Math.random() * 0x1000000 << 0).toString(16)).slice(-6);
 }

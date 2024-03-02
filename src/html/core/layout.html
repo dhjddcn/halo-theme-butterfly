@@ -6,13 +6,13 @@
   th:fragment="layout (page,title,header,css_pin,js_pin,main)"
 >
   <!DOCTYPE html>
-  <html lang="en" data-theme="light">
+  <html lang="en" data-theme="light" th:with="isDev = ${true ? #dates.createNow().time : ''} ">
   <head>
     <title th:text="${title}"></title>
     <meta charset="UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="twitter:title" th:content="${title}"/>
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, shrink-to-fit=no, viewport-fit=cover,maximum-scale=5">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, shrink-to-fit=no, viewport-fit=cover,maximum-scale=4">
     <meta name="author" th:content="${site.title}">
     <meta name="site" th:content="${site.url}">
     <meta name="description" th:content="${site.subtitle}"/>
@@ -28,8 +28,7 @@
     <link rel="canonical" th:href="${site.url}">
     <th:block th:replace="~{core/config}"/>
     <th:block th:replace="${css_pin}"/>
-    <link rel="preload stylesheet" as="style" th:href="${assets_link + 'css/' + page + '.min.css?v=' + theme.spec.version}">
-    <script type="text/javascript" th:src="${assets_link + 'js/' + page + '.min.js?v=' + theme.spec.version}"></script>
+    <link rel="preload stylesheet" as="style" th:href="${assets_link + 'css/' + page + '.min.css?v=' + theme.spec.version + isDev}">
   </head>
   <body th:with="stats = ${siteStatsFinder.getStats()},contributor = ${contributorFinder.getContributor(theme.config.base.metadata_name)}">
   <div id="Butterfly" th:class="${page}">
@@ -40,5 +39,6 @@
   </div>
   <th:block th:insert="${js_pin}"/>
   </body>
+  <script type="text/javascript" th:src="${assets_link + 'js/' + page + '.min.js?v=' + theme.spec.version + isDev}"></script>
   </html>
 </th:block>
