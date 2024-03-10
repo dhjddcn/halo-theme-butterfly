@@ -13,13 +13,13 @@ export default class common {
   constructor() {
     new LazyLoad({elements_selector: 'img', threshold: 0, data_src: 'lazy-src'}); //图片懒加载
 
-    this.#bars(); //唤醒移动端侧边栏
+    this.#_bars(); //唤醒移动端侧边栏
 
     if (App.config.aside.enable && App.config.aside.enable_webInfo) this.#runDay(); //站点运行时间
   }
 
   // 移动端侧边栏呼出图标
-  #bars() {
+  #_bars() {
     const sideBar = $('.side-bar');
     $('.nav a.bars').click((e) => {
       e.preventDefault();
