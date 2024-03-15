@@ -19,35 +19,42 @@ gulp.task("clean", () => {
     })
   );
 });
+
+const sass = require('gulp-sass')(require('sass'));
 const rename = require('gulp-rename');
+const autoPrefix = require('gulp-autoprefixer');
+const minifyCss = require('gulp-minify-css');
 const csso = require("gulp-csso");
 const cssnano = require('gulp-cssnano');
 const cleanCss = require('gulp-clean-css');
-const autoPrefix = require('gulp-autoprefixer');
+
+
 const postcss = require('gulp-postcss');
-const sass = require('gulp-sass')(require('sass'));
 gulp.task("css", function () {
   return gulp.src('./src/scss/page/*.scss')
     .pipe(sass({}, {}))
-    .pipe(csso({
-      debug: false,
-      comments: false,
-      restructure: true
-    }))
-    .pipe(cleanCss({
-      compatibility: 'ie8',
-      level: 2,
-      format: {
-        breaks: true,
-        specialComments: false
-      }
-    }))
+    .pipe(minifyCss())
+    // .pipe(csso({
+    //   debug: false,
+    //   comments: false, // 是否压缩注释
+    //   restructure: true 
+    // }))
+    // .pipe(cleanCss({
+    //   compatibility: 'ie8',
+    //   level: 2,
+    //   format: {
+    //     breaks: true, // 是否换行
+    //     specialComments: false//
+    //   }
+    // }))
     // .pipe(cssnano({
     //   discardComments: {
     //     removeAll: true // 删除所有注释
     //   }
     // }))
-    .pipe(postcss([]))
+    .pipe(postcss([
+      require('css-mqpacker')(),
+    ]))
     .pipe(autoPrefix({
       overrideBrowserslist: ["> 5%", "last 2 versions", "last 3 Safari versions", "Firefox >= 20",],
       cascade: false,

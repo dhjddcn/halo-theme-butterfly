@@ -81,6 +81,7 @@
   "dependencies": {
     "autoprefixer": "^10.4.18",
     "css-mqpacker": "^7.0.0",
+    "gulp-minify-css": "^1.2.4",
     "postcss-merge-media-queries": "^1.0.1"
   }
 }
