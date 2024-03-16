@@ -86,17 +86,19 @@
     <span class="name">网站资讯</span>
   </h1>
 
-  <div class="content" th:with="tags = ${tagFinder.list(1,5)},noData = ${not #lists.isEmpty(tags)}">
+  <div class="content">
     <div class="item">
       <span>文章数目：</span>
       <span th:text="${stats.post} + '章'"></span>
     </div>
-
+    <div class="item">
+      <span>文章点赞：</span>
+      <span th:text="${stats.upvote} + '赞'"></span>
+    </div>
     <div class="item" th:if="${not #strings.isEmpty(theme.config.base.site_birthday)}">
       <span>运行时间：</span>
       <span class="run-day" th:data-date="${theme.config.base.site_birthday}">... 天</span>
     </div>
-
     <div class="item">
       <span>总访问量：</span>
       <span th:text="${stats.visit} + '人'"></span>

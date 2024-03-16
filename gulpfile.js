@@ -28,30 +28,11 @@ const csso = require("gulp-csso");
 const cssnano = require('gulp-cssnano');
 const cleanCss = require('gulp-clean-css');
 
-
 const postcss = require('gulp-postcss');
 gulp.task("css", function () {
   return gulp.src('./src/scss/page/*.scss')
     .pipe(sass({}, {}))
     .pipe(minifyCss())
-    // .pipe(csso({
-    //   debug: false,
-    //   comments: false, // 是否压缩注释
-    //   restructure: true 
-    // }))
-    // .pipe(cleanCss({
-    //   compatibility: 'ie8',
-    //   level: 2,
-    //   format: {
-    //     breaks: true, // 是否换行
-    //     specialComments: false//
-    //   }
-    // }))
-    // .pipe(cssnano({
-    //   discardComments: {
-    //     removeAll: true // 删除所有注释
-    //   }
-    // }))
     .pipe(postcss([
       require('css-mqpacker')(),
     ]))

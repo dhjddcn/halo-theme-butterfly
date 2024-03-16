@@ -3,7 +3,7 @@
   th:fragment="lazyLoadImg(src,alt,class,random)"
   th:src="${theme.config.loading.preload}"
   th:attr="onerror='this.src='+${'`'+theme.config.loading.err+'`'}"
-  th:data-lazy-src="${(#strings.isEmpty(src) && theme.config.loading.enable_random_img == 'true' && random)  ? (theme.config.loading.random_img + '?v=' + postStat.index)  : src}"
+  th:data-lazy-src="${(#strings.isEmpty(src) && theme.config.loading.enable_random_img && random)  ? (theme.config.loading.random_img + '?v=' + postStat.index)  : src}"
   th:alt="${alt}"
   th:class="${class}"
 >
@@ -17,7 +17,7 @@
 >
   <th:block th:if="${noData}">
     <li class="item card" th:each="post : ${data}">
-      <a th:if="${not #strings.isEmpty(post.spec.cover) || theme.config.loading.enable_random_img == 'true' }" th:href="${post.status.permalink}" th:title="${post.spec.title}" th:class="'cover' + ${post.spec.pinned ? ' top' : ''}">
+      <a th:if="${not #strings.isEmpty(post.spec.cover) || theme.config.loading.enable_random_img }" th:href="${post.status.permalink}" th:title="${post.spec.title}" th:class="'cover' + ${post.spec.pinned ? ' top' : ''}">
         <img th:replace="~{::lazyLoadImg(${post.spec.cover},${post.spec.title},'img',true)}"/>
       </a>
 

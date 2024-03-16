@@ -10,7 +10,6 @@
   position: relative;
   width: 100%;
   min-height: 60px;
-
   @keyframes above-down {
     0% {
       opacity: 0;
@@ -31,7 +30,7 @@
     background-size: cover;
     background-repeat: no-repeat;
     backface-visibility: hidden;
-    //animation: above-down .8s;
+    animation: above-down .6s;
     transition: .35s;
     background-image: var(--above-background);
 
@@ -82,6 +81,16 @@
       font-weight: 700;
       color: var(--above-title-color);
       animation: above-title-scale 1s;
+    }
+  }
+
+  &.dp .nav {
+    background-color: var(--nav-active-background-color);
+    box-shadow: var(--nav-active-shadow);
+
+    .link {
+      text-shadow: none;
+      color: var(--nav-active-font-color);
     }
   }
 }

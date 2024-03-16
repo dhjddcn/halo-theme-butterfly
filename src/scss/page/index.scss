@@ -9,28 +9,26 @@
 @use "../modules/components";
 
 .index {
-  .header {
-    .above {
-      height: 100vh;
+  .header .above {
+    height: 100vh;
 
-      &-info {
-        top: 42%;
-      }
+    &-info {
+      top: 42%;
+    }
 
-      @include util.useThemeVar((
-        above-index-subtitle-color: (#eee, rgba(255, 255, 255, 0.7)),
-      ));
+    @include util.useThemeVar((
+      above-index-subtitle-color: (#eee, rgba(255, 255, 255, 0.7)),
+    ));
 
-      &-subtitle {
-        font-size: 1.72em;
-        line-height: 1.5;
-        color: var(--above-index-subtitle-color);
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, .15);
-        animation: above-title-scale 1s;
+    &-subtitle {
+      font-size: 1.72em;
+      line-height: 1.5;
+      color: var(--above-index-subtitle-color);
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, .15);
+      animation: above-title-scale 1s;
 
-        @include util.useResponsive(util.$w-md, 0) {
-          font-size: 1.15em;
-        }
+      @include util.useResponsive(util.$w-md, 0) {
+        font-size: 1.15em;
       }
     }
   }

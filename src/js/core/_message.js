@@ -5,7 +5,6 @@
  * @Description: 消息提示
  */
 
-
 export default class Message {
   constructor() {
 

@@ -38,6 +38,8 @@
   @include util.flex-center;
   justify-content: space-between;
 
+
+
   @include util.useResponsive(util.$w-md) {
     padding: 0 16px;
   }
@@ -170,7 +172,7 @@
         transform: scaleY(0);
         transform-origin: top;
         transition: transform 0.3s ease-out, opacity .2s ease-out, visibility .1s ease-out;
-        
+
 
         &--item {
           transition: background-color .3s;

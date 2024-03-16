@@ -1,0 +1,9 @@
+<template xmlns:th="https://www.thymeleaf.org" th:replace="~{core/layout :: layout (
+  page = 'post',
+  title = ${site.title},
+  css_pin = ~{::css_pin},
+  js_pin = ~{::js_pin},
+  main = ~{::main}
+  )}"><th:block th:fragment="css_pin"><style th:inline="css">.above {
+        --above-background: /*[(${'url('+post.spec.cover+')'})]*/ transparent;
+      }</style></th:block><th:block th:fragment="js_pin"></th:block><th:block th:fragment="main"><section class="content"></section> <th:block th:replace="~{modules/aside::aside}"/> </th:block></template>

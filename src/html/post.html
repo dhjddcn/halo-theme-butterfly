@@ -1,0 +1,32 @@
+<template
+  xmlns:th="https://www.thymeleaf.org"
+  th:replace="~{core/layout :: layout (
+  page = 'post',
+  title = ${site.title},
+  css_pin = ~{::css_pin},
+  js_pin = ~{::js_pin},
+  main = ~{::main}
+  )}"
+>
+  <!--/* css */-->
+  <th:block th:fragment="css_pin">
+    <style th:inline="css">
+      .above {
+        --above-background: /*[(${'url('+post.spec.cover+')'})]*/ transparent;
+      }
+    </style>
+  </th:block>
+
+  <!--/* js */-->
+  <th:block th:fragment="js_pin"></th:block>
+
+
+  <!--/* 內容 */-->
+  <th:block th:fragment="main">
+    <section class="content">
+<!--      <th:block th:replace="~{modules/components:: list(${posts.items},${theme.config.index.post_layout})}"/>-->
+<!--      <th:block th:replace="~{modules/components:: pagination(${posts},${'/index'})}"/>-->
+    </section>
+    <th:block th:replace="~{modules/aside::aside}"/>
+  </th:block>
+</template>

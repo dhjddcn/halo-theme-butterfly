@@ -73,38 +73,38 @@ spec:
           value: '#ffffff radial-gradient(rgba(12, 12, 12, 0.171) .1em, transparent 0) repeat scroll -5px -5px / 30px 30px'
           help: 颜色值或图片链接 默认值：#ffffff radial-gradient(rgba(12, 12, 12, 0.171) .1em, transparent 0) repeat scroll -5px -5px / 30px 30px
           validation: required
-        - $formkit: radio
-          name: enable_assets_link
-          label: 启用外部资源文件加载地址
-          help: 必须选配置外链地址才能生效，否则无效，不启用默认为本站地址
-          value: 'false'
-          options:
-            - label: 启用
-              value: 'true'
-            - label: 禁用
-              value: 'false'
-          validation: required
-        - $formkit: url
-          name: assets_link
-          label: 资源文件地址
-          placeholder: 请填写 资源文件地址
-          value: 'https://cdn.jsdelivr.net/npm/halo-theme-butterfly/templates/assets/'
-          help: '默认为npmJs的jsdelivr加速地址（gitHub仓库主页加速列表），可自行配置cdn地址（请确保链接下assets文件夹下主题静态资源文件 与 jsdelivr 地址中的文件一致,否则页面无法正常显示）!'
-          validation: required|url
     #加载设置
     - group: loading
       label: 加载设置
       formSchema:
         - $formkit: radio
+          name: enable_assets_link
+          label: 启用外部资源文件加载地址
+          help: 必须选配置外链地址才能生效，否则无效，不启用默认为本站地址
+          value: false
+          options:
+            - label: 启用
+              value: true
+            - label: 禁用
+              value: false
+          validation: required
+        - $formkit: url
+          name: assets_link
+          label: 静态资源资源文件地址
+          placeholder: 请填写 资源文件地址
+          value: 'https://cdn.jsdelivr.net/npm/halo-theme-butterfly/templates/assets/'
+          help: '默认为npmJs的jsdelivr加速地址（gitHub仓库主页加速列表），可自行配置cdn地址（请确保链接下assets文件夹下主题静态资源文件 与 jsdelivr 地址中的文件一致,否则页面无法正常显示）!'
+          validation: required|url        
+        - $formkit: radio
           name: enable_random_img
           label: 启用随机图片
           help: 是否启用随机图API（必须先配置 API），开启后将使用随机图填充没有设置封面的，未开启时使用主题内置的封面图
-          value: 'false'
+          value: true
           options:
             - label: 启用
-              value: 'true'
+              value: true
             - label: 禁用
-              value: 'false'
+              value: false
         - $formkit: text
           name: random_img
           label: 随机图片链接
@@ -378,7 +378,7 @@ spec:
           name: notice
           label: 侧边栏公告
           placeholder: 请填写 侧边栏公告内容
-          value: 好博客，一定要 分享出去 呀~
+          value: '好博客，一定要 分享出去 呀~'
           help: 侧边栏公告内容, 支持 html 代码片段
         - $formkit: radio
           name: enable_category
@@ -476,4 +476,18 @@ spec:
             - label: 列表
               value: list
             - label: 平铺
-              value: tile          
+              value: tile
+    #文章设置
+    - group: post
+      label: 文章设置
+      formSchema:
+        - $formkit: radio
+          name: enable_above
+          label: 启用第一屏
+          help: 启用首页第一屏
+          value: true
+          options:
+            - label: 启用
+              value: true
+            - label: 禁用
+              value: false                    

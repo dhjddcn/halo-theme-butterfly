@@ -5,13 +5,11 @@
   title = ${site.title},
   css_pin = ~{::css_pin},
   js_pin = ~{::js_pin},
-  header = ~{::header},
   main = ~{::main}
   )}"
 >
   <!--/* css */-->
   <th:block th:fragment="css_pin">
-    <link rel="preload" fetchpriority="high" as="image" th:href="${theme.config.index.above_background}">
     <style th:inline="css">
       .above {
         --above-background: /*[(${'url('+theme.config.index.above_background+')'})]*/ transparent;
@@ -22,19 +20,6 @@
   <!--/* js */-->
   <th:block th:fragment="js_pin"></th:block>
 
-  <!--/* 头部 */-->
-  <th:block th:fragment="header">
-    <th:block th:replace="~{modules/nav}"/>
-    <!--/* 第一屏 */-->
-    <div class="above">
-      <div class="above-info">
-        <h1 class="above-title" th:text="${site.title}"></h1>
-        <div class="above-subtitle">
-          <span class="above-subtitle--text" th:data-typewriter="${theme.config.index.typewriter}"></span>
-        </div>
-      </div>
-    </div>
-  </th:block>
 
   <!--/* 內容 */-->
   <th:block th:fragment="main">

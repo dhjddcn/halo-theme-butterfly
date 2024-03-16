@@ -1,9 +1,9 @@
 <th:block
   xmlns:th="https://www.thymeleaf.org"
   th:with="
-     assets_link = ${theme.config.style.enable_assets_link == 'true' ? theme.config.style.assets_link : #theme.assets('//')}
+     assets_link = ${theme.config.loading.enable_assets_link ? theme.config.loading.assets_link : #theme.assets('//')}
   "
-  th:fragment="layout (page,title,header,css_pin,js_pin,main)"
+  th:fragment="layout (page,title,css_pin,js_pin,main)"
 >
   <!DOCTYPE html>
   <html lang="en" data-theme="light" th:with="isDev = ${true ? #dates.createNow().time : ''} ">
@@ -32,7 +32,7 @@
   </head>
   <body th:with="stats = ${siteStatsFinder.getStats()},contributor = ${contributorFinder.getContributor(theme.config.base.metadata_name)}">
   <div id="Butterfly" th:class="${page}">
-    <header class="header" th:insert="${header}"></header>
+    <th:block  th:replace="~{modules/header::render(${page})}"></th:block>
     <main th:class="'main ' + ${theme.config.aside.position}" th:insert="${main}"></main>
     <th:block th:replace="~{modules/footer}"/>
     <th:block th:replace="~{modules/side_wt}"/>

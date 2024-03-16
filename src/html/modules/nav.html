@@ -1,5 +1,8 @@
 <!--/* 导航栏 */-->
-<nav class="nav">
+<nav
+  xmlns:th="https://www.thymeleaf.org"
+  class="nav"
+>
   <div class="nav-title">
     <a class="link" th:text="${site.title}" href="/"></a>
   </div>
@@ -11,11 +14,12 @@
         <span class="name">搜索</span>
       </a>
 
+      <!--/* 移动侧边栏按钮 */-->
       <a class="link bars" href="#">
         <i class="fas fa-bars fa-fw"></i>
       </a>
     </div>
-    <!--/* 移动侧边栏按钮 */-->
+
 
     <!--/* 菜单 */-->
     <menu class="menu" th:with="menuItems = ${menuFinder.getPrimary().menuItems}">
