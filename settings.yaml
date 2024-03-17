@@ -51,7 +51,7 @@ spec:
         - $formkit: select
           name: font_family
           label: 主题字体
-          value: 'null'
+          value: 'CircularBody'
           options:
             - value: 'null'
               label: "游览器默认字体"

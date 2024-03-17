@@ -9,5 +9,72 @@
 @use "../modules/components";
 
 .post {
+  @import "../modules/renderHtml";
 
+  .header .above {
+    &-info {
+      padding: 0 8%;
+      bottom: 35%;
+      transition: bottom .3s, padding .3s;
+      text-align: center;
+
+      @include util.useResponsive(900px, 0) {
+        bottom: 30px;
+        text-align: left;
+      }
+
+      @include util.useResponsive(util.$w-md, 0) {
+        bottom: 22px;
+        padding: 0 22px;
+      }
+    }
+  }
+
+  .main > .content {
+    padding: 25px;
+  }
+
+  @include util.useThemeVar((
+    post-title-color: (#ffffff, rgba(255, 255, 255, 0.9)),
+    post-meta-color: (#eeeeee, rgba(255, 255, 255, 0.7)),
+  ));
+
+  &-title {
+    font-weight: 400;
+    margin-bottom: 8px;
+    color: var(--post-title-color);
+    font-size: 2.2rem;
+    line-height: 1.5;
+    transition: font-size .3s;
+    @include util.text-clamp(3);
+
+    @include util.useResponsive(util.$w-md) {
+      font-size: 1.8rem;
+    }
+
+    @include util.useResponsive(650px) {
+      font-size: 1.5rem;
+    }
+  }
+
+  &-meta {
+    color: var(--post-meta-color);
+    font-size: 95%;
+
+    .row {
+      .wp:not(:last-child):after {
+        content: '|';
+        margin: 0 5px;
+      }
+
+      .wp.category, .wp.tag {
+        .lk:not(:last-child):after {
+          content: '•';
+          margin: 0 5px;
+          color: var(--post-meta-color);
+        }
+      }
+
+    }
+  }
 }

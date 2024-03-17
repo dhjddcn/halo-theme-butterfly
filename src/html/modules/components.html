@@ -1,9 +1,9 @@
 <!--/* 图片加载 */-->
 <img
-  th:fragment="lazyLoadImg(src,alt,class,random)"
+  th:fragment="lazyLoadImg(src,alt,class,random,rparam)"
   th:src="${theme.config.loading.preload}"
   th:attr="onerror='this.src='+${'`'+theme.config.loading.err+'`'}"
-  th:data-lazy-src="${(#strings.isEmpty(src) && theme.config.loading.enable_random_img && random)  ? (theme.config.loading.random_img + '?v=' + postStat.index)  : src}"
+  th:data-lazy-src="${(#strings.isEmpty(src) && theme.config.loading.enable_random_img && random)  ? (theme.config.loading.random_img + rparam)  : src}"
   th:alt="${alt}"
   th:class="${class}"
 >
@@ -18,7 +18,7 @@
   <th:block th:if="${noData}">
     <li class="item card" th:each="post : ${data}">
       <a th:if="${not #strings.isEmpty(post.spec.cover) || theme.config.loading.enable_random_img }" th:href="${post.status.permalink}" th:title="${post.spec.title}" th:class="'cover' + ${post.spec.pinned ? ' top' : ''}">
-        <img th:replace="~{::lazyLoadImg(${post.spec.cover},${post.spec.title},'img',true)}"/>
+        <img th:replace="~{::lazyLoadImg(${post.spec.cover},${post.spec.title},'img',true,${'?v=' + #dates.format(post.spec.publishTime, 'yyyyMMddhhmmss')})}"/>
       </a>
 
       <div class="info">
@@ -67,8 +67,20 @@
 <div xmlns:th="https://www.thymeleaf.org"
      class="pagination"
      th:fragment="pagination(data,path)"
-     th:data-pgn="${#strings.concat(path,'-',data.nextUrl,'-',data.prevUrl,'-',data.page,'-',data.size,'-',data.totalPages,'-',data.total,'-',data.hasPrevious(),'-',data.hasNext())}"
 >
+  <script id="paginationScript" th:inline="javascript">
+    window.pgnInfo = {
+      path: /*[[${path}]]*/ {},
+      nextUrl: /*[[${data.nextUrl}]]*/ {},
+      prevUrl: /*[[${data.prevUrl}]]*/ {},
+      page: /*[[${data.page}]]*/ {},
+      size: /*[[${data.size}]]*/ {},
+      total: /*[[${data.total}]]*/ {},
+      totalPages: /*[[${data.totalPages}]]*/ {},
+      hasPrevious: /*[[${data.hasPrevious()}]]*/ {},
+      hasNext: /*[[${data.hasNext()}]]*/ {},
+    }
+  </script>
 </div>
 
 

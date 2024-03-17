@@ -9,36 +9,21 @@ import $ from 'jquery';
 
 export default class Pagination {
   #dom = $('.pagination');
-
-  #pgn = {};
+  #pgn = window.pgnInfo;
 
   constructor() {
-    const [path, nextUrl, prevUrl, page, size, totalPages, total, hasPrevious, hasNext] = this.#dom.data('pgn').split('-');
-    this.#pgn = {
-      path,
-      nextUrl,
-      prevUrl,
-      hasPrevious: hasPrevious,
-      hasNext: hasNext,
-      page: Number(page),
-      size: Number(size),
-      total: Number(total),
-      totalPages: Number(totalPages),
-    };
-
     if (this.#pgn.page > this.#pgn.totalPages) return;
-    
     this.#createPage();
   }
 
   // 获取上一页
   #getPrevUrl() {
-    return this.#pgn.hasPrevious == 'true' ? `<a class="page prev" rel="prev" href="${this.#pgn.prevUrl}"><i class="fas fa-chevron-left fa-fw"></i></a>` : '';
+    return this.#pgn.hasPrevious ? `<a class="page prev" rel="prev" href="${this.#pgn.prevUrl}"><i class="fas fa-chevron-left fa-fw"></i></a>` : '';
   }
 
   // 获取下一页
   #getNextUrl() {
-    return this.#pgn.hasNext == 'true' ? `<a class="page next" rel="next" href="${this.#pgn.nextUrl}"><i class="fas fa-chevron-right fa-fw"></i></a>` : '';
+    return this.#pgn.hasNext ? `<a class="page next" rel="next" href="${this.#pgn.nextUrl}"><i class="fas fa-chevron-right fa-fw"></i></a>` : '';
   }
 
   // 获取页码
@@ -66,7 +51,7 @@ export default class Pagination {
     let html = '';
 
     for (let i = startPage; i <= endPage; i++) {
-      html += `<a class="page${i == page ? ' current' : ''}"  href="${path}/page/${i}">${i}</a>`
+      html += `<a class="page${i === page ? ' current' : ''}"  href="${path}/page/${i}">${i}</a>`
     }
 
     return html

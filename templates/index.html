@@ -1,4 +1,4 @@
-<template xmlns:th="https://www.thymeleaf.org" th:replace="~{core/layout :: layout (
+<layout xmlns:th="https://www.thymeleaf.org" th:replace="~{core/layout :: layout (
   page = 'index',
   title = ${site.title},
   css_pin = ~{::css_pin},
@@ -6,4 +6,4 @@
   main = ~{::main}
   )}"><th:block th:fragment="css_pin"><style th:inline="css">.above {
         --above-background: /*[(${'url('+theme.config.index.above_background+')'})]*/ transparent;
-      }</style></th:block><th:block th:fragment="js_pin"></th:block><th:block th:fragment="main"><section class="content"> <th:block th:replace="~{modules/components:: list(${posts.items},${theme.config.index.post_layout})}"/> <th:block th:replace="~{modules/components:: pagination(${posts},${'/index'})}"/> </section> <th:block th:replace="~{modules/aside::aside}"/> </th:block></template>
+      }</style></th:block><th:block th:fragment="js_pin"></th:block><th:block th:fragment="main"><section class="content"> <th:block th:replace="~{modules/components:: list(${posts.items},${theme.config.index.post_layout})}"/> <th:block th:replace="~{modules/components:: pagination(${posts},${'/index'})}"/> </section> <th:block th:replace="~{modules/aside::aside}"/> </th:block></layout>

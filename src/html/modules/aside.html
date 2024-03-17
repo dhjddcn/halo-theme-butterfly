@@ -1,6 +1,6 @@
 <!--/* 信息 */-->
 <section xmlns:th="https://www.thymeleaf.org" th:fragment="user" class="aside-user card">
-  <img th:replace="~{modules/components:: lazyLoadImg(${contributor.avatar},${contributor.displayName},'avatar',false)}"/>
+  <img th:replace="~{modules/components:: lazyLoadImg(${contributor.avatar},${contributor.displayName},'avatar',false,'')}"/>
 
   <h1 class="name" th:text="${contributor.displayName}"></h1>
 
@@ -26,7 +26,7 @@
   </a>
 
   <div class="social" th:with="social = ${theme.config.aside.social[0]}">
-    <a class="link" target="_blank" title="QQ" th:if="${not #strings.isEmpty(social.QQ)}" th:href="${'http://wpa.qq.com/msgrd?v=3&uin=' + social.QQ +  '&site=qq&menu=yes'}"><i class="fa-brands fa-qq"></i></a>
+    <a class="link" target="_blank" title="QQ" th:if="${not #strings.isEmpty(social.QQ)}" th:href="${'//wpa.qq.com/msgrd?v=3&uin=' + social.QQ +  '&site=qq&menu=yes'}"><i class="fa-brands fa-qq"></i></a>
     <a class="link" target="_blank" title="Github" th:if="${not #strings.isEmpty(social.Github)}" th:href="${ social.Github }"><i class="fa-brands fa-github"></i></a>
     <a class="link" target="_blank" title="emil" th:if="${not #strings.isEmpty(social.Email)}" th:href="${'mailto:'+ social.Email }"><i class="fa-solid fa-envelope"></i></a>
   </div>
@@ -70,7 +70,7 @@
 
   <div class="content" th:with="tags = ${tagFinder.list(1,25)},noData = ${not #lists.isEmpty(tags)}">
     <th:block th:if="${noData}">
-      <a class="link" th:each="tag : ${tags.items}" th:href="@{${tag.status.permalink}}">
+      <a class="link" th:each="tag : ${tags.items}" th:if="${tag.status.visiblePostCount > 0}" th:href="@{${tag.status.permalink}}">
         <span class="name" th:text="${tag.spec.displayName}"></span><span class="num" th:text="${'（' + tag.status.visiblePostCount + '）'}"></span>
       </a>
     </th:block>
