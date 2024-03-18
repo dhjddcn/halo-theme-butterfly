@@ -4,7 +4,104 @@
  * @fileName: renderHtml
  * @Description:渲染 html
  */
+@use "../core/util";
+
 
 .render-html {
+  @include util.useThemeVar((
+    h-color:(#1f2d3d, rgba(255, 255, 255, 0.9)),
+  ));
+
+  h1, h2, h3, h4, h5, h6 {
+    color: var(--h-color);
+    font-weight: 700;
+    margin: 10px 0;
+    position: relative;
+
+
+    &:before {
+      -moz-osx-font-smoothing: grayscale;
+      -webkit-font-smoothing: antialiased;
+      display: var(--fa-display, inline-block);
+      font-style: normal;
+      font-variant: normal;
+      line-height: 1;
+      text-rendering: auto;
+      content: "\e3c2";
+      font-family: "Font Awesome 6 Pro";
+      color: var(--theme);
+      margin-right: 7px;
+      font-size: 0.9em;
+    }
+
+  }
+
+  h1 {
+    font-size: 1.5em;
+  }
+
+  h2 {
+    font-size: 1.4em;
+  }
+
+  h3 {
+    font-size: 1.3em;
+  }
+
+  h4 {
+    font-size: 1.2em;
+  }
+
+  h5 {
+    font-size: 1.1em;
+  }
+
+  h6 {
+    font-size: 1em;
+  }
+
+
+  &.enable_h_title {
+    h1, h2, h3, h4, h5, h6 {
+      &::before {
+        display: none;
+      }
+    }
+  }
+
+  p {
+    min-height: 30px;
+  }
+
+
+  a {
+    position: relative;
+    color: var(--theme);
+    display: inline-block;
+    font-weight: normal;
+
+    &:after {
+      position: absolute;
+      left: 0;
+      right: 0;
+      opacity: 0;
+      content: "";
+      bottom: 5px;
+      height: 1px;
+      transform: scaleX(.25);
+      background: var(--theme);
+      transition: opacity .5s, transform .5s;
+      width: 95%;
+      margin: auto;
+    }
+
+    &:hover {
+      &:after {
+        opacity: 1;
+        transform: scaleX(1);
+      }
+    }
+  }
+
 }
  

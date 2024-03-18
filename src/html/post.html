@@ -13,16 +13,24 @@
     <style
       xmlns:th="https://www.thymeleaf.org"
       th:inline="css"
-      th:with="above_background = ${not #strings.isEmpty(post.spec.cover) ? post.spec.cover : 
-      (theme.config.loading.enable_random_img ? theme.config.loading.random_img  : 'todo-'  )}">
+      th:with="above_background = ${not #strings.isEmpty(post.spec.cover) ? post.spec.cover : (theme.config.loading.enable_random_img ? theme.config.loading.random_img  : 'todo-'  )}">
       .above {
         --above-background: /*[(${'url('+above_background+')'})]*/ transparent;
       }
     </style>
+
+    <th:block th:if="${theme.config.code.enable}">
+      <link rel="preload stylesheet" as="style" th:href="${assets_link+'plugins/prism/prism.min.css'}">
+      <link rel="preload stylesheet" as="style" data-code="light" th:href="${assets_link+ 'plugins/prism/themes/prism-'+theme.config.code.theme_light+'.css'}">
+      <link rel="preload stylesheet" as="style" data-code="dark" th:href="${assets_link+'plugins/prism/themes/prism-'+theme.config.code.theme_dark+'.css'}">
+      <script type="text/javascript" th:src="${assets_link+'plugins/prism/prism.min.js'}"></script>
+    </th:block>
+
   </th:block>
 
   <!--/* js */-->
-  <th:block th:fragment="js_pin"></th:block>
+  <th:block th:fragment="js_pin">
+  </th:block>
 
 
   <!--/* 內容 */-->

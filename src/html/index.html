@@ -1,5 +1,4 @@
 <layout
-  xmlns:th="https://www.thymeleaf.org"
   th:replace="~{core/layout :: layout (
   page = 'index',
   title = ${site.title},
@@ -18,7 +17,9 @@
   </th:block>
 
   <!--/* js */-->
-  <th:block th:fragment="js_pin"></th:block>
+  <th:block th:fragment="js_pin">
+
+  </th:block>
 
 
   <!--/* 內容 */-->

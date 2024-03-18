@@ -6,8 +6,14 @@
  */
 
 import Core from "../core";
+import RenderHtml from "../modules/renderHtml";
 
 class Post extends Core {
+  useRenderHtml = new RenderHtml(this.useTheme);
+
+  constructor() {
+    super();
+  }
 
 }
 
