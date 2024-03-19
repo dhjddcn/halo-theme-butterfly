@@ -74,7 +74,7 @@ body {
 
   }
 
-  img[data-lazy-src]:not(.loaded,.error) {
+  img[data-lazy-src]:not(.loaded,.error,.loading) {
     filter: blur(50px) brightness(1);
   }
 }
