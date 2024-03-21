@@ -19,17 +19,42 @@ class Index extends Core {
 
   // 打字机效果
   typewriter() {
-    const dom = $('.header .above-subtitle--text');
-    if (!dom.length) return;
-    const text = dom.attr('data-typewriter').replaceAll('\n', '').split('|&|');
-    new Typed('.above-subtitle--text', {
-      strings: text,
-      startDelay: 300,
-      typeSpeed: 200,
-      loop: true,
-      backSpeed: 50,
-    })
+
+    // 创建打字
+    const useTyped = (strings) => {
+      if (!strings.length) return;
+
+      new Typed('.above-subtitle--text', {
+        strings,
+        startDelay: 300,
+        typeSpeed: 200,
+        loop: true,
+        backSpeed: 50,
+      })
+    }
+
+    // 自定义
+    const text = App.config.index.typewriter_custom_text?.replaceAll('\n', '').split('|&|');
+
+    // 随机文字
+    if (App.config.index.enable_typewriter_random_text) {
+      $.ajax({
+        url: App.config.index.typewriter_random_url,
+        type: 'get',
+        dataType: 'text',
+        success: (res) => {
+          useTyped([res]);
+        },
+        error: (err) => {
+          useTyped(text);
+        }
+      });
+      return;
+    }
+    useTyped(text);
   }
+
+
 }
 
 document.addEventListener("DOMContentLoaded", () => window.App.page = new Index())

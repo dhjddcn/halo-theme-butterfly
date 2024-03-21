@@ -3,7 +3,7 @@
   <div class="above-info">
     <h1 class="above-title" th:text="${site.title}"></h1>
     <div class="above-subtitle">
-      <span class="above-subtitle--text" th:data-typewriter="${theme.config.index.typewriter}"></span>
+      <span class="above-subtitle--text" ></span>
     </div>
   </div>
 </section>
@@ -14,7 +14,7 @@
     <h1 class="post-title" th:text="${post.spec.title}"></h1>
     <ul class="post-meta">
       <li class="row">
-        <span class="wp category">
+        <span class="wp category" th:if="${not #lists.isEmpty(post.categories)}">
             <i class="fa-solid fa-layer-group"></i>
             <span class="cys">
               <th:block th:each="cy : ${post.categories}">
@@ -23,7 +23,7 @@
             </span>
         </span>
 
-        <span class="wp tag">
+        <span class="wp tag" th:if="${not #lists.isEmpty(post.categories)}">
            <i class="fa-duotone fa-tags"></i>
             <span class="cys">
               <th:block th:each="cy : ${post.tags}">

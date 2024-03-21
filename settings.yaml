@@ -461,12 +461,26 @@ spec:
           validation: required
         - $formkit: textarea
           rows: 5
-          name: typewriter
+          name: typewriter_custom_text
           label: 打字机文案
           placeholder: 请填写 打字机文案
-          value: '欢迎来到我的博客|&|请填写打字机文案'
           help: 首页第一屏打字机文案 (注：多个文案用 |&| 分割)
-          validation: required
+        - $formkit: radio
+          name: enable_typewriter_random_text
+          label: 启用随机打字机文案
+          help: 是否启用随文案API（必须先配置 API），开启后将使用随机显示打字机文案，未开启时使用自定义的打字机文案
+          value: true
+          options:
+            - label: 启用
+              value: true
+            - label: 禁用
+              value: false
+        - $formkit: text
+          name: typewriter_random_url
+          label: 随机文案链接
+          placeholder: 请正确填写 随机文案链接
+          value: 'https://v1.hitokoto.cn/?encode=text'
+          help: 自定义随机文案API(推荐使用一言,返回格式设置为TEXT格式)，免费 API 不会一直可用，请知悉
         - $formkit: radio
           name: post_layout
           label: 文章布局方式
