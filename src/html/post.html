@@ -36,7 +36,7 @@
   <!--/* 內容 */-->
   <th:block th:fragment="main">
     <article class="content card">
-      <div class="render-html" th:utext="${post.content.content}"></div>
+      <div class="render-html enable_h_icon" th:utext="${post.content.content}"></div>
     </article>
     <th:block th:replace="~{modules/aside::aside}"/>
   </th:block>

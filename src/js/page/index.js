@@ -53,8 +53,5 @@ class Index extends Core {
     }
     useTyped(text);
   }
-
-
 }
-
 document.addEventListener("DOMContentLoaded", () => window.App.page = new Index())

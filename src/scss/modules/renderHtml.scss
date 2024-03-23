@@ -9,31 +9,17 @@
 
 .render-html {
   @include util.useThemeVar((
-    h-color:(#1f2d3d, rgba(255, 255, 255, 0.9)),
+    h-color:(#1f2d3d, rgba(255, 255, 255, 0.9)), //标题颜色
+    code-color:(#ed2929, #ed2929), // 普通code字体颜色
+    code-background-color:(rgba(27, 31, 35, 0.05), #584d4d) // 普通code背景字体颜色
   ));
+
 
   h1, h2, h3, h4, h5, h6 {
     color: var(--h-color);
     font-weight: 700;
     margin: 10px 0;
     position: relative;
-
-
-    &:before {
-      -moz-osx-font-smoothing: grayscale;
-      -webkit-font-smoothing: antialiased;
-      display: var(--fa-display, inline-block);
-      font-style: normal;
-      font-variant: normal;
-      line-height: 1;
-      text-rendering: auto;
-      content: "\e3c2";
-      font-family: "Font Awesome 6 Pro";
-      color: var(--theme);
-      margin-right: 7px;
-      font-size: 0.9em;
-    }
-
   }
 
   h1 {
@@ -61,18 +47,9 @@
   }
 
 
-  &.enable_h_title {
-    h1, h2, h3, h4, h5, h6 {
-      &::before {
-        display: none;
-      }
-    }
-  }
-
   p {
     min-height: 30px;
   }
-
 
   a {
     position: relative;
@@ -99,6 +76,66 @@
       &:after {
         opacity: 1;
         transform: scaleX(1);
+      }
+    }
+  }
+
+
+  ul, ol {
+    margin: 10px 0;
+    padding-left: 20px;
+
+    > li {
+      line-height: 38px;
+    }
+  }
+
+  ul > li {
+    list-style: circle;
+
+    &::marker {
+      color: var(--theme);
+      font-weight: 600;
+      font-size: 1.5em;
+    }
+  }
+
+  ol > li {
+    list-style: decimal;
+  }
+
+  code:not([class]) {
+    user-select: all;
+    background-color: var(--code-background-color);
+    color: var(--code-color);
+    display: inline-block;
+    margin: 2px 4px;
+    padding: 0 8px;
+    white-space: normal;
+    text-indent: 0;
+    vertical-align: baseline;
+    word-break: break-word;
+    border-radius: 4px;
+    line-height: 1.8;
+  }
+
+
+  //启动h标题旁边图标
+  &.enable_h_icon {
+    h1, h2, h3, h4, h5, h6 {
+      &:before {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        display: var(--fa-display, inline-block);
+        font-style: normal;
+        font-variant: normal;
+        line-height: 1;
+        text-rendering: auto;
+        content: "\e3c2";
+        font-family: "Font Awesome 6 Pro";
+        color: var(--theme);
+        margin-right: 7px;
+        font-size: 0.9em;
       }
     }
   }
