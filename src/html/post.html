@@ -18,14 +18,6 @@
         --above-background: /*[(${'url('+above_background+')'})]*/ transparent;
       }
     </style>
-
-    <th:block th:if="${theme.config.code.enable}">
-      <link rel="preload stylesheet" as="style" th:href="${assets_link+'plugins/prism/prism.min.css'}">
-      <link rel="preload stylesheet" as="style" data-code="light" th:href="${assets_link+ 'plugins/prism/themes/prism-'+theme.config.code.theme_light+'.css'}">
-      <link rel="preload stylesheet" as="style" data-code="dark" th:href="${assets_link+'plugins/prism/themes/prism-'+theme.config.code.theme_dark+'.css'}">
-      <script type="text/javascript" th:src="${assets_link+'plugins/prism/prism.min.js'}"></script>
-    </th:block>
-
   </th:block>
 
   <!--/* js */-->
@@ -35,9 +27,6 @@
 
   <!--/* 內容 */-->
   <th:block th:fragment="main">
-    <!--    <article class="content card">-->
-    <!--      <div class="render-html enable_h_icon" th:utext="${post.content.content}"></div>-->
-    <!--    </article>-->
     <th:block th:replace="~{modules/render::postHtml(${post.content.content})}"/>
     <th:block th:replace="~{modules/aside::aside_post}"/>
   </th:block>
