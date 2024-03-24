@@ -8,6 +8,8 @@ import Core from "../core";
 import Typed from 'typed.js';
 import $ from 'jquery';
 import Pagination from '../modules/pagination';
+import {run} from "../core/_util";
+
 
 class Index extends Core {
   usePagination = new Pagination();
@@ -54,4 +56,5 @@ class Index extends Core {
     useTyped(text);
   }
 }
-document.addEventListener("DOMContentLoaded", () => window.App.page = new Index())
+
+run(Index);
