@@ -109,7 +109,7 @@ spec:
           name: random_img
           label: 随机图片链接
           placeholder: 请正确填写 随机图片链接
-          value: 'https://api.likepoems.com/img/pc'
+          value: 'https://api.yimian.xyz/img'
           help: 自定义随机图API，用于填充没有设置封面的 ，免费 API 不会一直可用，请知悉
         - $formkit: attachment
           name: preload
@@ -479,7 +479,7 @@ spec:
           name: typewriter_random_url
           label: 随机文案链接
           placeholder: 请正确填写 随机文案链接
-          value: 'https://v1.hitokoto.cn/?encode=text'
+          value: 'https://api.btstu.cn/yan/api.php'
           help: 自定义随机文案API(推荐使用一言,返回格式设置为TEXT格式)，免费 API 不会一直可用，请知悉
         - $formkit: radio
           name: post_layout

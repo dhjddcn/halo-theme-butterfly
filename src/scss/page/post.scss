@@ -9,7 +9,7 @@
 @use "../modules/components";
 
 .post {
-  @import "../modules/renderHtml";
+  @import "../modules/render";
 
   .header .above {
     &-info {

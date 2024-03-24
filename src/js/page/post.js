@@ -6,13 +6,15 @@
  */
 
 import Core from "../core";
-import RenderHtml from "../modules/renderHtml";
+import Render from "../modules/render";
 
 class Post extends Core {
-  useRenderHtml = new RenderHtml(this.useTheme);
+  useRender = new Render(this.useTheme);
 
   constructor() {
     super();
+    // this.useRender.useSwitchCodeTheme(this.useTheme.getMode());
+    // this.useTheme.change((mode) => this.useRender.useSwitchCodeTheme(mode));
   }
 
 }

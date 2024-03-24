@@ -1,0 +1,331 @@
+/**
+ * @date: 2024/3/17
+ * @author: 小红
+ * @fileName: renderHtml
+ * @Description:渲染 html
+ */
+@use "../core/util";
+
+.main .content {
+  @include util.useResponsive($width: util.$w-md, $level: 0) {
+    padding: 1.5rem .8rem;
+  }
+}
+
+.render-html {
+  @include util.useThemeVar((
+    h-color:(#1f2d3d, rgba(255, 255, 255, 0.9)), //标题颜色
+    code-color:(#ed2929, #ed2929), // 普通code字体颜色
+    code-background-color:(rgba(27, 31, 35, 0.05), #584d4d), // 普通code背景字体颜色
+    blockquote-background-color:(rgba(73, 177, 245, 0.1), rgb(35 35 35)), // blockquote背景颜色
+    blockquote-font-color:(#6a737d, rgba(255, 255, 255, 0.7)), // blockquote字体颜色
+    table-border-color:(#e3e3e3, rgba(255, 255, 255, 0.7)), // 表格边框颜色
+    code-toolbar-box-shadow:(0 5px 10px 0 rgba(144, 164, 174, .4), 0 0 6px 2px rgba(39, 39, 39, 1)) // code-toolbar阴影
+  ));
+  word-break: break-word;
+  overflow-wrap: break-word;
+
+
+  h1, h2, h3, h4, h5, h6 {
+    color: var(--h-color);
+    font-weight: 700;
+    margin: 10px 0;
+    position: relative;
+  }
+
+  h1 {
+    font-size: 1.5em;
+  }
+
+  h2 {
+    font-size: 1.4em;
+  }
+
+  h3 {
+    font-size: 1.3em;
+  }
+
+  h4 {
+    font-size: 1.2em;
+  }
+
+  h5 {
+    font-size: 1.1em;
+  }
+
+  h6 {
+    font-size: 1em;
+  }
+
+
+  p {
+    min-height: 30px;
+  }
+
+  a {
+    position: relative;
+    color: var(--theme);
+    display: inline-block;
+    font-weight: normal;
+
+    &:after {
+      position: absolute;
+      left: 0;
+      right: 0;
+      opacity: 0;
+      content: "";
+      bottom: 5px;
+      height: 1px;
+      transform: scaleX(.25);
+      background: var(--theme);
+      transition: opacity .5s, transform .5s;
+      width: 95%;
+      margin: auto;
+    }
+
+    &:hover {
+      &:after {
+        opacity: 1;
+        transform: scaleX(1);
+      }
+    }
+  }
+
+
+  ul, ol {
+    margin: 10px 0;
+    padding-left: 20px;
+
+    > li {
+      line-height: 38px;
+    }
+  }
+
+  ul > li {
+    list-style: circle;
+
+    &::marker {
+      color: var(--theme);
+      font-weight: 600;
+      font-size: 1.5em;
+    }
+  }
+
+  ol > li {
+    list-style: decimal;
+  }
+
+  code:not([class]) {
+    user-select: all;
+    background-color: var(--code-background-color);
+    color: var(--code-color);
+    display: inline-block;
+    margin: 2px 4px;
+    padding: 0 8px;
+    white-space: normal;
+    text-indent: 0;
+    vertical-align: baseline;
+    word-break: break-word;
+    border-radius: 4px;
+    line-height: 1.8;
+  }
+
+  blockquote {
+    margin: 15px 0;
+    padding: 10px 15px;
+    border-left: 4px solid var(--theme);
+    background-color: var(--blockquote-background-color);
+    color: var(--blockquote-font-color);
+    border-radius: 5px;
+  }
+
+
+  img {
+    margin-bottom: 20px;
+    max-width: 100%;
+    transition: filter 375ms ease-in 0.2s;
+    cursor: zoom-in;
+    border-radius: 5px;
+  }
+
+  table {
+    display: table;
+    width: 100%;
+    border-spacing: 0;
+    border-collapse: collapse;
+    empty-cells: show;
+    border-radius: 4px;
+    margin: 5px 0;
+
+    tr > th, tr > td {
+      padding: 6px 12px;
+      border: 1px solid var(--table-border-color);
+      vertical-align: middle;
+      text-align: left;
+    }
+
+    tr > th {
+      background-color: rgba(153, 169, 191, .1);
+    }
+
+    tr > td {
+      &, > code:not([class]) {
+        white-space: nowrap;
+      }
+    }
+
+  }
+
+
+  //代码块
+  .code-toolbar {
+    margin: 12px 0;
+    overflow: hidden;
+    box-shadow: var(--code-toolbar-box-shadow);
+    border-radius: 5px;
+
+    &:before {
+      content: "";
+      position: absolute;
+      top: 9px;
+      left: 12px;
+      z-index: 1;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background-color: #fc625d;
+      box-shadow: 20px 0 #fdbc40, 40px 0 #35cd4b;
+    }
+
+    .toolbar {
+      position: absolute;
+      pointer-events: none;
+      opacity: 1;
+      left: 0;
+      right: 0;
+      top: 0;
+      z-index: unset;
+      height: 30px;
+      line-height: 30px;
+      text-align: center;
+
+      &-item:first-child {
+        display: none;
+
+        span {
+          background-color: transparent;
+          box-shadow: none;
+        }
+      }
+
+      .custom-item {
+        position: absolute;
+        top: 0;
+        user-select: none;
+        font-size: 1rem;
+        right: 12px;
+        color: #999;
+        pointer-events: all;
+
+        > i {
+          margin-left: 15px;
+          transition: transform 0.2s;
+
+          &:hover {
+            filter: brightness(1.2);
+          }
+
+          &.code-copy {
+            font-size: .9rem;
+            cursor: var(--cursor-pointer);
+          }
+        }
+      }
+
+      // 启动展开
+      &.enable-expander {
+        cursor: var(--cursor-pointer);
+
+        i.code-expander {
+          transform: rotate(90deg);
+        }
+      }
+
+      // 启用标题
+      &.enable-title {
+        .toolbar-item:first-child {
+          display: block;
+        }
+      }
+
+      // 启动分割线
+      &.enable-hr {
+        border-bottom: 1px solid #b2a8a84d;
+      }
+    }
+
+    pre[class*=language-] {
+      position: relative;
+      margin: 0;
+      padding: 30px 0 0;
+      overflow: hidden;
+      white-space: pre;
+      text-shadow: none;
+      border-radius: 5px;
+
+      .line-numbers-rows {
+        border-right: none;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        padding-top: 12px;
+      }
+
+      code[class*=language-] {
+        display: block;
+        margin-bottom: 0;
+        overflow-x: auto;
+        padding: 5px 18px 10px;
+        border-radius: 0 0 8px 8px;
+        text-shadow: none;
+
+        &::-webkit-scrollbar {
+          width: 5px;
+          height: 5px;
+        }
+
+        .token.string, .style .token.string, .token.entity, .token.operator, .token.url {
+          background-color: transparent;
+        }
+      }
+
+      &.line-numbers {
+        code[class*=language-] {
+          padding: 10px 20px 10px 50px;
+        }
+      }
+    }
+
+  }
+
+
+  //启动h标题旁边图标
+  &.enable_h_icon {
+    h1, h2, h3, h4, h5, h6 {
+      &:before {
+        font-family: "Font Awesome 6 Pro";
+        display: var(--fa-display, inline-block);
+        font-style: normal;
+        font-variant: normal;
+        line-height: 1;
+        text-rendering: auto;
+        content: "\e3c2";
+        color: var(--theme);
+        margin-right: 7px;
+        font-size: 0.9em;
+      }
+    }
+  }
+
+}
+ 

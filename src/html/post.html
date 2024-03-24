@@ -35,9 +35,10 @@
 
   <!--/* 內容 */-->
   <th:block th:fragment="main">
-    <article class="content card">
-      <div class="render-html enable_h_icon" th:utext="${post.content.content}"></div>
-    </article>
-    <th:block th:replace="~{modules/aside::aside}"/>
+    <!--    <article class="content card">-->
+    <!--      <div class="render-html enable_h_icon" th:utext="${post.content.content}"></div>-->
+    <!--    </article>-->
+    <th:block th:replace="~{modules/render::postHtml(${post.content.content})}"/>
+    <th:block th:replace="~{modules/aside::aside_post}"/>
   </th:block>
 </layout>

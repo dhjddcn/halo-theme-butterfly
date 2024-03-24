@@ -76,10 +76,9 @@
     "typed.js": "^2.1.0",
     "webpack": "^5.68.0",
     "webpack-stream": "^7.0.0",
-    "yamljs": "^0.3.0"
-  },
-  "dependencies": {
+    "yamljs": "^0.3.0",
     "autoprefixer": "^10.4.18",
+    "clipboard": "^2.0.11",
     "css-mqpacker": "^7.0.0",
     "gulp-minify-css": "^1.2.4",
     "postcss-merge-media-queries": "^1.0.1"

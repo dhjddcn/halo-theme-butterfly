@@ -26,7 +26,7 @@
   </a>
 
   <div class="social" th:with="social = ${theme.config.aside.social[0]}">
-    <a class="link" target="_blank" title="QQ" th:if="${not #strings.isEmpty(social.QQ)}" th:href="${'//wpa.qq.com/msgrd?v=3&uin=' + social.QQ +  '&site=qq&menu=yes'}"><i class="fa-brands fa-qq"></i></a>
+    <a class="link" target="_blank" title="QQ" th:if="${not #strings.isEmpty(social.QQ)}" th:href="${'https://api.btstu.cn/qqtalk/api.php?qq=' + social.QQ +  '&site=qq&menu=yes'}"><i class="fa-brands fa-qq"></i></a>
     <a class="link" target="_blank" title="Github" th:if="${not #strings.isEmpty(social.Github)}" th:href="${ social.Github }"><i class="fa-brands fa-github"></i></a>
     <a class="link" target="_blank" title="emil" th:if="${not #strings.isEmpty(social.Email)}" th:href="${'mailto:'+ social.Email }"><i class="fa-solid fa-envelope"></i></a>
   </div>
@@ -107,8 +107,16 @@
 </section>
 
 <!--/* 侧边栏 */-->
-<aside xmlns:th="https://www.thymeleaf.org" th:fragment="aside" th:if="${theme.config.aside.enable}" class="aside">
+<aside xmlns:th="https://www.thymeleaf.org" th:fragment="aside_common" th:if="${theme.config.aside.enable}" class="aside">
   <th:block th:replace="~{::user}"/>
+  <th:block th:replace="~{::notice}"/>
+  <th:block th:replace="~{::category}"/>
+  <th:block th:replace="~{::tags}"/>
+  <th:block th:replace="~{::webInfo}"/>
+</aside>
+
+<!--/* 侧边栏-文章 */-->
+<aside xmlns:th="https://www.thymeleaf.org" th:fragment="aside_post" class="aside">
   <th:block th:replace="~{::notice}"/>
   <th:block th:replace="~{::category}"/>
   <th:block th:replace="~{::tags}"/>
