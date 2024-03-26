@@ -39,7 +39,6 @@
   justify-content: space-between;
 
 
-
   @include util.useResponsive(util.$w-md) {
     padding: 0 16px;
   }
@@ -198,6 +197,10 @@
           font-size: .9rem;
           color: var(--nav-dropdown-font-color);
           width: 100%;
+          
+          &:hover {
+            color: var(--nav-dropdown-hover-font-color);
+          }
         }
       }
     }

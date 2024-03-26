@@ -5,11 +5,13 @@
  * @Description: 主题切换
  */
 import {useIsDaytime} from "./_util";
+import useUniverse from "./_universe";
 
 export default class Theme {
   #LOCALSTORAGE_KEY = 'Butterfly-data-theme';
   #CHANGE_FN = null;
 
+  #useUniverse = new useUniverse()
   mode = 'light';
 
   // 初始化主题模式
@@ -31,6 +33,8 @@ export default class Theme {
     this.mode = theme;
     document.documentElement.dataset.theme = theme;
     localStorage.setItem(this.#LOCALSTORAGE_KEY, theme);
+    // 绘制宇宙背景
+    this.#useUniverse.draw(theme);
     this.#CHANGE_FN && this.#CHANGE_FN(theme);
   }
 

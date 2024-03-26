@@ -123,6 +123,10 @@ export function useRandomColor() {
 }
 
 
+/**
+ * 运行
+ * @param classIns
+ */
 export function run(classIns) {
   document.addEventListener("DOMContentLoaded", () => window.App.page = new classIns())
 }

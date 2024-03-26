@@ -22,13 +22,13 @@ spec:
     kind: Post
   formSchema:
     - $formkit: "radio"
-      name: "enable_toc_sequence"
-      label: "启用目录序号"
-      help: "启用后，目录将会显示序号  // todo 配置定义，功能未实现"
-      value: "true"
+      name: "enable_h_icon"
+      label: "启用标题图标"
+      help: "启用h1~h6标题左边图标 仅限于当前文章"
+      value: 0
       options:
         - label: 启用
-          value: "true"
+          value: 1
         - label: 禁用
-          value: "false"
+          value: 0
       

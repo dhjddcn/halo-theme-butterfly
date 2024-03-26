@@ -6,4 +6,4 @@
   main = ~{::main}
   )}"><th:block th:fragment="css_pin"><style xmlns:th="https://www.thymeleaf.org" th:inline="css" th:with="above_background = ${not #strings.isEmpty(post.spec.cover) ? post.spec.cover : (theme.config.loading.enable_random_img ? theme.config.loading.random_img  : 'todo-'  )}">.above {
         --above-background: /*[(${'url('+above_background+')'})]*/ transparent;
-      }</style></th:block><th:block th:fragment="js_pin"></th:block><th:block th:fragment="main"> <th:block th:replace="~{modules/render::postHtml(${post.content.content})}"/> <th:block th:replace="~{modules/aside::aside_post}"/> </th:block></layout>
+      }</style></th:block><th:block th:fragment="js_pin"></th:block><th:block th:fragment="main"> <th:block th:replace="~{modules/render::postd}"/> <th:block th:replace="~{modules/aside::aside_post}"/> </th:block></layout>

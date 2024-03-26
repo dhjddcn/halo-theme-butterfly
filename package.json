@@ -3,7 +3,7 @@
   "version": "2.0.5",
   "description": "一个Halo博客主题，Butterfly",
   "scripts": {
-    "dev": "gulp watch",
+    "dev": "gulp css && gulp js && gulp html && gulp watch",
     "clean": "gulp clean",
     "zip": "gulp zip",
     "build-css": "gulp css",
@@ -82,6 +82,7 @@
     "typed.js": "^2.1.0",
     "webpack": "^5.68.0",
     "webpack-stream": "^7.0.0",
-    "yamljs": "^0.3.0"
+    "yamljs": "^0.3.0",
+    "prismjs": "^1.29.0"
   }
 }

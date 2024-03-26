@@ -164,15 +164,11 @@ gulp.task("release", async done => {
 gulp.task(
   "watch",
   function () {
-    // noinspection JSCheckFunctionSignatures
-    gulp.watch(['./src/**/**/**/*.scss', './src/html/**/**/**/*.html'], gulp.series('css'));
+    
+    
+    
+    gulp.watch(['./src/**/**/**/*.scss'], gulp.series('css'));
     gulp.watch(['./src/js/**/**/**/*.js'], gulp.series('js'));
     gulp.watch(['./src/html/**/**/**/*.html'], gulp.series('html'));
   }
-);
-gulp.task(
-  "default",
-  gulp.series(
-    gulp.parallel("css", "js")
-  )
 );

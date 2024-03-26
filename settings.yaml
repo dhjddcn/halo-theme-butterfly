@@ -130,7 +130,7 @@ spec:
       label: 导航设置
       formSchema:
         - $formkit: repeater
-          name: nav_font_color
+          name: font_color
           label: 导航栏默认字体颜色
           help: 支持rgba颜色值和十六进制颜色值
           addButton: false
@@ -156,7 +156,7 @@ spec:
               help: 默认值：rgba(255, 255, 255, 0.7)
               validation: required
         - $formkit: repeater
-          name: nav_active_font_color
+          name: active_font_color
           label: 导航栏滚动悬浮字体颜色
           help: 支持rgba颜色值和十六进制颜色值
           addButton: false
@@ -182,7 +182,7 @@ spec:
               help: 默认值：rgba(255, 255, 255, 0.7)
               validation: required
         - $formkit: repeater
-          name: nav_active_hover_font_color
+          name: active_hover_font_color
           label: 导航栏滚动悬浮鼠标移入字体颜色
           help: 支持rgba颜色值和十六进制颜色值（默认主题色）
           addButton: false
@@ -208,7 +208,7 @@ spec:
               help: 默认值：var(--theme)
               validation: required
         - $formkit: repeater
-          name: nav_active_background_color
+          name: active_background_color
           label: 导航栏滚动悬浮背景颜色
           help: 支持rgba颜色值和十六进制颜色值
           addButton: false
@@ -234,7 +234,7 @@ spec:
               help: 默认值：rgba(18, 18, 18, .8)
               validation: required
         - $formkit: repeater
-          name: nav_active_shadow
+          name: active_shadow
           label: 导航栏滚动悬浮阴影
           help: 支持rgba颜色值和十六进制颜色值
           addButton: false
@@ -260,7 +260,7 @@ spec:
               help: 默认值：0 5px 6px -5px rgba(133, 133, 133, 0)
               validation: required
         - $formkit: repeater
-          name: nav_dropdown_background_color
+          name: dropdown_background_color
           label: 导航栏二级下拉背景颜色
           help: 支持rgba颜色值和十六进制颜色值
           addButton: false
@@ -286,7 +286,7 @@ spec:
               help: 默认值：rgba(18, 18, 18)
               validation: required
         - $formkit: repeater
-          name: nav_dropdown_font_color
+          name: dropdown_font_color
           label: 导航栏二级下拉字体颜色
           help: 支持rgba颜色值和十六进制颜色值
           addButton: false
@@ -310,6 +310,32 @@ spec:
               label: 暗色
               value: ""
               help: 默认值：rgba(255, 255, 255, 0.7)
+              validation: required
+        - $formkit: repeater
+          name: dropdown_hover_font_color
+          label: 导航栏hover二级下拉字体颜色
+          help: 支持rgba颜色值和十六进制颜色值
+          addButton: false
+          addLabel: false
+          upControl: false
+          downControl: false
+          removeControl: false
+          insertControl: false
+          value:
+            - light: rgb(244 244 244)
+              dark: rgb(54 50 50)
+          children:
+            - $formkit: text
+              name: light
+              label: 浅色
+              value: ""
+              help: 默认值：rgb(244 244 244)
+              validation: required
+            - $formkit: text
+              name: dark
+              label: 暗色
+              value: ""
+              help: 默认值：rgb(54 50 50)
               validation: required
     #侧边栏设置          
     - group: aside
@@ -722,4 +748,232 @@ spec:
             - value: "xonokai"
               label: "xonokai"
             - value: "z-touch"
-              label: "z-touch"                
+              label: "z-touch"
+    #文章设置
+    - group: render
+      label: 渲染设置
+      formSchema:
+        - $formkit: radio
+          name: enable_h_icon
+          label: 启用标题图标（全局）
+          help: 启用h1~h6标题左边图标（元数据权限高于全局配置）
+          value: true
+          options:
+            - label: 启用
+              value: true
+            - label: 禁用
+              value: false              
+        - $formkit: radio
+          name: enable_code
+          label: 启用代码块
+          help: 如果安装其他代码块插件，请关闭此功能！！！
+          value: true
+          options:
+            - label: 启用
+              value: true
+            - label: 禁用
+              value: false
+        - $formkit: radio
+          name: enable_code_title
+          label: 启用代码标题
+          help: 启用代码块的标题，默认显示语言类型，也可自定义标题
+          value: true
+          options:
+            - label: 启用
+              value: true
+            - label: 禁用
+              value: false
+        - $formkit: radio
+          name: enable_code_hr
+          label: 启用代码标题分割线
+          help: 启用代码标题和内容之间的分割线，不展示时会更加简洁
+          value: true
+          options:
+            - label: 启用
+              value: true
+            - label: 禁用
+              value: false
+        - $formkit: radio
+          name: enable_code_line
+          label: 启用代码行号
+          help: 启用代码块行号功能
+          value: true
+          options:
+            - label: 启用
+              value: true
+            - label: 禁用
+              value: false
+        - $formkit: radio
+          name: enable_code_copy
+          label: 启用代码复制
+          help: 启用代码块复制按钮
+          value: true
+          options:
+            - label: 启用
+              value: true
+            - label: 禁用
+              value: false
+        - $formkit: radio
+          name: enable_code_expander
+          label: 启用代码折叠
+          help: 启用代码折叠功能
+          value: true
+          options:
+            - label: 启用
+              value: true
+            - label: 禁用
+              value: false
+        - $formkit: select
+          name: code_theme_light
+          label: 代码块主题（浅色）随着系统主题变化
+          value: one-light
+          options:
+            - value: "one-dark"
+              label: "one-dark"
+            - value: "one-light"
+              label: "one-light"
+            - value: "a11y-dark"
+              label: "a11y-dark"
+            - value: "atom-dark"
+              label: "atom-dark"
+            - value: "base16-ateliersulphurpool.light"
+              label: "base16-ateliersulphurpool.light"
+            - value: "cb"
+              label: "cb"
+            - value: "coldark-cold"
+              label: "coldark-cold"
+            - value: "coldark-dark"
+              label: "coldark-dark"
+            - value: "coy-without-shadows"
+              label: "coy-without-shadows"
+            - value: "darcula"
+              label: "darcula"
+            - value: "dracula"
+              label: "dracula"
+            - value: "duotone-dark"
+              label: "duotone-dark"
+            - value: "duotone-earth"
+              label: "duotone-earth"
+            - value: "duotone-forest"
+              label: "duotone-forest"
+            - value: "duotone-light"
+              label: "duotone-light"
+            - value: "duotone-sea"
+              label: "duotone-sea"
+            - value: "duotone-space"
+              label: "duotone-space"
+            - value: "ghcolors"
+              label: "ghcolors"
+            - value: "gruvbox-dark"
+              label: "gruvbox-dark"
+            - value: "gruvbox-light"
+              label: "gruvbox-light"
+            - value: "holi-theme"
+              label: "holi-theme"
+            - value: "hopscotch"
+              label: "hopscotch"
+            - value: "lucario"
+              label: "lucario"
+            - value: "material-dark"
+              label: "material-dark"
+            - value: "material-light"
+              label: "material-light"
+            - value: "material-oceanic"
+              label: "material-oceanic"
+            - value: "night-owl"
+              label: "night-owl"
+            - value: "nord"
+              label: "nord"
+            - value: "pojoaque"
+              label: "pojoaque"
+            - value: "shades-of-purple"
+              label: "shades-of-purple"
+            - value: "solarized-dark-atom"
+              label: "solarized-dark-atom"
+            - value: "synthwave84"
+              label: "synthwave84"
+            - value: "vs"
+              label: "vs"
+            - value: "vsc-dark-plus"
+              label: "vsc-dark-plus"
+            - value: "xonokai"
+              label: "xonokai"
+            - value: "z-touch"
+              label: "z-touch"
+        - $formkit: select
+          name: code_theme_dark
+          label: 代码块主题（深色）随着系统主题变化
+          value: one-dark
+          options:
+            - value: "one-dark"
+              label: "one-dark"
+            - value: "one-light"
+              label: "one-light"
+            - value: "a11y-dark"
+              label: "a11y-dark"
+            - value: "atom-dark"
+              label: "atom-dark"
+            - value: "base16-ateliersulphurpool.light"
+              label: "base16-ateliersulphurpool.light"
+            - value: "cb"
+              label: "cb"
+            - value: "coldark-cold"
+              label: "coldark-cold"
+            - value: "coldark-dark"
+              label: "coldark-dark"
+            - value: "coy-without-shadows"
+              label: "coy-without-shadows"
+            - value: "darcula"
+              label: "darcula"
+            - value: "dracula"
+              label: "dracula"
+            - value: "duotone-dark"
+              label: "duotone-dark"
+            - value: "duotone-earth"
+              label: "duotone-earth"
+            - value: "duotone-forest"
+              label: "duotone-forest"
+            - value: "duotone-light"
+              label: "duotone-light"
+            - value: "duotone-sea"
+              label: "duotone-sea"
+            - value: "duotone-space"
+              label: "duotone-space"
+            - value: "ghcolors"
+              label: "ghcolors"
+            - value: "gruvbox-dark"
+              label: "gruvbox-dark"
+            - value: "gruvbox-light"
+              label: "gruvbox-light"
+            - value: "holi-theme"
+              label: "holi-theme"
+            - value: "hopscotch"
+              label: "hopscotch"
+            - value: "lucario"
+              label: "lucario"
+            - value: "material-dark"
+              label: "material-dark"
+            - value: "material-light"
+              label: "material-light"
+            - value: "material-oceanic"
+              label: "material-oceanic"
+            - value: "night-owl"
+              label: "night-owl"
+            - value: "nord"
+              label: "nord"
+            - value: "pojoaque"
+              label: "pojoaque"
+            - value: "shades-of-purple"
+              label: "shades-of-purple"
+            - value: "solarized-dark-atom"
+              label: "solarized-dark-atom"
+            - value: "synthwave84"
+              label: "synthwave84"
+            - value: "vs"
+              label: "vs"
+            - value: "vsc-dark-plus"
+              label: "vsc-dark-plus"
+            - value: "xonokai"
+              label: "xonokai"
+            - value: "z-touch"
+              label: "z-touch"              

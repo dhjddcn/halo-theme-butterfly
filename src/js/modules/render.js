@@ -9,13 +9,18 @@ import Clipboard from 'clipboard';
 
 export default class Render {
 
-  #Theme = null;
+  // 全局配置
+  #config = window.App.config.render || {};
+
+  // 元数据配置
+  #attrs = window.App.config.attrs || {};
 
   constructor(Theme) {
-    this.#Theme = Theme;
+    this.Theme = Theme;
     if (!Theme) return;
-    this.useCodeBlock();
-    this.#Theme.change((mode) => this.useSwitchCodeTheme(mode));
+
+    // 代码块
+    if (this.#config['enable_code']) this.useCodeBlock(this.#config);
   }
 
 
@@ -37,14 +42,28 @@ export default class Render {
   /**
    * 代码块
    */
-  useCodeBlock() {
-    this.useSwitchCodeTheme(this.#Theme.getMode());
+  useCodeBlock(codeConfig) {
+    // 初始化代码主题
+    this.useSwitchCodeTheme(this.Theme.getMode());
 
-    let dom = $('.render-html');
+    //  主题切换，代码块切换
+    this.Theme.change((mode) => this.useSwitchCodeTheme(mode));
+
+    let dom = $('article.render');
+
+    // 单行复制
+    let className = 'single_code_select'
+
+    // 是否显示行号
+    if (codeConfig['enable_code_line']) className += ' line-numbers';
+
+    dom.addClass(className)
+
+    Prism.highlightAll();
+
     const pres = dom.find('pre');
-    if (!pres.length) return;
 
-    const codeConfig = App.config.code;
+    if (!pres.length) return;
 
     pres.each(function () {
       const pre = $(this);
@@ -57,17 +76,17 @@ export default class Render {
         const customItem = toolbar.find('.custom-item');
 
         //标题
-        if (codeConfig['enable_title']) {
+        if (codeConfig['enable_code_title']) {
           toolbar.addClass('enable-title')
         }
 
         // 分割线
-        if (codeConfig['enable_hr']) {
+        if (codeConfig['enable_code_hr']) {
           toolbar.addClass('enable-hr')
         }
 
         // 代码块复制
-        if (codeConfig['enable_copy']) {
+        if (codeConfig['enable_code_copy']) {
           customItem.append('<i class="fas fa-paste code-copy"></i>');
 
           customItem.find('.code-copy').on('click', function (e) {
@@ -89,7 +108,7 @@ export default class Render {
         }
 
         // 代码块展开
-        if (codeConfig['enable_expander']) {
+        if (codeConfig['enable_code_expander']) {
           customItem.append('<i class="fa-sharp fa-solid fa-caret-down code-expander"></i>');
 
           customItem.find('.code-expander').on('click', function () {
