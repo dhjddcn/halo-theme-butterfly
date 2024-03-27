@@ -15,10 +15,9 @@
   <th:block th:replace="~{::prism}"/>
   <script id="postScript" th:inline="javascript">
     window.App.attrs = Object.assign(window.App.attrs, {
-      enable_h_icon: /*[[${#annotations.get(post, 'enable_h_icon')}]]*/ {},
-      
+      enable_code_copy: /*[[${#annotations.getOrDefault(post, 'enable_code_copy','true')}]]*/ true,
     });
   </script>
-  <article class="render" th:utext="${post.content.content}"></article>
+  <article class="render"  th:utext="${post.content.content}"></article>
 </section>
 

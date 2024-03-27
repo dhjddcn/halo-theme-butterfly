@@ -22,13 +22,13 @@ spec:
     kind: Post
   formSchema:
     - $formkit: "radio"
-      name: "enable_h_icon"
-      label: "启用标题图标"
-      help: "启用h1~h6标题左边图标 仅限于当前文章"
+      name: "enable_code_copy"
+      label: "启用代码复制"
+      help: "本篇文章代码块复制按钮"
       value: "true"
       options:
         - label: 启用
           value: "true"
         - label: 禁用
           value: "false"
-      
+            

@@ -6,21 +6,16 @@
  */
 import $ from 'jquery';
 import Clipboard from 'clipboard';
+import {isBool} from "../core/_util";
 
 export default class Render {
 
-  // 全局配置
-  #config = window.App.config.render || {};
-
-  // 元数据配置
-  #attrs = window.App.config.attrs || {};
-
   constructor(Theme) {
-    this.Theme = Theme;
     if (!Theme) return;
 
-    // 代码块
-    if (this.#config['enable_code']) this.useCodeBlock(this.#config);
+    this.Theme = Theme;
+    //  使用代码块
+    if (App.config.render['enable_code']) this.useCodeBlock(App.config.render,App.attrs);
   }
 
 
@@ -42,7 +37,7 @@ export default class Render {
   /**
    * 代码块
    */
-  useCodeBlock(codeConfig) {
+  useCodeBlock(config,attrs) {
     // 初始化代码主题
     this.useSwitchCodeTheme(this.Theme.getMode());
 
@@ -55,7 +50,7 @@ export default class Render {
     let className = 'single_code_select'
 
     // 是否显示行号
-    if (codeConfig['enable_code_line']) className += ' line-numbers';
+    if (config['enable_code_line']) className += ' line-numbers';
 
     dom.addClass(className)
 
@@ -76,17 +71,17 @@ export default class Render {
         const customItem = toolbar.find('.custom-item');
 
         //标题
-        if (codeConfig['enable_code_title']) {
+        if (config['enable_code_title']) {
           toolbar.addClass('enable-title')
         }
 
         // 分割线
-        if (codeConfig['enable_code_hr']) {
+        if (config['enable_code_hr']) {
           toolbar.addClass('enable-hr')
         }
 
         // 代码块复制
-        if (codeConfig['enable_code_copy']) {
+        if (config['enable_code_copy'] && isBool(attrs['enable_code_copy'])) {
           customItem.append('<i class="fas fa-paste code-copy"></i>');
 
           customItem.find('.code-copy').on('click', function (e) {
@@ -108,7 +103,7 @@ export default class Render {
         }
 
         // 代码块展开
-        if (codeConfig['enable_code_expander']) {
+        if (config['enable_code_expander']) {
           customItem.append('<i class="fa-sharp fa-solid fa-caret-down code-expander"></i>');
 
           customItem.find('.code-expander').on('click', function () {

@@ -124,6 +124,15 @@ export function useRandomColor() {
 
 
 /**
+ * 为布尔值
+ * @param str
+ * @returns {boolean}
+ */
+export function isBool(str) {
+  return str === 'true'
+}
+
+/**
  * 运行
  * @param classIns
  */
