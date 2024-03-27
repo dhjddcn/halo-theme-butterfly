@@ -29,7 +29,7 @@
             class="link"
             th:href="@{${menuItem.status.href}}"
             th:target="${menuItem.spec.target?.value}"
-            th:with="icon = ${#annotations.getOrDefault(menuItem, 'icon','')}"
+            th:with="icon = ${#annotations.get(menuItem,'icon')}"
           >
             <i th:if="${!#strings.isEmpty(icon)}" th:class="${icon}"></i>
             <span class="name" th:text="${menuItem.status.displayName}"></span>
@@ -40,7 +40,7 @@
           <a
             class="link"
             onclick="event.preventDefault()"
-            th:with="icon = ${#annotations.getOrDefault(menuItem, 'icon','')}"
+            th:with="icon = ${#annotations.get(menuItem, 'icon')}"
           >
             <i th:if="${!#strings.isEmpty(icon)}" th:class="${icon}"></i>
             <span class="name" th:text="${menuItem.status.displayName}"></span>
@@ -53,7 +53,7 @@
                 class="menu-children--link"
                 th:href="@{${children.status.href}}"
                 th:target="${children.spec.target?.value}"
-                th:with="icon = ${#annotations.getOrDefault(children, 'icon','')}"
+                th:with="icon = ${#annotations.get(children, 'icon')}"
               >
                 <i th:if="${!#strings.isEmpty(icon)}" th:class="${icon}"></i>
                 <span class="name" th:text="${children.status.displayName}"></span>

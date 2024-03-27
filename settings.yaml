@@ -12,7 +12,7 @@ spec:
           label: 作者的唯一标识 metadata.name
           placeholder: 请填写 作者的唯一标识 metadata.name
           value: admin
-          help: 后台用户管理中的用户名，不可乱填否则侧边栏个人资料显示异常（示例：admin）
+          help: 后台管理页面（console）用户 -> 修改资料 -> 用户名，不可乱填否则侧边栏个人资料显示异常（示例：admin）
           validation: required
         - $formkit: text
           name: icp
@@ -765,6 +765,8 @@ spec:
               value: false              
         - $formkit: radio
           name: enable_code
+          id: enable_code
+          key: enable_code
           label: 启用代码块
           help: 如果安装其他代码块插件，请关闭此功能！！！
           value: true
@@ -775,6 +777,7 @@ spec:
               value: false
         - $formkit: radio
           name: enable_code_title
+          if: $get(enable_code).value
           label: 启用代码标题
           help: 启用代码块的标题，默认显示语言类型，也可自定义标题
           value: true
@@ -785,6 +788,7 @@ spec:
               value: false
         - $formkit: radio
           name: enable_code_hr
+          if: $get(enable_code).value
           label: 启用代码标题分割线
           help: 启用代码标题和内容之间的分割线，不展示时会更加简洁
           value: true
@@ -795,6 +799,7 @@ spec:
               value: false
         - $formkit: radio
           name: enable_code_line
+          if: $get(enable_code).value
           label: 启用代码行号
           help: 启用代码块行号功能
           value: true
@@ -805,6 +810,7 @@ spec:
               value: false
         - $formkit: radio
           name: enable_code_copy
+          if: $get(enable_code).value
           label: 启用代码复制
           help: 启用代码块复制按钮
           value: true
@@ -815,6 +821,7 @@ spec:
               value: false
         - $formkit: radio
           name: enable_code_expander
+          if: $get(enable_code).value
           label: 启用代码折叠
           help: 启用代码折叠功能
           value: true
@@ -825,6 +832,7 @@ spec:
               value: false
         - $formkit: select
           name: code_theme_light
+          if: $get(enable_code).value
           label: 代码块主题（浅色）随着系统主题变化
           value: one-light
           options:
@@ -902,6 +910,7 @@ spec:
               label: "z-touch"
         - $formkit: select
           name: code_theme_dark
+          if: $get(enable_code).value
           label: 代码块主题（深色）随着系统主题变化
           value: one-dark
           options:
@@ -977,3 +986,4 @@ spec:
               label: "xonokai"
             - value: "z-touch"
               label: "z-touch"              
+                            
