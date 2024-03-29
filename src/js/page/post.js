@@ -5,10 +5,10 @@
  * @Description: 文章
  */
 
-import Core from "../core";
+import Application from "../core/Application"
 import Render from "../modules/render";
 
-class Post extends Core {
+class Post extends Application {
   useRender = new Render(this.useTheme);
 
   constructor() {
@@ -16,7 +16,6 @@ class Post extends Core {
     // this.useRender.useSwitchCodeTheme(this.useTheme.getMode());
     // this.useTheme.change((mode) => this.useRender.useSwitchCodeTheme(mode));
   }
-
 }
 
-document.addEventListener("DOMContentLoaded", () => window.App.page = new Post())
+document.addEventListener("DOMContentLoaded", () => window.Application.page = new Post())

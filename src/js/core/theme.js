@@ -16,7 +16,7 @@ export default class Theme {
 
   // 初始化主题模式
   constructor() {
-    const themeMode = App.config.style['mode'];
+    const themeMode = byApp.config.style['mode'];
     let theme = localStorage.getItem(this.#LOCALSTORAGE_KEY) || 'light';
 
     if (themeMode === 'auto') {

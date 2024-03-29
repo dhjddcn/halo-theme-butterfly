@@ -14,7 +14,7 @@
 >
   <th:block th:replace="~{::prism}"/>
   <script id="postScript" th:inline="javascript">
-    window.App.attrs = Object.assign(window.App.attrs, {
+    window.byApp.attrs = Object.assign(window.byApp.attrs, {
       enable_code_copy: /*[[${#annotations.getOrDefault(post, 'enable_code_copy','true')}]]*/ true,
     });
   </script>

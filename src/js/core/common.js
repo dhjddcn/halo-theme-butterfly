@@ -8,14 +8,14 @@ import $ from 'jquery';
 import {useMask} from "./_util";
 import LazyLoad from "./_lazyLoad";
 
-export default class common {
+export default class Common {
 
   constructor() {
     new LazyLoad({elements_selector: 'img', threshold: 0, data_src: 'lazy-src'}); //图片懒加载
 
     this.#_bars(); //唤醒移动端侧边栏
 
-    if (App.config.aside.enable && App.config.aside.enable_webInfo) this.#runDay(); //站点运行时间
+    if (byApp.config.aside.enable && byApp.config.aside.enable_webInfo) this.#runDay(); //站点运行时间
   }
 
   // 移动端侧边栏呼出图标

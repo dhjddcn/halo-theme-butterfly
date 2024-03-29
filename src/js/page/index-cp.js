@@ -4,22 +4,23 @@
  * @fileName: index
  * @Description: 首页
  */
-import {run} from '../core/_decorator';
+import {log} from '../core/_decorator';
 import Typed from 'typed.js';
 import $ from 'jquery';
+import {run} from '../core/_util';
+import Application from '../core/Application';
 import Pagination from '../modules/pagination';
 
-@run
-class Index {
+class Index extends Application {
   usePagination = new Pagination();
 
   constructor() {
+    super();
     this.typewriter();
   }
 
   // 打字机效果
   typewriter() {
-    console.log(this);
 
     // 创建打字
     const useTyped = (strings) => {
@@ -55,3 +56,5 @@ class Index {
     useTyped(text);
   }
 }
+
+run(Index);

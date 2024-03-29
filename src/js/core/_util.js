@@ -137,5 +137,5 @@ export function isBool(str) {
  * @param classIns
  */
 export function run(classIns) {
-  document.addEventListener("DOMContentLoaded", () => window.App.page = new classIns())
+  document.addEventListener("DOMContentLoaded", () => window.byApp.page = new classIns())
 }
