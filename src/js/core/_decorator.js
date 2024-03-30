@@ -1,21 +1,35 @@
+/**
+ * @date: 2024/3/30
+ * @author: 小红
+ * @fileName: _decorator
+ * @Description: 装饰器
+ */
+
 import Application from './Application';
 
 /**
- * @desc: 运行App
- * @param target
- * @param name
- * @param descriptor
+ * @desc: 注册应用
  * @returns {*}
+ * @param modules
  */
-export function run(target) {
-  const instance = Reflect.construct(target, []);
-
-  instance.prototype = new Application();
-
-  console.log(instance);
-
-  document.addEventListener('DOMContentLoaded',
-    () => window.byApp.page = instance);
-
-  return instance;
+export function App(modules) {
+  return function(target) {
+    const app = new Application();
+    Object.setPrototypeOf(target.prototype, app);
+    for (let i = 0; i < modules.length; i++) new modules[i](app);
+    return target;
+  };
 }
+
+/**
+ * @desc: 注册模块
+ * @returns {*}
+ * @param name
+ */
+export function module(name) {
+  return function(target) {
+    target.prototype.name = name;
+    return target;
+  };
+}
+

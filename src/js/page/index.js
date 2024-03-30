@@ -4,14 +4,14 @@
  * @fileName: index
  * @Description: 首页
  */
-import {run} from '../core/_decorator';
-import Typed from 'typed.js';
 import $ from 'jquery';
+import {run} from '../core/_util';
+import {App} from '../core/_decorator';
+import Typed from 'typed.js';
 import Pagination from '../modules/pagination';
 
-@run
+@App([Pagination])
 class Index {
-  usePagination = new Pagination();
 
   constructor() {
     this.typewriter();
@@ -19,11 +19,9 @@ class Index {
 
   // 打字机效果
   typewriter() {
-    console.log(this);
-
     // 创建打字
     const useTyped = (strings) => {
-      if (!strings.length) return;
+      if(!strings.length) return;
 
       new Typed('.above-subtitle--text', {
         strings,
@@ -38,7 +36,7 @@ class Index {
     const text = byApp.config.index.typewriter_custom_text?.replaceAll('\n', '').split('|&|');
 
     // 随机文字
-    if (byApp.config.index.enable_typewriter_random_text) {
+    if(byApp.config.index.enable_typewriter_random_text) {
       $.ajax({
         url: byApp.config.index.typewriter_random_url,
         type: 'get',
@@ -55,3 +53,4 @@ class Index {
     useTyped(text);
   }
 }
+run(Index);

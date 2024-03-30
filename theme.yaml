@@ -3,7 +3,7 @@ kind: Theme
 metadata:
     name: theme-butterfly
 spec:
-    displayName: Index
+    displayName: Butterfly
     author:
         name: 小红
         website: 'https://dhjdd.cn'

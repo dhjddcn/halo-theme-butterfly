@@ -5,17 +5,19 @@
  * @Description: 文章
  */
 
-import Application from "../core/Application"
+import {App} from '../core/_decorator';
+import {run} from '../core/_util';
 import Render from "../modules/render";
 
-class Post extends Application {
-  useRender = new Render(this.useTheme);
+
+
+@App([Render])
+class Post  {
 
   constructor() {
-    super();
     // this.useRender.useSwitchCodeTheme(this.useTheme.getMode());
     // this.useTheme.change((mode) => this.useRender.useSwitchCodeTheme(mode));
   }
 }
 
-document.addEventListener("DOMContentLoaded", () => window.Application.page = new Post())
+run(Post);

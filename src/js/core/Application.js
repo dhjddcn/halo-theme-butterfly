@@ -5,14 +5,15 @@
  * @Description:核心
  */
 
-import $ from "jquery";
-import Message from "./_message";
+import $ from 'jquery';
+import Message from './_message';
 import Theme from './theme';
-import Scroll from "./scroll";
-import Common from "./common";
-
+import Scroll from './scroll';
+import Common from './common';
 
 export default class Application {
+  useConfig = window.byApp.config; //配置
+  useAttrs = window.byApp.attrs; //属性
   useTheme = new Theme(); //主题
   useMessage = new Message(); //消息
   useCommon = new Common(); // 普通逻辑
