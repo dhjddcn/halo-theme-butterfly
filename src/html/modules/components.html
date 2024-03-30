@@ -69,7 +69,7 @@
      th:fragment="pagination(data,path)"
 >
   <script id="paginationScript" th:inline="javascript">
-    window.pgnInfo = {
+    window.ThemeConfig.pagination = {
       path: /*[[${path}]]*/ {},
       nextUrl: /*[[${data.nextUrl}]]*/ {},
       prevUrl: /*[[${data.prevUrl}]]*/ {},

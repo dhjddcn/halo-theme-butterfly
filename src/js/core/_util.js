@@ -4,7 +4,7 @@
  * @fileName: Utils
  * @Description:工具
  */
-import $ from "jquery";
+import $ from 'jquery';
 
 /**
  * 防抖
@@ -14,19 +14,19 @@ import $ from "jquery";
  * @returns {(function(): void)|*}
  */
 export function useDebounce(func, wait, immediate) {
-  let timeout
-  return function () {
-    const context = this
-    const args = arguments
-    const later = function () {
-      timeout = null
-      if (!immediate) func.apply(context, args)
-    }
-    const callNow = immediate && !timeout
-    clearTimeout(timeout)
-    timeout = setTimeout(later, wait)
-    if (callNow) func.apply(context, args)
-  }
+  let timeout;
+  return function() {
+    const context = this;
+    const args = arguments;
+    const later = function() {
+      timeout = null;
+      if(!immediate) func.apply(context, args);
+    };
+    const callNow = immediate && !timeout;
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+    if(callNow) func.apply(context, args);
+  };
 }
 
 /**
@@ -37,34 +37,36 @@ export function useDebounce(func, wait, immediate) {
  * @returns {(function(): void)|*}
  */
 export function useThrottle(func, wait, options = {}) {
-  let timeOut, context, args
-  let previous = 0
+  let timeOut, context, args;
+  let previous = 0;
 
-  const later = function () {
-    previous = options['leading'] === false ? 0 : new Date().getTime()
-    timeOut = null
-    func.apply(context, args)
-    context = args = null
-  }
+  const later = function() {
+    previous = options['leading'] === false ? 0 : new Date().getTime();
+    timeOut = null;
+    func.apply(context, args);
+    context = args = null;
+  };
 
-  return function () {
-    const now = new Date().getTime()
-    if (!previous && options['leading'] === false) previous = now
-    const remaining = wait - (now - previous)
-    context = this
-    args = arguments
-    if (remaining <= 0 || remaining > wait) {
-      if (timeOut) {
-        clearTimeout(timeOut)
-        timeOut = null
+  return function() {
+    const now = new Date().getTime();
+    if(!previous && options['leading'] === false) previous = now;
+    const remaining = wait - (now - previous);
+    context = this;
+    args = arguments;
+    if(remaining <= 0 || remaining > wait) {
+      if(timeOut) {
+        clearTimeout(timeOut);
+        timeOut = null;
       }
-      previous = now
-      func.apply(context, args)
-      if (!timeOut) context = args = null
-    } else if (!timeOut && options['leading'] !== false) {
-      timeOut = setTimeout(later, remaining)
+      previous = now;
+      func.apply(context, args);
+      if(!timeOut) context = args = null;
     }
-  }
+    else
+      if(!timeOut && options['leading'] !== false) {
+        timeOut = setTimeout(later, remaining);
+      }
+  };
 }
 
 /**
@@ -72,9 +74,10 @@ export function useThrottle(func, wait, options = {}) {
  * @param bool
  */
 export function useDisableScroll(bool) {
-  if (bool) {
+  if(bool) {
     document.body.style.overflow = 'hidden';
-  } else {
+  }
+  else {
     document.body.removeAttribute('style');
   }
 }
@@ -101,7 +104,8 @@ export function useIsDaytime() {
  */
 export function useMask(close) {
   let dom = $('#Butterfly >  .mask');
-  if (dom.length === 0) dom = $('<div class="mask"></div>').appendTo('#Butterfly');
+  if(dom.length === 0) dom = $('<div class="mask"></div>')
+  .appendTo('#Butterfly');
 
   dom.fadeIn(400);
 
@@ -111,7 +115,7 @@ export function useMask(close) {
     useDisableScroll(false);
     dom.off('click').fadeOut(400);
     close();
-  })
+  });
 }
 
 /**
@@ -122,14 +126,13 @@ export function useRandomColor() {
   return '#' + ('00000' + (Math.random() * 0x1000000 << 0).toString(16)).slice(-6);
 }
 
-
 /**
  * 为布尔值
  * @param str
  * @returns {boolean}
  */
 export function isBool(str) {
-  return str === 'true'
+  return str === 'true';
 }
 
 /**
@@ -137,8 +140,5 @@ export function isBool(str) {
  * @param classIns
  */
 export function run(classIns) {
-  document.addEventListener("DOMContentLoaded", () => {
-    window.byApp.page = new classIns();
-    
-  })
+  document.addEventListener('DOMContentLoaded', () => window.ByApp = new classIns());
 }

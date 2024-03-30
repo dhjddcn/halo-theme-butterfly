@@ -6,7 +6,7 @@
  */
 
 export default class Message {
-  constructor() {
+  constructor(config) {
 
   }
 

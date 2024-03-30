@@ -12,13 +12,9 @@ import Pagination from '../modules/pagination';
 
 @App([Pagination])
 class Index {
-
-  constructor() {
-    this.typewriter();
-  }
-
   // 打字机效果
-  typewriter() {
+  run_typewriter() {
+    console.log('创建打字2',this);
     // 创建打字
     const useTyped = (strings) => {
       if(!strings.length) return;
@@ -32,13 +28,13 @@ class Index {
       });
     };
 
-    // 自定义
-    const text = byApp.config.index.typewriter_custom_text?.replaceAll('\n', '').split('|&|');
+    // 自定义文字
+    const text = this.useConfig.base.index['typewriter_custom_text']?.replaceAll('\n', '').split('|&|');
 
     // 随机文字
-    if(byApp.config.index.enable_typewriter_random_text) {
+    if(this.useConfig.base.index['enable_typewriter_random_text']) {
       $.ajax({
-        url: byApp.config.index.typewriter_random_url,
+        url: this.useConfig.base.index['typewriter_random_url'],
         type: 'get',
         dataType: 'text',
         success: (res) => {
@@ -53,4 +49,5 @@ class Index {
     useTyped(text);
   }
 }
+
 run(Index);

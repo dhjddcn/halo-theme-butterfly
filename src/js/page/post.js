@@ -13,11 +13,7 @@ import Render from "../modules/render";
 
 @App([Render])
 class Post  {
-
-  constructor() {
-    // this.useRender.useSwitchCodeTheme(this.useTheme.getMode());
-    // this.useTheme.change((mode) => this.useRender.useSwitchCodeTheme(mode));
-  }
+  
 }
 
 run(Post);

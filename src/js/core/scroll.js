@@ -14,7 +14,7 @@ export default class Scroll {
   #scroll_Num = 0; // 当前值
 
   // 初始化
-  constructor() {
+  constructor(config) {
     window.addEventListener('scroll', useThrottle(() => {
       let scrollTop = window.scrollY || document.documentElement.scrollTop
 

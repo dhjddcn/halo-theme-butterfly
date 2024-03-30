@@ -1,9 +1,5 @@
-<script id="baseScript" th:inline="javascript">window.byApp = {
-    config: /*[[${theme.config}]]*/ {},
-    attrs: {},
-  };
-  window.ThemeConfig = {
-    config: /*[[${theme.config}]]*/ {},
+<script id="baseScript" th:inline="javascript">window.ThemeConfig = {
+    base: /*[[${theme.config}]]*/ {},
     attrs: {},
   };
   window['baseScript'].remove();</script><style th:inline="css" th:with="body_background = ${#strings.containsIgnoreCase(theme.config.style.body_background,'http') ? 'url('+theme.config.style.body_background+') no-repeat fixed center / cover;' : theme.config.style.body_background }">:root {

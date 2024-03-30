@@ -16,6 +16,8 @@ export function App(modules) {
   return function(target) {
     const app = new Application();
     Object.setPrototypeOf(target.prototype, app);
+    const keys = Object.getOwnPropertyNames(target.prototype);
+    for (let i = 0; i < keys.length; i++) keys[i].startsWith('run_') && target.prototype[keys[i]]();
     for (let i = 0; i < modules.length; i++) new modules[i](app);
     return target;
   };

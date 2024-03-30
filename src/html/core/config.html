@@ -1,11 +1,7 @@
 <!--/* script */-->
 <script id="baseScript" th:inline="javascript">
-  window.byApp = {
-    config: /*[[${theme.config}]]*/ {},
-    attrs: {},
-  };
   window.ThemeConfig = {
-    config: /*[[${theme.config}]]*/ {},
+    base: /*[[${theme.config}]]*/ {},
     attrs: {},
   };
   window['baseScript'].remove();

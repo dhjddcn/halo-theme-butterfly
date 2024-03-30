@@ -5,22 +5,15 @@
  * @Description:核心
  */
 
-import $ from 'jquery';
 import Message from './_message';
 import Theme from './theme';
 import Scroll from './scroll';
 import Common from './common';
 
 export default class Application {
-  useConfig = window.byApp.config; //配置
-  useAttrs = window.byApp.attrs; //属性
-  useTheme = new Theme(); //主题
-  useMessage = new Message(); //消息
-  useCommon = new Common(); // 普通逻辑
+  useConfig = window.ThemeConfig; //主题配置
+  useTheme = new Theme(this.useConfig.base.style.mode); //主题
+  useCommon = new Common(this.useConfig.base); // 普通逻辑
+  useMessage = new Message(); //消息提示 
   useScroll = new Scroll(); //滚动导航侧边
-
-  //返回顶部
-  backTop() {
-    $('html,body').animate({scrollTop: 0}, 300);
-  }
 }
