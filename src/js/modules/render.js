@@ -158,8 +158,6 @@ export default class Render {
 
     const isSticky = $('.aside .is-sticky');
 
-    console.log(isSticky);
-
     // toc fixed
     useScroll.change((max, num, scrollTop) => {
       if(scrollTop < max) return;
