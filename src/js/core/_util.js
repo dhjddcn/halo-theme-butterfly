@@ -62,10 +62,9 @@ export function useThrottle(func, wait, options = {}) {
       func.apply(context, args);
       if(!timeOut) context = args = null;
     }
-    else
-      if(!timeOut && options['leading'] !== false) {
-        timeOut = setTimeout(later, remaining);
-      }
+    else if(!timeOut && options['leading'] !== false) {
+      timeOut = setTimeout(later, remaining);
+    }
   };
 }
 
@@ -104,8 +103,7 @@ export function useIsDaytime() {
  */
 export function useMask(close) {
   let dom = $('#Butterfly >  .mask');
-  if(dom.length === 0) dom = $('<div class="mask"></div>')
-  .appendTo('#Butterfly');
+  if(dom.length === 0) dom = $('<div class="mask"></div>').appendTo('#Butterfly');
 
   dom.fadeIn(400);
 
@@ -136,9 +134,18 @@ export function isBool(str) {
 }
 
 /**
- * 运行
- * @param classIns
+ * 运行run_ 实例方法
+ * @param ins
  */
-export function run(classIns) {
-  document.addEventListener('DOMContentLoaded', () => window.ByApp = new classIns());
+export function runInsFn(ins) {
+  const fns = Object.getOwnPropertyNames(ins.__proto__);
+  for (let i = 0; i < fns.length; i++) fns[i].startsWith('run_') && ins[fns[i]]();
+}
+
+/**
+ * 运行run_ modules 方法
+ * @param modules
+ */
+export function runModulesFn(modules, app) {
+  for (let i = 0; i < modules.length; i++) new modules[i](app);
 }

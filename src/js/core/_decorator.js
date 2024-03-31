@@ -5,6 +5,7 @@
  * @Description: 装饰器
  */
 
+import {runInsFn, runModulesFn} from '../core/_util';
 import Application from './Application';
 
 /**
@@ -14,24 +15,15 @@ import Application from './Application';
  */
 export function App(modules) {
   return function(target) {
-    const app = new Application();
-    Object.setPrototypeOf(target.prototype, app);
-    const keys = Object.getOwnPropertyNames(target.prototype);
-    for (let i = 0; i < keys.length; i++) keys[i].startsWith('run_') && target.prototype[keys[i]]();
-    for (let i = 0; i < modules.length; i++) new modules[i](app);
-    return target;
-  };
-}
-
-/**
- * @desc: 注册模块
- * @returns {*}
- * @param name
- */
-export function module(name) {
-  return function(target) {
-    target.prototype.name = name;
-    return target;
+    document.addEventListener('DOMContentLoaded', () => {
+      const app = new Application();
+      Object.setPrototypeOf(target.prototype, app);
+      const ins = new target();
+      runInsFn(ins); // 运行实例方法
+      runModulesFn(modules, app); // 注册模块
+      window.ByApp = ins;
+    });
+    return window.ByApp;
   };
 }
 

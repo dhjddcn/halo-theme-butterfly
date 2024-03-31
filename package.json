@@ -84,6 +84,7 @@
     "typed.js": "^2.1.0",
     "webpack": "^5.68.0",
     "webpack-stream": "^7.0.0",
+    "tocbot": "^4.25.0",
     "yamljs": "^0.3.0"
   }
 }

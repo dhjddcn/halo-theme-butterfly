@@ -6,14 +6,9 @@
  */
 
 import {App} from '../core/_decorator';
-import {run} from '../core/_util';
 import Render from "../modules/render";
-
-
 
 @App([Render])
 class Post  {
   
 }
-
-run(Post);

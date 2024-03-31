@@ -5,16 +5,17 @@
  * @Description: 首页
  */
 import $ from 'jquery';
-import {run} from '../core/_util';
 import {App} from '../core/_decorator';
 import Typed from 'typed.js';
 import Pagination from '../modules/pagination';
 
 @App([Pagination])
 class Index {
-  // 打字机效果
+
+  /**
+   * 打字机
+   */
   run_typewriter() {
-    console.log('创建打字2',this);
     // 创建打字
     const useTyped = (strings) => {
       if(!strings.length) return;
@@ -49,5 +50,3 @@ class Index {
     useTyped(text);
   }
 }
-
-run(Index);

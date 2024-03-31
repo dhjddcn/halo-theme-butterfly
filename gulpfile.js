@@ -93,7 +93,10 @@ gulp.task('js', function() {
     output: {
       filename: '[name].min.js',
     },
-  }).pipe(uglify()).pipe(gulp.dest('./templates/assets/js')).pipe(
+  })
+  .pipe(uglify())
+  .pipe(gulp.dest('./templates/assets/js'))
+  .pipe(
     gzip({
       threshold: '10kb',
     }),

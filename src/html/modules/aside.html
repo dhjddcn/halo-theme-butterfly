@@ -117,9 +117,14 @@
 
 <!--/* 侧边栏-文章 */-->
 <aside xmlns:th="https://www.thymeleaf.org" th:fragment="aside_post" class="aside">
-  <th:block th:replace="~{::notice}"/>
-  <th:block th:replace="~{::category}"/>
-  <th:block th:replace="~{::tags}"/>
-  <th:block th:replace="~{::webInfo}"/>
+  <div class="is-sticky">
+    <section class="aside-toc card">
+      <h1 class="title">
+        <i class="fa-sharp fa-solid fa-list-tree"></i>
+        <span class="name">目录</span>
+      </h1>
+      <div class="toc"></div>
+    </section>
+  </div>
 </aside>
 

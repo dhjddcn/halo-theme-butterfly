@@ -32,13 +32,13 @@
 
   > .content {
     width: 74%;
-    align-self: flex-start;
+    align-self: auto;
     padding: 35px;
   }
 
   > .aside {
     width: 25%;
-    align-self: flex-start;
+    align-self: auto;
   }
 
   &.off-aside > .content {

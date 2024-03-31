@@ -8,7 +8,7 @@
 @use "../core/util";
 
 .aside {
-  > section {
+   .card {
     padding: 16px 23px;
 
     &:not(:first-child) {
