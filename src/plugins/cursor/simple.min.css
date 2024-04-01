@@ -1,0 +1,1 @@
+body {--cursor-default: url(/themes/theme-butterfly/assets/plugins/cursor/simple/default.cur), auto;--cursor-pointer: url(/themes/theme-butterfly/assets/plugins/cursor/simple/pointer.cur), auto;cursor: var(--cursor-default);a, button {cursor: var(--cursor-pointer);}}
