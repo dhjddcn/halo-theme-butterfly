@@ -6,7 +6,7 @@
  */
 import $ from 'jquery';
 import Clipboard from 'clipboard';
-import {isBool} from '../core/_util';
+import {isBoolStr} from '../core/_util';
 import tocBot from 'tocbot';
 
 export default class Render {
@@ -89,6 +89,7 @@ export default class Render {
         this.setCustomSettings(toolbar, pre);
       }
     });
+    setTimeout(() => pres.addClass('code-success'), 200);
   }
 
   /**
@@ -100,7 +101,7 @@ export default class Render {
     const customItem = toolbar.find('.custom-item');
 
     // 代码块复制
-    if(this.conf['enable_code_copy'] && isBool(this.attrs?.['enable_code_copy'])) {
+    if(this.conf['enable_code_copy'] && isBoolStr(this.attrs?.['enable_code_copy'])) {
       customItem.append('<i class="fas fa-paste code-copy"></i>');
       customItem.find('.code-copy').on('click', function(e) {
         const text = pre.children('code[class*=\'language-\']').text();
@@ -148,10 +149,7 @@ export default class Render {
       headingsOffset: 80, // 目录中高亮的偏移值，和scrollSmoothOffset有关联
       scrollSmoothOffset: -80, // 屏幕滚动的偏移值（这里和导航条固定也有关联）
       fixedSidebarOffset: 'auto',
-      disableTocScrollSync: false,
-      onClick: function(e) {
-        e.preventDefault();
-      },
+      onClick: (e) => e.preventDefault(),
       scrollEndCallback: function(e) {
       },
     });

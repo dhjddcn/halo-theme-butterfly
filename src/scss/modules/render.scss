@@ -21,11 +21,18 @@
     blockquote-background-color:(rgba(73, 177, 245, 0.1), rgb(35 35 35)), // blockquote背景颜色
     blockquote-font-color:(#6a737d, rgba(255, 255, 255, 0.7)), // blockquote字体颜色
     table-border-color:(#e3e3e3, rgba(255, 255, 255, 0.7)), // 表格边框颜色
-    code-toolbar-box-shadow:(0 5px 10px 0 rgb(187 193 197 / 40%), 0 5px 10px 0 rgb(28 29 29 / 40%)) // code-toolbar阴影
+    code-toolbar-box-shadow:(0 5px 10px 0 rgb(187 193 197 / 40%), 0 5px 10px 0 rgb(28 29 29 / 40%)), // code-toolbar阴影
+    code-loading-background-color:(#ffff, rgb(61 57 57)), // code加载动画颜色
   ));
 
   word-break: break-word;
   overflow-wrap: break-word;
+  overflow-x: hidden;
+
+  code[class*=language-] {
+    opacity: 0;
+    transition: opacity .3s;
+  }
 
   h1, h2, h3, h4, h5, h6 {
     color: var(--h-color);
@@ -175,6 +182,61 @@
       }
     }
 
+  }
+
+
+  pre[class*=language-] {
+    &:before, &:after {
+      animation-name: fa-spin;
+      animation-duration: var(--fa-animation-duration, 2s);
+      animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+      animation-timing-function: var(--fa-animation-timing, linear);
+      animation-direction: var(--fa-animation-direction, normal);
+      animation-delay: var(--fa-animation-delay, 0s);
+
+      font-family: "Font Awesome 6 Duotone";
+      font-weight: 900;
+      letter-spacing: normal;
+      -webkit-font-smoothing: antialiased;
+      display: var(--fa-display, inline-block);
+      font-style: normal;
+      font-variant: normal;
+      line-height: 1;
+      text-rendering: auto;
+      font-size: 30px;
+      width: 33px;
+      height: 33px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      right: 0;
+      bottom: 0;
+      z-index: 88;
+      transform: translate(-50%, -50%);
+    }
+
+    &:before {
+      color: var(--fa-primary-color, inherit);
+      opacity: var(--fa-primary-opacity, 1);
+      content: "\e1d4";
+    }
+
+    &:after {
+      content: "\e1d4\e1d4";
+      opacity: var(--fa-secondary-opacity, .4);
+      color: var(--fa-secondary-color, inherit);
+    }
+
+
+    &.code-success {
+      &:before, &:after {
+        display: none;
+      }
+
+      code {
+        opacity: 1;
+      }
+    }
   }
 
 
@@ -334,6 +396,12 @@
 //目录
 .toc {
   overflow-y: auto;
+  max-height: 500px;
+
+  &::-webkit-scrollbar {
+    height: 2px;
+    width: 2px;
+  }
 }
 
 .toc > .toc-list {
@@ -387,7 +455,7 @@ a.toc-link {
 }
 
 .is-active-link::before {
-  background-color: #54BC4B;
+  background-color: var(--theme);
 }
 
 //目录 fixed

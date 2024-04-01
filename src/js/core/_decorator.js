@@ -20,7 +20,7 @@ export function App(modules) {
       Object.setPrototypeOf(target.prototype, app);
       const ins = new target();
       runInsFn(ins); // 运行实例方法
-      runModulesFn(modules, app); // 注册模块
+      runModulesFn(modules, app); // 运行模块
       window.ByApp = ins;
     });
     return window.ByApp;

@@ -1,9 +1,9 @@
 <!--/* 图片加载 */-->
 <img
-  th:fragment="lazyLoadImg(src,alt,class,random,rparam)"
+  th:fragment="lazyLoadImg(src,alt,class,random,rParam)"
   th:src="${theme.config.loading.preload}"
   th:attr="onerror='this.src='+${'`'+theme.config.loading.err+'`'}"
-  th:data-lazy-src="${(#strings.isEmpty(src) && theme.config.loading.enable_random_img && random)  ? (theme.config.loading.random_img + rparam)  : src}"
+  th:data-lazy-src="${(#strings.isEmpty(src) && theme.config.loading.enable_random_img && random)  ? (theme.config.loading.random_img + rParam)  : src}"
   th:alt="${alt}"
   th:class="${class}"
 >

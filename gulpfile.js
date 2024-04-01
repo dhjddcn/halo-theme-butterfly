@@ -166,10 +166,21 @@ gulp.task('release', async done => {
   done();
 });
 
+
+// 复制文件夹 font plugins
+gulp.task('copy-folder', function() {
+  return gulp.src([
+    './src/font/**/*',
+    './src/plugins/**/*',
+  ], { base: 'src' }) // 设置基本路径为 'src'
+  .pipe(gulp.dest('./templates/assets/'));
+});
+
+
+
 gulp.task(
   'watch',
   function() {
-
     gulp.watch(['./src/**/**/**/*.scss'], gulp.series('css'));
     gulp.watch(['./src/js/**/**/**/*.js'], gulp.series('js'));
     gulp.watch(['./src/html/**/**/**/*.html'], gulp.series('html'));
@@ -180,6 +191,6 @@ gulp.task(
 gulp.task(
   "default",
   gulp.series(
-    gulp.parallel("css", "js",'html')
+    gulp.parallel("copy-folder","css", "js",'html')
   )
 );

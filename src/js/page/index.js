@@ -28,7 +28,7 @@ class Index {
         backSpeed: 50,
       });
     };
-
+    
     // 自定义文字
     const text = this.useConfig.base.index['typewriter_custom_text']?.replaceAll('\n', '').split('|&|');
 

@@ -129,7 +129,7 @@ export function useRandomColor() {
  * @param str
  * @returns {boolean}
  */
-export function isBool(str) {
+export function isBoolStr(str) {
   return str === 'true';
 }
 

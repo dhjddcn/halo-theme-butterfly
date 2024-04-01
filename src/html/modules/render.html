@@ -1,23 +1,24 @@
 <!--/* 代码块  */-->
 <th:block xmlns:th="https://www.thymeleaf.org" th:if="${theme.config.render.enable_code}" th:fragment="prism">
   <link rel="preload stylesheet" as="style" th:href="${assets_link+'plugins/prism/prism.min.css'}">
-  <link rel="preload stylesheet" as="style" data-code="light" th:href="${assets_link+ 'plugins/prism/themes/prism-'+theme.config.code.theme_light+'.css'}">
-  <link rel="preload stylesheet" as="style" data-code="dark" th:href="${assets_link+'plugins/prism/themes/prism-'+theme.config.code.theme_dark+'.css'}">
+  <link rel="preload stylesheet" as="style" data-code="light" th:href="${assets_link+ 'plugins/prism/themes/prism-'+theme.config.render.code_theme_light+'.css'}">
+  <link rel="preload stylesheet" as="style" data-code="dark" th:href="${assets_link+'plugins/prism/themes/prism-'+theme.config.render.code_theme_dark+'.css'}">
   <script type="text/javascript" th:src="${assets_link+'plugins/prism/prism.min.js'}"></script>
 </th:block>
 
 
 <!--/* 渲染post页面  */-->
 <section xmlns:th="https://www.thymeleaf.org"
-         th:fragment="postd"
+         th:fragment="post"
          class="content card"
 >
   <th:block th:replace="~{::prism}"/>
-  <script id="postScript" th:inline="javascript">
+  <script id="renderScript" th:inline="javascript">
     Object.assign(window.ThemeConfig.attrs, {
       enable_code_copy: /*[[${#annotations.getOrDefault(post, 'enable_code_copy','true')}]]*/ true,
     });
+    window['renderScript']?.remove();
   </script>
-  <article class="render"  th:utext="${post.content.content}"></article>
+  <article class="render" th:utext="${post.content.content}"></article>
 </section>
 
