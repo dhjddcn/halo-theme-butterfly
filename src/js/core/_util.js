@@ -133,19 +133,3 @@ export function isBoolStr(str) {
   return str === 'true';
 }
 
-/**
- * 运行run_ 实例方法
- * @param ins
- */
-export function runInsFn(ins) {
-  const fns = Object.getOwnPropertyNames(ins.__proto__);
-  for (let i = 0; i < fns.length; i++) fns[i].startsWith('run_') && ins[fns[i]]();
-}
-
-/**
- * 运行run_ modules 方法
- * @param modules
- */
-export function runModulesFn(modules, app) {
-  for (let i = 0; i < modules.length; i++) new modules[i](app);
-}
