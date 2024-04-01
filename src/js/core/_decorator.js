@@ -10,7 +10,7 @@ import Application from './Application';
 
 /**
  * @desc: 注册应用
- * @returns {*}
+ * @returns function(*): *
  * @param modules
  */
 export function App(modules) {
