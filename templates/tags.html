@@ -1,9 +1,0 @@
-<layout xmlns:th="https://www.thymeleaf.org" th:replace="~{core/layout :: layout (
-  page = 'post',
-  title = ${site.title},
-  css_pin = ~{::css_pin},
-  js_pin = ~{::js_pin},
-  main = ~{::main}
-  )}"><th:block th:fragment="css_pin"><style xmlns:th="https://www.thymeleaf.org" th:inline="css">.above {
-        /*--above-background: !*[(${'url('+above_background+')'})]*! transparent;*/
-      }</style></th:block><th:block th:fragment="js_pin"></th:block><th:block th:fragment="main"><section class="content card"><article th:utext="${post.content.content}"></article></section> <th:block th:replace="~{modules/aside::aside}"/> </th:block></layout>

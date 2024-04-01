@@ -343,8 +343,8 @@ spec:
       formSchema:
         - $formkit: radio
           name: enable
-          label: 启用侧边栏
-          help: 是否启用侧边栏（全局），关闭后所有页面都没有侧边栏（优先级高于页面元数据）
+          label: 启用侧边栏（全局）
+          help: 是否启用侧边栏，关闭后所有页面都没有侧边栏（优先级高于页面元数据）
           value: true
           options:
             - label: 启用
@@ -538,7 +538,7 @@ spec:
         - $formkit: radio
           name: enable_h_icon
           label: 启用标题图标（全局）
-          help: 启用h1~h6标题左边图标（元数据权限高于全局配置）
+          help: 启用h1~h6标题左边图标（元数据可配置）
           value: true
           options:
             - label: 启用

@@ -11,8 +11,7 @@ const resolve = (name) => path.resolve(__dirname, name);
 
 gulp.task('clean', () => {
   return gulp.src([
-    './templates/assets/css',
-    './templates/assets/js',
+    './templates/',
     './theme-butterfly-dist.zip'], {
     read: false,
     allowEmpty: true,
@@ -175,4 +174,12 @@ gulp.task(
     gulp.watch(['./src/js/**/**/**/*.js'], gulp.series('js'));
     gulp.watch(['./src/html/**/**/**/*.html'], gulp.series('html'));
   },
+);
+
+
+gulp.task(
+  "default",
+  gulp.series(
+    gulp.parallel("css", "js",'html')
+  )
 );
