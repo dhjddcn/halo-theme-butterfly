@@ -27,4 +27,4 @@ dist-ssr
 .gradle
 build
 pnpm-lock.yaml
-
+templates
