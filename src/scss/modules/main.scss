@@ -62,7 +62,7 @@
   }
 
 
-  @include util.useResponsive(1000px) {
+  @include util.useResponsive(1100px) {
     flex-direction: column;
     > .content {
       width: 100%;

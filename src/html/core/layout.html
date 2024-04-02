@@ -1,7 +1,8 @@
 <th:block
   xmlns:th="https://www.thymeleaf.org"
   th:with="
-     assets_link = ${theme.config.loading.enable_assets_link ? theme.config.loading.assets_link : #theme.assets('//')}
+     assets_link = ${theme.config.loading.enable_assets_link ? theme.config.loading.assets_link : #theme.assets('//')},
+     param_prefix = ${#strings.containsIgnoreCase(theme.config.loading.random_img,'?') ? '&' : '?'}
   "
   th:fragment="layout (page,title,css_pin,js_pin,main)"
 >

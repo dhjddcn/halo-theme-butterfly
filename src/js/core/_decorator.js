@@ -17,17 +17,29 @@ export function App(modules) {
     document.addEventListener('DOMContentLoaded', () => {
       const app = new Application();
       Object.setPrototypeOf(target.prototype, app);
-      Object.defineProperty(target.prototype, 'modules', {value: modules});
       const ins = new target();
       const fns = Object.getOwnPropertyNames(ins.__proto__);
       // 运行实例方法
       for (let i = 0; i < fns.length; i++) fns[i].startsWith('run_') && ins[fns[i]]();
-      // 运行模块
-      for (let i = 0; i < ins.modules.length; i++) new ins.modules[i](app);
+      // 实例化模块 
+      for (let i = 0; i < modules.length; i++) {
+        const module = new modules[i](app);
+        Object.defineProperty(ins, `use${module.NAME}`, {value: module});
+      }
       window.ByApp = ins;
     });
     return window.ByApp;
   };
 }
 
-  
+/**
+ * @desc: 模块
+ * @param name
+ * @returns {function(*): *}
+ */
+export function module(name) {
+  return function(target) {
+    Object.defineProperty(target.prototype, 'NAME', {value: name});
+    return target;
+  };
+}

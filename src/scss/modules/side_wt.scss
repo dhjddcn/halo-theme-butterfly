@@ -151,13 +151,18 @@
       opacity: 1;
       transform: translateX(-58px)
     }
-    
+
     & > .button {
       margin: .5rem 0;
       width: 35px;
       height: 35px;
       font-size: .9rem;
       transition: .3s ease 0s;
+
+      &.post-toc {
+        visibility: hidden;
+        transition: visibility .3s;
+      }
     }
   }
 

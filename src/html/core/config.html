@@ -2,6 +2,7 @@
 <script id="baseScript" th:inline="javascript">
   window.ThemeConfig = {
     base: /*[[${theme.config}]]*/ {},
+    assets_link:/*[[${assets_link}]]*/ null,
     attrs: {},
   };
   window['baseScript']?.remove();

@@ -1,9 +1,9 @@
 <!--/* 图片加载 */-->
 <img
-  th:fragment="lazyLoadImg(src,alt,class,random,rParam)"
+  th:fragment="lazyLoadImg(src,alt,class,random,parma)"
   th:src="${theme.config.loading.preload}"
   th:attr="onerror='this.src='+${'`'+theme.config.loading.err+'`'}"
-  th:data-lazy-src="${(#strings.isEmpty(src) && theme.config.loading.enable_random_img && random)  ? (theme.config.loading.random_img + rParam)  : src}"
+  th:data-lazy-src="${(#strings.isEmpty(src) && theme.config.loading.enable_random_img && random)  ? (theme.config.loading.random_img + parma)  : src}"
   th:alt="${alt}"
   th:class="${class}"
 >
@@ -18,7 +18,7 @@
   <th:block th:if="${noData}">
     <li class="item card" th:each="post : ${data}">
       <a th:if="${not #strings.isEmpty(post.spec.cover) || theme.config.loading.enable_random_img }" th:href="${post.status.permalink}" th:title="${post.spec.title}" th:class="'cover' + ${post.spec.pinned ? ' top' : ''}">
-        <img th:replace="~{::lazyLoadImg(${post.spec.cover},${post.spec.title},'img',true,${'?v=' + #dates.format(post.spec.publishTime, 'yyyyMMddhhmmss')})}"/>
+        <img th:replace="~{::lazyLoadImg(${post.spec.cover},${post.spec.title},'img',true,${param_prefix +'v=' + #dates.format(post.spec.publishTime, 'yyyyMMddhhmmss')})}"/>
       </a>
 
       <div class="info">

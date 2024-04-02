@@ -6,14 +6,17 @@
  */
 import $ from 'jquery';
 import Clipboard from 'clipboard';
+import {module} from '../core/_decorator';
 import {isBoolStr} from '../core/_util';
 import tocBot from 'tocbot';
 
+@module('Render')
 export default class Render {
-  dom = $('article.render'); // 文章渲染区域
+  #dom = $('article.render'); // 文章渲染区域
+  #isStickyDom = $('.aside .is-sticky');
   className = []; // 默认单行复制
-  lightDom = document.querySelector('link[data-code=light]'); // 亮色代码主题
-  darkDom = document.querySelector('link[data-code=dark]'); // 暗色代码主题
+  #lightDom = document.querySelector('link[data-code=light]'); // 亮色代码主题
+  #darkDom = document.querySelector('link[data-code=dark]'); // 暗色代码主题
 
   constructor(App) {
     if(!App) return;
@@ -30,7 +33,7 @@ export default class Render {
       // 是否显示行号
       if(this.conf['enable_code_line']) this.className.push('line-numbers');
 
-      this.dom.addClass(this.className.join(' '));
+      this.#dom.addClass(this.className.join(' '));
 
       //重新渲染代码块
       Prism.highlightAll();
@@ -45,7 +48,7 @@ export default class Render {
       this.setCodeBlock();
     }
     else {
-      this.dom.addClass(this.className.join(' '));
+      this.#dom.addClass(this.className.join(' '));
     }
 
     this.setTocBot(App.useScroll); // 目录
@@ -56,18 +59,18 @@ export default class Render {
    * @param mode
    */
   setCodeTheme(mode) {
-    if(!this.lightDom && !this.darkDom) return;
+    if(!this.#lightDom && !this.#darkDom) return;
 
-    this.lightDom.disabled = mode === 'dark';
+    this.#lightDom.disabled = mode === 'dark';
 
-    this.darkDom.disabled = mode === 'light';
+    this.#darkDom.disabled = mode === 'light';
   }
 
   /**
    * 代码块
    */
   setCodeBlock() {
-    const pres = this.dom.find('pre');
+    const pres = this.#dom.find('pre');
     pres.each((index, dom) => {
       const pre = $(dom);
 
@@ -139,7 +142,7 @@ export default class Render {
   setTocBot(useScroll) {
     tocBot.init({
       contentSelector: 'article.render',
-      tocSelector: '.toc',
+      tocSelector: '.aside-toc > .toc',
       headingSelector: 'h1, h2, h3, h4, h5, h6',
       hasInnerContainers: true,
       scrollSmooth: true,
@@ -154,17 +157,42 @@ export default class Render {
       },
     });
 
-    const isSticky = $('.aside .is-sticky');
-
     // toc fixed
     useScroll.change((max, num, scrollTop) => {
-      if(scrollTop < max) return;
+      if(scrollTop < max || window.innerWidth <= 1100) return;
       if(num <= scrollTop) {
-        isSticky.css('top', '');
+        this.#isStickyDom.css('top', '');
       }
       else {
-        isSticky.css('top', '70px');
+        this.#isStickyDom.css('top', '70px');
       }
     });
+
+    const toc = $('.aside-toc > .toc');
+
+    if(!toc.html()) toc.html('暂无目录~');
+  }
+
+  /**
+   * 设置移动端目录
+   */
+  setH5Toc() {
+    const adToc = this.#isStickyDom.find('.aside-toc');
+
+    console.log(adToc, 11);
+
+    // 打开
+    if(!adToc.attr('style')) {
+      adToc.css({
+        'display': 'block',
+        'animation': 'open-toc .3s',
+      });
+
+      return;
+    }
+    
+    // 关闭
+    adToc.css({'animation': 'close-toc .2s'});
+    setTimeout(() => adToc.attr('style', ''), 100);
   }
 }
