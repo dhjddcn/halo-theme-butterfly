@@ -9,12 +9,13 @@ import Clipboard from 'clipboard';
 import {module} from '../core/_decorator';
 import {isBoolStr} from '../core/_util';
 import tocBot from 'tocbot';
+import { Fancybox } from "@fancyapps/ui";
 
 @module('Render')
 export default class Render {
+  className = []; // 默认单行复制
   #dom = $('article.render'); // 文章渲染区域
   #isStickyDom = $('.aside .is-sticky');
-  className = []; // 默认单行复制
   #lightDom = document.querySelector('link[data-code=light]'); // 亮色代码主题
   #darkDom = document.querySelector('link[data-code=dark]'); // 暗色代码主题
 
@@ -52,6 +53,8 @@ export default class Render {
     }
 
     this.setTocBot(App.useScroll); // 目录
+
+    this.setImagePreview(); // 图片预览
   }
 
   /**
@@ -177,22 +180,39 @@ export default class Render {
    * 设置移动端目录
    */
   setH5Toc() {
+    console.log(1);
     const adToc = this.#isStickyDom.find('.aside-toc');
+    adToc.toggle('fast');
 
-    console.log(adToc, 11);
-
-    // 打开
-    if(!adToc.attr('style')) {
-      adToc.css({
-        'display': 'block',
-        'animation': 'open-toc .3s',
-      });
-
-      return;
+    if(adToc.css('display') === 'none') {
+      setTimeout(() => adToc.attr('style', ''), 100);
     }
+  }
+
+  /**
+   * 图片预览
+   */
+  setImagePreview() {
+    // fancybox($);
+    // const imgs = this.#dom.find('img');
+    //
+    // console.log(imgs);
+    //
     
-    // 关闭
-    adToc.css({'animation': 'close-toc .2s'});
-    setTimeout(() => adToc.attr('style', ''), 100);
+
+    // console.log($('article.render .img'));
+
+    // imgs.each(function() {
+    //   this.dataset.fancybox = 'fancyBoxImg';
+    //   this.setAttribute('href', this.getAttribute('src'));
+    // });
+
+
+    Fancybox.bind('img', {
+      //
+    });
+
+
+
   }
 }

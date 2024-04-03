@@ -64,8 +64,8 @@
 
 <!--/* 侧边按钮 */-->
 <div class="side-btn">
-  <button class="button post-toc" type="button" title="文章目录">
-    <i class="fa-sharp fa-solid fa-list-tree" onclick="ByApp.useRender.setH5Toc()"></i>
+  <button class="button post-toc" type="button" title="文章目录" onclick="ByApp['useRender'].setH5Toc()">
+    <i class="fa-sharp fa-solid fa-list-tree" ></i>
   </button>
 
   <button class="button switch-model" th:if="${theme.config.style.mode == 'user'}" onclick="ByApp.useTheme.toggleMode()" type="button" title="浅色和深色模式转换">

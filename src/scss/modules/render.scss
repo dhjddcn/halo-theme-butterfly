@@ -5,6 +5,8 @@
  * @Description:渲染 html
  */
 @use "../core/util";
+@import '@fancyapps/ui/dist/fancybox/fancybox.css';
+
 
 .main .content {
   @include util.useResponsive($width: util.$w-md, $level: 0) {
@@ -158,23 +160,22 @@
   }
 
   table {
-    display: table;
     width: 100%;
+    display: table;
     border-spacing: 0;
     border-collapse: collapse;
     empty-cells: show;
-    border-radius: 4px;
+    border-radius: 4px !important;
     margin: 5px 0;
 
     tr > th, tr > td {
-      padding: 6px 12px;
-      border: 1px solid var(--table-border-color);
+      padding: 5px 10px !important;
+      border: 1px solid var(--table-border-color) !important;
       vertical-align: middle;
-      text-align: left;
     }
 
     tr > th {
-      background-color: rgba(153, 169, 191, .1);
+      background-color: rgba(153, 169, 191, .1) !important;
     }
 
     tr > td {
@@ -194,7 +195,6 @@
       animation-timing-function: var(--fa-animation-timing, linear);
       animation-direction: var(--fa-animation-direction, normal);
       animation-delay: var(--fa-animation-delay, 0s);
-
       font-family: "Font Awesome 6 Duotone";
       font-weight: 900;
       letter-spacing: normal;
@@ -395,25 +395,6 @@
 
 //目录
 .toc {
-  @keyframes open-toc {
-    0% {
-      transform: scale(.7)
-    }
-
-    to {
-      transform: scale(1)
-    }
-  }
-
-  @keyframes close-toc {
-    0% {
-      transform: scale(1)
-    }
-
-    to {
-      transform: scale(.7);
-    }
-  }
 
   overflow-y: auto;
   max-height: 500px;
@@ -468,6 +449,7 @@
 
   .is-active-link {
     font-weight: 700;
+    color: var(--theme);
 
     &::before {
       background-color: var(--theme);
@@ -487,7 +469,7 @@
     .aside-toc {
       display: none;
       position: fixed;
-      bottom: 50px;
+      bottom: 133px;
       z-index: 200;
       max-width: 380px;
       max-height: calc(100% - 60px);

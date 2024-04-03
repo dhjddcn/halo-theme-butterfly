@@ -17,6 +17,7 @@ export default class Common {
     if (this.config.aside['enable'] && this.config.aside['enable_webInfo']) this.#runDay(); //站点运行时间
   }
   
+  //图片懒加载
   #createLazyLoad() {
     new LazyLoad({elements_selector: 'img', threshold: 0, data_src: 'lazy-src'}); //图片懒加载
   }
