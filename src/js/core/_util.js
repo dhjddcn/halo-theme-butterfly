@@ -125,11 +125,22 @@ export function useRandomColor() {
 }
 
 /**
- * 为布尔值
- * @param str
- * @returns {boolean}
+ * 转为布尔值
  */
-export function isBoolStr(str) {
-  return str === 'true';
+export function useStrToBool(str) {
+  try {
+    return JSON.parse(str);
+  } catch (e) {
+    return false;
+  }
 }
 
+/**
+ * 动态插入style到页面
+ * @param path
+ */
+export function useImportStyle(text) {
+  const style = document.createElement('style');
+  style.innerHTML = text;
+  document.head.appendChild(style);
+}

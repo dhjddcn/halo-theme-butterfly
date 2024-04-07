@@ -7,7 +7,7 @@
 import $ from 'jquery';
 import Clipboard from 'clipboard';
 import {module} from '../core/_decorator';
-import {isBoolStr} from '../core/_util';
+import {useImportCss, useImportStyle, useStrToBool} from '../core/_util';
 import tocBot from 'tocbot';
 import {Fancybox} from '@fancyapps/ui';
 
@@ -107,7 +107,7 @@ export default class Render {
     const customItem = toolbar.find('.custom-item');
 
     // 代码块复制
-    if(this.conf['enable_code_copy'] && isBoolStr(this.attrs?.['enable_code_copy'])) {
+    if(this.conf['enable_code_copy'] && useStrToBool(this.attrs?.['enable_code_copy'])) {
       customItem.append('<i class="fas fa-paste code-copy"></i>');
       customItem.find('.code-copy').on('click', function(e) {
         const text = pre.children('code[class*=\'language-\']').text();
@@ -197,43 +197,31 @@ export default class Render {
 
     if(!imgs.length) return;
 
-    this.importFancyBoxCss();
+    import('@fancyapps/ui/dist/fancybox/fancybox.css').then(module => useImportStyle(module.default.toString()));
 
     imgs.each(function() {
       const $this = $(this);
       $this.wrap($(`<span  data-fancybox="fancyBoxImg" href="${$this.attr('src')}" ></span>`));
     });
 
-    Fancybox.bind('[data-fancybox="fancyBoxImg"]', {
-      Toolbar: {
-        display: {
-          left: ['infobar'],
-          middle: [
-            'zoomIn',
-            'zoomOut',
-            'toggle1to1',
-            'rotateCCW',
-            'rotateCW',
-            'flipX',
-            'flipY',
-          ],
-          right: ['slideshow', 'thumbs', 'close'],
+    Fancybox.bind(
+      '[data-fancybox="fancyBoxImg"]',
+      {
+        Toolbar: {
+          display: {
+            left: ['infobar'],
+            middle: [
+              'zoomIn',
+              'zoomOut',
+              'toggle1to1',
+              'rotateCCW',
+              'rotateCW',
+              'flipX',
+              'flipY',
+            ],
+            right: ['slideshow', 'thumbs', 'close'],
+          },
         },
-      },
-    });
-  }
-
-  /**
-   * 导入fancybox css
-   */
-  importFancyBoxCss() {
-    import('@fancyapps/ui/dist/fancybox/fancybox.css').then(module => {
-      const text = module.default.toString();
-      const style = document.createElement('style');
-      style.innerHTML = text;
-      document.head.appendChild(style);
-    }).catch(error => {
-      console.error('导入css失败', error);
-    });
+      });
   }
 }
