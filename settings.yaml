@@ -9,7 +9,7 @@ spec:
       formSchema:
         - $formkit: text
           name: metadata_name
-          label: 作者的唯一标识 metadata.name
+          label: 作者用户名
           placeholder: 请填写 作者的唯一标识 metadata.name
           value: admin
           help: 后台管理页面（console）用户 -> 修改资料 -> 用户名，不可乱填否则侧边栏个人资料显示异常（示例：admin）

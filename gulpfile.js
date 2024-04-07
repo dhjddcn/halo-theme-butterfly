@@ -12,7 +12,8 @@ const resolve = (name) => path.resolve(__dirname, name);
 gulp.task('clean', () => {
   return gulp.src([
     './templates/',
-    './theme-butterfly-dist.zip'], {
+    './theme-butterfly-dist.zip',
+  ], {
     read: false,
     allowEmpty: true,
   }).pipe(
@@ -43,7 +44,8 @@ gulp.task('css', function() {
       '> 5%',
       'last 2 versions',
       'last 3 Safari versions',
-      'Firefox >= 20'],
+      'Firefox >= 20',
+    ],
     cascade: false,
   })).
   pipe(rename({suffix: '.min'})).
@@ -86,16 +88,17 @@ gulp.task('js', function() {
             ],
           },
         },
+        {
+          test: /\.css$/,
+          use: ['css-loader'],
+        },
       ],
     },
     stats: 'errors-only',
     output: {
       filename: '[name].min.js',
     },
-  })
-  .pipe(uglify())
-  .pipe(gulp.dest('./templates/assets/js'))
-  .pipe(
+  }).pipe(uglify()).pipe(gulp.dest('./templates/assets/js')).pipe(
     gzip({
       threshold: '10kb',
     }),
@@ -149,7 +152,7 @@ gulp.task('release', async done => {
 
   await exec(`npm version ${value} --no-git-tag-version`,
     async (error, stdout, stderr) => {
-      if (error) {
+      if(error) {
         console.error(`执行出错: ${error}`);
         return;
       }
@@ -166,17 +169,14 @@ gulp.task('release', async done => {
   done();
 });
 
-
 // 复制文件夹 font plugins
 gulp.task('copy-folder', function() {
   return gulp.src([
     './src/font/**/*',
     './src/plugins/**/*',
-  ], { base: 'src' }) // 设置基本路径为 'src'
+  ], {base: 'src'}) // 设置基本路径为 'src'
   .pipe(gulp.dest('./templates/assets/'));
 });
-
-
 
 gulp.task(
   'watch',
@@ -187,10 +187,9 @@ gulp.task(
   },
 );
 
-
 gulp.task(
-  "default",
+  'default',
   gulp.series(
-    gulp.parallel("copy-folder","css", "js",'html')
-  )
+    gulp.parallel('copy-folder', 'css', 'js', 'html'),
+  ),
 );

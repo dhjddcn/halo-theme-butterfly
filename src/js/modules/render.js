@@ -9,7 +9,7 @@ import Clipboard from 'clipboard';
 import {module} from '../core/_decorator';
 import {isBoolStr} from '../core/_util';
 import tocBot from 'tocbot';
-import { Fancybox } from "@fancyapps/ui";
+import {Fancybox} from '@fancyapps/ui';
 
 @module('Render')
 export default class Render {
@@ -193,26 +193,47 @@ export default class Render {
    * 图片预览
    */
   setImagePreview() {
-    // fancybox($);
-    // const imgs = this.#dom.find('img');
-    //
-    // console.log(imgs);
-    //
-    
+    const imgs = this.#dom.find('img');
 
-    // console.log($('article.render .img'));
+    if(!imgs.length) return;
 
-    // imgs.each(function() {
-    //   this.dataset.fancybox = 'fancyBoxImg';
-    //   this.setAttribute('href', this.getAttribute('src'));
-    // });
+    this.importFancyBoxCss();
 
-
-    Fancybox.bind('img', {
-      //
+    imgs.each(function() {
+      const $this = $(this);
+      $this.wrap($(`<span  data-fancybox="fancyBoxImg" href="${$this.attr('src')}" ></span>`));
     });
 
+    Fancybox.bind('[data-fancybox="fancyBoxImg"]', {
+      Toolbar: {
+        display: {
+          left: ['infobar'],
+          middle: [
+            'zoomIn',
+            'zoomOut',
+            'toggle1to1',
+            'rotateCCW',
+            'rotateCW',
+            'flipX',
+            'flipY',
+          ],
+          right: ['slideshow', 'thumbs', 'close'],
+        },
+      },
+    });
+  }
 
-
+  /**
+   * 导入fancybox css
+   */
+  importFancyBoxCss() {
+    import('@fancyapps/ui/dist/fancybox/fancybox.css').then(module => {
+      const text = module.default.toString();
+      const style = document.createElement('style');
+      style.innerHTML = text;
+      document.head.appendChild(style);
+    }).catch(error => {
+      console.error('导入css失败', error);
+    });
   }
 }

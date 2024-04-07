@@ -34,15 +34,16 @@
   html[data-theme=dark] {
     --theme: #ff7242;
     --body-background: rgb(15, 23, 42);
-    --nav-font-color: /*[(${theme.config.nav.font_color[0].dark})]*/ transparent;;
+    --nav-font-color: /*[(${theme.config.nav.font_color[0].dark})]*/ transparent;
     --nav-active-font-color: /*[(${theme.config.nav.active_font_color[0].dark})]*/ transparent;
     --nav-active-hover-font-color: /*[(${theme.config.nav.active_hover_font_color[0].dark})]*/ transparent;
-    --nav-active-background-color: /*[(${theme.config.nav.active_background_color[0].dark})]*/ transparent;;
+    --nav-active-background-color: /*[(${theme.config.nav.active_background_color[0].dark})]*/ transparent;
     --nav-active-shadow: /*[(${theme.config.nav.active_shadow[0].dark})]*/ transparent;
     --nav-dropdown-background-color: /*[(${theme.config.nav.dropdown_background_color[0].dark})]*/ transparent;
     --nav-dropdown-font-color: /*[(${theme.config.nav.dropdown_font_color[0].dark})]*/ transparent;
     --nav-dropdown-hover-font-color: /*[(${theme.config.nav.dropdown_hover_font_color[0].dark})]*/ transparent;
   }
+
 </style>
 <link rel="preload stylesheet" as="style" th:if="${theme.config.style.font_family != 'null'}" th:href="${assets_link + 'font/' + theme.config.style.font_family + '.min.css'}">
 <link rel="preload stylesheet" as="style" th:href="${assets_link + 'plugins/fontawesome/fontawesome.min.css'}">
