@@ -36,7 +36,7 @@
     <th:block  th:replace="~{modules/header::h(${page})}"></th:block>
     <main th:class="'main ' + ${theme.config.aside.position}" th:insert="${main}"></main>
     <th:block th:replace="~{modules/footer}"/>
-    <th:block th:replace="~{modules/side_wt}"/>
+    <th:block th:replace="~{modules/components::side}"/>
   </div>
   <th:block th:insert="${js_pin}"/>
   <script type="text/javascript" th:src="${assets_link + 'js/' + page + '.min.js?v=' + theme.spec.version + isDev}"></script>

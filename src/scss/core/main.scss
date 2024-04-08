@@ -4,9 +4,11 @@
  * @fileName: main
  * @Description: main
  */
-@use "../core/util";
+@use "util";
 
 .main {
+  @import "aside";
+  
   width: 100%;
   display: flex;
   margin: 0 auto;

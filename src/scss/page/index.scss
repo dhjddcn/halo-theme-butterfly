@@ -6,6 +6,7 @@
  */
 @use '../core';
 @use "../core/util";
+
 @use "../modules/components";
 
 .index {
@@ -15,6 +16,7 @@
     &-info {
       top: 42%;
     }
+
 
     @include util.useThemeVar((
       above-index-subtitle-color: (#eee, rgba(255, 255, 255, 0.7)),

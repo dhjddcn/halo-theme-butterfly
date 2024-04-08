@@ -166,12 +166,12 @@
       }
 
 
-      @include util.useResponsive($width: 1200px, $level: 0) {
+      @include util.useResponsive($width: 1200px, $level: 3) {
         grid-template-columns: repeat(2, 1fr); /* 创建2列 */
       }
 
       @include util.useResponsive($width: util.$w-md, $level: 0) {
-        grid-template-columns: repeat(1, 1fr); /* 创建2列 */
+        grid-template-columns: repeat(1, 1fr); /* 创建1列 */
       }
     }
   }
@@ -202,7 +202,7 @@
       background-color: var(--theme);
       color: #fff;
     }
-    
+
   }
 }
 

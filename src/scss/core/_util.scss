@@ -41,8 +41,50 @@ $w-2xl: 1536px;
         @content;
       }
     }
-  } @else {
+  } @else if ($level == 0) {
     @at-root  #Butterfly#{&} {
+      @media ($wh: $width) {
+        @content;
+      }
+    }
+  } @else {
+    @at-root  & {
+      @media ($wh: $width) {
+        @content;
+      }
+    }
+  }
+
+
+}
+
+
+// $level  0 同级 #Butterfly.&   1 同级 &    2  子级  #Butterfly &  3子级  &
+//$size 表示最大最小
+@mixin useResponsiveVVVV2($width,$level:1,$size:max) {
+  $wh: #{$size}-width;
+
+  @if ($level == 0) {
+    @at-root  #Butterfly#{&} {
+      @media ($wh: $width) {
+        @content;
+      }
+    }
+
+  } @else if ($level == 1) {
+    @at-root  & {
+      @media ($wh: $width) {
+        @content;
+      }
+    }
+  } @else if ($level == 2) {
+    @at-root  #Butterfly & {
+      @media ($wh: $width) {
+        @content;
+      }
+    }
+  } @else {
+    @at-root & {
       @media ($wh: $width) {
         @content;
       }

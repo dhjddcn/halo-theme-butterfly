@@ -5,8 +5,7 @@
  * @Description:导航栏
  */
 
-@use "../core/util";
-
+@use "util";
 
 .nav {
   @keyframes nav-down {

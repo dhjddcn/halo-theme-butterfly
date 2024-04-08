@@ -197,6 +197,7 @@ export default class Render {
 
     if(!imgs.length) return;
 
+    // 动态插入
     import('@fancyapps/ui/dist/fancybox/fancybox.css').then(module => useImportStyle(module.default.toString()));
 
     imgs.each(function() {

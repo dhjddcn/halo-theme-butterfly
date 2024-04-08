@@ -6,9 +6,9 @@
  */
 
 import Message from './_message';
-import Theme from './Theme';
-import Scroll from './Scroll';
-import Common from './Common';
+import Theme from './theme';
+import Scroll from './scroll';
+import Common from './common';
 
 export default class Application {
   useConfig = window.ThemeConfig; //配置

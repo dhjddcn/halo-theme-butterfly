@@ -1,9 +1,8 @@
-@use "reset";
-@use "base";
 @use '../../../node_modules/animate.css/animate.min.css';
-@use "../modules/header";
-@use "../modules/main";
-@use "../modules/aside";
-@use "../modules/footer";
-@use "../modules/button";
-@use "../modules/side_wt";
+@use "_reset";
+@use "_base";
+@use "_button";
+@use "common";
+@use "header";
+@use "main";
+@use "footer";

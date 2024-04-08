@@ -4,7 +4,7 @@
  * @fileName: header
  * @Description: 头部
  */
-@use "../core/util";
+@use "util";
 
 .header {
   @import "nav";

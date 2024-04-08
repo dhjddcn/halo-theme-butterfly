@@ -5,7 +5,7 @@
  * @Description: 按钮
  */
 
-@use "../core/util";
+@use "util";
 
 //定义变量
 @include util.useThemeVar((

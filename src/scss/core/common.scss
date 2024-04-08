@@ -2,20 +2,22 @@
  * @date: 2024/1/16
  * @author: 小红
  * @fileName: variable
- * @Description: 侧边样式
+ * @Description: 公用
  */
-@use "../core/util";
+@use "util";
 
+
+//侧边
 .side {
-  @include util.useThemeVar((
-    cd-background-color:(#f6f8fa, #121212),
-    cd-border-color:(#e3e8f7, #3d3d3f),
-    cd-data-background-color:(#fff, #1b1c20),
-    cd-data-num-text-color:(#1f2d3d, rgba(255, 255, 255, 0.9)),
-  ));
-
-  //侧边菜单
+  //移动端侧边栏菜单
   &-bar {
+    @include util.useThemeVar((
+      cd-background-color:(#f6f8fa, #121212),
+      cd-border-color:(#e3e8f7, #3d3d3f),
+      cd-data-background-color:(#fff, #1b1c20),
+      cd-data-num-text-color:(#1f2d3d, rgba(255, 255, 255, 0.9)),
+    ));
+
     position: fixed;
     top: 0;
     right: -300px;
@@ -165,5 +167,4 @@
       }
     }
   }
-
 }
