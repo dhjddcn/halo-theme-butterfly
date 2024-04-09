@@ -8,6 +8,7 @@
 @use "../core/util";
 @use "../modules/components";
 
+
 .index {
   .header .above {
     height: 100vh;
@@ -28,7 +29,7 @@
       text-shadow: 2px 2px 4px rgba(0, 0, 0, .15);
       animation: above-title-scale 1s;
 
-      @include util.use_ResponsiveVVVV2(util.$w-md) {
+      @include util.useResponsive(util.$w-md) {
         font-size: 1.15em;
       }
     }

@@ -31,35 +31,8 @@ $w-2xl: 1536px;
 }
 
 
-//$level 0 表示同级  1表示子级 
 //$size 表示最大最小
-@mixin useResponsive($width,$level:1,$size:max) {
-  $wh: #{$size}-width;
-  @if ($level == 1) {
-    @at-root  #Butterfly & {
-      @media ($wh: $width) {
-        @content;
-      }
-    }
-  } @else if ($level == 0) {
-    @at-root  #Butterfly#{&} {
-      @media ($wh: $width) {
-        @content;
-      }
-    }
-  } @else {
-    @at-root  & {
-      @media ($wh: $width) {
-        @content;
-      }
-    }
-  }
-
-}
-
-
-//$size 表示最大最小
-@mixin use_ResponsiveVVVV2($width,$level:'&',$size:max) {
+@mixin useResponsive($width,$level:'&',$size:max) {
   $unit: #{$size}-width;
 
   $maps: (

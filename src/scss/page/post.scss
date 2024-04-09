@@ -7,6 +7,7 @@
 @use '../core';
 @use "../core/util";
 @use "../modules/components";
+@import "@fancyapps/ui/dist/fancybox/fancybox.css"; // 引入fancybox样式
 
 .post {
   @import "../modules/render";
@@ -18,12 +19,12 @@
       transition: bottom .3s, padding .3s;
       text-align: center;
 
-      @include util.use_ResponsiveVVVV2(900px) {
+      @include util.useResponsive(900px) {
         bottom: 30px;
         text-align: left;
       }
 
-      @include util.use_ResponsiveVVVV2(util.$w-md) {
+      @include util.useResponsive(util.$w-md) {
         bottom: 22px;
         padding: 0 22px;
       }
@@ -48,11 +49,11 @@
     transition: font-size .3s;
     @include util.text-clamp(3);
 
-    @include util.use_ResponsiveVVVV2(util.$w-md) {
+    @include util.useResponsive(util.$w-md) {
       font-size: 1.8rem;
     }
 
-    @include util.use_ResponsiveVVVV2(650px) {
+    @include util.useResponsive(650px) {
       font-size: 1.5rem;
     }
   }

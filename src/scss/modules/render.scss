@@ -4,15 +4,14 @@
  * @fileName: renderHtml
  * @Description:渲染 html
  */
-@use "../core/util";
+@use '../core/util';
 
 
 .main .content {
-  @include util.use_ResponsiveVVVV2($width: util.$w-md) {
+  @include util.useResponsive($width: util.$w-md) {
     padding: 1.5rem .8rem;
   }
 }
-
 
 // 渲染html
 .render {
@@ -107,7 +106,7 @@
     padding-left: 30px;
 
     > li {
-      line-height: 38px;
+      line-height: 35px;
     }
   }
 
@@ -183,6 +182,74 @@
         white-space: nowrap;
       }
     }
+
+  }
+
+
+  ul[data-type*=taskList], ul[class*=task-list] {
+    li {
+      margin-left: -16px;
+      list-style: none;
+    }
+
+    > label, input, div, p {
+      display: inline-block;
+    }
+
+    label {
+      position: relative;
+      margin-right: 8px;
+      top: 2.6px;
+      display: inline-block;
+      user-select: none;
+
+      input {
+        position: absolute;
+        opacity: 0;
+        cursor: var(--cursor-pointer);
+        height: 0;
+        width: 0;
+
+        &:checked ~ span {
+          background-color: limegreen;
+          border-radius: 5px;
+          transition: 0.15s;
+        }
+
+        &:checked ~ span:after {
+          display: block;
+        }
+      }
+
+      span {
+        display: inline-block;
+        position: relative;
+        top: 0;
+        left: 0;
+        height: 16px;
+        width: 16px;
+        background-color: #ccc;
+        border-radius: 5px;
+        transition: 0.15s;
+        cursor: var(--cursor-pointer);
+
+        &:after {
+          content: "";
+          position: absolute;
+          display: none;
+          left: 5px;
+          top: 3px;
+          width: 6px;
+          height: 8px;
+          border: solid #fff;
+          border-width: 0 0.15em 0.15em 0;
+          transform: rotate(45deg);
+        }
+
+
+      }
+    }
+
 
   }
 
@@ -465,7 +532,7 @@
   transition: top .3s;
   z-index: 10;
 
-  @include util.use_ResponsiveVVVV2($width: 1100px) {
+  @include util.useResponsive($width: 1100px) {
     .aside-toc {
       display: none;
       position: fixed;
@@ -483,7 +550,7 @@
 
 
 .side-btn {
-  @include util.use_ResponsiveVVVV2($width: 1100px) {
+  @include util.useResponsive($width: 1100px) {
     //侧边目录按钮
     .post-toc {
       visibility: visible;
