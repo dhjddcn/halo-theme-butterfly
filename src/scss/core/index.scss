@@ -1,4 +1,3 @@
-@use '../../../node_modules/animate.css/animate.min.css';
 @use "_reset";
 @use "_base";
 @use "_button";
@@ -6,3 +5,4 @@
 @use "header";
 @use "main";
 @use "footer";
+@import 'animate.css/animate.min.css';

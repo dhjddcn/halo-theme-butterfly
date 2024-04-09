@@ -16,10 +16,10 @@ class Index {
    * 打字机
    */
   run_typewriter() {
+    if(!this.useConfig.base.index['enable_above']) return;
+
     // 创建打字
     const useTyped = (strings) => {
-      if(!strings.length) return;
-
       new Typed('.above-subtitle--text', {
         strings,
         startDelay: 300,
@@ -28,9 +28,13 @@ class Index {
         backSpeed: 50,
       });
     };
-    
+
     // 自定义文字
-    const text = this.useConfig.base.index['typewriter_custom_text']?.replaceAll('\n', '').split('|&|');
+    let text = this.useConfig.base.index['typewriter_custom_text']?.replaceAll('\n', '').split('|&|');
+
+    if(!text || text.toString() === '') {
+      text = ['请填写打字文案或者配置随机文案！'];
+    }
 
     // 随机文字
     if(this.useConfig.base.index['enable_typewriter_random_text']) {

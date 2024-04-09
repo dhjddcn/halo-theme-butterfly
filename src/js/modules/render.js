@@ -7,7 +7,7 @@
 import $ from 'jquery';
 import Clipboard from 'clipboard';
 import {module} from '../core/_decorator';
-import {useImportCss, useImportStyle, useStrToBool} from '../core/_util';
+import {useDelay, useImportStyle, useStrToBool} from '../core/_util';
 import tocBot from 'tocbot';
 import {Fancybox} from '@fancyapps/ui';
 
@@ -179,14 +179,14 @@ export default class Render {
   /**
    * 设置移动端目录
    */
-  setH5Toc() {
-    console.log(1);
+  async setH5Toc() {
     const adToc = this.#isStickyDom.find('.aside-toc');
+    
     adToc.toggle('fast');
 
-    if(adToc.css('display') === 'none') {
-      setTimeout(() => adToc.attr('style', ''), 100);
-    }
+    await useDelay(500);
+
+    adToc.css('display') === 'none' && adToc.attr('style', '');
   }
 
   /**

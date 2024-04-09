@@ -76,6 +76,7 @@
     "jquery": "^3.7.1",
     "jszip": "^3.10.1",
     "pace-js": "^1.2.4",
+    "postcss-import": "^16.1.0",
     "postcss-merge-media-queries": "^1.0.1",
     "postcss-merge-rules": "^6.0.3",
     "postcss-nested": "^6.0.1",

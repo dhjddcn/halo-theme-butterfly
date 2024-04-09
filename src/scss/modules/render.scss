@@ -8,7 +8,7 @@
 
 
 .main .content {
-  @include util.useResponsive($width: util.$w-md, $level: 0) {
+  @include util.use_ResponsiveVVVV2($width: util.$w-md) {
     padding: 1.5rem .8rem;
   }
 }
@@ -465,7 +465,7 @@
   transition: top .3s;
   z-index: 10;
 
-  @include util.useResponsive($width: 1100px, $level: 0) {
+  @include util.use_ResponsiveVVVV2($width: 1100px) {
     .aside-toc {
       display: none;
       position: fixed;
@@ -483,7 +483,7 @@
 
 
 .side-btn {
-  @include util.useResponsive($width: 1100px, $level: 0) {
+  @include util.use_ResponsiveVVVV2($width: 1100px) {
     //侧边目录按钮
     .post-toc {
       visibility: visible;

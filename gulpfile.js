@@ -35,10 +35,11 @@ const postcss = require('gulp-postcss');
 gulp.task('css', function() {
   return gulp.src('./src/scss/page/*.scss').
   pipe(sass({}, {})).
-  pipe(minifyCss()).
   pipe(postcss([
     require('css-mqpacker')(),
+    require('postcss-import')(),
   ])).
+  pipe(minifyCss()).
   pipe(autoPrefix({
     overrideBrowserslist: [
       '> 5%',

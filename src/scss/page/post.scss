@@ -18,12 +18,12 @@
       transition: bottom .3s, padding .3s;
       text-align: center;
 
-      @include util.useResponsive(900px, 0) {
+      @include util.use_ResponsiveVVVV2(900px) {
         bottom: 30px;
         text-align: left;
       }
 
-      @include util.useResponsive(util.$w-md, 0) {
+      @include util.use_ResponsiveVVVV2(util.$w-md) {
         bottom: 22px;
         padding: 0 22px;
       }
@@ -48,11 +48,11 @@
     transition: font-size .3s;
     @include util.text-clamp(3);
 
-    @include util.useResponsive(util.$w-md) {
+    @include util.use_ResponsiveVVVV2(util.$w-md) {
       font-size: 1.8rem;
     }
 
-    @include util.useResponsive(650px) {
+    @include util.use_ResponsiveVVVV2(650px) {
       font-size: 1.5rem;
     }
   }

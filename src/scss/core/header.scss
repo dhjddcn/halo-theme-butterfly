@@ -73,7 +73,7 @@
         above-title-color: (rgb(255, 255, 255), rgba(255, 255, 255, 0.9)),
       ));
 
-      @include util.useResponsive(util.$w-md) {
+      @include util.use_ResponsiveVVVV2(util.$w-md) {
         font-size: 1.85em;
       }
 

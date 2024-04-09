@@ -144,3 +144,12 @@ export function useImportStyle(text) {
   style.innerHTML = text;
   document.head.appendChild(style);
 }
+
+/**
+ * 延迟
+ * @param time
+ * @returns {*}
+ */
+export function useDelay(time) {
+  return new Promise(resolve => setTimeout(resolve, time));
+}

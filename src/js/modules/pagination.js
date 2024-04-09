@@ -19,12 +19,12 @@ export default class Pagination {
 
   // 获取上一页
   #getPrevUrl() {
-    return this.conf.hasPrevious ? `<a class="page prev" rel="prev" href="${this.conf.prevUrl}"><i class="fas fa-chevron-left fa-fw"></i></a>` : '';
+    return this.conf.hasPrevious ? `<a class="page prev" rel="prev" aria-label="prev" href="${this.conf.prevUrl}"><i class="fas fa-chevron-left fa-fw"></i></a>` : '';
   }
 
   // 获取下一页
   #getNextUrl() {
-    return this.conf.hasNext ? `<a class="page next" rel="next" href="${this.conf.nextUrl}"><i class="fas fa-chevron-right fa-fw"></i></a>` : '';
+    return this.conf.hasNext ? `<a class="page next" aria-label="next" href="${this.conf.nextUrl}"><i class="fas fa-chevron-right fa-fw"></i></a>` : '';
   }
 
   // 获取页码

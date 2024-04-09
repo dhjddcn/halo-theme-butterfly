@@ -64,7 +64,7 @@
   }
 
 
-  @include util.useResponsive(1100px) {
+  @include util.use_ResponsiveVVVV2(1100px,'# &') {
     flex-direction: column;
     > .content {
       width: 100%;
@@ -75,11 +75,11 @@
     }
   }
 
-  @include util.useResponsive(util.$w-md) {
+  @include util.use_ResponsiveVVVV2(util.$w-md) {
     padding: 18px 8px;
   }
 
-  @include util.useResponsive($width: 2000px, $size: min) {
+  @include util.use_ResponsiveVVVV2($width: 2000px, $size: min) {
     max-width: 60%;
   }
 

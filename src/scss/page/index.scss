@@ -6,7 +6,6 @@
  */
 @use '../core';
 @use "../core/util";
-
 @use "../modules/components";
 
 .index {
@@ -29,7 +28,7 @@
       text-shadow: 2px 2px 4px rgba(0, 0, 0, .15);
       animation: above-title-scale 1s;
 
-      @include util.useResponsive(util.$w-md, 0) {
+      @include util.use_ResponsiveVVVV2(util.$w-md) {
         font-size: 1.15em;
       }
     }

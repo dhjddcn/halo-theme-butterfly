@@ -55,41 +55,27 @@ $w-2xl: 1536px;
     }
   }
 
-
 }
 
 
-// $level  0 同级 #Butterfly.&   1 同级 &    2  子级  #Butterfly &  3子级  &
 //$size 表示最大最小
-@mixin useResponsiveVVVV2($width,$level:1,$size:max) {
-  $wh: #{$size}-width;
+@mixin use_ResponsiveVVVV2($width,$level:'&',$size:max) {
+  $unit: #{$size}-width;
 
-  @if ($level == 0) {
-    @at-root  #Butterfly#{&} {
-      @media ($wh: $width) {
-        @content;
-      }
-    }
+  $maps: (
+    '&':&, // 子级 不带 #
+    '#&':#Butterfly#{&}, // 带 #
+    '# &':#Butterfly &, // 子级 不带 #
+  );
 
-  } @else if ($level == 1) {
-    @at-root  & {
-      @media ($wh: $width) {
-        @content;
-      }
-    }
-  } @else if ($level == 2) {
-    @at-root  #Butterfly & {
-      @media ($wh: $width) {
-        @content;
-      }
-    }
-  } @else {
-    @at-root & {
-      @media ($wh: $width) {
-        @content;
-      }
+  $selector: map-get($maps, $level);
+
+  @at-root  #{$selector} {
+    @media ($unit: $width) {
+      @content;
     }
   }
+
 }
 
 

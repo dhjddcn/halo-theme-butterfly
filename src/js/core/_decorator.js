@@ -43,3 +43,12 @@ export function module(name) {
     return target;
   };
 }
+
+export function run(target, key, descriptor) {
+  const fn = descriptor.value;
+  descriptor.value = function() {
+    fn.call(this);
+    console.log(`run ${key}`);
+  };
+  return descriptor;
+}

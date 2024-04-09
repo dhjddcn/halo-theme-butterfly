@@ -38,7 +38,7 @@
   justify-content: space-between;
 
 
-  @include util.useResponsive(util.$w-md) {
+  @include util.use_ResponsiveVVVV2(util.$w-md) {
     padding: 0 16px;
   }
 
@@ -119,7 +119,7 @@
         display: none;
       }
 
-      @include util.useResponsive(util.$w-md) {
+      @include util.use_ResponsiveVVVV2(util.$w-md) {
         .link {
           padding: 0 2px;
           font-size: 1em;
@@ -140,7 +140,7 @@
     .menu {
       @include util.flex-center;
 
-      @include util.useResponsive(util.$w-md) {
+      @include util.use_ResponsiveVVVV2(util.$w-md) {
         display: none;
       }
 
