@@ -20,5 +20,13 @@
     window['renderScript']?.remove();
   </script>
   <article class="render" th:utext="${post.content.content}"></article>
+
+  <th:block th:if="${haloCommentEnabled}">
+    <halo:comment
+      group="content.halo.run"
+      kind="Post"
+      th:attr="name=${post.metadata.name}"
+    />
+  </th:block>
 </section>
 
