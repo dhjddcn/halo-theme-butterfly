@@ -15,6 +15,7 @@ body {
   font-family: "Butterfly Font", "Microsoft YaHei", "微软雅黑", Arial, "sans-serif";
   font-size: 14px;
   line-height: 2;
+  -webkit-tap-highlight-color: transparent;
   overflow-y: overlay;
   scroll-behavior: smooth;
   padding-bottom: env(safe-area-inset-bottom);

@@ -16,13 +16,13 @@ $w-2xl: 1536px;
  */
 @mixin useThemeVar($vars) {
   @at-root  html {
-    &[data-theme='light'] {
+    &[data-color-scheme='light'] {
       @each $key, $value in $vars {
         --#{$key}: #{nth($value,1)};
       }
     }
 
-    &[data-theme='dark'] {
+    &[data-color-scheme='dark'] {
       @each $key, $value in $vars {
         --#{$key}: #{nth($value,2)};
       }

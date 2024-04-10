@@ -6,8 +6,23 @@
  */
 
 export default class Message {
-  constructor(config) {
 
+  ins = null; // 实例
+
+  constructor(config) {
+    this.ins = document.createElement('div');
+    this.ins.className = 'message-container';
+    document.body.appendChild(this.ins);
+  }
+
+  /**
+   * @description: 弹出消息
+   * @param msg
+   */
+  createWrapper(msg) {
+    const div = document.createElement('div');
+    div.className = 'message-wrapper';
+    div.innerHTML = `<div class=""></div>`;
   }
 
 }
