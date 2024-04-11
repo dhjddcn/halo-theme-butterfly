@@ -30,6 +30,8 @@ export default class Common {
       sideBar.addClass('active');
       useMask(() => sideBar.removeClass('active'));
     });
+    
+    
 
     //  注册侧边菜单
     $('menu.bar').on('click', 'li.child', (event) => event.currentTarget.classList.toggle('active'));

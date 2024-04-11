@@ -359,6 +359,7 @@
         pointer-events: all;
 
         > i {
+          cursor: var(--cursor-pointer);
           margin-left: 15px;
           transition: transform 0.2s;
 
@@ -368,14 +369,12 @@
 
           &.code-copy {
             font-size: .9rem;
-            cursor: var(--cursor-pointer);
           }
         }
       }
 
       // 启动展开
       &.enable-expander {
-        cursor: var(--cursor-pointer);
 
         i.code-expander {
           transform: rotate(90deg);
