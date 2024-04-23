@@ -7,26 +7,61 @@
 </th:block>
 
 
+<!--/* 文章版权  */-->
+<th:block xmlns:th="https://www.thymeleaf.org" th:fragment="copyRight">
+  <div class="copy-right">
+    <i class="fa-solid fa-copyright"></i>
+
+    <div class="author">
+      <span class="name">文章作者：</span>
+      <span class="text">小红</span>
+    </div>
+
+    <div class="url">
+      <span class="name">本文链接：</span>
+      <span class="text">
+              <a href="https://dhjdd.cn/archives/liunx%E9%98%BF%E9%87%8C%E4%BA%91%E8%BD%BB%E9%87%8F%E6%9C%8D%E5%8A%A1%E5%99%A8465%E7%AB%AF%E5%8F%A3%E5%8F%91%E9%80%81%E9%82%AE%E7%AE%B1" target="_blank">https://dhjdd.cn/archives/liunx阿里云轻量服务器465端口发送邮箱</a>
+      </span>
+    </div>
+
+
+    <div class="declaration">
+      <span class="name">版权声明：</span>
+      <span class="text">本站所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自<a href="/" target="_blank">小红</a>！</span>
+    </div>
+  </div>
+</th:block>
+
+<!--评论-->
+<th:block xmlns:th="https://www.thymeleaf.org" th:fragment="comment">
+  <halo:comment
+    group="content.halo.run"
+    kind="Post"
+    th:attr="name=${post.metadata.name}"
+  />
+</th:block>
+
+
 <!--/* 渲染post页面  */-->
 <section xmlns:th="https://www.thymeleaf.org"
          th:fragment="post"
          class="content card"
 >
   <th:block th:replace="~{::prism}"/>
+
   <script id="renderScript" th:inline="javascript">
     Object.assign(window.ThemeConfig.attrs, {
       enable_code_copy: /*[[${#annotations.getOrDefault(post, 'enable_code_copy','true')}]]*/ true,
     });
     window['renderScript']?.remove();
   </script>
+
   <article class="render" th:utext="${post.content.content}"></article>
 
-  <th:block th:if="${haloCommentEnabled}">
-    <halo:comment
-      group="content.halo.run"
-      kind="Post"
-      th:attr="name=${post.metadata.name}"
-    />
-  </th:block>
+  <th:block th:replace="~{::copyRight}"/>
+
+  <!--  <th:block th:if="${haloCommentEnabled}">-->
+
+  <!--  </th:block>-->
 </section>
 

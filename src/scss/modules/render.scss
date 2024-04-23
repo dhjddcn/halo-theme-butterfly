@@ -6,7 +6,6 @@
  */
 @use '../core/util';
 
-
 .main .content {
   @include util.useResponsive($width: util.$w-md) {
     padding: 1.5rem .8rem;
@@ -28,7 +27,7 @@
 
   word-break: break-word;
   overflow-wrap: break-word;
-  overflow-x: hidden;
+  //overflow-x: hidden;
 
   code[class*=language-] {
     opacity: 0;
@@ -547,12 +546,43 @@
   }
 }
 
-
 .side-btn {
   @include util.useResponsive($width: 1100px) {
     //侧边目录按钮
     .post-toc {
       visibility: visible;
     }
+  }
+}
+
+
+//版权
+.copy-right {
+  @include util.useThemeVar((
+    cpy-border-color:(#ebe5f83b, rgba(33, 35, 37, 0.9)), //版权边框颜色
+    cpy-background-color:(#f0f0f0cc, rgba(33, 35, 37, 0.9)), //版权背景颜色
+    cpy-text-color:(#1f2d3d, rgba(255, 255, 255, 0.9)), //版权字体颜色
+  ));
+
+  margin: 25px 0;
+  padding: 10px 16px;
+  border: 1px solid var(--cpy-border-color);
+  transition: box-shadow .2s, transform .2s;
+  background-color: var(--cpy-background-color);
+  border-radius: 8px;
+  color: var(--cpy-text-color);
+  position: relative;
+
+
+  > i.fa-copyright {
+    position: absolute;
+    font-size: 1.5em;
+    color: var(--theme);
+    right: 10px;
+    top: 10px;
+  }
+
+  a {
+    color: var(--theme);
   }
 }

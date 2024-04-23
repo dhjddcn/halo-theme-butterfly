@@ -87,6 +87,7 @@ body {
 
 ::-webkit-scrollbar-thumb {
   background: var(--theme);
+  cursor: var(--cursor-pointer);
 }
 
 ::-webkit-scrollbar-track {
@@ -98,49 +99,3 @@ body {
   background-color: #00c4b6;
 }
 
-hr {
-  position: relative;
-  margin: 30px auto;
-  border: 1px dashed var(--theme);
-  width: calc(100% - 5px);
-  height: 0;
-  overflow: visible;
-
-  &::before {
-    font-family: "Font Awesome 6 Pro", serif;
-    font-weight: 900;
-    -webkit-font-smoothing: antialiased;
-    display: var(--fa-display, inline-block);
-    font-style: normal;
-    font-variant: normal;
-    line-height: 1;
-    text-rendering: auto;
-    position: absolute;
-    top: -10px;
-    left: 5%;
-    z-index: 1;
-    color: var(--theme);
-    content: "\f2dc";
-    font-size: 18px;
-    transition: 1s ease-in-out;
-  }
-}
-
-a:hover {
-  color: var(--link-hover-color);
-}
-
-.empty {
-  @include util.flex-center;
-  flex-direction: column;
-  padding: 20px 5px;
-  color: #888;
-  text-align: center;
-
-  &-svg {
-    width: 90px;
-    height: 90px;
-    margin-bottom: 20px;
-    fill: currentColor
-  }
-}

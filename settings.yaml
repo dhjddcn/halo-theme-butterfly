@@ -10,7 +10,7 @@ spec:
         - $formkit: text
           name: metadata_name
           label: 作者用户名
-          placeholder: 请填写 作者的唯一标识 metadata.name
+          placeholder: 请填写作者的唯一标识（用户名）
           value: admin
           help: 后台管理页面（console）用户 -> 修改资料 -> 用户名，不可乱填否则侧边栏个人资料显示异常（示例：admin）
           validation: required
@@ -77,6 +77,46 @@ spec:
     - group: loading
       label: 加载设置
       formSchema:
+        - $formkit: radio
+          name: static_assets_type
+          id: static_assets_type
+          key: static_assets_type
+          label: 静态资源加载类型
+          help: 启用后从npmJs的jsDeLiVr加速地址加载，不启用本站资源地址加载，可自定义资源链接地址
+          value: false
+          options:
+            - label: 启用
+              value: true
+            - label: 禁用
+              value: false
+            - label: 自定义
+              value: custom
+        - $formkit: url
+          name: static_assets_custom
+          if: $get(static_assets_type).value == custom
+          label: 自定义链接
+          placeholder: 请填写 自定义资源链接地址
+          help: 请确保链接下assets文件夹下主题静态资源文件一致,否则可能导致页面无法正常显示！
+          validation: required|url
+        - $formkit: radio
+          name: static_assets_link
+          if: $get(static_assets_type).value
+          label: npm加速地址
+          help: 免费可用的npmJs-cdn加速地址
+          value: 'https://cdn.jsdelivr.net/npm/halo-theme-butterfly/templates/assets/'
+          options:
+            - label: 'cdn.jsdelivr.net'
+              value: 'https://cdn.jsdelivr.net/npm/halo-theme-butterfly/templates/assets/'
+            - label: 'unpkg.com'
+              value: 'https://unpkg.com/halo-theme-butterfly/templates/assets/'
+            - label: 'jsd.onmicrosoft.cn'
+              value: 'https://jsd.onmicrosoft.cn/npm/halo-theme-butterfly/templates/assets/'
+            - label: 'fastly.jsdelivr.net'
+              value: 'https://fastly.jsdelivr.net/npm/halo-theme-butterfly@latest/templates/assets/'
+          validation: required
+
+
+
         - $formkit: radio
           name: enable_assets_link
           label: 启用外部资源文件加载地址
@@ -544,7 +584,7 @@ spec:
             - label: 启用
               value: true
             - label: 禁用
-              value: false              
+              value: false
         - $formkit: radio
           name: enable_code
           id: enable_code

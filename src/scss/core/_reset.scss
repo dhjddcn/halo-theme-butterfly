@@ -6,7 +6,6 @@
  */
 *, ::after, ::before {
   box-sizing: border-box;
-  border: 0 solid #e5e7eb;
   cursor: inherit;
 }
 
@@ -68,7 +67,8 @@ button, input, optgroup, select, textarea {
   line-height: inherit;
   color: inherit;
   margin: 0;
-  padding: 0
+  padding: 0;
+  border: none;
 }
 
 button, select {

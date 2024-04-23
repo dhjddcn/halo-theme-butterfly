@@ -1,11 +1,7 @@
-<th:block
-  xmlns:th="https://www.thymeleaf.org"
-  th:with="
-     assets_link = ${theme.config.loading.enable_assets_link ? theme.config.loading.assets_link : #theme.assets('//')},
+<th:block xmlns:th="https://www.thymeleaf.org" th:with="
+     assets_link = ${theme.config.loading.static_assets_type ? theme.config.loading.static_assets_link : (theme.config.loading.static_assets_type == 'custom' ? theme.config.loading.static_assets_custom : #theme.assets('//'))},
      param_prefix = ${#strings.containsIgnoreCase(theme.config.loading.random_img,'?') ? '&' : '?'}
-  "
-  th:fragment="layout (page,title,css_pin,js_pin,main)"
->
+  " th:fragment="layout (page,title,css_pin,js_pin,main)">
   <!DOCTYPE html>
   <html lang="en" data-color-scheme="light"  th:with="isDev = ${true ? #dates.createNow().time : ''} ">
   <head>
