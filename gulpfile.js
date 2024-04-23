@@ -27,8 +27,6 @@ const sass = require('gulp-sass')(require('sass'));
 const rename = require('gulp-rename');
 const autoPrefix = require('gulp-autoprefixer');
 const minifyCss = require('gulp-minify-css');
-const csso = require('gulp-csso');
-const cssnano = require('gulp-cssnano');
 const cleanCss = require('gulp-clean-css');
 
 const postcss = require('gulp-postcss');
@@ -41,6 +39,7 @@ gulp.task('css', function() {
     }),
     require('css-mqpacker')(),
   ])).
+  pipe(cleanCss()).
   pipe(minifyCss()).
   pipe(autoPrefix({
     overrideBrowserslist: [
