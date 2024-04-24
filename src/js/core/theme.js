@@ -13,14 +13,14 @@ export default class Theme {
   mode = 'light'; // 主题模式
 
   // 初始化主题模式
-  constructor(mode) {
+  constructor() {
     const mes = {
       auto: () => useIsDaytime() ? 'light' : 'dark',
       user: () => localStorage.getItem(this.#LOCALSTORAGE_KEY) || 'light',
       light: () => 'light',
       dark: () => 'dark',
     };
-    this.setMode(mes[mode]());
+    this.setMode(mes[window.ThemeConfig.base.style.mode]());
   }
 
   // 设置主题模式

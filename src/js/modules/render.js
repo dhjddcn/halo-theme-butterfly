@@ -6,12 +6,10 @@
  */
 import $ from 'jquery';
 import Clipboard from 'clipboard';
-import {module} from '../core/_decorator';
-import {useDelay, useImportStyle, useStrToBool} from '../core/_util';
+import {useDelay, useStrToBool} from '../core/_util';
 import tocBot from 'tocbot';
 import {Fancybox} from '@fancyapps/ui';
 
-@module('Render')
 export default class Render {
   className = []; // 默认单行复制
   #dom = $('article.render'); // 文章渲染区域
@@ -19,10 +17,9 @@ export default class Render {
   #lightDom = document.querySelector('link[data-code=light]'); // 亮色代码主题
   #darkDom = document.querySelector('link[data-code=dark]'); // 暗色代码主题
 
-  constructor(App) {
-    if(!App) return;
-    this.attrs = App.useConfig.attrs;
-    this.conf = App.useConfig.base.render;
+  constructor() {
+    this.attrs = this.useConfig.attrs;
+    this.conf = this.useConfig.base.render;
 
     // h1~h6标题图标
     if(this.conf['enable_h_icon']) this.className.push('enable_h_icon');
@@ -40,10 +37,10 @@ export default class Render {
       Prism.highlightAll();
 
       // 初始化代码主题
-      this.setCodeTheme(App.useTheme.getMode());
+      this.setCodeTheme(this.useTheme.getMode());
 
       //主题切换，代码块切换
-      App.useTheme.change((mode) => this.setCodeTheme(mode));
+      this.useTheme.change((mode) => this.setCodeTheme(mode));
 
       // 初始化代码块
       this.setCodeBlock();
@@ -52,7 +49,7 @@ export default class Render {
       this.#dom.addClass(this.className.join(' '));
     }
 
-    this.setTocBot(App.useScroll); // 目录
+    this.setTocBot(this.useScroll); // 目录
 
     this.setImagePreview(); // 图片预览
   }
@@ -181,7 +178,7 @@ export default class Render {
    */
   async setH5Toc() {
     const adToc = this.#isStickyDom.find('.aside-toc');
-    
+
     adToc.toggle('fast');
 
     await useDelay(500);

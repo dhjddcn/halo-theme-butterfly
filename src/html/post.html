@@ -13,7 +13,7 @@
     <style
       xmlns:th="https://www.thymeleaf.org"
       th:inline="css"
-      th:with="above_background = ${not #strings.isEmpty(post.spec.cover) ? post.spec.cover : (theme.config.loading.enable_random_img ? theme.config.loading.random_img  : 'todo-'  )}">
+      th:with="above_background = ${not #strings.isEmpty(post.spec.cover) ? post.spec.cover : (theme.config.loading.img.random_enable ? theme.config.loading.img.random_link  : 'todo-'  )}">
       .above {
         --above-background: /*[(${'url('+above_background+')'})]*/ transparent;
       }

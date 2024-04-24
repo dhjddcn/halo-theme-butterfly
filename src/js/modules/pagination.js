@@ -8,12 +8,13 @@
 import $ from 'jquery';
 
 export default class Pagination {
-  constructor(App) {
-    if(!App.useConfig.pagination) return;
+  constructor() {
+    if(!this.useConfig.pagination) return;
 
-    this.conf = App.useConfig.pagination;
+    this.conf = this.useConfig.pagination;
 
     if(this.conf.page > this.conf.totalPages) return;
+
     this.#createPage();
   }
 
@@ -43,15 +44,14 @@ export default class Pagination {
         startPage = 1;
         endPage = maxPagesToShow;
       }
-      else
-        if(page >= totalPages - halfMaxPagesToShow) {
-          startPage = totalPages - maxPagesToShow + 1;
-          endPage = totalPages;
-        }
-        else {
-          startPage = page - halfMaxPagesToShow;
-          endPage = page + halfMaxPagesToShow;
-        }
+      else if(page >= totalPages - halfMaxPagesToShow) {
+        startPage = totalPages - maxPagesToShow + 1;
+        endPage = totalPages;
+      }
+      else {
+        startPage = page - halfMaxPagesToShow;
+        endPage = page + halfMaxPagesToShow;
+      }
     }
     let html = '';
 

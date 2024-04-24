@@ -1,9 +1,9 @@
 <!--/* 图片加载 */-->
 <img
   th:fragment="lazyLoadImg(src,alt,class,random,parma)"
-  th:src="${theme.config.loading.preload}"
-  th:attr="onerror='this.src='+${'`'+theme.config.loading.err+'`'}"
-  th:data-lazy-src="${(#strings.isEmpty(src) && theme.config.loading.enable_random_img && random)  ? (theme.config.loading.random_img + parma)  : src}"
+  th:src="${theme.config.loading.img.preload}"
+  th:attr="onerror='this.src='+${'`'+theme.config.loading.img.err+'`'}"
+  th:data-lazy-src="${(#strings.isEmpty(src) && theme.config.loading.img.random_enable && random)  ? (theme.config.loading.img.random_link + parma)  : src}"
   th:alt="${alt}"
   th:class="${class}"
 >
@@ -17,7 +17,7 @@
 >
   <th:block th:if="${noData}">
     <li class="item card" th:each="post : ${data}">
-      <a th:if="${not #strings.isEmpty(post.spec.cover) || theme.config.loading.enable_random_img }" th:href="${post.status.permalink}" th:title="${post.spec.title}" th:class="'cover' + ${post.spec.pinned ? ' top' : ''}">
+      <a th:if="${not #strings.isEmpty(post.spec.cover) || theme.config.loading.img.random_enable }" th:href="${post.status.permalink}" th:title="${post.spec.title}" th:class="'cover' + ${post.spec.pinned ? ' top' : ''}">
         <img th:replace="~{::lazyLoadImg(${post.spec.cover},${post.spec.title},'img',true,${param_prefix +'v=' + #dates.format(post.spec.publishTime, 'yyyyMMddhhmmss')})}"/>
       </a>
 
@@ -166,7 +166,7 @@
 
   <!--/* 侧边按钮 */-->
   <div class="side-btn">
-    <button class="button post-toc" type="button" title="文章目录" onclick="ByApp['useRender'].setH5Toc()">
+    <button class="button h5-toc" type="button" title="文章目录" onclick="ByApp['useRender'].setH5Toc()">
       <i class="fa-sharp fa-solid fa-list-tree" ></i>
     </button>
 

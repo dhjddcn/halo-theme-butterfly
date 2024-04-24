@@ -11,7 +11,6 @@ import Pagination from '../modules/pagination';
 
 @App([Pagination])
 class Index {
-
   /**
    * 打字机
    */
@@ -46,7 +45,7 @@ class Index {
           useTyped([res]);
         },
         error: (err) => {
-          useTyped(text);
+          useTyped(['获取随机文案失败，请检查API是否正常！']);
         },
       });
       return;

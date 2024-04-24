@@ -5,7 +5,10 @@
  * @Description: 装饰器
  */
 
-import Application from './Application';
+import Message from './_message';
+import Theme from './theme';
+import Scroll from './scroll';
+import Common from './common';
 
 /**
  * @desc: 注册应用
@@ -14,33 +17,24 @@ import Application from './Application';
  */
 export function App(modules) {
   return function(target) {
-    document.addEventListener('DOMContentLoaded', () => {
-      const app = new Application();
-      Object.setPrototypeOf(target.prototype, app);
-      const ins = new target();
-      const fns = Object.getOwnPropertyNames(ins.__proto__);
-      // 运行实例方法
-      for (let i = 0; i < fns.length; i++) fns[i].startsWith('run_') && ins[fns[i]]();
-      // 实例化模块 
-      for (let i = 0; i < modules.length; i++) {
-        const module = new modules[i](app);
-        Object.defineProperty(ins, `use${module.NAME}`, {value: module});
-      }
-      window.ByApp = ins;
+    Object.setPrototypeOf(target.prototype, {
+      useConfig: window.ThemeConfig, //配置
+      useTheme: new Theme(), //主题
+      useCommon: new Common(), // 普通
+      useScroll: new Scroll(), //滚动导航侧边
+      useMessage: new Message(), //消息
     });
+    const ins = new target();
+    const fns = Object.getOwnPropertyNames(ins.__proto__);
+    // 运行实例方法
+    for (let i = 0; i < fns.length; i++) fns[i].startsWith('run_') && ins[fns[i]]();
+    // 实例化模块 
+    for (let i = 0; i < modules.length; i++) {
+      Object.setPrototypeOf(modules[i].prototype, ins);
+      new modules[i]();
+    }
+    window.ByApp = ins;
     return window.ByApp;
-  };
-}
-
-/**
- * @desc: 模块
- * @param name
- * @returns {function(*): *}
- */
-export function module(name) {
-  return function(target) {
-    Object.defineProperty(target.prototype, 'NAME', {value: name});
-    return target;
   };
 }
 

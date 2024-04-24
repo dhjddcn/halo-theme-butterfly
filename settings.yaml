@@ -77,94 +77,99 @@ spec:
     - group: loading
       label: 加载设置
       formSchema:
-        - $formkit: radio
-          name: static_assets_type
-          id: static_assets_type
-          key: static_assets_type
-          label: 静态资源加载类型
-          help: 启用后从npmJs的jsDeLiVr加速地址加载，不启用本站资源地址加载，可自定义资源链接地址
-          value: false
-          options:
-            - label: 启用
-              value: true
-            - label: 禁用
-              value: false
-            - label: 自定义
-              value: custom
-        - $formkit: url
-          name: static_assets_custom
-          if: $get(static_assets_type).value == custom
-          label: 自定义链接
-          placeholder: 请填写 自定义资源链接地址
-          help: 请确保链接下assets文件夹下主题静态资源文件一致,否则可能导致页面无法正常显示！
-          validation: required|url
-        - $formkit: radio
-          name: static_assets_link
-          if: $get(static_assets_type).value
-          label: npm加速地址
-          help: 免费可用的npmJs-cdn加速地址
-          value: 'https://cdn.jsdelivr.net/npm/halo-theme-butterfly/templates/assets/'
-          options:
-            - label: 'cdn.jsdelivr.net'
+        - $formkit: group
+          label: 资源加载
+          name: source
+          value:
+            custom: ''
+            type: site
+            site: '/themes/theme-butterfly/assets/'
+            npm: 'https://cdn.jsdelivr.net/npm/halo-theme-butterfly/templates/assets/'
+          children:
+            - $formkit: radio
+              help: 从本站加载 npm-cdn 自定义链接 来加载静态文件（js、css）
+              label: 类型
+              name: type
+              id: _type
+              key: _type
+              value: site
+              validation: required
+              options:
+                - label: 本站
+                  value: site
+                - label: npm
+                  value: npm
+                - label: 自定义
+                  value: custom
+            - $formkit: url
+              name: custom
+              key: _custom
+              id: _custom
+              if: $get(_type).value == custom
+              label: 自定义链接
+              placeholder: 请填写 自定义资源链接地址
+              help: 请确保链接下assets文件夹下主题静态资源文件一致,否则可能导致页面无法正常显示！
+              validation: required|url
+            - $formkit: radio
+              name: npm
+              key: _npm
+              id: _npm
+              if: $get(_type).value == npm
+              label: npm加速地址
+              help: 免费可用的npmJs-cdn加速地址
               value: 'https://cdn.jsdelivr.net/npm/halo-theme-butterfly/templates/assets/'
-            - label: 'unpkg.com'
-              value: 'https://unpkg.com/halo-theme-butterfly/templates/assets/'
-            - label: 'jsd.onmicrosoft.cn'
-              value: 'https://jsd.onmicrosoft.cn/npm/halo-theme-butterfly/templates/assets/'
-            - label: 'fastly.jsdelivr.net'
-              value: 'https://fastly.jsdelivr.net/npm/halo-theme-butterfly@latest/templates/assets/'
-          validation: required
+              options:
+                - label: 'cdn.jsdelivr.net'
+                  value: 'https://cdn.jsdelivr.net/npm/halo-theme-butterfly/templates/assets/'
+                - label: 'unpkg.com'
+                  value: 'https://unpkg.com/halo-theme-butterfly/templates/assets/'
+                - label: 'jsd.onmicrosoft.cn'
+                  value: 'https://jsd.onmicrosoft.cn/npm/halo-theme-butterfly/templates/assets/'
+                - label: 'fastly.jsdelivr.net'
+                  value: 'https://fastly.jsdelivr.net/npm/halo-theme-butterfly@latest/templates/assets/'
+              validation: required
 
-
-
-        - $formkit: radio
-          name: enable_assets_link
-          label: 启用外部资源文件加载地址
-          help: 必须选配置外链地址才能生效，否则无效，不启用默认为本站地址
-          value: false
-          options:
-            - label: 启用
+        - $formkit: group
+          label: 图片加载
+          name: img
+          value:
+            preload: 'data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs='
+            err: 'data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs='
+            random_enable: true
+            random_link: 'https://api.yimian.xyz/img'
+          children:
+            - $formkit: attachment
+              name: preload
+              label: 预加载图
+              placeholder: 请填写 预加载图片
+              value: 'data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs='
+              help: 预加载图片，默认 data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=
+              validation: required
+            - $formkit: attachment
+              name: err
+              label: 加载失败图
+              placeholder: 请填写 加载失败图片
+              value: 'data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs='
+              help: 加载失败图片，默认 data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=
+              validation: required
+            - $formkit: radio
+              name: random_enable
+              label: 启用随机图片
+              help: 是否启用随机图API（必须先配置 API），开启后将使用随机图填充没有设置封面的，未开启时使用主题内置的封面图
               value: true
-            - label: 禁用
-              value: false
-          validation: required
-        - $formkit: url
-          name: assets_link
-          label: 静态资源资源文件地址
-          placeholder: 请填写 资源文件地址
-          value: 'https://cdn.jsdelivr.net/npm/halo-theme-butterfly/templates/assets/'
-          help: '默认为npmJs的jsdelivr加速地址（gitHub仓库主页加速列表），可自行配置cdn地址（请确保链接下assets文件夹下主题静态资源文件 与 jsdelivr 地址中的文件一致,否则页面无法正常显示）!'
-          validation: required|url
-        - $formkit: radio
-          name: enable_random_img
-          label: 启用随机图片
-          help: 是否启用随机图API（必须先配置 API），开启后将使用随机图填充没有设置封面的，未开启时使用主题内置的封面图
-          value: true
-          options:
-            - label: 启用
-              value: true
-            - label: 禁用
-              value: false
-        - $formkit: text
-          name: random_img
-          label: 随机图片链接
-          placeholder: 请正确填写 随机图片链接
-          value: 'https://api.yimian.xyz/img'
-          help: 自定义随机图API，用于填充没有设置封面的 ，免费 API 不会一直可用，请知悉
-        - $formkit: attachment
-          name: preload
-          label: 预加载图片
-          placeholder: 请填写 预加载图片
-          value: 'data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs='
-          help: 预加载图片，默认 data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=
-          validation: required
-        - $formkit: attachment
-          name: err
-          label: 加载失败图片
-          placeholder: 请填写 加载失败图片
-          value: 'data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs='
-          help: 加载失败图片，默认 data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=
-          validation: required
+              validation: required
+              options:
+                - label: 启用
+                  value: true
+                - label: 禁用
+                  value: false
+            - $formkit: text
+              name: random_link
+              label: 随机图片链接
+              placeholder: 请正确填写 随机图片链接
+              value: 'https://api.yimian.xyz/img'
+              help: 自定义随机图API，用于填充没有设置封面的 ，免费 API 不会一直可用，请知悉
+              validation: required|url
     #导航设置
     - group: nav
       label: 导航设置

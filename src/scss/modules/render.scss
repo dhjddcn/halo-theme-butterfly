@@ -549,7 +549,7 @@
 .side-btn {
   @include util.useResponsive($width: 1100px) {
     //侧边目录按钮
-    .post-toc {
+    .h5-toc {
       visibility: visible;
     }
   }
