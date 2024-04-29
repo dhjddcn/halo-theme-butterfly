@@ -128,7 +128,6 @@ spec:
                 - label: 'fastly.jsdelivr.net'
                   value: 'https://fastly.jsdelivr.net/npm/halo-theme-butterfly@latest/templates/assets/'
               validation: required
-
         - $formkit: group
           label: 图片加载
           name: img
@@ -174,19 +173,13 @@ spec:
     - group: nav
       label: 导航设置
       formSchema:
-        - $formkit: repeater
+        - $formkit: group
           name: font_color
           label: 导航栏默认字体颜色
           help: 支持rgba颜色值和十六进制颜色值
-          addButton: false
-          addLabel: false
-          upControl: false
-          downControl: false
-          removeControl: false
-          insertControl: false
           value:
-            - light: rgba(238, 238, 238, 1)
-              dark: rgba(255, 255, 255, 0.7)
+            light: rgba(238, 238, 238, 1)
+            dark: rgba(255, 255, 255, 0.7)
           children:
             - $formkit: text
               name: light
@@ -200,19 +193,13 @@ spec:
               value: ""
               help: 默认值：rgba(255, 255, 255, 0.7)
               validation: required
-        - $formkit: repeater
+        - $formkit: group
           name: active_font_color
           label: 导航栏滚动悬浮字体颜色
           help: 支持rgba颜色值和十六进制颜色值
-          addButton: false
-          addLabel: false
-          upControl: false
-          downControl: false
-          removeControl: false
-          insertControl: false
           value:
-            - light: rgb(76, 73, 72)
-              dark: rgba(255, 255, 255, 0.7)
+            light: rgb(76, 73, 72)
+            dark: rgba(255, 255, 255, 0.7)
           children:
             - $formkit: text
               name: light
@@ -226,19 +213,13 @@ spec:
               value: ""
               help: 默认值：rgba(255, 255, 255, 0.7)
               validation: required
-        - $formkit: repeater
+        - $formkit: group
           name: active_hover_font_color
           label: 导航栏滚动悬浮鼠标移入字体颜色
           help: 支持rgba颜色值和十六进制颜色值（默认主题色）
-          addButton: false
-          addLabel: false
-          upControl: false
-          downControl: false
-          removeControl: false
-          insertControl: false
           value:
-            - light: var(--theme)
-              dark: var(--theme)
+            light: var(--theme)
+            dark: var(--theme)
           children:
             - $formkit: text
               name: light
@@ -252,19 +233,13 @@ spec:
               value: ""
               help: 默认值：var(--theme)
               validation: required
-        - $formkit: repeater
+        - $formkit: group
           name: active_background_color
           label: 导航栏滚动悬浮背景颜色
           help: 支持rgba颜色值和十六进制颜色值
-          addButton: false
-          addLabel: false
-          upControl: false
-          downControl: false
-          removeControl: false
-          insertControl: false
           value:
-            - light: rgba(255, 255, 255, .8)
-              dark: rgba(18, 18, 18, .8)
+            light: rgba(255, 255, 255, .8)
+            dark: rgba(18, 18, 18, .8)
           children:
             - $formkit: text
               name: light
@@ -278,19 +253,13 @@ spec:
               value: ""
               help: 默认值：rgba(18, 18, 18, .8)
               validation: required
-        - $formkit: repeater
+        - $formkit: group
           name: active_shadow
           label: 导航栏滚动悬浮阴影
           help: 支持rgba颜色值和十六进制颜色值
-          addButton: false
-          addLabel: false
-          upControl: false
-          downControl: false
-          removeControl: false
-          insertControl: false
           value:
-            - light: 0 5px 6px -5px rgba(133, 133, 133, .6)
-              dark: 0 5px 6px -5px rgba(133, 133, 133, 0)
+            light: 0 5px 6px -5px rgba(133, 133, 133, .6)
+            dark: 0 5px 6px -5px rgba(133, 133, 133, 0)
           children:
             - $formkit: text
               name: light
@@ -304,19 +273,13 @@ spec:
               value: ""
               help: 默认值：0 5px 6px -5px rgba(133, 133, 133, 0)
               validation: required
-        - $formkit: repeater
+        - $formkit: group
           name: dropdown_background_color
           label: 导航栏二级下拉背景颜色
           help: 支持rgba颜色值和十六进制颜色值
-          addButton: false
-          addLabel: false
-          upControl: false
-          downControl: false
-          removeControl: false
-          insertControl: false
           value:
-            - light: rgba(255, 255, 255)
-              dark: rgba(18, 18, 18)
+            light: rgba(255, 255, 255)
+            dark: rgba(18, 18, 18)
           children:
             - $formkit: text
               name: light
@@ -330,19 +293,13 @@ spec:
               value: ""
               help: 默认值：rgba(18, 18, 18)
               validation: required
-        - $formkit: repeater
+        - $formkit: group
           name: dropdown_font_color
           label: 导航栏二级下拉字体颜色
           help: 支持rgba颜色值和十六进制颜色值
-          addButton: false
-          addLabel: false
-          upControl: false
-          downControl: false
-          removeControl: false
-          insertControl: false
           value:
-            - light: rgba(76, 73, 72, 1)
-              dark: rgba(255, 255, 255, 0.7)
+            light: rgba(76, 73, 72, 1)
+            dark: rgba(255, 255, 255, 0.7)
           children:
             - $formkit: text
               name: light
@@ -356,19 +313,13 @@ spec:
               value: ""
               help: 默认值：rgba(255, 255, 255, 0.7)
               validation: required
-        - $formkit: repeater
+        - $formkit: group
           name: dropdown_hover_font_color
           label: 导航栏hover二级下拉字体颜色
           help: 支持rgba颜色值和十六进制颜色值
-          addButton: false
-          addLabel: false
-          upControl: false
-          downControl: false
-          removeControl: false
-          insertControl: false
           value:
-            - light: rgb(244 244 244)
-              dark: rgb(54 50 50)
+            light: rgb(244 244 244)
+            dark: rgb(54 50 50)
           children:
             - $formkit: text
               name: light
