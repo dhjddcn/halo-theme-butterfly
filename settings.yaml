@@ -357,44 +357,52 @@ spec:
               value: aside-left
             - label: 右边
               value: aside-right
-        - $formkit: text
-          rows: 5
+        - $formkit: group
           name: button
           label: 侧边栏按钮
-          placeholder: 请填写 侧边栏按钮内容
-          value: Github主页|&|https://github.com/dhjddcn
-          help: 侧边栏按钮内容, 支持 html 代码片段，内容按 |&| 分割. 举例：(Github主页|&|https://github.com/dhjddcn)
-          validation: required
-        - $formkit: repeater
-          name: social
-          addButton: false
-          addLabel: false
-          upControl: false
-          downControl: false
-          removeControl: false
-          insertControl: false
-          label: 默认社交账号
           value:
-            - QQ: ''
-              Github: ''
-              Email: ''
+            name: '主题仓库'
+            link: 'https://github.com/dhjddcn/halo-theme-butterfly'
           children:
             - $formkit: text
-              name: QQ
-              label: QQ
-              placeholder: 请填写 QQ 号码
+              name: name
+              label: 名称
+              placeholder: 请填写 按钮名称
+              help: 支持html代码判断
               value: ""
+              validation: required
             - $formkit: text
-              name: Github
-              label: Github
-              placeholder: 请填写 Github 地址
+              name: link
+              label: 链接
+              placeholder: 请填写 按钮链接
               value: ""
+              validation: required        
+        - $formkit: repeater
+          name: social
+          label: 社交账号
+          value:
+            - name: 'Github'
+              icon: '<i class="fa-brands fa-github"></i>'
+              link: 'https://github.com/dhjddcn'
+          children:
             - $formkit: text
-              rows: 4
-              name: Email
-              label: 邮箱
-              placeholder: 请填写 邮箱 地址
+              name: name
+              label: 名称
+              placeholder: 请填写 账号名称
               value: ""
+              validation: required
+            - $formkit: text
+              name: icon
+              label: 图标
+              placeholder: 请填写 图标
+              value: ""
+              validation: required
+            - $formkit: text
+              name: link
+              label: 链接
+              placeholder: 请填写 链接
+              value: ""
+              validation: required
         - $formkit: textarea
           rows: 5
           name: notice
@@ -498,11 +506,16 @@ spec:
             - label: 禁用
               value: false
         - $formkit: text
-          name: typewriter_random_url
-          label: 随机文案链接
-          placeholder: 请正确填写 随机文案链接
+          name: typewriter_random_api
+          label: 随机文案链接（api）
+          placeholder: 请正确填写 随机文案链接（api）
           value: 'https://api.btstu.cn/yan/api.php'
           help: 自定义随机文案API(推荐使用一言,返回格式设置为TEXT格式)，免费 API 不会一直可用，请知悉
+        - $formkit: text
+          name: typewriter_api_value_format
+          label: 随机文案api取值格式
+          value: ''
+          help: 如果使用的随机文案API返回格式不是TEXT格式，请自定义取值格式，如：data.content          
         - $formkit: radio
           name: post_layout
           label: 文章布局方式

@@ -7,6 +7,7 @@
 @use '../core/util';
 
 .main .content {
+  min-height: 500px;
   @include util.useResponsive($width: util.$w-md) {
     padding: 1.5rem .8rem;
   }

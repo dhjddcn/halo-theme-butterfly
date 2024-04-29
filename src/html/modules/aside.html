@@ -21,14 +21,12 @@
     </a>
   </div>
 
-  <a th:with="bt=${#strings.arraySplit(theme.config.aside.button,'|&|')}" target="_blank" th:href="${bt[1]}">
-    <button class="button" th:utext="${bt[0]}"></button>
+  <a  target="_blank" th:href="${theme.config.aside.button.link}">
+    <button class="button" th:utext="${theme.config.aside.button.name}"></button>
   </a>
 
-  <div class="social" th:with="social = ${theme.config.aside.social[0]}">
-    <a class="link" target="_blank" title="QQ" th:if="${not #strings.isEmpty(social.QQ)}" th:href="${'https://api.btstu.cn/qqtalk/api.php?qq=' + social.QQ +  '&site=qq&menu=yes'}"><i class="fa-brands fa-qq"></i></a>
-    <a class="link" target="_blank" title="Github" th:if="${not #strings.isEmpty(social.Github)}" th:href="${ social.Github }"><i class="fa-brands fa-github"></i></a>
-    <a class="link" target="_blank" title="emil" th:if="${not #strings.isEmpty(social.Email)}" th:href="${'mailto:'+ social.Email }"><i class="fa-solid fa-envelope"></i></a>
+  <div class="social" th:with="social = ${not #lists.isEmpty(theme.config.aside.social)}">
+    <a th:each="item : ${theme.config.aside.social}"  class="link" target="_blank" th:title="${item.name}"  th:href="${item.link}"  th:utext="${item.icon}"></a>
   </div>
 </section>
 

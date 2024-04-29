@@ -15,14 +15,20 @@
   @keyframes above-down {
     0% {
       opacity: 0;
-      transform: translate3d(0, -50px, 0)
+      //transform: translate3d(0, -50px, 0)
+    }
+    
+    30%{
+      opacity: 0.5;
     }
 
-    to {
+    100% {
       opacity: 1;
-      transform: translate3d(0, 0, 0)
+      //transform: translate3d(0, 0, 0)
     }
   }
+  
+
 
   .above {
     position: relative;
@@ -32,7 +38,7 @@
     background-size: cover;
     background-repeat: no-repeat;
     backface-visibility: hidden;
-    //animation: above-down .6s;
+    animation: above-down .5s;
     transition: .35s;
     background-image: var(--above-background);
     background-color: #ffffff;

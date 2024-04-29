@@ -38,11 +38,21 @@ class Index {
     // 随机文字
     if(this.useConfig.base.index['enable_typewriter_random_text']) {
       $.ajax({
-        url: this.useConfig.base.index['typewriter_random_url'],
+        url: this.useConfig.base.index['typewriter_random_api'],
         type: 'get',
-        dataType: 'text',
-        success: (res) => {
-          useTyped([res]);
+        success: (response) => {
+          // 文本情况
+          if(typeof response === 'string') {
+            return useTyped([response]);
+          }
+
+          if(!this.useConfig.base.index['typewriter_api_value_format']) {
+            return useTyped(['随机文案API返回数据格式为JSON，请配置取值格式！']);
+          }
+
+          //json 情况
+          const text =  this.useConfig.base.index['typewriter_api_value_format'].split('.').reduce((o, i) => o[i], response);  
+          useTyped([text]);
         },
         error: (err) => {
           useTyped(['获取随机文案失败，请检查API是否正常！']);
@@ -50,6 +60,8 @@ class Index {
       });
       return;
     }
+    
+    // 其他情况
     useTyped(text);
   }
 }

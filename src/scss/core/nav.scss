@@ -20,22 +20,21 @@
     }
   }
 
-  position: absolute;
-  top: 0;
   width: 100%;
   height: 60px;
-  display: flex;
-  align-items: center;
-  flex-wrap: nowrap;
+  position: absolute;
+  top: 0;
   user-select: none;
   padding: 0 38px;
   font-size: 1.15rem;
   animation: nav-down 1.2s;
   z-index: 90;
-  will-change: opacity, transform;
   transition: .5s;
+  will-change: opacity, transform;
   @include util.flex-center;
   justify-content: space-between;
+  flex-wrap: nowrap;
+  
 
 
   @include util.useResponsive(util.$w-md) {

@@ -26,8 +26,6 @@ gulp.task('clean', () => {
 const sass = require('gulp-sass')(require('sass'));
 const rename = require('gulp-rename');
 const autoPrefix = require('gulp-autoprefixer');
-const minifyCss = require('gulp-minify-css');
-const cleanCss = require('gulp-clean-css');
 
 const postcss = require('gulp-postcss');
 gulp.task('css', function() {
@@ -39,8 +37,15 @@ gulp.task('css', function() {
     }),
     require('css-mqpacker')(),
   ])).
-  pipe(cleanCss()).
-  pipe(minifyCss()).
+  pipe(require('gulp-clean-css')({
+    level: 2,
+  })).
+  pipe(require("gulp-csso")()).
+  pipe(require('gulp-minify-css')({
+    compatibility: 'ie8',
+    keepSpecialComments: false,
+    restructuring: true,
+  })).
   pipe(autoPrefix({
     overrideBrowserslist: [
       '> 5%',
