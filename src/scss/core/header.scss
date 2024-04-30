@@ -39,7 +39,7 @@
     transition: .35s;
     background-image: var(--above-background);
     background-color: #ffffff;
-
+    @include  util.flex-center;
 
     @include util.useThemeVar((
       above-mask-color:(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6)),

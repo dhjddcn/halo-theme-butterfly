@@ -41,10 +41,7 @@
 
 
 <!--/* 渲染post页面  */-->
-<section xmlns:th="https://www.thymeleaf.org"
-         th:fragment="post"
-         class="content card"
->
+<section xmlns:th="https://www.thymeleaf.org" th:fragment="post" class="content card">
   <th:block th:replace="~{::prism}"/>
 
   <script id="renderScript" th:inline="javascript">

@@ -1,0 +1,28 @@
+<layout
+  th:replace="~{core/layout :: layout (
+  page = 'archives',
+  title = ${site.title},
+  css_pin = ~{::css_pin},
+  js_pin = ~{::js_pin},
+  main = ~{::main}
+  )}"
+>
+  <!--/* css */-->
+  <th:block th:fragment="css_pin">
+    <style th:inline="css">
+
+    </style>
+  </th:block>
+
+  <!--/* js */-->
+  <th:block th:fragment="js_pin">
+  </th:block>
+
+
+  <!--/* 內容 */-->
+  <th:block th:fragment="main">
+    <section class="content">
+    </section>
+    <th:block th:replace="~{modules/aside::aside_common}"/>
+  </th:block>
+</layout>

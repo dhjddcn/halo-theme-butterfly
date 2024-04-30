@@ -7,15 +7,13 @@
 @use '../core';
 @use "../core/util";
 @use "../modules/components";
-@import "@fancyapps/ui/dist/fancybox/fancybox.css"; // 引入fancybox样式
+@import "../modules/render";
 
 .post {
-  @import "../modules/render";
 
   .header .above {
     &-info {
       padding: 0 8%;
-      bottom: 35%;
       transition: bottom .3s, padding .3s;
       text-align: center;
 

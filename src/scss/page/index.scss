@@ -13,11 +13,6 @@
   .header .above {
     height: 100vh;
 
-    &-info {
-      top: 42%;
-    }
-
-
     @include util.useThemeVar((
       above-index-subtitle-color: (#eee, rgba(255, 255, 255, 0.7)),
     ));
