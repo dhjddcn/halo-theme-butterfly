@@ -27,13 +27,28 @@ export default class Pagination {
   #getNextUrl() {
     return this.conf.hasNext ? `<a class="page next" aria-label="next" href="${this.conf.nextUrl}"><i class="fas fa-chevron-right fa-fw"></i></a>` : '';
   }
+  
+  // 获取路径
+  #getPath(){
+    if(this.conf.hasNext) {
+      return  `/${this.conf.nextUrl.split('/')?.[1]}`
+    }
+    if(this.conf.hasPrevious) {
+      return  `/${this.conf.prevUrl.split('/')?.[1]}`
+    }
+    
+    return '/'
+  }
 
   // 获取页码
   #getPage() {
-    const {totalPages, page, path} = this.conf;
+    const {totalPages, page} = this.conf;
+    const path = this.#getPath();
     const maxPagesToShow = 5; // 可见的最大页码数
     const halfMaxPagesToShow = Math.floor(maxPagesToShow / 2);
     let startPage, endPage;
+
+    
 
     if(totalPages <= maxPagesToShow) {
       startPage = 1;

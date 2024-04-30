@@ -18,9 +18,6 @@
       //transform: translate3d(0, -50px, 0)
     }
     
-    30%{
-      opacity: 0.5;
-    }
 
     100% {
       opacity: 1;
@@ -38,7 +35,7 @@
     background-size: cover;
     background-repeat: no-repeat;
     backface-visibility: hidden;
-    animation: above-down .5s;
+    //animation: above-down .5s;
     transition: .35s;
     background-image: var(--above-background);
     background-color: #ffffff;

@@ -510,7 +510,7 @@ spec:
           label: 随机文案链接（api）
           placeholder: 请正确填写 随机文案链接（api）
           value: 'https://api.btstu.cn/yan/api.php'
-          help: 自定义随机文案API(推荐使用一言,返回格式设置为TEXT格式)，免费 API 不会一直可用，请知悉
+          help: 自定义随机文案API(推荐使用一言,返回格式设置为TEXT格式，json需要配置取值格式)，免费 API 不会一直可用，请知悉
         - $formkit: text
           name: typewriter_api_value_format
           label: 随机文案api取值格式

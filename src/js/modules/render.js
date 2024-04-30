@@ -13,7 +13,8 @@ import {Fancybox} from '@fancyapps/ui';
 export default class Render {
   className = []; // 默认单行复制
   #dom = $('article.render'); // 文章渲染区域
-  #isStickyDom = $('.aside .is-sticky');
+  #isStickyDom = $('.aside .is-sticky'); // 固定
+  #copyRight = $('.copy-right'); // 版权信息
   #lightDom = document.querySelector('link[data-code=light]'); // 亮色代码主题
   #darkDom = document.querySelector('link[data-code=dark]'); // 暗色代码主题
 
@@ -52,6 +53,8 @@ export default class Render {
     this.setTocBot(this.useScroll); // 目录
 
     this.setImagePreview(); // 图片预览
+    
+    this.copyRightPermalink(); // 版权信息
   }
 
   /**
@@ -218,5 +221,14 @@ export default class Render {
           },
         },
       });
+  }
+
+  /**
+   * 设置文章版权信息 url
+   */
+  copyRightPermalink(){
+    const permalink =  this.#copyRight.find('a.permalink');
+    permalink.attr('href',window.location.href);
+    permalink.html(decodeURI(window.location.href));
   }
 }
