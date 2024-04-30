@@ -54,7 +54,7 @@ export default class Render {
 
     this.setImagePreview(); // 图片预览
     
-    this.copyRightPermalink(); // 版权信息
+    this.setCopyRightPermalink(); // 版权信息
   }
 
   /**
@@ -226,7 +226,7 @@ export default class Render {
   /**
    * 设置文章版权信息 url
    */
-  copyRightPermalink(){
+  setCopyRightPermalink(){
     const permalink =  this.#copyRight.find('a.permalink');
     permalink.attr('href',window.location.href);
     permalink.html(decodeURI(window.location.href));

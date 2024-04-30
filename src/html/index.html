@@ -25,7 +25,7 @@
   <th:block th:fragment="main">
     <section class="content">
       <th:block th:replace="~{modules/components:: list(${posts.items},${theme.config.index.post_layout})}"/>
-      <th:block th:replace="~{modules/components:: pagination(${posts},${'/index'})}"/>
+      <th:block th:replace="~{modules/components:: pagination(${posts})}"/>
     </section>
     <th:block th:replace="~{modules/aside::aside_common}"/>
   </th:block>

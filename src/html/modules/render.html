@@ -14,7 +14,7 @@
 
     <div class="author">
       <span class="name">文章作者：</span>
-      <span class="text">小红</span>
+      <span class="text" th:text="${contributor.displayName}"></span>
     </div>
 
     <div class="url">
@@ -31,7 +31,7 @@
 </th:block>
 
 <!--评论-->
-<th:block xmlns:th="https://www.thymeleaf.org" th:fragment="comment">
+<th:block th:if="${haloCommentEnabled}" xmlns:th="https://www.thymeleaf.org" th:fragment="comment">
   <halo:comment
     group="content.halo.run"
     kind="Post"
@@ -57,9 +57,7 @@
   <article class="render" th:utext="${post.content.content}"></article>
 
   <th:block th:replace="~{::copyRight}"/>
-
-  <!--  <th:block th:if="${haloCommentEnabled}">-->
-
-  <!--  </th:block>-->
+  
+  <th:block th:replace="~{::comment}"/>
 </section>
 

@@ -30,12 +30,11 @@ export default class Pagination {
   
   // 获取路径
   #getPath(){
-    if(this.conf.hasNext) {
-      return  `/${this.conf.nextUrl.split('/')?.[1]}`
-    }
-    if(this.conf.hasPrevious) {
-      return  `/${this.conf.prevUrl.split('/')?.[1]}`
-    }
+    const regex = /.*?(?=\/\d+)\//;
+
+    if(this.conf.hasNext) return  this.conf.nextUrl.match(regex)?.[0];
+    
+    if(this.conf.hasPrevious)   return  this.conf.prevUrl.match(regex)?.[0];
     
     return '/'
   }
@@ -47,8 +46,6 @@ export default class Pagination {
     const maxPagesToShow = 5; // 可见的最大页码数
     const halfMaxPagesToShow = Math.floor(maxPagesToShow / 2);
     let startPage, endPage;
-
-    
 
     if(totalPages <= maxPagesToShow) {
       startPage = 1;
@@ -71,7 +68,7 @@ export default class Pagination {
     let html = '';
 
     for (let i = startPage; i <= endPage; i++) {
-      html += `<a class="page${i === page ? ' current' : ''}"  href="${path}/page/${i}">${i}</a>`;
+      html += `<a class="page${i === page ? ' current' : ''}"  href="${path}${i}">${i}</a>`;
     }
 
     return html;

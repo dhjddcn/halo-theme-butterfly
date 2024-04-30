@@ -66,7 +66,7 @@
 <!--/* 分页  */-->
 <div xmlns:th="https://www.thymeleaf.org"
      class="pagination"
-     th:fragment="pagination(data,path)"
+     th:fragment="pagination(data)"
 >
   <script id="paginationScript" th:inline="javascript">
     window.ThemeConfig.pagination = {
@@ -96,8 +96,7 @@
 
 
 
-<!--/* 侧边  */-->
-
+<!--/* 移动端侧边  */-->
 <th:block  th:fragment="side" >
   <!--/* 侧边菜单 */-->
   <div class="side-bar">
