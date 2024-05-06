@@ -1,7 +1,7 @@
 <layout
   th:replace="~{core/layout :: layout (
   page = 'index',
-  title = ${site.title},
+  title = ${site.title +' - '+ site.subtitle},
   css_pin = ~{::css_pin},
   js_pin = ~{::js_pin},
   main = ~{::main}

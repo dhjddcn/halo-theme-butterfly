@@ -1,10 +1,15 @@
 <!--/* script */-->
 <script id="baseScript" th:inline="javascript">
-  window.ThemeConfig = {
-    base: /*[[${theme.config}]]*/ {},
+  window.THEME_CONFIG = {
+    global: /*[[${theme.config}]]*/ {},
     attrs: {},
+    site: /*[[${site}]]*/ {},
   };
+  
+  window.ThemeApp = {};
+  
   document.documentElement.dataset.colorScheme = localStorage.getItem('Butterfly-data-theme');
+  
   window['baseScript']?.remove();
 </script>
 

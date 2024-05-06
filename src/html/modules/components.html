@@ -69,7 +69,7 @@
      th:fragment="pagination(data)"
 >
   <script id="paginationScript" th:inline="javascript">
-    window.ThemeConfig.pagination = {
+    window.THEME_CONFIG.pagination = {
       nextUrl: /*[[${data.nextUrl}]]*/ {},
       prevUrl: /*[[${data.prevUrl}]]*/ {},
       page: /*[[${data.page}]]*/ {},
@@ -78,7 +78,7 @@
       totalPages: /*[[${data.totalPages}]]*/ {},
       hasPrevious: /*[[${data.hasPrevious()}]]*/ {},
       hasNext: /*[[${data.hasNext()}]]*/ {},
-    }
+    };
   </script>
 </div>
 
@@ -93,11 +93,8 @@
 </div>
 
 
-
-
-
 <!--/* 移动端侧边  */-->
-<th:block  th:fragment="side" >
+<th:block th:fragment="side">
   <!--/* 侧边菜单 */-->
   <div class="side-bar">
     <img th:replace="~{modules/components:: lazyLoadImg(${contributor.avatar},${contributor.displayName},'avatar',false,'')}"/>
@@ -165,7 +162,7 @@
   <!--/* 侧边按钮 */-->
   <div class="side-btn">
     <button class="button h5-toc" type="button" title="文章目录" onclick="ByApp['useRender'].setH5Toc()">
-      <i class="fa-sharp fa-solid fa-list-tree" ></i>
+      <i class="fa-sharp fa-solid fa-list-tree"></i>
     </button>
 
     <button class="button switch-model" th:if="${theme.config.style.mode == 'user'}" onclick="ByApp.useTheme.toggleMode()" type="button" title="浅色和深色模式转换">

@@ -42,7 +42,7 @@
     @include  util.flex-center;
 
     @include util.useThemeVar((
-      above-mask-color:(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6)),
+      above-mask-color:(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)),
     ));
 
     &::before {

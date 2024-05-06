@@ -193,7 +193,7 @@
   .button {
     @include util.flex-center;
     position: relative;
-    border-radius: 10px;
+    border-radius: 20px;
     background-color: var(--theme);
     color: var(--button-text-color);
     transition: filter 0.35s, transform 0.35s;

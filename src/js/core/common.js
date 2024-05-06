@@ -10,7 +10,7 @@ import LazyLoad from './_lazyLoad';
 
 export default class Common {
 
-  #conf = window.ThemeConfig.base;
+  #conf = window.THEME_CONFIG.global;
 
   constructor() {
     this.#createSingleAction(); //创建单一行为事件

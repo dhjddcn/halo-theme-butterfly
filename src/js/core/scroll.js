@@ -55,6 +55,7 @@ export default class Scroll {
     if(scrollTop > this.#max && this.#num <= scrollTop) this.#sideBtnDom.addClass('active');
   }
 
+
   /**
    *  回调
    */
