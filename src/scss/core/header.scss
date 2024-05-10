@@ -12,19 +12,18 @@
   position: relative;
   width: 100%;
   min-height: 60px;
+
   @keyframes above-down {
     0% {
       opacity: 0;
-      //transform: translate3d(0, -50px, 0)
+      transform: translate3d(0, -50px, 0)
     }
-    
 
-    100% {
+    to {
       opacity: 1;
-      //transform: translate3d(0, 0, 0)
+      transform: translate3d(0, 0, 0)
     }
   }
-  
 
 
   .above {
@@ -35,11 +34,11 @@
     background-size: cover;
     background-repeat: no-repeat;
     backface-visibility: hidden;
-    //animation: above-down .5s;
+    animation: above-down .8s;
     transition: .35s;
     background-image: var(--above-background);
     background-color: #ffffff;
-    @include  util.flex-center;
+    @include util.flex-center;
 
     @include util.useThemeVar((
       above-mask-color:(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)),

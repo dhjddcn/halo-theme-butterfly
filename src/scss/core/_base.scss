@@ -16,6 +16,7 @@ body {
   font-size: 14px;
   line-height: 2;
   -webkit-tap-highlight-color: transparent;
+  -webkit-text-size-adjust: 100%;
   overflow-y: overlay;
   scroll-behavior: smooth;
   padding-bottom: env(safe-area-inset-bottom);

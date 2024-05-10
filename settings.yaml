@@ -368,7 +368,7 @@ spec:
               name: name
               label: 名称
               placeholder: 请填写 按钮名称
-              help: 支持html代码判断
+              help: 支持html代码片段
               value: ""
               validation: required
             - $formkit: text
@@ -376,7 +376,7 @@ spec:
               label: 链接
               placeholder: 请填写 按钮链接
               value: ""
-              validation: required        
+              validation: required
         - $formkit: repeater
           name: social
           label: 社交账号
@@ -498,7 +498,7 @@ spec:
         - $formkit: radio
           name: enable_typewriter_random_text
           label: 启用随机打字机文案
-          help: 是否启用随文案API（必须先配置 API），开启后将使用随机显示打字机文案，未开启时使用自定义的打字机文案
+          help: 是否启用随文案API（必须先配置 API），启用后将显示随机API文案，禁用时显示打字机文案
           value: true
           options:
             - label: 启用
@@ -515,7 +515,7 @@ spec:
           name: typewriter_api_value_format
           label: 随机文案api取值格式
           value: ''
-          help: 如果使用的随机文案API返回格式不是TEXT格式，请自定义取值格式，如：data.content          
+          help: 如果使用的随机文案API返回格式不是TEXT格式，Json请自定义取值格式，如：data.content
         - $formkit: radio
           name: post_layout
           label: 文章布局方式
@@ -552,7 +552,7 @@ spec:
             - label: 启用
               value: true
             - label: 禁用
-              value: false              
+              value: false
     #渲染设置
     - group: render
       label: 渲染设置
