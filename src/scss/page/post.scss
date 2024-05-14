@@ -7,10 +7,9 @@
 @use '../core';
 @use "../core/util";
 @use "../modules/components";
-@import "../modules/render";
+@use "../modules/render";
 
 .post {
-
   .header .above {
     &-info {
       padding: 0 8%;
@@ -29,9 +28,9 @@
     }
   }
 
-  .main > .content {
-    padding: 1.5rem 1.8rem;
-  }
+  //.main > .content {
+  //  padding: 1.5rem 1.8rem;
+  //}
 
   @include util.useThemeVar((
     post-title-color: (#ffffff, rgba(255, 255, 255, 0.9)),

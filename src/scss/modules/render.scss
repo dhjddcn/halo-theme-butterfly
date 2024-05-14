@@ -7,10 +7,12 @@
 @use '../core/util';
 @import "@fancyapps/ui/dist/fancybox/fancybox.css"; // 引入fancybox样式
 
-.main .content {
+.main > .content {
+  padding: 1.2rem;
   min-height: 500px;
+
   @include util.useResponsive($width: util.$w-md) {
-    padding: 1.5rem .8rem;
+    padding: 1.2rem .8rem;
   }
 }
 
@@ -575,6 +577,13 @@
   color: var(--cpy-text-color);
   position: relative;
 
+  > div {
+    @include util.text-overflow;
+
+    @include util.useResponsive($width: util.$w-md) {
+      font-size: .8rem;
+    }
+  }
 
   > i.fa-copyright {
     position: absolute;
@@ -587,4 +596,6 @@
   a {
     color: var(--theme);
   }
+
+
 }
