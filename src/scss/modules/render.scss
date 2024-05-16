@@ -8,7 +8,7 @@
 @import "@fancyapps/ui/dist/fancybox/fancybox.css"; // 引入fancybox样式
 
 .main > .content {
-  padding: 1.2rem;
+  padding: 1.5rem;
   min-height: 500px;
 
   @include util.useResponsive($width: util.$w-md) {
@@ -24,7 +24,7 @@
     code-background-color:(rgba(27, 31, 35, 0.05), #584d4d), // 普通code背景字体颜色
     blockquote-background-color:(rgba(73, 177, 245, 0.1), rgb(35 35 35)), // blockquote背景颜色
     blockquote-font-color:(#6a737d, rgba(255, 255, 255, 0.7)), // blockquote字体颜色
-    table-border-color:(#e3e3e3, rgba(255, 255, 255, 0.7)), // 表格边框颜色
+    table-border-color:(#e3e3e3, #656565b3), // 表格边框颜色
     code-toolbar-box-shadow:(0 5px 10px 0 rgb(187 193 197 / 40%), 0 5px 10px 0 rgb(28 29 29 / 40%)), // code-toolbar阴影
     code-loading-background-color:(#ffff, rgb(61 57 57)), // code加载动画颜色
   ));
@@ -164,15 +164,13 @@
   table {
     width: 100%;
     display: table;
-    border-spacing: 0;
-    border-collapse: collapse;
     empty-cells: show;
     border-radius: 4px !important;
     margin: 5px 0;
 
     tr > th, tr > td {
       padding: 5px 10px !important;
-      border: 1px solid var(--table-border-color) !important;
+      border-color: var(--table-border-color) !important;
       vertical-align: middle;
     }
 
