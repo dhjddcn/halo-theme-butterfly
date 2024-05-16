@@ -8,7 +8,7 @@
 
 body {
   @include util.useThemeVar((
-    body-text-color:(rgb(76, 73, 72), rgba(255, 255, 255, 0.7)),
+    text-color:(rgb(76, 73, 72), rgba(255, 255, 255, 0.7)),
     mask-color:(rgba(255, 255, 255, 0.6), rgba(0, 0, 0, 0.6)),
   ));
 
@@ -21,7 +21,7 @@ body {
   scroll-behavior: smooth;
   padding-bottom: env(safe-area-inset-bottom);
   background: var(--body-background);
-  color: var(--body-text-color);
+  color: var(--text-color);
 }
 
 #Butterfly {
