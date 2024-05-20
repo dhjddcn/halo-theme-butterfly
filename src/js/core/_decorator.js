@@ -5,6 +5,7 @@
  * @Description: 装饰器
  */
 
+import Message from './_message';
 import Theme from './theme';
 import Scroll from './scroll';
 import Common from './common';
@@ -22,6 +23,7 @@ export function App(modules = []) {
       useTheme: new Theme(), //主题
       useCommon: new Common(), // 普通
       useScroll: new Scroll(), //滚动导航侧边
+      useMessage: new Message(), //滚动导航侧边
     });
     const ins = new target();
 

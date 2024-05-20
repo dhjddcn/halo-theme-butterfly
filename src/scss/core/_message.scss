@@ -1,0 +1,79 @@
+/**
+ * @date: 2024/5/17
+ * @author: 小红
+ * @fileName: _message
+ * @Description: 消息提示
+ */
+
+@use "_util";
+
+
+.message {
+  //@keyframes messageMoveOut {
+  //  0% {
+  //    opacity: 1
+  //  }
+  //
+  //  to {
+  //    padding: 0;
+  //    opacity: 0
+  //  }
+  //}
+  //
+  //@keyframes MessageMoveIn {
+  //  0% {
+  //    transform: translateY(-100%);
+  //    transform-origin: 0 0;
+  //    opacity: 0
+  //  }
+  //
+  //  to {
+  //    transform: translateY(0);
+  //    transform-origin: 0 0;
+  //    opacity: 1
+  //  }
+  //}
+
+  &-container {
+    z-index: 10000;
+    position: fixed;
+    height: 0;
+    overflow: visible;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    top: 12px;
+    left: 0;
+    right: 0;
+  }
+
+
+  &-wrapper {
+    margin: 0 0 8px 0;
+    z-index: 0;
+    transform-origin: top center;
+    display: flex;
+  }
+
+  &-item {
+    display: flex;
+    align-items: center;
+    padding: .3rem .8rem;
+    border-radius: 3px;
+    flex-wrap: nowrap;
+    overflow: hidden;
+    max-width: 720px;
+    color: rgb(51, 54, 57);
+    background-color: #fff;
+    flex-shrink: 0;
+    box-shadow: 0 3px 6px -4px rgba(0, 0, 0, .12), 0 6px 16px 0 rgba(0, 0, 0, .08), 0 9px 28px 8px rgba(0, 0, 0, .05);
+
+    svg {
+      width: 20px;
+      height: 20px;
+      margin-right: 8px;
+    }
+  }
+
+
+}
