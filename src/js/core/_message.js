@@ -39,6 +39,11 @@ export default class Message {
     this.#removeWrapper(wrapper, duration);
   }
 
+  /**
+   * @description 移除消息包装器
+   * @param wrapper
+   * @param duration
+   */
   #removeWrapper(wrapper, duration = 3000) {
     setTimeout(() => {
       wrapper.classList.remove('animate__fadeInDown', 'animate__faster');
@@ -47,10 +52,20 @@ export default class Message {
     }, duration);
   }
 
+  /**
+   * @description: 消息提示
+   * @param msg
+   * @param duration
+   */
   info(msg, duration) {
     this.#createWrapper('info', msg, duration);
   }
 
+  /**
+   * @description: 错误提示
+   * @param msg
+   * @param duration
+   */
   error(msg, duration) {
     this.#createWrapper('error', msg, duration);
   }
