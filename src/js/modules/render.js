@@ -53,7 +53,7 @@ export default class Render {
     this.setTocBot(this.useScroll); // 目录
 
     this.setImagePreview(); // 图片预览
-    
+
     this.setCopyRightPermalink(); // 版权信息
   }
 
@@ -109,13 +109,12 @@ export default class Render {
     // 代码块复制
     if(this.conf['enable_code_copy'] && useStrToBool(this.attrs?.['enable_code_copy'])) {
       customItem.append('<i class="fas fa-paste code-copy"></i>');
-      customItem.find('.code-copy').on('click', function(e) {
+      customItem.find('.code-copy').on('click', (e) => {
         const text = pre.children('code[class*=\'language-\']').text();
-        const clipboard = new Clipboard(this, {text: () => text});
+        const clipboard = new Clipboard(e.target, {text: () => text});
 
         clipboard.on('success', () => {
-          console.log('已复制'); // todo msg 提示插件未编写 
-          alert('已复制');
+          this.useMessage.info('复制成功~');
           clipboard.destroy();
         });
 
@@ -226,9 +225,9 @@ export default class Render {
   /**
    * 设置文章版权信息 url
    */
-  setCopyRightPermalink(){
-    const permalink =  this.#copyRight.find('a.permalink');
-    permalink.attr('href',window.location.href);
+  setCopyRightPermalink() {
+    const permalink = this.#copyRight.find('a.permalink');
+    permalink.attr('href', window.location.href);
     permalink.html(decodeURI(window.location.href));
   }
 }
