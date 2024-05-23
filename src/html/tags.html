@@ -1,0 +1,39 @@
+<layout
+  th:replace="~{core/layout :: layout (
+  page = 'tags',
+  title = ${site.title} + ' - ' + '标签',
+  css_pin = ~{::css_pin},
+  js_pin = ~{::js_pin},
+  main = ~{::main}
+  )}"
+>
+  <!--/* css */-->
+  <th:block th:fragment="css_pin">
+    <style th:inline="css">
+      .above {
+        --above-background: /*[(${'url('+theme.config.tags.above_background+')'})]*/ transparent;
+      }
+    </style>
+  </th:block>
+
+  <!--/* js */-->
+  <th:block th:fragment="js_pin">
+    <script id="tagsScript" th:inline="javascript">
+      window.THEME_CONFIG.tags =  /*[[${tags}]]*/ [];
+      window['tagsScript']?.remove();
+    </script>
+  </th:block>
+
+
+  <!--/* 內容 */-->
+  <th:block th:fragment="main">
+    <section class="content card" th:with="noData = ${not #lists.isEmpty(tags)}">
+      <th:block th:if="${noData}">
+        <div class="chart"></div>
+      </th:block>
+
+      <th:block th:unless="${noData}" th:insert="~{modules/components:: emptyData(false)}"></th:block>
+    </section>
+    <th:block th:replace="~{modules/aside::aside_common}"/>
+  </th:block>
+</layout>

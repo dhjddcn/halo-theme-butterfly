@@ -540,6 +540,7 @@ spec:
               value: true
             - label: 禁用
               value: false
+    #归档设置          
     - group: archives
       label: 归档设置
       formSchema:
@@ -559,7 +560,28 @@ spec:
           placeholder: 请填写 第一屏背景图
           value: 'https://fastly.jsdelivr.net/npm/halo-theme-butterfly@latest/above.png'
           help: 如果全局背景图设置为图片链接，则此处背景图将不生效
-          validation: required              
+          validation: required     
+    #标签设置          
+    - group: tags
+      label: 标签设置
+      formSchema:
+        - $formkit: radio
+          name: enable_above
+          label: 启用第一屏
+          help: 启用首页第一屏
+          value: true
+          options:
+            - label: 启用
+              value: true
+            - label: 禁用
+              value: false
+        - $formkit: attachment
+          name: above_background
+          label: 第一屏背景图
+          placeholder: 请填写 第一屏背景图
+          value: 'https://fastly.jsdelivr.net/npm/halo-theme-butterfly@latest/above.png'
+          help: 如果全局背景图设置为图片链接，则此处背景图将不生效
+          validation: required
     #渲染设置
     - group: render
       label: 渲染设置
