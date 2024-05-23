@@ -61,6 +61,10 @@ class Archives {
           },
         },
       },
+      grid: {
+        left: '5%', // 调整左边距
+        right: '5%', // 调整右边距
+      },
       xAxis: {
         type: 'category',
         boundaryGap: false,
