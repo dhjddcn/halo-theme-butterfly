@@ -8,4 +8,126 @@
 @use '../core';
 @use "../core/util";
 @use "../modules/components";
- 
+
+.archives {
+  .chart {
+    width: 100%;
+    height: 380px;
+  }
+
+  .axis {
+    @include util.useThemeVar((
+      axis-line-background-color: (#fff, rgba(40, 47, 62, 0.9)),
+    ));
+
+    &-title {
+      position: relative;
+      margin-left: 18px;
+      padding-bottom: 20px;
+      padding-left: 18px;
+      font-size: 1.5rem;
+
+      &:before {
+        position: absolute;
+        top: calc(((100% - 48px) / 2));
+        left: -9px;
+        z-index: 1;
+        width: 10px;
+        height: 10px;
+        border-radius: 10px;
+        background-color: var(--axis-line-background-color);
+        content: '';
+        line-height: 10px;
+        transition: color .2s ease-in-out;
+        border: 5px solid var(--theme);
+        box-sizing: content-box;
+      }
+
+
+      &:after {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        z-index: 0;
+        width: 2px;
+        height: 1.8em;
+        background-color: var(--theme);
+        content: '';
+        top: 28px;
+      }
+    }
+
+    &-list {
+      margin-left: 18px;
+      padding-left: 20px;
+      border-left: 2px solid var(--theme);
+
+      &--item {
+        margin: 0 0 20px 10px;
+        transition: .2s ease-in-out;
+        position: relative;
+        display: flex;
+        align-items: center;
+
+        &:before {
+          position: absolute;
+          top: 10px;
+          left: calc(-20px - 17px);
+          width: 6px;
+          height: 6px;
+          border-radius: 6px;
+          background-color: var(--axis-line-background-color);
+          content: '';
+          border: 3px solid var(--theme);
+          box-sizing: content-box;
+        }
+
+        &.year {
+          font-size: 1.43em;
+        }
+
+        .cover {
+          width: 7rem;
+          height: 7rem;
+          border-radius: 8px;
+          transition: transform .3s;
+          @include util.text-overflow;
+          position: relative;
+
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+
+            &:hover {
+              transform: scale(1.1);
+            }
+          }
+        }
+
+        .info {
+          padding: 0 16px;
+          flex: 1;
+
+          time {
+            color: var(--text-obs-color);
+            font-size: 95%;
+          }
+
+          .title {
+            font-size: 1rem;
+            transition: transform .3s;
+            @include util.text-clamp(2);
+
+            &:hover {
+              color: var(--link-hover-color);
+              //transform: translateX(10px);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @include components.pagination;
+}

@@ -8,12 +8,12 @@
 @import "@fancyapps/ui/dist/fancybox/fancybox.css"; // 引入fancybox样式
 
 .main > .content {
-  padding: 1.5rem;
   min-height: 500px;
-
-  @include util.useResponsive($width: util.$w-md) {
-    padding: 1.2rem .8rem;
-  }
+  //padding: 1.5rem;
+  //
+  //@include util.useResponsive($width: util.$w-md) {
+  //  padding: 1.2rem .8rem;
+  //}
 }
 
 // 渲染html

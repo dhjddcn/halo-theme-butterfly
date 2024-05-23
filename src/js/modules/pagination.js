@@ -27,16 +27,16 @@ export default class Pagination {
   #getNextUrl() {
     return this.conf.hasNext ? `<a class="page next" aria-label="next" href="${this.conf.nextUrl}"><i class="fas fa-chevron-right fa-fw"></i></a>` : '';
   }
-  
+
   // 获取路径
-  #getPath(){
+  #getPath() {
     const regex = /.*?(?=\/\d+)\//;
 
-    if(this.conf.hasNext) return  this.conf.nextUrl.match(regex)?.[0];
-    
-    if(this.conf.hasPrevious)   return  this.conf.prevUrl.match(regex)?.[0];
-    
-    return '/'
+    if(this.conf.hasNext) return this.conf.nextUrl.match(regex)?.[0];
+
+    if(this.conf.hasPrevious) return this.conf.prevUrl.match(regex)?.[0];
+
+    return '/';
   }
 
   // 获取页码

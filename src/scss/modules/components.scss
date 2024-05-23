@@ -175,7 +175,10 @@
       }
     }
   }
+}
 
+// 页码  分页
+@mixin pagination {
   .pagination {
     margin-top: 20px;
     @include util.flex-center;
@@ -205,5 +208,4 @@
 
   }
 }
-
 

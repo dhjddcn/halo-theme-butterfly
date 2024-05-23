@@ -6,7 +6,7 @@
  */
 import $ from 'jquery';
 import Clipboard from 'clipboard';
-import {useDelay, useStrToBool} from '../core/_util';
+import {useDelay, useToBool} from '../core/_util';
 import tocBot from 'tocbot';
 import {Fancybox} from '@fancyapps/ui';
 
@@ -107,7 +107,7 @@ export default class Render {
     const customItem = toolbar.find('.custom-item');
 
     // 代码块复制
-    if(this.conf['enable_code_copy'] && useStrToBool(this.attrs?.['enable_code_copy'])) {
+    if(this.conf['enable_code_copy'] && useToBool(this.attrs?.['enable_code_copy'])) {
       customItem.append('<i class="fas fa-paste code-copy"></i>');
       customItem.find('.code-copy').on('click', (e) => {
         const text = pre.children('code[class*=\'language-\']').text();

@@ -125,14 +125,10 @@ export function useRandomColor() {
 }
 
 /**
- * 转为布尔值
+ * 转为布尔值 判断是否为true
  */
-export function useStrToBool(str) {
-  try {
-    return JSON.parse(str);
-  } catch (e) {
-    return false;
-  }
+export function useToBool(str) {
+  return [true, 'true'].includes(str);
 }
 
 /**

@@ -34,13 +34,17 @@
 
   > .content {
     width: 100%;
-    align-self: auto;
-    padding: 1.8rem;
+    align-self: flex-start;
+    padding: 1.5rem;
+
+    @include util.useResponsive($width: util.$w-md) {
+      padding: 1.2rem .8rem;
+    }
   }
 
   > .aside {
     width: 25%;
-    align-self: auto;
+    align-self: flex-start;
   }
 
   &.off-aside > .content {

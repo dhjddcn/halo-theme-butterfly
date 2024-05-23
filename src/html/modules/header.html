@@ -1,14 +1,14 @@
-<!--/* index  */-->
+<!--/* index 首页  */-->
 <section xmlns:th="https://www.thymeleaf.org" class="above" th:fragment="index">
   <div class="above-info">
     <h1 class="above-title" th:text="${site.title}"></h1>
     <div class="above-subtitle">
-      <span class="above-subtitle--text" ></span>
+      <span class="above-subtitle--text"></span>
     </div>
   </div>
 </section>
 
-<!--/* post */-->
+<!--/* post 文章 */-->
 <section xmlns:th="https://www.thymeleaf.org" class="above" th:fragment="post">
   <div class="above-info">
     <h1 class="post-title" th:text="${post.spec.title}"></h1>
@@ -65,13 +65,12 @@
   </div>
 </section>
 
-
+<!--/* post 归档 */-->
 <section xmlns:th="https://www.thymeleaf.org" class="above" th:fragment="archives">
   <div class="above-info">
-    <h1 class="above-title" th:text="${site.title}"></h1>
+    <h1 class="above-title">归档</h1>
   </div>
 </section>
-
 
 
 <!--/* 头部  */-->

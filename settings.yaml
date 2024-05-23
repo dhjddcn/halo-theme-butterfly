@@ -553,6 +553,13 @@ spec:
               value: true
             - label: 禁用
               value: false
+        - $formkit: attachment
+          name: above_background
+          label: 第一屏背景图
+          placeholder: 请填写 第一屏背景图
+          value: 'https://fastly.jsdelivr.net/npm/halo-theme-butterfly@latest/above.png'
+          help: 如果全局背景图设置为图片链接，则此处背景图将不生效
+          validation: required              
     #渲染设置
     - group: render
       label: 渲染设置
