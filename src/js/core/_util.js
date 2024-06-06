@@ -4,6 +4,7 @@
  * @fileName: Utils
  * @Description:工具
  */
+import * as echarts from 'echarts/core';
 import $ from 'jquery';
 
 /**
@@ -148,4 +149,20 @@ export function useImportStyle(text) {
  */
 export function useDelay(time) {
   return new Promise(resolve => setTimeout(resolve, time));
+}
+
+/**
+ *  图表渲染 支持浅色暗色
+ * @param dom
+ * @param options
+ */
+export function useChart(dom, options) {
+  let es = echarts.init(dom, this.useTheme.getMode());
+  es.setOption(options);
+
+  this.useTheme.change((mode) => {
+    es?.dispose();
+    es = echarts.init(dom, mode);
+    es.setOption(options);
+  });
 }

@@ -29,17 +29,18 @@ export function App(modules = []) {
 
     const fns = Reflect.ownKeys(target.prototype);
     // 运行实例方法
-    
+
     for (let i = 0; i < fns.length; i++) fns[i].startsWith('run_') && ins[fns[i]]();
-    
+
     // 实例化模块 
     for (let i = 0; i < modules.length; i++) {
       Reflect.setPrototypeOf(modules[i].prototype, ins);
       new modules[i]();
     }
-    
+
     window.ByApp = ins;
-    
+
     return window.ByApp;
   };
 }
+
