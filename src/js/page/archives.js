@@ -7,7 +7,7 @@
 import {useChart} from '../core/_util';
 import {App} from '../core/_decorator';
 import pagination from '../modules/pagination';
-import * as echarts from 'echarts/core';
+import * as echarts from 'echarts';
 import {LineChart} from 'echarts/charts';
 import {TitleComponent, TooltipComponent, GridComponent, DataZoomComponent} from 'echarts/components';
 import {CanvasRenderer} from 'echarts/renderers';
@@ -32,7 +32,7 @@ class Archives {
 
     if(!chartDom) return;
 
-    const getOptions = () => {
+    useChart.call(this, chartDom, () => {
       const data = [];
 
       for (let year of this.useConfig.archives) {
@@ -109,8 +109,6 @@ class Archives {
           },
         ],
       };
-    };
-    
-    useChart.call(this, chartDom, getOptions());
+    });
   }
 }

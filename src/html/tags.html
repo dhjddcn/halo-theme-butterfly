@@ -30,6 +30,15 @@
     <section class="content card" th:with="noData = ${not #lists.isEmpty(tags)}">
       <th:block th:if="${noData}">
         <div class="chart"></div>
+
+        <div class="equinox">
+          <a class="link "
+             th:each="tag : ${tags}"
+             th:text="${tag.spec.displayName}"
+             th:data-postCount="${tag.postCount}"
+             th:data-color="${tag.spec.color}"
+             th:href="${tag.status.permalink}"></a>
+        </div>
       </th:block>
 
       <th:block th:unless="${noData}" th:insert="~{modules/components:: emptyData(false)}"></th:block>

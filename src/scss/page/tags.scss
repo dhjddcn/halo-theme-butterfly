@@ -11,7 +11,33 @@
 .tags {
   .chart {
     width: 100%;
-    height: 500px;
+    height: 360px;
+  }
+
+  .equinox {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 25px;
+    justify-content: center;
+
+    .link {
+      position: relative;
+      transition: transform .2s ease-in-out;
+      font-size: 1.5em;
+
+      &:hover {
+        transform: scale(1.1);
+      }
+
+      &::before {
+        position: absolute;
+        content: attr(data-postCount);
+        font-size: 75%;
+        right: -10px;
+        top: -5px;
+      }
+    }
   }
 }
 

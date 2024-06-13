@@ -31,7 +31,9 @@
 
       <th:block th:if="${noData}">
         <div class="chart"></div>
+
         <div class="axis-title" th:text="'文章总览 - '+${archives.total}"></div>
+
         <ul class="axis-list">
           <th:block th:each="archive : ${archives.items}">
             <li class="axis-list--item  year">

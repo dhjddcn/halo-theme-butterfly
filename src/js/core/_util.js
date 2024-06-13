@@ -156,13 +156,20 @@ export function useDelay(time) {
  * @param dom
  * @param options
  */
-export function useChart(dom, options) {
+export function useChart(dom, getOption) {
+  const options = getOption();
+
   let es = echarts.init(dom, this.useTheme.getMode());
+
   es.setOption(options);
 
   this.useTheme.change((mode) => {
     es?.dispose();
     es = echarts.init(dom, mode);
     es.setOption(options);
+  });
+
+  dom.addEventListener('resize', () => {
+    es.resize()
   });
 }

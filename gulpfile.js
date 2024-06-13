@@ -40,7 +40,7 @@ gulp.task('css', function() {
   pipe(require('gulp-clean-css')({
     level: 2,
   })).
-  pipe(require("gulp-csso")()).
+  pipe(require('gulp-csso')()).
   pipe(require('gulp-minify-css')({
     compatibility: 'ie8',
     keepSpecialComments: false,
@@ -188,9 +188,10 @@ gulp.task('copy-folder', function() {
 gulp.task(
   'watch',
   function() {
-    gulp.watch(['./src/**/**/**/*.scss'], gulp.series('css'));
-    gulp.watch(['./src/js/**/**/*.js'], gulp.series('js'));
+    gulp.watch(['./src/scss/**/*.scss'], gulp.series('css'));
+    gulp.watch(['./src/js/**/*.js'], gulp.series('js'));
     gulp.watch(['./src/html/**/**/*.html'], gulp.series('html'));
+    
   },
 );
 
