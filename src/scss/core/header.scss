@@ -43,7 +43,7 @@
     @include util.useThemeVar((
       above-mask-color:(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)),
     ));
-
+    
     &::before {
       position: absolute;
       width: 100%;

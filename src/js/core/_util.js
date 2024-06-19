@@ -122,7 +122,9 @@ export function useMask(close) {
  * @returns {string}
  */
 export function useRandomColor() {
-  return '#' + ('00000' + (Math.random() * 0x1000000 << 0).toString(16)).slice(-6);
+  const randomColor = Math.random() * (0xFFFFFF - 0x100000) + 0x100000;
+
+  return '#' + ('00000' + (randomColor << 0).toString(16)).slice(-6);
 }
 
 /**
@@ -154,7 +156,7 @@ export function useDelay(time) {
 /**
  *  图表渲染 支持浅色暗色
  * @param dom
- * @param options
+ * @param getOption
  */
 export function useChart(dom, getOption) {
   const options = getOption();
@@ -170,6 +172,6 @@ export function useChart(dom, getOption) {
   });
 
   dom.addEventListener('resize', () => {
-    es.resize()
+    es.resize();
   });
 }

@@ -4,9 +4,12 @@
   title = ${site.title +' - '+ site.subtitle},
   css_pin = ~{::css_pin},
   js_pin = ~{::js_pin},
+  header = ~{::header},
   main = ~{::main}
   )}"
 >
+
+
   <!--/* css */-->
   <th:block th:fragment="css_pin">
     <style th:inline="css">
@@ -18,6 +21,34 @@
 
   <!--/* js */-->
   <th:block th:fragment="js_pin">
+    <script id="indexScript" th:inline="javascript">
+      window.THEME_CONFIG.index = {
+        typewriter_custom_text: /*[[${theme.config.index.typewriter_custom_text}]]*/ '',
+        enable_typewriter_random_text: /*[[${theme.config.index.enable_typewriter_random_text}]]*/ '',
+        typewriter_random_api: /*[[${theme.config.index.typewriter_random_api}]]*/ '',
+        typewriter_api_value_format: /*[[${theme.config.index.typewriter_api_value_format}]]*/ '',
+      };
+      window['indexScript']?.remove();
+    </script>
+  </th:block>
+
+
+  <!--/* header */-->
+  <th:block th:fragment="header">
+    <header th:class="${not theme.config.index.enable_above ? 'header dp' : 'header'}">
+      <!--/* 导航栏 */-->
+      <th:block th:replace="~{modules/nav}"/>
+
+      <!--第一屏内容-->
+      <section class="above" th:if="${theme.config.index.enable_above}">
+        <div class="above-info">
+          <h1 class="above-title" th:text="${site.title}"></h1>
+          <div class="above-subtitle">
+            <span class="above-subtitle--text"></span>
+          </div>
+        </div>
+      </section>
+    </header>
   </th:block>
 
 

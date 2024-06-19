@@ -9,7 +9,7 @@ import {useChart, useRandomColor} from '../core/_util';
 import {App} from '../core/_decorator';
 import * as echarts from 'echarts';
 import {LineChart, PieChart, GaugeChart} from 'echarts/charts';
-import {TitleComponent, TooltipComponent, GridComponent, DataZoomComponent, GraphicComponent} from 'echarts/components';
+import {TitleComponent, TooltipComponent, GridComponent, DataZoomComponent} from 'echarts/components';
 import {CanvasRenderer} from 'echarts/renderers';
 
 // 注册所需的组件和渲染器

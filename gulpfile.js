@@ -189,7 +189,7 @@ gulp.task(
   'watch',
   function() {
     gulp.watch(['./src/scss/**/*.scss'], gulp.series('css'));
-    gulp.watch(['./src/js/**/*.js'], gulp.series('js'));
+    gulp.watch(['./src/js/**/**/*.js'], gulp.series('js'));
     gulp.watch(['./src/html/**/**/*.html'], gulp.series('html'));
     
   },

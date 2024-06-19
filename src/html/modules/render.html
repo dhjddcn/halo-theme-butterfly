@@ -19,13 +19,13 @@
 
     <div class="url">
       <span class="name">本文链接：</span>
-      <span class="text"><a class="permalink"  target="_blank"></a></span>
+      <span class="text"><a class="permalink" target="_blank"></a></span>
     </div>
 
 
     <div class="declaration">
       <span class="name">版权声明：</span>
-      <span class="text">本站所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="/" target="_blank"  th:text="${contributor.displayName}"></a>！</span>
+      <span class="text">本站所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="/" target="_blank" th:text="${contributor.displayName}"></a>！</span>
     </div>
   </div>
 </th:block>
@@ -45,6 +45,18 @@
   <th:block th:replace="~{::prism}"/>
 
   <script id="renderScript" th:inline="javascript">
+    window.THEME_CONFIG.render = {
+      enable_code: /*[[${theme.config.render.enable_code}]]*/ true,
+      code_theme_dark: /*[[${theme.config.render.code_theme_dark}]]*/ 'one-dark',
+      enable_code_copy: /*[[${theme.config.render.enable_code_copy}]]*/ true,
+      enable_code_expander: /*[[${theme.config.render.enable_code_expander}]]*/ true,
+      code_theme_light: /*[[${theme.config.render.code_theme_light}]]*/ 'one-light',
+      enable_code_title: /*[[${theme.config.render.enable_code_title}]]*/ true,
+      enable_code_hr: /*[[${theme.config.render.enable_code_hr}]]*/ true,
+      enable_code_line: /*[[${theme.config.render.enable_code_line}]]*/ true,
+      enable_h_icon: /*[[${theme.config.render.enable_h_icon}]]*/ true,
+    };
+
     Object.assign(window.THEME_CONFIG.attrs, {
       enable_code_copy: /*[[${#annotations.getOrDefault(post, 'enable_code_copy','true')}]]*/ true,
     });
@@ -54,7 +66,7 @@
   <article class="render" th:utext="${post.content.content}"></article>
 
   <th:block th:replace="~{::copyRight}"/>
-  
+
   <th:block th:replace="~{::comment}"/>
 </section>
 

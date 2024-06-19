@@ -66,12 +66,12 @@ spec:
           placeholder: 请填写内容区最大宽度
           help: 内容区域最大宽度，像素或百分比，默认 1250px
           validation: required
-        - $formkit: attachment
+        - $formkit: text
           name: body_background
           label: 全局背景
           placeholder: 请填写 全局背景
           value: '#ffffff radial-gradient(rgba(12, 12, 12, 0.171) .1em, transparent 0) repeat scroll -5px -5px / 30px 30px'
-          help: 颜色值或图片链接 默认值：#ffffff radial-gradient(rgba(12, 12, 12, 0.171) .1em, transparent 0) repeat scroll -5px -5px / 30px 30px
+          help: 颜色值 默认值：#ffffff radial-gradient(rgba(12, 12, 12, 0.171) .1em, transparent 0) repeat scroll -5px -5px / 30px 30px
           validation: required
     #加载设置
     - group: loading
@@ -582,6 +582,27 @@ spec:
           value: 'https://fastly.jsdelivr.net/npm/halo-theme-butterfly@latest/above.png'
           help: 如果全局背景图设置为图片链接，则此处背景图将不生效
           validation: required
+    #分类设置          
+    - group: categories
+      label: 分类设置
+      formSchema:
+        - $formkit: radio
+          name: enable_above
+          label: 启用第一屏
+          help: 启用首页第一屏
+          value: true
+          options:
+            - label: 启用
+              value: true
+            - label: 禁用
+              value: false
+        - $formkit: attachment
+          name: above_background
+          label: 第一屏背景图
+          placeholder: 请填写 第一屏背景图
+          value: 'https://fastly.jsdelivr.net/npm/halo-theme-butterfly@latest/above.png'
+          help: 如果全局背景图设置为图片链接，则此处背景图将不生效
+          validation: required          
     #渲染设置
     - group: render
       label: 渲染设置

@@ -1,21 +1,24 @@
 <!--/* script */-->
 <script id="baseScript" th:inline="javascript">
   window.THEME_CONFIG = {
-    global: /*[[${theme.config}]]*/ {},
+    common: {
+      style_mode: /*[[${theme.config.style.mode}]]*/ null,
+      enable_aside: /*[[${theme.config.aside.enable}]]*/ true,
+      enable_webInfo: /*[[${theme.config.aside.enable_webInfo}]]*/ true,
+    },
     attrs: {},
-    site: /*[[${site}]]*/ {},
   };
-  
+
   window.ThemeApp = {};
-  
+
   document.documentElement.dataset.colorScheme = localStorage.getItem('Butterfly-data-theme');
-  
+
   window['baseScript']?.remove();
 </script>
 
 <!--/* style */-->
 <style th:inline="css"
-       th:with="body_background = ${#strings.containsIgnoreCase(theme.config.style.body_background,'http') ? 'url('+theme.config.style.body_background+') no-repeat fixed center / cover;' : theme.config.style.body_background }"
+       th:with="body_background = ${is_body_background_http ? 'url('+theme.config.style.body_background+') no-repeat fixed center / cover;' : theme.config.style.body_background }"
 >
   :root {
     --card-border-radius: /*[(${theme.config.card.radius})]*/ 24px;

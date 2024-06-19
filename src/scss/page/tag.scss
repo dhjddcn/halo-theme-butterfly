@@ -1,0 +1,25 @@
+/**
+ * @date: 2024/6/19
+ * @author: 小红
+ * @fileName: tag
+ * @Description: 标签详情
+ */
+
+@use '../core';
+@use "../core/util";
+@use "../modules/components";
+
+
+.tag {
+  .main {
+    > .content {
+      padding: 0;
+    }
+  }
+  
+
+  @include components.essayList;
+  @include components.pagination;
+}
+ 
+ 

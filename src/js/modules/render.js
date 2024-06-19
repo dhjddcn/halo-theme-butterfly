@@ -20,7 +20,7 @@ export default class Render {
 
   constructor() {
     this.attrs = this.useConfig.attrs;
-    this.conf = this.useConfig.global.render;
+    this.conf = this.useConfig.render;
 
     // h1~h6标题图标
     if(this.conf['enable_h_icon']) this.className.push('enable_h_icon');

@@ -4,6 +4,7 @@
   title = ${site.title} + ' - ' + '归档',
   css_pin = ~{::css_pin},
   js_pin = ~{::js_pin},
+  header = ~{::header},
   main = ~{::main}
   )}"
 >
@@ -22,6 +23,22 @@
       window.THEME_CONFIG.archives =  /*[[${postFinder.archives(1,archives.total).items}]]*/ [];
       window['archivesScript']?.remove();
     </script>
+  </th:block>
+
+
+  <!--/* header */-->
+  <th:block th:fragment="header">
+    <header th:class="${not theme.config.archives.enable_above ? 'header dp' : 'header'}">
+      <!--/* 导航栏 */-->
+      <th:block th:replace="~{modules/nav}"/>
+
+      <!--第一屏内容-->
+      <section class="above" th:if="${theme.config.archives.enable_above}">
+        <div class="above-info">
+          <h1 class="above-title">归档</h1>
+        </div>
+      </section>
+    </header>
   </th:block>
 
 
@@ -50,7 +67,7 @@
 
                 <div class="info">
                   <time th:text="'发布于 '+${#dates.format(post.spec.publishTime, 'yyyy-MM-dd HH:mm')}"></time>
-                  
+
                   <a class="title" th:href="${post.status.permalink}" th:text="${post.spec.title}"></a>
                 </div>
 
@@ -67,4 +84,5 @@
     </section>
     <th:block th:replace="~{modules/aside::aside_common}"/>
   </th:block>
+
 </layout>

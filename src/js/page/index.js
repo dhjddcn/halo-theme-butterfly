@@ -11,13 +11,17 @@ import Pagination from '../modules/pagination';
 
 @App([Pagination])
 class Index {
-  #conf = this.useConfig.global; //配置
-
   /**
    * 打字机
    */
   run_typewriter() {
-    if(!this.#conf.index['enable_above']) return;
+
+    if(!document.querySelector('.above-subtitle--text')) return;
+
+    const {
+            typewriter_custom_text, enable_typewriter_random_text,
+            typewriter_random_api, typewriter_api_value_format,
+          } = this.useConfig.index;
 
     // 创建打字
     const useTyped = (strings) => {
@@ -31,16 +35,16 @@ class Index {
     };
 
     // 自定义文字
-    let text = this.#conf.index['typewriter_custom_text']?.replaceAll('\n', '').split('|&|');
+    let text = typewriter_custom_text.replaceAll('\n', '').split('|&|');
 
     if(!text || text.toString() === '') {
       text = ['请填写打字文案或者配置随机文案！'];
     }
 
     // 随机文字
-    if(this.#conf.index['enable_typewriter_random_text']) {
+    if(enable_typewriter_random_text) {
       $.ajax({
-        url: this.#conf.index['typewriter_random_api'],
+        url: typewriter_random_api,
         type: 'get',
         success: (response) => {
           // 文本情况
@@ -48,12 +52,12 @@ class Index {
             return useTyped([response]);
           }
 
-          if(!this.#conf.index['typewriter_api_value_format']) {
+          if(typewriter_api_value_format) {
             return useTyped(['随机文案API返回数据格式为JSON，请配置取值格式！']);
           }
 
           //json 情况
-          const text = this.#conf.index['typewriter_api_value_format'].split('.').reduce((o, i) => o[i], response);
+          const text = typewriter_api_value_format.split('.').reduce((o, i) => o[i], response);
           useTyped([text]);
         },
         error: (err) => {

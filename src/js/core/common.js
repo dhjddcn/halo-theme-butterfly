@@ -10,12 +10,10 @@ import LazyLoad from './_lazyLoad';
 
 export default class Common {
 
-  #conf = window.THEME_CONFIG.global;
-
   constructor() {
     this.#createSingleAction(); //创建单一行为事件
 
-    if(this.#conf.aside['enable'] && this.#conf.aside['enable_webInfo']) this.#runDay(); //站点运行时间
+    if(THEME_CONFIG.common.enable_aside && THEME_CONFIG.common.enable_webInfo) this.#runDay(); //站点运行时间
   }
 
   // 站点运行时间
