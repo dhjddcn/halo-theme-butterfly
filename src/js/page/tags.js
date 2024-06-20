@@ -33,20 +33,18 @@ class Tags {
 
     if(!items.length) return;
 
-    const leg = items.length - 1;
-
     const source = [];
 
-    items.forEach(function(dom, index) {
-      let postCount = Number(dom.getAttribute('data-postCount') || 0);
+    for (let i = 0; i < items.length; i++) {
+      
+      const dom =   items[i];
+      
+      const count = Number(dom.getAttribute('data-postCount') || 0);
 
       dom.style.color = useRandomColor();
 
-      source.push([
-        dom.innerText,
-        postCount,
-      ]);
-    });
+      source.push([dom.innerText, count]);
+    }
 
     this.chart(source);
   }

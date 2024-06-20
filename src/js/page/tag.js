@@ -6,8 +6,9 @@
  */
 
 import {App} from '../core/_decorator';
+import Pagination from '../modules/pagination';
 
-@App([])
+@App([Pagination])
 class Tag {
-  
+
 }

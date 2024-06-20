@@ -1,0 +1,22 @@
+/**
+ * @date: 2024/6/19
+ * @author: 小红
+ * @fileName: categories
+ * @Description: 分类
+ */
+
+@use '../core';
+@use "../core/util";
+@use "../modules/components";
+
+.category {
+  .main {
+    > .content {
+      padding: 0;
+    }
+  }
+
+  @include components.essayList;
+  @include components.pagination;
+}
+
