@@ -36,9 +36,9 @@ class Tags {
     const source = [];
 
     for (let i = 0; i < items.length; i++) {
-      
-      const dom =   items[i];
-      
+
+      const dom = items[i];
+
       const count = Number(dom.getAttribute('data-postCount') || 0);
 
       dom.style.color = useRandomColor();
@@ -66,8 +66,12 @@ class Tags {
       return {
         color: 'null',
         backgroundColor: '',
+        grid: {
+          left: '5%', // 调整左边距
+          right: '5%', // 调整右边距
+        },
         title: {
-          text: 'Top 10 标签统计图📌',
+          text: 'Top 10 标签统计 📌',
           x: 'center',
         },
         dataset: [

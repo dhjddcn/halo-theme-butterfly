@@ -47,8 +47,6 @@
     <section class="content card" th:with="noData = ${not #lists.isEmpty(categories)}">
       <th:block th:if="${noData}">
         <div class="chart"></div>
-        
-
       </th:block>
 
       <th:block th:unless="${noData}" th:insert="~{modules/components:: emptyData(false)}"></th:block>

@@ -1,0 +1,70 @@
+<layout
+  th:replace="~{core/layout :: layout (
+  page = 'links',
+  title = ${site.title} + ' - ' + '链接列表',
+  css_pin = ~{::css_pin},
+  js_pin = ~{::js_pin},
+  header = ~{::header},
+  main = ~{::main}
+  )}"
+>
+  <!--/* css */-->
+  <th:block th:fragment="css_pin">
+    <style th:inline="css">
+      .above {
+        --above-background: /*[(${'url('+theme.config.index.above_background+')'})]*/ transparent;
+      }
+    </style>
+  </th:block>
+
+  <!--/* js */-->
+  <th:block th:fragment="js_pin">
+  </th:block>
+
+
+  <!--/* header */-->
+  <th:block th:fragment="header">
+    <header th:class="${not theme.config.index.enable_above ? 'header dp' : 'header'}">
+      <!--/* 导航栏 */-->
+      <th:block th:replace="~{modules/nav}"/>
+
+      <!--第一屏内容-->
+      <section class="above" th:if="${theme.config.index.enable_above}">
+        <div class="above-info">
+          <h1 class="above-title">链接管理</h1>
+        </div>
+      </section>
+    </header>
+  </th:block>
+
+
+  <!--/* 內容 */-->
+  <th:block th:fragment="main">
+    <section class="content card" th:with="noData = ${not #lists.isEmpty(groups)}">
+      <th:block th:if="${noData}">
+        <div class="groups">
+
+          <div class="item" th:each="group : ${groups}">
+            <h2 class="name" clas th:text="${group.spec.displayName}"></h2>
+
+            <div class="list">
+              <a class="link " th:each="link : ${group.links}" th:href="${link.spec.url}" target="_blank">
+                <img th:replace="~{modules/components:: lazyLoadImg(${link.spec.logo},${link.spec.displayName},'logo',false,'')}"/>
+                <div class="info">
+                  <p class="n" th:text="${link.spec.displayName}"></p>
+                  <p class="d" th:text="${link.spec.description}"></p>
+                </div>
+              </a>
+            </div>
+
+          </div>
+
+        </div>
+
+      </th:block>
+
+      <th:block th:unless="${noData}" th:insert="~{modules/components:: emptyData(false)}"></th:block>
+    </section>
+    <th:block th:replace="~{modules/aside::aside_common}"/>
+  </th:block>
+</layout>
