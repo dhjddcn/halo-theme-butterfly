@@ -1,0 +1,46 @@
+<layout
+  th:replace="~{core/layout :: layout (
+  page = 'single',
+  title = ${singlePage.spec.title} ,
+  css_pin = ~{::css_pin},
+  js_pin = ~{::js_pin},
+  header = ~{::header},
+  main = ~{::main}
+  )}"
+>
+  <!--/* css */-->
+  <th:block th:fragment="css_pin">
+    <style th:with="above_background = ${ #strings.isEmpty(singlePage.spec.cover) ? theme.config.index.above_background : (theme.config.loading.img.random_enable ? theme.config.loading.img.random_link  : ''  )}" th:inline="css">
+      .above {
+        --above-background: /*[(${'url('+above_background+')'})]*/ '';
+      }
+    </style>
+  </th:block>
+
+  <!--/* js */-->
+  <th:block th:fragment="js_pin">
+
+  </th:block>
+
+  <!--/* header */-->
+  <th:block th:fragment="header">
+    <header th:class="${not theme.config.index.enable_above ? 'header dp' : 'header'}">
+      <!--/* 导航栏 */-->
+      <th:block th:replace="~{modules/nav}"/>
+
+      <!--第一屏内容-->
+      <section class="above" th:if="${theme.config.index.enable_above}">
+        <div class="above-info">
+          <h1 class="above-title" th:text="${singlePage.spec.title}"></h1>
+        </div>
+      </section>
+    </header>
+  </th:block>
+
+
+  <!--/* 內容 */-->
+  <th:block th:fragment="main">
+    <th:block th:replace="~{modules/render::single}"/>
+    <th:block th:replace="~{modules/aside::aside_common}"/>
+  </th:block>
+</layout>

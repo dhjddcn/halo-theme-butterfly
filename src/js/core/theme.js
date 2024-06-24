@@ -7,7 +7,7 @@
 import {useIsDaytime} from './_util';
 
 export default class Theme {
-  #LOCALSTORAGE_KEY = 'Butterfly-data-theme';
+  #LOCALSTORAGE_KEY = 'data-color-scheme';
   #ATTR_KEY = 'colorScheme'; // 根元素主题属性
   #CHANGE_FN = null; // 主题切换回调
   mode = 'light'; // 主题模式
