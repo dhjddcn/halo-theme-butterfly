@@ -47,8 +47,10 @@
     "@babel/preset-env": "^7.15.6",
     "@babel/runtime": "^7.20.7",
     "@fancyapps/ui": "^5.0.35",
+    "@halo-dev/api-client": "^2.16.0",
     "animate.css": "^4.1.1",
     "autoprefixer": "^10.4.18",
+    "axios": "^1.7.2",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.2.3",
     "clipboard": "^2.0.11",
@@ -90,7 +92,6 @@
     "typed.js": "^2.1.0",
     "webpack": "^5.68.0",
     "webpack-stream": "^7.0.0",
-    "@halo-dev/api-client": "^2.16.0",
     "yamljs": "^0.3.0"
   }
 }

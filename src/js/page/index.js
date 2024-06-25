@@ -15,7 +15,6 @@ class Index {
    * 打字机
    */
   run_typewriter() {
-
     if(!document.querySelector('.above-subtitle--text')) return;
 
     const {

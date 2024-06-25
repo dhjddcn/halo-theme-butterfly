@@ -71,7 +71,6 @@
 
         &:before {
           position: absolute;
-          top: 10px;
           left: calc(-20px - 17px);
           width: 6px;
           height: 6px;
@@ -80,15 +79,30 @@
           content: '';
           border: 3px solid var(--theme);
           box-sizing: content-box;
+          margin: auto;
+          top: 0;
+          bottom: 0;
         }
 
         &.year {
           font-size: 1.43em;
+
+          &:before {
+            filter: hue-rotate(135deg);
+            top: 10px;
+            margin: 0;
+          }
+        }
+
+        &:hover {
+          &:before {
+            filter: hue-rotate(135deg);
+          }
         }
 
         .cover {
-          width: 7rem;
-          height: 7rem;
+          width: 6rem;
+          height: 6rem;
           border-radius: 8px;
           transition: transform .3s;
           @include util.text-overflow;

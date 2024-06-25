@@ -151,7 +151,7 @@ audio, canvas, embed, iframe, img, object, svg, video {
 img, video {
   max-width: 100%;
   height: auto;
-  transition: filter 375ms ease-in .2s, transform .6s;
+  transition: transform .5s;
 }
 
 [hidden] {

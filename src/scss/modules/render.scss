@@ -27,6 +27,7 @@
     table-border-color:(#e3e3e3, #656565b3), // 表格边框颜色
     code-toolbar-box-shadow:(0 5px 10px 0 rgb(187 193 197 / 40%), 0 5px 10px 0 rgb(28 29 29 / 40%)), // code-toolbar阴影
     code-loading-background-color:(#ffff, rgb(61 57 57)), // code加载动画颜色
+    img-filter:(none, brightness(0.9) contrast(0.8))
   ));
 
   padding-bottom: 1.2rem;
@@ -133,14 +134,14 @@
     background-color: var(--code-background-color);
     color: var(--code-color);
     display: inline-block;
-    margin: 2px 4px;
+    margin: 4px 6px;
     padding: 0 8px;
     white-space: normal;
     text-indent: 0;
     vertical-align: baseline;
     word-break: break-word;
     border-radius: 4px;
-    line-height: 1.8;
+    line-height: 1.3;
   }
 
   blockquote {
@@ -156,10 +157,10 @@
   img {
     margin-bottom: 20px;
     max-width: 100%;
-    transition: filter 375ms ease-in 0.2s;
     cursor: zoom-in;
     border-radius: 5px;
     border: rgba(147, 139, 139, 0.15) solid 1px;
+    filter: var(--img-filter);
   }
 
   table {

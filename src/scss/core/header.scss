@@ -37,20 +37,21 @@
     animation: above-down .8s;
     transition: .35s;
     background-image: var(--above-background);
-    background-color: #ffffff;
+    background-blend-mode: multiply;
+    background-color: var(--above-mask-color);
     @include util.flex-center;
 
     @include util.useThemeVar((
       above-mask-color:(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)),
     ));
     
-    &::before {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background-color: var(--above-mask-color);
-      content: '';
-    }
+    //&::before {
+    //  position: absolute;
+    //  width: 100%;
+    //  height: 100%;
+    //  background-color: var(--above-mask-color);
+    //  content: '';
+    //}
 
     &-info {
       width: 100%;
@@ -80,7 +81,7 @@
         font-size: 1.85em;
       }
 
-      font-size: 2.85em;
+      font-size: 2.3em;
       text-shadow: 2px 2px 4px rgba(0, 0, 0, .15);
       line-height: 1.5;
       font-weight: 700;

@@ -24,8 +24,11 @@
   <!--/* js */-->
   <th:block th:fragment="js_pin">
     <script id="postScript" th:inline="javascript">
-      
-      window['indexScript']?.remove();
+      Object.assign(window.THEME_CONFIG.attrs, {
+        enable_code_copy: /*[[${#annotations.getOrDefault(post, 'enable_code_copy','true')}]]*/ true,
+      });
+
+      window['postScript']?.remove();
     </script>
   </th:block>
 
