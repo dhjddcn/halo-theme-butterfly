@@ -5,7 +5,6 @@
  * @Description:渲染 html
  */
 @use '../core/util';
-@import "@fancyapps/ui/dist/fancybox/fancybox.css"; // 引入fancybox样式
 
 .main > .content {
   min-height: 500px;

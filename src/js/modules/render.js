@@ -6,7 +6,7 @@
  */
 import $ from 'jquery';
 import Clipboard from 'clipboard';
-import {useDelay, useToBool} from '../core/_util';
+import {useDelay, useFancybox, useToBool} from '../core/_util';
 import tocBot from 'tocbot';
 import {Fancybox} from '@fancyapps/ui';
 
@@ -55,6 +55,8 @@ export default class Render {
     this.setImagePreview(); // 图片预览
 
     this.setCopyRightPermalink(); // 版权信息
+
+    useFancybox() // 图片预览
   }
 
   /**
