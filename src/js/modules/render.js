@@ -228,8 +228,8 @@ export default class Render {
    * 设置文章版权信息 url
    */
   setCopyRightPermalink() {
-    const permalink = this.#copyRight.find('a.permalink');
-    permalink.attr('href', window.location.href);
-    permalink.html(decodeURI(window.location.href));
+    const a = this.#copyRight.find('a.permalink');
+    a.attr('href', window.location.href);
+    a.html(decodeURI(window.location.href));
   }
 }
