@@ -6,9 +6,8 @@
  */
 import $ from 'jquery';
 import Clipboard from 'clipboard';
-import {useDelay, useFancybox, useToBool} from '../core/_util';
+import {useDelay, useToBool} from '../core/_util';
 import tocBot from 'tocbot';
-import {Fancybox} from '@fancyapps/ui';
 
 export default class Render {
   className = []; // 默认单行复制
@@ -52,11 +51,8 @@ export default class Render {
 
     this.setTocBot(this.useScroll); // 目录
 
-    this.setImagePreview(); // 图片预览
-
     this.setCopyRightPermalink(); // 版权信息
 
-    useFancybox() // 图片预览
   }
 
   /**
@@ -189,41 +185,7 @@ export default class Render {
 
     adToc.css('display') === 'none' && adToc.attr('style', '');
   }
-
-  /**
-   * 图片预览
-   */
-  setImagePreview() {
-    const imgs = this.#dom.find('img');
-
-    if(!imgs.length) return;
-
-    imgs.each(function() {
-      const $this = $(this);
-      $this.wrap($(`<span  data-fancybox="fancyBoxImg" href="${$this.attr('src')}" ></span>`));
-    });
-
-    Fancybox.bind(
-      '[data-fancybox="fancyBoxImg"]',
-      {
-        Toolbar: {
-          display: {
-            left: ['infobar'],
-            middle: [
-              'zoomIn',
-              'zoomOut',
-              'toggle1to1',
-              'rotateCCW',
-              'rotateCW',
-              'flipX',
-              'flipY',
-            ],
-            right: ['slideshow', 'thumbs', 'close'],
-          },
-        },
-      });
-  }
-
+  
   /**
    * 设置文章版权信息 url
    */

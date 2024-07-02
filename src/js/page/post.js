@@ -5,10 +5,11 @@
  * @Description: 文章
  */
 
-import {App} from '../core/_decorator';
-import Render from "../modules/render";
+import {App} from '../core';
+import {AmplifyImg} from '../core/_decorator';
+import Render from '../modules/render';
 
-@App([Render])
-class Post  {
-  
+@App([Render, AmplifyImg])
+class Post {
+
 }

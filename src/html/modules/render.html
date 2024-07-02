@@ -1,17 +1,15 @@
 <!--/* 代码块  */-->
 <th:block xmlns:th="https://www.thymeleaf.org" th:if="${theme.config.render.enable_code}" th:fragment="prism">
-  <link rel="preload stylesheet" as="style" th:href="${assets_link+'plugins/prism/prism.min.css'}">
-  <link rel="preload stylesheet" as="style" data-code="light" th:href="${assets_link+ 'plugins/prism/themes/prism-'+theme.config.render.code_theme_light+'.css'}">
-  <link rel="preload stylesheet" as="style" data-code="dark" th:href="${assets_link+'plugins/prism/themes/prism-'+theme.config.render.code_theme_dark+'.css'}">
-  <script type="text/javascript" th:src="${assets_link+'plugins/prism/prism.min.js'}"></script>
+  <link rel="preload stylesheet" as="style" th:href="${assets_link + 'plugins/prism/prism.min.css'}">
+  <link rel="preload stylesheet" as="style" id="codeLight" data-code="light" th:href="${assets_link + 'plugins/prism/themes/prism-' + theme.config.render.code_theme_light + '.css'}">
+  <link rel="preload stylesheet" as="style" id="codeDark" data-code="dark" th:href="${assets_link + 'plugins/prism/themes/prism-' + theme.config.render.code_theme_dark + '.css'}">
+  <script type="text/javascript" th:src="${assets_link + 'plugins/prism/prism.min.js'}"></script>
 
   <script id="renderScript" th:inline="javascript">
     window.THEME_CONFIG.render = {
       enable_code: /*[[${theme.config.render.enable_code}]]*/ true,
-      code_theme_dark: /*[[${theme.config.render.code_theme_dark}]]*/ 'one-dark',
       enable_code_copy: /*[[${theme.config.render.enable_code_copy}]]*/ true,
       enable_code_expander: /*[[${theme.config.render.enable_code_expander}]]*/ true,
-      code_theme_light: /*[[${theme.config.render.code_theme_light}]]*/ 'one-light',
       enable_code_title: /*[[${theme.config.render.enable_code_title}]]*/ true,
       enable_code_hr: /*[[${theme.config.render.enable_code_hr}]]*/ true,
       enable_code_line: /*[[${theme.config.render.enable_code_line}]]*/ true,
@@ -78,28 +76,3 @@
 </section>
 
 
-<!--/* 渲染瞬间页面  */-->
-<section xmlns:th="https://www.thymeleaf.org" th:fragment="moments" class="content card animate__animated animate__fadeIn">
-  <th:block th:replace="~{::prism}"/>
-
-  <article class="render">
-    <ul>
-      <li th:each="moment : ${moments.items}" th:with="content=${moment.spec.content}">
-        <div th:if="${not #strings.isEmpty(content.html)}" th:utext="${content.html}"></div>
-
-        <th:block th:if="${not #lists.isEmpty(content.medium)}" th:each="momentItem : ${content.medium}">
-          <img th:if="${momentItem.type.name == 'PHOTO'}" th:src="${momentItem.url}"/>
-          <video th:if="${momentItem.type.name == 'VIDEO'}" th:src="${momentItem.url}"></video>
-          <audio th:if="${momentItem.type.name == 'AUDIO'}" th:src="${momentItem.url}"></audio>
-        </th:block>
-      </li>
-    </ul> 
-  </article>
-
-  <!--  <halo:comment-->
-  <!--    th:if="${pluginFinder.available('PluginCommentWidget') && haloCommentEnabled && singlePage.spec.allowComment}"-->
-  <!--    group="content.halo.run"-->
-  <!--    kind="SinglePage"-->
-  <!--    th:attr="name=${singlePage.metadata.name}"-->
-  <!--  />-->
-</section>

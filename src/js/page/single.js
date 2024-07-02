@@ -5,7 +5,7 @@
  * @Description: 自定义页面
  */
 
-import {App} from '../core/_decorator';
+import {App} from '../core';
 import Render from "../modules/render";
 
 @App([Render])

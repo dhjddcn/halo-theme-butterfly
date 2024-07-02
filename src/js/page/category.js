@@ -5,7 +5,7 @@
  * @Description: 分类详情
  */
 
-import {App} from '../core/_decorator';
+import {App} from '../core';
 import Pagination from '../modules/pagination';
 
 @App([Pagination])

@@ -8,8 +8,53 @@
 @use '../core';
 @use "../core/util";
 @use "../modules/components";
-@use "../modules/render";
 
 .moments {
+
+  @include util.useThemeVar((
+    m-color: (#363636, #F7F7FA),
+  ));
+
+
+  .content {
+    > .list {
+
+      .item {
+        margin-bottom: 15px;
+        padding: 10px;
+        //border-radius: 10px;
+        //box-shadow: 1px 1px 5px 0 #d8d8d8;
+        border-bottom: var(--theme) dashed 1px;
+      }
+
+      .h {
+        font-weight: 700;
+        color: var(--m-color);
+        font-size: .8rem;
+      }
+
+      .medium {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+
+        img, video, audio {
+          width: 170px;
+          height: 110px;
+          border-radius: 5px;
+          margin-right: 10px;
+        }
+
+        video {
+          object-fit: cover;
+          object-position: center;
+        }
+      }
+
+      .in {
+
+      }
+    }
+  }
 
 }

@@ -5,10 +5,11 @@
  * @Description: 瞬间
  */
 
-import {App} from '../core/_decorator';
-import Render from "../modules/render";
+import {App} from '../core';
 
-@App([Render])
+
+@App([])
 class Moments {
+
 
 }

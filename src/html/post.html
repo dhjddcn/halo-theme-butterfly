@@ -12,6 +12,7 @@
   <!--/* css */-->
   <th:block th:fragment="css_pin">
     <style
+      id="pageStyle"
       xmlns:th="https://www.thymeleaf.org"
       th:inline="css"
       th:with="above_background = ${not #strings.isEmpty(post.spec.cover) ? post.spec.cover : (theme.config.loading.img.random_enable ? theme.config.loading.img.random_link  : ''  )}">
@@ -23,12 +24,10 @@
 
   <!--/* js */-->
   <th:block th:fragment="js_pin">
-    <script id="postScript" th:inline="javascript">
+    <script id="pageScript" th:inline="javascript">
       Object.assign(window.THEME_CONFIG.attrs, {
         enable_code_copy: /*[[${#annotations.getOrDefault(post, 'enable_code_copy','true')}]]*/ true,
       });
-
-      window['postScript']?.remove();
     </script>
   </th:block>
 

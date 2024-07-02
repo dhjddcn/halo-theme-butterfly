@@ -5,7 +5,7 @@
  * @Description: 链接
  */
 
-import {App} from '../core/_decorator';
+import {App} from '../core';
 
 @App([])
 class Links {
