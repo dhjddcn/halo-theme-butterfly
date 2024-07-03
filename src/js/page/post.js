@@ -6,10 +6,11 @@
  */
 
 import {App} from '../core';
-import {AmplifyImg} from '../core/_decorator';
+import {AmplifyImg, codeBlock, renderArticle} from '../core/_decorator';
 import Render from '../modules/render';
 
-@App([Render, AmplifyImg])
+@App([renderArticle, AmplifyImg,])
 class Post {
 
+  
 }
