@@ -63,24 +63,6 @@
 </ul>
 
 
-<!--/* 分页  */-->
-<div xmlns:th="https://www.thymeleaf.org"
-     class="pagination"
-     th:fragment="pagination(data)"
->
-  <script id="paginationScript" th:inline="javascript">
-    window.THEME_CONFIG.pagination = {
-      nextUrl: /*[[${data.nextUrl}]]*/ {},
-      prevUrl: /*[[${data.prevUrl}]]*/ {},
-      page: /*[[${data.page}]]*/ {},
-      size: /*[[${data.size}]]*/ {},
-      total: /*[[${data.total}]]*/ {},
-      totalPages: /*[[${data.totalPages}]]*/ {},
-      hasPrevious: /*[[${data.hasPrevious()}]]*/ {},
-      hasNext: /*[[${data.hasNext()}]]*/ {},
-    };
-  </script>
-</div>
 
 
 <!--/* 暂无数据  */-->
@@ -174,3 +156,6 @@
     </button>
   </div>
 </th:block>
+
+
+<!--/* 移动端侧边  */-->

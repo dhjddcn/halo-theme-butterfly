@@ -13,7 +13,8 @@ export default class Common {
   constructor() {
     this.#createSingleAction(); //创建单一行为事件
 
-    if(THEME_CONFIG.common.enable_aside && THEME_CONFIG.common.enable_webInfo) this.#runDay(); //站点运行时间
+    if(MainApp.conf.base.enable_aside && MainApp.conf.base.enable_webInfo) this.#runDay(); //站点运行时间
+    
   }
 
   // 站点运行时间
@@ -60,6 +61,10 @@ export default class Common {
   backTop() {
     $('html,body').animate({scrollTop: 0}, 300);
   }
+
+
+ 
+
 }
  
  

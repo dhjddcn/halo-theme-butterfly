@@ -9,9 +9,9 @@ import $ from 'jquery';
 
 export default class Pagination {
   constructor() {
-    if(!this.useConfig.pagination) return;
+    if(!MainApp.conf.pagination) return;
 
-    this.conf = this.useConfig.pagination;
+    this.conf = MainApp.conf.pagination;
 
     if(this.conf.page > this.conf.totalPages) return;
 
@@ -75,6 +75,6 @@ export default class Pagination {
   }
 
   #createPage() {
-    $('.pagination').html(this.#getPrevUrl() + this.#getPage() + this.#getNextUrl());
+    $('main.main  section.content').append(`<div class="pagination">${this.#getPrevUrl()}${this.#getPage()}${this.#getNextUrl()}</div>`);
   }
 }

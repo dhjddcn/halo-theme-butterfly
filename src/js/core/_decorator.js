@@ -69,7 +69,7 @@ export class renderContent {
     this.code();
   }
 
-  rct(conf) {
+  rct() {
     // h1~h6标题图标
     if(this.render['enable_h_icon']) this.renderDom.addClass('enable_h_icon');
 
@@ -77,7 +77,7 @@ export class renderContent {
     this.setTocBot();
 
     // 版权设置
-    this.copyrightSetting();
+    this.setCopyrightSetting();
   }
 
   /**
@@ -135,7 +135,7 @@ export class renderContent {
   /**
    *文章版权设置
    */
-  copyrightSetting() {
+  setCopyrightSetting() {
     const a = $('.copy-right a.permalink'); // 版权信息
     a.attr('href', window.location.href);
     a.html(decodeURI(window.location.href));

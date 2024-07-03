@@ -4,8 +4,6 @@
  * @fileName: Utils
  * @Description:工具
  */
-import {Fancybox} from '@fancyapps/ui';
-import Clipboard from 'clipboard';
 import * as echarts from 'echarts/core';
 import $ from 'jquery';
 
@@ -166,4 +164,16 @@ export function useChart(dom, getOption) {
   dom.addEventListener('resize', () => {
     es.resize();
   });
+}
+
+/**
+ * 清理页面
+ */
+export function  useClearPage(){
+    const scripts = document.querySelectorAll('script');
+ 
+    for (let i = 0; i < scripts.length; i++) {
+      const script = scripts[i];
+      if (script.id.includes('Script')) script.remove();
+    }
 }

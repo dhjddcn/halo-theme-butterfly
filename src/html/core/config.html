@@ -1,20 +1,20 @@
 <!--/* script */-->
 <script id="baseScript" th:inline="javascript">
-  window.THEME_CONFIG = {
-    common: {
-      style_mode: /*[[${theme.config.style.mode}]]*/ null,
-      enable_aside: /*[[${theme.config.aside.enable}]]*/ true,
-      enable_webInfo: /*[[${theme.config.aside.enable_webInfo}]]*/ true,
-      assets_link: /*[[${assets_link}]]*/ true,
+  window.MainApp = {
+    conf:{
+      base: {
+        style_mode: /*[[${theme.config.style.mode}]]*/ null,
+        enable_aside: /*[[${theme.config.aside.enable}]]*/ true,
+        enable_webInfo: /*[[${theme.config.aside.enable_webInfo}]]*/ true,
+        assets_link: /*[[${assets_link}]]*/ true,
+      },
+      attrs: {},
+      page: {},
     },
-    attrs: {},
+    action:{},
   };
 
-  window.ThemeApp = {};
-
   document.documentElement.dataset.colorScheme = localStorage.getItem('Butterfly-data-theme');
-
-  window['baseScript']?.remove();
 </script>
 
 <!--/* style */-->

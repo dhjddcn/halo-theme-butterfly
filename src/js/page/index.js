@@ -17,10 +17,7 @@ class Index {
   run_typewriter() {
     if(!document.querySelector('.above-subtitle--text')) return;
 
-    const {
-            typewriter_custom_text, enable_typewriter_random_text,
-            typewriter_random_api, typewriter_api_value_format,
-          } = this.useConfig.index;
+    const {typewriter_custom_text, enable_typewriter_random_text, typewriter_random_api, typewriter_api_value_format,} = MainApp.conf.index;
 
     // 创建打字
     const useTyped = (strings) => {

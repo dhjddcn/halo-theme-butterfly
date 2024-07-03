@@ -28,17 +28,16 @@
     <link rel="canonical" th:href="${site.url}">
     <th:block th:replace="~{core/config}"/>
     <th:block th:replace="${css_pin}"/>
+    <th:block th:replace="${js_pin}"/>
     <link rel="preload stylesheet" as="style" th:href="${assets_link + 'css/' + page + '.min.css?v=' + theme.spec.version + isDev}">
   </head>
   <body th:with="stats = ${siteStatsFinder.getStats()},contributor = ${contributorFinder.getContributor(theme.config.base.metadata_name)}">
   <div id="Butterfly" th:class="${page}">
-    <!--    <th:block th:replace="~{modules/header::h(${page})}"></th:block>-->
     <th:block th:replace="${header}"></th:block>
     <main th:class="'main ' +  ${theme.config.aside.enable ? theme.config.aside.position : '' }" th:insert="${main}"></main>
     <th:block th:replace="~{modules/footer}"/>
     <th:block th:replace="~{modules/components::side}"/>
   </div>
-  <th:block th:replace="${js_pin}"/>
   <script type="text/javascript" th:src="${assets_link + 'js/' + page + '.min.js?v=' + theme.spec.version + isDev}"></script>
   </body>
   </html>

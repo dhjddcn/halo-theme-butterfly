@@ -20,7 +20,7 @@ export default class Theme {
       light: () => 'light',
       dark: () => 'dark',
     };
-    this.setMode(mes[window.THEME_CONFIG.common.style_mode]());
+    this.setMode(mes[MainApp.conf.base.style_mode]());
   }
 
   // 设置主题模式

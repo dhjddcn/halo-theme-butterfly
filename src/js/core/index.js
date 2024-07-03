@@ -5,6 +5,7 @@
  * @Description: 注册应用
  */
 
+import {useClearPage} from '../core/_util';
 import Message from './_message';
 import Theme from './theme';
 import Scroll from './scroll';
@@ -17,14 +18,13 @@ import Common from './common';
  */
 export function App(modules = []) {
   return function(target) {
-    Reflect.setPrototypeOf(target.prototype, {
-      useConfig: window.THEME_CONFIG, //配置
-      useTheme: new Theme(), //主题
-      useCommon: new Common(), // 公用逻辑
-      useScroll: new Scroll(), //滚动导航侧边
-      useMessage: new Message(), //滚动导航侧边
+    Object.assign(window.MainApp.action,{
+      theme: new Theme(), //主题
+      common: new Common(), // 公用逻辑
+      scroll: new Scroll(), //滚动导航侧边
+      message: new Message(), //滚动导航侧边
       modules: [],
-    });
+    })
     
     const ins = new target();
 
@@ -34,11 +34,11 @@ export function App(modules = []) {
 
     for (let i = 0; i < modules.length; i++) {
       Reflect.setPrototypeOf(modules[i].prototype, ins);
-      ins.modules.push(new modules[i]());
+      window.MainApp.action.modules.push(new modules[i]());
     }
 
-    window.ByApp = ins;
-
+    useClearPage();
+    
     return ins;
   };
 }
