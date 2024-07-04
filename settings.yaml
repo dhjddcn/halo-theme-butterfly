@@ -70,8 +70,8 @@ spec:
           name: body_background
           label: 全局背景
           placeholder: 请填写 全局背景
-          value: '#ffffff radial-gradient(rgba(12, 12, 12, 0.171) .1em, transparent 0) repeat scroll -5px -5px / 30px 30px'
-          help: 颜色值 默认值：#ffffff radial-gradient(rgba(12, 12, 12, 0.171) .1em, transparent 0) repeat scroll -5px -5px / 30px 30px
+          value: '#f7f9fe'
+          help: 颜色值 默认值：#f7f9fe
           validation: required
     #加载设置
     - group: loading

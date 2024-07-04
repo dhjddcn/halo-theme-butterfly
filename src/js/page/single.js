@@ -5,10 +5,9 @@
  * @Description: 自定义页面
  */
 
-import {App} from '../core';
-import Render from "../modules/render";
+import {App} from '../core/App';
 
-@App([Render])
+@App([])
 class Single {
 
 }

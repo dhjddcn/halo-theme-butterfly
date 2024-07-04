@@ -6,7 +6,7 @@
  */
 
 import {useChart, useRandomColor} from '../core/_util';
-import {App} from '../core';
+import {App} from '../core/App';
 import * as echarts from 'echarts';
 import {LineChart, PieChart, GaugeChart} from 'echarts/charts';
 import {TitleComponent, TooltipComponent, GridComponent, DataZoomComponent} from 'echarts/components';

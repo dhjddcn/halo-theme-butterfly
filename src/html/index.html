@@ -2,36 +2,32 @@
   th:replace="~{core/layout :: layout (
   page = 'index',
   title = ${site.title +' - '+ site.subtitle},
-  css_pin = ~{::css_pin},
-  js_pin = ~{::js_pin},
+  pin = ~{::pin},
   header = ~{::header},
   main = ~{::main}
   )}"
 >
 
 
-  <!--/* css */-->
-  <th:block th:fragment="css_pin">
+  <!--/* pin */-->
+  <th:block th:fragment="pin">
     <style th:inline="css">
       .above {
         --above-background: /*[(${'url('+theme.config.index.above_background+')'})]*/ transparent;
       }
     </style>
-  </th:block>
 
-  <!--/* js */-->
-  <th:block th:fragment="js_pin">
     <script id="pageScript" th:inline="javascript">
-      window.MainApp.conf.index = {
+      window.MainApp.conf.page = {
         typewriter_custom_text: /*[[${theme.config.index.typewriter_custom_text}]]*/ '',
         enable_typewriter_random_text: /*[[${theme.config.index.enable_typewriter_random_text}]]*/ '',
         typewriter_random_api: /*[[${theme.config.index.typewriter_random_api}]]*/ '',
         typewriter_api_value_format: /*[[${theme.config.index.typewriter_api_value_format}]]*/ '',
       };
     </script>
-    
+
     <!-- 分页-->
-    <th:block th:replace="~{core/getConf::pagination(${posts})}"/>
+    <th:block th:replace="~{core/config::pagination(${posts})}"/>
   </th:block>
 
 

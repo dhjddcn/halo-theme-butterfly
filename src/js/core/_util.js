@@ -128,6 +128,15 @@ export function useRandomColor() {
 }
 
 /**
+ * 插入style
+ */
+export function useInsertStyle(str) {
+  const style = document.createElement('style');
+  style.textContent = str;
+  document.head.appendChild(style);
+}
+
+/**
  * 转为布尔值 判断是否为true
  */
 export function useToBool(str) {

@@ -6,8 +6,8 @@
  */
 import $ from 'jquery';
 import Typed from 'typed.js';
-import {App} from '../core';
-import Pagination from '../modules/pagination';
+import {App} from '../core/App';
+import Pagination from '../modules/Pagination';
 
 @App([Pagination])
 class Index {
@@ -17,7 +17,10 @@ class Index {
   run_typewriter() {
     if(!document.querySelector('.above-subtitle--text')) return;
 
-    const {typewriter_custom_text, enable_typewriter_random_text, typewriter_random_api, typewriter_api_value_format,} = MainApp.conf.index;
+    const {
+            typewriter_custom_text, enable_typewriter_random_text,
+            typewriter_random_api, typewriter_api_value_format,
+          } = MainApp.conf.page;
 
     // 创建打字
     const useTyped = (strings) => {
@@ -66,4 +69,5 @@ class Index {
     // 其他情况
     useTyped(text);
   }
+
 }

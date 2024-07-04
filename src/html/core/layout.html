@@ -5,7 +5,7 @@
      param_prefix = ${#strings.containsIgnoreCase(theme.config.loading.img.random_link,'?') ? '&' : '?'},
      is_body_background_http = ${#strings.containsIgnoreCase(theme.config.style.body_background,'http')}
   "
-  th:fragment="layout (page,title,css_pin,js_pin,header,main)"
+  th:fragment="layout (page,title,pin,header,main)"
 >
   <!DOCTYPE html>
   <html lang="en" data-color-scheme="light" th:with="isDev = ${true ? #dates.createNow().time : ''} ">
@@ -26,9 +26,8 @@
     <meta property="og:type"   th:content="${page}" th:value="${page}">
     <link rel="apple-touch-icon" sizes="180x180" th:href="${site.logo}">
     <link rel="canonical" th:href="${site.url}">
-    <th:block th:replace="~{core/config}"/>
-    <th:block th:replace="${css_pin}"/>
-    <th:block th:replace="${js_pin}"/>
+    <th:block th:replace="~{core/config::base}"/>
+    <th:block th:replace="${pin}"/>
     <link rel="preload stylesheet" as="style" th:href="${assets_link + 'css/' + page + '.min.css?v=' + theme.spec.version + isDev}">
   </head>
   <body th:with="stats = ${siteStatsFinder.getStats()},contributor = ${contributorFinder.getContributor(theme.config.base.metadata_name)}">

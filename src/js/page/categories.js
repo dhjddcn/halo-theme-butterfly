@@ -5,7 +5,7 @@
  * @Description: 分类
  */
 import {useChart} from '../core/_util';
-import {App} from '../core';
+import {App} from '../core/App';
 import * as echarts from 'echarts';
 import {PieChart} from 'echarts/charts';
 import {TitleComponent, TooltipComponent, GridComponent, DataZoomComponent} from 'echarts/components';

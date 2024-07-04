@@ -63,8 +63,6 @@
 </ul>
 
 
-
-
 <!--/* 暂无数据  */-->
 <div xmlns:th="https://www.thymeleaf.org" th:fragment="emptyData(showCard)"
      th:class="'empty'+${showCard ? ' card' : ''}">
@@ -143,19 +141,16 @@
 
   <!--/* 侧边按钮 */-->
   <div class="side-btn">
-    <button class="button h5-toc" type="button" title="文章目录" onclick="ByApp['useRender'].setH5Toc()">
+    <button class="button h5-toc" type="button" title="文章目录" onclick="MainApp.action['useRender'].setH5Toc()">
       <i class="fa-sharp fa-solid fa-list-tree"></i>
     </button>
 
-    <button class="button switch-model" th:if="${theme.config.style.mode == 'user'}" onclick="ByApp.useTheme.toggleMode()" type="button" title="浅色和深色模式转换">
+    <button class="button switch-model" th:if="${theme.config.style.mode == 'user'}" onclick="MainApp.action.theme.toggleMode()" type="button" title="浅色和深色模式转换">
       <i class="fas fa-adjust"></i>
     </button>
 
-    <button class="button back-top" onclick="ByApp.useCommon.backTop()" type="button" title="回到顶部">
+    <button class="button back-top" onclick="MainApp.action.common.backTop()" type="button" title="回到顶部">
       <i class="fa-solid fa-up"></i>
     </button>
   </div>
 </th:block>
-
-
-<!--/* 移动端侧边  */-->

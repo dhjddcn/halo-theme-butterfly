@@ -3,14 +3,13 @@
   th:replace="~{core/layout :: layout (
   page = 'post',
   title = ${post.spec.title},
-  css_pin = ~{::css_pin},
-  js_pin = ~{::js_pin},
+  pin = ~{::pin},
   header = ~{::header},
   main = ~{::main}
   )}"
 >
-  <!--/* css */-->
-  <th:block th:fragment="css_pin">
+  <!--/* pin */-->
+  <th:block th:fragment="pin">
     <style
       id="pageStyle"
       xmlns:th="https://www.thymeleaf.org"
@@ -20,18 +19,15 @@
         --above-background: /*[(${'url('+above_background+')'})]*/ '';
       }
     </style>
-  </th:block>
 
-  <!--/* js */-->
-  <th:block th:fragment="js_pin">
+
     <script id="pageScript" th:inline="javascript">
-      Object.assign(window.THEME_CONFIG.attrs, {
-        enable_code_copy: /*[[${#annotations.getOrDefault(post, 'enable_code_copy','true')}]]*/ true,
-      });
-      
-    </script>
-  </th:block>
 
+    </script>
+
+    <th:block th:replace="~{core/config::render}"/>
+    <th:block th:replace="~{core/config::code}"/>
+  </th:block>
 
   <th:block th:fragment="header">
     <header th:class="${not theme.config.post.enable_above ? 'header dp' : 'header'}">
@@ -99,7 +95,36 @@
 
   <!--/* 內容 */-->
   <th:block th:fragment="main">
-    <th:block th:replace="~{modules/render::post}"/>
+    <section class="content card animate__animated animate__fadeIn">
+        <article class="render" th:utext="${post.content.content}"></article>
+
+        <div class="copy-right">
+        <i class="fa-solid fa-copyright"></i>
+
+        <div class="author">
+          <span class="name">文章作者：</span>
+          <span class="text" th:text="${contributor.displayName}"></span>
+        </div>
+
+        <div class="url">
+          <span class="name">本文链接：</span>
+          <span class="text"><a class="permalink" target="_blank"></a></span>
+        </div>
+
+
+        <div class="declaration">
+          <span class="name">版权声明：</span>
+          <span class="text">本站所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="/" target="_blank" th:text="${contributor.displayName}"></a>！</span>
+        </div>
+      </div>
+
+        <halo:comment
+          th:if="${pluginFinder.available('PluginCommentWidget') && haloCommentEnabled && post.spec.allowComment}"
+          group="content.halo.run"
+          kind="Post"
+          th:attr="name=${post.metadata.name}"
+        />
+    </section>
     <th:block th:replace="~{modules/aside::aside_post}"/>
   </th:block>
 </layout>

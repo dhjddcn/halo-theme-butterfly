@@ -5,12 +5,13 @@
  * @Description: 文章
  */
 
-import {App} from '../core';
-import {AmplifyImg, codeBlock, renderArticle} from '../core/_decorator';
-import Render from '../modules/render';
+import codeBlock from '../modules/CodeBlock';
+import Render from '../modules/Render';
+import AmplifyImg from '../modules/AmplifyImg';
 
-@App([renderArticle, AmplifyImg,])
+import {App} from '../core/App';
+
+@App([Render,codeBlock,AmplifyImg])
 class Post {
 
-  
 }
