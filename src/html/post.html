@@ -16,7 +16,7 @@
       th:inline="css"
       th:with="above_background = ${not #strings.isEmpty(post.spec.cover) ? post.spec.cover : (theme.config.loading.img.random_enable ? theme.config.loading.img.random_link  : ''  )}">
       .above {
-        --above-background: /*[(${'url('+above_background+')'})]*/ '';
+        background-image: /*[(${'url('+above_background+')'})]*/ none;
       }
     </style>
 
@@ -95,7 +95,7 @@
 
   <!--/* 內容 */-->
   <th:block th:fragment="main">
-    <section class="content card animate__animated animate__fadeIn">
+    <section class="content card">
         <article class="render" th:utext="${post.content.content}"></article>
 
         <div class="copy-right">

@@ -16,7 +16,7 @@ import Common from './common';
  * @returns function(*): *
  * @param modules
  */
-export function App(modules = []) {
+export default function App(modules = []) {
   return function(target) {
     Object.assign(window.MainApp.action, {
       theme: new Theme(), //主题
@@ -35,6 +35,7 @@ export function App(modules = []) {
       const mods = new modules[i]();
       window.MainApp.modules[mods.name] = mods;
     }
+    
     useClearPage();
     
     return ins;

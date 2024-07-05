@@ -178,11 +178,15 @@ export function useChart(dom, getOption) {
 /**
  * 清理页面
  */
-export function  useClearPage(){
+export function useClearPage() {
+  window.onload = function() {
     const scripts = document.querySelectorAll('script');
- 
+
     for (let i = 0; i < scripts.length; i++) {
       const script = scripts[i];
-      if (script.id.includes('Script')) script.remove();
+      if(script.id.includes('Script')) script.remove();
     }
+
+    document.body.classList.remove('loading');
+  };
 }

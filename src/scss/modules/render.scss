@@ -1,7 +1,7 @@
 /**
  * @date: 2024/3/17
  * @author: 小红
- * @fileName: renderHtml
+ * @fileName: render
  * @Description:渲染 html
  */
 @use '../core/util';
@@ -9,12 +9,6 @@
 .main {
   > .content {
     min-height: 500px;
-    //padding: 1.5rem;
-    //
-    //@include util.useResponsive($width: util.$w-md) {
-    //  padding: 1.2rem .8rem;
-    //}
-
   }
   
   .aside{
@@ -367,6 +361,10 @@
 }
 
 .side-btn {
+  .h5-toc {
+    visibility: hidden;
+    transition: visibility .3s;
+  }
   @include util.useResponsive($width: 1100px) {
     //侧边目录按钮
     .h5-toc {

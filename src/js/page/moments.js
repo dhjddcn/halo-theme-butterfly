@@ -5,7 +5,7 @@
  * @Description: 瞬间
  */
 
-import {App} from '../core/App';
+import App from '../core/App';
 
 
 @App([])

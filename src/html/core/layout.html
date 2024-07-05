@@ -23,21 +23,21 @@
     <meta property="og:url" th:content="${site.url}">
     <meta property="og:title" th:content="${site.title}">
     <meta property="og:locale" content="zh_CN">
-    <meta property="og:type"   th:content="${page}" th:value="${page}">
+    <meta property="og:type" th:content="${page}" th:value="${page}">
     <link rel="apple-touch-icon" sizes="180x180" th:href="${site.logo}">
     <link rel="canonical" th:href="${site.url}">
     <th:block th:replace="~{core/config::base}"/>
     <th:block th:replace="${pin}"/>
     <link rel="preload stylesheet" as="style" th:href="${assets_link + 'css/' + page + '.min.css?v=' + theme.spec.version + isDev}">
   </head>
-  <body th:with="stats = ${siteStatsFinder.getStats()},contributor = ${contributorFinder.getContributor(theme.config.base.metadata_name)}">
+  <body class="loading" th:with="stats = ${siteStatsFinder.getStats()},contributor = ${contributorFinder.getContributor(theme.config.base.metadata_name)}">
   <div id="Butterfly" th:class="${page}">
     <th:block th:replace="${header}"></th:block>
-    <main th:class="'main ' +  ${theme.config.aside.enable ? theme.config.aside.position : '' }" th:insert="${main}"></main>
+    <main class="main animate__animated  animate__fadeIn" th:classappend="${theme.config.aside.enable ? theme.config.aside.position : '' }" th:insert="${main}"></main>
     <th:block th:replace="~{modules/footer}"/>
     <th:block th:replace="~{modules/components::side}"/>
   </div>
-  <script type="text/javascript" th:src="${assets_link + 'js/' + page + '.min.js?v=' + theme.spec.version + isDev}"></script>
   </body>
+  <script type="text/javascript" th:src="${assets_link + 'js/' + page + '.min.js?v=' + theme.spec.version + isDev}"></script>
   </html>
 </th:block>

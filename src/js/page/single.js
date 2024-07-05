@@ -5,7 +5,7 @@
  * @Description: 自定义页面
  */
 
-import {App} from '../core/App';
+import App from '../core/App';
 
 @App([])
 class Single {

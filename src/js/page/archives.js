@@ -5,7 +5,7 @@
  * @Description:归档
  */
 import {useChart} from '../core/_util';
-import {App} from '../core/App';
+import App from '../core/App';
 import pagination from '../modules/pagination';
 import * as echarts from 'echarts';
 import {LineChart} from 'echarts/charts';

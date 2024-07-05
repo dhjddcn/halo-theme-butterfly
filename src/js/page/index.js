@@ -6,7 +6,7 @@
  */
 import $ from 'jquery';
 import Typed from 'typed.js';
-import {App} from '../core/App';
+import App from '../core/App';
 import Pagination from '../modules/Pagination';
 
 @App([Pagination])

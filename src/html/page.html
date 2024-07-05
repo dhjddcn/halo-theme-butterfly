@@ -12,7 +12,7 @@
   <th:block th:fragment="css_pin">
     <style th:with="above_background = ${ #strings.isEmpty(singlePage.spec.cover) ? theme.config.index.above_background : (theme.config.loading.img.random_enable ? theme.config.loading.img.random_link  : ''  )}" th:inline="css">
       .above {
-        --above-background: /*[(${'url('+above_background+')'})]*/ '';
+        background-image: /*[(${'url('+above_background+')'})]*/ none;
       }
     </style>
   </th:block>

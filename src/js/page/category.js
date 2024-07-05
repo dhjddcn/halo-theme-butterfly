@@ -5,7 +5,7 @@
  * @Description: 分类详情
  */
 
-import {App} from '../core/App';
+import App from '../core/App';
 import Pagination from '../modules/pagination';
 
 @App([Pagination])

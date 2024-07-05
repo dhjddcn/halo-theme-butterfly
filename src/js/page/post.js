@@ -5,11 +5,11 @@
  * @Description: 文章
  */
 
+import App from '../core/App';
 import codeBlock from '../modules/CodeBlock';
 import Render from '../modules/Render';
 import AmplifyImg from '../modules/AmplifyImg';
 
-import {App} from '../core/App';
 
 @App([Render,codeBlock,AmplifyImg])
 class Post {

@@ -64,6 +64,7 @@ export default class Render {
     const toc = $('.aside-toc > .toc');
 
     if(!toc.html()) toc.html('暂无目录~');
+    
   }
 
   /**
