@@ -44,7 +44,10 @@ export default class codeBlock {
 
     //重新渲染代码块
     Prism.highlightAll();
-   
+
+    // 初始化代码块
+    this.#codeTheme(MainApp.action.theme.getMode());
+    
     // 代码块主题切换
     MainApp.action.theme.change((mode) => this.#codeTheme(mode));
   }

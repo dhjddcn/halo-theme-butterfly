@@ -10,30 +10,31 @@ import tocBot from 'tocbot';
 
 export default class Render {
   name = 'Render';
-  
+
   #renderDom = $('article.render'); // 文章渲染区域
 
   #tocStickyDom = $('.aside .is-sticky');
-  
+
   #conf = MainApp.conf.render;
-  
+
   constructor() {
-    this.#h()
-    this.#tocBot()
-    this.#copyRight()
+    this.#h();
+    this.#tocBot();
+    this.#tocBotH5();
+    this.#copyRight();
   }
 
   /**
    * h标题
    */
-  #h(){
+  #h() {
     if(this.#conf.enable_h_icon) this.#renderDom.addClass('enable_h_icon');
   }
 
   /**
    * 设置目录
    */
-  #tocBot(){
+  #tocBot() {
     tocBot.init({
       contentSelector: 'article.render',
       tocSelector: '.aside-toc > .toc',
@@ -64,33 +65,39 @@ export default class Render {
     const toc = $('.aside-toc > .toc');
 
     if(!toc.html()) toc.html('暂无目录~');
-    
+
   }
 
   /**
    * h5目录
-   * @returns {Promise<void>}
    */
-  async tocBotH5() {
-    const adToc = this.#tocStickyDom.find('.aside-toc');
+  #tocBotH5() {
+    const adeToc = this.#tocStickyDom.find('.aside-toc');
 
-    adToc.toggle('fast');
+    const sideBtn = $('.side-btn');
+    
+    const tocBtn = $(`<button  class="button h5-toc" type="button"  title="文章目录" ><i class="fa-sharp fa-solid fa-list-tree"></i></button>`);
 
-    await useDelay(500);
+    sideBtn.prepend(tocBtn);
+    
+    tocBtn.on('click', async () => {
+      adeToc.toggle('fast');
+      
+      await useDelay(500);
 
-    adToc.css('display') === 'none' && adToc.attr('style', '');
+      adeToc.css('display') === 'none' && adeToc.attr('style', '');
+    })
   }
 
   /**
    * 版权
    */
-  #copyRight(){
+  #copyRight() {
     const a = $('.copy-right a.permalink');
-    
+
     a.attr('href', window.location.href);
-    
+
     a.html(decodeURI(window.location.href));
   }
 
-  
 }
