@@ -15,8 +15,8 @@ export default class Render {
 
   #tocStickyDom = $('.aside .is-sticky');
 
-  #conf = MainApp.conf.render;
-
+  #conf = MainApp.conf;
+  
   constructor() {
     this.#h();
     this.#tocBot();
@@ -52,7 +52,7 @@ export default class Render {
       },
     });
 
-    MainApp.action.scroll.change((max, num, scrollTop) => {
+    MainApp.useScroll.change((max, num, scrollTop) => {
       if(scrollTop < max || window.innerWidth <= 1100) return;
       if(num <= scrollTop) {
         this.#tocStickyDom.css('top', '');

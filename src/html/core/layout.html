@@ -26,7 +26,7 @@
     <meta property="og:type" th:content="${page}" th:value="${page}">
     <link rel="apple-touch-icon" sizes="180x180" th:href="${site.logo}">
     <link rel="canonical" th:href="${site.url}">
-    <th:block th:replace="~{core/config::base}"/>
+    <th:block th:replace="~{core/config}"/>
     <th:block th:replace="${pin}"/>
     <link rel="preload stylesheet" as="style" th:href="${assets_link + 'css/' + page + '.min.css?v=' + theme.spec.version + isDev}">
   </head>

@@ -1,157 +1,103 @@
 <!--/* 基础配置 */-->
-
 <!--suppress CssUnresolvedCustomProperty -->
-<th:block th:fragment="base">
-  <!--/* script */-->
-  <script id="baseScript" th:inline="javascript">
-    window.MainApp = {
-      conf: {
-        base: {
-          style_mode: /*[[${theme.config.style.mode}]]*/ null,
-          enable_aside: /*[[${theme.config.aside.enable}]]*/ true,
-          enable_webInfo: /*[[${theme.config.aside.enable_webInfo}]]*/ true,
-          assets_link: /*[[${assets_link}]]*/ true,
-        },
-        page: {},
-        attrs: {},
-      },
-      action: {},
-      modules: {},
-    };
-
-    document.documentElement.dataset.colorScheme = localStorage.getItem('Butterfly-data-theme');
-  </script>
-
-  <!--/* style */-->
-  <style th:inline="css"
-         th:with="body_background = ${is_body_background_http ? 'url('+theme.config.style.body_background+') no-repeat fixed center / cover;' : theme.config.style.body_background }"
-  >
-    :root {
-      --card-border-radius: /*[(${theme.config.card.radius})]*/ 24px;
-      --card-box-shadow: /*[(${theme.config.card.shadow})]*/ transparent;
-      --link-hover-color: var(--theme);
-    }
-
-    html {
-      --theme: #1c69ed;
-      --body-background: /*[(${body_background})]*/ transparent;
-      --nav-font-color: /*[(${theme.config.nav.font_color.light})]*/ transparent;
-      --nav-active-font-color: /*[(${theme.config.nav.active_font_color.light})]*/ transparent;
-      --nav-active-hover-font-color: /*[(${theme.config.nav.active_hover_font_color.light})]*/ transparent;
-      --nav-active-background-color: /*[(${theme.config.nav.active_background_color.light})]*/ transparent;
-      --nav-active-shadow: /*[(${theme.config.nav.active_shadow.light})]*/ transparent;
-      --nav-dropdown-background-color: /*[(${theme.config.nav.dropdown_background_color.light})]*/ transparent;
-      --nav-dropdown-font-color: /*[(${theme.config.nav.dropdown_font_color.light})]*/ transparent;
-      --nav-dropdown-hover-font-color: /*[(${theme.config.nav.dropdown_hover_font_color.light})]*/ transparent;
-    }
-
-    html[data-color-scheme=dark] {
-      --theme: #3aa675;
-      --body-background: rgb(15, 23, 42);
-      --nav-font-color: /*[(${theme.config.nav.font_color.dark})]*/ transparent;
-      --nav-active-font-color: /*[(${theme.config.nav.active_font_color.dark})]*/ transparent;
-      --nav-active-hover-font-color: /*[(${theme.config.nav.active_hover_font_color.dark})]*/ transparent;
-      --nav-active-background-color: /*[(${theme.config.nav.active_background_color.dark})]*/ transparent;
-      --nav-active-shadow: /*[(${theme.config.nav.active_shadow.dark})]*/ transparent;
-      --nav-dropdown-background-color: /*[(${theme.config.nav.dropdown_background_color.dark})]*/ transparent;
-      --nav-dropdown-font-color: /*[(${theme.config.nav.dropdown_font_color.dark})]*/ transparent;
-      --nav-dropdown-hover-font-color: /*[(${theme.config.nav.dropdown_hover_font_color.dark})]*/ transparent;
-    }
-
-    .loading #Butterfly {
-      display: none;
-    }
-
-    .loading:before, .loading:after {
-      animation-name: fa-spin;
-      animation-duration: var(--fa-animation-duration, 2s);
-      animation-iteration-count: var(--fa-animation-iteration-count, infinite);
-      animation-timing-function: var(--fa-animation-timing, linear);
-      animation-direction: var(--fa-animation-direction, normal);
-      animation-delay: var(--fa-animation-delay, 0s);
-      font-family: "Font Awesome 6 Duotone";
-      font-weight: 900;
-      letter-spacing: normal;
-      -webkit-font-smoothing: antialiased;
-      display: var(--fa-display, inline-block);
-      font-style: normal;
-      font-variant: normal;
-      line-height: 1;
-      text-rendering: auto;
-      font-size: 30px;
-      width: 33px;
-      height: 33px;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      right: 0;
-      bottom: 0;
-      z-index: 88;
-      transform: translate(-50%, -50%);
-      visibility: visible;
-    }
-    
-    .loading:before {
-      color: var(--fa-primary-color, inherit);
-      opacity: var(--fa-primary-opacity, 1);
-      content: "\e1d4";
-    }
-
-    .loading:after {
-      content: "\e1d4\e1d4";
-      opacity: var(--fa-secondary-opacity, .4);
-      color: var(--fa-secondary-color, inherit);
-    }
-
-  </style>
-  <link rel="preload stylesheet" as="style" th:if="${theme.config.style.font_family != 'null'}" th:href="${assets_link + 'font/' + theme.config.style.font_family + '.min.css'}">
-  <link rel="preload stylesheet" as="style" th:href="${assets_link + 'plugins/fontawesome/fontawesome.min.css'}">
-  <link rel="preload stylesheet" as="style" th:href="${assets_link + 'plugins/cursor/' + 'simple' + '.min.css?v=' + theme.spec.version}">
-</th:block>
-
-
-<!--/* 分页配置  */-->
-<script xmlns:th="https://www.thymeleaf.org" id="paginationScript" th:fragment="pagination(data)" th:inline="javascript">
-  window.MainApp.conf.pagination = {
-    nextUrl: /*[[${data.nextUrl}]]*/ {},
-    prevUrl: /*[[${data.prevUrl}]]*/ {},
-    page: /*[[${data.page}]]*/ {},
-    size: /*[[${data.size}]]*/ {},
-    total: /*[[${data.total}]]*/ {},
-    totalPages: /*[[${data.totalPages}]]*/ {},
-    hasPrevious: /*[[${data.hasPrevious()}]]*/ {},
-    hasNext: /*[[${data.hasNext()}]]*/ {},
+<script id="baseScript" th:inline="javascript">
+  window.MainApp = {
+    conf: {
+      style_mode: /*[[${theme.config.style.mode}]]*/ null,
+      enable_aside: /*[[${theme.config.aside.enable}]]*/ true,
+      enable_webInfo: /*[[${theme.config.aside.enable_webInfo}]]*/ true,
+      assets_link: /*[[${assets_link}]]*/ true,
+    },
+    attrs: {},
+    modules: {},
   };
+
+  document.documentElement.dataset.colorScheme = localStorage.getItem('Butterfly-data-theme');
 </script>
 
-<!--/* 渲染配置  */-->
-<th:block th:fragment="render">
-  <script id="renderScript" th:inline="javascript">
-    window.MainApp.conf.render = {
-      enable_h_icon: /*[[${theme.config.render.enable_h_icon}]]*/ true,
-    };
-  </script>
-</th:block>
+<!--/* style */-->
+<style th:inline="css"
+       th:with="body_background = ${is_body_background_http ? 'url('+theme.config.style.body_background+') no-repeat fixed center / cover;' : theme.config.style.body_background }"
+>
+  :root {
+    --card-border-radius: /*[(${theme.config.card.radius})]*/ 24px;
+    --card-box-shadow: /*[(${theme.config.card.shadow})]*/ transparent;
+    --link-hover-color: var(--theme);
+  }
 
-<!--/* 代码块配置  */-->
-<th:block th:fragment="code" th:if="${theme.config.render.enable_code}">
-  <link rel="preload stylesheet" as="style" th:href="${assets_link + 'plugins/prism/prism.min.css'}">
-  <link rel="preload stylesheet" as="style" id="codeLight" th:href="${assets_link + 'plugins/prism/themes/prism-' + theme.config.render.code_theme_light + '.css'}">
-  <link rel="preload stylesheet" as="style" id="codeDark" th:href="${assets_link + 'plugins/prism/themes/prism-' + theme.config.render.code_theme_dark + '.css'}">
-  <script type="text/javascript" th:src="${assets_link + 'plugins/prism/prism.min.js'}"></script>
-  <script id="renderScript" th:inline="javascript">
-    window.MainApp.conf.code = {
-      enable_code: /*[[${theme.config.render.enable_code}]]*/ true,
-      enable_code_copy: /*[[${theme.config.render.enable_code_copy}]]*/ true,
-      enable_code_expander: /*[[${theme.config.render.enable_code_expander}]]*/ true,
-      enable_code_title: /*[[${theme.config.render.enable_code_title}]]*/ true,
-      enable_code_hr: /*[[${theme.config.render.enable_code_hr}]]*/ true,
-      enable_code_line: /*[[${theme.config.render.enable_code_line}]]*/ true,
-    };
+  html {
+    --theme: #1c69ed;
+    --body-background: /*[(${body_background})]*/ transparent;
+    --nav-font-color: /*[(${theme.config.nav.font_color.light})]*/ transparent;
+    --nav-active-font-color: /*[(${theme.config.nav.active_font_color.light})]*/ transparent;
+    --nav-active-hover-font-color: /*[(${theme.config.nav.active_hover_font_color.light})]*/ transparent;
+    --nav-active-background-color: /*[(${theme.config.nav.active_background_color.light})]*/ transparent;
+    --nav-active-shadow: /*[(${theme.config.nav.active_shadow.light})]*/ transparent;
+    --nav-dropdown-background-color: /*[(${theme.config.nav.dropdown_background_color.light})]*/ transparent;
+    --nav-dropdown-font-color: /*[(${theme.config.nav.dropdown_font_color.light})]*/ transparent;
+    --nav-dropdown-hover-font-color: /*[(${theme.config.nav.dropdown_hover_font_color.light})]*/ transparent;
+  }
 
-    Object.assign(window.MainApp.conf.attrs, {
-      enable_code_copy: /*[[${#annotations.getOrDefault(post, 'enable_code_copy','true')}]]*/ true,
-    });
-  </script>
-</th:block>
+  html[data-color-scheme=dark] {
+    --theme: #3aa675;
+    --body-background: rgb(15, 23, 42);
+    --nav-font-color: /*[(${theme.config.nav.font_color.dark})]*/ transparent;
+    --nav-active-font-color: /*[(${theme.config.nav.active_font_color.dark})]*/ transparent;
+    --nav-active-hover-font-color: /*[(${theme.config.nav.active_hover_font_color.dark})]*/ transparent;
+    --nav-active-background-color: /*[(${theme.config.nav.active_background_color.dark})]*/ transparent;
+    --nav-active-shadow: /*[(${theme.config.nav.active_shadow.dark})]*/ transparent;
+    --nav-dropdown-background-color: /*[(${theme.config.nav.dropdown_background_color.dark})]*/ transparent;
+    --nav-dropdown-font-color: /*[(${theme.config.nav.dropdown_font_color.dark})]*/ transparent;
+    --nav-dropdown-hover-font-color: /*[(${theme.config.nav.dropdown_hover_font_color.dark})]*/ transparent;
+  }
+
+  .loading #Butterfly {
+    display: none;
+  }
+
+  .loading:before, .loading:after {
+    animation-name: fa-spin;
+    animation-duration: var(--fa-animation-duration, 2s);
+    animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+    animation-timing-function: var(--fa-animation-timing, linear);
+    animation-direction: var(--fa-animation-direction, normal);
+    animation-delay: var(--fa-animation-delay, 0s);
+    font-family: "Font Awesome 6 Duotone";
+    font-weight: 900;
+    letter-spacing: normal;
+    -webkit-font-smoothing: antialiased;
+    display: var(--fa-display, inline-block);
+    font-style: normal;
+    font-variant: normal;
+    line-height: 1;
+    text-rendering: auto;
+    font-size: 30px;
+    width: 33px;
+    height: 33px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    right: 0;
+    bottom: 0;
+    z-index: 88;
+    transform: translate(-50%, -50%);
+    visibility: visible;
+  }
+
+  .loading:before {
+    color: var(--fa-primary-color, inherit);
+    opacity: var(--fa-primary-opacity, 1);
+    content: "\e1d4";
+  }
+
+  .loading:after {
+    content: "\e1d4\e1d4";
+    opacity: var(--fa-secondary-opacity, .4);
+    color: var(--fa-secondary-color, inherit);
+  }
+
+</style>
+<link rel="preload stylesheet" as="style" th:if="${theme.config.style.font_family != 'null'}" th:href="${assets_link + 'font/' + theme.config.style.font_family + '.min.css'}">
+<link rel="preload stylesheet" as="style" th:href="${assets_link + 'plugins/fontawesome/fontawesome.min.css'}">
+<link rel="preload stylesheet" as="style" th:href="${assets_link + 'plugins/cursor/' + 'simple' + '.min.css?v=' + theme.spec.version}">
 

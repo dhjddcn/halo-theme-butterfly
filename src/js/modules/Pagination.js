@@ -9,13 +9,11 @@ import $ from 'jquery';
 
 export default class Pagination {
   name = 'Pagination';
-  
-  #conf = {};
+
+  #conf = MainApp.conf;
 
   constructor() {
-    if(!MainApp.conf.pagination) return;
-
-    this.#conf = MainApp.conf.pagination;
+    if(!MainApp.conf.total) return;
 
     if(this.#conf.page > this.#conf.totalPages) return;
 

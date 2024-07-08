@@ -19,20 +19,14 @@
         background-image: /*[(${'url('+above_background+')'})]*/ none;
       }
     </style>
-
-
-    <script id="pageScript" th:inline="javascript">
-
-    </script>
-
-    <th:block th:replace="~{core/config::render}"/>
-    <th:block th:replace="~{core/config::code}"/>
+    <th:block th:replace="~{modules/render}"/>
+    <th:block th:replace="~{modules/codeBlock}"/>
   </th:block>
 
   <th:block th:fragment="header">
     <header th:class="${not theme.config.post.enable_above ? 'header dp' : 'header'}">
       <!--/* 导航栏 */-->
-      <th:block th:replace="~{modules/nav}"/>
+      <th:block th:replace="~{common/nav}"/>
 
       <!--第一屏内容-->
       <section class="above" th:if="${theme.config.post.enable_above}">
@@ -125,6 +119,6 @@
           th:attr="name=${post.metadata.name}"
         />
     </section>
-    <th:block th:replace="~{modules/aside::aside_post}"/>
+    <th:block th:replace="~{common/aside::aside_post}"/>
   </th:block>
 </layout>

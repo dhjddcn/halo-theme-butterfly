@@ -9,16 +9,16 @@ import Clipboard from 'clipboard';
 import {useInsertStyle, useToBool} from '../core/_util';
 
 export default class codeBlock {
-  name = 'Code';
+  name = 'codeBlock';
   
   #renderDom = $('article.render'); // 文章渲染区域
   
-  #conf = MainApp.conf.code;
+  #conf = MainApp.conf;
   
-  #attrs = MainApp.conf.attrs;
+  #attrs = MainApp.attrs;
   
   constructor() {
-    if(this.#conf.enable_code){
+    if(this.#conf?.enable_code){
       this.#addCss();
       this.#code();
       this.#codeToolbar();
@@ -46,10 +46,10 @@ export default class codeBlock {
     Prism.highlightAll();
 
     // 初始化代码块
-    this.#codeTheme(MainApp.action.theme.getMode());
+    this.#codeTheme(MainApp.useTheme.getMode());
     
     // 代码块主题切换
-    MainApp.action.theme.change((mode) => this.#codeTheme(mode));
+    MainApp.useTheme.change((mode) => this.#codeTheme(mode));
   }
 
   /**
@@ -113,7 +113,7 @@ export default class codeBlock {
         const clipboard = new Clipboard(e.target, {text: () => text});
 
         clipboard.on('success', () => {
-          MainApp.action.message.info('复制成功~');
+          MainApp.useMessage.info('复制成功~');
           clipboard.destroy();
         });
 

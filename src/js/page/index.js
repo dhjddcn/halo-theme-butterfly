@@ -20,7 +20,7 @@ class Index {
     const {
             typewriter_custom_text, enable_typewriter_random_text,
             typewriter_random_api, typewriter_api_value_format,
-          } = MainApp.conf.page;
+          } = MainApp.conf;
 
     // 创建打字
     const useTyped = (strings) => {

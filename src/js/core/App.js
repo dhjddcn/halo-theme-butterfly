@@ -18,11 +18,11 @@ import Common from './common';
  */
 export default function App(modules = []) {
   return function(target) {
-    Object.assign(window.MainApp.action, {
-      theme: new Theme(), //主题
-      common: new Common(), // 公用逻辑
-      scroll: new Scroll(), //滚动导航侧边
-      message: new Message(), //滚动导航侧边
+    Object.assign(window.MainApp, {
+      useTheme: new Theme(), //主题
+      useCommon: new Common(), // 公用逻辑
+      useScroll: new Scroll(), //滚动导航侧边
+      useMessage: new Message(), //滚动导航侧边
     });
 
     const ins = new target();
@@ -35,9 +35,9 @@ export default function App(modules = []) {
       const mods = new modules[i]();
       window.MainApp.modules[mods.name] = mods;
     }
-    
+
     useClearPage();
-    
+
     return ins;
   };
 }
