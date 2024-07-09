@@ -1,5 +1,7 @@
 <!--/* 基础配置 */-->
 <!--suppress CssUnresolvedCustomProperty -->
+<script type="text/javascript"  th:src="${assets_link + 'plugins/loading/' + 'color_rotate' + '.min.js?v=' + theme.spec.version + isDev}"></script>
+
 <script id="baseScript" th:inline="javascript">
   window.MainApp = {
     conf: {
@@ -54,50 +56,7 @@
   .loading #Butterfly {
     display: none;
   }
-
-  .loading:before, .loading:after {
-    animation-name: fa-spin;
-    animation-duration: var(--fa-animation-duration, 2s);
-    animation-iteration-count: var(--fa-animation-iteration-count, infinite);
-    animation-timing-function: var(--fa-animation-timing, linear);
-    animation-direction: var(--fa-animation-direction, normal);
-    animation-delay: var(--fa-animation-delay, 0s);
-    font-family: "Font Awesome 6 Duotone";
-    font-weight: 900;
-    letter-spacing: normal;
-    -webkit-font-smoothing: antialiased;
-    display: var(--fa-display, inline-block);
-    font-style: normal;
-    font-variant: normal;
-    line-height: 1;
-    text-rendering: auto;
-    font-size: 30px;
-    width: 33px;
-    height: 33px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    right: 0;
-    bottom: 0;
-    z-index: 88;
-    transform: translate(-50%, -50%);
-    visibility: visible;
-  }
-
-  .loading:before {
-    color: var(--fa-primary-color, inherit);
-    opacity: var(--fa-primary-opacity, 1);
-    content: "\e1d4";
-  }
-
-  .loading:after {
-    content: "\e1d4\e1d4";
-    opacity: var(--fa-secondary-opacity, .4);
-    color: var(--fa-secondary-color, inherit);
-  }
-
 </style>
 <link rel="preload stylesheet" as="style" th:if="${theme.config.style.font_family != 'null'}" th:href="${assets_link + 'font/' + theme.config.style.font_family + '.min.css'}">
 <link rel="preload stylesheet" as="style" th:href="${assets_link + 'plugins/fontawesome/fontawesome.min.css'}">
 <link rel="preload stylesheet" as="style" th:href="${assets_link + 'plugins/cursor/' + 'simple' + '.min.css?v=' + theme.spec.version}">
-

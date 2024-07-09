@@ -1,0 +1,20 @@
+<th:block th:if="${theme.config.render.enable_code}">
+  <link rel="preload stylesheet" as="style" th:href="${assets_link + 'plugins/prism/prism.min.css'}">
+  <link rel="preload stylesheet" as="style" id="codeLight" th:href="${assets_link + 'plugins/prism/themes/prism-' + theme.config.render.code_theme_light + '.css'}">
+  <link rel="preload stylesheet" as="style" id="codeDark" th:href="${assets_link + 'plugins/prism/themes/prism-' + theme.config.render.code_theme_dark + '.css'}">
+  <script type="text/javascript" th:src="${assets_link + 'plugins/prism/prism.min.js'}"></script>
+  <script id="renderScript" th:inline="javascript">
+    Object.assign(window.MainApp.conf, {
+      enable_code: /*[[${theme.config.render.enable_code}]]*/ true,
+      enable_code_copy: /*[[${theme.config.render.enable_code_copy}]]*/ true,
+      enable_code_expander: /*[[${theme.config.render.enable_code_expander}]]*/ true,
+      enable_code_title: /*[[${theme.config.render.enable_code_title}]]*/ true,
+      enable_code_hr: /*[[${theme.config.render.enable_code_hr}]]*/ true,
+      enable_code_line: /*[[${theme.config.render.enable_code_line}]]*/ true,
+    });
+
+    Object.assign(window.MainApp.attrs, {
+      enable_code_copy: /*[[${#annotations.getOrDefault(post, 'enable_code_copy','true')}]]*/ true,
+    });
+  </script>
+</th:block>

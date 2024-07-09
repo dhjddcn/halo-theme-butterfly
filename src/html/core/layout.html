@@ -34,8 +34,8 @@
   <div id="Butterfly" th:class="${page}">
     <th:block th:replace="${header}"></th:block>
     <main class="main animate__animated  animate__fadeIn" th:classappend="${theme.config.aside.enable ? theme.config.aside.position : '' }" th:insert="${main}"></main>
-    <th:block th:replace="~{modules/footer}"/>
-    <th:block th:replace="~{modules/components::side}"/>
+    <th:block th:replace="~{common/footer}"/>
+    <th:block th:replace="~{common/components::side}"/>
   </div>
   </body>
   <script type="text/javascript" th:src="${assets_link + 'js/' + page + '.min.js?v=' + theme.spec.version + isDev}"></script>
