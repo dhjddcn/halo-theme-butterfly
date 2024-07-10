@@ -160,11 +160,11 @@ export function useDelay(time) {
 export function useChart(dom, getOption) {
   const options = getOption();
 
-  let es = echarts.init(dom, this.useTheme.getMode());
+  let es = echarts.init(dom, MainApp.useTheme.getMode());
 
   es.setOption(options);
 
-  this.useTheme.change((mode) => {
+  MainApp.useTheme.change((mode) => {
     es?.dispose();
     es = echarts.init(dom, mode);
     es.setOption(options);

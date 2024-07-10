@@ -35,7 +35,7 @@ class Archives {
     useChart.call(this, chartDom, () => {
       const data = [];
 
-      for (let year of this.useConfig.archives) {
+      for (let year of MainApp.data) {
         for (let months of year['months']) {
           data.push([
             `${year['year']}-${months['month']}`,

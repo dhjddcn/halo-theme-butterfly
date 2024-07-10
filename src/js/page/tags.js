@@ -5,16 +5,15 @@
  * @Description: 标签
  */
 
-import {useChart, useRandomColor} from '../core/_util';
 import App from '../core/App';
 import * as echarts from 'echarts';
-import {LineChart, PieChart, GaugeChart} from 'echarts/charts';
-import {TitleComponent, TooltipComponent, GridComponent, DataZoomComponent} from 'echarts/components';
+import {useChart, useRandomColor} from '../core/_util';
+import {LineChart, GaugeChart} from 'echarts/charts';
 import {CanvasRenderer} from 'echarts/renderers';
+import {TitleComponent, TooltipComponent, GridComponent, DataZoomComponent} from 'echarts/components';
 
 // 注册所需的组件和渲染器
 echarts.use([
-  PieChart,
   LineChart,
   TitleComponent,
   TooltipComponent,
@@ -62,7 +61,7 @@ class Tags {
 
     source = source.length >= 10 ? source.slice(0, 10) : source;
 
-    useChart.call(this, chartDom, () => {
+    useChart(chartDom, () => {
       return {
         color: 'null',
         backgroundColor: '',

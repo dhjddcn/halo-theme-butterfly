@@ -1,4 +1,4 @@
-<script xmlns:th="https://www.thymeleaf.org" id="paginationScript"  th:inline="javascript">
+<script xmlns:th="https://www.thymeleaf.org"  th:fragment="pagination" id="paginationScript"  th:inline="javascript">
   Object.assign(window.MainApp.conf, {
     nextUrl: /*[[${posts.nextUrl}]]*/ {},
     prevUrl: /*[[${posts.prevUrl}]]*/ {},

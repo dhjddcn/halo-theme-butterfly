@@ -26,7 +26,6 @@
       });
     </script>
 
-    <!-- 分页-->
     <th:block th:replace="~{modules/pagination}"/>
   </th:block>
 
@@ -37,7 +36,7 @@
       <!--/* 导航栏 */-->
       <th:block th:replace="~{common/nav}"/>
 
-      <!--第一屏内容-->
+      <!--/* 第一屏内容 */-->
       <section class="above" th:if="${theme.config.index.enable_above}">
         <div class="above-info">
           <h1 class="above-title" th:text="${site.title}"></h1>

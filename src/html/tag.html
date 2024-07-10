@@ -2,33 +2,29 @@
   th:replace="~{core/layout :: layout (
   page = 'tag',
   title = ${site.title} + ' - ' + '标签',
-  css_pin = ~{::css_pin},
-  js_pin = ~{::js_pin},
+  pin = ~{::pin},
   header = ~{::header},
   main = ~{::main}
   )}"
 >
-  <!--/* css */-->
-  <th:block th:fragment="css_pin">
+  <!--/* pin */-->
+  <th:block th:fragment="pin">
     <style th:inline="css">
       .above {
         background-image: /*[(${'url('+theme.config.tags.above_background+')'})]*/ none;
       }
     </style>
-  </th:block>
 
-  <!--/* js */-->
-  <th:block th:fragment="js_pin">
-
+    <th:block th:replace="~{modules/pagination}"/>
   </th:block>
 
   <!--/* header */-->
   <th:block th:fragment="header">
     <header th:class="${not theme.config.tags.enable_above ? 'header dp' : 'header'}">
       <!--/* 导航栏 */-->
-      <th:block th:replace="~{modules/nav}"/>
+      <th:block th:replace="~{common/nav}"/>
 
-      <!--第一屏内容-->
+      <!--/* 第一屏内容 */-->
       <section class="above" th:if="${theme.config.tags.enable_above}">
         <div class="above-info">
           <h1 class="above-title">标签</h1>
@@ -42,9 +38,8 @@
   <!--/* 內容 */-->
   <th:block th:fragment="main">
     <section class="content">
-      <th:block th:replace="~{modules/components:: list(${posts.items},'list')}"/>
-      <th:block th:replace="~{modules/components:: pagination(${posts})}"/>
+      <th:block th:replace="~{common/components:: list(${posts.items},'list')}"/>
     </section>
-    <th:block th:replace="~{modules/aside::aside_common}"/>
+    <th:block th:replace="~{common/aside::aside_common}"/>
   </th:block>
 </layout>

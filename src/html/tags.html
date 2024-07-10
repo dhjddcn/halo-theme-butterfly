@@ -2,26 +2,20 @@
   th:replace="~{core/layout :: layout (
   page = 'tags',
   title = ${site.title} + ' - ' + '标签',
-  css_pin = ~{::css_pin},
-  js_pin = ~{::js_pin},
+  pin = ~{::pin},
   header = ~{::header},
   main = ~{::main}
   )}"
 >
-  <!--/* css */-->
-  <th:block th:fragment="css_pin">
+  <!--/* pin */-->
+  <th:block th:fragment="pin">
     <style th:inline="css">
       .above {
         background-image: /*[(${'url('+theme.config.tags.above_background+')'})]*/ none;
       }
     </style>
-  </th:block>
 
-  <!--/* js */-->
-  <th:block th:fragment="js_pin">
-    <script id="tagsScript" th:inline="javascript">
-      window.THEME_CONFIG.tags =  /*[[${tags}]]*/ [];
-      window['tagsScript']?.remove();
+    <script id="pageScript" th:inline="javascript">
     </script>
   </th:block>
 
@@ -30,7 +24,7 @@
   <th:block th:fragment="header">
     <header th:class="${not theme.config.tags.enable_above ? 'header dp' : 'header'}">
       <!--/* 导航栏 */-->
-      <th:block th:replace="~{modules/nav}"/>
+      <th:block th:replace="~{common/nav}"/>
 
       <!--第一屏内容-->
       <section class="above" th:if="${theme.config.tags.enable_above}">
@@ -46,7 +40,7 @@
   <th:block th:fragment="main">
     <section class="content card" th:with="noData = ${not #lists.isEmpty(tags)}">
       <th:block th:if="${noData}">
-        <div class="chart"></div>
+        <canvas class="chart"></canvas>
 
         <div class="equinox">
           <a class="link "
@@ -58,8 +52,8 @@
         </div>
       </th:block>
 
-      <th:block th:unless="${noData}" th:insert="~{modules/components:: emptyData(false)}"></th:block>
+      <th:block th:unless="${noData}" th:insert="~{common/components:: emptyData(false)}"></th:block>
     </section>
-    <th:block th:replace="~{modules/aside::aside_common}"/>
+    <th:block th:replace="~{common/aside::aside_common}"/>
   </th:block>
 </layout>
