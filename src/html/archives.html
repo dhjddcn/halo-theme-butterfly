@@ -19,7 +19,7 @@
       window.MainApp.data =  /*[[${postFinder.archives(1,archives.total).items}]]*/ [];
     </script>
 
-    <th:block th:replace="~{modules/pagination}"/>
+    <th:block th:replace="~{modules/pagination::in(${archives})}"/>
   </th:block>
 
   <!--/* header */-->

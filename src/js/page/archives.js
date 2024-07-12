@@ -32,7 +32,7 @@ class Archives {
 
     if(!chartDom) return;
 
-    useChart.call(this, chartDom, () => {
+    useChart( chartDom, () => {
       const data = [];
 
       for (let year of MainApp.data) {

@@ -40,7 +40,7 @@
   <th:block th:fragment="main">
     <section class="content card" th:with="noData = ${not #lists.isEmpty(tags)}">
       <th:block th:if="${noData}">
-        <canvas class="chart"></canvas>
+        <div class="chart"></div>
 
         <div class="equinox">
           <a class="link "

@@ -160,9 +160,20 @@ export function useDelay(time) {
 export function useChart(dom, getOption) {
   const options = getOption();
 
-  let es = echarts.init(dom, MainApp.useTheme.getMode());
+  let es = null;
 
-  es.setOption(options);
+  const observer = new ResizeObserver(entries => {
+    for (let entry of entries) {
+      const {width} = entry.contentRect;
+      if(width > 0) {
+        es = echarts.init(dom, MainApp.useTheme.getMode());
+        es.setOption(options);
+        observer.disconnect();
+      }
+    }
+  });
+
+  observer.observe(dom);
 
   MainApp.useTheme.change((mode) => {
     es?.dispose();

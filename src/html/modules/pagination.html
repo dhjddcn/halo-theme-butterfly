@@ -1,12 +1,12 @@
-<script xmlns:th="https://www.thymeleaf.org"  th:fragment="pagination" id="paginationScript"  th:inline="javascript">
+<script xmlns:th="https://www.thymeleaf.org"  th:fragment="in(data)" id="paginationScript"  th:inline="javascript">
   Object.assign(window.MainApp.conf, {
-    nextUrl: /*[[${posts.nextUrl}]]*/ {},
-    prevUrl: /*[[${posts.prevUrl}]]*/ {},
-    page: /*[[${posts.page}]]*/ {},
-    size: /*[[${posts.size}]]*/ {},
-    total: /*[[${posts.total}]]*/ {},
-    totalPages: /*[[${posts.totalPages}]]*/ {},
-    hasPrevious: /*[[${posts.hasPrevious()}]]*/ {},
-    hasNext: /*[[${posts.hasNext()}]]*/ {},
+    nextUrl: /*[[${data.nextUrl}]]*/ {},
+    prevUrl: /*[[${data.prevUrl}]]*/ {},
+    page: /*[[${data.page}]]*/ {},
+    size: /*[[${data.size}]]*/ {},
+    total: /*[[${data.total}]]*/ {},
+    totalPages: /*[[${data.totalPages}]]*/ {},
+    hasPrevious: /*[[${data.hasPrevious()}]]*/ {},
+    hasNext: /*[[${data.hasNext()}]]*/ {},
   });
 </script>

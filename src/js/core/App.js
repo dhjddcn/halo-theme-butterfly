@@ -10,7 +10,6 @@ import Message from './_message';
 import Theme from './theme';
 import Scroll from './scroll';
 import Common from './common';
-
 /**
  * @desc: 注册应用
  * @returns function(*): *
