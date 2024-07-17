@@ -1,5 +1,5 @@
 <layout
-  th:replace="~{core/layout :: layout (
+  th:replace="~{views/layout :: layout (
   page = 'tag',
   title = ${site.title} + ' - ' + '标签',
   pin = ~{::pin},
@@ -15,14 +15,28 @@
       }
     </style>
 
-    <th:block th:replace="~{modules/pagination}"/>
+
+    <script id="pageScript" th:inline="javascript">
+      Object.assign(window.MainApp.conf, {
+        // 分页
+        nextUrl: /*[[${posts.nextUrl}]]*/ {},
+        prevUrl: /*[[${posts.prevUrl}]]*/ {},
+        page: /*[[${posts.page}]]*/ {},
+        size: /*[[${posts.size}]]*/ {},
+        total: /*[[${posts.total}]]*/ {},
+        totalPages: /*[[${posts.totalPages}]]*/ {},
+        hasPrevious: /*[[${posts.hasPrevious()}]]*/ {},
+        hasNext: /*[[${posts.hasNext()}]]*/ {},
+      });
+    </script>
+    
   </th:block>
 
   <!--/* header */-->
   <th:block th:fragment="header">
     <header th:class="${not theme.config.tags.enable_above ? 'header dp' : 'header'}">
       <!--/* 导航栏 */-->
-      <th:block th:replace="~{common/nav}"/>
+      <th:block th:replace="~{views/nav}"/>
 
       <!--/* 第一屏内容 */-->
       <section class="above" th:if="${theme.config.tags.enable_above}">
@@ -38,8 +52,8 @@
   <!--/* 內容 */-->
   <th:block th:fragment="main">
     <section class="content">
-      <th:block th:replace="~{common/components:: list(${posts.items},'list')}"/>
+      <th:block th:replace="~{views/components:: list(${posts.items},'list')}"/>
     </section>
-    <th:block th:replace="~{common/aside::aside_common}"/>
+    <th:block th:replace="~{views/aside::common}"/>
   </th:block>
 </layout>

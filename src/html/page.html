@@ -1,5 +1,5 @@
 <layout
-  th:replace="~{core/layout :: layout (
+  th:replace="~{base/layout :: layout (
   page = 'single',
   title = ${singlePage.spec.title} ,
   css_pin = ~{::css_pin},
@@ -26,7 +26,7 @@
   <th:block th:fragment="header">
     <header th:class="${not theme.config.index.enable_above ? 'header dp' : 'header'}">
       <!--/* 导航栏 */-->
-      <th:block th:replace="~{modules/nav}"/>
+      <th:block th:replace="~{views/nav}"/>
 
       <!--第一屏内容-->
       <section class="above" th:if="${theme.config.index.enable_above}">
@@ -40,7 +40,7 @@
 
   <!--/* 內容 */-->
   <th:block th:fragment="main">
-    <th:block th:replace="~{modules/render::single}"/>
-    <th:block th:replace="~{modules/aside::aside_common}"/>
+    <th:block th:replace="~{views/render::single}"/>
+    <th:block th:replace="~{views/aside::common}"/>
   </th:block>
 </layout>

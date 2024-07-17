@@ -1,5 +1,5 @@
 <layout
-  th:replace="~{core/layout :: layout (
+  th:replace="~{base/layout :: layout (
   page = 'category',
   title = ${site.title} + ' - ' + '分类列表',
   css_pin = ~{::css_pin},
@@ -26,7 +26,7 @@
   <th:block th:fragment="header">
     <header th:class="${not theme.config.categories.enable_above ? 'header dp' : 'header'}">
       <!--/* 导航栏 */-->
-      <th:block th:replace="~{modules/nav}"/>
+      <th:block th:replace="~{views/nav}"/>
 
       <!--第一屏内容-->
       <section class="above" th:if="${theme.config.categories.enable_above}">
@@ -41,9 +41,9 @@
   <!--/* 內容 */-->
   <th:block th:fragment="main">
     <section class="content">
-      <th:block th:replace="~{modules/components:: list(${posts.items},'list')}"/>
-      <th:block th:replace="~{modules/components:: pagination(${posts})}"/>
+      <th:block th:replace="~{views/components:: list(${posts.items},'list')}"/>
+      <th:block th:replace="~{views/components:: pagination(${posts})}"/>
     </section>
-    <th:block th:replace="~{modules/aside::aside_common}"/>
+    <th:block th:replace="~{views/aside::common}"/>
   </th:block>
 </layout>

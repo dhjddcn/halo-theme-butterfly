@@ -1,5 +1,5 @@
 <layout
-  th:replace="~{core/layout :: layout (
+  th:replace="~{base/layout :: layout (
   page = 'archives',
   title = ${site.title} + ' - ' + '归档',
   pin = ~{::pin},
@@ -19,7 +19,7 @@
       window.MainApp.data =  /*[[${postFinder.archives(1,archives.total).items}]]*/ [];
     </script>
 
-    <th:block th:replace="~{modules/pagination::in(${archives})}"/>
+    <th:block th:replace="~{views/pagination::in(${archives})}"/>
   </th:block>
 
   <!--/* header */-->
@@ -77,7 +77,7 @@
 
       <th:block th:unless="${noData}" th:insert="~{common/components:: emptyData(false)}"></th:block>
     </section>
-    <th:block th:replace="~{common/aside::aside_common}"/>
+    <th:block th:replace="~{common/aside::common}"/>
   </th:block>
 
 </layout>

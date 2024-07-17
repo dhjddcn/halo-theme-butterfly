@@ -69,5 +69,4 @@ class Index {
     // 其他情况
     useTyped(text);
   }
-
 }

@@ -26,16 +26,16 @@
     <meta property="og:type" th:content="${page}" th:value="${page}">
     <link rel="apple-touch-icon" sizes="180x180" th:href="${site.logo}">
     <link rel="canonical" th:href="${site.url}">
-    <th:block th:replace="~{core/config}"/>
+    <th:block th:replace="~{views/config}"/>
     <th:block th:replace="${pin}"/>
     <link rel="preload stylesheet" as="style" th:href="${assets_link + 'css/' + page + '.min.css?v=' + theme.spec.version + isDev}">
   </head>
   <body class="loading" th:with="stats = ${siteStatsFinder.getStats()},contributor = ${contributorFinder.getContributor(theme.config.base.metadata_name)}">
   <div id="Butterfly" th:class="${page}">
     <th:block th:replace="${header}"></th:block>
-    <main class="main animate__animated  animate__fadeIn" th:classappend="${theme.config.aside.enable ? theme.config.aside.position : '' }" th:insert="${main}"></main>
-    <th:block th:replace="~{common/footer}"/>
-    <th:block th:replace="~{common/components::side}"/>
+    <main class="main animate__animated   " th:classappend="${theme.config.aside.enable ? theme.config.aside.position : '' }" th:insert="${main}"></main>
+    <th:block th:replace="~{views/footer}"/>
+    <th:block th:replace="~{views/components::side}"/>
   </div>
   </body>
   <script type="text/javascript" th:src="${assets_link + 'js/' + page + '.min.js?v=' + theme.spec.version + isDev}"></script>

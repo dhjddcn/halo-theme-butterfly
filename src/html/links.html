@@ -1,5 +1,5 @@
 <layout
-  th:replace="~{core/layout :: layout (
+  th:replace="~{base/layout :: layout (
   page = 'links',
   title = ${site.title} + ' - ' + '链接列表',
   pin = ~{::pin},
@@ -44,7 +44,7 @@
 
             <div class="list">
               <a class="link " th:each="link : ${group.links}" th:href="${link.spec.url}" target="_blank">
-                <img th:replace="~{modules/components:: lazyLoadImg(${link.spec.logo},${link.spec.displayName},'logo',false,'')}"/>
+                <img th:replace="~{views/components:: lazyLoadImg(${link.spec.logo},${link.spec.displayName},'logo',false,'')}"/>
                 <div class="info">
                   <p class="n" th:text="${link.spec.displayName}"></p>
                   <p class="d" th:text="${link.spec.description}"></p>
@@ -59,6 +59,6 @@
 
       <th:block th:unless="${noData}" th:insert="~{common/components:: emptyData(false)}"></th:block>
     </section>
-    <th:block th:replace="~{common/aside::aside_common}"/>
+    <th:block th:replace="~{common/aside::common}"/>
   </th:block>
 </layout>

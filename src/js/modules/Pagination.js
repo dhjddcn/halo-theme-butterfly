@@ -34,9 +34,9 @@ export default class Pagination {
   #getPath() {
     const regex = /.*?(?=\/\d+)\//;
 
-    if(this.#conf.hasNext) return this.#conf.nextUrl.match(regex)?.[0];
+    if(this.#conf.nextUrl.includes('/page/')) return this.#conf.nextUrl.match(regex)?.[0];
 
-    if(this.#conf.hasPrevious) return this.#conf.prevUrl.match(regex)?.[0];
+    if(this.#conf.prevUrl.includes('/page/')) return this.#conf.prevUrl.match(regex)?.[0];
 
     return '/';
   }

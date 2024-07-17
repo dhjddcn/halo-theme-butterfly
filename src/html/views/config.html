@@ -1,5 +1,4 @@
 <!--/* 基础配置 */-->
-<!--suppress CssUnresolvedCustomProperty -->
 <script type="text/javascript" th:src="${assets_link + 'plugins/loading/' + 'color_rotate' + '.min.js?v=' + theme.spec.version + isDev}"></script>
 
 <script id="baseScript" th:inline="javascript">
@@ -12,7 +11,6 @@
     },
     attrs: {},
     modules: {},
-    page:/*[[${page}]]*/ '',
   };
 
   document.documentElement.dataset.colorScheme = localStorage.getItem('Butterfly-data-theme');

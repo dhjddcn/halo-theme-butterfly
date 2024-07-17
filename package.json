@@ -93,5 +93,8 @@
     "webpack": "^5.68.0",
     "webpack-stream": "^7.0.0",
     "yamljs": "^0.3.0"
+  },
+  "dependencies": {
+    "terser-webpack-plugin": "^5.3.10"
   }
 }

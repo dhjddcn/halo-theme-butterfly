@@ -78,6 +78,7 @@
       line-height: 60px;
       text-align: center;
 
+   
       &::after {
         position: absolute;
         left: 0;
@@ -93,6 +94,8 @@
       }
 
       &:hover {
+        color: var(--nav-font-color);
+        
         &::after {
           opacity: 1;
           transform: scaleX(1);

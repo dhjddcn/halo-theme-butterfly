@@ -4,6 +4,7 @@
  * @fileName: Render
  * @Description: 渲染html
  */
+import * as echarts from 'echarts/core';
 import $ from 'jquery';
 import {useDelay} from '../core/_util';
 import tocBot from 'tocbot';
@@ -16,10 +17,10 @@ export default class Render {
   #tocStickyDom = $('.aside .is-sticky');
 
   #conf = MainApp.conf;
-  
+
   constructor() {
     this.#h();
-    this.#tocBot();
+    this.#domObserver();
     this.#tocBotH5();
     this.#copyRight();
   }
@@ -31,6 +32,20 @@ export default class Render {
     if(this.#conf.enable_h_icon) this.#renderDom.addClass('enable_h_icon');
   }
 
+  #domObserver() {
+    const renderDom = document.querySelector('article.render');
+
+    const observer = new ResizeObserver(entries => {
+      for (let entry of entries) {
+        if(entry.contentRect.height > 0) {
+          this.#tocBot();
+          observer.disconnect();
+        }
+      }
+    });
+    observer.observe(renderDom);
+  }
+
   /**
    * 设置目录
    */
@@ -38,14 +53,14 @@ export default class Render {
     tocBot.init({
       contentSelector: 'article.render',
       tocSelector: '.aside-toc > .toc',
-      headingSelector: 'h1, h2, h3, h4, h5, h6',
+      headingSelector: 'h1,h2,h3,h4,h5,h6',
       hasInnerContainers: true,
       scrollSmooth: true,
       includeTitleTags: true,
       scrollSmoothDuration: 280,
       throttleTimeout: 30,
-      headingsOffset: 80, // 目录中高亮的偏移值，和scrollSmoothOffset有关联
-      scrollSmoothOffset: -80, // 屏幕滚动的偏移值（这里和导航条固定也有关联）
+      headingsOffset: 20, // 目录中高亮的偏移值，和scrollSmoothOffset有关联
+      scrollSmoothOffset: -20, // 屏幕滚动的偏移值（这里和导航条固定也有关联）
       fixedSidebarOffset: 'auto',
       onClick: (e) => e.preventDefault(),
       scrollEndCallback: function(e) {
@@ -75,18 +90,18 @@ export default class Render {
     const adeToc = this.#tocStickyDom.find('.aside-toc');
 
     const sideBtn = $('.side-btn');
-    
+
     const tocBtn = $(`<button  class="button h5-toc" type="button"  title="文章目录" ><i class="fa-sharp fa-solid fa-list-tree"></i></button>`);
 
     sideBtn.prepend(tocBtn);
-    
+
     tocBtn.on('click', async () => {
       adeToc.toggle('fast');
-      
+
       await useDelay(500);
 
       adeToc.css('display') === 'none' && adeToc.attr('style', '');
-    })
+    });
   }
 
   /**

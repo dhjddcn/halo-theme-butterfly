@@ -1,6 +1,6 @@
 <layout
   xmlns:th="https://www.thymeleaf.org"
-  th:replace="~{core/layout :: layout (
+  th:replace="~{views/layout :: layout (
   page = 'post',
   title = ${post.spec.title},
   pin = ~{::pin},
@@ -19,14 +19,33 @@
         background-image: /*[(${'url('+above_background+')'})]*/ none;
       }
     </style>
-    <th:block th:replace="~{modules/render}"/>
-    <th:block th:replace="~{modules/codeBlock}"/>
+    <script id="pageScript" th:inline="javascript">
+      Object.assign(window.MainApp.conf, {
+        // 渲染
+        enable_h_icon: /*[[${theme.config.render.enable_h_icon}]]*/ true,
+        // 代码块
+        enable_code: /*[[${theme.config.render.enable_code}]]*/ true,
+        enable_code_copy: /*[[${theme.config.render.enable_code_copy}]]*/ true,
+        enable_code_expander: /*[[${theme.config.render.enable_code_expander}]]*/ true,
+        enable_code_title: /*[[${theme.config.render.enable_code_title}]]*/ true,
+        enable_code_hr: /*[[${theme.config.render.enable_code_hr}]]*/ true,
+        enable_code_line: /*[[${theme.config.render.enable_code_line}]]*/ true,
+      });
+      // 文章页面 自定义元数据
+      Object.assign(window.MainApp.attrs, {
+        enable_code_copy: /*[[${#annotations.getOrDefault(post, 'enable_code_copy','true')}]]*/ true,
+      });
+    </script>
+    <link rel="preload stylesheet" as="style" th:href="${assets_link + 'plugins/prism/prism.min.css'}">
+    <link rel="preload stylesheet" as="style" id="codeLight" th:href="${assets_link + 'plugins/prism/themes/prism-' + theme.config.render.code_theme_light + '.css'}">
+    <link rel="preload stylesheet" as="style" id="codeDark" th:href="${assets_link + 'plugins/prism/themes/prism-' + theme.config.render.code_theme_dark + '.css'}">
+    <script type="text/javascript" th:src="${assets_link + 'plugins/prism/prism.min.js'}"></script>
   </th:block>
 
   <th:block th:fragment="header">
     <header th:class="${not theme.config.post.enable_above ? 'header dp' : 'header'}">
       <!--/* 导航栏 */-->
-      <th:block th:replace="~{common/nav}"/>
+      <th:block th:replace="~{views/nav}"/>
 
       <!--第一屏内容-->
       <section class="above" th:if="${theme.config.post.enable_above}">
@@ -90,9 +109,9 @@
   <!--/* 內容 */-->
   <th:block th:fragment="main">
     <section class="content card">
-        <article class="render" th:utext="${post.content.content}"></article>
+      <article class="render" th:utext="${post.content.content}"></article>
 
-        <div class="copy-right">
+      <div class="copy-right">
         <i class="fa-solid fa-copyright"></i>
 
         <div class="author">
@@ -112,13 +131,13 @@
         </div>
       </div>
 
-        <halo:comment
-          th:if="${pluginFinder.available('PluginCommentWidget') && haloCommentEnabled && post.spec.allowComment}"
-          group="content.halo.run"
-          kind="Post"
-          th:attr="name=${post.metadata.name}"
-        />
+      <halo:comment
+        th:if="${pluginFinder.available('PluginCommentWidget') && haloCommentEnabled && post.spec.allowComment}"
+        group="content.halo.run"
+        kind="Post"
+        th:attr="name=${post.metadata.name}"
+      />
     </section>
-    <th:block th:replace="~{common/aside::aside_post}"/>
+    <th:block th:replace="~{views/aside::post}"/>
   </th:block>
 </layout>

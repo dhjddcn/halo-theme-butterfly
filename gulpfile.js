@@ -3,7 +3,6 @@ const gzip = require('gulp-gzip');
 const path = require('path');
 const fs = require('fs');
 const clean = require('gulp-clean');
-const zip = require('gulp-zip');
 const exec = require('child_process').exec;
 const yaml = require('yamljs');
 const inquirer = require('inquirer');
@@ -60,16 +59,20 @@ gulp.task('css', function() {
 });
 
 const uglify = require('gulp-uglify');
+const TerserPlugin = require('terser-webpack-plugin');
 const webpack = require('webpack-stream');
+const zip = require('gulp-zip');
 gulp.task('js', function() {
   const getEntryData = () => {
     try {
       let files = fs.readdirSync('./src/js/page', 'utf-8');
+
       const result = {};
-      files.forEach((file) => {
-        const fileName = file.replace(/.js$/, '');
-        result[fileName] = resolve(`./src/js/page/${file}`);
-      });
+
+      for (let i = 0; i < files.length; i++) {
+        const fileName = files[i].replace(/.js$/, '');
+        result[fileName] = resolve(`./src/js/page/${files[i]}`);
+      }
 
       return result;
     } catch (error) {
@@ -101,15 +104,32 @@ gulp.task('js', function() {
         },
       ],
     },
+    optimization: {
+      minimize: true,
+      minimizer: [
+        new TerserPlugin({
+          terserOptions: {
+            format: {
+              comments: true,
+            },
+          },
+          extractComments: false,
+        }),
+      ],
+    },
     stats: 'errors-only',
     output: {
       filename: '[name].min.js',
     },
-  }).pipe(uglify()).pipe(gulp.dest('./templates/assets/js')).pipe(
+  })
+  // .pipe(uglify())
+  .pipe(gulp.dest('./templates/assets/js'))
+  .pipe(
     gzip({
       threshold: '10kb',
     }),
-  ).pipe(gulp.dest('./templates/assets/js'));
+  )
+  .pipe(gulp.dest('./templates/assets/js'));
 });
 
 const htmlMin = require('gulp-htmlmin');
