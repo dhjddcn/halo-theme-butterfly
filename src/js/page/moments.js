@@ -6,9 +6,10 @@
  */
 
 import App from '../core/App';
+import AmplifyImg from '../modules/AmplifyImg';
 
 
-@App([])
+@App([AmplifyImg])
 class Moments {
 
 

@@ -1,15 +1,14 @@
 <layout
-  th:replace="~{base/layout :: layout (
+  th:replace="~{views/layout :: layout (
   page = 'single',
   title = ${singlePage.spec.title} ,
-  css_pin = ~{::css_pin},
-  js_pin = ~{::js_pin},
+  pin = ~{::pin},
   header = ~{::header},
   main = ~{::main}
   )}"
 >
-  <!--/* css */-->
-  <th:block th:fragment="css_pin">
+  <!--/* pin */-->
+  <th:block th:fragment="pin">
     <style th:with="above_background = ${ #strings.isEmpty(singlePage.spec.cover) ? theme.config.index.above_background : (theme.config.loading.img.random_enable ? theme.config.loading.img.random_link  : ''  )}" th:inline="css">
       .above {
         background-image: /*[(${'url('+above_background+')'})]*/ none;
@@ -17,10 +16,6 @@
     </style>
   </th:block>
 
-  <!--/* js */-->
-  <th:block th:fragment="js_pin">
-
-  </th:block>
 
   <!--/* header */-->
   <th:block th:fragment="header">
@@ -40,7 +35,15 @@
 
   <!--/* 內容 */-->
   <th:block th:fragment="main">
-    <th:block th:replace="~{views/render::single}"/>
+    <section class="content card">
+      <article class="render" th:utext="${singlePage.content.content}"></article>
+      <halo:comment
+        th:if="${pluginFinder.available('PluginCommentWidget') && haloCommentEnabled && singlePage.spec.allowComment}"
+        group="content.halo.run"
+        kind="SinglePage"
+        th:attr="name=${singlePage.metadata.name}"
+      />
+    </section>
     <th:block th:replace="~{views/aside::common}"/>
   </th:block>
 </layout>

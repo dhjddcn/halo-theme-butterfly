@@ -60,15 +60,8 @@ spec:
             - value: "HarmonyOS_Regular"
               label: "HarmonyOS_Regular"
         - $formkit: text
-          name: content_max_width
-          label: 全局内容区最大宽度
-          value: '1250px'
-          placeholder: 请填写内容区最大宽度
-          help: 内容区域最大宽度，像素或百分比，默认 1250px
-          validation: required
-        - $formkit: text
           name: body_background
-          label: 全局背景
+          label: 全局背景（浅色）
           placeholder: 请填写 全局背景
           value: '#f7f9fe'
           help: 颜色值 默认值：#f7f9fe
@@ -77,8 +70,19 @@ spec:
     - group: loading
       label: 加载设置
       formSchema:
+        - $formkit: radio
+          name: type
+          label: 页面加载Loading
+          help: 内置多种加载样式
+          value: 'null'
+          options:
+            - label: '禁用'
+              value: 'null'
+            - label: '彩色线条旋转'
+              value: 'color_rotate'
+          validation: required
         - $formkit: group
-          label: 资源加载
+          label: 静态资源加载（js、css）
           name: source
           value:
             custom: ''
@@ -560,7 +564,7 @@ spec:
           placeholder: 请填写 第一屏背景图
           value: 'https://fastly.jsdelivr.net/npm/halo-theme-butterfly@latest/above.png'
           help: 如果全局背景图设置为图片链接，则此处背景图将不生效
-          validation: required     
+          validation: required
     #标签设置          
     - group: tags
       label: 标签设置
@@ -602,7 +606,7 @@ spec:
           placeholder: 请填写 第一屏背景图
           value: 'https://fastly.jsdelivr.net/npm/halo-theme-butterfly@latest/above.png'
           help: 如果全局背景图设置为图片链接，则此处背景图将不生效
-          validation: required          
+          validation: required
     #渲染设置
     - group: render
       label: 渲染设置

@@ -181,9 +181,9 @@ export function useChart(dom, getOption) {
     es.setOption(options);
   });
 
-  dom.addEventListener('resize', () => {
+  window.addEventListener('resize', useThrottle(() => {
     es.resize();
-  });
+  }, 500));
 }
 
 /**

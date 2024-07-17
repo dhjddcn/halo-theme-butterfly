@@ -1,25 +1,19 @@
 <layout
-  th:replace="~{base/layout :: layout (
+  th:replace="~{views/layout :: layout (
   page = 'moments',
   title = ${site.title} + ' - ' + '瞬间',
-  css_pin = ~{::css_pin},
-  js_pin = ~{::js_pin},
+  pin = ~{::pin},
   header = ~{::header},
   main = ~{::main}
   )}"
 >
-  <!--/* css */-->
-  <th:block th:fragment="css_pin">
+  <!--/* pin */-->
+  <th:block th:fragment="pin">
     <style th:inline="css">
       .above {
         background-image: /*[(${'url('+theme.config.index.above_background+')'})]*/ none;
       }
     </style>
-  </th:block>
-
-  <!--/* js */-->
-  <th:block th:fragment="js_pin">
-
   </th:block>
 
   <!--/* header */-->

@@ -1,5 +1,5 @@
 <layout
-  th:replace="~{base/layout :: layout (
+  th:replace="~{views/layout :: layout (
   page = 'links',
   title = ${site.title} + ' - ' + '链接列表',
   pin = ~{::pin},
@@ -22,7 +22,7 @@
   <th:block th:fragment="header">
     <header th:class="${not theme.config.index.enable_above ? 'header dp' : 'header'}">
       <!--/* 导航栏 */-->
-      <th:block th:replace="~{common/nav}"/>
+      <th:block th:replace="~{views/nav}"/>
 
       <!--第一屏内容-->
       <section class="above" th:if="${theme.config.index.enable_above}">
@@ -57,8 +57,8 @@
 
       </th:block>
 
-      <th:block th:unless="${noData}" th:insert="~{common/components:: emptyData(false)}"></th:block>
+      <th:block th:unless="${noData}" th:insert="~{views/components:: emptyData(false)}"></th:block>
     </section>
-    <th:block th:replace="~{common/aside::common}"/>
+    <th:block th:replace="~{views/aside::common}"/>
   </th:block>
 </layout>

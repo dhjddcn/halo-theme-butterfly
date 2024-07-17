@@ -1,30 +1,24 @@
 <layout
-  th:replace="~{base/layout :: layout (
+  th:replace="~{views/layout :: layout (
   page = 'categories',
   title = ${site.title} + ' - ' + '分类',
-  css_pin = ~{::css_pin},
-  js_pin = ~{::js_pin},
+  pin = ~{::pin},
   header = ~{::header},
   main = ~{::main}
   )}"
 >
-  <!--/* css */-->
-  <th:block th:fragment="css_pin">
+  <!--/* pin */-->
+  <th:block th:fragment="pin">
     <style th:inline="css">
       .above {
         background-image: /*[(${'url('+theme.config.categories.above_background+')'})]*/ none;
       }
     </style>
-  </th:block>
 
-  <!--/* js */-->
-  <th:block th:fragment="js_pin">
-    <script id="categoriesScript" th:inline="javascript">
-      window.THEME_CONFIG.categories =  /*[[${categories}]]*/ [];
-      window['categoriesScript']?.remove();
+    <script id="pageScript" th:inline="javascript">
+      window.MainApp.data =  /*[[${categories}]]*/ [];
     </script>
   </th:block>
-
 
   <!--/* header */-->
   <th:block th:fragment="header">

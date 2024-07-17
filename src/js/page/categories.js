@@ -28,18 +28,19 @@ class Categories {
    * 图表
    */
   run_chart() {
+    
     const data = [];
     
-    for (let i = 0; i < this.useConfig.categories.length; i++) {
+    for (let i = 0; i < MainApp.data.length; i++) {
 
-      const item = this.useConfig.categories[i];
+      const item = MainApp.data[i];
 
       data.push({value: item.postCount, name: item.spec.displayName});
     }
 
     const chartDom = document.querySelector('section.content > .chart');
 
-    useChart.call(this, chartDom, () => {
+    useChart( chartDom, () => {
       return {
         backgroundColor: '',
         title: {

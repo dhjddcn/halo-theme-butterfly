@@ -1,24 +1,34 @@
 <layout
-  th:replace="~{base/layout :: layout (
+  th:replace="~{views/layout :: layout (
   page = 'category',
   title = ${site.title} + ' - ' + '分类列表',
-  css_pin = ~{::css_pin},
-  js_pin = ~{::js_pin},
+  pin = ~{::pin},
   header = ~{::header},
   main = ~{::main}
   )}"
 >
-  <!--/* css */-->
-  <th:block th:fragment="css_pin">
+  <!--/* pin */-->
+  <th:block th:fragment="pin">
     <style th:inline="css">
       .above {
         background-image: /*[(${'url('+theme.config.categories.above_background+')'})]*/ none;
       }
     </style>
-  </th:block>
 
-  <!--/* js */-->
-  <th:block th:fragment="js_pin">
+
+    <script id="pageScript" th:inline="javascript">
+      Object.assign(window.MainApp.conf, {
+        // 分页
+        nextUrl: /*[[${posts.nextUrl}]]*/ {},
+        prevUrl: /*[[${posts.prevUrl}]]*/ {},
+        page: /*[[${posts.page}]]*/ {},
+        size: /*[[${posts.size}]]*/ {},
+        total: /*[[${posts.total}]]*/ {},
+        totalPages: /*[[${posts.totalPages}]]*/ {},
+        hasPrevious: /*[[${posts.hasPrevious()}]]*/ {},
+        hasNext: /*[[${posts.hasNext()}]]*/ {},
+      });
+    </script>
   </th:block>
 
 
@@ -42,7 +52,6 @@
   <th:block th:fragment="main">
     <section class="content">
       <th:block th:replace="~{views/components:: list(${posts.items},'list')}"/>
-      <th:block th:replace="~{views/components:: pagination(${posts})}"/>
     </section>
     <th:block th:replace="~{views/aside::common}"/>
   </th:block>
