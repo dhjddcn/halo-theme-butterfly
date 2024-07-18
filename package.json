@@ -79,7 +79,6 @@
     "inquirer": "^7.3.3",
     "jquery": "^3.7.1",
     "jszip": "^3.10.1",
-    "lazyload": "2.0.0-rc.2",
     "pace-js": "^1.2.4",
     "postcss-import": "^16.1.0",
     "postcss-merge-media-queries": "^1.0.1",

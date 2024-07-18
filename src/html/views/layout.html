@@ -24,7 +24,6 @@
     <meta property="og:title" th:content="${site.title}">
     <meta property="og:locale" content="zh_CN">
     <meta property="og:type" th:content="${page}" th:value="${page}">
-    <link rel="apple-touch-icon" sizes="180x180" th:href="${site.logo}">
     <link rel="canonical" th:href="${site.url}">
     <th:block th:replace="~{views/config}"/>
     <th:block th:replace="${pin}"/>
@@ -36,7 +35,7 @@
     <div id="Butterfly" th:class="${page}">
       <th:block th:replace="${header}"></th:block>
       
-      <main class="main animate__animated   " th:classappend="${theme.config.aside.enable ? theme.config.aside.position : '' }" th:insert="${main}"></main>
+      <main class="main    " th:classappend="${theme.config.aside.enable ? theme.config.aside.position : '' }" th:insert="${main}"></main>
       
       <th:block th:replace="~{views/footer}"/>
       

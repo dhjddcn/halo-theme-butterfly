@@ -110,7 +110,7 @@ gulp.task('js', function() {
         new TerserPlugin({
           terserOptions: {
             format: {
-              comments: true,
+              comments: false,
             },
           },
           extractComments: false,
@@ -123,13 +123,78 @@ gulp.task('js', function() {
     },
   })
   // .pipe(uglify())
-  .pipe(gulp.dest('./templates/assets/js'))
-  .pipe(
+  .pipe(gulp.dest('./templates/assets/js')).pipe(
     gzip({
       threshold: '10kb',
     }),
-  )
-  .pipe(gulp.dest('./templates/assets/js'));
+  ).pipe(gulp.dest('./templates/assets/js'));
+});
+
+gulp.task('js-plugins-loading', function() {
+  const entryRoot = './src/plugins/loading/';
+  const outputRoot = './templates/assets/plugins/loading/';
+
+  const getEntryData = () => {
+    try {
+      let files = fs.readdirSync(entryRoot, 'utf-8');
+
+      const result = {};
+
+      for (let i = 0; i < files.length; i++) {
+        const fileName = files[i].replace(/.js$/, '');
+        result[fileName] = resolve(`${entryRoot}${files[i]}`);
+      }
+
+      return result;
+    } catch (error) {
+      throw new Error(error);
+    }
+  };
+
+  return webpack({
+    mode: 'production',
+    entry: getEntryData(),
+    module: {
+      rules: [
+        {
+          test: /\.js$/,
+          loader: 'babel-loader',
+          include: resolve('src'),
+          exclude: resolve('node_modules'),
+          options: {
+            presets: ['@babel/preset-env'],
+          },
+        },
+        {
+          test: /\.css$/,
+          use: ['css-loader'],
+        },
+      ],
+    },
+    optimization: {
+      minimize: true,
+      minimizer: [
+        new TerserPlugin({
+          terserOptions: {
+            format: {
+              comments: false,
+            },
+          },
+          extractComments: false,
+        }),
+      ],
+    },
+    stats: 'errors-only',
+    output: {
+      filename: '[name].min.js',
+    },
+  })
+  // .pipe(uglify())
+  .pipe(gulp.dest(outputRoot)).pipe(
+    gzip({
+      threshold: '10kb',
+    }),
+  ).pipe(gulp.dest(outputRoot));
 });
 
 const htmlMin = require('gulp-htmlmin');
@@ -211,7 +276,7 @@ gulp.task(
     gulp.watch(['./src/scss/**/*.scss'], gulp.series('css'));
     gulp.watch(['./src/js/**/**/*.js'], gulp.series('js'));
     gulp.watch(['./src/html/**/**/*.html'], gulp.series('html'));
-    
+
   },
 );
 

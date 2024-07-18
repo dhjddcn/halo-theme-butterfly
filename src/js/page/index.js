@@ -17,12 +17,9 @@ class Index {
   run_typewriter() {
     if(!document.querySelector('.above-subtitle--text')) return;
 
-    const {
-            typewriter_custom_text, enable_typewriter_random_text,
-            typewriter_random_api, typewriter_api_value_format,
-          } = MainApp.conf;
+    const {typewriter_custom_text, enable_typewriter_random_text, typewriter_random_api, typewriter_api_value_format} = MainApp.conf;
 
-    // 创建打字
+    // 创建打字鸡
     const useTyped = (strings) => {
       new Typed('.above-subtitle--text', {
         strings,
@@ -33,13 +30,7 @@ class Index {
       });
     };
 
-    // 自定义文字
-    let text = typewriter_custom_text.replaceAll('\n', '').split('|&|');
-
-    if(!text || text.toString() === '') {
-      text = ['请填写打字文案或者配置随机文案！'];
-    }
-
+    
     // 随机文字
     if(enable_typewriter_random_text) {
       $.ajax({
@@ -64,6 +55,13 @@ class Index {
         },
       });
       return;
+    }
+
+    // 自定义文字
+    let text = typewriter_custom_text.replaceAll('\n', '').split('|&|');
+
+    if(!text || text.toString() === '') {
+      text = ['请填写打字文案或者配置随机文案！'];
     }
 
     // 其他情况

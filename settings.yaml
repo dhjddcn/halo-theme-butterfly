@@ -72,14 +72,16 @@ spec:
       formSchema:
         - $formkit: radio
           name: type
-          label: 页面加载Loading
+          label: 页面加载（Loading）
           help: 内置多种加载样式
           value: 'null'
           options:
             - label: '禁用'
               value: 'null'
-            - label: '彩色线条旋转'
-              value: 'color_rotate'
+            - label: '交叉线'
+              value: 'cross_line'
+            - label: '小圆点'
+              value: 'dot'
           validation: required
         - $formkit: group
           label: 静态资源加载（js、css）
@@ -88,7 +90,7 @@ spec:
             custom: ''
             type: site
             site: '/themes/theme-butterfly/assets/'
-            npm: 'https://cdn.jsdelivr.net/npm/halo-theme-butterfly/templates/assets/'
+            npm: 'https://unpkg.com/halo-theme-butterfly/templates/assets/'
           children:
             - $formkit: radio
               help: 从本站加载 npm-cdn 自定义链接 来加载静态文件（js、css）
@@ -121,12 +123,12 @@ spec:
               if: $get(_type).value == npm
               label: npm加速地址
               help: 免费可用的npmJs-cdn加速地址
-              value: 'https://cdn.jsdelivr.net/npm/halo-theme-butterfly/templates/assets/'
+              value: 'https://unpkg.com/halo-theme-butterfly/templates/assets/'
               options:
-                - label: 'cdn.jsdelivr.net'
-                  value: 'https://cdn.jsdelivr.net/npm/halo-theme-butterfly/templates/assets/'
                 - label: 'unpkg.com'
                   value: 'https://unpkg.com/halo-theme-butterfly/templates/assets/'
+                - label: 'cdn.jsdelivr.net'
+                  value: 'https://cdn.jsdelivr.net/npm/halo-theme-butterfly/templates/assets/'
                 - label: 'jsd.onmicrosoft.cn'
                   value: 'https://jsd.onmicrosoft.cn/npm/halo-theme-butterfly/templates/assets/'
                 - label: 'fastly.jsdelivr.net'
@@ -490,7 +492,7 @@ spec:
           name: above_background
           label: 第一屏背景图
           placeholder: 请填写 第一屏背景图
-          value: 'https://fastly.jsdelivr.net/npm/halo-theme-butterfly@latest/above.png'
+          value: 'https://unpkg.com/halo-theme-butterfly/above.png'
           help: 如果全局背景图设置为图片链接，则此处背景图将不生效
           validation: required
         - $formkit: textarea
@@ -499,11 +501,13 @@ spec:
           label: 打字机文案
           placeholder: 请填写 打字机文案
           help: 首页第一屏打字机文案 (注：多个文案用 |&| 分割)
+          value: '欢迎使用Butterfly主题，一个简洁、优雅的主题~'
+          validation: required
         - $formkit: radio
           name: enable_typewriter_random_text
           label: 启用随机打字机文案
           help: 是否启用随文案API（必须先配置 API），启用后将显示随机API文案，禁用时显示打字机文案
-          value: true
+          value: false
           options:
             - label: 启用
               value: true
@@ -562,7 +566,7 @@ spec:
           name: above_background
           label: 第一屏背景图
           placeholder: 请填写 第一屏背景图
-          value: 'https://fastly.jsdelivr.net/npm/halo-theme-butterfly@latest/above.png'
+          value: 'https://unpkg.com/halo-theme-butterfly/above.png'
           help: 如果全局背景图设置为图片链接，则此处背景图将不生效
           validation: required
     #标签设置          
@@ -583,7 +587,7 @@ spec:
           name: above_background
           label: 第一屏背景图
           placeholder: 请填写 第一屏背景图
-          value: 'https://fastly.jsdelivr.net/npm/halo-theme-butterfly@latest/above.png'
+          value: 'https://unpkg.com/halo-theme-butterfly/above.png'
           help: 如果全局背景图设置为图片链接，则此处背景图将不生效
           validation: required
     #分类设置          
@@ -604,7 +608,7 @@ spec:
           name: above_background
           label: 第一屏背景图
           placeholder: 请填写 第一屏背景图
-          value: 'https://fastly.jsdelivr.net/npm/halo-theme-butterfly@latest/above.png'
+          value: 'https://unpkg.com/halo-theme-butterfly/above.png'
           help: 如果全局背景图设置为图片链接，则此处背景图将不生效
           validation: required
     #渲染设置

@@ -1,11 +1,11 @@
 /**
  * @date: 2023/1/15
  * @author: 小红
- * @fileName: color_rotate
+ * @fileName: cross_line
  * @Description: 彩色旋转加载loading
  */
 
-class ColorRotate {
+class CrossLine {
   cssText = `.loading-container {
         display: flex;
         justify-content: center;
@@ -102,7 +102,7 @@ class ColorRotate {
   }
 }
 
-const Loading = new ColorRotate();
+const Loading = new CrossLine();
 
 document.addEventListener('DOMContentLoaded', () => Loading.start());
 
