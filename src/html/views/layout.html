@@ -31,6 +31,7 @@
   </head>
   
   <body th:classappend="${theme.config.loading.type != 'null' ? 'loading' : ''}" th:with="stats = ${siteStatsFinder.getStats()},contributor = ${contributorFinder.getContributor(theme.config.base.metadata_name)}">
+  <script type="text/javascript"  th:if="${theme.config.loading.type != 'null'}" th:src="${assets_link + 'plugins/loading/' + theme.config.loading.type + '.min.js?v=' + theme.spec.version}"></script>
   
     <div id="Butterfly" th:class="${page}">
       <th:block th:replace="${header}"></th:block>

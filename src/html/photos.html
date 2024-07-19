@@ -35,8 +35,18 @@
 
   <!--/* 內容 */-->
   <th:block th:fragment="main">
-    <section class="content card">
-      1111
+    <section class="content ">
+      <div class="head card">
+        <div class="title">图库分类</div>
+        <ul class="bts">
+          <li th:each="group : ${groups}" th:text="${group.spec.displayName}" class="bts-item"></li>
+        </ul>
+      </div>
+      <ul class="imgs">
+        <li th:each="photo : ${photoFinder.listBy(groups[0].metadata.name)}">
+          <img th:src="${photo.spec.url}" th:alt="${photo.spec.displayName}" width="280">
+        </li>
+      </ul>
     </section>
     <th:block th:replace="~{views/aside::common}"/>
   </th:block>

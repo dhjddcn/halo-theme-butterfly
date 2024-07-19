@@ -9,6 +9,72 @@
 @use "../core/util";
 @use "../modules/components";
 
-.single {
+.photos {
+  .main > .content {
+    padding: 0;
+
+    > .head {
+      padding: 20px 15px 15px;
+      position: relative;
+
+      > .title {
+        position: relative;
+        width: 80px;
+        height: 28px;
+        background-color: var(--theme);
+        color: #fff;
+        text-align: center;
+        margin-bottom: 20px;
+        left: -25px;
+
+        &::before {
+          content: "";
+          position: absolute;
+          bottom: -10px;
+          left: -10px;
+          border-style: solid;
+          border-width: 10px;
+          border-color: var(--theme) transparent transparent;
+          transform: rotate(90deg);
+        }
+      }
+
+
+
+    }
+
+  }
+
+
+  .bts {
+    display: grid;
+    gap: 15px;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    border-top: 1px solid #ebeef5;
+    padding-top: 15px;
+
+
+    &-item {
+      user-select: none;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      background: #f2f6fc;
+      height: 28px;
+      line-height: 28px;
+      border-radius: 14px;
+      cursor: pointer;
+      color: #606266;
+      font-size: 12px;
+      padding: 0 15px;
+      text-align: center;
+      transition: color 0.35s, background 0.35s, box-shadow 0.35s, transform 0.35s;
+
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
+      }
+    }
+  }
 
 }

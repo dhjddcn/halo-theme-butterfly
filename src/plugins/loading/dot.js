@@ -95,7 +95,6 @@ class Dot {
       }
     }
    `;
-
   style = document.createElement('style');
   container = document.createElement('div');
 
@@ -111,15 +110,16 @@ class Dot {
   }
 
   destroy() {
-    document.body.classList.remove('loading');
     this.container.remove();
     this.style.remove();
+    document.body.classList.remove('loading');
   }
 }
 
 const Loading = new Dot();
 
-document.addEventListener('DOMContentLoaded', () => Loading.start());
+Loading.start();
 
 window.addEventListener('load', () => Loading.destroy());
+
 

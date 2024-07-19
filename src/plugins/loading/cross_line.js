@@ -104,7 +104,7 @@ class CrossLine {
 
 const Loading = new CrossLine();
 
-document.addEventListener('DOMContentLoaded', () => Loading.start());
+Loading.start();
 
 window.addEventListener('load', () => Loading.destroy());
 
