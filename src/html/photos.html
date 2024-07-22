@@ -43,8 +43,8 @@
         </ul>
       </div>
       <ul class="imgs">
-        <li th:each="photo : ${photoFinder.listBy(groups[0].metadata.name)}">
-          <img th:src="${photo.spec.url}" th:alt="${photo.spec.displayName}" width="280">
+        <li class="imgs-item" th:each="photo : ${photoFinder.listBy(groups[0].metadata.name)}">
+          <img th:src="${photo.spec.url}" th:alt="${photo.spec.displayName}" >
         </li>
       </ul>
     </section>

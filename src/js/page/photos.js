@@ -5,9 +5,10 @@
  * @Description: 图库
  */
 
+import AmplifyImg from '../modules/AmplifyImg';
 import App from '../core/App';
 
-@App([])
-class Single {
+@App([AmplifyImg])
+class Photos {
 
 }

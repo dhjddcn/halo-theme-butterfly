@@ -19,10 +19,13 @@ export default class Message {
    * @description: 创建消息容器
    */
   constructor() {
-    const container = document.createElement('div');
-    container.className = 'message-container';
-    document.body.appendChild(container);
-    this.#container = container;
+
+  }
+
+  #createContainer() {
+    this.#container = document.createElement('div');
+    this.#container.className = 'message-container';
+    document.body.appendChild( this.#container);
   }
 
   /**
@@ -32,6 +35,7 @@ export default class Message {
    * @param duration 持续时间
    */
   #createWrapper(type, msg, duration) {
+    if(!this.#container) this.#createContainer();
     const wrapper = document.createElement('div');
     wrapper.className = `message-wrapper ${type} animate__animated animate__fadeInDown animate__faster`;
     wrapper.innerHTML = `<div class="message-item">${this.#svgs[type]}<div class="message-text">${msg}</div></div>`;

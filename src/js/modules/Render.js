@@ -4,7 +4,6 @@
  * @fileName: Render
  * @Description: 渲染html
  */
-import * as echarts from 'echarts/core';
 import $ from 'jquery';
 import {useDelay} from '../core/_util';
 import tocBot from 'tocbot';
