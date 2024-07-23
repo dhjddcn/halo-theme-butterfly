@@ -6,7 +6,6 @@
  */
 import * as echarts from 'echarts/core';
 import $ from 'jquery';
-import * as url from 'node:url';
 
 /**
  * 防抖
