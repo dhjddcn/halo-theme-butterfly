@@ -28,7 +28,7 @@ export default class AmplifyImg {
 
     imgs.each(function() {
       const $this = $(this);
-      $this.wrap($(`<span data-fancybox="fancyBoxImg" style="display: inline-block" href="${$this.attr('src')}"></span>`));
+      $this.wrap($(`<span data-fancybox="fancyBoxImg" href="${$this.attr('src')}"></span>`));
     });
 
     Fancybox.bind(

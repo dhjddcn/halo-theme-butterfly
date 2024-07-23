@@ -6,6 +6,7 @@
  */
 import * as echarts from 'echarts/core';
 import $ from 'jquery';
+import * as url from 'node:url';
 
 /**
  * 防抖
@@ -198,4 +199,26 @@ export function useClearPage() {
       if(script.id.includes('Script')) script.remove();
     }
   });
+}
+
+/**
+ * 获取url参数
+ * @returns {{}}
+ */
+export function getQueryParams(search = window.location.search) {
+  if(!search) return null;
+
+  const queryStr = url.substring(1);
+
+  const params = {};
+  
+  const pairs = queryStr.split('&');
+  
+  for (let i = 0; i < pairs.length; i++) {
+    const pair = pairs[i];
+    const kv = pair.split('=');
+    params[kv[0]] = kv[1] || '';
+  }
+  
+  return params;
 }

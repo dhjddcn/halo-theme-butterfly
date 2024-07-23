@@ -1,7 +1,7 @@
 <layout
   th:replace="~{views/layout :: layout (
   page = 'photos',
-  title = ${singlePage.spec.title} ,
+  title = '图库' ,
   pin = ~{::pin},
   header = ~{::header},
   main = ~{::main}
@@ -38,15 +38,14 @@
     <section class="content ">
       <div class="head card">
         <div class="title">图库分类</div>
-        <ul class="bts">
-          <li th:each="group : ${groups}" th:text="${group.spec.displayName}" class="bts-item"></li>
-        </ul>
+        <div class="groups">
+          <a class="groups-item animate__animated animate__swing" href="/photos">全部</a>
+          <a th:each="group : ${groups}" th:text="${group.spec.displayName}" th:href="${'/photos?group=' + group.metadata.name }" th:data-group="${group.metadata.name}" class="groups-item animate__animated animate__swing"></a>
+        </div>
       </div>
-      <ul class="imgs">
-        <li class="imgs-item" th:each="photo : ${photoFinder.listBy(groups[0].metadata.name)}">
-          <img th:src="${photo.spec.url}" th:alt="${photo.spec.displayName}" >
-        </li>
-      </ul>
+      <div class="imgs">
+        <img class="img animate__animated animate__bounceIn" th:each="photo : ${photos.items}" th:src="${photo.spec.url}" th:alt="${photo.spec.displayName}">
+      </div>
     </section>
     <th:block th:replace="~{views/aside::common}"/>
   </th:block>
