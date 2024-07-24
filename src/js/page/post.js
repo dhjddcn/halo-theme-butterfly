@@ -18,7 +18,6 @@ class Post {
     const clock = document.querySelector('.clock >  span');
 
     wordCount.textContent = `字数总计 ${render.textContent.length} 字`;
-    clock.textContent = `阅读时间 ${Math.ceil(render.textContent.length / 350)} 分钟`;
-
+    clock.textContent = `阅读时间 ${Math.ceil(render.textContent.length / 500)} 分钟`;
   }
 }
