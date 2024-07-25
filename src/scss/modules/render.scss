@@ -148,13 +148,17 @@
     background-color: var(--blockquote-background-color);
     color: var(--blockquote-font-color);
     border-radius: 5px;
+
+    p {
+      margin: 0;
+    }
   }
 
   span[data-fancybox=fancyBoxImg] {
     margin-bottom: 15px;
   }
 
-  video {
+  video, img {
     border-radius: 5px;
   }
 
@@ -164,7 +168,7 @@
 
   img {
     max-width: 100%;
-    //border: rgba(147, 139, 139, 0.15) solid 1px;
+
     filter: var(--img-filter);
     cursor: zoom-in;
     transition: transform .35s, box-shadow .35s;
@@ -173,6 +177,10 @@
       transform: translateY(-5px);
       box-shadow: 0 34px 20px -24px rgba(136, 161, 206, .3);
     }
+  }
+
+  hr {
+    margin: 15px 0;
   }
 
   table {
