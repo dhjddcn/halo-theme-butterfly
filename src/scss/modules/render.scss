@@ -39,7 +39,7 @@
   h1, h2, h3, h4, h5, h6 {
     color: var(--h-color);
     font-weight: 700;
-    margin: 10px 0;
+    margin-bottom: 5px;
     position: relative;
   }
 
@@ -70,6 +70,7 @@
 
   p {
     min-height: 30px;
+    margin-bottom: 15px;
   }
 
   a {
@@ -141,7 +142,7 @@
   }
 
   blockquote {
-    margin: 15px 0;
+    margin-bottom: 15px;
     padding: 10px 15px;
     border-left: 4px solid var(--theme);
     background-color: var(--blockquote-background-color);
@@ -153,12 +154,25 @@
     margin-bottom: 15px;
   }
 
+  video {
+    border-radius: 5px;
+  }
+
+  video {
+    margin-bottom: 15px;
+  }
+
   img {
     max-width: 100%;
-    border-radius: 5px;
-    border: rgba(147, 139, 139, 0.15) solid 1px;
+    //border: rgba(147, 139, 139, 0.15) solid 1px;
     filter: var(--img-filter);
     cursor: zoom-in;
+    transition: transform .35s, box-shadow .35s;
+
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 34px 20px -24px rgba(136, 161, 206, .3);
+    }
   }
 
   table {
@@ -166,7 +180,7 @@
     display: table;
     empty-cells: show;
     border-radius: 4px !important;
-    margin: 5px 0;
+    margin-bottom: 15px;
 
     tr > th, tr > td {
       padding: 5px 10px !important;
@@ -259,7 +273,7 @@
   &.enable_h_icon {
     h1, h2, h3, h4, h5, h6 {
       &:before {
-        font-family: "Font Awesome 6 Pro";
+        font-family: "Font Awesome 6 Pro", serif;
         display: var(--fa-display, inline-block);
         font-style: normal;
         font-variant: normal;
