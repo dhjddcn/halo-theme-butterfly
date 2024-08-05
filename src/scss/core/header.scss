@@ -9,9 +9,11 @@
 .header {
   @import "nav";
 
-  position: relative;
-  width: 100%;
-  min-height: 60px;
+  & {
+    position: relative;
+    width: 100%;
+    min-height: 60px;
+  }
 
   @keyframes above-down {
     0% {
@@ -43,7 +45,7 @@
     @include util.useThemeVar((
       above-mask-color:(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)),
     ));
-    
+
     //&::before {
     //  position: absolute;
     //  width: 100%;
@@ -80,12 +82,14 @@
         font-size: 1.85em;
       }
 
-      font-size: 2.3em;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, .15);
-      line-height: 1.5;
-      font-weight: 700;
-      color: var(--above-title-color);
-      animation: above-title-scale 1s;
+      & {
+        font-size: 2.3em;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, .15);
+        line-height: 1.5;
+        font-weight: 700;
+        color: var(--above-title-color);
+        animation: above-title-scale 1s;
+      }
     }
   }
 

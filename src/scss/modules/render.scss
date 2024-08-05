@@ -30,9 +30,12 @@
     img-filter:(none, brightness(0.9) contrast(0.8))
   ));
 
-  padding-bottom: 1.2rem;
-  word-break: break-word;
-  overflow-wrap: break-word;
+  & {
+    padding-bottom: 1.2rem;
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+
   //overflow-x: hidden;
 
 
@@ -407,14 +410,16 @@
     cpy-text-color:(#1f2d3d, rgba(255, 255, 255, 0.9)), //版权字体颜色
   ));
 
-  margin: 25px 0;
-  padding: 10px 16px;
-  border: 1px solid var(--cpy-border-color);
-  transition: box-shadow .2s, transform .2s;
-  background-color: var(--cpy-background-color);
-  border-radius: 8px;
-  color: var(--cpy-text-color);
-  position: relative;
+  & {
+    margin: 25px 0;
+    padding: 10px 16px;
+    border: 1px solid var(--cpy-border-color);
+    transition: box-shadow .2s, transform .2s;
+    background-color: var(--cpy-background-color);
+    border-radius: 8px;
+    color: var(--cpy-text-color);
+    position: relative;
+  }
 
   > div {
     @include util.text-overflow;

@@ -20,20 +20,22 @@
     }
   }
 
-  width: 100%;
-  height: 60px;
-  position: absolute;
-  top: 0;
-  user-select: none;
-  padding: 0 38px;
-  font-size: 1.15rem;
-  animation: nav-down 1.2s;
-  z-index: 90;
-  transition: .5s;
-  will-change: opacity, transform;
-  @include util.flex-center;
-  justify-content: space-between;
-  flex-wrap: nowrap;
+  & {
+    width: 100%;
+    height: 60px;
+    position: absolute;
+    top: 0;
+    user-select: none;
+    padding: 0 38px;
+    font-size: 1.15rem;
+    animation: nav-down 1.2s;
+    z-index: 90;
+    transition: .5s;
+    will-change: opacity, transform;
+    @include util.flex-center;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+  }
 
 
   @include util.useResponsive(util.$w-md) {
@@ -78,7 +80,7 @@
       line-height: 60px;
       text-align: center;
 
-   
+
       &::after {
         position: absolute;
         left: 0;
@@ -95,7 +97,7 @@
 
       &:hover {
         color: var(--nav-font-color);
-        
+
         &::after {
           opacity: 1;
           transform: scaleX(1);

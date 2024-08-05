@@ -1,7 +1,7 @@
 <layout
   th:replace="~{views/layout :: layout (
   page = 'index',
-  title = ${site.title +' - '+ site.subtitle},
+  title = ${site.title +  (#strings.isEmpty(site.subtitle) ? '' : ' - ' + site.subtitle )},
   pin = ~{::pin},
   header = ~{::header},
   main = ~{::main}
@@ -26,7 +26,7 @@
         // 分页
         nextUrl: /*[[${posts.nextUrl}]]*/ {},
         prevUrl: /*[[${posts.prevUrl}]]*/ {},
-        page: /*[[${posts.page}]]*/ {},
+        page: /*[[${posts.page}]]*/ {}, 
         size: /*[[${posts.size}]]*/ {},
         total: /*[[${posts.total}]]*/ {},
         totalPages: /*[[${posts.totalPages}]]*/ {},

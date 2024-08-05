@@ -12,16 +12,18 @@ body {
     mask-color:(rgba(255, 255, 255, 0.6), rgba(0, 0, 0, 0.6)),
   ));
 
-  font-family: "Butterfly Font", "Microsoft YaHei", "微软雅黑", Arial, "sans-serif";
-  font-size: 14px;
-  line-height: 2;
-  -webkit-tap-highlight-color: transparent;
-  -webkit-text-size-adjust: 100%;
-  overflow-y: overlay;
-  scroll-behavior: smooth;
-  padding-bottom: env(safe-area-inset-bottom);
-  background: var(--body-background);
-  color: var(--text-color);
+  & {
+    font-family: "Butterfly Font", "Microsoft YaHei", "微软雅黑", Arial, "sans-serif";
+    font-size: 14px;
+    line-height: 2;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-text-size-adjust: 100%;
+    overflow-y: overlay;
+    scroll-behavior: smooth;
+    padding-bottom: env(safe-area-inset-bottom);
+    background: var(--body-background);
+    color: var(--text-color);
+  }
 }
 
 #Butterfly {
@@ -54,17 +56,18 @@ body {
         display: none;
       }
     }
-
-
-    position: fixed;
-    display: none;
-    z-index: 100;
-    width: 100%;
-    height: 100%;
-    background-color: var(--mask-color);
-    backdrop-filter: blur(20px) saturate(1.5);
-    transform: translateZ(0);
-    -webkit-transform-style: preserve-3d;
+    
+    & {
+      position: fixed;
+      display: none;
+      z-index: 100;
+      width: 100%;
+      height: 100%;
+      background-color: var(--mask-color);
+      backdrop-filter: blur(20px) saturate(1.5);
+      transform: translateZ(0);
+      -webkit-transform-style: preserve-3d;
+    }
 
     &.active {
       animation: 0.6s ease 0s 1 normal none running m_show;

@@ -9,16 +9,19 @@
 .main {
   @import "aside";
 
-  width: 100%;
-  display: flex;
-  margin: 0 auto;
-  max-width: 1250px;
-  padding: 28px 15px;
-  flex-direction: row;
-
   @include util.useThemeVar((
     card-background-color: (rgba(255, 255, 255, 1), rgba(40, 47, 62, 0.9)),
   ));
+
+
+  & {
+    width: 100%;
+    display: flex;
+    margin: 0 auto;
+    max-width: 1250px;
+    padding: 28px 15px;
+    flex-direction: row;
+  }
 
   .card {
     background-color: var(--card-background-color);
