@@ -12,7 +12,6 @@ spec:
       label: "图标"
 
 ---
-
 apiVersion: v1alpha1
 kind: AnnotationSetting
 metadata:
@@ -23,13 +22,12 @@ spec:
     kind: Post
   formSchema:
     - $formkit: "radio"
-      name: "enable_toc_sequence"
-      label: "启用目录序号"
-      help: "启用后，目录将会显示序号  // todo 配置定义，功能未实现"
+      name: "enable_code_copy"
+      label: "启用代码复制"
+      help: "本篇文章代码块复制按钮"
       value: "true"
       options:
         - label: 启用
           value: "true"
         - label: 禁用
           value: "false"
-      

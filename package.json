@@ -11,7 +11,7 @@
     "build-html": "gulp html",
     "copy-folder": "gulp copy-folder",
     "build-zip": "npm run clean && gulp && npm run zip",
-    "build": "npm run clean && gulp",
+    "build": "npm run clean && gulp && gulp js-plugins-loading",
     "release": "gulp release"
   },
   "keywords": [

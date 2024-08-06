@@ -5,14 +5,14 @@ metadata:
 spec:
   forms:
     - group: base
-      label: 基本
+      label: 基本设置
       formSchema:
         - $formkit: text
           name: metadata_name
-          label: 作者的唯一标识 metadata.name
-          placeholder: 请填写 作者的唯一标识 metadata.name
+          label: 作者用户名
+          placeholder: 请填写作者的唯一标识（用户名）
           value: admin
-          help: 后台用户管理中的用户名，不可乱填否则个人资料显示异常（示例：admin）
+          help: 后台管理页面（console）用户 -> 修改资料 -> 用户名，不可乱填否则侧边栏个人资料显示异常（示例：admin）
           validation: required
         - $formkit: text
           name: icp
@@ -23,154 +23,330 @@ spec:
           name: police
           label: 公网安备号
           placeholder: 请填写公网安备号信息
-          help: 公网安备信息将展示在页脚中，不填不展示（示例：京公xxxxxxxxx号）
-        - $formkit: text
+          help: 公网安备信息将展示在页脚中，不填不展示（示例：京公xxx号）
+        - $formkit: date
           name: site_birthday
           label: 建站时间
           placeholder: 示例 2022-01-01 00:00
-          help: 自定义博客的起始时间/安装时间，作为计算博客运行时间的参照值，请严格按照示例格式填写，否则将导致报错
-
+          help: 自定义博客的起始时间/安装时间，作为计算博客运行时间的参照值，不选择不显示
+    #主题设置
     - group: style
-      label: 主题
+      label: 主题设置
       formSchema:
-        #      - $formkit: select
-        #        name: theme_type
-        #        label: 主题模式
-        #        value: '#49b1f5'
-        #        placeholder: 请填写主题颜色
-        #        help: '设置博客的主题模式（用户/自动/浅色/暗黑），默认为用户模式，仅在用户模式下页面才有主题切换按钮，自动模式下根据时间自动切换'
-        #        options:
-        #          - value: user
-        #            label: 用户模式
-        #          - value: light
-        #            label: 浅色模式
-        #          - value: dark
-        #            label: 暗黑模式
-        - $formkit: text
-          name: theme_color_light
-          label: 主题颜色（浅色）
-          value: '#49b1f5'
-          placeholder: 请填写主题 浅色 颜色
-          help: '主题颜色运用到大部分模块色调，默认 #49b1f5'
-          validation: required
-        - $formkit: text
-          name: theme_color_dark
-          label: 主题颜色（深色）
-          value: '#ff7242'
-          placeholder: 请填写主题 深色 颜色
-          help: '主题颜色运用到大部分模块色调，默认 #ff7242'
-          validation: required
-        - $formkit: text
-          name: content_max_width
-          label: 全局内容区最大宽度
-          value: 1250px
-          placeholder: 请填写内容区最大宽度
-          help: 内容区域最大宽度，像素或百分比，默认 1250px（注：配合halo 设置-文章设置-文章列表显示条数，效果更好）
-          validation: required
-        - $formkit: attachment
-          name: body_background
-          label: 全局背景
-          placeholder: 请填写 全局背景
-          value: 'linear-gradient(90deg, rgba(247, 149, 51, .1) 0, rgba(243, 112, 85, .1) 15%, rgba(239, 78, 123, .1) 30%, rgba(161, 102, 171, .1) 44%, rgba(80, 115, 184, .1) 58%, rgba(16, 152, 173, .1) 72%, rgba(7, 179, 155, .1) 86%, rgba(109, 186, 130, .1) 100%)'
-          help: 如果全局背景图设置为图片链接，第一屏背景图将不生效 (注：颜色值或图片链接) 默认：linear-gradient(90deg, rgba(247, 149, 51, .1) 0, rgba(243, 112, 85, .1) 15%, rgba(239, 78, 123, .1) 30%, rgba(161, 102, 171, .1) 44%, rgba(80, 115, 184, .1) 58%, rgba(16, 152, 173, .1) 72%, rgba(7, 179, 155, .1) 86%, rgba(109, 186, 130, .1) 100%)
-          validation: required
+        - $formkit: select
+          name: mode
+          label: 主题模式
+          value: 'user'
+          placeholder: 请填写主题颜色
+          help: '设置博客的主题模式（自动/用户/浅色/深色），默认为用户模式，仅在用户模式下页面才有主题切换按钮，自动模式下根据时间自动切换'
+          options:
+            - value: 'auto'
+              label: 自动模式
+            - value: 'user'
+              label: 用户模式
+            - value: 'light'
+              label: 浅色模式
+            - value: 'dark'
+              label: 深色模式
         - $formkit: select
           name: font_family
           label: 主题字体
-          value: no
+          value: 'CircularBody'
           options:
-            - value: "no"
+            - value: 'null'
               label: "游览器默认字体"
             - value: "CircularBody"
               label: "CircularBody"
             - value: "HarmonyOS_Regular"
               label: "HarmonyOS_Regular"
-
+        - $formkit: text
+          name: body_background
+          label: 全局背景（浅色）
+          placeholder: 请填写 全局背景
+          value: '#f7f9fe'
+          help: 颜色值 默认值：#f7f9fe
+          validation: required
+    #加载设置
     - group: loading
-      label: 加载
+      label: 加载设置
       formSchema:
         - $formkit: radio
-          name: enable_random_img
-          label: 启用随机图片
-          help: 是否启用随机图API（必须先配置 API），开启后将使用随机图填充没有设置封面的，未开启时使用主题内置的封面图
-          value: true
+          name: type
+          label: 页面加载（Loading）
+          help: 内置多种加载样式
+          value: 'null'
           options:
-            - label: 启用
+            - label: '禁用'
+              value: 'null'
+            - label: '交叉线'
+              value: 'cross_line'
+            - label: '小圆点'
+              value: 'dot'
+          validation: required
+        - $formkit: group
+          label: 静态资源加载（js、css）
+          name: source
+          value:
+            custom: ''
+            type: site
+            site: '/themes/theme-butterfly/assets/'
+            npm: 'https://unpkg.com/halo-theme-butterfly/templates/assets/'
+          children:
+            - $formkit: radio
+              help: 从本站加载 npm-cdn 自定义链接 来加载静态文件（js、css）
+              label: 类型
+              name: type
+              id: _type
+              key: _type
+              value: site
+              validation: required
+              options:
+                - label: 本站
+                  value: site
+                - label: npm
+                  value: npm
+                - label: 自定义
+                  value: custom
+            - $formkit: url
+              name: custom
+              key: _custom
+              id: _custom
+              if: $get(_type).value == custom
+              label: 自定义链接
+              placeholder: 请填写 自定义资源链接地址
+              help: 请确保链接下assets文件夹下主题静态资源文件一致,否则可能导致页面无法正常显示！
+              validation: required|url
+            - $formkit: radio
+              name: npm
+              key: _npm
+              id: _npm
+              if: $get(_type).value == npm
+              label: npm加速地址
+              help: 免费可用的npmJs-cdn加速地址
+              value: 'https://unpkg.com/halo-theme-butterfly/templates/assets/'
+              options:
+                - label: 'unpkg.com'
+                  value: 'https://unpkg.com/halo-theme-butterfly/templates/assets/'
+                - label: 'cdn.jsdelivr.net'
+                  value: 'https://cdn.jsdelivr.net/npm/halo-theme-butterfly/templates/assets/'
+                - label: 'jsd.onmicrosoft.cn'
+                  value: 'https://jsd.onmicrosoft.cn/npm/halo-theme-butterfly/templates/assets/'
+                - label: 'fastly.jsdelivr.net'
+                  value: 'https://fastly.jsdelivr.net/npm/halo-theme-butterfly@latest/templates/assets/'
+              validation: required
+        - $formkit: group
+          label: 图片加载
+          name: img
+          value:
+            preload: 'data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs='
+            err: 'data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs='
+            random_enable: true
+            random_link: 'https://api.yimian.xyz/img'
+          children:
+            - $formkit: attachment
+              name: preload
+              label: 预加载图
+              placeholder: 请填写 预加载图片
+              value: 'data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs='
+              help: 预加载图片，默认 data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=
+              validation: required
+            - $formkit: attachment
+              name: err
+              label: 加载失败图
+              placeholder: 请填写 加载失败图片
+              value: 'data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs='
+              help: 加载失败图片，默认 data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=
+              validation: required
+            - $formkit: radio
+              name: random_enable
+              label: 启用随机图片
+              help: 是否启用随机图API（必须先配置 API），开启后将使用随机图填充没有设置封面的，未开启时使用主题内置的封面图
               value: true
-            - label: 禁用
-              value: false
-        - $formkit: text
-          name: random_img
-          label: 随机图片链接
-          placeholder: 请正确填写 随机图片链接
-          value: 'https://api.likepoems.com/img/aliyun/pc'
-          help: 自定义随机图API，用于填充没有设置封面的 ，免费 API 不会一直可用，请知悉
-        - $formkit: attachment
-          name: preload
-          label: 预加载图片
-          placeholder: 请填写 预加载图片
-          value: 'data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs='
-          help: 预加载图片，默认 data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=
-          validation: required
-        - $formkit: attachment
-          name: filter
-          label: 预加载图片 css滤镜
-          placeholder: 请填写 滤镜
-          value: blur(50px) brightness(1)
-          help: 滤镜，默认 blur(50px) brightness(1)
-          validation: required
-        - $formkit: attachment
-          name: err
-          label: 加载失败图片
-          placeholder: 请填写 加载失败图片
-          value: 'data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs='
-          help: 加载失败图片，默认 data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=
-          validation: required
-    
-    #
-    #    - group: nav
-    #      label: 导航
-    #      formSchema:
-    #        - $formkit: text
-    #          name: font_color_light
-    #          label: 导航字体颜色
-    #          placeholder: 请填写 导航字体颜色
-    #          value: '#eee'
-    #          help: '导航字体颜色，默认 #eee'
-    #          validation: required
-
-    - group: card
-      label: 卡片
+              validation: required
+              options:
+                - label: 启用
+                  value: true
+                - label: 禁用
+                  value: false
+            - $formkit: text
+              name: random_link
+              label: 随机图片链接
+              placeholder: 请正确填写 随机图片链接
+              value: 'https://api.yimian.xyz/img'
+              help: 自定义随机图API，用于填充没有设置封面的 ，免费 API 不会一直可用，请知悉
+              validation: required|url
+    #导航设置
+    - group: nav
+      label: 导航设置
       formSchema:
-        - $formkit: text
-          name: radius
-          label: 卡片圆角
-          placeholder: 请填写 卡片圆角
-          value: 24px
-          help: 卡片圆角，像素或百分比，默认 24px
-          validation: required
-        - $formkit: text
-          name: bg_color
-          label: 卡片背景色
-          placeholder: 请填写 卡片背景色
-          value: rgba(255, 255, 255, 1)
-          help: 卡片背景色，颜色值，默认 rgba(255, 255, 255, 1)，透明值可选范围（0.1~1）1为不透明
-          validation: required
-        - $formkit: text
-          name: shadow
-          label: 卡片阴影
-          placeholder: 请填写 卡片阴影
-          value: 0 3px 8px 6px rgba(7,17,27,0.05)
-          help: 卡片阴影，颜色值，默认 0 3px 8px 6px rgba(7,17,27,0.05)
-          validation: required
-
+        - $formkit: group
+          name: font_color
+          label: 导航栏默认字体颜色
+          help: 支持rgba颜色值和十六进制颜色值
+          value:
+            light: rgba(238, 238, 238, 1)
+            dark: rgba(255, 255, 255, 0.7)
+          children:
+            - $formkit: text
+              name: light
+              label: 浅色
+              value: ""
+              help: 默认值：rgba(238, 238, 238, 1)
+              validation: required
+            - $formkit: text
+              name: dark
+              label: 暗色
+              value: ""
+              help: 默认值：rgba(255, 255, 255, 0.7)
+              validation: required
+        - $formkit: group
+          name: active_font_color
+          label: 导航栏滚动悬浮字体颜色
+          help: 支持rgba颜色值和十六进制颜色值
+          value:
+            light: rgb(76, 73, 72)
+            dark: rgba(255, 255, 255, 0.7)
+          children:
+            - $formkit: text
+              name: light
+              label: 浅色
+              value: ""
+              help: 默认值：rgb(76, 73, 72)
+              validation: required
+            - $formkit: text
+              name: dark
+              label: 暗色
+              value: ""
+              help: 默认值：rgba(255, 255, 255, 0.7)
+              validation: required
+        - $formkit: group
+          name: active_hover_font_color
+          label: 导航栏滚动悬浮鼠标移入字体颜色
+          help: 支持rgba颜色值和十六进制颜色值（默认主题色）
+          value:
+            light: var(--theme)
+            dark: var(--theme)
+          children:
+            - $formkit: text
+              name: light
+              label: 浅色
+              value: ""
+              help: 默认值：var(--theme)
+              validation: required
+            - $formkit: text
+              name: dark
+              label: 暗色
+              value: ""
+              help: 默认值：var(--theme)
+              validation: required
+        - $formkit: group
+          name: active_background_color
+          label: 导航栏滚动悬浮背景颜色
+          help: 支持rgba颜色值和十六进制颜色值
+          value:
+            light: rgba(255, 255, 255, .8)
+            dark: rgba(18, 18, 18, .8)
+          children:
+            - $formkit: text
+              name: light
+              label: 浅色
+              value: ""
+              help: 默认值：rgba(255, 255, 255, .8)
+              validation: required
+            - $formkit: text
+              name: dark
+              label: 暗色
+              value: ""
+              help: 默认值：rgba(18, 18, 18, .8)
+              validation: required
+        - $formkit: group
+          name: active_shadow
+          label: 导航栏滚动悬浮阴影
+          help: 支持rgba颜色值和十六进制颜色值
+          value:
+            light: 0 5px 6px -5px rgba(133, 133, 133, .6)
+            dark: 0 5px 6px -5px rgba(133, 133, 133, 0)
+          children:
+            - $formkit: text
+              name: light
+              label: 浅色
+              value: ""
+              help: 默认值：0 5px 6px -5px rgba(133, 133, 133, .6)
+              validation: required
+            - $formkit: text
+              name: dark
+              label: 暗色
+              value: ""
+              help: 默认值：0 5px 6px -5px rgba(133, 133, 133, 0)
+              validation: required
+        - $formkit: group
+          name: dropdown_background_color
+          label: 导航栏二级下拉背景颜色
+          help: 支持rgba颜色值和十六进制颜色值
+          value:
+            light: rgba(255, 255, 255)
+            dark: rgba(18, 18, 18)
+          children:
+            - $formkit: text
+              name: light
+              label: 浅色
+              value: ""
+              help: 默认值：rgba(255, 255, 255)
+              validation: required
+            - $formkit: text
+              name: dark
+              label: 暗色
+              value: ""
+              help: 默认值：rgba(18, 18, 18)
+              validation: required
+        - $formkit: group
+          name: dropdown_font_color
+          label: 导航栏二级下拉字体颜色
+          help: 支持rgba颜色值和十六进制颜色值
+          value:
+            light: rgba(76, 73, 72, 1)
+            dark: rgba(255, 255, 255, 0.7)
+          children:
+            - $formkit: text
+              name: light
+              label: 浅色
+              value: ""
+              help: 默认值：rgba(76, 73, 72, 1)
+              validation: required
+            - $formkit: text
+              name: dark
+              label: 暗色
+              value: ""
+              help: 默认值：rgba(255, 255, 255, 0.7)
+              validation: required
+        - $formkit: group
+          name: dropdown_hover_font_color
+          label: 导航栏hover二级下拉字体颜色
+          help: 支持rgba颜色值和十六进制颜色值
+          value:
+            light: rgb(244 244 244)
+            dark: rgb(54 50 50)
+          children:
+            - $formkit: text
+              name: light
+              label: 浅色
+              value: ""
+              help: 默认值：rgb(244 244 244)
+              validation: required
+            - $formkit: text
+              name: dark
+              label: 暗色
+              value: ""
+              help: 默认值：rgb(54 50 50)
+              validation: required
+    #侧边栏设置          
     - group: aside
-      label: 侧边栏
+      label: 侧边栏设置
       formSchema:
         - $formkit: radio
           name: enable
-          label: 启用侧边栏
-          help: 是否启用侧边栏（全局），关闭后所有页面都没有侧边栏（优先级高于页面元数据）
+          label: 启用侧边栏（全局）
+          help: 是否启用侧边栏，关闭后所有页面都没有侧边栏（优先级高于页面元数据）
           value: true
           options:
             - label: 启用
@@ -187,25 +363,63 @@ spec:
               value: aside-left
             - label: 右边
               value: aside-right
-        - $formkit: textarea
-          rows: 5
+        - $formkit: group
           name: button
           label: 侧边栏按钮
-          placeholder: 请填写 侧边栏按钮内容
-          value: 关注我&+&/
-          help: 侧边栏按钮内容, 支持 html 代码片段 (注：文案&+&链接 用&+&分割)
-          validation: required
+          value:
+            name: '主题仓库'
+            link: 'https://github.com/dhjddcn/halo-theme-butterfly'
+          children:
+            - $formkit: text
+              name: name
+              label: 名称
+              placeholder: 请填写 按钮名称
+              help: 支持html代码片段
+              value: ""
+              validation: required
+            - $formkit: text
+              name: link
+              label: 链接
+              placeholder: 请填写 按钮链接
+              value: ""
+              validation: required
+        - $formkit: repeater
+          name: social
+          label: 社交账号
+          value:
+            - name: 'Github'
+              icon: '<i class="fa-brands fa-github"></i>'
+              link: 'https://github.com/dhjddcn'
+          children:
+            - $formkit: text
+              name: name
+              label: 名称
+              placeholder: 请填写 账号名称
+              value: ""
+              validation: required
+            - $formkit: text
+              name: icon
+              label: 图标
+              placeholder: 请填写 图标
+              value: ""
+              validation: required
+            - $formkit: text
+              name: link
+              label: 链接
+              placeholder: 请填写 链接
+              value: ""
+              validation: required
         - $formkit: textarea
           rows: 5
           name: notice
           label: 侧边栏公告
           placeholder: 请填写 侧边栏公告内容
-          value: 好博客，一定要 分享出去 呀~
+          value: '好博客，一定要 分享出去 呀~'
           help: 侧边栏公告内容, 支持 html 代码片段
         - $formkit: radio
           name: enable_category
           label: 启用侧边栏分类
-          help: 是否启用侧边栏分类
+          help: 是否启用侧边栏分类（只随机展示 5 个分类，不支持二级分类）
           value: true
           options:
             - label: 启用
@@ -215,7 +429,7 @@ spec:
         - $formkit: radio
           name: enable_tags
           label: 启用侧边栏标签
-          help: 是否启用侧边栏标签
+          help: 是否启用侧边栏标签（只随机展示 25 个标签）
           value: true
           options:
             - label: 启用
@@ -242,9 +456,27 @@ spec:
               value: true
             - label: 禁用
               value: false
-
+    #卡片设置              
+    - group: card
+      label: 卡片设置
+      formSchema:
+        - $formkit: text
+          name: radius
+          label: 卡片圆角
+          placeholder: 请填写 卡片圆角
+          value: 15px
+          help: 卡片圆角，像素或百分比，默认值： 15px
+          validation: required
+        - $formkit: text
+          name: shadow
+          label: 卡片阴影
+          placeholder: 请填写 卡片阴影
+          value: 0 3px 8px 6px rgba(7,17,27,0.05)
+          help: 卡片阴影，默认值： 0 3px 8px 6px rgba(7,17,27,0.05)
+          validation: required
+    #首页设置
     - group: index
-      label: 首页
+      label: 首页设置
       formSchema:
         - $formkit: radio
           name: enable_above
@@ -260,17 +492,38 @@ spec:
           name: above_background
           label: 第一屏背景图
           placeholder: 请填写 第一屏背景图
-          value: 'https://fastly.jsdelivr.net/npm/halo-theme-butterfly@latest/above.png'
+          value: 'https://unpkg.com/halo-theme-butterfly/above.png'
           help: 如果全局背景图设置为图片链接，则此处背景图将不生效
           validation: required
         - $formkit: textarea
           rows: 5
-          name: typewriter
+          name: typewriter_custom_text
           label: 打字机文案
           placeholder: 请填写 打字机文案
-          value: 欢迎来到我的博客 &+& 请填写打字机文案
-          help: 首页第一屏打字机文案 (注：多个文案用 &+& 隔开)
+          help: 首页第一屏打字机文案 (注：多个文案用 |&| 分割)
+          value: '欢迎使用Butterfly主题，一个简洁、优雅的主题~'
           validation: required
+        - $formkit: radio
+          name: enable_typewriter_random_text
+          label: 启用随机打字机文案
+          help: 是否启用随文案API（必须先配置 API），启用后将显示随机API文案，禁用时显示打字机文案
+          value: false
+          options:
+            - label: 启用
+              value: true
+            - label: 禁用
+              value: false
+        - $formkit: text
+          name: typewriter_random_api
+          label: 随机文案链接（api）
+          placeholder: 请正确填写 随机文案链接（api）
+          value: 'https://api.btstu.cn/yan/api.php'
+          help: 自定义随机文案API(推荐使用一言,返回格式设置为TEXT格式，json需要配置取值格式)，免费 API 不会一直可用，请知悉
+        - $formkit: text
+          name: typewriter_api_value_format
+          label: 随机文案api取值格式
+          value: ''
+          help: 如果使用的随机文案API返回格式不是TEXT格式，Json请自定义取值格式，如：data.content
         - $formkit: radio
           name: post_layout
           label: 文章布局方式
@@ -281,13 +534,13 @@ spec:
               value: list
             - label: 平铺
               value: tile
-
+    #文章设置
     - group: post
-      label: 文章
+      label: 文章设置
       formSchema:
         - $formkit: radio
           name: enable_above
-          label: 启用第一屏 （由于设计原因文章页面 此功能还未实现）
+          label: 启用第一屏
           help: 启用首页第一屏
           value: true
           options:
@@ -295,46 +548,9 @@ spec:
               value: true
             - label: 禁用
               value: false
-        - $formkit: text
-          name: out_date
-          label: 文章过期
-          placeholder: 请填写 文章过期时间
-          value: 30
-          help: 文章过期-卡片提醒，默认30天 如果填写0不展示
-          validation: required|number
-        - $formkit: radio
-          name: enable_h_title
-          label: 启用文章标题图标
-          help: 启用文章标题图标 （h1 ~ h6）前面的图标
-          value: true
-          options:
-            - label: 启用
-              value: true
-            - label: 禁用
-              value: false
-        - $formkit: radio
-          name: enable_reward
-          label: 启用打赏
-          help: 启用文章打赏，请正确填写名称和二维码图片链接
-          value: true
-          options:
-            - label: 启用
-              value: true
-            - label: 禁用
-              value: false
-        - $formkit: attachment
-          name: wxPay
-          label: 微信
-          placeholder: 请填写微信二维码链接
-          help: 微信二维码链接
-        - $formkit: attachment
-          name: alipay
-          label: 支付宝
-          placeholder: 请填写支付宝二维码链接
-          help: 支付宝二维码链接
-
+    #归档设置          
     - group: archives
-      label: 归档
+      label: 归档设置
       formSchema:
         - $formkit: radio
           name: enable_above
@@ -350,57 +566,12 @@ spec:
           name: above_background
           label: 第一屏背景图
           placeholder: 请填写 第一屏背景图
-          value: 'https://fastly.jsdelivr.net/npm/halo-theme-butterfly@latest/above.png'
+          value: 'https://unpkg.com/halo-theme-butterfly/above.png'
           help: 如果全局背景图设置为图片链接，则此处背景图将不生效
           validation: required
-        - $formkit: text
-          name: custom_title
-          label: 自定义标题
-          placeholder: 请填写 自定义标题
-          value: 归档
-          help: 请填写 自定义标题
-          validation: required
-
-    - group: categories
-      label: 分类
-      formSchema:
-        - $formkit: radio
-          name: enable_above
-          label: 启用第一屏
-          help: 启用首页第一屏
-          value: true
-          options:
-            - label: 启用
-              value: true
-            - label: 禁用
-              value: false
-        - $formkit: attachment
-          name: above_background
-          label: 第一屏背景图
-          placeholder: 请填写 第一屏背景图
-          value: 'https://fastly.jsdelivr.net/npm/halo-theme-butterfly@latest/above.png'
-          help: 如果全局背景图设置为图片链接，则此处背景图将不生效
-          validation: required
-        - $formkit: text
-          name: custom_title
-          label: 自定义标题
-          placeholder: 请填写 自定义标题
-          value: '分类'
-          help: 请填写 自定义标题
-          validation: required
-        - $formkit: radio
-          name: post_layout
-          label: 分类详情 文章布局方式
-          help: 分类详情 文章布局方式 提供（列表、平铺）两种，仅文章详情生效
-          value: list
-          options:
-            - label: 列表
-              value: list
-            - label: 平铺
-              value: tile
-
+    #标签设置          
     - group: tags
-      label: 标签
+      label: 标签设置
       formSchema:
         - $formkit: radio
           name: enable_above
@@ -416,29 +587,12 @@ spec:
           name: above_background
           label: 第一屏背景图
           placeholder: 请填写 第一屏背景图
-          value: 'https://fastly.jsdelivr.net/npm/halo-theme-butterfly@latest/above.png'
+          value: 'https://unpkg.com/halo-theme-butterfly/above.png'
           help: 如果全局背景图设置为图片链接，则此处背景图将不生效
           validation: required
-        - $formkit: text
-          name: custom_title
-          label: 自定义标题
-          placeholder: 请填写 自定义标题
-          value: 标签
-          help: 请填写 自定义标题
-          validation: required
-        - $formkit: radio
-          name: post_layout
-          label: 标签详情 文章布局方式
-          help: 标签详情 文章布局方式 提供（列表、平铺）两种，仅文章详情生效
-          value: list
-          options:
-            - label: 列表
-              value: list
-            - label: 平铺
-              value: tile
-
-    - group: single
-      label: 独立页
+    #分类设置          
+    - group: categories
+      label: 分类设置
       formSchema:
         - $formkit: radio
           name: enable_above
@@ -454,27 +608,29 @@ spec:
           name: above_background
           label: 第一屏背景图
           placeholder: 请填写 第一屏背景图
-          value: 'https://fastly.jsdelivr.net/npm/halo-theme-butterfly@latest/above.png'
+          value: 'https://unpkg.com/halo-theme-butterfly/above.png'
           help: 如果全局背景图设置为图片链接，则此处背景图将不生效
           validation: required
+    #渲染设置
+    - group: render
+      label: 渲染设置
+      formSchema:
         - $formkit: radio
-          name: enable_h_title
-          label: 启用文章标题图标
-          help: 启用文章标题图标 （h1 ~ h6）前面的图标
+          name: enable_h_icon
+          label: 启用标题图标（全局）
+          help: 启用h1~h6标题左边图标（元数据可配置）
           value: true
           options:
             - label: 启用
               value: true
             - label: 禁用
               value: false
-
-    - group: code
-      label: 代码块
-      formSchema:
         - $formkit: radio
-          name: enable
+          name: enable_code
+          id: enable_code
+          key: enable_code
           label: 启用代码块
-          help: 如果安装代码块插件，可关闭此功能
+          help: 如果安装其他代码块插件，请关闭此功能！！！
           value: true
           options:
             - label: 启用
@@ -482,7 +638,8 @@ spec:
             - label: 禁用
               value: false
         - $formkit: radio
-          name: enable_title
+          name: enable_code_title
+          if: $get(enable_code).value
           label: 启用代码标题
           help: 启用代码块的标题，默认显示语言类型，也可自定义标题
           value: true
@@ -492,7 +649,8 @@ spec:
             - label: 禁用
               value: false
         - $formkit: radio
-          name: enable_hr
+          name: enable_code_hr
+          if: $get(enable_code).value
           label: 启用代码标题分割线
           help: 启用代码标题和内容之间的分割线，不展示时会更加简洁
           value: true
@@ -502,7 +660,8 @@ spec:
             - label: 禁用
               value: false
         - $formkit: radio
-          name: enable_line
+          name: enable_code_line
+          if: $get(enable_code).value
           label: 启用代码行号
           help: 启用代码块行号功能
           value: true
@@ -512,7 +671,8 @@ spec:
             - label: 禁用
               value: false
         - $formkit: radio
-          name: enable_copy
+          name: enable_code_copy
+          if: $get(enable_code).value
           label: 启用代码复制
           help: 启用代码块复制按钮
           value: true
@@ -522,7 +682,8 @@ spec:
             - label: 禁用
               value: false
         - $formkit: radio
-          name: enable_expander
+          name: enable_code_expander
+          if: $get(enable_code).value
           label: 启用代码折叠
           help: 启用代码折叠功能
           value: true
@@ -532,7 +693,8 @@ spec:
             - label: 禁用
               value: false
         - $formkit: select
-          name: theme_light
+          name: code_theme_light
+          if: $get(enable_code).value
           label: 代码块主题（浅色）随着系统主题变化
           value: one-light
           options:
@@ -609,7 +771,8 @@ spec:
             - value: "z-touch"
               label: "z-touch"
         - $formkit: select
-          name: theme_dark
+          name: code_theme_dark
+          if: $get(enable_code).value
           label: 代码块主题（深色）随着系统主题变化
           value: one-dark
           options:
@@ -684,59 +847,5 @@ spec:
             - value: "xonokai"
               label: "xonokai"
             - value: "z-touch"
-              label: "z-touch"
-
-    - group: socials
-      label: 社交
-      formSchema:
-        - $formkit: repeater
-          name: no_data
-          label: 社交账号
-          help: 特殊跳转，请注意url中的参数值 如：QQ 只需要修改 uin= 后面的值即可，其他直接填写url即可，此处可直接填写html片段，svg图标代码片段
-          value:
-            - name: QQ
-              icon: <i class="fa-brands fa-qq"></i>
-              url: https://api.sumt.cn/api/qq.talk.php?qq=自己的QQ号&format=card
-              delete: true
-            - name: Github
-              icon: <i class="fa-brands fa-github"></i>
-              url:
-            - name: Email
-              icon: <i class="fa-solid fa-envelope"></i>
-              url: mailto:邮箱地址
-          children:
-            - $formkit: text
-              name: name
-              label: 名称
-              value: ""
-            - $formkit: text
-              name: icon
-              label: 图标
-              value: ""
-            - $formkit: textarea
-              rows: 4
-              name: url
-              label: 地址
-              value: ""
-
-    - group: other
-      label: 其他
-      formSchema:
-        - $formkit: radio
-          name: enable_cdn_link
-          label: 启用外链加载资源文件
-          help: 必须选配置外链地址才能生效，否则无效
-          value: false
-          options:
-            - label: 启用
-              value: true
-            - label: 禁用
-              value: false
-        - $formkit: text
-          name: cdn_link
-          label: cdn地址，外链地址
-          placeholder: 请填写 cdn地址，外链地址
-          value: 'https://cdn.jsdelivr.net/npm/halo-theme-butterfly/templates/assets'
-          help: '默认为npmJs的jsdelivr加速地址，如果你有自己的cdn地址（请确保链接下assets文件夹下主题静态资源文件），可以填写，否则请勿修改！ jsdelivr地址：https://cdn.jsdelivr.net/npm/halo-theme-butterfly/templates/assets'
-          validation: required
-              
+              label: "z-touch"              
+                            
