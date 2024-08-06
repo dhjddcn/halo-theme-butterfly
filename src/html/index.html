@@ -18,14 +18,12 @@
     <script id="pageScript" th:inline="javascript">
       Object.assign(window.MainApp.conf, {
         enable_above: /*[[${theme.config.index.enable_above}]]*/ '',
-        above_background: /*[[${theme.config.index.above_background}]]*/ '',
-
-        typewriter_custom_text: /*[[${theme.config.index.typewriter_custom_text}]]*/ '' ,
+        above_background: /*[[${theme.config.index.above_background}]]*/ '', //第一屏
         enable_typewriter_random_text: /*[[${theme.config.index.enable_typewriter_random_text}]]*/ '',
+        typewriter_custom_text: /*[[${theme.config.index.typewriter_custom_text}]]*/ '',
         typewriter_random_api: /*[[${theme.config.index.typewriter_random_api}]]*/ '',
         typewriter_api_value_format: /*[[${theme.config.index.typewriter_api_value_format}]]*/ '',
-        // 分页
-        nextUrl: /*[[${posts.nextUrl}]]*/ {},
+        nextUrl: /*[[${posts.nextUrl}]]*/ {},// 分页
         prevUrl: /*[[${posts.prevUrl}]]*/ {},
         page: /*[[${posts.page}]]*/ {},
         size: /*[[${posts.size}]]*/ {},
