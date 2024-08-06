@@ -2,8 +2,7 @@
   xmlns:th="https://www.thymeleaf.org"
   th:with="
      assets_link = ${theme.config.loading.source[theme.config.loading.source.type]},
-     param_prefix = ${#strings.containsIgnoreCase(theme.config.loading.img.random_link,'?') ? '&' : '?'},
-     is_body_background_http = ${#strings.containsIgnoreCase(theme.config.style.body_background,'http')}
+     param_prefix = ${#strings.containsIgnoreCase(theme.config.loading.img.random_link,'?') ? '&' : '?'}
   "
   th:fragment="layout (page,title,pin,header,main)"
 >

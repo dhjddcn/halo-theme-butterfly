@@ -14,9 +14,7 @@
 </script>
 
 <!--/* style */-->
-<style th:inline="css"
-       th:with="body_background = ${is_body_background_http ? 'url('+theme.config.style.body_background+') no-repeat fixed center / cover;' : theme.config.style.body_background }"
->
+<style th:inline="css">
   :root {
     --card-border-radius: /*[(${theme.config.card.radius})]*/ 24px;
     --card-box-shadow: /*[(${theme.config.card.shadow})]*/ transparent;
@@ -25,7 +23,7 @@
 
   html {
     --theme: #1c69ed;
-    --body-background: /*[(${body_background})]*/ transparent;
+    --body-background: /*[(${theme.config.style.body_background})]*/ transparent;
     --nav-font-color: /*[(${theme.config.nav.font_color.light})]*/ transparent;
     --nav-active-font-color: /*[(${theme.config.nav.active_font_color.light})]*/ transparent;
     --nav-active-hover-font-color: /*[(${theme.config.nav.active_hover_font_color.light})]*/ transparent;

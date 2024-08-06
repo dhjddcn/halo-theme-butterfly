@@ -11,10 +11,12 @@ import LazyLoad from './_lazyLoad';
 export default class Common {
 
   constructor() {
+    if(window.MainApp.conf.enable_above && window.MainApp.conf.above_background) this.#loadAboveBackgroundImg(); //第一屏图片预加载 
+
     this.#createSingleAction(); //创建单一行为事件
 
     if(MainApp.conf.enable_aside && MainApp.conf.enable_webInfo) this.#runDay(); //站点运行时间
-    
+
   }
 
   // 站点运行时间
@@ -62,9 +64,18 @@ export default class Common {
     $('html,body').animate({scrollTop: 0}, 300);
   }
 
-
- 
-
+  //第一屏图片预加载
+  #loadAboveBackgroundImg() {
+    const img = new Image();
+    img.src = window.MainApp.conf.above_background;
+    img.onload = () => {
+      const above = document.querySelector('.header > .above');
+      above.style.backgroundImage = `url(${img.src})`;
+    };
+    img.onerror = () => {
+      console.error('第一屏图片预加载失败');
+    };
+  }
 }
  
  

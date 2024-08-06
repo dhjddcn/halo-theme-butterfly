@@ -14,13 +14,14 @@
       id="pageStyle"
       xmlns:th="https://www.thymeleaf.org"
       th:inline="css"
-      th:with="above_background = ${not #strings.isEmpty(post.spec.cover) ? post.spec.cover : (theme.config.loading.img.random_enable ? theme.config.loading.img.random_link  : ''  )}">
-      .above {
-        background-image: /*[(${'url('+above_background+')'})]*/ none;
-      }
+    >
+
     </style>
-    <script id="pageScript" th:inline="javascript">
+    <script id="pageScript" th:inline="javascript" th:with="above_background = ${not #strings.isEmpty(post.spec.cover) ? post.spec.cover : (theme.config.loading.img.random_enable ? theme.config.loading.img.random_link  : ''  )}">
       Object.assign(window.MainApp.conf, {
+        // 第一屏
+        enable_above: /*[[${theme.config.post.enable_above}]]*/ '',
+        above_background: /*[[${above_background}]]*/ '',
         // 渲染
         enable_h_icon: /*[[${theme.config.render.enable_h_icon}]]*/ true,
         // 代码块
