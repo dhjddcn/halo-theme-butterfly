@@ -1,12 +1,13 @@
 /**
- * @date: 2023/1/15
+ * @date: 2023/1/20
  * @author: 小红
  * @fileName: cross_line
  * @Description: 彩色旋转加载loading
  */
 
 class CrossLine {
-  cssText = `.loading-container {
+  cssText = `
+  .loading-container {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -91,7 +92,7 @@ class CrossLine {
 
   start() {
     this.container.className = 'loading-container';
-    this.container.innerHTML = `<dvi class="loading-body"></dvi>`;
+    this.container.innerHTML = `<div class="loading-body"></div>`;
     document.body.appendChild(this.container);
   }
 

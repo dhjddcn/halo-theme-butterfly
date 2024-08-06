@@ -74,10 +74,12 @@ spec:
           name: type
           label: 页面加载（Loading）
           help: 内置多种加载样式
-          value: 'null'
+          value: 'circle'
           options:
-            - label: '禁用'
-              value: 'null'
+            - label: '转圈'
+              value: 'circle'
+            - label: '沙漏'
+              value: 'hourglass'
             - label: '交叉线'
               value: 'cross_line'
             - label: '小圆点'
