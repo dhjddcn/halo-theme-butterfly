@@ -9,11 +9,13 @@
 >
   <!--/* pin */-->
   <th:block th:fragment="pin">
-    <style th:inline="css">
-      .above {
-        background-image: /*[(${'url('+theme.config.index.above_background+')'})]*/ none;
-      }
-    </style>
+    <script id="pageScript" th:inline="javascript">
+      Object.assign(window.MainApp.conf, {
+        //第一屏
+        enable_above: /*[[${theme.config.index.enable_above}]]*/ '',
+        above_background: /*[[${theme.config.index.above_background}]]*/ '',
+      });
+    </script>
   </th:block>
 
 
@@ -36,12 +38,17 @@
   <!--/* 內容 */-->
   <th:block th:fragment="main">
     <section class="content ">
-      <div class="head card">
+      <div class="head card" th:with="noData = ${not #lists.isEmpty(groups)}">
         <div class="title">图库分类</div>
         <div class="groups">
-          <a class="groups-item animate__animated animate__swing" href="/photos">全部</a>
-          <a th:each="group : ${groups}" th:text="${group.spec.displayName}" th:href="${'/photos?group=' + group.metadata.name }" th:data-group="${group.metadata.name}" class="groups-item animate__animated animate__swing"></a>
+          <th:block th:if="${noData}">
+            <a class="groups-item animate__animated " href="/photos">全部</a>
+            <a th:each="group : ${groups}" th:text="${group.spec.displayName}" th:href="${'/photos?group=' + group.metadata.name }" th:data-group="${group.metadata.name}" class="groups-item animate__animated "></a>
+          </th:block>
+          
+          <th:block th:unless="${noData}" th:insert="~{views/components:: emptyData(false)}"></th:block>
         </div>
+
       </div>
       <div class="imgs">
         <img class="img animate__animated animate__bounceIn" th:each="photo : ${photos.items}" th:src="${photo.spec.url}" th:alt="${photo.spec.displayName}">

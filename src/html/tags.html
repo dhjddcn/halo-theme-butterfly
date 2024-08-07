@@ -9,13 +9,12 @@
 >
   <!--/* pin */-->
   <th:block th:fragment="pin">
-    <style th:inline="css">
-      .above {
-        background-image: /*[(${'url('+theme.config.tags.above_background+')'})]*/ none;
-      }
-    </style>
-
     <script id="pageScript" th:inline="javascript">
+      Object.assign(window.MainApp.conf, {
+        //第一屏
+        enable_above: /*[[${theme.config.tags.enable_above}]]*/ '',
+        above_background: /*[[${theme.config.tags.above_background}]]*/ '',
+      });
     </script>
   </th:block>
 

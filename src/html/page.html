@@ -9,11 +9,13 @@
 >
   <!--/* pin */-->
   <th:block th:fragment="pin">
-    <style th:with="above_background = ${ #strings.isEmpty(singlePage.spec.cover) ? theme.config.index.above_background : (theme.config.loading.img.random_enable ? theme.config.loading.img.random_link  : ''  )}" th:inline="css">
-      .above {
-        background-image: /*[(${'url('+above_background+')'})]*/ none;
-      }
-    </style>
+    <script id="pageScript" th:inline="javascript" th:with="above_background = ${ #strings.isEmpty(singlePage.spec.cover) ? theme.config.index.above_background : (theme.config.loading.img.random_enable ? theme.config.loading.img.random_link  : ''  )}">
+      Object.assign(window.MainApp.conf, {
+        //第一屏
+        enable_above: /*[[${theme.config.index.enable_above}]]*/ '',
+        above_background: /*[[${above_background}]]*/ '',
+      });
+    </script>
   </th:block>
 
 

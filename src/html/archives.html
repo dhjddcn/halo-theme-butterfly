@@ -9,16 +9,13 @@
 >
   <!--/* pin */-->
   <th:block th:fragment="pin">
-    <style th:inline="css">
-      .above {
-        background-image: /*[(${'url('+theme.config.archives.above_background+')'})]*/ none;
-      }
-    </style>
-
     <script id="pageScript" th:inline="javascript">
       window.MainApp.data =  /*[[${postFinder.archives(1,archives.total).items}]]*/ [];
 
       Object.assign(window.MainApp.conf, {
+        //第一屏
+        enable_above: /*[[${theme.config.archives.enable_above}]]*/ '',
+        above_background: /*[[${theme.config.archives.above_background}]]*/ '',
         // 分页
         nextUrl: /*[[${archives.nextUrl}]]*/ {},
         prevUrl: /*[[${archives.prevUrl}]]*/ {},
@@ -30,7 +27,6 @@
         hasNext: /*[[${archives.hasNext()}]]*/ {},
       });
     </script>
-
   </th:block>
 
   <!--/* header */-->

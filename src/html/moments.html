@@ -9,11 +9,13 @@
 >
   <!--/* pin */-->
   <th:block th:fragment="pin">
-    <style th:inline="css">
-      .above {
-        background-image: /*[(${'url('+theme.config.index.above_background+')'})]*/ none;
-      }
-    </style>
+    <script id="pageScript" th:inline="javascript">
+      Object.assign(window.MainApp.conf, {
+        //第一屏
+        enable_above: /*[[${theme.config.index.enable_above}]]*/ '',
+        above_background: /*[[${theme.config.index.above_background}]]*/ '',
+      });
+    </script>
   </th:block>
 
   <!--/* header */-->
@@ -35,8 +37,8 @@
   <!--/* 內容 */-->
   <th:block th:fragment="main">
 
-    <section class="content card animate__animated animate__fadeIn">
-      <ul class="list">
+    <section class="content card animate__animated animate__fadeIn" th:with="noData = ${not #lists.isEmpty(moments.items)}"  th:style="${ noData ?  '' : 'min-height: auto'}">
+      <ul class="list" th:if="${noData}">
         <li class="item" th:each="moment : ${moments.items}" th:with="content=${moment.spec.content}">
           <div class="h" th:if="${not #strings.isEmpty(content.html)}" th:utext="${content.html}"></div>
 
@@ -51,6 +53,7 @@
           <div class="in"></div>
         </li>
       </ul>
+      <th:block th:unless="${noData}" th:insert="~{views/components:: emptyData(false)}"></th:block>
     </section>
     <th:block th:replace="~{views/aside::common}"/>
   </th:block>

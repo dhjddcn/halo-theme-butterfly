@@ -17,6 +17,12 @@
 
     <script id="pageScript" th:inline="javascript">
       window.MainApp.data =  /*[[${categories}]]*/ [];
+
+      Object.assign(window.MainApp.conf, {
+        //第一屏
+        enable_above: /*[[${theme.config.categories.enable_above}]]*/ '',
+        above_background: /*[[${theme.config.categories.above_background}]]*/ '',
+      });
     </script>
   </th:block>
 

@@ -207,7 +207,7 @@ export function useClearPage() {
 export function getQueryParams(search = window.location.search) {
   if(!search) return null;
 
-  const queryStr = url.substring(1);
+  const queryStr = search.substring(1);
 
   const params = {};
   
