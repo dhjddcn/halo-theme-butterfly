@@ -26,10 +26,10 @@
 
 ## 🌐 免费可用的 npm cdn
 
-- https://unpkg.com/halo-theme-butterfly/templates/assets
-- https://cdn.jsdelivr.net/npm/halo-theme-butterfly/templates/assets
-- https://jsd.onmicrosoft.cn/npm/halo-theme-butterfly/templates/assets
-- https://fastly.jsdelivr.net/npm/halo-theme-butterfly@latest/templates/assets
+- https://unpkg.com/halo-theme-butterfly/templates/assets/
+- https://cdn.jsdelivr.net/npm/halo-theme-butterfly/templates/assets/
+- https://jsd.onmicrosoft.cn/npm/halo-theme-butterfly/templates/assets/
+- https://fastly.jsdelivr.net/npm/halo-theme-butterfly@latest/templates/assets/
 
 ## ⭐️ 主题功能
 
