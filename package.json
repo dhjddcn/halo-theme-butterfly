@@ -1,6 +1,6 @@
 {
   "name": "halo-theme-butterfly",
-  "version": "2.0.5",
+  "version": "2.0.6",
   "description": "一个Halo博客主题，Butterfly",
   "scripts": {
     "dev": "gulp watch",
@@ -14,6 +14,10 @@
     "build": "npm run clean && gulp && gulp js-plugins-loading",
     "release": "gulp release"
   },
+  "files": [
+    "templates/assets/",
+    "docs/"
+  ],
   "keywords": [
     "halo",
     "halo-theme",
@@ -91,9 +95,7 @@
     "typed.js": "^2.1.0",
     "webpack": "^5.68.0",
     "webpack-stream": "^7.0.0",
-    "yamljs": "^0.3.0"
-  },
-  "dependencies": {
+    "yamljs": "^0.3.0",
     "terser-webpack-plugin": "^5.3.10"
   }
 }
