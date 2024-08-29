@@ -494,7 +494,7 @@ spec:
           name: above_background
           label: 第一屏背景图
           placeholder: 请填写 第一屏背景图
-          value: 'https://unpkg.com/halo-theme-butterfly/above.png'
+          value: 'https://unpkg.com/halo-theme-butterfly/docs/above.png'
           help: 如果全局背景图设置为图片链接，则此处背景图将不生效
           validation: required
         - $formkit: textarea
@@ -568,7 +568,7 @@ spec:
           name: above_background
           label: 第一屏背景图
           placeholder: 请填写 第一屏背景图
-          value: 'https://unpkg.com/halo-theme-butterfly/above.png'
+          value: 'https://unpkg.com/halo-theme-butterfly/docs/above.png'
           help: 如果全局背景图设置为图片链接，则此处背景图将不生效
           validation: required
     #标签设置          
@@ -589,7 +589,7 @@ spec:
           name: above_background
           label: 第一屏背景图
           placeholder: 请填写 第一屏背景图
-          value: 'https://unpkg.com/halo-theme-butterfly/above.png'
+          value: 'https://unpkg.com/halo-theme-butterfly/docs/above.png'
           help: 如果全局背景图设置为图片链接，则此处背景图将不生效
           validation: required
     #分类设置          
@@ -610,7 +610,7 @@ spec:
           name: above_background
           label: 第一屏背景图
           placeholder: 请填写 第一屏背景图
-          value: 'https://unpkg.com/halo-theme-butterfly/above.png'
+          value: 'https://unpkg.com/halo-theme-butterfly/docs/above.png'
           help: 如果全局背景图设置为图片链接，则此处背景图将不生效
           validation: required
     #渲染设置
