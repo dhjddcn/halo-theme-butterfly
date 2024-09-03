@@ -6,7 +6,7 @@
  */
 import {useChart} from '../core/_util';
 import App from '../core/App';
-import pagination from '../modules/pagination';
+import pagination from '../modules/Pagination';
 import * as echarts from 'echarts';
 import {LineChart} from 'echarts/charts';
 import {TitleComponent, TooltipComponent, GridComponent, DataZoomComponent} from 'echarts/components';

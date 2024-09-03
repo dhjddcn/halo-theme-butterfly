@@ -6,7 +6,7 @@
  */
 
 import App from '../core/App';
-import Pagination from '../modules/pagination';
+import Pagination from '../modules/Pagination';
 
 @App([Pagination])
 class Category {
