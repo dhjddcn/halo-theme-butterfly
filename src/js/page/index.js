@@ -17,7 +17,10 @@ class Index {
   run_typewriter() {
     if(!document.querySelector('.above-subtitle--text')) return;
 
-    const {typewriter_custom_text, enable_typewriter_random_text, typewriter_random_api, typewriter_api_value_format} = MainApp.conf;
+    const {
+            typewriter_custom_text, enable_typewriter_random_text,
+            typewriter_random_api, typewriter_api_value_format,
+          } = MainApp.conf;
 
     // 创建打字鸡
     const useTyped = (strings) => {
@@ -30,7 +33,6 @@ class Index {
       });
     };
 
-    
     // 随机文字
     if(enable_typewriter_random_text) {
       $.ajax({
@@ -66,5 +68,17 @@ class Index {
 
     // 其他情况
     useTyped(text);
+  }
+
+  /**
+   * 箭头向下到内容部分
+   */
+  run_above_down() {
+    const downIcon = $('header .above-down i');
+
+    downIcon.on('click', (e) => {
+      $('body,html').animate({scrollTop: $('main').offset().top}, 500);
+    });
+
   }
 }

@@ -28,6 +28,37 @@
         font-size: 1.15em;
       }
     }
+
+
+    @keyframes above-down-effect {
+      0%, to {
+        top: 0;
+        opacity: .4
+      }
+
+      50% {
+        //top: -16px;
+        transform: translateY(-14px);
+        opacity: 1;
+        filter: none
+      }
+    }
+
+    &-down {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 10px;
+      font-size: 1.9rem;
+      text-align: center;
+
+      i {
+        z-index: 99;
+        cursor: var(--cursor-pointer);
+        animation: above-down-effect 1.5s infinite;
+        color: var(--above-index-subtitle-color);
+      }
+    }
   }
 
   .main {
