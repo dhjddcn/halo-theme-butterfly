@@ -76,6 +76,7 @@ export default class Common {
       console.error('第一屏图片预加载失败');
     };
   }
+
 }
  
  

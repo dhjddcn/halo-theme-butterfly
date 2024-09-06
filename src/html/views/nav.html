@@ -26,7 +26,7 @@
       <th:block th:each="menuItem : ${menuItems}" th:with="isChildren = ${#lists.isEmpty(menuItem.children)} ">
         <li th:if="${isChildren}" class="menu-item">
           <a
-            class="link"
+            class="menu-link"
             th:href="@{${menuItem.status.href}}"
             th:target="${menuItem.spec.target?.value}"
             th:with="icon = ${#annotations.getOrDefault(menuItem,'icon','')}"
@@ -38,7 +38,7 @@
         <!--/* 二级*/-->
         <li th:unless="${isChildren}" class="menu-item">
           <a
-            class="link"
+            class="menu-link"
             onclick="event.preventDefault()"
             th:with="icon = ${#annotations.getOrDefault(menuItem, 'icon','')}"
           >

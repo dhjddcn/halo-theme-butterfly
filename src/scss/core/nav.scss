@@ -70,50 +70,7 @@
     @include util.flex-center;
     flex-direction: row;
     color: var(--nav-font-color);
-
-    .link {
-      display: block;
-      position: relative;
-      height: 60px;
-      text-shadow: 1px 1px 2px rgba(0, 0, 0, .3);
-      font-size: .85em;
-      line-height: 60px;
-      text-align: center;
-
-
-      &::after {
-        position: absolute;
-        left: 0;
-        right: 0;
-        opacity: 0;
-        bottom: 16px;
-        content: "";
-        height: 3px;
-        transform: scaleX(.25);
-        background: var(--theme);
-        border-radius: 2px 2px 0 0;
-        transition: opacity .5s, transform .5s;
-      }
-
-      &:hover {
-        color: var(--nav-font-color);
-
-        &::after {
-          opacity: 1;
-          transform: scaleX(1);
-        }
-
-        .fa-chevron-down {
-          transform: rotate(180deg);
-        }
-      }
-
-      i {
-        font-size: 1em;
-      }
-
-    }
-
+    
     //操作项
     .controls {
       @include util.flex-center;
@@ -160,6 +117,50 @@
           transform: scaleY(1)
         }
       }
+
+      &-link {
+        display: block;
+        position: relative;
+        height: 60px;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, .3);
+        font-size: .85em;
+        line-height: 60px;
+        text-align: center;
+
+
+        &::after {
+          position: absolute;
+          left: 0;
+          right: 0;
+          opacity: 0;
+          bottom: 16px;
+          content: "";
+          height: 3px;
+          transform: scaleX(.25);
+          background: var(--theme);
+          border-radius: 2px 2px 0 0;
+          transition: opacity .5s, transform .5s;
+        }
+
+        &:hover {
+          color: var(--nav-font-color);
+
+          &::after {
+            opacity: 1;
+            transform: scaleX(1);
+          }
+
+          .fa-chevron-down {
+            transform: rotate(180deg);
+          }
+        }
+
+        i {
+          font-size: 1em;
+        }
+
+      }
+      
 
       //二级
       &-children {

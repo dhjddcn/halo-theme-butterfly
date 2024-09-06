@@ -91,11 +91,11 @@
     "postcss-sass": "^0.5.0",
     "prismjs": "^1.29.0",
     "sass": "^1.63.6",
+    "terser-webpack-plugin": "^5.3.10",
     "tocbot": "^4.25.0",
     "typed.js": "^2.1.0",
     "webpack": "^5.68.0",
     "webpack-stream": "^7.0.0",
-    "yamljs": "^0.3.0",
-    "terser-webpack-plugin": "^5.3.10"
+    "yamljs": "^0.3.0"
   }
 }
