@@ -60,7 +60,7 @@
         <span class="num" th:text="${category.status.visiblePostCount}"></span>
       </a>
     </th:block>
-    <th:block th:unless="${noData}" th:insert="~{views/components:: emptyData(false)}"></th:block>
+    <th:block th:unless="${noData}" th:insert="~{modules/components:: emptyData(false)}"></th:block>
     </ul>
   </div>
 </section>
@@ -78,7 +78,7 @@
         <span class="name" th:text="${tag.spec.displayName}"></span><span class="num" th:text="${'（' + tag.status.visiblePostCount + '）'}"></span>
       </a>
     </th:block>
-    <th:block th:unless="${noData}" th:insert="~{views/components:: emptyData(false)}"></th:block>
+    <th:block th:unless="${noData}" th:insert="~{modules/components:: emptyData(false)}"></th:block>
     </ul>
   </div>
 </section>

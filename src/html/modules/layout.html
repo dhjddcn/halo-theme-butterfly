@@ -24,7 +24,7 @@
     <meta property="og:locale" content="zh_CN">
     <meta property="og:type" th:content="${page}" th:value="${page}">
     <link rel="canonical" th:href="${site.url}">
-    <th:block th:replace="~{views/config}"/>
+    <th:block th:replace="~{modules/config}"/>
     <th:block th:replace="${pin}"/>
     <link rel="preload stylesheet" as="style" th:href="${assets_link + 'css/' + page + '.min.css?v=' + theme.spec.version}">
   </head>
@@ -37,9 +37,9 @@
 
     <main class="main" th:classappend="${theme.config.aside.enable ? theme.config.aside.position : '' }" th:insert="${main}"></main>
 
-    <th:block th:replace="~{views/footer}"/>
+    <th:block th:replace="~{modules/footer}"/>
 
-    <th:block th:replace="~{views/components::side}"/>
+    <th:block th:replace="~{modules/components::side}"/>
   </div>
 
   </body>

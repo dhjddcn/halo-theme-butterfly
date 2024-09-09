@@ -1,5 +1,5 @@
 <layout
-  th:replace="~{views/layout :: layout (
+  th:replace="~{modules/layout :: layout (
   page = 'index',
   title = ${site.title +  (#strings.isEmpty(site.subtitle) ? '' : ' - ' + site.subtitle )},
   pin = ~{::pin},
@@ -39,7 +39,7 @@
   <th:block th:fragment="header">
     <header th:class="${not theme.config.index.enable_above ? 'header dp' : 'header'}">
       <!--/* 导航栏 */-->
-      <th:block th:replace="~{views/nav}"/>
+      <th:block th:replace="~{modules/nav}"/>
 
       <!--/* 第一屏内容 */-->
       <section class="above" th:if="${theme.config.index.enable_above}">
@@ -62,8 +62,8 @@
   <!--/* 內容 */-->
   <th:block th:fragment="main">
     <section class="content">
-      <th:block th:replace="~{views/components:: list(${posts.items},${theme.config.index.post_layout})}"/>
+      <th:block th:replace="~{modules/components:: list(${posts.items},${theme.config.index.post_layout})}"/>
     </section>
-    <th:block th:replace="~{views/aside::common}"/>
+    <th:block th:replace="~{modules/aside::common}"/>
   </th:block>
 </layout>

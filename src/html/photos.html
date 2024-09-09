@@ -1,5 +1,5 @@
 <layout
-  th:replace="~{views/layout :: layout (
+  th:replace="~{modules/layout :: layout (
   page = 'photos',
   title = '图库' ,
   pin = ~{::pin},
@@ -23,7 +23,7 @@
   <th:block th:fragment="header">
     <header th:class="${not theme.config.index.enable_above ? 'header dp' : 'header'}">
       <!--/* 导航栏 */-->
-      <th:block th:replace="~{views/nav}"/>
+      <th:block th:replace="~{modules/nav}"/>
 
       <!--第一屏内容-->
       <section class="above" th:if="${theme.config.index.enable_above}">
@@ -46,7 +46,7 @@
             <a th:each="group : ${groups}" th:text="${group.spec.displayName}" th:href="${'/photos?group=' + group.metadata.name }" th:data-group="${group.metadata.name}" class="groups-item animate__animated "></a>
           </th:block>
           
-          <th:block th:unless="${noData}" th:insert="~{views/components:: emptyData(false)}"></th:block>
+          <th:block th:unless="${noData}" th:insert="~{modules/components:: emptyData(false)}"></th:block>
         </div>
 
       </div>
@@ -54,6 +54,6 @@
         <img class="img animate__animated animate__bounceIn" th:each="photo : ${photos.items}" th:src="${photo.spec.url}" th:alt="${photo.spec.displayName}">
       </div>
     </section>
-    <th:block th:replace="~{views/aside::common}"/>
+    <th:block th:replace="~{modules/aside::common}"/>
   </th:block>
 </layout>

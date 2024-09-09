@@ -1,5 +1,5 @@
 <layout
-  th:replace="~{views/layout :: layout (
+  th:replace="~{modules/layout :: layout (
   page = 'links',
   title = ${site.title} + ' - ' + '链接列表',
   pin = ~{::pin},
@@ -24,7 +24,7 @@
   <th:block th:fragment="header">
     <header th:class="${not theme.config.index.enable_above ? 'header dp' : 'header'}">
       <!--/* 导航栏 */-->
-      <th:block th:replace="~{views/nav}"/>
+      <th:block th:replace="~{modules/nav}"/>
 
       <!--第一屏内容-->
       <section class="above" th:if="${theme.config.index.enable_above}">
@@ -46,7 +46,7 @@
 
             <div class="list">
               <a class="link " th:each="link : ${group.links}" th:href="${link.spec.url}" target="_blank">
-                <img th:replace="~{views/components:: lazyLoadImg(${link.spec.logo},${link.spec.displayName},'logo',false,'')}"/>
+                <img th:replace="~{modules/components:: lazyLoadImg(${link.spec.logo},${link.spec.displayName},'logo',false,'')}"/>
                 <div class="info">
                   <p class="n" th:text="${link.spec.displayName}"></p>
                   <p class="d" th:text="${link.spec.description}"></p>
@@ -59,8 +59,8 @@
 
       </th:block>
 
-      <th:block th:unless="${noData}" th:insert="~{views/components:: emptyData(false)}"></th:block>
+      <th:block th:unless="${noData}" th:insert="~{modules/components:: emptyData(false)}"></th:block>
     </section>
-    <th:block th:replace="~{views/aside::common}"/>
+    <th:block th:replace="~{modules/aside::common}"/>
   </th:block>
 </layout>

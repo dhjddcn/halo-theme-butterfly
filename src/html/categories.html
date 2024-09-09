@@ -1,5 +1,5 @@
 <layout
-  th:replace="~{views/layout :: layout (
+  th:replace="~{modules/layout :: layout (
   page = 'categories',
   title = ${site.title} + ' - ' + '分类',
   pin = ~{::pin},
@@ -30,7 +30,7 @@
   <th:block th:fragment="header">
     <header th:class="${not theme.config.categories.enable_above ? 'header dp' : 'header'}">
       <!--/* 导航栏 */-->
-      <th:block th:replace="~{views/nav}"/>
+      <th:block th:replace="~{modules/nav}"/>
 
       <!--第一屏内容-->
       <section class="above" th:if="${theme.config.categories.enable_above}">
@@ -49,8 +49,8 @@
         <div class="chart"></div>
       </th:block>
 
-      <th:block th:unless="${noData}" th:insert="~{views/components:: emptyData(false)}"></th:block>
+      <th:block th:unless="${noData}" th:insert="~{modules/components:: emptyData(false)}"></th:block>
     </section>
-    <th:block th:replace="~{views/aside::common}"/>
+    <th:block th:replace="~{modules/aside::common}"/>
   </th:block>
 </layout>

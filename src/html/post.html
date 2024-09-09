@@ -1,6 +1,6 @@
 <layout
   xmlns:th="https://www.thymeleaf.org"
-  th:replace="~{views/layout :: layout (
+  th:replace="~{modules/layout :: layout (
   page = 'post',
   title = ${post.spec.title},
   pin = ~{::pin},
@@ -46,7 +46,7 @@
   <th:block th:fragment="header">
     <header th:class="${not theme.config.post.enable_above ? 'header dp' : 'header'}">
       <!--/* 导航栏 */-->
-      <th:block th:replace="~{views/nav}"/>
+      <th:block th:replace="~{modules/nav}"/>
 
       <!--第一屏内容-->
       <section class="above" th:if="${theme.config.post.enable_above}">
@@ -138,6 +138,6 @@
         th:attr="name=${post.metadata.name}"
       />
     </section>
-    <th:block th:replace="~{views/aside::post}"/>
+    <th:block th:replace="~{modules/aside::post}"/>
   </th:block>
 </layout>

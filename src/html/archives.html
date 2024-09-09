@@ -1,5 +1,5 @@
 <layout
-  th:replace="~{views/layout :: layout (
+  th:replace="~{modules/layout :: layout (
   page = 'archives',
   title = ${site.title} + ' - ' + '归档',
   pin = ~{::pin},
@@ -33,7 +33,7 @@
   <th:block th:fragment="header">
     <header th:class="${not theme.config.archives.enable_above ? 'header dp' : 'header'}">
       <!--/* 导航栏 */-->
-      <th:block th:replace="~{views/nav}"/>
+      <th:block th:replace="~{modules/nav}"/>
 
       <!--第一屏内容-->
       <section class="above" th:if="${theme.config.archives.enable_above}">
@@ -65,7 +65,7 @@
                   th:each="post : ${months.posts}">
 
                 <a class="cover" th:href="${post.status.permalink}">
-                  <img th:replace="~{views/components:: lazyLoadImg(${post.spec.cover},${post.spec.title},'img',true,${param_prefix +'v=' + #dates.format(post.spec.publishTime, 'yyyyMMddhhmmss')})}"/>
+                  <img th:replace="~{modules/components:: lazyLoadImg(${post.spec.cover},${post.spec.title},'img',true,${param_prefix +'v=' + #dates.format(post.spec.publishTime, 'yyyyMMddhhmmss')})}"/>
                 </a>
 
                 <div class="info">
@@ -82,9 +82,9 @@
 
       </th:block>
 
-      <th:block th:unless="${noData}" th:insert="~{views/components:: emptyData(false)}"></th:block>
+      <th:block th:unless="${noData}" th:insert="~{modules/components:: emptyData(false)}"></th:block>
     </section>
-    <th:block th:replace="~{views/aside::common}"/>
+    <th:block th:replace="~{modules/aside::common}"/>
   </th:block>
 
 </layout>
