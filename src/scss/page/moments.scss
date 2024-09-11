@@ -14,18 +14,31 @@
 
   @include util.useThemeVar((
     m-color: (#363636, #F7F7FA),
+    m-border-color: (#e3e8f7, #42444a),
+    m-box-shadow: (0 8px 16px -4px rgba(44, 45, 48, 0.047), 0 8px 16px -4px rgba(44, 45, 48, 0.047)),
   ));
 
 
   .content {
-    > .list {
+    padding-top: 0;
 
+    > .list {
       .item {
+        padding: 1rem;
+        border: 1px solid var(--m-border-color);
+        background-color: var(--card-background-color);
+        //box-shadow: var(--m-box-shadow);
+        transition: all 0.3s ease 0s;
+        border-radius: 12px;
         margin-bottom: 15px;
-        padding: 10px;
-        //border-radius: 10px;
-        //box-shadow: 1px 1px 5px 0 #d8d8d8;
-        border-bottom: var(--theme) dashed 1px;
+      }
+
+      hr {
+        margin: 10px auto;
+
+        &:before {
+          content: none;
+        }
       }
 
       .h {
@@ -38,22 +51,20 @@
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
+        margin-top: 10px;
 
         img, video, audio {
           width: 170px;
           height: 110px;
           border-radius: 5px;
           margin-right: 10px;
+          box-shadow: var(--m-box-shadow);
         }
 
         video {
           object-fit: cover;
           object-position: center;
         }
-      }
-
-      .in {
-
       }
     }
   }

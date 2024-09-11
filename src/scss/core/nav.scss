@@ -70,7 +70,7 @@
     @include util.flex-center;
     flex-direction: row;
     color: var(--nav-font-color);
-    
+
     //操作项
     .controls {
       @include util.flex-center;
@@ -160,7 +160,7 @@
         }
 
       }
-      
+
 
       //二级
       &-children {
@@ -214,7 +214,7 @@
     .nav-title, .nav-do {
       color: var(--nav-active-font-color);
 
-      .link {
+      .link, .menu-link {
         text-shadow: none;
 
         &:hover {

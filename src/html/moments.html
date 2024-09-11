@@ -37,21 +37,21 @@
   <!--/* 內容 */-->
   <th:block th:fragment="main">
 
-    <section class="content card animate__animated animate__fadeIn" th:with="noData = ${not #lists.isEmpty(moments.items)}"  th:style="${ noData ?  '' : 'min-height: auto'}">
+    <section class="content  animate__animated animate__fadeIn" th:with="noData = ${not #lists.isEmpty(moments.items)}" th:style="${ noData ?  '' : 'min-height: auto'}">
       <ul class="list" th:if="${noData}">
         <li class="item" th:each="moment : ${moments.items}" th:with="content=${moment.spec.content}">
           <div class="h" th:if="${not #strings.isEmpty(content.html)}" th:utext="${content.html}"></div>
 
-          <div class="medium">
-            <th:block th:if="${not #lists.isEmpty(content.medium)}" th:each="momentItem : ${content.medium}">
-              <img th:if="${momentItem.type.name == 'PHOTO'}" th:src="${momentItem.url}"/>
+          <div class="medium" th:if="${not #lists.isEmpty(content.medium)}">
+            <th:block th:each="momentItem : ${content.medium}">
+              <img th:if="${momentItem.type.name == 'PHOTO'}" th:src="${momentItem.url}" alt=""/>
               <video controls th:if="${momentItem.type.name == 'VIDEO'}" th:src="${momentItem.url}"></video>
               <audio th:if="${momentItem.type.name == 'AUDIO'}" th:src="${momentItem.url}"></audio>
             </th:block>
           </div>
 
-          <div class="in"></div>
         </li>
+
       </ul>
       <th:block th:unless="${noData}" th:insert="~{modules/components:: emptyData(false)}"></th:block>
     </section>
