@@ -11,8 +11,5 @@ import AmplifyImg from '../modules/AmplifyImg';
 @App([AmplifyImg])
 class Moments {
 
-  run_waterfall() {
-
-  }
 
 }

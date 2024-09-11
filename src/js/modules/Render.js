@@ -56,6 +56,7 @@ export default class Render {
       hasInnerContainers: true,
       scrollSmooth: true,
       includeTitleTags: true,
+      collapseDepth:6,
       scrollSmoothDuration: 280,
       throttleTimeout: 30,
       headingsOffset: 20, // 目录中高亮的偏移值，和scrollSmoothOffset有关联
