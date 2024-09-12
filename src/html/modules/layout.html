@@ -2,7 +2,9 @@
   xmlns:th="https://www.thymeleaf.org"
   th:with="
      assets_link = ${theme.config.loading.source[theme.config.loading.source.type]},
-     param_prefix = ${#strings.containsIgnoreCase(theme.config.loading.img.random_link,'?') ? '&' : '?'}
+     param_prefix = ${#strings.containsIgnoreCase(theme.config.loading.img.random_link,'?') ? '&' : '?'},
+     stats = ${siteStatsFinder.getStats()},
+     contributor = ${contributorFinder.getContributor(theme.config.base.metadata_name)}
   "
   th:fragment="layout (page,title,pin,header,main)"
 >
@@ -29,7 +31,7 @@
     <link rel="preload stylesheet" as="style" th:href="${assets_link + 'css/' + page + '.min.css?v=' + theme.spec.version}">
   </head>
 
-  <body th:classappend="${theme.config.loading.type != 'null' ? 'loading' : ''}" th:with="stats = ${siteStatsFinder.getStats()},contributor = ${contributorFinder.getContributor(theme.config.base.metadata_name)}">
+  <body th:classappend="${theme.config.loading.type != 'null' ? 'loading' : ''}" >
   <script type="text/javascript" th:if="${theme.config.loading.type != 'null'}" th:src="${assets_link + 'plugins/loading/' + theme.config.loading.type + '.min.js?v=' + theme.spec.version}"></script>
 
   <div id="Butterfly" th:class="${page}">

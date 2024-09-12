@@ -1,3 +1,4 @@
+#file: noinspection YAMLIncompatibleTypes
 apiVersion: v1alpha1
 kind: Setting
 metadata:
@@ -550,6 +551,14 @@ spec:
               value: true
             - label: 禁用
               value: false
+        - $formkit: textarea
+          name: custom_copy_right
+          label: 版权声明
+          placeholder: 请填写 版权声明
+          value: 'https://unpkg.com/halo-theme-butterfly/docs/above.png'
+          help: 如果全局背景图设置为图片链接，则此处背景图将不生效
+          validation: required
+          
     #归档设置          
     - group: archives
       label: 归档设置
@@ -849,5 +858,11 @@ spec:
             - value: "xonokai"
               label: "xonokai"
             - value: "z-touch"
-              label: "z-touch"              
-                            
+              label: "z-touch"
+        - $formkit: number
+          name: toc_collapse_depth
+          label: 目录折叠深度
+          placeholder: 请填写 目录折叠深度
+          value: 3
+          help: 目录折叠深度，默认值：3
+          validation: required|number                       

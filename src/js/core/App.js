@@ -10,6 +10,7 @@ import Message from './_message';
 import Theme from './theme';
 import Scroll from './scroll';
 import Common from './common';
+
 /**
  * @desc: 注册应用
  * @returns function(*): *
@@ -31,7 +32,11 @@ export default function App(modules = []) {
     for (let i = 0; i < fns.length; i++) fns[i].startsWith('run_') && ins[fns[i]]();
 
     for (let i = 0; i < modules.length; i++) {
-      const mods = new modules[i]();
+
+      let mods = modules[i];
+
+      if(typeof mods === 'function' && mods.name) mods = new mods();
+
       window.MainApp.modules[mods.name] = mods;
     }
 

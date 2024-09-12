@@ -18,19 +18,22 @@ export default class Render {
   #conf = MainApp.conf;
 
   constructor() {
-    this.#h();
+    this.#h_icon();
     this.#domObserver();
     this.#tocBotH5();
     this.#copyRight();
   }
 
   /**
-   * h标题
+   * h标题图标
    */
-  #h() {
+  #h_icon() {
     if(this.#conf.enable_h_icon) this.#renderDom.addClass('enable_h_icon');
   }
 
+  /**
+   * 监听dom 处理目录
+   */
   #domObserver() {
     const renderDom = document.querySelector('article.render');
 
@@ -56,7 +59,7 @@ export default class Render {
       hasInnerContainers: true,
       scrollSmooth: true,
       includeTitleTags: true,
-      collapseDepth:6,
+      collapseDepth: this.#conf.toc_collapse_depth,
       scrollSmoothDuration: 280,
       throttleTimeout: 30,
       headingsOffset: 20, // 目录中高亮的偏移值，和scrollSmoothOffset有关联
@@ -108,11 +111,37 @@ export default class Render {
    * 版权
    */
   #copyRight() {
-    const a = $('.copy-right a.permalink');
+    const copyRightDom = $('.copy-right');
 
-    a.attr('href', window.location.href);
+    if(!copyRightDom.length) return;
 
-    a.html(decodeURI(window.location.href));
+    //
+    // const a = $('.copy-right a.permalink');
+    // console.log(a);
+    //
+    // a.attr('href', window.location.href);
+    //
+    // a.html(decodeURI(window.location.href));
+
+    const html = `
+        <i class="fa-solid fa-copyright"></i>
+
+        <div class="author">
+          <span class="name">文章作者：</span>
+          <span class="text" >${this.#conf.display_name}</span>
+        </div>
+
+        <div class="url">
+          <span class="name">本文链接：</span>
+          <span class="text"><a class="permalink" target="_blank"></a></span>
+        </div>
+
+        <div class="declaration">
+          <span class="name">版权声明：</span>
+          <span class="text">本站所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 @<a href="/" target="_blank" ></a>！</span>
+        </div>
+    `;
+
   }
 
 }
