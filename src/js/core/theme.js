@@ -14,13 +14,15 @@ export default class Theme {
 
   // 初始化主题模式
   constructor() {
-    const mes = {
-      auto: () => useIsDaytime() ? 'light' : 'dark',
-      user: () => localStorage.getItem(this.#LOCALSTORAGE_KEY) || 'light',
-      light: () => 'light',
-      dark: () => 'dark',
-    };
-    this.setMode(mes[MainApp.conf.style_mode]());
+    window.addEventListener('load', () => {
+      const mes = {
+        auto: () => useIsDaytime() ? 'light' : 'dark',
+        user: () => localStorage.getItem(this.#LOCALSTORAGE_KEY) || 'light',
+        light: () => 'light',
+        dark: () => 'dark',
+      };
+      this.setMode(mes[MainApp.conf.style_mode]());
+    });
   }
 
   // 设置主题模式
@@ -29,6 +31,9 @@ export default class Theme {
     document.documentElement.dataset[this.#ATTR_KEY] = theme;
     localStorage.setItem(this.#LOCALSTORAGE_KEY, theme);
     this.#CHANGE_FN && this.#CHANGE_FN(theme);
+
+    // halo评论主题
+    this.setHaloCommentTheme(theme);
   }
 
   // 获取主题模式
@@ -47,4 +52,18 @@ export default class Theme {
   change(fn) {
     this.#CHANGE_FN = fn;
   }
+
+  // 设置halo评论主题
+  setHaloCommentTheme(theme) {
+    const haloComment = document.querySelector('.theme-halo-comment #comment');
+
+    if(!haloComment) return;
+
+    const haloCommentWidget = haloComment.querySelector('div')?.shadowRoot?.querySelector('.halo-comment-widget');
+
+    haloCommentWidget.classList.remove('light', 'dark');
+    
+    haloCommentWidget.classList.add(theme);
+  }
+
 }

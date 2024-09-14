@@ -39,12 +39,14 @@
   <th:block th:fragment="main">
     <section class="content card">
       <article class="render" th:utext="${singlePage.content.content}"></article>
-      <halo:comment
-        th:if="${pluginFinder.available('PluginCommentWidget') && haloCommentEnabled && singlePage.spec.allowComment}"
-        group="content.halo.run"
-        kind="SinglePage"
-        th:attr="name=${singlePage.metadata.name}"
-      />
+      <div class="theme-halo-comment">
+        <halo:comment
+          th:if="${pluginFinder.available('PluginCommentWidget') && haloCommentEnabled && singlePage.spec.allowComment}"
+          group="content.halo.run"
+          kind="SinglePage"
+          th:attr="name=${singlePage.metadata.name}"
+        />
+      </div>
     </section>
     <th:block th:replace="~{modules/aside::common}"/>
   </th:block>

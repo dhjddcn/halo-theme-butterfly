@@ -134,12 +134,14 @@
         </div>
       </div>
 
-      <halo:comment
-        th:if="${pluginFinder.available('PluginCommentWidget') && haloCommentEnabled && post.spec.allowComment}"
-        group="content.halo.run"
-        kind="Post"
-        th:attr="name=${post.metadata.name}"
-      />
+      <div class="theme-halo-comment">
+        <halo:comment
+          th:if="${pluginFinder.available('PluginCommentWidget') && haloCommentEnabled && post.spec.allowComment}"
+          group="content.halo.run"
+          kind="Post"
+          th:attr="name=${post.metadata.name}"
+        />
+      </div>
     </section>
     <th:block th:replace="~{modules/aside::post}"/>
   </th:block>
