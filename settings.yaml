@@ -555,8 +555,9 @@ spec:
           name: custom_copy_right
           label: 版权声明
           placeholder: 请填写 版权声明
-          value: 'https://unpkg.com/halo-theme-butterfly/docs/above.png'
-          help: 如果全局背景图设置为图片链接，则此处背景图将不生效
+          rows: 5
+          value: '本站所有文章除特别声明外，均采用 <a href="{$CC_BY_NC_SA_4.0}" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="/" target="_blank" >{$author}</a>！'
+          help: 文章底部版权声明，支持html代码片段 支持内置变量 作者：{$author}、 CC-4.0协议 {$CC_BY_NC_SA_4.0}
           validation: required
           
     #归档设置          

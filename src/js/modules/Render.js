@@ -21,7 +21,6 @@ export default class Render {
     this.#h_icon();
     this.#domObserver();
     this.#tocBotH5();
-    this.#copyRight();
   }
 
   /**
@@ -45,6 +44,7 @@ export default class Render {
         }
       }
     });
+
     observer.observe(renderDom);
   }
 
@@ -107,41 +107,6 @@ export default class Render {
     });
   }
 
-  /**
-   * 版权
-   */
-  #copyRight() {
-    const copyRightDom = $('.copy-right');
 
-    if(!copyRightDom.length) return;
-
-    //
-    // const a = $('.copy-right a.permalink');
-    // console.log(a);
-    //
-    // a.attr('href', window.location.href);
-    //
-    // a.html(decodeURI(window.location.href));
-
-    const html = `
-        <i class="fa-solid fa-copyright"></i>
-
-        <div class="author">
-          <span class="name">文章作者：</span>
-          <span class="text" >${this.#conf.display_name}</span>
-        </div>
-
-        <div class="url">
-          <span class="name">本文链接：</span>
-          <span class="text"><a class="permalink" target="_blank"></a></span>
-        </div>
-
-        <div class="declaration">
-          <span class="name">版权声明：</span>
-          <span class="text">本站所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 @<a href="/" target="_blank" ></a>！</span>
-        </div>
-    `;
-
-  }
 
 }

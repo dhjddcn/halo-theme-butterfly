@@ -32,6 +32,7 @@
         enable_code_hr: /*[[${theme.config.render.enable_code_hr}]]*/ true,
         enable_code_line: /*[[${theme.config.render.enable_code_line}]]*/ true,
         toc_collapse_depth: parseInt( /*[[${theme.config.render.toc_collapse_depth}]]*/ '2'),
+        custom_copy_right: /*[[${theme.config.post.custom_copy_right}]]*/ '',
       });
       // 文章页面 自定义元数据
       Object.assign(window.MainApp.attrs, {
@@ -113,24 +114,24 @@
       <article class="render" th:utext="${post.content.content}"></article>
 
       <!--/* 信息-版权 */-->
-      <div class="copy-right" th:data-displayName="${contributor.displayName}">
-<!--        <i class="fa-solid fa-copyright"></i>-->
+      <div class=" statement">
+        <i class="fa-solid fa-copyright"></i>
 
-<!--        <div class="author">-->
-<!--          <span class="name">文章作者：</span>-->
-<!--          <span class="text" th:text="${contributor.displayName}"></span>-->
-<!--        </div>-->
+        <div class="author">
+          <span class="name">文章作者：</span>
+          <span class="text" th:text="${contributor.displayName}"></span>
+        </div>
 
-<!--        <div class="url">-->
-<!--          <span class="name">本文链接：</span>-->
-<!--          <span class="text"><a class="permalink" target="_blank"></a></span>-->
-<!--        </div>-->
+        <div class="url">
+          <span class="name">本文链接：</span>
+          <span class="text"><a class="permalink" target="_blank"></a>...</span>
+        </div>
 
 
-<!--        <div class="declaration">-->
-<!--          <span class="name">版权声明：</span>-->
-<!--          <span class="text">本站所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 @<a href="/" target="_blank" th:text="${contributor.displayName}"></a>！</span>-->
-<!--        </div>-->
+        <div class="copyright">
+          <span class="name">版权声明：</span>
+          <span class="text">...</span>
+        </div>
       </div>
 
       <halo:comment
