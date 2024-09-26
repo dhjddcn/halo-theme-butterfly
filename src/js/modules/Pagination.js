@@ -17,6 +17,8 @@ export default class Pagination {
 
     if(this.#conf.page > this.#conf.totalPages) return;
 
+    MainApp.conf.total = 100;
+
     this.#createPage();
   }
 
