@@ -9,7 +9,6 @@ lerna-debug.log*
 
 node_modules
 dist
-theme-butterfly-dist.zip
 dist-ssr
 *.local
 
@@ -26,5 +25,3 @@ dist-ssr
 
 .gradle
 build
-pnpm-lock.yaml
-templates
