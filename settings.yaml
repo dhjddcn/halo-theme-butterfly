@@ -1,4 +1,3 @@
-#file: noinspection YAMLIncompatibleTypes
 apiVersion: v1alpha1
 kind: Setting
 metadata:
