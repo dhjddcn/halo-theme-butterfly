@@ -1,0 +1,21 @@
+apiVersion: theme.halo.run/v1alpha1
+kind: Theme
+metadata:
+  name: theme-vite-starter
+spec:
+  displayName: Vite Starter
+  author:
+    name: Halo
+    website: https://github.com/halo-dev
+  description: A development starter theme with Vite Ecosystem for Halo
+  logo: https://www.halo.run/logo
+  homepage: https://github.com/halo-dev/theme-vite-starter#readme
+  repo: https://github.com/halo-dev/theme-vite-starter
+  issues: https://github.com/halo-dev/theme-vite-starter/issues
+  settingName: "theme-vite-starter-setting"
+  configMapName: "theme-vite-starter-configMap"
+  version: 1.0.0
+  requires: ">=2.0.0"
+  license:
+    - name: "GPL-3.0"
+      url: "https://github.com/halo-dev/theme-vite-starter/blob/main/LICENSE"

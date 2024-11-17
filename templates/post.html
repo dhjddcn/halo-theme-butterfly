@@ -1,0 +1,6 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" th:replace="~{modules/layout :: html(content = ~{::content})}">
+  <th:block th:fragment="content">
+    <article th:utext="${post.content.content}"></article>
+  </th:block>
+</html>
