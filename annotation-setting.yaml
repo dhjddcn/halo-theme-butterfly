@@ -1,0 +1,33 @@
+apiVersion: v1alpha1
+kind: AnnotationSetting
+metadata:
+  generateName: annotation-setting-
+spec:
+  targetRef:
+    group: ''
+    kind: MenuItem
+  formSchema:
+    - $formkit: 'text'
+      name: 'icon'
+      label: '图标'
+
+---
+apiVersion: v1alpha1
+kind: AnnotationSetting
+metadata:
+  generateName: annotation-setting-
+spec:
+  targetRef:
+    group: content.halo.run
+    kind: Post
+  formSchema:
+    - $formkit: 'radio'
+      name: 'enable_code_copy'
+      label: '启用代码复制'
+      help: '本篇文章代码块复制按钮'
+      value: 'true'
+      options:
+        - label: 启用
+          value: 'true'
+        - label: 禁用
+          value: 'false'

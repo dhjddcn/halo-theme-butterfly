@@ -1,21 +1,17 @@
 apiVersion: theme.halo.run/v1alpha1
 kind: Theme
 metadata:
-  name: theme-vite-starter
+  name: theme-butterfly
 spec:
-  displayName: Vite Starter
+  displayName: Butterfly
   author:
-    name: Halo
-    website: https://github.com/halo-dev
-  description: A development starter theme with Vite Ecosystem for Halo
-  logo: https://www.halo.run/logo
-  homepage: https://github.com/halo-dev/theme-vite-starter#readme
-  repo: https://github.com/halo-dev/theme-vite-starter
-  issues: https://github.com/halo-dev/theme-vite-starter/issues
-  settingName: "theme-vite-starter-setting"
-  configMapName: "theme-vite-starter-configMap"
-  version: 1.0.0
-  requires: ">=2.0.0"
-  license:
-    - name: "GPL-3.0"
-      url: "https://github.com/halo-dev/theme-vite-starter/blob/main/LICENSE"
+    name: 小红
+    website: 'https://dhjdd.cn'
+  description: '一个Halo博客主题，Butterfly 🦋'
+  logo: 'https://halo.run/logo'
+  website: 'https://dhjdd.cn'
+  repo: 'https://github.com/dhjddcn/halo-theme-butterfly.git'
+  settingName: theme-butterfly-setting
+  configMapName: theme-butterfly-configMap
+  version: 2.0.6
+  require: 2.0.0

@@ -8,11 +8,11 @@ importers:
   .:
     dependencies:
       alpinejs:
-        specifier: ^3.13.7
+        specifier: ^3.14.3
         version: 3.14.3
     devDependencies:
       '@types/alpinejs':
-        specifier: ^3.13.9
+        specifier: ^3.13.10
         version: 3.13.10
       '@types/node':
         specifier: 18.11.9
@@ -23,6 +23,9 @@ importers:
       '@typescript-eslint/parser':
         specifier: ^5.62.0
         version: 5.62.0(eslint@8.57.1)(typescript@4.9.5)
+      '@unocss/preset-icons':
+        specifier: ^0.64.1
+        version: 0.64.1
       chokidar-cli:
         specifier: ^3.0.0
         version: 3.0.0
@@ -2769,9 +2772,9 @@ snapshots:
     dependencies:
       fill-range: 7.1.1
 
-  bundle-require@5.0.0(esbuild@0.21.5):
+  bundle-require@5.0.0(esbuild@0.23.1):
     dependencies:
-      esbuild: 0.21.5
+      esbuild: 0.23.1
       load-tsconfig: 0.2.5
 
   cac@6.7.14: {}
@@ -3159,9 +3162,9 @@ snapshots:
 
   importx@0.4.4:
     dependencies:
-      bundle-require: 5.0.0(esbuild@0.21.5)
+      bundle-require: 5.0.0(esbuild@0.23.1)
       debug: 4.3.7
-      esbuild: 0.21.5
+      esbuild: 0.23.1
       jiti: 2.0.0-beta.3
       jiti-v1: jiti@1.21.6
       pathe: 1.1.2
