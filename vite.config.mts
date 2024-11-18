@@ -5,6 +5,13 @@ import UnoCSS from 'unocss/vite';
 
 export default defineConfig({
   plugins: [UnoCSS()],
+  css: {
+    preprocessorOptions: {
+      scss: {
+        silenceDeprecations: ['legacy-js-api'],
+      },
+    },
+  },
   build: {
     outDir: fileURLToPath(new URL('./templates/assets/dist', import.meta.url)),
     emptyOutDir: true,

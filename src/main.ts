@@ -1,3 +1,4 @@
+import '@unocss/reset/normalize.css';
 import 'virtual:uno.css';
 import './styles/main.scss';
 import Alpine from 'alpinejs';
