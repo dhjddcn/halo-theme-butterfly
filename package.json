@@ -37,7 +37,7 @@
     "dev": "vite build --watch",
     "lint": "eslint ./src --ext .js,.cjs,.mjs,.ts,.cts,.mts --ignore-path .gitignore",
     "prepare": "husky",
-    "prettier": "npx prettier --write \"**/*.{ts,json,yaml,yml,html}\"",
+    "prettier": "npx prettier --write \"./**/*.{ts,json,yaml,yml,html}\"",
     "watch:dev": "chokidar \"templates/**/*.html\" \"src/**/*\" --command \"npm run build\""
   },
   "lint-staged": {
