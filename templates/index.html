@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+<!doctype html>
 <html xmlns:th="https://www.thymeleaf.org" th:replace="~{modules/layout :: html(content = ~{::content})}">
   <th:block th:fragment="content">
     <ul>
       <li th:each="post : ${posts.items}">
-        <a th:text="${post.spec.title}" class="text-base text-red" th:href="${post.status.permalink}"></a>
+        <a th:text="${post.spec.title}" class="font-900 text-20px" th:href="${post.status.permalink}"></a>
       </li>
     </ul>
   </th:block>
