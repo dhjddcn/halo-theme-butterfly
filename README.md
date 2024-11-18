@@ -1,6 +1,6 @@
-<p align="center">Index 主题 Halo 2.0</p>
+<p >Index 主题 Halo 2.0</p>
 
-> `Index` 是Hexo社区[hexo-theme-Index](https://github.com/jerryc127) 此次移植`pug`模板引擎调整为 `thymeleaf`，
+> `Index` 是 Hexo 社区[hexo-theme-Index](https://github.com/jerryc127) 此次移植`pug`模板引擎调整为 `thymeleaf`，
 > 希望大家喜欢 ❤️ ！同时也要在此感谢原作者 [Jerry](https://github.com/jerryc127)
 > 欢迎大家加入 [halo-theme-Index 交流群：916571927](https://jq.qq.com/?_wv=1027&k=LfbGKBVG)
 
@@ -39,10 +39,10 @@
 - [x] 页面顶部自定义图
 - [x] 文章列表（列表/平铺）
 - [x] 侧边栏 全局/单独控制
-- [x] 分类/标签页UI优化
+- [x] 分类/标签页 UI 优化
 - [x] 社交账号配置
 - [x] 代码高亮 + 行号 + 复制 + 折叠
-- [x] 随机图片api配置
+- [x] 随机图片 api 配置
 - [x] 统计页面 总访问量
 - [x] 站点运行时间
 - [x] 主题模式（深色/浅色）
@@ -85,7 +85,7 @@ Halo 使用 GPL-v3.0 协议开源，请遵守开源协议。
 |:-----------|:-----|:-------|:------|:---|
 | 2022-07-25 | 咕咕鸽  | QQ     | 50    | 🍹 |
 | 2023-03-14 | Cary | Alipay | 10    | 🍹 |
-| 2023-03-14 | *哦   | Wechat | 50    | 🍹 |
+| 2023-03-14 | \*哦  | Wechat | 50    | 🍹 |
 | 2023-03-22 | 心底.  | Wechat | 28.88 | 🍹 |
-| 2023-03-22 | xx鹏  | Alipay | 3.33  | 🍹 |
-| 2024-06-23 | *!   | Wechat | 18.88 | 🍹 |
+| 2023-03-22 | xx 鹏 | Alipay | 3.33  | 🍹 |
+| 2024-06-23 | \*!  | Wechat | 18.88 | 🍹 |
