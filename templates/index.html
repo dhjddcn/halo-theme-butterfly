@@ -1,10 +1,36 @@
-<!doctype html>
-<html xmlns:th="https://www.thymeleaf.org" th:replace="~{modules/layout :: html(content = ~{::content})}">
-  <th:block th:fragment="content">
-    <ul>
-      <li th:each="post : ${posts.items}">
-        <a th:text="${post.spec.title}" class="font-900 text-20px" th:href="${post.status.permalink}"></a>
-      </li>
-    </ul>
+<html
+  xmlns:th="https://www.thymeleaf.org"
+  th:replace="~{modules/layout :: layout (
+  page = 'index',
+  title = ${site.title +  (#strings.isEmpty(site.subtitle) ? '' : ' - ' + site.subtitle )},
+  header = ~{::header},
+  main = ~{::main}
+  )}"
+>
+  <!--/* header */-->
+  <th:block th:fragment="header">
+    <!--    <header th:class="${not theme.config.index.enable_above ? 'header dp' : 'header'}">-->
+    <!--      <th:block th:replace="~{modules/nav}"/>-->
+
+    <!--      &lt;!&ndash;/* 第一屏内容 */&ndash;&gt;-->
+    <!--      <section class="above" th:if="${theme.config.index.enable_above}">-->
+    <!--        <div class="above-info">-->
+    <!--          <h1 class="above-title" th:text="${site.title}"></h1>-->
+    <!--          <div class="above-subtitle">-->
+    <!--            <span class="above-subtitle&#45;&#45;text"></span>-->
+    <!--          </div>-->
+    <!--        </div>-->
+
+    <!--        <div class="above-down">-->
+    <!--          <i class="fa-solid fa-angle-down"></i>-->
+    <!--        </div>-->
+    <!--      </section>-->
+
+    <!--    </header>-->
+  </th:block>
+
+  <!--/* 內容 */-->
+  <th:block th:fragment="main">
+    <section class="content"></section>
   </th:block>
 </html>
