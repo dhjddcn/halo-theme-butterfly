@@ -1,5 +1,6 @@
 <html
   xmlns:th="https://www.thymeleaf.org"
+  xmlns:x-on="http://www.w3.org/1999/xhtml"
   th:replace="~{modules/layout :: layout (
   page = 'index',
   title = ${site.title +  (#strings.isEmpty(site.subtitle) ? '' : ' - ' + site.subtitle )},
@@ -31,6 +32,12 @@
 
   <!--/* 內容 */-->
   <th:block th:fragment="main">
-    <section class="content"></section>
+    <section class="content">
+      <div x-data="{ count: 0 }">
+        <button x-on:click="count++">Increment</button>
+
+        <span x-text="count"></span>
+      </div>
+    </section>
   </th:block>
 </html>

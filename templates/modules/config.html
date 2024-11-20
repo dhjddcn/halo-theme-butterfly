@@ -1,20 +1,5 @@
 <!--/* 基础配置 */-->
-<script th:inline="javascript">
-  window.MainApp = {
-    conf: {
-      style_mode: /*[[${theme.config.style.mode}]]*/ null,
-      enable_aside: /*[[${theme.config.aside.enable}]]*/ true,
-      enable_webInfo: /*[[${theme.config.aside.enable_webInfo}]]*/ true,
-      assets_link: /*[[${assets_link}]]*/ true,
-      contributor: {
-        name: /*[[${contributor.displayName}]]*/ '',
-        bio: /*[[${contributor.bio}]]*/ '',
-      },
-    },
-    attrs: {},
-    modules: {},
-  };
-</script>
+<script th:inline="javascript"></script>
 
 <!--/* style */-->
 <style th:inline="css">
@@ -59,11 +44,15 @@
   as="style"
   th:href="${assets_link + 'plugins/cursor/' + 'simple' + '.min.css?v=' + theme.spec.version}"
 />
-<link rel="preload stylesheet" as="style" th:href="${assets_link + 'dist/style.css?v=' + theme.spec.version}" />
+<link rel="preload stylesheet" as="style" th:href="${assets_link + 'dist/style.css?v=' + theme.spec.version + isDev}" />
 <script
   defer
   type="text/javascript"
   th:if="${theme.config.loading.type != 'null'}"
   th:src="${assets_link + 'plugins/loading/' + theme.config.loading.type + '.min.js?v=' + theme.spec.version}"
 ></script>
-<script defer type="text/javascript" th:src="${assets_link + 'dist/main.iife.js?v=' + theme.spec.version }"></script>
+<script
+  defer
+  type="text/javascript"
+  th:src="${assets_link + 'dist/main.iife.js?v=' + theme.spec.version + isDev }"
+></script>
