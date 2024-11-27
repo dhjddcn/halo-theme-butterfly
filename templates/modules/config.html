@@ -1,5 +1,12 @@
 <!--/* 基础配置 */-->
-<script th:inline="javascript"></script>
+<script th:inline="javascript">
+  window.__BUTTERFLY_CONFIG = {
+    common: {
+      mode: /*[[${theme.config.style.mode}]]*/ null,
+      loading: /*[[${theme.config.loading.type}]]*/ null,
+    },
+  };
+</script>
 
 <!--/* style */-->
 <style th:inline="css">
@@ -34,25 +41,19 @@
     --nav-dropdown-font-color: /*[(${theme.config.nav.dropdown_font_color.dark})]*/ transparent;
     --nav-dropdown-hover-font-color: /*[(${theme.config.nav.dropdown_hover_font_color.dark})]*/ transparent;
   }
-
-  .loading #Butterfly {
-    display: none;
-  }
 </style>
+<!--<link-->
+<!--  rel="preload stylesheet"-->
+<!--  as="style"-->
+<!--  th:href="${assets_link + 'plugins/cursor/' + 'simple' + '.min.css?v=' + theme.spec.version}"-->
+<!--/>-->
 <link
   rel="preload stylesheet"
   as="style"
-  th:href="${assets_link + 'plugins/cursor/' + 'simple' + '.min.css?v=' + theme.spec.version}"
+  th:href="${assets_link + 'dist/butterfly.css?v=' + theme.spec.version + isDev}"
 />
-<link rel="preload stylesheet" as="style" th:href="${assets_link + 'dist/style.css?v=' + theme.spec.version + isDev}" />
 <script
   defer
   type="text/javascript"
-  th:if="${theme.config.loading.type != 'null'}"
-  th:src="${assets_link + 'plugins/loading/' + theme.config.loading.type + '.min.js?v=' + theme.spec.version}"
-></script>
-<script
-  defer
-  type="text/javascript"
-  th:src="${assets_link + 'dist/main.iife.js?v=' + theme.spec.version + isDev }"
+  th:src="${assets_link + 'dist/butterfly.iife.js?v=' + theme.spec.version + isDev }"
 ></script>

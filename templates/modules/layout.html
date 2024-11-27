@@ -28,7 +28,7 @@
       <link rel="canonical" th:href="${site.url}" />
       <th:block th:replace="~{modules/config}" />
     </head>
-    <body th:classappend="${theme.config.loading.type != 'null' ? 'loading' : ''}">
+    <body>
       <div id="Butterfly" th:class="${page}" th:insert="${content}"></div>
     </body>
   </html>

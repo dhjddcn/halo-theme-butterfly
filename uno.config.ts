@@ -2,12 +2,14 @@ import { defineConfig, presetTypography, presetUno, presetIcons, transformerVari
 
 export default defineConfig({
   content: {
-    filesystem: ['./templates/**/*.html', './src/main.ts'],
+    filesystem: ['./templates/**/*.html', './src/**/*.ts'],
   },
   /** presetIcons 支持iconify */
   presets: [presetUno(), presetTypography(), presetIcons()],
   /** 支持这样组合的写法 before:(bg-red w-6px h-6px rounded-full inline-block content-['']) */
   transformers: [transformerVariantGroup()],
+  // 强制 UnoCSS 生成 `hidden` 类
+  safelist: ['hidden'],
   // 小点样式
   shortcuts: [
     [

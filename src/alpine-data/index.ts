@@ -1,18 +1,11 @@
 /**
- * @date: 2024/11/19
+ * @date: 2024/11/27
  * @author: 小红
  * @fileName: index
- * @Description: 首页
+ * @Description: Alpinejs 数据绑定
  */
 
-export default () => {
-  return {
-    count: 0,
-    increment() {
-      this.count++;
-    },
-    decrement() {
-      this.count--;
-    },
-  };
-};
+import Alpine from 'alpinejs';
+
+window.Alpine = Alpine;
+Alpine.start();

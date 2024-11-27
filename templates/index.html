@@ -4,8 +4,7 @@
   th:replace="~{modules/layout :: layout (
   page = 'index',
   title = ${site.title +  (#strings.isEmpty(site.subtitle) ? '' : ' - ' + site.subtitle )},
-  header = ~{::header},
-  main = ~{::main}
+  content = ~{::content}
   )}"
 >
   <!--/* header */-->
@@ -31,7 +30,7 @@
   </th:block>
 
   <!--/* 內容 */-->
-  <th:block th:fragment="main">
+  <th:block th:fragment="content">
     <section class="content">
       <div x-data="{ count: 0 }">
         <button x-on:click="count++">Increment</button>
