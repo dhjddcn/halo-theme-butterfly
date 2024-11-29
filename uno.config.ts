@@ -9,7 +9,7 @@ export default defineConfig({
   /** 支持这样组合的写法 before:(bg-red w-6px h-6px rounded-full inline-block content-['']) */
   transformers: [transformerVariantGroup()],
   // 强制 UnoCSS 生成 `hidden` 类
-  safelist: ['hidden'],
+  safelist: [],
   // 小点样式
   shortcuts: [
     [

@@ -2,6 +2,16 @@
 @import '@unocss/reset/sanitize/assets.css';
 
 body {
-  background: #f2f2f2;
+  font-family: "Butterfly Font", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  font-size: 14px;
+  line-height: 2;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-text-size-adjust: 100%;
+  //noinspection CssInvalidPropertyValue
+  overflow-y: overlay;
+  scroll-behavior: smooth;
+  padding-bottom: env(safe-area-inset-bottom);
+  background: var(--body-background);
+  color: var(--text-color);
 }
 

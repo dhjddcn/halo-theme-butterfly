@@ -3,8 +3,6 @@
 import type { Alpine } from 'alpinejs';
 import { LoadingType } from './plugins/Loading/types';
 
-export {};
-
 declare global {
   interface Window {
     Alpine: Alpine;
@@ -15,3 +13,5 @@ declare global {
     };
   }
 }
+
+export {};

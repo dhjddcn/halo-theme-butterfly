@@ -8,9 +8,10 @@ import { AbstractLoading } from './types';
 
 export default class Circle implements AbstractLoading {
   cssText = `
-    #Butterfly{
+     #Butterfly{
         display: none;
-    }
+     }
+      
     .loading-container {
         display: flex;
         justify-content: center;
