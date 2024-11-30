@@ -1,11 +1,11 @@
-import { defineConfig, presetTypography, presetUno, transformerVariantGroup } from 'unocss';
+import { defineConfig, presetTypography, presetUno, transformerVariantGroup, presetIcons } from 'unocss';
 
 export default defineConfig({
   content: {
     filesystem: ['./templates/**/*.html', './src/**/*.ts'],
   },
   /** presetIcons 支持iconify */
-  presets: [presetUno(), presetTypography()],
+  presets: [presetUno(), presetTypography(), presetIcons()],
   /** 支持这样组合的写法 before:(bg-red w-6px h-6px rounded-full inline-block content-['']) */
   transformers: [transformerVariantGroup()],
   // 强制 UnoCSS 生成 `hidden` 类
