@@ -2,16 +2,10 @@ import { defineConfig } from 'vite';
 import { fileURLToPath } from 'url';
 import path from 'path';
 import UnoCSS from 'unocss/vite';
-import buildIconify from './build/Iconify';
+import BuildIconify from './build/vite-plugin-Iconify';
 
 export default defineConfig({
-  plugins: [
-    UnoCSS(),
-    {
-      name: 'vite-plugin-Iconify-build',
-      closeBundle: buildIconify,
-    },
-  ],
+  plugins: [UnoCSS(), BuildIconify()],
   css: {
     preprocessorOptions: {
       scss: {
