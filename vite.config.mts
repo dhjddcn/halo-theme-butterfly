@@ -2,7 +2,7 @@ import { defineConfig } from 'vite';
 import { fileURLToPath } from 'url';
 import path from 'path';
 import UnoCSS from 'unocss/vite';
-import BuildIconify from './build/vite-plugin-Iconify';
+import BuildIconify from './vite-plugin/Iconify';
 
 export default defineConfig({
   plugins: [UnoCSS(), BuildIconify()],
