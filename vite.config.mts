@@ -5,7 +5,7 @@ import UnoCSS from 'unocss/vite';
 import BuildIconify from './vite-plugin/Iconify';
 
 export default defineConfig({
-  plugins: [UnoCSS(), BuildIconify()],
+  plugins: [UnoCSS(), BuildIconify({force: true})],
   css: {
     preprocessorOptions: {
       scss: {
