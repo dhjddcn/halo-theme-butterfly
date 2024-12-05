@@ -1,6 +1,21 @@
 @import '@unocss/reset/sanitize/sanitize.css';
 @import '@unocss/reset/sanitize/assets.css';
 
+
+::-webkit-scrollbar {
+  height: 6px;
+  width: 6px
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--theme);
+  cursor: var(--cursor-pointer)
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent
+}
+
 body {
   font-family: "Butterfly Font", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
   font-size: 14px;
@@ -14,4 +29,5 @@ body {
   background: var(--body-background);
   color: var(--text-color);
 }
+
 

@@ -9,20 +9,12 @@
 >
   <!--/* 內容 */-->
   <th:block th:fragment="content">
-    <header class="header min-h-[60px] relative"></header>
+    <header class="header min-h-[60px] relative">
+      <nav
+        class="nav h-[60px] w-full absolute flex items-center justify-between flex-nowrap select-none top-0 px-[38px] text-[1.15rem] z-90 transition-opacity transition-transform duration-500 will-change-transform bg-red-2"
+      ></nav>
+    </header>
 
-    <main class="content h-[2000px] bg-red @dark:bg-red:10 w-full mt-[500px]">
-      <!--      <div x-data="{ count: 0 }">-->
-      <!--        <button x-on:click="count++">Increment</button>-->
-      <!--        <div class="i-mdi-home"></div>-->
-      <!--        <div class="i-mdi-bell"></div>-->
-      <!--        <div class="i-mdi-account-circle"></div>-->
-
-      <!--        <div class="@dark:bg-red:10" ></div>-->
-      <!--        &lt;!&ndash;        <img src="https://unpkg.com/halo-theme-butterfly@2.0.7/docs/above.png">&ndash;&gt;-->
-
-      <!--        <span x-text="count"></span>-->
-      <!--      </div>-->
-    </main>
+    <main class="content h-[2000px] bg-amber w-full mt-[500px]"></main>
   </th:block>
 </html>
