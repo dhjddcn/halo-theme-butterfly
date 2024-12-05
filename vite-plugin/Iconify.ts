@@ -4,12 +4,12 @@
  * @fileName: vite-plugin-Iconify
  * @Description:图标打包插件
  */
-import {Plugin} from 'vite';
-import {readFile, writeFile} from 'node:fs/promises';
-import {getIconsCSS} from '@iconify/utils';
-import {locate} from '@iconify/json';
+import { Plugin } from 'vite';
+import { readFile, writeFile } from 'node:fs/promises';
+import { getIconsCSS } from '@iconify/utils';
+import { locate } from '@iconify/json';
 import esbuild from 'esbuild';
-import * as fs from 'node:fs';
+import fs from 'node:fs';
 import path from 'path';
 // all 代表所有图标
 // ['home', 'account'] 代表指定图标
@@ -52,7 +52,7 @@ const cacheFilePath = path.resolve('./node_modules/.cache/vite-plugin-iconify', 
 // 生成缓存文件
 function genCacheFile(jsonData: object) {
   if (!fs.existsSync(path.dirname(cacheFilePath))) {
-    fs.mkdirSync(path.dirname(cacheFilePath), {recursive: true});
+    fs.mkdirSync(path.dirname(cacheFilePath), { recursive: true });
   }
   if (jsonData) {
     fs.writeFileSync(cacheFilePath, JSON.stringify(jsonData));
@@ -78,12 +78,11 @@ async function genCss(dir: any) {
   genCacheFile(icons);
 }
 
-export default function BuildIconify({force = false}: { force?: boolean }): Plugin {
+export default function VIconify({ force = false }: { force?: boolean }): Plugin {
   return {
     name: 'vite-plugin-Iconify',
     enforce: 'post',
     generateBundle: async (_, _bundle) => {
-
       if (force) {
         return await genCss(_.dir);
       }

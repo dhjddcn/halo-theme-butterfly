@@ -3,47 +3,26 @@
   xmlns:x-on="http://www.w3.org/1999/xhtml"
   th:replace="~{modules/layout :: layout (
   page = 'index',
-  title = ${site.title +  (#strings.isEmpty(site.subtitle) ? '' : ' - ' + site.subtitle )},
+  title = ${site.title + (#strings.isEmpty(site.subtitle) ? '' : ' - ' + site.subtitle)},
   content = ~{::content}
   )}"
 >
-  <!--/* header */-->
-  <th:block th:fragment="header">
-    <!--    <header th:class="${not theme.config.index.enable_above ? 'header dp' : 'header'}">-->
-    <!--      <th:block th:replace="~{modules/nav}"/>-->
-
-    <!--      &lt;!&ndash;/* 第一屏内容 */&ndash;&gt;-->
-    <!--      <section class="above" th:if="${theme.config.index.enable_above}">-->
-    <!--        <div class="above-info">-->
-    <!--          <h1 class="above-title" th:text="${site.title}"></h1>-->
-    <!--          <div class="above-subtitle">-->
-    <!--            <span class="above-subtitle&#45;&#45;text"></span>-->
-    <!--          </div>-->
-    <!--        </div>-->
-
-    <!--        <div class="above-down">-->
-    <!--          <i class="fa-solid fa-angle-down"></i>-->
-    <!--        </div>-->
-    <!--      </section>-->
-
-    <!--    </header>-->
-  </th:block>
-
   <!--/* 內容 */-->
   <th:block th:fragment="content">
-    <section class="content">
-      <div x-data="{ count: 0 }">
-        <button x-on:click="count++">Increment</button>
-        <div class="i-mdi-home"></div>
-        <div class="i-mdi-account"></div>
-        <div class="i-mdi-bell"></div>
-        <div class="i-mdi-account-circle"></div>
+    <header class="header min-h-[60px] relative"></header>
 
-        <div class="@dark:bg-red:10" ></div>
-        <!--        <img src="https://unpkg.com/halo-theme-butterfly@2.0.7/docs/above.png">-->
+    <main class="content h-[2000px] bg-red @dark:bg-red:10 w-full mt-[500px]">
+      <!--      <div x-data="{ count: 0 }">-->
+      <!--        <button x-on:click="count++">Increment</button>-->
+      <!--        <div class="i-mdi-home"></div>-->
+      <!--        <div class="i-mdi-bell"></div>-->
+      <!--        <div class="i-mdi-account-circle"></div>-->
 
-        <span x-text="count"></span>
-      </div>
-    </section>
+      <!--        <div class="@dark:bg-red:10" ></div>-->
+      <!--        &lt;!&ndash;        <img src="https://unpkg.com/halo-theme-butterfly@2.0.7/docs/above.png">&ndash;&gt;-->
+
+      <!--        <span x-text="count"></span>-->
+      <!--      </div>-->
+    </main>
   </th:block>
 </html>
