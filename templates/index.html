@@ -9,10 +9,10 @@
 >
   <!--/* 內容 */-->
   <th:block th:fragment="content">
-    <header class="header min-h-[60px] relative">
-      <nav
-        class="nav h-[60px] w-full absolute flex items-center justify-between flex-nowrap select-none top-0 px-[38px] text-[1.15rem] z-90 transition-opacity transition-transform duration-500 will-change-transform bg-red-2"
-      ></nav>
+    <header th:replace="~{modules/common/header :: h(above)}">
+      <th:block th:fragment="above">
+        <div>111</div>
+      </th:block>
     </header>
 
     <main class="content h-[2000px] bg-amber w-full mt-[500px]"></main>
