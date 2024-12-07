@@ -134,9 +134,9 @@ export default defineConfig({
       fileName: 'butterfly',
       formats: ['iife'],
     },
-
     rollupOptions: {
       output: {
+        entryFileNames: 'butterfly.js',
         assetFileNames: 'butterfly.css',
       },
     },
