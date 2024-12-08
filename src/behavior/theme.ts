@@ -31,6 +31,7 @@ class Theme {
 
     // halo评论主题
     this.setHaloCommentTheme(theme);
+
     // 文章页面代码块主题
     this.setPostCodeTheme(theme);
   }
