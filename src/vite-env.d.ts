@@ -9,8 +9,10 @@ declare global {
     __BUTTERFLY_CONFIG: {
       common: {
         loading: LoadingType;
+        mode: 'auto' | 'user' | 'light' | 'dark';
       };
     };
+    butterfly: any;
   }
 }
 

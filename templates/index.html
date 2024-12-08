@@ -11,7 +11,11 @@
   <th:block th:fragment="content">
     <header th:replace="~{modules/common/header :: h(above)}">
       <th:block th:fragment="above">
-        <div>111</div>
+        <div class="text-primary">111</div>
+
+        <div class="bg-white text-black dark:bg-gray-800 dark:text-white">
+          This text will be white in dark mode and black in light mode.
+        </div>
       </th:block>
     </header>
 

@@ -7,10 +7,15 @@ export default defineConfig({
   presets: [presetUno(), presetTypography()],
   /** 支持这样组合的写法 before:(bg-red w-6px h-6px rounded-full inline-block content-['']) */
   transformers: [transformerVariantGroup()],
-  // 强制 UnoCSS 生成 `hidden` 类
+  // 注入css
+  preflights: [],
+  // 默认生成类名
   safelist: [],
   // 小点样式
   shortcuts: [
+    {
+      'flex-center': 'flex justify-center items-center',
+    },
     [
       /^dot-before-(.*)$/,
       ([, color]) => {

@@ -1,9 +1,10 @@
 <nav
   xmlns:th="https://www.thymeleaf.org"
   th:fragment="nav"
-  class="nav h-[60px] w-full absolute flex items-center justify-between flex-nowrap select-none top-0 px-[38px] text-[1.15rem] z-90 transition-opacity transition-transform duration-500 will-change-transform bg-red-2"
+  class="nav h-[60px] w-full absolute flex items-center justify-between flex-nowrap select-none top-0 px-[38px] text-[1.15rem] z-90 transition-[opacity,transform] duration-500 will-change-transform bg-[var(--primary)]"
 ></nav>
 
 <header xmlns:th="https://www.thymeleaf.org" th:fragment="h(above)" class="header min-h-[60px] relative">
   <th:block th:replace="~{::nav}" />
+  <th:block th:replace="~{::above}" />
 </header>

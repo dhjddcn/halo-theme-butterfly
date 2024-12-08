@@ -1,0 +1,23 @@
+/**
+ * @date: 2024/12/8
+ * @author: 小红
+ * @fileName: _util
+ * @Description: 工具类
+ */
+@use "sass:list";
+
+
+@mixin useThemeVar($theme-colors) {
+  :root {
+    @each $name, $colors in $theme-colors {
+      --#{$name}: #{list.nth($colors, 1)}; // 默认使用 light 模式的颜色
+    }
+  }
+
+  :root[data-color-scheme="dark"] {
+    color-scheme: dark;
+    @each $name, $colors in $theme-colors {
+      --#{$name}: #{list.nth($colors, 2)}; // dark 模式的颜色
+    }
+  }
+}

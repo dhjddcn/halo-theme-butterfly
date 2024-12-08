@@ -1,6 +1,10 @@
+@use "util.scss";
+@use "theme.scss";
+@import '@unocss/reset/normalize.css';
 @import '@unocss/reset/sanitize/sanitize.css';
 @import '@unocss/reset/sanitize/assets.css';
 
+@include util.useThemeVar(theme.$theme-colors);
 
 ::-webkit-scrollbar {
   height: 6px;
@@ -22,12 +26,11 @@ body {
   line-height: 2;
   -webkit-tap-highlight-color: transparent;
   -webkit-text-size-adjust: 100%;
-  //noinspection CssInvalidPropertyValue
   overflow-y: overlay;
   scroll-behavior: smooth;
   padding-bottom: env(safe-area-inset-bottom);
-  background: var(--body-background);
-  color: var(--text-color);
 }
+
+
 
 

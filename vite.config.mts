@@ -17,7 +17,7 @@ import fgb from "fast-glob";
  * @param icons
  * @constructor
  */
-async function IconifyCss({force, icons}: { force?: boolean, icons: any }) {
+async function IconifyCss({force, icons}: { force?: boolean, icons: object }) {
   // 缓存文件路径   生成全量的 Iconify CSS  时间太长如果配置没有变化则不生成
   const cacheFilePath = path.resolve('./node_modules/.cache/vite-plugin-iconify', 'IconifyCssCache.json');
 

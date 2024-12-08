@@ -13,9 +13,6 @@
     --card-border-radius: /*[(${theme.config.card.radius})]*/ 24px;
     --card-box-shadow: /*[(${theme.config.card.shadow})]*/ transparent;
     --link-hover-color: var(--theme);
-  }
-
-  html {
     --theme: #1c69ed;
     --body-background: /*[(${theme.config.style.body_background})]*/ transparent;
     --nav-font-color: /*[(${theme.config.nav.font_color.light})]*/ transparent;
@@ -28,7 +25,7 @@
     --nav-dropdown-hover-font-color: /*[(${theme.config.nav.dropdown_hover_font_color.light})]*/ transparent;
   }
 
-  html[data-color-scheme='dark'] {
+  [data-color-scheme='dark'] {
     --theme: #3aa675;
     --body-background: rgb(15, 23, 42);
     --nav-font-color: /*[(${theme.config.nav.font_color.dark})]*/ transparent;
@@ -42,6 +39,11 @@
   }
 </style>
 <link rel="preload stylesheet" as="style" th:href="${ assets_link + 'dist/iconify.css?v=' + theme.spec.version }" />
+<link
+  rel="preload stylesheet"
+  as="style"
+  th:href="${ assets_link + 'plugins/cursor/' + 'simple' + '.min.css?v=' + theme.spec.version}"
+/>
 <link
   rel="preload stylesheet"
   as="style"

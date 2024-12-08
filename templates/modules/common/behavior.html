@@ -1,0 +1,31 @@
+<div class="side-behavior-nav"></div>
+
+<div
+  x-data="sideBehaviorIcons"
+  class="side-behavior-icons fixed z-80 right-[-48px] bottom-[40px] transition-[opacity,transform] duration-500 ease-in-out transform translate-x-[-58px]"
+>
+  <button
+    class="flex-center my-[0.5rem] w-[2.2rem] h-[2.2rem] rounded-[.7rem] border-none bg-[var(--theme)] text-#fff switch-model"
+    th:if="${theme.config.style.mode == 'user'}"
+    type="button"
+    title="浅色和深色模式转换"
+    onclick="butterfly.theme.toggleMode()"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
+      <path
+        fill="currentColor"
+        d="M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10a10 10 0 0 0 10-10A10 10 0 0 0 12 2m0 2a8 8 0 0 1 8 8a8 8 0 0 1-8 8z"
+      />
+    </svg>
+  </button>
+
+  <button
+    class="flex-center my-[0.5rem] w-[2.2rem] h-[2.2rem] rounded-[.7rem] border-none bg-[var(--theme)] text-#fff back-top"
+    type="button"
+    title="回到顶部"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
+      <path fill="currentColor" d="M14 20h-4v-9l-3.5 3.5l-2.42-2.42L12 4.16l7.92 7.92l-2.42 2.42L14 11z" />
+    </svg>
+  </button>
+</div>
