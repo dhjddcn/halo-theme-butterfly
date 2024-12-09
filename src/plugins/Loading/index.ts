@@ -17,6 +17,7 @@ const Loading = {
   cross_line,
   dot,
 };
+
 ((type: LoadingType) => {
   if (!Loading[type]) return;
   const loading = new Loading[type]();

@@ -31,9 +31,6 @@ class Theme {
 
     // halo评论主题
     this.setHaloCommentTheme(theme);
-
-    // 文章页面代码块主题
-    this.setPostCodeTheme(theme);
   }
 
   // 获取主题模式
@@ -61,12 +58,6 @@ class Theme {
     haloCommentWidget?.classList.remove('light', 'dark');
 
     haloCommentWidget?.classList.add(theme);
-  }
-
-  //设置文章页面代码块主题
-  setPostCodeTheme(theme: string) {
-    if (theme) {
-    }
   }
 }
 export default new Theme();

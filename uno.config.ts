@@ -1,10 +1,15 @@
-import { defineConfig, presetTypography, presetUno, transformerVariantGroup } from 'unocss';
+import { defineConfig, presetAttributify, presetTypography, presetUno, transformerVariantGroup } from 'unocss';
 
 export default defineConfig({
   content: {
     filesystem: ['./templates/**/*.html', './src/**/*.ts'],
   },
-  presets: [presetUno(), presetTypography()],
+  theme: {
+    breakpoints: {
+      768: '768px', // 自定義斷點名稱
+    },
+  },
+  presets: [presetUno(), presetTypography(), presetAttributify()],
   /** 支持这样组合的写法 before:(bg-red w-6px h-6px rounded-full inline-block content-['']) */
   transformers: [transformerVariantGroup()],
   // 注入css
@@ -13,9 +18,7 @@ export default defineConfig({
   safelist: [],
   // 小点样式
   shortcuts: [
-    {
-      'flex-center': 'flex justify-center items-center',
-    },
+    {},
     [
       /^dot-before-(.*)$/,
       ([, color]) => {

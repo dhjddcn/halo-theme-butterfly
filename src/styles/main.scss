@@ -6,6 +6,11 @@
 
 @include util.useThemeVar(theme.$theme-colors);
 
+
+a{
+  text-decoration: none;
+}
+
 ::-webkit-scrollbar {
   height: 6px;
   width: 6px

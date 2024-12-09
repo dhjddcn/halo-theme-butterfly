@@ -1,11 +1,10 @@
 <div class="side-behavior-nav"></div>
 
 <div
-  x-data="sideBehaviorIcons"
-  class="side-behavior-icons fixed z-80 right-[-48px] bottom-[40px] transition-[opacity,transform] duration-500 ease-in-out transform translate-x-[-58px]"
+  class="side-behavior-icons fixed z-80 right-[-48px] bottom-[40px] [transition:opacity_0.5s,transform_0.5s] translate-x-[-58px]"
 >
   <button
-    class="flex-center my-[0.5rem] w-[2.2rem] h-[2.2rem] rounded-[.7rem] border-none bg-[var(--theme)] text-#fff switch-model"
+    class="flex items-center justify-center my-[0.5rem] w-[2.2rem] h-[2.2rem] rounded-[.7rem] border-none bg-[var(--theme)] text-#fff switch-model"
     th:if="${theme.config.style.mode == 'user'}"
     type="button"
     title="浅色和深色模式转换"
@@ -20,7 +19,7 @@
   </button>
 
   <button
-    class="flex-center my-[0.5rem] w-[2.2rem] h-[2.2rem] rounded-[.7rem] border-none bg-[var(--theme)] text-#fff back-top"
+    class="flex items-center justify-center my-[0.5rem] w-[2.2rem] h-[2.2rem] rounded-[.7rem] border-none bg-[var(--theme)] text-#fff back-top"
     type="button"
     title="回到顶部"
   >

@@ -10,15 +10,13 @@
   <!--/* 內容 */-->
   <th:block th:fragment="content">
     <header th:replace="~{modules/common/header :: h(above)}">
-      <th:block th:fragment="above">
-        <div class="text-primary">111</div>
-
-        <div class="bg-white text-black dark:bg-gray-800 dark:text-white">
-          This text will be white in dark mode and black in light mode.
-        </div>
-      </th:block>
+      <section
+        class="h-[100vh] bg-center bg-cover bg-no-repeat backface-hidden bg-blend-multiply [transition:height_0.35s,width_0.35s]"
+        style="background-image: url(https://unpkg.com/halo-theme-butterfly/docs/above.png)"
+        th:fragment="above"
+      ></section>
     </header>
 
-    <main class="content h-[2000px] bg-amber w-full mt-[500px]"></main>
+    <main class="content h-[2000px] bg-coolgray w-full"></main>
   </th:block>
 </html>
