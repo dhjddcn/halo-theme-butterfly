@@ -16,9 +16,16 @@ export default defineConfig({
   preflights: [],
   // 默认生成类名
   safelist: [],
+  rules: [
+    [
+      /^transition-\[(.+)]$/,
+      ([, value]) => ({
+        transition: value.replace(/_/g, ' '), // 将 "_" 替换为 " "
+      }),
+    ],
+  ],
   // 小点样式
   shortcuts: [
-    {},
     [
       /^dot-before-(.*)$/,
       ([, color]) => {
