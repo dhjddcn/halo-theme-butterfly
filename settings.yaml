@@ -102,15 +102,15 @@ spec:
               name: type
               id: _type
               key: _type
-              value: site
+              value: 'site'
               validation: required
               options:
                 - label: 本站
-                  value: site
+                  value: 'site'
                 - label: npm
-                  value: npm
+                  value: 'npm'
                 - label: 自定义
-                  value: custom
+                  value: 'custom'
             - $formkit: url
               name: custom
               key: _custom
