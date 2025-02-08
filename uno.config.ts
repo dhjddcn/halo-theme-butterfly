@@ -6,7 +6,7 @@ export default defineConfig({
   },
   theme: {
     breakpoints: {
-      768: '768px', // 自定義斷點名稱
+      768: '768px',
     },
   },
   presets: [presetUno(), presetTypography(), presetAttributify()],
