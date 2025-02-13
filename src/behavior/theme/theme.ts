@@ -4,12 +4,12 @@
  * @fileName: theme
  * @Description: 主题
  */
-import { useIsDaytime } from '../util';
+import { useIsDaytime } from '../../util';
 
 class Theme {
   #LOCALSTORAGE_KEY: string = 'data-color-scheme';
   #ATTR_KEY: string = 'colorScheme'; // 根元素主题属性
-  mode: string = 'light'; // 主题模式
+  #mode: string = 'light'; // 主题模式
 
   // 初始化主题模式
   constructor() {
@@ -19,13 +19,12 @@ class Theme {
       light: 'light',
       dark: 'dark',
     };
-
-    this.setMode(mes[window.__BUTTERFLY_CONFIG.common.mode]);
+    this.set(mes[window.__BUTTERFLY_CONFIG.common.mode]);
   }
 
   // 设置主题模式
-  setMode(theme: string) {
-    this.mode = theme;
+  set(theme: string) {
+    this.#mode = theme;
     document.documentElement.dataset[this.#ATTR_KEY] = theme;
     localStorage.setItem(this.#LOCALSTORAGE_KEY, theme);
 
@@ -34,15 +33,15 @@ class Theme {
   }
 
   // 获取主题模式
-  getMode() {
+  get() {
     const rootTheme = document.documentElement.dataset.theme;
     const locDataTheme = localStorage.getItem(this.#LOCALSTORAGE_KEY);
-    return this.mode || rootTheme || locDataTheme;
+    return this.#mode || rootTheme || locDataTheme;
   }
 
   // 切换主题模式
-  toggleMode() {
-    this.setMode(this.mode === 'light' ? 'dark' : 'light');
+  toggle() {
+    this.set(this.#mode === 'light' ? 'dark' : 'light');
   }
 
   // 设置halo评论主题
@@ -60,4 +59,5 @@ class Theme {
     haloCommentWidget?.classList.add(theme);
   }
 }
+
 export default new Theme();

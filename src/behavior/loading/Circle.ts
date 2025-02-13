@@ -4,10 +4,11 @@
  * @fileName: Circle
  * @Description: 转圈加载
  */
-import { AbstractLoading } from './types';
+import { AbsLoading } from '../../types';
 
-export default class Circle implements AbstractLoading {
-  cssText = `
+export default class Circle extends AbsLoading {
+  constructor() {
+    super(`
      #Butterfly{
         display: none;
      }
@@ -43,21 +44,7 @@ export default class Circle implements AbstractLoading {
             transform: rotate(360deg);
           }
       }
-  `;
-  style = document.createElement('style');
-  container = document.createElement('div');
-
-  constructor() {
-    this.style.textContent = this.cssText;
-    document.head.appendChild(this.style);
-
-    this.container.className = 'loading-container';
-    this.container.innerHTML = `<dvi class="loading-body"></dvi>`;
-    document.body.appendChild(this.container);
-  }
-
-  destroy() {
-    this.container.remove();
-    this.style.remove();
+  `);
+    this.start();
   }
 }

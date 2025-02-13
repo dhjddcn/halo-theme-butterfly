@@ -1,4 +1,4 @@
-export * from './behavior';
-import './styles/main.scss';
 import 'virtual:uno.css';
-import './plugins/Loading';
+import './styles/main.scss';
+
+export * from './behavior';

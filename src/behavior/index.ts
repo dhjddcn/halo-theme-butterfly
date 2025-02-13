@@ -1,3 +1,4 @@
-import theme from './theme';
+import theme from './theme/theme';
+import loading from './loading';
 
-export { theme };
+export { theme, loading };

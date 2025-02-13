@@ -9,7 +9,7 @@ import dot from './Dot';
 import circle from './Circle';
 import hourglass from './Hourglass';
 import cross_line from './CrossLine';
-import { LoadingType } from './types';
+import { AbsLoading, LoadingFn } from '../../types';
 
 const Loading = {
   circle,
@@ -18,8 +18,10 @@ const Loading = {
   dot,
 };
 
-((type: LoadingType) => {
-  if (!Loading[type]) return;
-  const loading = new Loading[type]();
-  window.addEventListener('load', () => loading.destroy());
-})(window.__BUTTERFLY_CONFIG.common.loading);
+const type: LoadingFn = window.__BUTTERFLY_CONFIG.common.loading;
+
+const loading = new Loading[type]() as AbsLoading;
+
+window.addEventListener('load', () => loading?.stop());
+
+export default loading;
