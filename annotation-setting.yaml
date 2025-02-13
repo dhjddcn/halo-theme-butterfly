@@ -1,3 +1,4 @@
+# nonk8s
 apiVersion: v1alpha1
 kind: AnnotationSetting
 metadata:
