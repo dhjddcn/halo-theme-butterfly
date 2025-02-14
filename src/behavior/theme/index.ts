@@ -5,19 +5,18 @@
  * @Description: 主题
  */
 import { useIsDaytime } from '../../util';
+import { ATTR_KEY, LOCALSTORAGE_KEY, ThemeMode } from './types';
 
-class Theme {
-  #LOCALSTORAGE_KEY: string = 'data-color-scheme';
-  #ATTR_KEY: string = 'colorScheme'; // 根元素主题属性
-  #mode: string = 'light'; // 主题模式
+export default class Theme {
+  #mode: string = ThemeMode.light; // 主题模式
 
   // 初始化主题模式
   constructor() {
     const mes: any = {
-      auto: useIsDaytime() ? 'light' : 'dark',
-      user: localStorage.getItem(this.#LOCALSTORAGE_KEY) || 'light',
-      light: 'light',
-      dark: 'dark',
+      auto: useIsDaytime() ? ThemeMode.light : ThemeMode.dark,
+      user: localStorage.getItem(LOCALSTORAGE_KEY) || ThemeMode.light,
+      light: ThemeMode.light,
+      dark: ThemeMode.dark,
     };
     this.set(mes[window.__BUTTERFLY_CONFIG.common.mode]);
   }
@@ -25,8 +24,9 @@ class Theme {
   // 设置主题模式
   set(theme: string) {
     this.#mode = theme;
-    document.documentElement.dataset[this.#ATTR_KEY] = theme;
-    localStorage.setItem(this.#LOCALSTORAGE_KEY, theme);
+
+    document.documentElement.dataset[ATTR_KEY] = theme;
+    localStorage.setItem(LOCALSTORAGE_KEY, theme);
 
     // halo评论主题
     this.setHaloCommentTheme(theme);
@@ -35,13 +35,13 @@ class Theme {
   // 获取主题模式
   get() {
     const rootTheme = document.documentElement.dataset.theme;
-    const locDataTheme = localStorage.getItem(this.#LOCALSTORAGE_KEY);
+    const locDataTheme = localStorage.getItem(LOCALSTORAGE_KEY);
     return this.#mode || rootTheme || locDataTheme;
   }
 
   // 切换主题模式
   toggle() {
-    this.set(this.#mode === 'light' ? 'dark' : 'light');
+    this.set(this.#mode === ThemeMode.light ? ThemeMode.dark : ThemeMode.light);
   }
 
   // 设置halo评论主题
@@ -54,10 +54,8 @@ class Theme {
 
     if (!haloCommentWidget) return;
 
-    haloCommentWidget?.classList.remove('light', 'dark');
+    haloCommentWidget?.classList.remove(ThemeMode.light, ThemeMode.dark);
 
     haloCommentWidget?.classList.add(theme);
   }
 }
-
-export default new Theme();

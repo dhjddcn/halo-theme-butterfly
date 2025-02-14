@@ -1,4 +1,15 @@
 import 'virtual:uno.css';
-import './styles/main.scss';
+import Loading from './behavior/loading';
+import Theme from './behavior/theme';
+import './style/main.scss';
 
-export * from './behavior';
+const loading = new Loading({
+  fullscreen: true,
+  el: 'body',
+});
+
+loading.start();
+
+const theme = new Theme();
+
+export { loading, theme };

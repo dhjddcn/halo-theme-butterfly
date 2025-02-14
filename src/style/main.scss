@@ -30,6 +30,7 @@ body {
   line-height: 2;
   -webkit-tap-highlight-color: transparent;
   -webkit-text-size-adjust: 100%;
+  //noinspection CssInvalidPropertyValue
   overflow-y: overlay;
   scroll-behavior: smooth;
   padding-bottom: env(safe-area-inset-bottom);

@@ -5,23 +5,72 @@
  * @Description: 页面加载
  */
 
-import dot from './Dot';
-import circle from './Circle';
-import hourglass from './Hourglass';
-import cross_line from './CrossLine';
-import { AbsLoading, LoadingFn } from '../../types';
+// import dot from './Dot';
+// import circle from './Circle';
+// import hourglass from './Hourglass';
+// import cross_line from './CrossLine';
+// import {LoadingAbs, LoadingFn} from "./types";
+import './style.scss';
+import { LoadingOptions } from './types';
+//
+//
+// const Loading = {
+//   circle,
+//   hourglass,
+//   cross_line,
+//   dot,
+// };
+//
+// const type: LoadingFn = window.__BUTTERFLY_CONFIG.common.loading;
+//
+//
+// const loading = new Loading[type]() as LoadingAbs;
+//
+// window.addEventListener('load', () => loading?.stop());
 
-const Loading = {
-  circle,
-  hourglass,
-  cross_line,
-  dot,
-};
+export default class Loading {
+  #parent: HTMLElement | null;
 
-const type: LoadingFn = window.__BUTTERFLY_CONFIG.common.loading;
+  #wrapper: HTMLElement | null;
 
-const loading = new Loading[type]() as AbsLoading;
+  public constructor(options: LoadingOptions) {
+    // this.#parent = document.querySelector(selector);
+    //
+    // if (!this.#parent) {
+    //   throw new Error('selector未找到元素');
+    // }
+    //
+    //
+    // this.#wrapper = this.#parent?.querySelector('.loading-wrapper') as HTMLElement | null;
+    //
+    // this.#parent.classList.add('loading-parent');
+    // if (!this.#wrapper) this.#createWrapper();
+  }
 
-window.addEventListener('load', () => loading?.stop());
-
-export default loading;
+  // /**
+  //  * 创建loading的wrapper
+  //  * @private
+  //  */
+  // #createWrapper() {
+  //   this.#wrapper = document.createElement('div');
+  //   this.#wrapper.className = 'loading-wrapper';
+  //   this.#parent?.appendChild(this.#wrapper);
+  //
+  //   this.#createSpinner();
+  // }
+  //
+  // #createSpinner() {
+  //   const spinner = document.createElement('div');
+  //   spinner.className = 'loading-spinner';
+  //   spinner.innerHTML = `·...·`;
+  //   this.#wrapper?.appendChild(spinner);
+  // }
+  //
+  // public start() {
+  //   // window.__BUTTERFLY_CONFIG.common.loading
+  // }
+  //
+  // stop() {
+  //   console.log('stop loading');
+  // }
+}
