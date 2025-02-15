@@ -24,8 +24,6 @@ import { LoadingOptions } from './types';
 // const type: LoadingFn = window.__BUTTERFLY_CONFIG.common.loading;
 //
 //
-// const loading = new Loading[type]() as LoadingAbs;
-//
 // window.addEventListener('load', () => loading?.stop());
 
 export default class Loading {
@@ -36,8 +34,6 @@ export default class Loading {
   public constructor(options: LoadingOptions) {
     // this.#parent = document.querySelector(selector);
     //
-    // if (!this.#parent) {
-    //   throw new Error('selector未找到元素');
     // }
     //
     //
@@ -66,11 +62,11 @@ export default class Loading {
   //   this.#wrapper?.appendChild(spinner);
   // }
   //
-  // public start() {
-  //   // window.__BUTTERFLY_CONFIG.common.loading
-  // }
-  //
-  // stop() {
-  //   console.log('stop loading');
-  // }
+  public start() {
+    // window.__BUTTERFLY_CONFIG.common.loading
+  }
+
+  stop() {
+    console.log('stop loading');
+  }
 }
