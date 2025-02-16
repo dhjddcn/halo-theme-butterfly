@@ -41,5 +41,5 @@ export type LoadingFn = 'circle' | 'hourglass' | 'cross_line' | 'dot';
 export interface LoadingOptions {
   text?: string;
   fullscreen?: boolean;
-  el: HTMLElement | string | null;
+  el: string | HTMLElement;
 }

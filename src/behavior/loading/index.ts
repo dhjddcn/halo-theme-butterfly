@@ -31,7 +31,11 @@ export default class Loading {
 
   #wrapper: HTMLElement | null;
 
-  public constructor(options: LoadingOptions) {
+  public constructor(options: LoadingOptions = { el: 'body' }) {
+    const el = document.querySelector(options.el as string);
+
+    el?.classList.add('loading-parent');
+
     // this.#parent = document.querySelector(selector);
     //
     // }
