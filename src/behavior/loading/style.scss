@@ -7,11 +7,25 @@
 
 .loading {
   &-parent {
-    position: relative;
-    overflow: hidden;
+    &--relative {
+      position: relative !important;
+
+      .loading-wrapper {
+        display: flex;
+      }
+
+      :not(.loading-wrapper) {
+        display: none;
+      }
+    }
+
+    &--hidden {
+      overflow: hidden !important;
+    }
   }
 
   &-wrapper {
+    display: none;
     position: absolute;
     z-index: 2000;
     background-color: rgba(225, 225, 225, .8);
@@ -21,19 +35,42 @@
     bottom: 0;
     left: 0;
     transition: opacity .3s;
-    display: flex;
     justify-items: center;
     align-items: center;
+
+    &.is-fullscreen {
+      position: fixed !important;
+    }
   }
 
 
   &-spinner {
     width: 100%;
     min-height: 100px;
-    background: red;
     display: flex;
     align-items: center;
     justify-content: center;
+
+
+    @keyframes circleSpin {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    & .circle {
+      position: relative;
+      border: 4px solid rgba(0, 0, 0, .3);
+      border-left-color: transparent;
+      border-radius: 50%;
+      width: 36px;
+      height: 36px;
+      animation: circleSpin 1s linear infinite;
+    }
   }
 
 }

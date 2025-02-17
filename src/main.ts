@@ -3,13 +3,22 @@ import Loading from './behavior/loading';
 import Theme from './behavior/theme';
 import './style/main.scss';
 
-const loading = new Loading({
+const loading = Loading({
   fullscreen: true,
+  background: 'rgba(255, 255, 255, 1)',
   el: 'body',
+});
+
+const d = Loading({
+  el: '.adadxx',
 });
 
 loading.start();
 
 const theme = new Theme();
 
-export { loading, theme };
+const Utils = {
+  Loading,
+};
+
+export { loading, theme, Utils };

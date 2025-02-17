@@ -4,7 +4,6 @@
  * @fileName: types
  * @Description: 类型
  */
-import Loading from './index';
 
 // 加载函数类型
 export type LoadingFn = 'circle' | 'hourglass' | 'cross_line' | 'dot';
@@ -42,4 +41,5 @@ export interface LoadingOptions {
   text?: string;
   fullscreen?: boolean;
   el: string | HTMLElement;
+  background?: string;
 }

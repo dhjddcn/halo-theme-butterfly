@@ -12,65 +12,49 @@
 // import {LoadingAbs, LoadingFn} from "./types";
 import './style.scss';
 import { LoadingOptions } from './types';
-//
-//
-// const Loading = {
-//   circle,
-//   hourglass,
-//   cross_line,
-//   dot,
-// };
-//
-// const type: LoadingFn = window.__BUTTERFLY_CONFIG.common.loading;
-//
-//
-// window.addEventListener('load', () => loading?.stop());
 
-export default class Loading {
+class Loading {
   #parent: HTMLElement | null;
 
   #wrapper: HTMLElement | null;
 
-  public constructor(options: LoadingOptions = { el: 'body' }) {
-    const el = document.querySelector(options.el as string);
+  #options: LoadingOptions | null;
 
-    el?.classList.add('loading-parent');
+  public constructor(options: LoadingOptions) {
+    this.#options = options;
 
-    // this.#parent = document.querySelector(selector);
-    //
-    // }
-    //
-    //
-    // this.#wrapper = this.#parent?.querySelector('.loading-wrapper') as HTMLElement | null;
-    //
-    // this.#parent.classList.add('loading-parent');
-    // if (!this.#wrapper) this.#createWrapper();
+    this.#parent = document.querySelector(options.el as string);
+    this.#parent?.classList.add('loading-parent--relative', 'loading-parent--hidden');
+
+    this.#wrapper = this.#parent?.querySelector('.loading-wrapper') as HTMLElement | null;
+
+    if (!this.#wrapper) this.#createWrapper();
   }
 
-  // /**
-  //  * 创建loading的wrapper
-  //  * @private
-  //  */
-  // #createWrapper() {
-  //   this.#wrapper = document.createElement('div');
-  //   this.#wrapper.className = 'loading-wrapper';
-  //   this.#parent?.appendChild(this.#wrapper);
-  //
-  //   this.#createSpinner();
-  // }
-  //
-  // #createSpinner() {
-  //   const spinner = document.createElement('div');
-  //   spinner.className = 'loading-spinner';
-  //   spinner.innerHTML = `·...·`;
-  //   this.#wrapper?.appendChild(spinner);
-  // }
-  //
-  public start() {
-    // window.__BUTTERFLY_CONFIG.common.loading
+  /**
+   * 创建loading的wrapper
+   * @private
+   */
+  #createWrapper() {
+    const spinner = `<div class="loading-spinner"> <div class="circle"></div> </div>`;
+    this.#wrapper = document.createElement('div');
+    this.#wrapper.className = `loading-wrapper ${this.#options?.fullscreen ? 'is-fullscreen' : ''}`;
+    this.#wrapper.style.background = this.#options?.background || '';
+    this.#wrapper.innerHTML = spinner;
+    this.#parent?.appendChild(this.#wrapper);
   }
 
-  stop() {
+  public start() {}
+
+  public stop() {
     console.log('stop loading');
   }
+
+  public destroy() {
+    console.log('destroy loading');
+  }
+}
+
+export default function createLoading(options: LoadingOptions) {
+  return new Loading(options);
 }
