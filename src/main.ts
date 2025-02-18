@@ -5,7 +5,6 @@ import './style/main.scss';
 
 const loading = Loading({
   fullscreen: true,
-  background: 'rgba(255, 255, 255, 1)',
   el: 'body',
 });
 

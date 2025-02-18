@@ -41,5 +41,4 @@ export interface LoadingOptions {
   text?: string;
   fullscreen?: boolean;
   el: string | HTMLElement;
-  background?: string;
 }

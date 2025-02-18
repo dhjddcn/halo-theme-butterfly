@@ -36,10 +36,9 @@ class Loading {
    * @private
    */
   #createWrapper() {
-    const spinner = `<div class="loading-spinner"> <div class="circle"></div> </div>`;
+    const spinner = `<div class="loading-spinner"> </div>`;
     this.#wrapper = document.createElement('div');
     this.#wrapper.className = `loading-wrapper ${this.#options?.fullscreen ? 'is-fullscreen' : ''}`;
-    this.#wrapper.style.background = this.#options?.background || '';
     this.#wrapper.innerHTML = spinner;
     this.#parent?.appendChild(this.#wrapper);
   }
