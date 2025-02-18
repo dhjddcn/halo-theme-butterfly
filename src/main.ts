@@ -3,18 +3,14 @@ import Loading from './behavior/loading';
 import Theme from './behavior/theme';
 import './style/main.scss';
 
+const theme = new Theme();
+
 const loading = Loading({
   fullscreen: true,
   el: 'body',
 });
 
-const d = Loading({
-  el: '.adadxx',
-});
-
-loading.start();
-
-const theme = new Theme();
+window.addEventListener('load', () => loading.stop());
 
 const Utils = {
   Loading,

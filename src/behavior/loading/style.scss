@@ -28,7 +28,7 @@
     display: none;
     position: absolute;
     z-index: 2000;
-    background-color: rgba(255, 255, 255, 1);
+    background-color: rgba(255, 255, 255, 0.9);
     margin: 0;
     top: 0;
     right: 0;
@@ -42,32 +42,6 @@
       position: fixed !important;
     }
     
-    
-    //小圆圈
-    &.circle{
-      background-color: rgba(255, 255, 255, 0.9);
-
-      @keyframes circleSpin {
-        0% {
-          transform: rotate(0deg);
-        }
-
-        100% {
-          transform: rotate(360deg);
-        }
-      }
-
-      & .circle {
-        position: relative;
-        border: 4px solid rgba(0, 0, 0, .3);
-        border-left-color: transparent;
-        border-radius: 50%;
-        width: 36px;
-        height: 36px;
-        animation: circleSpin 1s linear infinite;
-      }
-    }
-    
   }
 
 
@@ -78,10 +52,7 @@
     align-items: center;
     justify-content: center;
 
-
   }
 
 }
-
-
 

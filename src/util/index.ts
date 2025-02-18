@@ -20,3 +20,15 @@ export function useIsDaytime(): boolean {
   // 判断当前小时是否在白天时间范围内
   return currentHour >= daytimeStartHour && currentHour < daytimeEndHour;
 }
+
+/**
+ * 压缩 CSS
+ * @param {string} css
+ * @returns {string}
+ */
+export function compressCss(css: string): string {
+  return css
+    .replace(/\s+/g, ' ')
+    .replace(/\s*([{};:])\s*/g, '$1')
+    .trim();
+}
