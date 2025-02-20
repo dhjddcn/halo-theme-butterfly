@@ -6,7 +6,7 @@
  */
 
 // 加载函数类型
-export type LoadingFn = 'circle' | 'hourglass' | 'cross_line' | 'dot';
+export type LoadingType = 'circle' | 'hourglass' | 'cross_line' | 'dot';
 
 // 加载抽象类
 // export abstract class LoadingAbs {
