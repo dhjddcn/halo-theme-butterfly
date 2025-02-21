@@ -4,73 +4,70 @@
  * @fileName: Loading
  * @Description: 页面加载
  */
-
-import './style.scss';
 import { LoadingOptions } from './types';
+import './style.scss';
 import Spinner from './Spinner';
 
 class Loading {
-  #parent: HTMLElement | null;
+  options: LoadingOptions;
 
-  #wrapper: HTMLElement | null;
-
-  #options: LoadingOptions | null;
-
-  className: string;
+  el: HTMLElement | null = null;
 
   public constructor(options: LoadingOptions) {
-    this.#parent = document.querySelector(options.el as string);
-
-    if (!this.#parent) {
-      throw new Error('el is not found');
-    }
-
-    this.#options = options;
-
-    this.className = `loading-parent--relative ${this.#options?.fullscreen ? 'loading-parent--hidden' : ''}`;
-
-    this.#parent.className = this.className;
-
-    this.#wrapper = this.#parent?.querySelector('.loading-wrapper') as HTMLElement | null;
-
-    if (!this.#wrapper) this.#createWrapper();
+    console.log(options);
+    this.options = options;
+    this.#addRelative();
   }
 
   /**
-   * 创建loading的wrapper
-   * @private
+   * 找到loading  添加 relative
    */
-  #createWrapper() {
-    this.#wrapper = document.createElement('div');
-    this.#wrapper.className = `loading-wrapper ${this.#options?.fullscreen ? 'is-fullscreen' : ''}`;
-    // const spinner = `<div class="loading-spinner"> ${(loadings as any)[type]()}</div>`;
-    // this.#wrapper.innerHTML = spinner.get(window.__BUTTERFLY_CONFIG.common.loading);
-    this.#parent?.appendChild(this.#wrapper);
-  }
+  #addRelative() {
+    this.el = document.querySelector(this.options.el as string);
 
-  public start(time: number) {
-    if (!this.#parent) return;
+    if (!this.el) throw new Error('未找到loading el');
 
-    this.#parent.className = this.className;
+    const classList: string[] = ['loading-parent--relative'];
 
-    if (time) {
-      setTimeout(() => {
-        this.stop();
-      }, time);
+    if (this.options.fullscreen) {
+      classList.push('loading-parent--hidden');
     }
+
+    this.el.classList.add(...classList);
+
+    this.#checkMask();
   }
 
-  public stop() {
-    this.#parent?.classList.remove(...['loading-parent--relative', 'loading-parent--hidden']);
+  /**
+   * 检查是否有loading mask 如果就就不需要创建
+   */
+  #checkMask() {
+    let mask = document.querySelector('.loading-mask');
+
+    if (mask) return;
+
+    const classList: string[] = ['loading-mask'];
+
+    if (this.options.fullscreen) {
+      classList.push('is-fullscreen');
+    }
+    mask = document.createElement('div');
+
+    const spinner = new Spinner(this.options.type);
+
+    mask.innerHTML = spinner.getHtmlText();
+
+    mask.classList.add(...classList);
+
+    this.el?.appendChild(mask);
   }
 
-  public destroy() {
-    console.log('destroy loading');
-  }
+  public start() {}
+
+  public stop() {}
 }
 
-export default function createLoading(options: LoadingOptions) {
-  const spinner = new Spinner();
-
+export default function (options?: LoadingOptions) {
+  options = options || { el: 'body', fullscreen: true, type: window.__BUTTERFLY_CONFIG.common.loading };
   return new Loading(options);
 }

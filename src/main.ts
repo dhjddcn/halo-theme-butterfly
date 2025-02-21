@@ -5,12 +5,9 @@ import './style/main.scss';
 
 const theme = new Theme();
 
-const loading = Loading({
-  fullscreen: true,
-  el: 'body',
-});
+const loading = Loading();
 
-window.addEventListener('load', () => loading.stop());
+// window.addEventListener('load', () => loading.stop());
 
 const Utils = {
   Loading,

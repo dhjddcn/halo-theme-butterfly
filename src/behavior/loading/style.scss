@@ -10,11 +10,11 @@
     &--relative {
       position: relative !important;
 
-      .loading-wrapper {
+      .loading-mask {
         display: flex;
       }
 
-     > :not(.loading-wrapper) {
+     > :not(.loading-mask) {
         display: none;
       }
     }
@@ -24,7 +24,7 @@
     }
   }
 
-  &-wrapper {
+  &-mask {
     display: none;
     position: absolute;
     z-index: 2000;
