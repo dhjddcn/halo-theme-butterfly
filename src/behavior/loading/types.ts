@@ -5,17 +5,16 @@
  * @Description: 类型
  */
 
-// 加载函数类型
 export type LoadingType = 'circle' | 'hourglass' | 'cross_line' | 'dot';
 
 export interface LoadingOptions {
   text?: string;
+  type?: LoadingType;
   fullscreen?: boolean;
   el: string | HTMLElement;
-  type: LoadingType;
 }
 
 export interface LoadingSpinner {
-  getCssText: () => string;
-  getHtmlText: () => string;
+  cssText: string;
+  htmlText: string;
 }

@@ -7,42 +7,45 @@
 import { LoadingOptions } from './types';
 import './style.scss';
 import Spinner from './Spinner';
+import { addClass, removeClass } from '../../util';
 
 class Loading {
   options: LoadingOptions;
 
   el: HTMLElement | null = null;
 
+  classList: string[] = [];
+
   public constructor(options: LoadingOptions) {
-    console.log(options);
+    console.log('options', options);
     this.options = options;
-    this.#addRelative();
+    this.addRelative();
   }
 
   /**
    * 找到loading  添加 relative
    */
-  #addRelative() {
+  public addRelative() {
     this.el = document.querySelector(this.options.el as string);
 
     if (!this.el) throw new Error('未找到loading el');
 
-    const classList: string[] = ['loading-parent--relative'];
+    this.classList = ['loading-parent--relative'];
 
     if (this.options.fullscreen) {
-      classList.push('loading-parent--hidden');
+      this.classList.push('loading-parent--hidden');
     }
 
-    this.el.classList.add(...classList);
+    this.el.classList.add(...this.classList);
 
-    this.#checkMask();
+    this.checkMask();
   }
 
   /**
    * 检查是否有loading mask 如果就就不需要创建
    */
-  #checkMask() {
-    let mask = document.querySelector('.loading-mask');
+  public checkMask() {
+    let mask = this.el?.querySelector('.loading-mask');
 
     if (mask) return;
 
@@ -53,21 +56,24 @@ class Loading {
     }
     mask = document.createElement('div');
 
-    const spinner = new Spinner(this.options.type);
-
-    mask.innerHTML = spinner.getHtmlText();
+    mask.innerHTML = Spinner(this.options.type || window.__BUTTERFLY_CONFIG.common.loading);
 
     mask.classList.add(...classList);
 
     this.el?.appendChild(mask);
   }
 
-  public start() {}
+  public start() {
+    addClass(this.el as HTMLElement, ...this.classList);
+  }
 
-  public stop() {}
+  public stop() {
+    removeClass(this.el as HTMLElement, ...this.classList);
+  }
 }
 
 export default function (options?: LoadingOptions) {
-  options = options || { el: 'body', fullscreen: true, type: window.__BUTTERFLY_CONFIG.common.loading };
+  options = options || { el: 'body', fullscreen: true };
+
   return new Loading(options);
 }

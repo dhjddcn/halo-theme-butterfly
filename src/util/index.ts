@@ -32,3 +32,57 @@ export function compressCss(css: string): string {
     .replace(/\s*([{};:])\s*/g, '$1')
     .trim();
 }
+
+/**
+ * 创建 style 标签 添加到 head 中
+ * @param {string} cssText
+ * @param className
+ */
+export function createStyleTag(cssText: string, className: string) {
+  const style = document.createElement('style');
+  style.className = className;
+  style.innerHTML = compressCss(cssText);
+  document.head.appendChild(style);
+}
+
+/**
+ * 检查是否存在某一个标签
+ * @param {string} className
+ */
+export function checkTag(className: string) {
+  return document.querySelector(`.${className}`);
+}
+
+/**
+ * 检测元素是否有某个css类
+ */
+export function hasClass(el: HTMLElement, className: string): boolean {
+  return el.classList.contains(className);
+}
+
+/**
+ * 添加元素css类
+ */
+export function addClass(el: HTMLElement, ...className: (HTMLElement | string)[]) {
+  const eCls = [...Array.from(el.classList), ...className];
+  el.className = eCls.join(' ');
+}
+
+/**
+ * 移除元素css类
+ */
+export function removeClass(el: HTMLElement, ...className: (HTMLElement | string)[]) {
+  const cls = Array.from(el.classList);
+
+  for (let i = 0; i < className.length; i++) {
+    const index = cls.indexOf(className[i] as string);
+    if (index > -1) {
+      cls.splice(index, 1);
+    }
+  }
+  if (cls.length === 0) {
+    el.removeAttribute('class');
+  } else {
+    el.className = cls.join(' ');
+  }
+}
