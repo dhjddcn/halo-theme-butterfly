@@ -7,7 +7,7 @@ const theme = new Theme();
 
 const loading = Loading();
 
-window.addEventListener('load', () => loading.stop());
+window.addEventListener('load', () => loading.stop(), { once: true });
 
 const Utils = {
   Loading,
