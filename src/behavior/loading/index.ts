@@ -4,10 +4,10 @@
  * @fileName: Loading
  * @Description: 页面加载
  */
-import { LoadingOptions } from './types';
+import { LoadingOptions, LoadingSpinner } from './types';
 import './style.scss';
-import Spinner from './Spinner';
-import { addClass, removeClass } from '../../util';
+import * as Spinner from './Spinner';
+import { addClass, checkTag, createStyleTag, removeClass } from '../../util';
 
 class Loading {
   options: LoadingOptions;
@@ -17,7 +17,6 @@ class Loading {
   classList: string[] = [];
 
   public constructor(options: LoadingOptions) {
-    console.log('options', options);
     this.options = options;
     this.addRelative();
   }
@@ -25,7 +24,7 @@ class Loading {
   /**
    * 找到loading  添加 relative
    */
-  public addRelative() {
+  private addRelative() {
     this.el = document.querySelector(this.options.el as string);
 
     if (!this.el) throw new Error('未找到loading el');
@@ -44,7 +43,7 @@ class Loading {
   /**
    * 检查是否有loading mask 如果就就不需要创建
    */
-  public checkMask() {
+  private checkMask() {
     let mask = this.el?.querySelector('.loading-mask');
 
     if (mask) return;
@@ -56,11 +55,25 @@ class Loading {
     }
     mask = document.createElement('div');
 
-    mask.innerHTML = Spinner(this.options.type || window.__BUTTERFLY_CONFIG.common.loading);
+    mask.innerHTML = this.createSpinner();
 
     mask.classList.add(...classList);
 
     this.el?.appendChild(mask);
+  }
+
+  private createSpinner() {
+    const type = this.options.type || window.__BUTTERFLY_CONFIG.common.loading;
+
+    const className = `loading-${type}`;
+
+    const module: LoadingSpinner = new Spinner[type]();
+
+    if (!checkTag(className)) {
+      createStyleTag(module.getCssText(), className);
+    }
+
+    return `<div class="loading-spinner">${module.getHtmlText()}</div>`;
   }
 
   public start() {
@@ -74,6 +87,5 @@ class Loading {
 
 export default function (options?: LoadingOptions) {
   options = options || { el: 'body', fullscreen: true };
-
   return new Loading(options);
 }

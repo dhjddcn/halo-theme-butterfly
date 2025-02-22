@@ -5,7 +5,7 @@
  * @Description: 类型
  */
 
-export type LoadingType = 'circle' | 'hourglass' | 'cross_line' | 'dot';
+export type LoadingType = 'circle' | 'hourglass' | 'crossLine' | 'dot';
 
 export interface LoadingOptions {
   text?: string;
@@ -15,6 +15,6 @@ export interface LoadingOptions {
 }
 
 export interface LoadingSpinner {
-  cssText: string;
-  htmlText: string;
+  getHtmlText: () => string;
+  getCssText: () => string;
 }

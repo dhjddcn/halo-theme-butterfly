@@ -5,16 +5,16 @@
  * @Description: 加载动画
  */
 
-import { LoadingSpinner, LoadingType } from './types';
-import { checkTag, createStyleTag } from '../../util';
-
 /**
  * 圆形加载动画
  */
-function circle(): LoadingSpinner {
-  return {
-    htmlText: `<div class="loading-circle"></div>`,
-    cssText: `
+export class circle {
+  getHtmlText(): string {
+    return `<div class="loading-circle"></div>`;
+  }
+
+  getCssText(): string {
+    return `
       @keyframes circleSpin {
           0% {
               transform: rotate(0deg);
@@ -32,50 +32,48 @@ function circle(): LoadingSpinner {
           height: 36px;
           animation: circleSpin 1s linear infinite;
       }
-  `,
-  };
+  `;
+  }
 }
-
-function hourglass(): LoadingSpinner {
-  return {
-    htmlText: ``,
-    cssText: `  `,
-  };
-}
-
-function crossLine(): LoadingSpinner {
-  return {
-    htmlText: ``,
-    cssText: `  `,
-  };
-}
-
-function dot(): LoadingSpinner {
-  return {
-    htmlText: ``,
-    cssText: `  `,
-  };
-}
-
-const modules: { [key in LoadingType]: () => LoadingSpinner } = {
-  circle,
-  hourglass,
-  cross_line: crossLine,
-  dot,
-};
 
 /**
- * 创建加载动画
- * @param type
+ * 沙漏加载动画
  */
-export default function createSpinner(type: LoadingType): string {
-  const className = `loading-${type}`;
-
-  const module: LoadingSpinner = modules[type]();
-
-  if (!checkTag(className)) {
-    createStyleTag(module.cssText, className);
+export class hourglass {
+  getHtmlText(): string {
+    return `<div class="loading-hourglass"></div>`;
   }
 
-  return `<div class="loading-spinner">${module.htmlText}</div>`;
+  getCssText(): string {
+    return `
+  `;
+  }
+}
+
+/**
+ * 斜线加载动画
+ */
+export class crossLine {
+  getHtmlText(): string {
+    return `<div class="loading-hourglass"></div>`;
+  }
+
+  getCssText(): string {
+    return `
+  `;
+  }
+}
+
+/**
+ * 点加载动画
+ */
+export class dot {
+  getHtmlText(): string {
+    return `<div class="loading-hourglass"></div>`;
+  }
+
+  getCssText(): string {
+    return `
+  `;
+  }
 }
