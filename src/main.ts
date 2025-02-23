@@ -1,16 +1,16 @@
 import 'virtual:uno.css';
-import Loading from './behavior/loading';
-import Theme from './behavior/theme';
+import useLoading from './behavior/loading';
+import useTheme from './behavior/theme';
 import './style/main.scss';
 
-const theme = new Theme();
+const theme = new useTheme();
 
-const loading = Loading();
+const loading = useLoading();
 
 window.addEventListener('load', () => loading.stop(), { once: true });
 
 const Utils = {
-  Loading,
+  useLoading,
 };
 
 export { loading, theme, Utils };
