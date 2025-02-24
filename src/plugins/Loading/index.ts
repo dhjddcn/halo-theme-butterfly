@@ -5,9 +5,14 @@
  * @Description: 页面加载
  */
 import { LoadingOptions, LoadingSpinner } from './types';
-import './style.scss';
 import * as Spinner from './Spinner';
-import { addClass, checkTag, createStyleTag, removeClass } from '../util';
+import { addClass, checkTag, createStyleTag, removeClass } from '../../util';
+
+import styles from './style.scss?raw'; // 引入 SCSS 编译后的 CSS 字符串
+
+// 你可以将它作为一个变量传递给其他逻辑
+const cssString = styles;
+console.log(cssString); // 输出 SCSS 编译后的 CSS 字符串
 
 class Loading {
   options: LoadingOptions;
@@ -15,6 +20,51 @@ class Loading {
   el: HTMLElement | null = null;
 
   classList: string[] = [];
+
+  style = `
+      .loading-parent--relative {
+      position: relative !important
+    }
+    
+    .loading-parent--relative .loading-mask {
+      display: flex
+    }
+    
+    .loading-parent--relative > :not(.loading-mask) {
+      display: none
+    }
+    
+    .loading-parent--hidden {
+      overflow: hidden !important
+    }
+    
+    .loading-mask {
+      display: none;
+      position: absolute;
+      z-index: 2000;
+      background-color: #ffffffe6;
+      margin: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      transition: opacity .3s;
+      justify-items: center;
+      align-items: center
+    }
+    
+    .loading-mask.is-fullscreen {
+      position: fixed !important
+    }
+    
+    .loading-spinner {
+      width: 100%;
+      min-height: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center
+    }
+  `;
 
   public constructor(options: LoadingOptions) {
     this.options = options;

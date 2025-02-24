@@ -55,7 +55,8 @@
   th:href="${ assets_link + 'dist/butterfly.css?v=' + theme.spec.version + isDev }"
 />
 <script
-  defer
+  async
   type="text/javascript"
-  th:src="${ assets_link + 'dist/butterfly.js?v=' + theme.spec.version + isDev }"
+  th:src="${ assets_link + 'dist/loading.js?v=' + theme.spec.version + isDev }"
 ></script>
+<script type="text/javascript" th:src="${ assets_link + 'dist/butterfly.js?v=' + theme.spec.version + isDev }"></script>
