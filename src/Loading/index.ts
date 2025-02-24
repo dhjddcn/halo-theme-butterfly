@@ -7,7 +7,7 @@
 import { LoadingOptions, LoadingSpinner } from './types';
 import './style.scss';
 import * as Spinner from './Spinner';
-import { addClass, checkTag, createStyleTag, removeClass } from '../../util';
+import { addClass, checkTag, createStyleTag, removeClass } from '../util';
 
 class Loading {
   options: LoadingOptions;
@@ -85,7 +85,7 @@ class Loading {
   }
 }
 
-export default function (options?: LoadingOptions) {
+export default function useLoading(options?: LoadingOptions) {
   options = options || { el: 'body', fullscreen: true };
   return new Loading(options);
 }

@@ -1,7 +1,7 @@
 /// <reference types="vite/client" />
 
 import { ThemeMode } from './behavior/theme/types';
-import { LoadingType } from './behavior/loading/types';
+import { LoadingType } from './Loading/types';
 
 declare global {
   interface Window {
