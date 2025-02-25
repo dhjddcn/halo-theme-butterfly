@@ -14,7 +14,7 @@
         display: flex;
       }
 
-     > :not(.loading-mask) {
+      > :not(.loading-mask) {
         display: none;
       }
     }
@@ -41,7 +41,7 @@
     &.is-fullscreen {
       position: fixed !important;
     }
-    
+
   }
 
   &-spinner {
@@ -52,5 +52,26 @@
     justify-content: center;
   }
 
+
+  //圆形加载动画
+  &-circle {
+    @keyframes circleSpin {
+      0% {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+
+    position: relative;
+    border: 4px solid rgba(0, 0, 0, 0.3);
+    border-left-color: transparent;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    animation: circleSpin 1s linear infinite;
+  }
 }
 

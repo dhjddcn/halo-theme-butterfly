@@ -9,12 +9,7 @@ export type LoadingType = 'circle' | 'hourglass' | 'crossLine' | 'dot';
 
 export interface LoadingOptions {
   text?: string;
-  type?: LoadingType;
   fullscreen?: boolean;
+  type: LoadingType;
   el: string | HTMLElement;
-}
-
-export interface LoadingSpinner {
-  getHtmlText: () => string;
-  getCssText: () => string;
 }

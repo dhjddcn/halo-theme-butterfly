@@ -41,7 +41,7 @@ export function compressCss(css: string): string {
 export function createStyleTag(cssText: string, className: string) {
   const style = document.createElement('style');
   style.className = className;
-  style.innerHTML = compressCss(cssText);
+  style.innerHTML = cssText;
   document.head.appendChild(style);
 }
 
@@ -50,7 +50,7 @@ export function createStyleTag(cssText: string, className: string) {
  * @param {string} className
  */
 export function checkTag(className: string) {
-  return document.querySelector(`.${className}`);
+  return document.querySelector(className);
 }
 
 /**
