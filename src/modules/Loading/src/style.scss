@@ -34,14 +34,14 @@
     right: 0;
     bottom: 0;
     left: 0;
-    transition: opacity .3s;
+    opacity: 0;
     justify-items: center;
     align-items: center;
+
 
     &.is-fullscreen {
       position: fixed !important;
     }
-
   }
 
   &-spinner {

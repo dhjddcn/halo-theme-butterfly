@@ -100,6 +100,6 @@ window.addEventListener('load', () => loading.stop(), { once: true });
 
 export default {
   create: (options: LoadingOptions) => new Loading(options),
-  start: loading.start,
-  stop: loading.stop,
+  start: () => loading.start(),
+  stop: () => loading.stop(),
 };
