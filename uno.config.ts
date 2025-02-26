@@ -6,7 +6,10 @@ export default defineConfig({
   },
   theme: {
     breakpoints: {
-      768: '768px',
+      sm: '640px',
+      md: '768px',
+      lg: '1024px',
+      xl: '1280px',
     },
   },
   presets: [presetUno(), presetTypography(), presetAttributify()],
@@ -23,6 +26,9 @@ export default defineConfig({
         transition: value.replace(/_/g, ' '), // 将 "_" 替换为 " "
       }),
     ],
+    ['tap-transparent', { '-webkit-tap-highlight-color': 'transparent' }],
+    // 防止字体大小调整
+    ['text-size-fix', { '-webkit-text-size-adjust': '100%' }],
   ],
   // 小点样式
   shortcuts: [

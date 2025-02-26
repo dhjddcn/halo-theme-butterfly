@@ -1,0 +1,9 @@
+{
+  "name": "loading",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build-loading": "npx tsc && npx vite build --config vite.loading.mts"
+  }
+}

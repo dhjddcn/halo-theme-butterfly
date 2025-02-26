@@ -5,7 +5,6 @@ import './style/main.scss';
 
 const theme = new useTheme();
 
-console.log(theme);
 // const loading = useLoading();
 
 // window.addEventListener('load', () => loading.stop(), { once: true });
@@ -14,4 +13,4 @@ console.log(theme);
 //   useLoading,
 // };
 
-// export { loading, theme, Utils };
+export { theme };

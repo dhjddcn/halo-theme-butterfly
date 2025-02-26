@@ -5,8 +5,8 @@
  * @Description: 页面加载
  */
 import { LoadingOptions } from './types';
-import * as Spinner from './Spinner';
-import { addClass, checkTag, createStyleTag, removeClass } from '../../util';
+import * as Look from './Look';
+import { addClass, checkTag, createStyleTag, removeClass } from '../../../util';
 import styles from './style.scss?raw';
 
 class Loading {
@@ -82,7 +82,7 @@ class Loading {
   }
 
   private createSpinner() {
-    return `<div class="loading-spinner">${Spinner[this.options.type]()}</div>`;
+    return `<div class="loading-spinner">${Look[this.options.type]()}</div>`;
   }
 
   public start() {

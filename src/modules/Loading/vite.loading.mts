@@ -4,9 +4,6 @@ import path from 'node:path';
 import {readFileSync} from "node:fs";
 import * as sass from 'sass';
 
-
-console.log('1', fileURLToPath(new URL('../../../templates/assets/dist', import.meta.url)));
-
 export default defineConfig({
   plugins: [
     {
@@ -44,7 +41,7 @@ export default defineConfig({
     outDir: fileURLToPath(new URL('../../../templates/assets/dist', import.meta.url)), // 指定输出目录
     emptyOutDir: false, // 清空输出目录
     lib: {
-      entry: path.resolve(__dirname, './index.ts'),
+      entry: path.resolve(__dirname, './src/Loading.ts'),
       name: 'loading',
       fileName: 'loading',
       formats: ['iife'],

@@ -27,9 +27,12 @@
       <link rel="canonical" th:href="${site.url}" />
       <th:block th:replace="~{modules/config}" />
     </head>
-    <body>
+    <body
+      class="text-14px leading-loose overflow-y-overlay scroll-smooth tap-transparent text-size-fix pb-[env(safe-area-inset-bottom)]"
+    >
       <div id="Butterfly" th:class="${page + ' relative min-h-[100vh]'}">
         <th:block th:replace="${content}" />
+
         <!--/* 侧边行为*/-->
         <th:block th:replace="~{modules/common/action}" />
       </div>
