@@ -41,8 +41,8 @@ export default defineConfig({
     outDir: fileURLToPath(new URL('../../../templates/assets/dist', import.meta.url)), // 指定输出目录
     emptyOutDir: false, // 清空输出目录
     lib: {
-      entry: path.resolve(__dirname, './src/Loading.ts'),
-      name: 'loading',
+      entry: path.resolve(__dirname, './src/index.ts'),
+      name: '__BUTTERFLY_LOADING',
       fileName: 'loading',
       formats: ['iife'],
     },

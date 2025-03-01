@@ -4,10 +4,18 @@
  * @fileName: Loading
  * @Description: 页面加载
  */
-import { LoadingOptions } from './types';
 import * as Look from './Look';
 import { addClass, checkTag, createStyleTag, removeClass } from '../../../util';
 import styles from './style.scss?raw';
+
+export type LoadingType = 'circle' | 'hourglass' | 'crossLine' | 'dot';
+
+export interface LoadingOptions {
+  text?: string;
+  fullscreen?: boolean;
+  type: LoadingType;
+  el: string | HTMLElement;
+}
 
 class Loading {
   options: LoadingOptions;
@@ -94,12 +102,16 @@ class Loading {
   }
 }
 
-const loading = new Loading();
+const ins = new Loading();
 
-window.addEventListener('load', () => loading.stop(), { once: true });
+window.addEventListener('load', () => ins.stop(), { once: true });
 
 export default {
   create: (options: LoadingOptions) => new Loading(options),
-  start: () => loading.start(),
-  stop: () => loading.stop(),
+  ins,
 };
+
+export interface LoadingInstance {
+  create: (options: LoadingOptions) => Loading;
+  ins: Loading;
+}

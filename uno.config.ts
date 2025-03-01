@@ -44,5 +44,8 @@ export default defineConfig({
         return `before:(bg-${color} w-6px h-6px rounded-full inline-block content-[''] position-relative top-[-2px] ml-5px) `;
       },
     ],
+    {
+      'flex-center': 'flex items-center justify-center',
+    },
   ],
 });

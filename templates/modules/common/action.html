@@ -1,1 +1,11 @@
-<div class="side-actions"></div>
+<div
+  class="side-actions fixed z-100 bottom-[40px] right-[-48px] transition-[opacity_0.5s,transform_0.5s] translate-x-[-58px]"
+>
+  <button
+    class="flex-center my-[0.5rem] w-[2.2rem] h-[2.2rem] md:w-[3rem] md:h-[3rem] rounded-[.7rem] bg-[var(--theme)]"
+    th:if="${theme.config.style.mode == 'user'}"
+    type="button"
+    title="浅色和深色模式转换"
+    onclick="__BUTTERFLY_MAIN.theme.toggle()"
+  ></button>
+</div>

@@ -32,7 +32,7 @@ export default defineConfig({
     emptyOutDir: false, // 清空输出目录
     lib: {
       entry: path.resolve(__dirname, 'src/main.ts'),
-      name: 'butterfly',
+      name: '__BUTTERFLY_MAIN',
       fileName: 'butterfly',
       formats: ['iife'],
     },
