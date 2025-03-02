@@ -1,6 +1,6 @@
 /// <reference types="vite/client" />
 
-import { ThemeMode } from './behavior/theme/types';
+import { ThemeMode } from './modules/theme/types';
 import { LoadingInstance, LoadingType } from './modules/Loading/src';
 
 declare global {

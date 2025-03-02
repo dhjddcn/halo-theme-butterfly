@@ -1,10 +1,7 @@
-@use "util.scss";
 @use "theme.scss";
 @import '@unocss/reset/normalize.css';
 @import '@unocss/reset/sanitize/sanitize.css';
 @import '@unocss/reset/sanitize/assets.css';
-
-@include util.useThemeVar(theme.$theme-colors);
 
 a {
   text-decoration: none;

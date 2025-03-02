@@ -7,17 +7,22 @@
 @use "sass:list";
 
 
-@mixin useThemeVar($theme-colors) {
+// 主题变量
+@mixin useThemeVar($vars) {
   :root {
-    @each $name, $colors in $theme-colors {
-      --#{$name}: #{list.nth($colors, 1)}; // 默认使用 light 模式的颜色
+    @each $key, $value in $vars {
+      @each $name, $var in $value {
+        --#{$key}-#{$name}: #{list.nth($var, 1)}; // 默认使用 light 模式的颜色
+      }
     }
   }
 
   :root[data-color-scheme="dark"] {
     color-scheme: dark;
-    @each $name, $colors in $theme-colors {
-      --#{$name}: #{list.nth($colors, 2)}; // dark 模式的颜色
+    @each $key, $value in $vars {
+      @each $name, $var in $value {
+        --#{$key}-#{$name}: #{list.nth($var, 2)}; // dark 模式的颜色
+      }
     }
   }
 }

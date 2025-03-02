@@ -1,6 +1,6 @@
 import 'virtual:uno.css';
 // import useLoading from './behavior/loading';
-import useTheme from './behavior/theme';
+import useTheme from './modules/Theme';
 import './style/main.scss';
 
 const theme = new useTheme();

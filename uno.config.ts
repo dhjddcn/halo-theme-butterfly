@@ -26,9 +26,6 @@ export default defineConfig({
         transition: value.replace(/_/g, ' '), // 将 "_" 替换为 " "
       }),
     ],
-    ['tap-transparent', { '-webkit-tap-highlight-color': 'transparent' }],
-    // 防止字体大小调整
-    ['text-size-fix', { '-webkit-text-size-adjust': '100%' }],
   ],
   // 小点样式
   shortcuts: [
