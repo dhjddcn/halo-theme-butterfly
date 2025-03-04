@@ -34,7 +34,7 @@
   ],
   "scripts": {
     "build": "tsc && vite build",
-    "build-loading": "tsc && vite build --config ./src/modules/Loading/vite.loading.mts",
+    "build-loading": "tsc && vite build --config src/external/Loading/vite.loading.mts",
     "dev": "vite build --watch",
     "prepare": "husky",
     "lint": "eslint ./src --ext .js,.cjs,.mjs,.ts,.cts,.mts --ignore-path .gitignore",

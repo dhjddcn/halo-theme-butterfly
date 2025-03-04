@@ -18,22 +18,17 @@ export interface LoadingOptions {
 }
 
 class Loading {
-  options: LoadingOptions;
+  options: LoadingOptions = { el: 'body', type: window.__BUTTERFLY_CONFIG.common.loading };
 
-  el: HTMLElement | null = null;
+  #el: HTMLElement | null = 'body';
 
-  classList: string[] = [];
+  #classList: string[] = [];
 
-  public constructor(
-    options: LoadingOptions = {
-      el: 'body',
-      type: window.__BUTTERFLY_CONFIG.common.loading,
-    }
-  ) {
-    options.fullscreen = options.el === 'body' ? true : options.fullscreen;
-    this.options = options;
-    this.hasStyle();
-    this.addRelative();
+  public constructor(options?: LoadingOptions) {
+    this.options = { ...this.options, ...options, fullscreen: options?.el === 'body' ? true : options?.fullscreen };
+    console.log(this.options);
+    // this.hasStyle();
+    // this.addRelative();
   }
 
   /**
@@ -52,17 +47,17 @@ class Loading {
    * 找到 loading el 添加 relative
    */
   private addRelative() {
-    this.el = document.querySelector(this.options.el as string);
+    this.#el = document.querySelector(this.options.el as string);
 
-    if (!this.el) throw new Error('未找到loading el');
+    if (!this.#el) throw new Error('未找到loading el');
 
-    this.classList = ['loading-parent--relative'];
+    this.#classList = ['loading-parent--relative'];
 
     if (this.options.fullscreen) {
-      this.classList.push('loading-parent--hidden');
+      this.#classList.push('loading-parent--hidden');
     }
 
-    this.el.classList.add(...this.classList);
+    this.#el.classList.add(...this.#classList);
 
     this.checkMask();
   }
@@ -71,7 +66,7 @@ class Loading {
    * 检查是否有loading mask 如果就就不需要创建
    */
   private checkMask() {
-    let mask = this.el?.querySelector('.loading-mask');
+    let mask = this.#el?.querySelector('.loading-mask');
 
     if (mask) return;
 
@@ -86,7 +81,7 @@ class Loading {
 
     mask.classList.add(...classList);
 
-    this.el?.appendChild(mask);
+    this.#el?.appendChild(mask);
   }
 
   private createSpinner() {
@@ -94,17 +89,17 @@ class Loading {
   }
 
   public start() {
-    addClass(this.el as HTMLElement, ...this.classList);
+    addClass(this.#el as HTMLElement, ...this.#classList);
   }
 
   public stop() {
-    removeClass(this.el as HTMLElement, ...this.classList);
+    removeClass(this.#el as HTMLElement, ...this.#classList);
   }
 }
 
 const ins = new Loading();
 
-window.addEventListener('load', () => ins.stop(), { once: true });
+window.addEventListener('load', () => setTimeout((_) => ins.stop(), 1000));
 
 export default {
   create: (options: LoadingOptions) => new Loading(options),

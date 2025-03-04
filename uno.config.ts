@@ -43,6 +43,12 @@ export default defineConfig({
     ],
     {
       'flex-center': 'flex items-center justify-center',
+      'bg-ccr': 'bg-center bg-cover bg-no-repeat',
+    },
+    //header
+    {
+      'nav-down':
+        'opacity-0 transition-[background_0.5s,transform_0.5s,opacity_0.5s] animate-fade-in-down animate-duration-1.2s animate-ease animate-forwards',
     },
   ],
 });

@@ -42,7 +42,8 @@
   defer
   rel="preload"
   type="text/javascript"
-  th:src="${ assets_link + 'dist/loading.js?v=' + theme.spec.version}"
+  th:if="${theme.config.loading.type != 'null'}"
+  th:src="${assets_link + 'dist/loading.js?v=' + theme.spec.version}"
 ></script>
 <link
   rel="preload stylesheet"
