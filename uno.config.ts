@@ -43,7 +43,7 @@ export default defineConfig({
     ],
     {
       'flex-center': 'flex items-center justify-center',
-      'bg-ccr': 'bg-center bg-cover bg-no-repeat',
+      'bg-ccr': 'bg-center bg-cover',
     },
     //header
     {

@@ -20,22 +20,25 @@ export interface LoadingOptions {
 class Loading {
   options: LoadingOptions = { el: 'body', type: window.__BUTTERFLY_CONFIG.common.loading };
 
-  #el: HTMLElement | null = 'body';
+  #el: HTMLElement | null = document.body;
 
   #classList: string[] = [];
 
   public constructor(options?: LoadingOptions) {
-    this.options = { ...this.options, ...options, fullscreen: options?.el === 'body' ? true : options?.fullscreen };
-    console.log(this.options);
-    // this.hasStyle();
-    // this.addRelative();
+    this.options = {
+      ...this.options,
+      ...(options || {}),
+      fullscreen: !options?.el || options?.el === 'body' ? true : options?.fullscreen,
+    };
+    this.#hasStyle();
+    this.#addRelative();
   }
 
   /**
    * 检查是否有style 如果没有就创建
    * @private
    */
-  private hasStyle() {
+  #hasStyle() {
     const name = 'loading-style';
 
     if (checkTag(`.${name}`)) return;
@@ -46,7 +49,7 @@ class Loading {
   /**
    * 找到 loading el 添加 relative
    */
-  private addRelative() {
+  #addRelative() {
     this.#el = document.querySelector(this.options.el as string);
 
     if (!this.#el) throw new Error('未找到loading el');
@@ -57,15 +60,15 @@ class Loading {
       this.#classList.push('loading-parent--hidden');
     }
 
-    this.#el.classList.add(...this.#classList);
+    this.start();
 
-    this.checkMask();
+    this.#checkMask();
   }
 
   /**
    * 检查是否有loading mask 如果就就不需要创建
    */
-  private checkMask() {
+  #checkMask() {
     let mask = this.#el?.querySelector('.loading-mask');
 
     if (mask) return;
@@ -75,16 +78,17 @@ class Loading {
     if (this.options.fullscreen) {
       classList.push('is-fullscreen');
     }
+
     mask = document.createElement('div');
 
-    mask.innerHTML = this.createSpinner();
+    mask.innerHTML = this.#createSpinner();
 
     mask.classList.add(...classList);
 
     this.#el?.appendChild(mask);
   }
 
-  private createSpinner() {
+  #createSpinner() {
     return `<div class="loading-spinner">${Look[this.options.type]()}</div>`;
   }
 
