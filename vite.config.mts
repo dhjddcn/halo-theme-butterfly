@@ -3,7 +3,7 @@ import {fileURLToPath} from 'url';
 import path from 'path';
 import UnoCSS from 'unocss/vite';
 import fgb from "fast-glob";
-
+import Iconify from "./vite-plugins/Iconify";
 
 
 export default defineConfig({
@@ -19,6 +19,7 @@ export default defineConfig({
         }
       },
     },
+    Iconify({mdi: 'all'})
   ],
   css: {
     preprocessorOptions: {

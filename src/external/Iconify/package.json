@@ -1,0 +1,15 @@
+{
+  "name": "loading",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "build-Iconify": "npx tsx ./src/index.ts"
+  },
+  "devDependencies": {
+    "@iconify/json": "^2.2.314",
+    "@iconify/utils": "^2.3.0",
+    "esbuild": "^0.25.0"
+  }
+}
