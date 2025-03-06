@@ -18,7 +18,7 @@ export interface LoadingOptions {
 }
 
 class Loading {
-  options: LoadingOptions = { el: 'body', type: window.__BUTTERFLY_CONFIG.common.loading };
+  options: LoadingOptions = {} as LoadingOptions;
 
   #el: HTMLElement | null = document.body;
 
@@ -27,11 +27,10 @@ class Loading {
   public constructor(options?: LoadingOptions) {
     this.options = {
       ...this.options,
-      ...(options || {}),
-      fullscreen: !options?.el || options?.el === 'body' ? true : options?.fullscreen,
+      ...(options || { el: 'body', fullscreen: true, type: window.__BUTTERFLY_CONFIG.common.loading }),
     };
     this.#hasStyle();
-    this.#addRelative();
+    this.#setParentRelative();
   }
 
   /**
@@ -47,9 +46,10 @@ class Loading {
   }
 
   /**
-   * 找到 loading el 添加 relative
+   *  设置 loading 父元素的定位
+   * @private
    */
-  #addRelative() {
+  #setParentRelative() {
     this.#el = document.querySelector(this.options.el as string);
 
     if (!this.#el) throw new Error('未找到loading el');
@@ -67,6 +67,7 @@ class Loading {
 
   /**
    * 检查是否有loading mask 如果就就不需要创建
+   * @private
    */
   #checkMask() {
     let mask = this.#el?.querySelector('.loading-mask');
@@ -88,29 +89,47 @@ class Loading {
     this.#el?.appendChild(mask);
   }
 
+  /**
+   * 创建 spinner
+   * @private
+   */
   #createSpinner() {
     return `<div class="loading-spinner">${Look[this.options.type]()}</div>`;
   }
 
+  /**
+   * 检查当前是否在加载中
+   */
+  #check() {
+    return this.#el?.classList.contains('loading-parent--relative');
+  }
+
+  /**
+   * 开始加载
+   */
   public start() {
+    if (this.#check()) return;
     addClass(this.#el as HTMLElement, ...this.#classList);
   }
 
+  /**
+   * 停止加载
+   */
   public stop() {
     removeClass(this.#el as HTMLElement, ...this.#classList);
   }
+
+  /**
+   * 创建 loading
+   * @param options
+   */
+  static createLoading(options: LoadingOptions) {
+    return new Loading(options);
+  }
 }
 
-const ins = new Loading();
+const loading = new Loading();
 
-window.addEventListener('load', () => setTimeout((_) => ins.stop(), 1000));
+window.addEventListener('load', () => setTimeout((_) => loading.stop(), 1000));
 
-export default {
-  create: (options: LoadingOptions) => new Loading(options),
-  ins,
-};
-
-export interface LoadingInstance {
-  create: (options: LoadingOptions) => Loading;
-  ins: Loading;
-}
+export default loading;

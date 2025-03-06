@@ -3,7 +3,5 @@ import './style/main.scss';
 import useTheme from './modules/Theme';
 import useHeader from './modules/Header';
 
-const theme = new useTheme();
-const header = new useHeader();
-
-export { theme, header };
+export const theme = new useTheme();
+export const header = new useHeader();

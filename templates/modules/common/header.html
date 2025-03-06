@@ -1,20 +1,35 @@
 <nav
   xmlns:th="https://www.thymeleaf.org"
   th:fragment="nav"
-  class="nav w-full h-[60px] flex-center absolute top-0 p-x-4 text-1.2rem nav-down bg-red"
+  class="nav md:p-x-36px p-x-16px text-1.2em w-full h-[60px] flex-center justify-between absolute top-0 opacity-0 transition-[background_0.5s,transform_0.5s,opacity_0.5s] animate-fade-in-down animate-duration-1.2s animate-ease animate-forwards"
 >
-  12
-  <!--  <a-->
-  <!--    href="/"-->
-  <!--    th:text="${site.title}"-->
-  <!--    class="text-[var(&#45;&#45;nav-font-color)] font-700 text-shadow-[2px_2px_4px_rgba(0,0,0,0.15)] transition-[color_0.5s]"-->
-  <!--  ></a>-->
+  <a
+    href="/"
+    th:text="${site.title}"
+    class="site-title text-[var(--nav-font-color)] font-700 transition-[color_0.5s]"
+  />
 
-  <!--  <div class="flex items-center justify-center flex-row text-[var(&#45;&#45;nav-font-color)]">菜单</div>-->
+  <menu class="menu flex-center flex-row" th:with="menuItems = ${menuFinder.getPrimary().menuItems}">
+    <th:block th:each="menuItem : ${menuItems}" th:with="isChildren = ${#lists.isEmpty(menuItem.children)} ">
+      <!--/* 一级*/-->
+      <li th:if="${isChildren}" class="menu-item list-none">
+        <a
+          class="menu-link text-[var(--nav-font-color)]"
+          th:href="@{${menuItem.status.href}}"
+          th:target="${menuItem.spec.target?.value}"
+          th:with="icon = ${#annotations.getOrDefault(menuItem,'icon','')}"
+        >
+          <!--          <i th:if="${!#strings.isEmpty(icon)}" th:class="${icon}"></i>-->
+          <span class="name" th:text="${menuItem.status.displayName}"></span>
+        </a>
+      </li>
+    </th:block>
+  </menu>
 </nav>
 
 <header xmlns:th="https://www.thymeleaf.org" th:fragment="h(above)" class="header w-full min-h-[60px] relative">
   <th:block th:replace="~{::nav}" />
+
   <!--  <th:block th:replace="~{::above}" />-->
 
   <section
