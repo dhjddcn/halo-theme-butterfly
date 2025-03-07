@@ -52,7 +52,7 @@ async function IconifyCss(icons: any) {
   return await genIconifyCss();
 }
 
-const cssName = fileURLToPath(new URL('../../../../templates/assets/dist/iconify.css', import.meta.url));
+const cssName = fileURLToPath(new URL('../../../../templates/assets/css/iconify.css', import.meta.url));
 
 const dir = path.dirname(cssName);
 

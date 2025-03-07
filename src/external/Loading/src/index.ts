@@ -27,7 +27,7 @@ class Loading {
   public constructor(options?: LoadingOptions) {
     this.options = {
       ...this.options,
-      ...(options || { el: 'body', fullscreen: true, type: window.__BUTTERFLY_CONFIG.common.loading }),
+      ...(options || { el: 'body', fullscreen: true, type: window?.__BUTTERFLY_CONFIG?.loading?.type || 'circle' }),
     };
     this.#hasStyle();
     this.#setParentRelative();

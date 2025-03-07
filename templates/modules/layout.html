@@ -2,7 +2,8 @@
   xmlns:th="https://www.thymeleaf.org"
   th:with="
      stats = ${siteStatsFinder.getStats()},
-     isDev = ${true ? #dates.createNow().time : ''},
+     isDev = ${false ? #dates.createNow().time : ''},
+     version = ${'?version=' + theme.spec.version},
      assets_link = ${theme.config.loading.source[theme.config.loading.source.type]},
      contributor = ${contributorFinder.getContributor(theme.config.base.metadata_name)}
   "
@@ -27,9 +28,7 @@
       <link rel="canonical" th:href="${site.url}" />
       <th:block th:replace="~{modules/config}" />
     </head>
-    <body
-      class="text-14px text-[var(--root-text-color)] leading-loose overflow-y-overlay scroll-smooth pb-[env(safe-area-inset-bottom)]"
-    >
+    <body class="leading-loose overflow-y-overlay scroll-smooth">
       <div id="Butterfly" th:class="${page + ' relative min-h-[100vh]'}">
         <!--/* 内容 */-->
         <th:block th:replace="${content}" />

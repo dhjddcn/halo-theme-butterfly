@@ -7,9 +7,11 @@ declare global {
   interface Window {
     Alpine: Alpine;
     __BUTTERFLY_CONFIG: {
-      common: {
-        loading: LoadingType;
+      style: {
         mode: ThemeMode;
+      };
+      loading: {
+        type: LoadingType;
       };
     };
     __BUTTERFLY_LOADING: LoadingInstance;

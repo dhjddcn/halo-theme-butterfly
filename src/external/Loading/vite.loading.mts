@@ -38,7 +38,7 @@ export default defineConfig({
     },
   },
   build: {
-    outDir: fileURLToPath(new URL('../../../templates/assets/dist', import.meta.url)), // 指定输出目录
+    outDir: fileURLToPath(new URL('../../../templates/assets/js', import.meta.url)), // 指定输出目录
     emptyOutDir: false, // 清空输出目录
     lib: {
       entry: path.resolve(__dirname, './src/index.ts'),

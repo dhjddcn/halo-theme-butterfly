@@ -1,9 +1,11 @@
 <!--/* config */-->
 <script th:inline="javascript">
   window.__BUTTERFLY_CONFIG = {
-    common: {
+    style: {
       mode: /*[[${theme.config.style.mode}]]*/ null,
-      loading: /*[[${theme.config.loading.type}]]*/ null,
+    },
+    loading: {
+      type: /*[[${theme.config.loading.type}]]*/ null,
     },
   };
 </script>
@@ -43,7 +45,7 @@
   rel="preload"
   type="text/javascript"
   th:if="${theme.config.loading.type != 'null'}"
-  th:src="${assets_link + 'dist/loading.js?v=' + theme.spec.version}"
+  th:src="${assets_link + 'js/loading.js' + version}"
 ></script>
 <!--<link-->
 <!--  rel="preload stylesheet"-->
@@ -56,9 +58,6 @@
 <!--  as="style"-->
 <!--  th:href="${ assets_link + 'plugins/cursor/' + 'simple' + '.min.css?v=' + theme.spec.version}"-->
 <!--/>-->
-<link
-  rel="preload stylesheet"
-  as="style"
-  th:href="${ assets_link + 'dist/butterfly.css?v=' + theme.spec.version + isDev }"
-/>
-<script type="text/javascript" th:src="${ assets_link + 'dist/butterfly.js?v=' + theme.spec.version + isDev }"></script>
+<link rel="preload stylesheet" as="style" th:href="${ assets_link + 'css/iconify.css' + version + isDev }" />
+<link rel="preload stylesheet" as="style" th:href="${ assets_link + 'css/style.css' + version + isDev }" />
+<script type="text/javascript" th:src="${ assets_link + 'js/main.js' + version + isDev }"></script>

@@ -83,7 +83,7 @@ spec:
             - label: '沙漏'
               value: 'hourglass'
             - label: '交叉线'
-              value: 'cross_line'
+              value: 'crossLine'
             - label: '小圆点'
               value: 'dot'
           validation: required
