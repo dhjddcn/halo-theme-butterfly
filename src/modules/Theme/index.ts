@@ -24,9 +24,9 @@ export const ATTR_KEY: string = 'colorScheme';
 export default class Theme {
   #mode: string = THEME_MODE.light; // 主题模式
 
-  #changeFN!: Function; // 切换主题回调
+  #changeCallback!: Function; // 切换主题回调
 
-  #fns: Record<THEME_MODE, () => THEME_MODE> = {
+  #FNS: Record<THEME_MODE, () => THEME_MODE> = {
     auto: () => (useIsDaytime() ? THEME_MODE.light : THEME_MODE.dark),
     user: () => (localStorage.getItem(LOCALSTORAGE_KEY) as THEME_MODE) || THEME_MODE.light,
     light: () => THEME_MODE.light,
@@ -37,7 +37,7 @@ export default class Theme {
    * 构造函数
    */
   public constructor() {
-    const mode = this.#fns[THEME_MODE.auto]();
+    const mode = this.#FNS[window.__BUTTERFLY_CONFIG.style.mode]();
 
     this.set(mode);
   }
@@ -51,7 +51,7 @@ export default class Theme {
     localStorage.setItem(LOCALSTORAGE_KEY, theme);
     this.#mode = theme;
 
-    this.#changeFN && this.#changeFN(theme);
+    this.#changeCallback && this.#changeCallback(theme);
 
     // halo评论主题
     this.setHaloCommentTheme(theme);
@@ -62,7 +62,7 @@ export default class Theme {
    * @param fn
    */
   public change(fn: Function) {
-    this.#changeFN = fn;
+    this.#changeCallback = fn;
   }
 
   /**

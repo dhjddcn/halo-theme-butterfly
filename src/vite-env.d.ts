@@ -1,6 +1,6 @@
 /// <reference types="vite/client" />
 
-import { ThemeMode } from './modules/Theme';
+import { THEME_MODE } from './modules/Theme';
 import { LoadingInstance, LoadingType } from './external/Loading/src';
 
 declare global {
@@ -8,7 +8,7 @@ declare global {
     Alpine: Alpine;
     __BUTTERFLY_CONFIG: {
       style: {
-        mode: ThemeMode;
+        mode: THEME_MODE;
       };
       loading: {
         type: LoadingType;

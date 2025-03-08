@@ -9,15 +9,22 @@
 
 
 $vars: (
-        root: (
-                text-color: (rgba(76, 73, 72, 1), rgba(255, 255, 255, 0.7)),
-        ),
-        header: (
-                codwdlor:(#ffffff, #000000),
-        ),
-        nav: (
-                coloddr:(#ffffff, #000000),
-        )
+  // base
+  r: (
+    text-color: (rgba(76, 73, 72, 1), rgba(255, 255, 255, 0.7)),
+    btn-color: (rgba(225, 225, 225, 1), rgba(255, 255, 255, 0.7)),
+  ),
+  // header
+  h: (
+    codwdlor:(#ffffff, #000000),
+  ),
+  // main
+  m: (
+    color: (rgba(76, 73, 72, 1), rgba(255, 255, 255, 0.7)),
+  ),
+  // footer
+  f: (
+  )
 );
 
 @include util.useThemeVar($vars);

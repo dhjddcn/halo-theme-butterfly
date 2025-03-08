@@ -1,4 +1,5 @@
 @use "theme.scss";
+
 *, ::after, ::before {
   box-sizing: border-box;
   cursor: inherit;
@@ -72,7 +73,6 @@ button, select {
 
 [type=button], [type=reset], [type=submit], button {
   -webkit-appearance: button;
-  background-color: transparent;
   background-image: none
 }
 
@@ -163,11 +163,11 @@ img, video {
   background-color: transparent
 }
 
-body{
+body {
   font-size: 14px;
   text-size-adjust: 100%;
   padding-bottom: env(safe-area-inset-bottom);
-  color:var(--root-text-color);
+  color: var(--r-text-color);
 }
 
 a {

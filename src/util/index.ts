@@ -86,3 +86,7 @@ export function removeClass(el: HTMLElement, ...className: (HTMLElement | string
     el.className = cls.join(' ');
   }
 }
+
+/**
+ * 代数效应
+ */
