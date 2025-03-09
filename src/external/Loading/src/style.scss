@@ -55,7 +55,7 @@
 
   //圆形加载动画
   &-circle {
-    @keyframes circleLoad{
+    @keyframes circleLoad {
       0% {
         transform: rotate(0deg);
       }
@@ -74,10 +74,10 @@
       animation: circleLoad 1s linear infinite;
     }
   }
-  
-  
+
+
   //沙漏 
-  &-hourglass{
+  &-hourglass {
 
     @keyframes hourglassLoad_1 {
       80% {
@@ -90,57 +90,57 @@
     }
 
     @keyframes hourglassLoad_2 {
-      10%,70% {
-        background-size: 100% 205%,var(--s,0) 100%
+      10%, 70% {
+        background-size: 100% 205%, var(--s, 0) 100%
       }
 
-      70%,100% {
-        background-position: top,center
+      70%, 100% {
+        background-position: top, center
       }
     }
 
- &{
-   --c1: #673b14;
-   --c2: #f8b13b;
-   width: 40px;
-   height: 80px;
-   border-top: 4px solid var(--c1);
-   border-bottom: 4px solid var(--c1);
-   background: linear-gradient(90deg, var(--c1) 2px, var(--c2) 0 5px,var(--c1) 0) 50%/7px 8px no-repeat;
-   display: grid;
-   overflow: hidden;
-   animation: hourglassLoad_1 2s infinite linear;
+    & {
+      --c1: #673b14;
+      --c2: #f8b13b;
+      width: 40px;
+      height: 80px;
+      border-top: 4px solid var(--c1);
+      border-bottom: 4px solid var(--c1);
+      background: linear-gradient(90deg, var(--c1) 2px, var(--c2) 0 5px, var(--c1) 0) 50%/7px 8px no-repeat;
+      display: grid;
+      overflow: hidden;
+      animation: hourglassLoad_1 2s infinite linear;
 
-   
-    &::before, &::after {
-      content: "";
-      grid-area: 1/1;
-      width: 75%;
-      height: calc(50% - 4px);
-      margin: 0 auto;
-      border: 2px solid var(--c1);
-      border-top: 0;
-      box-sizing: content-box;
-      border-radius: 0 0 40% 40%;
-      mask-composite: exclude;
-      //noinspection CssInvalidFunction
-      background: linear-gradient(var(--d, 0deg), var(--c2) 50%, rgba(0, 0, 0, 0) 0) bottom/100% 205%,linear-gradient(var(--c2) 0 0) center/0 100% no-repeat;
-      animation: inherit;
-      animation-name: hourglassLoad_2;
+
+      &::before, &::after {
+        content: "";
+        grid-area: 1/1;
+        width: 75%;
+        height: calc(50% - 4px);
+        margin: 0 auto;
+        border: 2px solid var(--c1);
+        border-top: 0;
+        box-sizing: content-box;
+        border-radius: 0 0 40% 40%;
+        mask-composite: exclude;
+        //noinspection CssInvalidFunction
+        background: linear-gradient(var(--d, 0deg), var(--c2) 50%, rgba(0, 0, 0, 0) 0) bottom/100% 205%, linear-gradient(var(--c2) 0 0) center/0 100% no-repeat;
+        animation: inherit;
+        animation-name: hourglassLoad_2;
+      }
+
+      &::after {
+        transform-origin: 50% calc(100% + 2px);
+        transform: scaleY(-1);
+        --s: 3px;
+        --d: 180deg;
+      }
     }
-   
-   &::after {
-     transform-origin: 50% calc(100% + 2px);
-     transform: scaleY(-1);
-     --s: 3px;
-     --d: 180deg;
-   }
- }
   }
-  
-  
+
+
   // 交叉线 
-  &-crossLine{
+  &-crossLine {
     @keyframes crossLineLoad_1 {
       from {
         stroke-dashoffset: 0;
@@ -174,15 +174,15 @@
         stroke-dashoffset: -358;
       }
     }
-    
-    &-svg{
+
+    &-svg {
       width: 100px;
       height: 50px;
     }
 
 
     &__track {
-      stroke: hsl(var(--hue),90%,90%);
+      stroke: hsl(var(--hue), 90%, 90%);
       transition: stroke var(--trans-dur);
     }
 
@@ -194,6 +194,56 @@
     &__worm2 {
       animation-name: crossLineLoad_2;
     }
+  }
+
+
+  // 小点
+  &-dot {
+
+    @keyframes dotLoad {
+      0% {
+      }
+
+      80% {
+        transform: rotate(360deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+    
+   & {
+      --size-loader: 50px;
+      --size-orbe: 10px;
+      width: var(--size-loader);
+      height: var(--size-loader);
+      position: relative;
+      transform: rotate(45deg);
+    }
+
+    .dt {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      --delay: calc(var(--index) * 0.1s);
+      animation: dotLoad ease-in-out 1.5s var(--delay) infinite;
+      opacity: calc(1 - calc(0.2 * var(--index)));
+
+      &::after {
+        position: absolute;
+        content: '';
+        top: 0;
+        left: 0;
+        width: var(--size-orbe);
+        height: var(--size-orbe);
+        background-color: var(--theme);
+        box-shadow: 0 0 20px 2px var(--theme);
+        border-radius: 50%;
+      }
+    }
+
+
   }
 }
 
