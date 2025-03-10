@@ -30,9 +30,5 @@ export function crossLine() {
  * 点加载动画
  */
 export function dot() {
-  return `<div class="loading-dot">    <div class="dt" style="--index: 0"></div>
-<div class="dt" style="--index: 1"></div>
-    <div class="dt" style="--index: 2"></div>
-    <div class="dt" style="--index: 3"></div>
-    <div class="dt" style="--index: 4"></div></div>`;
+  return `<div class="loading-dot"> <div class="dt" style="--index: 0"></div><div class="dt" style="--index: 1"></div> <div class="dt" style="--index: 2"></div> <div class="dt" style="--index: 3"></div> <div class="dt" style="--index: 4"></div></div>`;
 }

@@ -1,8 +1,4 @@
 {
-  "name": "loading",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
   "type": "module",
   "scripts": {
     "build-Iconify": "npx tsx ./src/index.ts"
