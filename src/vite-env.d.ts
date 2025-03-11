@@ -1,7 +1,7 @@
 /// <reference types="vite/client" />
 
 import { THEME_MODE } from './modules/Theme';
-import { LoadingInstance, LoadingType } from './external/Loading/src';
+import { LoadingType } from './external/Loading/src';
 
 declare global {
   interface Window {
@@ -14,7 +14,7 @@ declare global {
         type: LoadingType;
       };
     };
-    __BUTTERFLY_LOADING: LoadingInstance;
+    __BUTTERFLY_LOADING: any;
     __BUTTERFLY_MAIN: any;
   }
 }
