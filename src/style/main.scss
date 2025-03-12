@@ -1,12 +1,9 @@
 @use "theme.scss";
 
-:after, :before {
-  box-sizing: border-box;
-}
-
 article, aside, blockquote, body, button, dd, details, div, dl, dt, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, hr, input, legend, li, menu, nav, ol, p, section, td, textarea, th, ul {
   margin: 0;
-  padding: 0
+  padding: 0;
+  box-sizing: border-box;
 }
 
 a {
@@ -16,7 +13,7 @@ a {
   transition: color .3s;
 }
 
-img:not([src]),img[src=""] {
+img:not([src]), img[src=""] {
   border: 0;
   opacity: 0
 }
@@ -26,8 +23,14 @@ table {
   border-spacing: 0
 }
 
-li,ol,ul {
+li, ol, ul {
   list-style: none
+}
+
+button {
+  border-style: none;
+  outline: none;
+  cursor: pointer
 }
 
 ::-webkit-scrollbar {
