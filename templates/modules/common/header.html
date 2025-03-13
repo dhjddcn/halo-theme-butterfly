@@ -3,12 +3,12 @@
   th:fragment="nav"
   class="nav md:p-x-36px p-x-16px text-1.2em w-full h-[60px] flex-center justify-between absolute top-0 opacity-0 transition-[background_0.5s,transform_0.5s,opacity_0.5s] animate-fade-in-down animate-duration-1.2s animate-ease animate-forwards"
 >
-  <a href="/" th:text="${site.title}" class="site-title text-[var(--nav-font-color)] font-700" />
+  <a href="/" th:text="${site.title}" class="site-title text-[var(--nav-font-color)] font-700"/>
 
   <menu class="menu flex-center flex-row" th:with="menuItems = ${menuFinder.getPrimary().menuItems}">
     <th:block th:each="menuItem : ${menuItems}" th:with="isChildren = ${#lists.isEmpty(menuItem.children)} ">
       <!--/* 一级*/-->
-      <li th:if="${isChildren}" class="menu-item list-none">
+      <li th:if="${isChildren}" class="menu-item">
         <a
           class="menu-item__link text-[var(--nav-font-color)]"
           th:href="@{${menuItem.status.href}}"
@@ -24,7 +24,7 @@
 </nav>
 
 <header xmlns:th="https://www.thymeleaf.org" th:fragment="h(above)" class="header w-full min-h-[60px] relative">
-  <th:block th:replace="~{::nav}" />
+  <th:block th:replace="~{::nav}"/>
 
   <!--  <th:block th:replace="~{::above}" />-->
 
