@@ -5,4 +5,9 @@
  * @Description: 头部
  */
 
-export default class Header {}
+import nav from './nav';
+
+export default class Header {
+  nav = new nav();
+
+}
