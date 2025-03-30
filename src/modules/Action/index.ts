@@ -7,10 +7,13 @@
 
 export default class Action {
 
+  constructor() {
+  }
+
   /**
    * 回到顶部
    */
-  public  backTop() {
+  public backTop() {
     window.scrollTo({
       top: 0,
       behavior: 'smooth' // 平滑滚动

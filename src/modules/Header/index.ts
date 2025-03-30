@@ -9,5 +9,6 @@ import nav from './nav';
 
 export default class Header {
   nav = new nav();
-
+  constructor() {
+  }
 }
